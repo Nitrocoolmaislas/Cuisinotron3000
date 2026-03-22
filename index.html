@@ -712,7 +712,7 @@
 <header>
   <div>
     <h1>Carnet de Recettes · <span>Clara</span></h1>
-    <div class="header-sub">par Élodie Legros · Diététicienne / Nutritionniste</div>
+    <div class="header-sub">Carnet de recettes personnel</div>
   </div>
 </header>
 
@@ -809,7 +809,7 @@
     <div id="drive-not-configured" style="display:none">
       <div class="setup-banner" style="margin:0">
         <strong>⚙️ Configuration requise</strong>
-        Remplace <code>758662499322-tmh1469ov6fnp5s0vjeqqd6023gm3edv.apps.googleusercontent.com</code> dans le fichier HTML par ton Client ID Google.<br>
+        Remplace <code>VOTRE_CLIENT_ID_ICI</code> dans le fichier HTML par ton Client ID Google.<br>
         <a href="guide_installation.html" target="_blank" style="color:var(--terracotta);font-weight:500;">Voir le guide d'installation →</a>
       </div>
     </div>
@@ -1610,34 +1610,53 @@ const RECIPES = [
 
 // ══════════════════════════════════════════════
 //  STATE
+//  stock = { [normKey]: { name, unit, qty } }
 // ══════════════════════════════════════════════
 let currentCat = 'all';
 let currentFeasFilter = null;
-let stock = JSON.parse(localStorage.getItem('recettes_stock') || '[]');
+
+function loadStockFromStorage() {
+  try {
+    const raw = JSON.parse(localStorage.getItem('recettes_stock') || 'null');
+    if (!raw) return {};
+    // migrate old array format
+    if (Array.isArray(raw)) {
+      const obj = {};
+      raw.forEach(name => { const k = normIngredient(name); obj[k] = { name, unit: '', qty: 0 }; });
+      return obj;
+    }
+    return raw;
+  } catch(e) { return {}; }
+}
+let stock = loadStockFromStorage();
 
 // ══════════════════════════════════════════════
-//  FEASIBILITY
+//  NORMALIZATION
 // ══════════════════════════════════════════════
 function normIngredient(str) {
-  return str.toLowerCase()
+  return (str || '').toLowerCase()
     .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9 ]/g, ' ')
     .replace(/\s+/g, ' ').trim();
 }
 
-function normStock(str) {
-  return normIngredient(str);
-}
-
+// ══════════════════════════════════════════════
+//  FEASIBILITY  (exact key match)
+// ══════════════════════════════════════════════
 function checkFeasibility(recipe) {
-  if (stock.length === 0) return { status: 'unknown', pct: 0, missing: [] };
-  const normStockList = stock.map(normStock);
+  const stockKeys = Object.keys(stock);
+  if (stockKeys.length === 0) return { status: 'unknown', pct: 0, missing: [] };
   let matched = 0;
   const missing = [];
   for (const ing of recipe.ingredients) {
-    const normIng = normIngredient(ing);
-    const words = normIng.split(' ').filter(w => w.length > 2);
-    const found = normStockList.some(s => words.some(w => s.includes(w)));
+    const { name } = parseIngredient(ing);
+    const key = normIngredient(name);
+    // 1. Exact match
+    let found = key in stock;
+    // 2. Stock key fully contained in recipe key (e.g. "ail" matches "ail hache")
+    if (!found) found = stockKeys.some(sk => sk.length >= 3 && key.includes(sk) && key.replace(sk,'').trim().length < 6);
+    // 3. Recipe key fully contained in stock key
+    if (!found) found = stockKeys.some(sk => key.length >= 3 && sk.includes(key) && sk.replace(key,'').trim().length < 6);
     if (found) matched++;
     else missing.push(ing);
   }
@@ -1711,12 +1730,14 @@ function openModal(id) {
     : `<span>⚡ ${r.prepTime} min</span>`;
   document.getElementById('modal-meta').innerHTML = cookInfo + `<span>👤 ${r.servings} portion${r.servings>1?'s':''}</span>`;
 
-  const normStockList = stock.map(normStock);
+  const stockKeys = Object.keys(stock);
   const ingredientsHTML = r.ingredients.map(ing => {
-    const normIng = normIngredient(ing);
-    const words = normIng.split(' ').filter(w => w.length > 2);
-    const inStock = stock.length > 0 && normStockList.some(s => words.some(w => s.includes(w)));
-    const dotClass = stock.length === 0 ? '' : (inStock ? 'in-stock' : 'out-stock');
+    const { name } = parseIngredient(ing);
+    const key = normIngredient(name);
+    let inStock = key in stock;
+    if (!inStock) inStock = stockKeys.some(sk => sk.length >= 3 && key.includes(sk) && key.replace(sk,'').trim().length < 6);
+    if (!inStock) inStock = stockKeys.some(sk => key.length >= 3 && sk.includes(key) && sk.replace(key,'').trim().length < 6);
+    const dotClass = stockKeys.length === 0 ? '' : (inStock ? 'in-stock' : 'out-stock');
     return `<li><span class="ing-dot ${dotClass}"></span>${ing}</li>`;
   }).join('');
   document.getElementById('modal-ingredients').innerHTML = ingredientsHTML;
@@ -1785,60 +1806,80 @@ function toggleStock() {
 
 function saveStock() {
   localStorage.setItem('recettes_stock', JSON.stringify(stock));
-  scheduleDriveSave(); // sync vers Google Drive si connecté
+  scheduleDriveSave();
 }
 
 function renderStock() {
-  const list = document.getElementById('stock-list');
-  const empty = document.getElementById('stock-empty');
-  const clearBtn = document.getElementById('stock-clear-btn');
-  const badge = document.getElementById('stock-badge');
-  badge.textContent = stock.length;
-  if (stock.length === 0) {
+  const list   = document.getElementById('stock-list');
+  const empty  = document.getElementById('stock-empty');
+  const clrBtn = document.getElementById('stock-clear-btn');
+  const badge  = document.getElementById('stock-badge');
+  const keys   = Object.keys(stock);
+  badge.textContent = keys.length;
+  if (keys.length === 0) {
     empty.style.display = '';
     list.innerHTML = '';
-    clearBtn.style.display = 'none';
+    clrBtn.style.display = 'none';
     return;
   }
   empty.style.display = 'none';
-  clearBtn.style.display = '';
-  list.innerHTML = stock.map((item, i) =>
-    `<div class="stock-item">
-      <span>🟢</span>
-      <span class="stock-item-name">${item}</span>
-      <button class="stock-item-remove" onclick="removeStock(${i})" title="Retirer">✕</button>
-    </div>`
-  ).join('');
+  clrBtn.style.display = '';
+  list.innerHTML = keys.sort().map(k => {
+    const e = stock[k];
+    return `<div class="stock-item">
+      <span style="color:var(--success);font-size:0.8rem;">●</span>
+      <span class="stock-item-name">${e.name}</span>
+      <input type="number" min="0" step="1" value="${e.qty || ''}"
+        placeholder="qté"
+        style="width:52px;padding:3px 6px;border:1.5px solid var(--border);border-radius:5px;
+               font-family:'DM Sans',sans-serif;font-size:0.82rem;text-align:right;"
+        onchange="updateStockQty('${k}', this.value)"
+        oninput="updateStockQty('${k}', this.value)">
+      <span style="font-size:0.78rem;color:var(--warm-grey);min-width:28px;">${e.unit || ''}</span>
+      <button class="stock-item-remove" onclick="removeStock('${k}')" title="Retirer">✕</button>
+    </div>`;
+  }).join('');
+}
+
+function updateStockQty(key, val) {
+  if (!stock[key]) return;
+  stock[key].qty = parseFloat(val) || 0;
+  saveStock();
 }
 
 function addStockItem() {
   const input = document.getElementById('stock-input');
   const val = input.value.trim();
   if (!val) return;
-  const lower = val.toLowerCase();
-  if (!stock.some(s => s.toLowerCase() === lower)) {
-    stock.push(val);
+  const key = normIngredient(val);
+  if (!(key in stock)) {
+    stock[key] = { name: val, unit: '', qty: 0 };
     saveStock();
     renderStock();
     renderGrid();
+    updateCounts();
   }
   input.value = '';
   input.focus();
 }
 
-function removeStock(i) {
-  stock.splice(i, 1);
+function removeStock(key) {
+  delete stock[key];
   saveStock();
   renderStock();
+  renderCatalog();
   renderGrid();
+  updateCounts();
 }
 
 function clearStock() {
   if (confirm('Vider tout le stock ?')) {
-    stock = [];
+    stock = {};
     saveStock();
     renderStock();
+    renderCatalog();
     renderGrid();
+    updateCounts();
   }
 }
 
@@ -1846,15 +1887,12 @@ function clearStock() {
 //  COUNTS
 // ══════════════════════════════════════════════
 function updateCounts() {
-  const all = RECIPES.length;
-  document.getElementById('cnt-all').textContent = all;
+  document.getElementById('cnt-all').textContent = RECIPES.length;
   ['repas','tartinade','petitdej'].forEach(cat => {
     document.getElementById('cnt-'+cat).textContent = RECIPES.filter(r => r.category === cat).length;
   });
-  const okCount = RECIPES.filter(r => checkFeasibility(r).status === 'ok').length;
-  const partialCount = RECIPES.filter(r => checkFeasibility(r).status === 'partial').length;
-  document.getElementById('cnt-ok').textContent = okCount;
-  document.getElementById('cnt-partial').textContent = partialCount;
+  document.getElementById('cnt-ok').textContent      = RECIPES.filter(r => checkFeasibility(r).status === 'ok').length;
+  document.getElementById('cnt-partial').textContent = RECIPES.filter(r => checkFeasibility(r).status === 'partial').length;
 }
 
 // ══════════════════════════════════════════════
@@ -1892,7 +1930,6 @@ function parseIngredient(raw) {
     .replace(/½/g, '0.5').replace(/¼/g, '0.25').replace(/¾/g, '0.75')
     .replace(/⅓/g, '0.33').replace(/⅔/g, '0.67');
 
-  // Ordered unit definitions: longer/specific first to avoid partial matches
   const UNITS = [
     { re: /c(?:uillères?)?\s*à\s*soupe|càs/i,  label: 'càs' },
     { re: /c(?:uillères?)?\s*à\s*caf[eé]|càc/i, label: 'càc' },
@@ -1913,27 +1950,28 @@ function parseIngredient(raw) {
     { re: /\bg\b/i,       label: 'g' },
   ];
 
-  // Prep descriptors to strip from name tail
   const prepRe = /,\s*(haché[e]?s?|émincé[e]?s?|pressé[e]?s?|coupé[e]?s?|râpé[e]?s?|grillé[e]?s?|écrasé[e]?s?|taillé[e]?s?|tranché[e]?s?).*$/i;
 
   function cleanName(n) {
     return n
-      .replace(/\(.*?\)/g, '')   // (notes entre parenthèses)
-      .replace(prepRe, '')       // ,haché, ,émincé…
-      .replace(/,\s*[a-zàâéèêëîïôùûüœ]/i, '') // autres descriptions après virgule
-      .replace(/\s+/g, ' ').trim();
+      .replace(/^(les?\s|la\s|l['']|un[e]?\s|des?\s|du\s|de\s(?:la\s|l[''])?)/i, '') // strip leading articles
+      .replace(/\bjus\s+d['']?/i, '')    // "jus de/d'" → keep fruit name
+      .replace(/\(.*?\)/g, '')           // (notes entre parenthèses)
+      .replace(prepRe, '')               // ,haché…
+      .replace(/,.*$/, '')               // tout ce qui suit une virgule
+      .replace(/\b(facultatif|optionnel|ou\s+.*|et\s+.*|selon.*|si\s+.*)\b.*$/i, '')
+      .replace(/\s+/g, ' ').trim()
+      .toLowerCase();
   }
 
   const qtyMatch = s.match(/^([\d.,]+(?:\s*[-–]\s*[\d.,]+)?)\s*/);
   if (!qtyMatch) {
-    // No number — pure name (e.g. "Thym", "Huile d'olive")
     return { qty: '', unit: '', name: cleanName(s) };
   }
 
   const qty = qtyMatch[1].trim();
   let rest = s.slice(qtyMatch[0].length).trim();
 
-  // Try to match a unit at the start of rest
   let unit = '';
   for (const u of UNITS) {
     const m = rest.match(new RegExp('^(' + u.re.source + ')\\s*', 'i'));
@@ -1983,7 +2021,6 @@ function renderCatalog() {
   const q = (document.getElementById('catalog-search')?.value || '')
     .toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
   const entries = buildIngredientMap(catalogCat);
-  const normStockList = stock.map(normStock);
   const tbody = document.getElementById('catalog-tbody');
   const empty = document.getElementById('catalog-empty');
   const restoreBar = document.getElementById('catalog-restore-bar');
@@ -2010,17 +2047,22 @@ function renderCatalog() {
   empty.style.display = 'none';
 
   tbody.innerHTML = filtered.map(([key, v]) => {
-    const words = key.split(' ').filter(w => w.length > 2);
-    const inStock = normStockList.some(s => words.some(w => s.includes(w)));
+    const inStock = key in stock;
     const rowClass = inStock ? 'catalog-row in-stock' : 'catalog-row';
 
     const stockBtn = inStock
-      ? `<button class="toggle-stock-btn remove" onclick="catalogToggle('${key}','${escapeAttr(v.name)}',false)" title="Retirer du stock">−</button>`
-      : `<button class="toggle-stock-btn add"    onclick="catalogToggle('${key}','${escapeAttr(v.name)}',true)"  title="Ajouter au stock">+</button>`;
+      ? `<button class="toggle-stock-btn remove" onclick="catalogToggle('${key}','${escapeAttr(v.name)}','${escapeAttr(v.unit)}',false)" title="Retirer du stock">−</button>`
+      : `<button class="toggle-stock-btn add"    onclick="catalogToggle('${key}','${escapeAttr(v.name)}','${escapeAttr(v.unit)}',true)"  title="Ajouter au stock">+</button>`;
 
-    const qtyDisplay = v.qties.length
-      ? `<div class="ing-qty">${v.qties.join(' / ')} ${v.unit}</div>`
-      : `<div class="ing-qty" style="color:var(--warm-grey)">—</div>`;
+    const qtyCell = inStock
+      ? `<input type="number" min="0" step="1"
+           value="${stock[key].qty || ''}"
+           placeholder="—"
+           style="width:52px;padding:3px 6px;border:1.5px solid var(--border);border-radius:5px;
+                  font-family:'DM Sans',sans-serif;font-size:0.82rem;text-align:right;"
+           onchange="updateStockQty('${key}',this.value)"
+           oninput="updateStockQty('${key}',this.value)">`
+      : `<span class="ing-qty" style="color:var(--warm-grey)">—</span>`;
 
     const recipeBadge = `<span class="ing-recipes">×${v.recipes.size} recette${v.recipes.size > 1 ? 's' : ''}</span>`;
 
@@ -2030,7 +2072,7 @@ function renderCatalog() {
         ${recipeBadge}
       </td>
       <td class="col-unit"><span class="ing-unit">${v.unit || '—'}</span></td>
-      <td class="col-qty">${qtyDisplay}</td>
+      <td class="col-qty">${qtyCell}</td>
       <td class="col-stock">${stockBtn}</td>
       <td class="col-del">
         <button class="del-ing-btn" onclick="deleteCatalogEntry('${escapeAttr(key)}')" title="Masquer cet ingrédient">🗑</button>
@@ -2055,25 +2097,20 @@ function restoreAllCatalog() {
   renderCatalog();
 }
 
-function catalogToggle(key, name, add) {
+function catalogToggle(key, name, unit, add) {
   if (add) {
-    const words = key.split(' ').filter(w => w.length > 2);
-    const existing = stock.some(s => {
-      const ns = normStock(s);
-      return words.some(w => ns.includes(w));
-    });
-    if (!existing) { stock.push(name); saveStock(); }
+    if (!(key in stock)) {
+      stock[key] = { name, unit, qty: 0 };
+      saveStock();
+    }
   } else {
-    const words = key.split(' ').filter(w => w.length > 2);
-    stock = stock.filter(s => {
-      const ns = normStock(s);
-      return !words.some(w => ns.includes(w));
-    });
+    delete stock[key];
     saveStock();
   }
   renderStock();
   renderCatalog();
   renderGrid();
+  updateCounts();
 }
 
 // ── TEXTAREA BATCH ADD ──
@@ -2081,13 +2118,14 @@ function addFromTextarea() {
   const ta = document.getElementById('stock-textarea');
   const lines = ta.value.split('\n').map(l => l.trim()).filter(Boolean);
   lines.forEach(line => {
-    const lower = line.toLowerCase();
-    if (!stock.some(s => s.toLowerCase() === lower)) stock.push(line);
+    const key = normIngredient(line);
+    if (!(key in stock)) stock[key] = { name: line, unit: '', qty: 0 };
   });
   saveStock();
   renderStock();
   renderCatalog();
   renderGrid();
+  updateCounts();
   ta.value = '';
 }
 
