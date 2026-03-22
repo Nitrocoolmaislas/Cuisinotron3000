@@ -1926,13 +1926,15 @@ function saveHidden() {
 
 // ── Parse a raw ingredient string into { name, unit, qty } ──
 function parseIngredient(raw) {
+  // 1. Normalise fractions & clean spaces
   let s = raw.trim()
     .replace(/½/g, '0.5').replace(/¼/g, '0.25').replace(/¾/g, '0.75')
     .replace(/⅓/g, '0.33').replace(/⅔/g, '0.67');
 
+  // 2. Unit table
   const UNITS = [
-    { re: /c(?:uillères?)?\s*à\s*soupe|càs/i,  label: 'càs' },
-    { re: /c(?:uillères?)?\s*à\s*caf[eé]|càc/i, label: 'càc' },
+    { re: /c\.?\s*(?:uillères?)?\s*à\s*soupe|càs/i, label: 'càs' },
+    { re: /c\.?\s*(?:uillères?)?\s*à\s*caf[eé]|càc/i, label: 'càc' },
     { re: /conserves?/i,  label: 'conserve' },
     { re: /boîtes?/i,     label: 'boîte' },
     { re: /sachets?/i,    label: 'sachet' },
@@ -1946,25 +1948,54 @@ function parseIngredient(raw) {
     { re: /\bkg\b/i,      label: 'kg' },
     { re: /\bml\b/i,      label: 'ml' },
     { re: /\bcl\b/i,      label: 'cl' },
-    { re: /\bL\b/,        label: 'L' },
-    { re: /\bg\b/i,       label: 'g' },
+    { re: /\bL\b/,        label: 'L'  },
+    { re: /\bg\b/i,       label: 'g'  },
   ];
-
-  const prepRe = /,\s*(haché[e]?s?|émincé[e]?s?|pressé[e]?s?|coupé[e]?s?|râpé[e]?s?|grillé[e]?s?|écrasé[e]?s?|taillé[e]?s?|tranché[e]?s?).*$/i;
 
   function cleanName(n) {
     return n
-      .replace(/^(les?\s|la\s|l['']|un[e]?\s|des?\s|du\s|de\s(?:la\s|l[''])?)/i, '') // strip leading articles
-      .replace(/\bjus\s+d['']?/i, '')    // "jus de/d'" → keep fruit name
-      .replace(/\(.*?\)/g, '')           // (notes entre parenthèses)
-      .replace(prepRe, '')               // ,haché…
-      .replace(/,.*$/, '')               // tout ce qui suit une virgule
-      .replace(/\b(facultatif|optionnel|ou\s+.*|et\s+.*|selon.*|si\s+.*)\b.*$/i, '')
+      // leading quantifiers / articles
+      .replace(/^(quelques?\s+|un\s+peu\s+de\s+|un\s+filet\s+de\s+|un\s+trait\s+de\s+)/i, '')
+      .replace(/^(les?\s+|la\s+|l['']\s*|une?\s+|des?\s+|du\s+|de\s+(?:la\s+|l['']\s*)?)/i, '')
+      // "jus de/d'" → garde le fruit
+      .replace(/\bjus\s+d[e'']\s*/i, '')
+      // "à N " résiduel en tête (ex: "à 6 feuilles de")
+      .replace(/^à\s+[\d.,]+\s+\S+\s+de\s+/i, '')
+      .replace(/^à\s+[\d.,]+\s+/i, '')
+      // chiffre résiduel en tête
+      .replace(/^[\d.,]+\s+/,'')
+      // parenthèses
+      .replace(/\(.*?\)/g, '')
+      // adjectifs et descriptions après le nom
+      .replace(/,\s*(haché[e]?s?|émincé[e]?s?|pressé[e]?s?|coupé[e]?s?|râpé[e]?s?|grillé[e]?s?|écrasé[e]?s?|taillé[e]?s?|tranché[e]?s?|fondu[e]?s?|demi[e]?s?|frais|fraîche[s]?|mûr[e]?s?|nature|bio|cuit[e]?s?|congelé[e]?s?).*$/i, '')
+      .replace(/\s+(haché[e]?s?|émincé[e]?s?|pressé[e]?s?|râpé[e]?s?|grillé[e]?s?|écrasé[e]?s?|tranché[e]?s?)$/i, '')
+      // tout après virgule
+      .replace(/,.*$/, '')
+      // mots-clés finaux
+      .replace(/\b(facultatif|optionnel|ou\b.*|et\b.*|selon\b.*|si\b.*|type\b.*)\b.*$/i, '')
       .replace(/\s+/g, ' ').trim()
       .toLowerCase();
   }
 
-  const qtyMatch = s.match(/^([\d.,]+(?:\s*[-–]\s*[\d.,]+)?)\s*/);
+  // 3. Strip leading "quelques" / "un peu de" before number detection
+  s = s.replace(/^quelques?\s+/i, '');
+
+  // 4. Handle range qty: "5 à 6" or "5-6" → take the higher value for display, keep as "5-6"
+  const rangeMatch = s.match(/^([\d.,]+)\s*(?:à|-|–)\s*([\d.,]+)\s*/);
+  if (rangeMatch) {
+    const qty = `${rangeMatch[1]}-${rangeMatch[2]}`;
+    let rest = s.slice(rangeMatch[0].length).trim();
+    let unit = '';
+    for (const u of UNITS) {
+      const m = rest.match(new RegExp('^(' + u.re.source + ')[\\s.]*', 'i'));
+      if (m) { unit = u.label; rest = rest.slice(m[0].length).trim(); break; }
+    }
+    rest = rest.replace(/^d[e'']\s*/i, '').trim();
+    return { qty, unit, name: cleanName(rest) };
+  }
+
+  // 5. Simple qty
+  const qtyMatch = s.match(/^([\d.,]+)\s*/);
   if (!qtyMatch) {
     return { qty: '', unit: '', name: cleanName(s) };
   }
@@ -1974,12 +2005,10 @@ function parseIngredient(raw) {
 
   let unit = '';
   for (const u of UNITS) {
-    const m = rest.match(new RegExp('^(' + u.re.source + ')\\s*', 'i'));
+    const m = rest.match(new RegExp('^(' + u.re.source + ')[\\s.]*', 'i'));
     if (m) { unit = u.label; rest = rest.slice(m[0].length).trim(); break; }
   }
-
-  // Strip "de " / "d'" connector
-  rest = rest.replace(/^d[e'][\s']/i, '').trim();
+  rest = rest.replace(/^d[e'']\s*/i, '').trim();
 
   return { qty, unit, name: cleanName(rest) };
 }
