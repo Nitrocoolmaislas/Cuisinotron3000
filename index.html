@@ -1,0 +1,2318 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carnet de Recettes · Clara</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<!-- Google Identity Services — nécessaire pour la sync Drive -->
+<script src="https://accounts.google.com/gsi/client" onload="onGISLoad()" async defer></script>
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --parchment: #EDE6D6;
+    --terracotta: #C4663A;
+    --terracotta-light: #E8916A;
+    --sage: #6B7F5E;
+    --sage-light: #9AAE8A;
+    --charcoal: #2C2C2C;
+    --warm-grey: #8A8278;
+    --border: #D8CEBC;
+    --white: #FEFCF8;
+    --success: #5B8A5B;
+    --danger: #B85454;
+    --warning: #C49A3A;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--charcoal);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--charcoal);
+    color: var(--cream);
+    padding: 18px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 3px solid var(--terracotta);
+  }
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.02em;
+  }
+  header h1 span { color: var(--terracotta-light); font-style: italic; }
+  .header-sub { font-size: 0.78rem; color: var(--warm-grey); margin-top: 2px; letter-spacing: 0.08em; text-transform: uppercase; }
+
+  /* ── LAYOUT ── */
+  .app {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    min-height: calc(100vh - 68px);
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    background: var(--charcoal);
+    color: var(--cream);
+    padding: 24px 0;
+    position: sticky;
+    top: 68px;
+    height: calc(100vh - 68px);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .sidebar::-webkit-scrollbar { width: 4px; }
+  .sidebar::-webkit-scrollbar-thumb { background: var(--warm-grey); border-radius: 2px; }
+
+  .sidebar-section { padding: 0 20px 16px; }
+  .sidebar-section-title {
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--warm-grey);
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .cat-btn {
+    width: 100%;
+    text-align: left;
+    padding: 9px 12px;
+    border-radius: 6px;
+    background: transparent;
+    border: none;
+    color: var(--cream);
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background 0.15s;
+    margin-bottom: 2px;
+  }
+  .cat-btn:hover { background: rgba(255,255,255,0.07); }
+  .cat-btn.active { background: var(--terracotta); color: white; }
+  .cat-btn .icon { font-size: 1rem; width: 20px; text-align: center; }
+  .cat-btn .count {
+    margin-left: auto;
+    font-size: 0.72rem;
+    background: rgba(255,255,255,0.12);
+    padding: 1px 7px;
+    border-radius: 10px;
+  }
+  .cat-btn.active .count { background: rgba(255,255,255,0.25); }
+
+  /* Stock button in sidebar */
+  .stock-toggle-btn {
+    margin: 8px 20px 0;
+    padding: 10px 14px;
+    background: var(--sage);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.15s;
+  }
+  .stock-toggle-btn:hover { background: var(--sage-light); }
+
+  .stock-count-badge {
+    margin-left: auto;
+    background: rgba(255,255,255,0.3);
+    padding: 1px 8px;
+    border-radius: 10px;
+    font-size: 0.75rem;
+  }
+
+  /* ── MAIN ── */
+  main { padding: 28px 32px; }
+
+  .view-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--charcoal);
+    margin-bottom: 6px;
+  }
+  .view-subtitle { font-size: 0.85rem; color: var(--warm-grey); margin-bottom: 24px; }
+
+  /* ── SEARCH ── */
+  .search-bar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+    align-items: center;
+  }
+  .search-input {
+    flex: 1;
+    padding: 10px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    background: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--charcoal);
+    outline: none;
+    transition: border 0.15s;
+  }
+  .search-input:focus { border-color: var(--terracotta); }
+  .search-input::placeholder { color: #BBAA98; }
+
+  /* ── RECIPE GRID ── */
+  .recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .recipe-card {
+    background: var(--white);
+    border-radius: 12px;
+    border: 1.5px solid var(--border);
+    padding: 20px;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+    position: relative;
+    overflow: hidden;
+  }
+  .recipe-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--terracotta);
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+  .recipe-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.09); border-color: var(--terracotta-light); }
+  .recipe-card:hover::before { opacity: 1; }
+
+  .card-category {
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--warm-grey);
+    margin-bottom: 8px;
+  }
+  .card-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--charcoal);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+  .card-meta {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 12px;
+  }
+  .card-meta span {
+    font-size: 0.77rem;
+    color: var(--warm-grey);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .feasibility-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+  .feasibility-badge.ok { background: #EBF5EB; color: var(--success); }
+  .feasibility-badge.partial { background: #FFF8E6; color: var(--warning); }
+  .feasibility-badge.no { background: #FAF0F0; color: #999; }
+  .feasibility-badge.unknown { background: var(--parchment); color: var(--warm-grey); }
+
+  /* ── MODAL ── */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(30,25,20,0.6);
+    z-index: 200;
+    backdrop-filter: blur(3px);
+    align-items: flex-start;
+    justify-content: center;
+    padding: 32px 16px;
+    overflow-y: auto;
+  }
+  .modal-overlay.open { display: flex; }
+
+  .modal {
+    background: var(--white);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 680px;
+    overflow: hidden;
+    animation: modalIn 0.2s ease-out;
+    margin: auto;
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: translateY(16px) scale(0.98); }
+    to { opacity: 1; transform: none; }
+  }
+
+  .modal-header {
+    background: var(--charcoal);
+    color: var(--cream);
+    padding: 24px 28px;
+    position: relative;
+  }
+  .modal-cat {
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--terracotta-light);
+    margin-bottom: 6px;
+  }
+  .modal-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    margin-bottom: 4px;
+  }
+  .modal-desc { font-size: 0.84rem; color: var(--warm-grey); line-height: 1.5; margin-top: 8px; }
+  .modal-meta { display: flex; gap: 20px; margin-top: 12px; }
+  .modal-meta span { font-size: 0.8rem; color: #9A9088; display: flex; align-items: center; gap: 5px; }
+
+  .modal-close {
+    position: absolute;
+    top: 16px; right: 16px;
+    background: rgba(255,255,255,0.12);
+    border: none;
+    color: var(--cream);
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.1rem;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.15s;
+  }
+  .modal-close:hover { background: rgba(255,255,255,0.22); }
+
+  .modal-body { padding: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+  .modal-section-title {
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--warm-grey);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .modal-section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .ingredient-list { list-style: none; }
+  .ingredient-list li {
+    padding: 7px 0;
+    border-bottom: 1px solid var(--parchment);
+    font-size: 0.88rem;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    line-height: 1.4;
+  }
+  .ingredient-list li:last-child { border-bottom: none; }
+  .ing-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--terracotta);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .ing-dot.in-stock { background: var(--success); }
+  .ing-dot.out-stock { background: var(--danger); }
+
+  .steps-list { list-style: none; }
+  .steps-list li {
+    padding: 9px 0 9px 32px;
+    border-bottom: 1px solid var(--parchment);
+    font-size: 0.86rem;
+    line-height: 1.55;
+    position: relative;
+  }
+  .steps-list li:last-child { border-bottom: none; }
+  .step-num {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 22px; height: 22px;
+    background: var(--terracotta);
+    color: white;
+    border-radius: 50%;
+    font-size: 0.72rem;
+    font-weight: 600;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .modal-notes {
+    margin: 0 28px 28px;
+    background: var(--parchment);
+    border-left: 3px solid var(--terracotta-light);
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.82rem;
+    color: var(--warm-grey);
+    line-height: 1.55;
+  }
+  .modal-notes strong { color: var(--charcoal); display: block; margin-bottom: 4px; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; }
+
+  /* ── STOCK PANEL ── */
+  .stock-panel {
+    display: none;
+    position: fixed;
+    top: 68px; right: 0;
+    width: 360px;
+    height: calc(100vh - 68px);
+    background: var(--white);
+    border-left: 1.5px solid var(--border);
+    z-index: 150;
+    flex-direction: column;
+    box-shadow: -8px 0 32px rgba(0,0,0,0.08);
+    animation: slideIn 0.2s ease-out;
+  }
+  .stock-panel.open { display: flex; }
+  @keyframes slideIn {
+    from { transform: translateX(100%); }
+    to { transform: none; }
+  }
+
+  .stock-header {
+    padding: 20px 20px 16px;
+    border-bottom: 1.5px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .stock-header h2 { font-family: 'Playfair Display', serif; font-size: 1.2rem; flex: 1; }
+  .stock-header-close {
+    background: none; border: none; cursor: pointer;
+    color: var(--warm-grey); font-size: 1.2rem;
+    display: flex; align-items: center; justify-content: center;
+    width: 30px; height: 30px; border-radius: 50%;
+    transition: background 0.15s;
+  }
+  .stock-header-close:hover { background: var(--parchment); }
+
+  .stock-add {
+    padding: 14px 20px;
+    border-bottom: 1.5px solid var(--border);
+    display: flex;
+    gap: 8px;
+  }
+  .stock-add input {
+    flex: 1;
+    padding: 9px 12px;
+    border: 1.5px solid var(--border);
+    border-radius: 7px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    outline: none;
+    background: var(--cream);
+    transition: border 0.15s;
+  }
+  .stock-add input:focus { border-color: var(--sage); }
+  .stock-add button {
+    padding: 9px 14px;
+    background: var(--sage);
+    color: white;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: background 0.15s;
+  }
+  .stock-add button:hover { background: var(--sage-light); }
+
+  .stock-body { flex: 1; overflow-y: auto; padding: 14px 20px; }
+  .stock-body::-webkit-scrollbar { width: 4px; }
+  .stock-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+  .stock-empty { color: var(--warm-grey); font-size: 0.85rem; text-align: center; padding: 24px 0; line-height: 1.6; }
+
+  .stock-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--parchment);
+    font-size: 0.88rem;
+  }
+  .stock-item:last-child { border-bottom: none; }
+  .stock-item-name { flex: 1; }
+  .stock-item-remove {
+    background: none; border: none; cursor: pointer;
+    color: var(--warm-grey); font-size: 1rem;
+    opacity: 0.5; transition: opacity 0.15s;
+    line-height: 1;
+    padding: 2px 4px;
+  }
+  .stock-item-remove:hover { opacity: 1; color: var(--danger); }
+
+  .stock-clear-btn {
+    margin: 12px 0 0;
+    width: 100%;
+    padding: 8px;
+    background: var(--parchment);
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    color: var(--warm-grey);
+    transition: background 0.15s;
+  }
+  .stock-clear-btn:hover { background: var(--border); color: var(--danger); }
+
+  /* ── CATALOG TAB SYSTEM ── */
+  .stock-tabs {
+    display: flex;
+    border-bottom: 1.5px solid var(--border);
+    background: var(--cream);
+  }
+  .stock-tab {
+    flex: 1;
+    padding: 10px 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--warm-grey);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1.5px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .stock-tab.active { color: var(--sage); border-bottom-color: var(--sage); }
+  .stock-tab:hover:not(.active) { color: var(--charcoal); }
+
+  .stock-tab-content { display: none; flex: 1; overflow: hidden; flex-direction: column; }
+  .stock-tab-content.active { display: flex; }
+
+  /* catalog filter */
+  .catalog-filter {
+    padding: 10px 14px 8px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    background: var(--cream);
+  }
+  .cat-filter-btn {
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 1.5px solid var(--border);
+    background: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    cursor: pointer;
+    color: var(--warm-grey);
+    transition: all 0.12s;
+  }
+  .cat-filter-btn.active { background: var(--charcoal); color: white; border-color: var(--charcoal); }
+  .cat-filter-btn:hover:not(.active) { border-color: var(--warm-grey); color: var(--charcoal); }
+
+  /* catalog search */
+  .catalog-search {
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .catalog-search input {
+    width: 100%;
+    padding: 7px 10px;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    background: var(--cream);
+    outline: none;
+    transition: border 0.15s;
+  }
+  .catalog-search input:focus { border-color: var(--sage); }
+
+  /* catalog table */
+  .catalog-scroll { flex: 1; overflow-y: auto; }
+  .catalog-scroll::-webkit-scrollbar { width: 3px; }
+  .catalog-scroll::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+  .catalog-table { width: 100%; border-collapse: collapse; }
+  .catalog-table th {
+    position: sticky; top: 0;
+    background: var(--parchment);
+    padding: 7px 10px;
+    text-align: left;
+    font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--warm-grey); font-weight: 500;
+    border-bottom: 1px solid var(--border); z-index: 1;
+  }
+  .catalog-table th.col-unit { width: 62px; }
+  .catalog-table th.col-qty  { width: 72px; }
+  .catalog-table th.col-stock { width: 44px; text-align: center; }
+  .catalog-table th.col-del   { width: 32px; }
+
+  .catalog-row { border-bottom: 1px solid var(--parchment); transition: background 0.1s; }
+  .catalog-row:hover { background: var(--parchment); }
+  .catalog-row.in-stock { background: #F0F7F0; }
+  .catalog-row.in-stock:hover { background: #E6F2E6; }
+
+  .catalog-row td { padding: 6px 10px; font-size: 0.83rem; vertical-align: middle; }
+  .catalog-row td.col-stock { text-align: center; padding: 4px 6px; }
+  .catalog-row td.col-del   { padding: 4px 6px; }
+
+  .ing-name { color: var(--charcoal); line-height: 1.3; }
+  .ing-recipes {
+    font-size: 0.67rem; color: var(--warm-grey);
+    background: var(--parchment); padding: 1px 6px;
+    border-radius: 10px; white-space: nowrap; display: inline-block; margin-top: 2px;
+  }
+  .ing-unit {
+    font-size: 0.81rem; color: var(--warm-grey);
+    font-style: italic;
+  }
+  .ing-qty {
+    font-size: 0.81rem; color: var(--charcoal);
+    font-weight: 500; line-height: 1.3;
+  }
+  .ing-qty-sub {
+    font-size: 0.68rem; color: var(--warm-grey);
+  }
+
+  .toggle-stock-btn {
+    width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid;
+    cursor: pointer; font-size: 1rem; line-height: 1;
+    display: inline-flex; align-items: center; justify-content: center;
+    transition: all 0.12s; font-weight: 700;
+  }
+  .toggle-stock-btn.add  { border-color: var(--sage); color: var(--sage); background: transparent; }
+  .toggle-stock-btn.add:hover  { background: var(--sage); color: white; }
+  .toggle-stock-btn.remove { border-color: var(--danger); color: var(--danger); background: #FAF0F0; }
+  .toggle-stock-btn.remove:hover { background: var(--danger); color: white; }
+
+  .del-ing-btn {
+    width: 22px; height: 22px; border-radius: 4px;
+    background: none; border: 1px solid transparent;
+    cursor: pointer; font-size: 0.8rem; color: var(--warm-grey);
+    display: inline-flex; align-items: center; justify-content: center;
+    transition: all 0.12s; opacity: 0.4;
+  }
+  .catalog-row:hover .del-ing-btn { opacity: 1; }
+  .del-ing-btn:hover { background: #FAF0F0; border-color: var(--danger); color: var(--danger); opacity: 1; }
+
+  /* Inline add form */
+  .catalog-add-row td {
+    background: #F4FAF4;
+    border-bottom: 2px solid var(--sage-light);
+    padding: 8px 10px;
+  }
+  .catalog-add-form {
+    display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+  }
+  .catalog-add-form input[type=number] {
+    width: 64px; padding: 5px 8px;
+    border: 1.5px solid var(--sage-light); border-radius: 6px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.85rem;
+    outline: none; text-align: right;
+  }
+  .catalog-add-form input[type=number]:focus { border-color: var(--sage); }
+  .catalog-add-form select {
+    padding: 5px 8px; border: 1.5px solid var(--sage-light); border-radius: 6px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.85rem;
+    background: white; outline: none; cursor: pointer;
+  }
+  .catalog-add-form select:focus { border-color: var(--sage); }
+  .add-confirm-btn {
+    padding: 5px 14px; background: var(--sage); color: white;
+    border: none; border-radius: 6px; font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem; font-weight: 500; cursor: pointer; transition: background 0.12s;
+  }
+  .add-confirm-btn:hover { background: var(--sage-light); }
+  .add-cancel-btn {
+    padding: 5px 10px; background: none; border: 1.5px solid var(--border);
+    border-radius: 6px; font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem; color: var(--warm-grey); cursor: pointer;
+  }
+
+  /* Stock item unit select */
+  .stock-unit-select {
+    padding: 2px 5px; border: 1.5px solid var(--border); border-radius: 5px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.78rem;
+    background: var(--cream); min-width: 54px; outline: none;
+  }
+
+  .catalog-empty { text-align: center; padding: 24px; color: var(--warm-grey); font-size: 0.82rem; }
+
+  /* receipt scan placeholder */
+  .scan-placeholder {
+    margin: 14px 0 0;
+    padding: 14px;
+    border: 1.5px dashed var(--border);
+    border-radius: 8px;
+    text-align: center;
+    color: var(--warm-grey);
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+  .scan-placeholder .scan-icon { font-size: 1.8rem; margin-bottom: 6px; }
+  .scan-placeholder strong { display: block; color: var(--charcoal); font-size: 0.82rem; margin-bottom: 4px; }
+
+  /* ── NO RESULTS ── */
+  .no-results { text-align: center; padding: 48px 0; color: var(--warm-grey); }
+  .no-results .nr-icon { font-size: 2.5rem; margin-bottom: 10px; }
+  .no-results p { font-size: 0.9rem; }
+
+  /* scrollbar global */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+  /* ── GOOGLE DRIVE AUTH BAR ── */
+  .drive-bar {
+    padding: 10px 16px;
+    border-bottom: 1.5px solid var(--border);
+    background: var(--parchment);
+    font-size: 0.8rem;
+  }
+  .drive-bar-row { display: flex; align-items: center; gap: 8px; }
+  .drive-bar-label { flex: 1; color: var(--warm-grey); line-height: 1.4; }
+  .drive-connect-btn {
+    padding: 5px 13px; background: var(--charcoal); color: white;
+    border: none; border-radius: 6px; font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem; cursor: pointer; white-space: nowrap; transition: background 0.15s;
+  }
+  .drive-connect-btn:hover { background: var(--terracotta); }
+  .drive-connect-btn:disabled { opacity: 0.4; cursor: default; }
+  .drive-status { display: flex; align-items: center; gap: 7px; }
+  .drive-status-dot {
+    width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+    background: var(--border); transition: background 0.3s;
+  }
+  .drive-status-dot.ok { background: var(--success); }
+  .drive-status-dot.loading { background: var(--warning); animation: pulse 1s infinite; }
+  .drive-status-dot.error { background: var(--danger); }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  .drive-status-text { flex: 1; color: var(--warm-grey); font-size: 0.78rem; }
+  .drive-signout-btn {
+    background: none; border: none; cursor: pointer;
+    font-size: 0.72rem; color: var(--warm-grey); padding: 2px 6px;
+    border-radius: 4px; transition: color 0.15s; font-family: 'DM Sans', sans-serif;
+  }
+  .drive-signout-btn:hover { color: var(--danger); }
+  .setup-banner {
+    background: linear-gradient(135deg, #FFF8E6, #FFF3D4);
+    border: 1.5px solid #E8C44A; border-radius: 8px;
+    padding: 12px 14px; font-size: 0.79rem; line-height: 1.55;
+    color: var(--charcoal); margin: 10px 14px;
+  }
+  .setup-banner strong { display: block; margin-bottom: 4px; font-size: 0.81rem; color: #8A6A00; }
+  .setup-banner code {
+    background: rgba(0,0,0,0.07); padding: 1px 5px; border-radius: 3px;
+    font-family: monospace; font-size: 0.78rem;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Carnet de Recettes · <span>Clara</span></h1>
+    <div class="header-sub">Carnet de recettes personnel</div>
+  </div>
+</header>
+
+<div class="app">
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Catégories</div>
+      <button class="cat-btn active" onclick="filterCat('all')" id="cat-all">
+        <span class="icon">🍽️</span> Toutes les recettes
+        <span class="count" id="cnt-all">0</span>
+      </button>
+      <button class="cat-btn" onclick="filterCat('repas')" id="cat-repas">
+        <span class="icon">🍲</span> Repas chauds
+        <span class="count" id="cnt-repas">0</span>
+      </button>
+      <button class="cat-btn" onclick="filterCat('tartinade')" id="cat-tartinade">
+        <span class="icon">🥙</span> Tartinades & Dips
+        <span class="count" id="cnt-tartinade">0</span>
+      </button>
+      <button class="cat-btn" onclick="filterCat('petitdej')" id="cat-petitdej">
+        <span class="icon">🥣</span> Petits-déjeuners
+        <span class="count" id="cnt-petitdej">0</span>
+      </button>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Faisabilité</div>
+      <button class="cat-btn" onclick="filterFeasibility('ok')" id="cat-ok">
+        <span class="icon">✅</span> Faisables
+        <span class="count" id="cnt-ok">0</span>
+      </button>
+      <button class="cat-btn" onclick="filterFeasibility('partial')" id="cat-partial">
+        <span class="icon">⚡</span> Partielles
+        <span class="count" id="cnt-partial">0</span>
+      </button>
+    </div>
+
+    <button class="stock-toggle-btn" onclick="toggleStock()">
+      🛒 Mon stock d'ingrédients
+      <span class="stock-count-badge" id="stock-badge">0</span>
+    </button>
+  </aside>
+
+  <!-- ── MAIN ── -->
+  <main>
+    <div class="search-bar">
+      <input type="text" class="search-input" id="search-input" placeholder="🔍 Rechercher une recette ou un ingrédient…" oninput="renderGrid()">
+    </div>
+
+    <div class="view-title" id="view-title">Toutes les recettes</div>
+    <div class="view-subtitle" id="view-subtitle"></div>
+
+    <div class="recipe-grid" id="recipe-grid"></div>
+  </main>
+</div>
+
+<!-- ── RECIPE MODAL ── -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <div class="modal-cat" id="modal-cat"></div>
+      <div class="modal-title" id="modal-title"></div>
+      <div class="modal-desc" id="modal-desc"></div>
+      <div class="modal-meta" id="modal-meta"></div>
+      <button class="modal-close" onclick="closeModalDirect()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div id="modal-ingredients-col">
+        <div class="modal-section-title">Ingrédients</div>
+        <ul class="ingredient-list" id="modal-ingredients"></ul>
+      </div>
+      <div id="modal-steps-col">
+        <div class="modal-section-title">Préparation</div>
+        <ol class="steps-list" id="modal-steps"></ol>
+      </div>
+    </div>
+    <div class="modal-notes" id="modal-notes" style="display:none"></div>
+  </div>
+</div>
+
+<!-- ── ADD-TO-STOCK MINI MODAL ── -->
+<div id="add-stock-overlay" onclick="closeAddModal(event)"
+  style="display:none;position:fixed;inset:0;background:rgba(30,25,20,0.45);z-index:300;
+         align-items:center;justify-content:center;padding:20px;">
+  <div id="add-stock-modal"
+    style="background:var(--white);border-radius:14px;padding:24px 24px 20px;
+           width:100%;max-width:320px;box-shadow:0 12px 40px rgba(0,0,0,0.18);
+           animation:modalIn 0.18s ease-out;">
+    <div style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;
+                color:var(--warm-grey);margin-bottom:6px;" id="asm-label">Ajouter au stock</div>
+    <div style="font-family:'Playfair Display',serif;font-size:1.15rem;margin-bottom:18px;
+                color:var(--charcoal);" id="asm-name"></div>
+    <div style="display:flex;gap:10px;margin-bottom:18px;align-items:center;">
+      <div style="flex:1;">
+        <div style="font-size:0.7rem;color:var(--warm-grey);margin-bottom:5px;">Quantité</div>
+        <input id="asm-qty" type="number" min="0" step="any" placeholder="ex: 500"
+          style="width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:8px;
+                 font-family:'DM Sans',sans-serif;font-size:0.95rem;outline:none;
+                 transition:border 0.15s;"
+          onfocus="this.style.borderColor='var(--sage)'"
+          onblur="this.style.borderColor='var(--border)'"
+          onkeydown="if(event.key==='Enter')confirmAddModal()">
+      </div>
+      <div style="flex:1;">
+        <div style="font-size:0.7rem;color:var(--warm-grey);margin-bottom:5px;">Unité</div>
+        <select id="asm-unit"
+          style="width:100%;padding:9px 10px;border:1.5px solid var(--border);border-radius:8px;
+                 font-family:'DM Sans',sans-serif;font-size:0.9rem;background:white;outline:none;
+                 transition:border 0.15s;cursor:pointer;"
+          onfocus="this.style.borderColor='var(--sage)'"
+          onblur="this.style.borderColor='var(--border)'">
+        </select>
+      </div>
+    </div>
+    <div style="display:flex;gap:8px;">
+      <button onclick="confirmAddModal()"
+        style="flex:1;padding:10px;background:var(--sage);color:white;border:none;
+               border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.9rem;
+               font-weight:500;cursor:pointer;transition:background 0.15s;"
+        onmouseover="this.style.background='var(--sage-light)'"
+        onmouseout="this.style.background='var(--sage)'">
+        ✓ Confirmer
+      </button>
+      <button onclick="closeAddModalDirect()"
+        style="padding:10px 16px;background:none;border:1.5px solid var(--border);
+               border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.9rem;
+               color:var(--warm-grey);cursor:pointer;">
+        Annuler
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ── STOCK PANEL ── -->
+<div class="stock-panel" id="stock-panel">
+  <div class="stock-header">
+    <span>🛒</span>
+    <h2>Mon Stock</h2>
+    <button class="stock-header-close" onclick="toggleStock()">✕</button>
+  </div>
+
+  <!-- ── GOOGLE DRIVE AUTH BAR ── -->
+  <div class="drive-bar" id="drive-bar">
+    <!-- État : non configuré -->
+    <div id="drive-not-configured" style="display:none">
+      <div class="setup-banner" style="margin:0">
+        <strong>⚙️ Configuration requise</strong>
+        Remplace <code>VOTRE_CLIENT_ID_ICI</code> dans le fichier HTML par ton Client ID Google.<br>
+        <a href="guide_installation.html" target="_blank" style="color:var(--terracotta);font-weight:500;">Voir le guide d'installation →</a>
+      </div>
+    </div>
+    <!-- État : non connecté -->
+    <div id="drive-signin-row" class="drive-bar-row" style="display:none">
+      <span class="drive-bar-label">☁️ Sync Google Drive désactivée</span>
+      <button class="drive-connect-btn" onclick="driveSignIn()">Se connecter</button>
+    </div>
+    <!-- État : connecté -->
+    <div id="drive-status-row" class="drive-status" style="display:none">
+      <div class="drive-status-dot" id="drive-dot"></div>
+      <span class="drive-status-text" id="drive-status-text">Connexion…</span>
+      <button class="drive-signout-btn" onclick="driveSignOut()">Déconnecter</button>
+    </div>
+  </div>
+  <!-- TABS -->
+  <div class="stock-tabs">
+    <button class="stock-tab active" onclick="switchStockTab('mon-stock')">📦 Mon stock</button>
+    <button class="stock-tab" onclick="switchStockTab('catalogue')">📋 Catalogue</button>
+    <button class="stock-tab" onclick="switchStockTab('ajouter')">✏️ Saisie libre</button>
+  </div>
+
+  <!-- TAB 1 : MON STOCK -->
+  <div class="stock-tab-content active" id="tab-mon-stock">
+    <div class="stock-body" id="stock-body">
+      <div class="stock-empty" id="stock-empty">
+        Aucun ingrédient en stock.<br>Utilisez le <strong>Catalogue</strong> ou<br>la <strong>Saisie libre</strong> pour commencer.
+      </div>
+      <div id="stock-list"></div>
+      <button class="stock-clear-btn" id="stock-clear-btn" style="display:none" onclick="clearStock()">🗑️ Vider le stock</button>
+      <div class="scan-placeholder">
+        <div class="scan-icon">📄</div>
+        <strong>Import ticket de caisse</strong>
+        Fonctionnalité à venir — scannez vos tickets pour alimenter le stock automatiquement.
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 2 : CATALOGUE -->
+  <div class="stock-tab-content" id="tab-catalogue">
+    <div class="catalog-filter" id="catalog-cat-filter">
+      <button class="cat-filter-btn active" onclick="setCatalogCat('all', this)">Tous</button>
+      <button class="cat-filter-btn" onclick="setCatalogCat('repas', this)">Repas</button>
+      <button class="cat-filter-btn" onclick="setCatalogCat('tartinade', this)">Tartinades</button>
+      <button class="cat-filter-btn" onclick="setCatalogCat('petitdej', this)">Petits-déj.</button>
+    </div>
+    <div class="catalog-search">
+      <input type="text" id="catalog-search" placeholder="🔍 Filtrer les ingrédients…" oninput="renderCatalog()">
+    </div>
+    <div class="catalog-scroll">
+      <table class="catalog-table">
+        <thead>
+          <tr>
+            <th>Ingrédient</th>
+            <th class="col-unit">Unité</th>
+            <th class="col-qty">Qté</th>
+            <th class="col-stock">Stock</th>
+            <th class="col-del"></th>
+          </tr>
+        </thead>
+        <tbody id="catalog-tbody"></tbody>
+      </table>
+      <div class="catalog-empty" id="catalog-empty" style="display:none">Aucun ingrédient trouvé.</div>
+      <div id="catalog-restore-bar" style="display:none;text-align:center;padding:10px 0 4px;">
+        <button onclick="restoreAllCatalog()"
+          style="background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;
+                 font-size:0.76rem;color:var(--warm-grey);text-decoration:underline;">
+          🔄 Restaurer les entrées supprimées (<span id="hidden-count">0</span>)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 3 : SAISIE LIBRE -->
+  <div class="stock-tab-content" id="tab-ajouter">
+    <div class="stock-add" style="flex-direction:column; gap:10px; padding:16px 16px 12px;">
+      <div style="font-size:0.78rem;color:var(--warm-grey);line-height:1.5;">
+        Entrez un ingrédient manuellement ou collez une liste (un par ligne).
+      </div>
+      <textarea id="stock-textarea" rows="6" placeholder="Ex :&#10;lait&#10;farine&#10;œufs&#10;champignons…"
+        style="width:100%;padding:10px 12px;border:1.5px solid var(--border);border-radius:8px;
+               font-family:'DM Sans',sans-serif;font-size:0.86rem;resize:vertical;
+               background:var(--cream);outline:none;line-height:1.5;"></textarea>
+      <button onclick="addFromTextarea()"
+        style="width:100%;padding:10px;background:var(--sage);color:white;border:none;
+               border-radius:8px;cursor:pointer;font-family:'DM Sans',sans-serif;
+               font-size:0.88rem;font-weight:500;transition:background 0.15s;"
+        onmouseover="this.style.background='var(--sage-light)'"
+        onmouseout="this.style.background='var(--sage)'">
+        ➕ Ajouter au stock
+      </button>
+    </div>
+    <div style="padding:0 16px;">
+      <div style="font-size:0.72rem;color:var(--warm-grey);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;">
+        Saisie rapide individuelle
+      </div>
+      <div style="display:flex;gap:8px;">
+        <input type="text" id="stock-input" placeholder="Un ingrédient…"
+          style="flex:1;padding:8px 12px;border:1.5px solid var(--border);border-radius:7px;
+                 font-family:'DM Sans',sans-serif;font-size:0.86rem;background:var(--cream);outline:none;"
+          onfocus="this.style.borderColor='var(--sage)'" onblur="this.style.borderColor='var(--border)'"
+          onkeydown="if(event.key==='Enter')addStockItem()">
+        <button onclick="addStockItem()"
+          style="padding:8px 14px;background:var(--sage);color:white;border:none;border-radius:7px;
+                 cursor:pointer;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:500;">
+          +
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════
+//  GOOGLE DRIVE — Configuration
+//  → Remplace la valeur ci-dessous par ton Client ID Google
+// ══════════════════════════════════════════════
+const GOOGLE_CLIENT_ID = '758662499322-tmh1469ov6fnp5s0vjeqqd6023gm3edv.apps.googleusercontent.com';
+const DRIVE_FILE_NAME  = 'recettes_clara_stock.json';
+
+let driveTokenClient = null;
+let driveAccessToken = null;
+let driveFileId      = null;
+let driveReady       = false;
+let driveSaveTimer   = null;
+
+// ── GIS chargé (callback du script async) ──
+function onGISLoad() {
+  const configured = GOOGLE_CLIENT_ID !== 'VOTRE_CLIENT_ID_ICI';
+  document.getElementById('drive-not-configured').style.display = configured ? 'none' : '';
+  document.getElementById('drive-signin-row').style.display     = configured ? '' : 'none';
+  if (!configured) return;
+
+  driveTokenClient = google.accounts.oauth2.initTokenClient({
+    client_id: GOOGLE_CLIENT_ID,
+    scope: 'https://www.googleapis.com/auth/drive.file',
+    callback: async (resp) => {
+      if (resp.error) { setDriveStatus('Erreur d\'authentification', 'error'); return; }
+      driveAccessToken = resp.access_token;
+      driveReady = true;
+      showDriveConnected();
+      await loadFromDrive();
+    }
+  });
+  // Tentative silencieuse (si déjà autorisé)
+  driveTokenClient.requestAccessToken({ prompt: '' });
+}
+
+function driveSignIn() {
+  if (!driveTokenClient) return;
+  driveTokenClient.requestAccessToken({ prompt: 'consent' });
+}
+
+function driveSignOut() {
+  if (driveAccessToken) google.accounts.oauth2.revoke(driveAccessToken, () => {});
+  driveAccessToken = null; driveFileId = null; driveReady = false;
+  document.getElementById('drive-signin-row').style.display  = '';
+  document.getElementById('drive-status-row').style.display  = 'none';
+}
+
+function showDriveConnected() {
+  document.getElementById('drive-signin-row').style.display  = 'none';
+  document.getElementById('drive-status-row').style.display  = '';
+}
+
+function setDriveStatus(msg, type) {
+  const txt = document.getElementById('drive-status-text');
+  const dot = document.getElementById('drive-dot');
+  if (!txt || !dot) return;
+  txt.textContent = msg;
+  dot.className = 'drive-status-dot ' + type;
+}
+
+async function findDriveFile() {
+  const r = await fetch(
+    `https://www.googleapis.com/drive/v3/files?q=name%3D'${DRIVE_FILE_NAME}'+and+trashed%3Dfalse&fields=files(id)`,
+    { headers: { Authorization: `Bearer ${driveAccessToken}` } }
+  );
+  const d = await r.json();
+  return d.files?.[0]?.id || null;
+}
+
+async function loadFromDrive() {
+  setDriveStatus('Chargement…', 'loading');
+  try {
+    driveFileId = await findDriveFile();
+    if (!driveFileId) { setDriveStatus('Prêt — aucun fichier encore', 'ok'); return; }
+    const r = await fetch(
+      `https://www.googleapis.com/drive/v3/files/${driveFileId}?alt=media`,
+      { headers: { Authorization: `Bearer ${driveAccessToken}` } }
+    );
+    const data = await r.json();
+    if (Array.isArray(data.stock)) {
+      stock = data.stock;
+      localStorage.setItem('recettes_stock', JSON.stringify(stock));
+      renderStock(); renderCatalog(); renderGrid(); updateCounts();
+    }
+    const d = data.updatedAt ? new Date(data.updatedAt).toLocaleString('fr-BE', { day:'2-digit', month:'2-digit', hour:'2-digit', minute:'2-digit' }) : '';
+    setDriveStatus('Synchronisé' + (d ? ' · ' + d : ''), 'ok');
+  } catch(e) {
+    setDriveStatus('Erreur de chargement', 'error');
+    console.error('Drive load error:', e);
+  }
+}
+
+async function saveToDriveNow() {
+  if (!driveAccessToken || !driveReady) return;
+  setDriveStatus('Sauvegarde…', 'loading');
+  const body = JSON.stringify({ stock, updatedAt: new Date().toISOString() });
+  try {
+    if (!driveFileId) {
+      const meta = await fetch('https://www.googleapis.com/drive/v3/files', {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${driveAccessToken}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: DRIVE_FILE_NAME })
+      });
+      driveFileId = (await meta.json()).id;
+    }
+    await fetch(
+      `https://www.googleapis.com/upload/drive/v3/files/${driveFileId}?uploadType=media`,
+      {
+        method: 'PATCH',
+        headers: { Authorization: `Bearer ${driveAccessToken}`, 'Content-Type': 'application/json' },
+        body
+      }
+    );
+    const now = new Date().toLocaleString('fr-BE', { day:'2-digit', month:'2-digit', hour:'2-digit', minute:'2-digit' });
+    setDriveStatus('Synchronisé · ' + now, 'ok');
+  } catch(e) {
+    setDriveStatus('Erreur de sauvegarde', 'error');
+    console.error('Drive save error:', e);
+  }
+}
+
+function scheduleDriveSave() {
+  clearTimeout(driveSaveTimer);
+  driveSaveTimer = setTimeout(saveToDriveNow, 1000);
+}
+
+// ══════════════════════════════════════════════
+//  DONNÉES RECIPEML
+// ══════════════════════════════════════════════
+const RECIPES = [
+
+  // ── REPAS CHAUDS ──
+  {
+    id: 'courge-farcie',
+    category: 'repas',
+    categoryLabel: 'Repas chauds',
+    name: 'Courge farcie aux champignons et épinards',
+    description: 'Une chair fondante, des champignons parfumés, des épinards juste tombés… et le tout gratiné au fromage. Une recette simple et chaleureuse qui sent bon l\'automne.',
+    prepTime: 20, cookTime: 50, servings: 2,
+    ingredients: [
+      '1 courge spaghetti ou butternut',
+      '500 g de champignons de Paris',
+      '2 gousses d\'ail, hachées',
+      'Thym',
+      '200 g d\'épinards frais',
+      '1 échalote, émincée',
+      '75 g de fromage frais aux fines herbes (½ pot)',
+      '50 g de fromage râpé',
+      'Huile d\'olive',
+      'Sel et poivre'
+    ],
+    steps: [
+      'Préchauffer le four à 180 °C. Couper les courges en deux, retirer les graines, huiler, saler, poivrer.',
+      'Enfourner 30 min.',
+      'Garniture : dans une poêle huilée, faire revenir champignons, échalotes, ail et thym.',
+      'Ajouter les épinards, laisser réduire, puis incorporer le fromage frais et 2 c. à s. d\'eau.',
+      'Farcir les courges, parsemer de fromage râpé et gratiner 20 min jusqu\'à ce que le dessus soit doré et la chair fondante.'
+    ],
+    notes: 'Variantes : remplacer le fromage frais par du gorgonzola, feta ou chèvre. Garniture à base de saumon, épinards et courgettes. Ou quinoa, épinards, chèvre et petits lardons.'
+  },
+  {
+    id: 'chili-con-carne',
+    category: 'repas',
+    categoryLabel: 'Repas chauds',
+    name: 'Chili con carne',
+    description: 'Un grand classique tex-mex, mijoté doucement pour révéler toutes ses saveurs. Parfait avec du riz, dans une tortilla ou simplement avec un avocat bien mûr.',
+    prepTime: 15, cookTime: 45, servings: 3,
+    ingredients: [
+      '250 g de bœuf haché',
+      '1 oignon blanc, haché',
+      '1 gousse d\'ail, hachée',
+      '½ sachet de mélange d\'épices à chili (ou 1 càc de poudre de chili + 1 càc de cumin + ½ càc de cannelle)',
+      '1 conserve de tomates en dés (400 g)',
+      '2 poivrons rouges',
+      '1 boîte de haricots rouges',
+      '1 conserve de maïs (285 g égouttés)',
+      '2 feuilles de laurier (optionnel)',
+      'Sel'
+    ],
+    steps: [
+      'Base aromatique : dans un wok, faire revenir l\'oignon, l\'ail et le piment émincés dans un filet d\'huile à feu doux 3 min. Ajouter les poivrons en dés.',
+      'Viande : incorporer le bœuf haché, cuire à feu vif 5 min, puis ajouter les épices.',
+      'Ajouter le maïs et les haricots rouges.',
+      'Mijotage : verser les tomates concassées et les feuilles de laurier. Réduire à feu doux, laisser mijoter 30 min.',
+      'Finition : saler, poivrer, retirer le laurier. Servir chaud avec du riz, dans une tortilla ou sur un lit d\'avocat.'
+    ],
+    notes: 'Peut aussi être utilisé dans des tacos, surmonté de cottage et de cheddar râpé.'
+  },
+  {
+    id: 'bowl-grecque',
+    category: 'repas',
+    categoryLabel: 'Repas chauds',
+    name: 'Bowl grecque au quinoa et légumes grillés',
+    description: 'Un mélange coloré et ensoleillé : légumes rôtis au paprika, quinoa parfumé au curry, feta crémeuse et un petit coup de pep\'s avec la sriracha. Simple, sain et plein de saveurs.',
+    prepTime: 10, cookTime: 30, servings: 2,
+    ingredients: [
+      '1 courgette',
+      '2 poivrons',
+      '250 g de tomates cerises',
+      '1 oignon rouge',
+      'Paprika',
+      'Curry',
+      '1 aubergine (facultatif)',
+      '60 g de feta',
+      '200 g de quinoa',
+      '2 gousses d\'ail hachées',
+      '1 filet d\'huile d\'olive',
+      'Quelques olives (facultatif)'
+    ],
+    steps: [
+      'Four : préchauffer à 180 °C.',
+      'Légumes : couper courgette et poivrons en dés, trancher l\'oignon rouge. Mettre sur une plaque avec les tomates cerises. Arroser d\'huile, parsemer d\'ail, saler et saupoudrer généreusement de paprika.',
+      'Rôtissage : enfourner 30 à 35 min, en remuant 1 à 2 fois, jusqu\'à ce que les légumes soient tendres et légèrement dorés.',
+      'Quinoa : cuire dans 2,5 volumes d\'eau salée parfumée au curry. Égoutter si nécessaire.',
+      'Service : dresser le quinoa, ajouter les légumes grillés, parsemer de feta et d\'olives. Ajouter un filet de sriracha pour relever le tout.'
+    ],
+    notes: 'Pour encore plus de parfum, ajoutez un peu de zeste de citron au quinoa juste avant de servir.'
+  },
+  {
+    id: 'nouilles-mauriciennes',
+    category: 'repas',
+    categoryLabel: 'Repas chauds',
+    name: 'Nouilles sautées à la mauricienne',
+    description: 'Un plat rapide, parfumé et plein de fraîcheur, où les nouilles s\'enrobent d\'une sauce au sésame, soja et vinaigre, relevée par le croquant des légumes sautés.',
+    prepTime: 15, cookTime: 20, servings: 4,
+    ingredients: [
+      '300 g de nouilles',
+      '3 carottes',
+      '300 g de chou blanc (¼)',
+      '100 g de germes de soja',
+      '200 g de tofu ou de poulet',
+      'Un filet d\'huile de sésame',
+      'Jeunes oignons',
+      'Sauce soja',
+      'Sauce d\'huître',
+      'Vinaigre blanc',
+      '2 gousses d\'ail'
+    ],
+    steps: [
+      'Marinade : couper le tofu ou le poulet en dés. Mélanger avec l\'ail, 3 c. à s. de sauce soja, 2 c. à s. de sauce d\'huître et 1 c. à s. d\'huile de sésame. Réserver au frais.',
+      'Légumes : couper les carottes et le chou en fines lamelles. Dans une poêle bien chaude, faire sauter carottes et chou avec 1 c. à s. d\'huile de sésame pendant 5 min. Ajouter les germes de soja et cuire encore 2-3 min. Réserver.',
+      'Nouilles : cuire selon les indications du paquet. Égoutter. Arroser d\'un filet de sauce soja.',
+      'Protéine : dans la poêle, faire dorer le tofu ou le poulet avec sa marinade.',
+      'Assemblage : baisser le feu, ajouter 3 c. à s. de vinaigre blanc, puis les légumes et les nouilles. Mélanger. Ajuster l\'assaisonnement.',
+      'Service : parsemer de jeunes oignons. Ajouter piment et languettes d\'omelette si souhaité.'
+    ],
+    notes: ''
+  },
+  {
+    id: 'soupe-lentilles',
+    category: 'repas',
+    categoryLabel: 'Repas chauds',
+    name: 'Soupe de lentilles au garam masala',
+    description: 'Un plat réconfortant, parfumé au garam masala, où les lentilles vertes et corail s\'unissent pour offrir texture et douceur. Idéal seul ou accompagné d\'un pain naan.',
+    prepTime: 15, cookTime: 25, servings: 4,
+    ingredients: [
+      '250 g de lentilles vertes',
+      '50 g de lentilles corail',
+      '2 carottes',
+      '1 oignon rouge',
+      '100 g d\'épinards frais',
+      'Huile d\'olive',
+      '2 càs de garam masala',
+      '2 L de bouillon',
+      '2 brins d\'origan',
+      '1 feuille de laurier',
+      '1 brin de thym'
+    ],
+    steps: [
+      'Préparer les ingrédients : rincer séparément les lentilles vertes et corail. Peler et couper les carottes en rondelles. Peler et couper l\'oignon en rondelles.',
+      'Base aromatique : dans une grande casserole, faire revenir l\'oignon avec le garam masala dans l\'huile d\'olive pendant 2 min.',
+      'Première cuisson : ajouter les lentilles vertes, le bouquet garni et le bouillon. Cuire 15 min.',
+      'Seconde cuisson : ajouter les lentilles corail et poursuivre 15 min supplémentaires.',
+      'Finition : incorporer les épinards frais en fin de cuisson, saler, poivrer, et mélanger. Servir chaud.'
+    ],
+    notes: 'Astuce nutrition : associez vos lentilles à du riz blanc. Leurs protéines sont complémentaires, ce qui améliore leur assimilation et leur valeur nutritive.'
+  },
+  {
+    id: 'pates-ricotta',
+    category: 'repas',
+    categoryLabel: 'Repas chauds',
+    name: 'Pâtes ricotta, épinards, citron',
+    description: 'Une assiette fraîche et onctueuse où la douceur de la ricotta rencontre le parfum du citron et la légèreté des épinards. Parfaite pour un repas rapide mais raffiné.',
+    prepTime: 15, cookTime: 15, servings: 3,
+    ingredients: [
+      '250 g de spaghettis',
+      '1 échalote',
+      '1 gousse d\'ail',
+      '200 g d\'épinards',
+      '125 g de ricotta',
+      '40 g de cerneaux de noix',
+      '1 citron bio',
+      'Eau de cuisson des pâtes',
+      'Filet d\'huile d\'olive',
+      'Vin blanc (facultatif)',
+      'Basilic'
+    ],
+    steps: [
+      'Pâtes : cuire les spaghettis al dente selon les indications du paquet.',
+      'Base aromatique : rincer et égoutter les épinards. Émincer l\'échalote et l\'ail. Dans une poêle avec un filet d\'huile d\'olive, faire revenir l\'échalote, puis ajouter l\'ail.',
+      'Sauce : déglacer avec le vin blanc (facultatif), puis ajouter la ricotta. Incorporer le zeste et le jus de citron. Laisser réduire légèrement.',
+      'Légumes : ajouter les épinards et les laisser fondre quelques instants. Si besoin, allonger avec un peu d\'eau de cuisson des pâtes.',
+      'Service : dresser les spaghettis, napper de sauce, ajouter les noix grillées et le basilic. Terminer par un peu de zeste de citron.'
+    ],
+    notes: 'Variante : ajoutez quelques lanières de saumon fumé pour une version gourmande aux saveurs marines.'
+  },
+  {
+    id: 'risotto-champignons',
+    category: 'repas',
+    categoryLabel: 'Repas chauds',
+    name: 'Risotto champignons et petits-pois',
+    description: 'Crémeux, parfumé et réconfortant, ce risotto allie la douceur des petits pois au goût boisé des champignons, relevé par une touche de parmesan fondant.',
+    prepTime: 10, cookTime: 40, servings: 2,
+    ingredients: [
+      '250 g de riz pour risotto',
+      '250 ml de bouillon de légumes',
+      '10 cl de vin blanc sec',
+      '250 g de champignons',
+      '150 g de petits pois',
+      '1 oignon',
+      '1 cuillère à soupe de parmesan',
+      'Sel',
+      'Poivre',
+      'Filet d\'huile d\'olive'
+    ],
+    steps: [
+      'Préparer les ingrédients : émincer les champignons, hacher l\'oignon et l\'ail. Faire chauffer le bouillon.',
+      'Base aromatique : dans une grande poêle, faire revenir champignons, oignon et ail à feu vif avec un filet d\'huile d\'olive.',
+      'Riz : ajouter le riz, mélanger 1 à 2 min. Déglacer avec le vin blanc et laisser réduire complètement.',
+      'Cuisson : ajouter le bouillon, louche par louche, en remuant et en attendant que le liquide soit absorbé avant chaque ajout.',
+      'Légumes : après environ 10 min de cuisson, incorporer les petits pois et poursuivre jusqu\'à ce que le riz soit crémeux et al dente.',
+      'Finition : hors du feu, ajouter le parmesan. Mélanger et servir bien chaud.'
+    ],
+    notes: 'Idées de variantes : potiron & gorgonzola · chorizo & poivrons · citron, asperge & parmesan'
+  },
+  {
+    id: 'chachouka',
+    category: 'repas',
+    categoryLabel: 'Repas chauds',
+    name: 'Chachouka aux œufs et haricots rouges',
+    description: 'Un plat complet et réconfortant, où les œufs cuisent doucement dans une sauce tomate relevée au chili, agrémentée de haricots rouges et parfumée à l\'origan.',
+    prepTime: 10, cookTime: 15, servings: 2,
+    ingredients: [
+      '1 oignon rouge',
+      '1 boîte de tomates pelées',
+      '1-2 càc d\'épices à chili',
+      'Origan',
+      '200 g d\'haricots rouges',
+      '2 œufs',
+      '1 cuillère à soupe de parmesan râpé',
+      'Persil',
+      'Huile d\'olive'
+    ],
+    steps: [
+      'Peler et couper les oignons en fines lamelles. Couper les tomates pelées en morceaux.',
+      'Dans une poêle, faire revenir les oignons dans un filet d\'huile d\'olive jusqu\'à dorés. Ajouter les tomates, la poudre de chili, l\'origan. Saler.',
+      'Ajouter les haricots rouges à la préparation. Mélanger à feu très doux puis casser les œufs par-dessus.',
+      'Parsemer de parmesan et de persil. Poivrer.',
+      'Placer un couvercle sur la poêle et laisser cuire les œufs à feux doux pendant 7 bonnes minutes.',
+      'Déguster chaud avec un morceau de pain !'
+    ],
+    notes: 'Astuce : pour éviter que les jaunes ne cuisent trop, retirez la poêle du feu une minute avant la fin de cuisson et laissez reposer à couvert.'
+  },
+
+  // ── TARTINADES & DIPS ──
+  {
+    id: 'tartinade-thon',
+    category: 'tartinade',
+    categoryLabel: 'Tartinades & Dips',
+    name: 'Tartinade thon cocktail revisité',
+    description: 'Une version plus légère et tout aussi gourmande du classique thon cocktail, idéale pour vos tartines, salades ou entrées froides.',
+    prepTime: 5, cookTime: 0, servings: 2,
+    ingredients: [
+      '1 boîte de thon au naturel (150 g égouttés)',
+      '2 c. à soupe de sauce cocktail (type Heinz)',
+      '2 c. à soupe de yaourt nature (ou fromage blanc 0–3%)',
+      '1 c. à café de jus de citron',
+      '1 petite échalote ou ¼ oignon rouge',
+      '1 c. à soupe de ciboulette',
+      'Poivre noir',
+      '½ c. à café de paprika doux ou piment d\'Espelette (optionnel)'
+    ],
+    steps: [
+      'Égoutter le thon et l\'émietter dans un bol.',
+      'Mélanger le yaourt + sauce cocktail + citron + paprika.',
+      'Ajouter l\'échalote et les herbes.',
+      'Incorporer le thon.',
+      'Poivrer, rectifier en sel si nécessaire.',
+      'Réserver au frais 20 minutes avant de servir, avec une feuille de salade ou quelques crudités !'
+    ],
+    notes: 'Le yaourt permet : alléger la sauce, apporter des protéines, avoir une texture plus douce et digeste.'
+  },
+  {
+    id: 'poivronnade-feta',
+    category: 'tartinade',
+    categoryLabel: 'Tartinades & Dips',
+    name: 'Poivronnade à la feta',
+    description: 'Un dip onctueux où la douceur du poivron rôti rencontre la salinité de la feta, relevé d\'une pointe d\'ail et de piment. Idéal pour un apéritif méditerranéen.',
+    prepTime: 15, cookTime: 40, servings: 4,
+    ingredients: [
+      '1 poivron rouge',
+      '100 g de feta',
+      '75 g de yaourt nature',
+      '1 gousse d\'ail',
+      '1 càc d\'huile d\'olive',
+      '5 g de piment de Cayenne',
+      '1 càc d\'origan'
+    ],
+    steps: [
+      'Préchauffer le four à 180 °C.',
+      'Enfourner le poivron entier 40 min sur une plaque, en le retournant à mi-cuisson.',
+      'Laisser tiédir, puis peler, épépiner et couper en morceaux.',
+      'Mixer le poivron avec la feta, le yaourt, l\'huile, l\'ail émincé, le piment et l\'origan jusqu\'à obtenir une texture lisse.',
+      'Servir frais avec des grissinis ou des crudités.'
+    ],
+    notes: 'Variantes possibles avec d\'autres légumes ou fromages. Ajoutez un filet de jus de citron pour une touche plus fraîche.'
+  },
+  {
+    id: 'dips-haricots-blanc',
+    category: 'tartinade',
+    categoryLabel: 'Tartinades & Dips',
+    name: 'Dips de haricots blancs à l\'ail et au citron',
+    description: 'Une tartinade douce et veloutée où la finesse des haricots blancs se marie à la fraîcheur acidulée du citron et au parfum de l\'huile d\'olive.',
+    prepTime: 15, cookTime: 0, servings: 4,
+    ingredients: [
+      '400 g de haricots blancs en boîte',
+      '1 citron',
+      '1 gousse d\'ail pressée',
+      '3 cuillères à soupe d\'huile d\'olive',
+      'Sel et poivre'
+    ],
+    steps: [
+      'Rincer les haricots blancs et les placer dans un mixeur.',
+      'Ajouter l\'ail pressé, le jus de citron, l\'huile d\'olive, le sel et le poivre.',
+      'Mixer jusqu\'à obtention d\'une crème lisse.',
+      'Goûter et ajuster l\'assaisonnement.',
+      'Servir frais avec des légumes croquants ou du pain pita.'
+    ],
+    notes: 'Pour une version plus gourmande, ajoutez une cuillère à soupe de tahini ou de yaourt grec avant de mixer. Pour plus de caractère, ajoutez une pincée de paprika fumé.'
+  },
+  {
+    id: 'mousse-truite',
+    category: 'tartinade',
+    categoryLabel: 'Tartinades & Dips',
+    name: 'Mousse de truite fumée',
+    description: 'Un mélange raffiné où la saveur délicate de la truite fumée rencontre le piquant subtil du wasabi et la fraîcheur de l\'aneth.',
+    prepTime: 15, cookTime: 0, servings: 4,
+    ingredients: [
+      '250 g de truite fumée',
+      '50 g de fromage frais type Philadelphia',
+      'Un filet de jus de citron',
+      'Un trait de lait',
+      '1 petite càc de wasabi ou de raifort',
+      'Quelques brins d\'aneth',
+      'Sel et poivre du moulin'
+    ],
+    steps: [
+      'Mixer finement la truite fumée avec le fromage frais.',
+      'Ajouter le wasabi et l\'aneth, puis mélanger.',
+      'Détendre avec un peu de lait jusqu\'à obtenir une texture onctueuse.',
+      'Réserver au frais et servir avec du pain grillé ou des crudités.'
+    ],
+    notes: 'Pour un goût plus doux, remplacez le wasabi par un peu de moutarde douce. Ajoutez quelques zestes de citron vert pour une touche encore plus fraîche.'
+  },
+  {
+    id: 'dips-courgette-basilic',
+    category: 'tartinade',
+    categoryLabel: 'Tartinades & Dips',
+    name: 'Dips à la courgette et au basilic',
+    description: 'Un dip léger et parfumé où la douceur des courgettes se marie à la fraîcheur du basilic et à la vivacité du citron vert.',
+    prepTime: 10, cookTime: 10, servings: 4,
+    ingredients: [
+      '2 courgettes moyennes',
+      '1 petite gousse d\'ail',
+      '1 c. à soupe de jus de citron vert',
+      '5 à 6 feuilles de basilic',
+      '1 c. à soupe d\'huile d\'olive',
+      'Sel, poivre',
+      '1 cuillère de fromage frais ou de yaourt (optionnel)'
+    ],
+    steps: [
+      'Laver les courgettes, couper les extrémités et les détailler en rondelles.',
+      'Les faire revenir dans un filet d\'huile d\'olive pendant 10 min, jusqu\'à tendreté.',
+      'Laisser tiédir, puis mixer avec l\'ail, le jus de citron vert, le basilic, le sel et le poivre.',
+      'Ajuster la texture avec un filet d\'huile ou une cuillère de fromage frais.',
+      'Réserver au frais au moins 30 min avant de servir.'
+    ],
+    notes: 'Pour une touche encore plus fraîche, ajoutez quelques feuilles de menthe en fin de mixage ou un soupçon de piment d\'Espelette.'
+  },
+  {
+    id: 'houmous-maison',
+    category: 'tartinade',
+    categoryLabel: 'Tartinades & Dips',
+    name: 'Houmous maison',
+    description: 'Un houmous crémeux et parfumé où la douceur du poivron rôti se mêle au goût intense des tomates confites et à la richesse du tahini.',
+    prepTime: 10, cookTime: 25, servings: 4,
+    ingredients: [
+      '250 g de pois chiches cuits (en conserve ou maison)',
+      '1 poivron rouge',
+      '3 tomates confites à l\'huile (égouttées)',
+      '1 gousse d\'ail',
+      '1 c. à soupe de tahini (purée de sésame)',
+      'Le jus d\'½ citron',
+      '2 c. à soupe d\'huile d\'olive',
+      'Sel, poivre',
+      'Paprika fumé ou piment doux (optionnel)'
+    ],
+    steps: [
+      'Préchauffer le four à 200 °C. Couper le poivron en deux, retirer les graines et enfourner 25 min jusqu\'à ce que la peau cloque. Laisser tiédir, peler et couper en morceaux.',
+      'Dans un mixeur, réunir pois chiches, poivron rôti, tomates confites, ail, tahini, jus de citron, huile, sel et poivre.',
+      'Mixer jusqu\'à texture lisse, en ajoutant un peu d\'eau ou de jus de cuisson des pois chiches si besoin.',
+      'Goûter et ajuster l\'assaisonnement.',
+      'Verser dans un bol, creuser un léger puits et garnir de tomates confites hachées, d\'un filet d\'huile d\'olive et d\'un soupçon de paprika fumé.'
+    ],
+    notes: 'Servez avec des bâtonnets de légumes croquants ou des pains pita grillés.'
+  },
+  {
+    id: 'tartinade-pois-chiches-avocat',
+    category: 'tartinade',
+    categoryLabel: 'Tartinades & Dips',
+    name: 'Tartinade de pois chiches et avocats',
+    description: 'Une tartinade onctueuse, fraîche et pleine de saveurs, idéale pour un apéro sain et gourmand.',
+    prepTime: 5, cookTime: 0, servings: 2,
+    ingredients: [
+      '200 g de pois chiches cuits',
+      '1 avocat mûr',
+      'Jus d\'un citron',
+      'Cumin, sel, poivre'
+    ],
+    steps: [
+      'Mixer les pois chiches et l\'avocat avec le jus de citron jusqu\'à obtenir une texture lisse.',
+      'Ajouter les épices et ajuster l\'assaisonnement selon votre goût.'
+    ],
+    notes: 'Pour un goût encore plus frais, ajoutez une poignée de coriandre ou de persil avant de mixer.'
+  },
+
+  // ── PETITS-DÉJEUNERS ──
+  {
+    id: 'pancakes-banane-avoine',
+    category: 'petitdej',
+    categoryLabel: 'Petits-déjeuners',
+    name: 'Pancakes banane et avoine',
+    description: 'Des pancakes moelleux et naturellement sucrés à la banane, avec une touche de cannelle et de vanille, parfaits pour un petit-déjeuner gourmand et sain.',
+    prepTime: 5, cookTime: 20, servings: 5,
+    ingredients: [
+      '200 g de flocons d\'avoine',
+      '250 ml de lait d\'amande',
+      '2 œufs',
+      '2 bananes',
+      '1 cuillère à café de levure chimique',
+      '1 cuillère à soupe de sirop d\'érable (facultatif)',
+      '½ cuillère à café de cannelle (facultatif)',
+      '1 cuillère à café d\'extrait de vanille (facultatif)',
+      '¼ cuillère à café de sel (facultatif)'
+    ],
+    steps: [
+      'Mixer les flocons d\'avoine jusqu\'à obtenir une poudre fine.',
+      'Ajouter le lait d\'amande, les œufs, la banane, la levure, le sirop d\'érable, la cannelle, la vanille et le sel. Mixer jusqu\'à obtention d\'une pâte lisse.',
+      'Chauffer une poêle grill avec un peu de beurre à feu vif.',
+      'Verser la pâte pour former les pancakes et cuire 2 à 3 min de chaque côté, jusqu\'à ce qu\'ils soient dorés.'
+    ],
+    notes: 'Servez avec des fruits frais, du yaourt ou un filet de sirop d\'érable pour encore plus de gourmandise.'
+  },
+  {
+    id: 'muffins-avoine-pomme',
+    category: 'petitdej',
+    categoryLabel: 'Petits-déjeuners',
+    name: 'Muffins d\'avoine et pomme',
+    description: 'Des muffins moelleux et légèrement épicés à la cannelle, où la douceur des pommes se marie parfaitement aux flocons d\'avoine.',
+    prepTime: 10, cookTime: 30, servings: 10,
+    ingredients: [
+      '100 g de flocons d\'avoine',
+      '4 càs de farine',
+      '2 œufs',
+      '1 sachet de sucre vanillé',
+      '2 càc de cannelle',
+      '2 pommes',
+      '100 ml de lait'
+    ],
+    steps: [
+      'Préchauffer le four à 180 °C.',
+      'Laver, éplucher et couper les pommes en petits dés.',
+      'Dans un saladier, mélanger les flocons d\'avoine, la farine, l\'œuf, le sucre vanillé et la cannelle. Ajouter le lait petit à petit en mélangeant jusqu\'à obtenir une pâte homogène.',
+      'Répartir la pâte dans des moules à muffins et enfourner 30 min.',
+      'Laisser refroidir avant de déguster.'
+    ],
+    notes: 'Pour encore plus de gourmandise, ajoutez quelques noix ou pépites de chocolat dans la pâte avant la cuisson.'
+  },
+  {
+    id: 'porridge-pomme-cannelle',
+    category: 'petitdej',
+    categoryLabel: 'Petits-déjeuners',
+    name: 'Porridge pomme cannelle',
+    description: 'Un porridge doux et réconfortant aux pommes fondantes, délicatement parfumé à la cannelle, pour un petit-déjeuner sain et plein de douceur.',
+    prepTime: 5, cookTime: 10, servings: 2,
+    ingredients: [
+      '100 g de flocons d\'avoine',
+      '200 ml de lait',
+      '1 càc de cannelle',
+      '2 pommes',
+      '2 càc de miel ou sirop d\'agave (facultatif)',
+      'Raisins secs (facultatif)'
+    ],
+    steps: [
+      'Couper les pommes en dés.',
+      'Les faire revenir dans une casserole à feu vif avec un peu d\'eau ou quelques gouttes d\'huile de sésame.',
+      'Lorsque les pommes sont dorées, saupoudrer de cannelle.',
+      'Ajouter les flocons d\'avoine et le lait.',
+      'Faire cuire à feu doux en remuant pendant 5 minutes.',
+      'Ajuster la consistance en ajoutant du lait selon votre goût. Ajouter un peu de miel et/ou quelques raisins secs si souhaité.'
+    ],
+    notes: 'Version rapide : faire cuire les dés de pomme avec la cannelle au micro-ondes 5 min. Ajouter les flocons d\'avoine, le lait, puis remettre au micro-ondes 2 minutes.'
+  },
+  {
+    id: 'porridge-cacao-banane',
+    category: 'petitdej',
+    categoryLabel: 'Petits-déjeuners',
+    name: 'Porridge cacao et banane',
+    description: 'Un porridge onctueux et naturellement sucré à la banane, sublimé par un cacao intense à 100%, pour un petit-déjeuner gourmand et plein d\'énergie.',
+    prepTime: 5, cookTime: 10, servings: 2,
+    ingredients: [
+      '100 g de flocons d\'avoine',
+      '200 ml de lait de soja ou de vache',
+      '2 càc de cacao 100%',
+      '2 bananes',
+      '2 càc de miel ou sirop d\'agave (facultatif)'
+    ],
+    steps: [
+      'Dans une casserole, verser les flocons d\'avoine et la poudre de cacao.',
+      'Ajouter le lait (vache ou soja) pour plus de douceur.',
+      'Faire cuire à feu doux en remuant pendant 5 minutes.',
+      'Ajuster la consistance en ajoutant du lait selon votre goût.',
+      'En fin de cuisson, incorporer une banane coupée en petits dés pour sucrer naturellement.',
+      'Réserver la deuxième banane pour décorer les bols avec des rondelles fraîches. Servir chaud.'
+    ],
+    notes: 'Version rapide en portion individuelle : même préparation au micro-ondes !'
+  },
+  {
+    id: 'porridge-fruits-rouges',
+    category: 'petitdej',
+    categoryLabel: 'Petits-déjeuners',
+    name: 'Porridge fruits rouges',
+    description: 'Un porridge gourmand et vitaminé, relevé par la fraîcheur acidulée des fruits rouges, pour un petit-déjeuner sain, coloré et plein de vitalité.',
+    prepTime: 5, cookTime: 10, servings: 2,
+    ingredients: [
+      '100 g de flocons d\'avoine',
+      '200 ml de lait de soja ou de vache',
+      '150 g de fruits rouges congelés',
+      '2 càc de miel ou sirop d\'agave'
+    ],
+    steps: [
+      'Dans une casserole, faire réduire les fruits rouges congelés jusqu\'à obtenir une compotée.',
+      'Ajouter le miel selon votre goût.',
+      'Verser les flocons d\'avoine sur la compotée.',
+      'Ajouter progressivement le lait en remuant doucement.',
+      'Faire cuire à feu doux pendant 5 minutes en remuant régulièrement.',
+      'Ajuster la consistance en ajoutant du lait selon vos préférences.',
+      'Répartir dans des bols et décorer avec quelques fruits rouges congelés. Servir chaud !'
+    ],
+    notes: 'Version rapide en portion individuelle : même préparation au micro-ondes !'
+  },
+  {
+    id: 'chia-pudding',
+    category: 'petitdej',
+    categoryLabel: 'Petits-déjeuners',
+    name: 'Chia pudding',
+    description: 'Un petit-déjeuner ou goûter sain et gourmand, où le crémeux du pudding de chia se marie au croquant du granola et à la fraîcheur des fruits.',
+    prepTime: 10, cookTime: 0, servings: 2,
+    ingredients: [
+      '250 g de fruits rouges',
+      '150 g de granola',
+      '50 g de graines de chia',
+      '50 cl de lait végétal ou de vache',
+      '1 càc de vanille en poudre',
+      '2 càs de sirop d\'agave'
+    ],
+    steps: [
+      'Verser le lait sur les graines de chia, ajouter la vanille et le sirop d\'agave.',
+      'Mélanger toutes les 10 minutes pendant 30 min. Filmer et placer au réfrigérateur 1 h.',
+      'Déposer du granola au fond d\'un bol, recouvrir de pudding de chia bien gonflé, puis ajouter les fruits par-dessus. Servir frais.'
+    ],
+    notes: 'Dans l\'idéal : préparez le pudding de chia la veille et laissez gonfler toute la nuit. Pour un pudding encore plus gourmand, ajoutez quelques noix concassées ou des pépites de chocolat.'
+  }
+];
+
+// ══════════════════════════════════════════════
+//  STATE
+//  stock = { [normKey]: { name, unit, qty } }
+// ══════════════════════════════════════════════
+let currentCat = 'all';
+let currentFeasFilter = null;
+
+function loadStockFromStorage() {
+  try {
+    const raw = JSON.parse(localStorage.getItem('recettes_stock') || 'null');
+    if (!raw) return {};
+    // migrate old array format
+    if (Array.isArray(raw)) {
+      const obj = {};
+      raw.forEach(name => { const k = normIngredient(name); obj[k] = { name, unit: '', qty: 0 }; });
+      return obj;
+    }
+    return raw;
+  } catch(e) { return {}; }
+}
+let stock = loadStockFromStorage();
+
+// ══════════════════════════════════════════════
+//  NORMALIZATION
+// ══════════════════════════════════════════════
+function normIngredient(str) {
+  return (str || '').toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9 ]/g, ' ')
+    .replace(/\s+/g, ' ').trim();
+}
+
+// ══════════════════════════════════════════════
+//  FEASIBILITY  (exact key match)
+// ══════════════════════════════════════════════
+function checkFeasibility(recipe) {
+  const stockKeys = Object.keys(stock);
+  if (stockKeys.length === 0) return { status: 'unknown', pct: 0, missing: [] };
+  let matched = 0;
+  const missing = [];
+  for (const ing of recipe.ingredients) {
+    const { name } = parseIngredient(ing);
+    const key = normIngredient(name);
+    // 1. Exact match
+    let found = key in stock;
+    // 2. Stock key fully contained in recipe key (e.g. "ail" matches "ail hache")
+    if (!found) found = stockKeys.some(sk => sk.length >= 3 && key.includes(sk) && key.replace(sk,'').trim().length < 6);
+    // 3. Recipe key fully contained in stock key
+    if (!found) found = stockKeys.some(sk => key.length >= 3 && sk.includes(key) && sk.replace(key,'').trim().length < 6);
+    if (found) matched++;
+    else missing.push(ing);
+  }
+  const pct = recipe.ingredients.length > 0 ? matched / recipe.ingredients.length : 0;
+  let status = 'no';
+  if (pct >= 0.85) status = 'ok';
+  else if (pct >= 0.5) status = 'partial';
+  return { status, pct, missing };
+}
+
+function feasibilityBadge(status, pct) {
+  if (status === 'unknown') return `<span class="feasibility-badge unknown">📦 Ajouter au stock</span>`;
+  if (status === 'ok') return `<span class="feasibility-badge ok">✅ Faisable</span>`;
+  if (status === 'partial') return `<span class="feasibility-badge partial">⚡ ${Math.round(pct*100)}% des ingrédients</span>`;
+  return `<span class="feasibility-badge no">❌ Manque des ingrédients</span>`;
+}
+
+// ══════════════════════════════════════════════
+//  RENDER GRID
+// ══════════════════════════════════════════════
+function renderGrid() {
+  const q = document.getElementById('search-input').value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  let list = RECIPES;
+
+  if (currentCat !== 'all') list = list.filter(r => r.category === currentCat);
+  if (currentFeasFilter) {
+    list = list.filter(r => checkFeasibility(r).status === currentFeasFilter);
+  }
+  if (q) {
+    list = list.filter(r => {
+      const haystack = (r.name + ' ' + r.description + ' ' + r.ingredients.join(' ')).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+      return haystack.includes(q);
+    });
+  }
+
+  const grid = document.getElementById('recipe-grid');
+  if (list.length === 0) {
+    grid.innerHTML = `<div class="no-results" style="grid-column:1/-1">
+      <div class="nr-icon">🍽️</div>
+      <p>Aucune recette trouvée.</p>
+    </div>`;
+    return;
+  }
+  grid.innerHTML = list.map(r => {
+    const f = checkFeasibility(r);
+    const cookInfo = r.cookTime > 0 ? `<span>⏱ ${r.prepTime + r.cookTime} min</span>` : `<span>⚡ ${r.prepTime} min</span>`;
+    return `<div class="recipe-card" onclick="openModal('${r.id}')">
+      <div class="card-category">${r.categoryLabel}</div>
+      <div class="card-name">${r.name}</div>
+      <div class="card-meta">
+        ${cookInfo}
+        <span>👤 ${r.servings} portion${r.servings > 1 ? 's' : ''}</span>
+      </div>
+      ${feasibilityBadge(f.status, f.pct)}
+    </div>`;
+  }).join('');
+}
+
+// ══════════════════════════════════════════════
+//  MODAL
+// ══════════════════════════════════════════════
+function openModal(id) {
+  const r = RECIPES.find(x => x.id === id);
+  if (!r) return;
+  document.getElementById('modal-cat').textContent = r.categoryLabel;
+  document.getElementById('modal-title').textContent = r.name;
+  document.getElementById('modal-desc').textContent = r.description;
+
+  const cookInfo = r.cookTime > 0
+    ? `<span>🥄 Prép. ${r.prepTime} min</span><span>🔥 Cuisson ${r.cookTime} min</span>`
+    : `<span>⚡ ${r.prepTime} min</span>`;
+  document.getElementById('modal-meta').innerHTML = cookInfo + `<span>👤 ${r.servings} portion${r.servings>1?'s':''}</span>`;
+
+  const stockKeys = Object.keys(stock);
+  const ingredientsHTML = r.ingredients.map(ing => {
+    const { name } = parseIngredient(ing);
+    const key = normIngredient(name);
+    let inStock = key in stock;
+    if (!inStock) inStock = stockKeys.some(sk => sk.length >= 3 && key.includes(sk) && key.replace(sk,'').trim().length < 6);
+    if (!inStock) inStock = stockKeys.some(sk => key.length >= 3 && sk.includes(key) && sk.replace(key,'').trim().length < 6);
+    const dotClass = stockKeys.length === 0 ? '' : (inStock ? 'in-stock' : 'out-stock');
+    return `<li><span class="ing-dot ${dotClass}"></span>${ing}</li>`;
+  }).join('');
+  document.getElementById('modal-ingredients').innerHTML = ingredientsHTML;
+
+  document.getElementById('modal-steps').innerHTML = r.steps.map((s, i) =>
+    `<li><span class="step-num">${i+1}</span>${s}</li>`
+  ).join('');
+
+  const notesEl = document.getElementById('modal-notes');
+  if (r.notes) {
+    notesEl.style.display = '';
+    notesEl.innerHTML = `<strong>💡 Notes</strong>${r.notes}`;
+  } else {
+    notesEl.style.display = 'none';
+  }
+
+  document.getElementById('modal-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById('modal-overlay')) closeModalDirect();
+}
+function closeModalDirect() {
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ══════════════════════════════════════════════
+//  CATEGORY FILTER
+// ══════════════════════════════════════════════
+function filterCat(cat) {
+  currentCat = cat;
+  currentFeasFilter = null;
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('cat-' + cat)?.classList.add('active');
+  const titles = { all: 'Toutes les recettes', repas: 'Repas chauds', tartinade: 'Tartinades & Dips', petitdej: 'Petits-déjeuners' };
+  document.getElementById('view-title').textContent = titles[cat] || cat;
+  document.getElementById('view-subtitle').textContent = '';
+  renderGrid();
+}
+
+function filterFeasibility(status) {
+  currentFeasFilter = currentFeasFilter === status ? null : status;
+  currentCat = 'all';
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+  if (currentFeasFilter) {
+    document.getElementById('cat-' + status)?.classList.add('active');
+    const lbl = { ok: '✅ Recettes faisables', partial: '⚡ Ingrédients partiels' };
+    document.getElementById('view-title').textContent = lbl[status];
+    document.getElementById('view-subtitle').textContent = 'Basé sur votre stock actuel';
+  } else {
+    document.getElementById('cat-all')?.classList.add('active');
+    document.getElementById('view-title').textContent = 'Toutes les recettes';
+    document.getElementById('view-subtitle').textContent = '';
+  }
+  renderGrid();
+}
+
+// ══════════════════════════════════════════════
+//  STOCK MANAGEMENT
+// ══════════════════════════════════════════════
+function toggleStock() {
+  document.getElementById('stock-panel').classList.toggle('open');
+}
+
+function saveStock() {
+  localStorage.setItem('recettes_stock', JSON.stringify(stock));
+  scheduleDriveSave();
+}
+
+function escapeAttr(str) {
+  return (str || '').replace(/'/g, '&#39;').replace(/"/g, '&quot;');
+}
+
+function deleteCatalogEntry(key) {
+  hiddenIngredients.add(key);
+  saveHidden();
+  renderCatalog();
+}
+
+function restoreAllCatalog() {
+  hiddenIngredients.clear();
+  saveHidden();
+  renderCatalog();
+}
+
+function renderStock() {
+  const list   = document.getElementById('stock-list');
+  const empty  = document.getElementById('stock-empty');
+  const clrBtn = document.getElementById('stock-clear-btn');
+  const badge  = document.getElementById('stock-badge');
+  const keys   = Object.keys(stock);
+  badge.textContent = keys.length;
+  if (keys.length === 0) {
+    empty.style.display = '';
+    list.innerHTML = '';
+    clrBtn.style.display = 'none';
+    return;
+  }
+  empty.style.display = 'none';
+  clrBtn.style.display = '';
+  list.innerHTML = keys.sort().map(k => {
+    const e = stock[k];
+    return `<div class="stock-item">
+      <span style="color:var(--success);font-size:0.8rem;flex-shrink:0">●</span>
+      <span class="stock-item-name" style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${e.name}</span>
+      <input type="number" min="0" step="any" value="${e.qty || ''}"
+        placeholder="qté"
+        style="width:56px;padding:3px 6px;border:1.5px solid var(--border);border-radius:5px;
+               font-family:'DM Sans',sans-serif;font-size:0.82rem;text-align:right;flex-shrink:0;"
+        onchange="updateStockQty('${k}', this.value)"
+        oninput="updateStockQty('${k}', this.value)">
+      <select class="stock-unit-select" onchange="updateStockUnit('${k}',this.value)">${unitOptions(e.unit)}</select>
+      <button class="stock-item-remove" onclick="removeStock('${k}')" title="Retirer">✕</button>
+    </div>`;
+  }).join('');
+}
+
+function updateStockQty(key, val) {
+  if (!stock[key]) return;
+  stock[key].qty = parseFloat(val) || 0;
+  saveStock();
+}
+
+function addStockItem() {
+  const input = document.getElementById('stock-input');
+  const val = input.value.trim();
+  if (!val) return;
+  const key = normIngredient(val);
+  if (!(key in stock)) {
+    stock[key] = { name: val, unit: '', qty: 0 };
+    saveStock();
+    renderStock();
+    renderGrid();
+    updateCounts();
+  }
+  input.value = '';
+  input.focus();
+}
+
+function removeStock(key) {
+  delete stock[key];
+  saveStock();
+  renderStock();
+  renderCatalog();
+  renderGrid();
+  updateCounts();
+}
+
+function clearStock() {
+  if (confirm('Vider tout le stock ?')) {
+    stock = {};
+    saveStock();
+    renderStock();
+    renderCatalog();
+    renderGrid();
+    updateCounts();
+  }
+}
+
+// ══════════════════════════════════════════════
+//  COUNTS
+// ══════════════════════════════════════════════
+function updateCounts() {
+  document.getElementById('cnt-all').textContent = RECIPES.length;
+  ['repas','tartinade','petitdej'].forEach(cat => {
+    document.getElementById('cnt-'+cat).textContent = RECIPES.filter(r => r.category === cat).length;
+  });
+  document.getElementById('cnt-ok').textContent      = RECIPES.filter(r => checkFeasibility(r).status === 'ok').length;
+  document.getElementById('cnt-partial').textContent = RECIPES.filter(r => checkFeasibility(r).status === 'partial').length;
+}
+
+// ══════════════════════════════════════════════
+//  INIT
+// ══════════════════════════════════════════════
+document.addEventListener('DOMContentLoaded', () => {
+  updateCounts();
+  renderGrid();
+  renderStock();
+  document.getElementById('stock-input').addEventListener('keydown', e => {
+    if (e.key === 'Enter') addStockItem();
+  });
+  // Re-count on stock change
+  const origRenderStock = renderStock;
+  window.renderStock = function() {
+    origRenderStock();
+    updateCounts();
+  };
+});
+
+// Keyboard close modals
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    closeModalDirect();
+    closeAddModalDirect();
+  }
+});
+let catalogCat = 'all';
+let hiddenIngredients = new Set(JSON.parse(localStorage.getItem('recettes_hidden_ings') || '[]'));
+
+function saveHidden() {
+  localStorage.setItem('recettes_hidden_ings', JSON.stringify([...hiddenIngredients]));
+}
+
+// ── Parse a raw ingredient string into { name, unit, qty } ──
+function parseIngredient(raw) {
+  // 1. Normalise fractions & clean spaces
+  let s = raw.trim()
+    .replace(/½/g, '0.5').replace(/¼/g, '0.25').replace(/¾/g, '0.75')
+    .replace(/⅓/g, '0.33').replace(/⅔/g, '0.67');
+
+  // 2. Unit table
+  const UNITS = [
+    { re: /c\.?\s*(?:uillères?)?\s*à\s*soupe|càs/i, label: 'càs' },
+    { re: /c\.?\s*(?:uillères?)?\s*à\s*caf[eé]|càc/i, label: 'càc' },
+    { re: /conserves?/i,  label: 'conserve' },
+    { re: /boîtes?/i,     label: 'boîte' },
+    { re: /sachets?/i,    label: 'sachet' },
+    { re: /gousses?/i,    label: 'gousse' },
+    { re: /brins?/i,      label: 'brin' },
+    { re: /feuilles?/i,   label: 'feuille' },
+    { re: /filets?/i,     label: 'filet' },
+    { re: /pots?/i,       label: 'pot' },
+    { re: /verres?/i,     label: 'verre' },
+    { re: /traits?/i,     label: 'trait' },
+    { re: /\bkg\b/i,      label: 'kg' },
+    { re: /\bml\b/i,      label: 'ml' },
+    { re: /\bcl\b/i,      label: 'cl' },
+    { re: /\bL\b/,        label: 'L'  },
+    { re: /\bg\b/i,       label: 'g'  },
+  ];
+
+  function cleanName(n) {
+    return n
+      // leading quantifiers / articles
+      .replace(/^(quelques?\s+|un\s+peu\s+de\s+|un\s+filet\s+de\s+|un\s+trait\s+de\s+)/i, '')
+      .replace(/^(les?\s+|la\s+|l['']\s*|une?\s+|des?\s+|du\s+|de\s+(?:la\s+|l['']\s*)?)/i, '')
+      // "jus de/d'" → garde le fruit
+      .replace(/\bjus\s+d[e'']\s*/i, '')
+      // "à N " résiduel en tête (ex: "à 6 feuilles de")
+      .replace(/^à\s+[\d.,]+\s+\S+\s+de\s+/i, '')
+      .replace(/^à\s+[\d.,]+\s+/i, '')
+      // chiffre résiduel en tête
+      .replace(/^[\d.,]+\s+/,'')
+      // parenthèses
+      .replace(/\(.*?\)/g, '')
+      // adjectifs et descriptions après le nom
+      .replace(/,\s*(haché[e]?s?|émincé[e]?s?|pressé[e]?s?|coupé[e]?s?|râpé[e]?s?|grillé[e]?s?|écrasé[e]?s?|taillé[e]?s?|tranché[e]?s?|fondu[e]?s?|demi[e]?s?|frais|fraîche[s]?|mûr[e]?s?|nature|bio|cuit[e]?s?|congelé[e]?s?).*$/i, '')
+      .replace(/\s+(haché[e]?s?|émincé[e]?s?|pressé[e]?s?|râpé[e]?s?|grillé[e]?s?|écrasé[e]?s?|tranché[e]?s?)$/i, '')
+      // tout après virgule
+      .replace(/,.*$/, '')
+      // mots-clés finaux
+      .replace(/\b(facultatif|optionnel|ou\b.*|et\b.*|selon\b.*|si\b.*|type\b.*)\b.*$/i, '')
+      .replace(/\s+/g, ' ').trim()
+      .toLowerCase();
+  }
+
+  // 3. Strip leading "quelques" / "un peu de" before number detection
+  s = s.replace(/^quelques?\s+/i, '');
+
+  // 4. Handle range qty: "5 à 6" or "5-6" → take the higher value for display, keep as "5-6"
+  const rangeMatch = s.match(/^([\d.,]+)\s*(?:à|-|–)\s*([\d.,]+)\s*/);
+  if (rangeMatch) {
+    const qty = `${rangeMatch[1]}-${rangeMatch[2]}`;
+    let rest = s.slice(rangeMatch[0].length).trim();
+    let unit = '';
+    for (const u of UNITS) {
+      const m = rest.match(new RegExp('^(' + u.re.source + ')[\\s.]*', 'i'));
+      if (m) { unit = u.label; rest = rest.slice(m[0].length).trim(); break; }
+    }
+    rest = rest.replace(/^d[e'']\s*/i, '').trim();
+    return { qty, unit, name: cleanName(rest) };
+  }
+
+  // 5. Simple qty
+  const qtyMatch = s.match(/^([\d.,]+)\s*/);
+  if (!qtyMatch) {
+    return { qty: '', unit: '', name: cleanName(s) };
+  }
+
+  const qty = qtyMatch[1].trim();
+  let rest = s.slice(qtyMatch[0].length).trim();
+
+  let unit = '';
+  for (const u of UNITS) {
+    const m = rest.match(new RegExp('^(' + u.re.source + ')[\\s.]*', 'i'));
+    if (m) { unit = u.label; rest = rest.slice(m[0].length).trim(); break; }
+  }
+  rest = rest.replace(/^d[e'']\s*/i, '').trim();
+
+  return { qty, unit, name: cleanName(rest) };
+}
+
+// ── Build deduplicated map: normName → { name, unit, qties[], recipes[], cats[] } ──
+function buildIngredientMap(catFilter) {
+  const map = new Map();
+  const catMap = { repas: 'Repas', tartinade: 'Tartinades', petitdej: 'Petits-déj.' };
+
+  RECIPES.forEach(r => {
+    if (catFilter !== 'all' && r.category !== catFilter) return;
+    r.ingredients.forEach(raw => {
+      const { qty, unit, name } = parseIngredient(raw);
+      const key = normIngredient(name);   // dedup key
+      if (!map.has(key)) {
+        map.set(key, { name, unit, qties: [], recipes: new Set(), cats: new Set() });
+      }
+      const entry = map.get(key);
+      // Update unit if blank and we now have one
+      if (!entry.unit && unit) entry.unit = unit;
+      if (qty && !entry.qties.includes(qty)) entry.qties.push(qty);
+      entry.recipes.add(r.name);
+      entry.cats.add(catMap[r.category] || r.categoryLabel);
+    });
+  });
+
+  return [...map.entries()]
+    .sort((a, b) => a[1].name.localeCompare(b[1].name, 'fr'));
+}
+
+function setCatalogCat(cat, btn) {
+  catalogCat = cat;
+  document.querySelectorAll('.cat-filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderCatalog();
+}
+
+let catalogExpandedKey = null; // unused now, kept for compat
+let _asmKey = null; // current key in add-stock modal
+
+const ALL_UNITS = ['', 'g', 'kg', 'ml', 'cl', 'L', 'càc', 'càs', 'conserve', 'boîte',
+                   'sachet', 'gousse', 'brin', 'feuille', 'filet', 'pot', 'verre', 'trait', 'pièce'];
+
+function unitOptions(selected) {
+  return ALL_UNITS.map(u =>
+    `<option value="${u}" ${u === (selected||'') ? 'selected' : ''}>${u || '—'}</option>`
+  ).join('');
+}
+
+// ── Mini-modal open/close ──
+function catalogExpand(key, name, defaultUnit) {
+  _asmKey = key;
+  document.getElementById('asm-name').textContent = name;
+  const unitSel = document.getElementById('asm-unit');
+  unitSel.innerHTML = unitOptions(defaultUnit);
+  const qtyInput = document.getElementById('asm-qty');
+  qtyInput.value = '';
+  const overlay = document.getElementById('add-stock-overlay');
+  overlay.style.display = 'flex';
+  setTimeout(() => qtyInput.focus(), 80);
+}
+
+function closeAddModal(e) {
+  if (e.target === document.getElementById('add-stock-overlay')) closeAddModalDirect();
+}
+function closeAddModalDirect() {
+  document.getElementById('add-stock-overlay').style.display = 'none';
+  _asmKey = null;
+}
+
+function confirmAddModal() {
+  if (!_asmKey) return;
+  const qty  = parseFloat(document.getElementById('asm-qty').value)  || 0;
+  const unit = document.getElementById('asm-unit').value || '';
+  const name = document.getElementById('asm-name').textContent;
+  stock[_asmKey] = { name, unit, qty };
+  saveStock();
+  closeAddModalDirect();
+  renderStock();
+  renderCatalog();
+  renderGrid();
+  updateCounts();
+}
+
+function renderCatalog() {
+  const q = (document.getElementById('catalog-search')?.value || '')
+    .toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  const entries = buildIngredientMap(catalogCat);
+  const tbody = document.getElementById('catalog-tbody');
+  const empty = document.getElementById('catalog-empty');
+  const restoreBar = document.getElementById('catalog-restore-bar');
+  const hiddenCount = document.getElementById('hidden-count');
+  if (!tbody) return;
+
+  const hiddenVisible = entries.filter(([key]) => hiddenIngredients.has(key)).length;
+  if (hiddenCount) hiddenCount.textContent = hiddenVisible;
+  if (restoreBar) restoreBar.style.display = hiddenVisible > 0 ? '' : 'none';
+
+  let filtered = entries.filter(([key]) => !hiddenIngredients.has(key));
+  if (q) {
+    filtered = filtered.filter(([key, v]) =>
+      key.includes(q) || v.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').includes(q)
+    );
+  }
+
+  if (filtered.length === 0) {
+    tbody.innerHTML = '';
+    empty.style.display = '';
+    return;
+  }
+  empty.style.display = 'none';
+
+  tbody.innerHTML = filtered.map(([key, v]) => {
+    const inStock = key in stock;
+    const rowClass = inStock ? 'catalog-row in-stock' : 'catalog-row';
+
+    const unitCell = inStock
+      ? `<select class="stock-unit-select" onchange="updateStockUnit('${key}',this.value)">${unitOptions(stock[key].unit)}</select>`
+      : `<span class="ing-unit">${v.unit || '—'}</span>`;
+
+    const qtyCell = inStock
+      ? `<input type="number" min="0" step="any"
+           value="${stock[key].qty || ''}"
+           placeholder="qté"
+           style="width:52px;padding:3px 5px;border:1.5px solid var(--border);border-radius:5px;
+                  font-family:'DM Sans',sans-serif;font-size:0.82rem;text-align:right;"
+           onchange="updateStockQty('${key}',this.value)"
+           oninput="updateStockQty('${key}',this.value)">`
+      : `<span style="color:var(--warm-grey)">—</span>`;
+
+    const stockBtn = inStock
+      ? `<button class="toggle-stock-btn remove" onclick="catalogRemove('${key}')" title="Retirer du stock">−</button>`
+      : `<button class="toggle-stock-btn add" onclick="catalogExpand('${key}','${escapeAttr(v.name)}','${escapeAttr(v.unit)}')" title="Ajouter au stock">+</button>`;
+
+    return `<tr class="${rowClass}">
+      <td>
+        <div class="ing-name">${v.name}</div>
+        <span class="ing-recipes">×${v.recipes.size} recette${v.recipes.size > 1 ? 's' : ''}</span>
+      </td>
+      <td class="col-unit">${unitCell}</td>
+      <td class="col-qty">${qtyCell}</td>
+      <td class="col-stock">${stockBtn}</td>
+      <td class="col-del">
+        <button class="del-ing-btn" onclick="deleteCatalogEntry('${escapeAttr(key)}')" title="Masquer">🗑</button>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+function catalogRemove(key) {
+  delete stock[key];
+  saveStock();
+  renderStock();
+  renderCatalog();
+  renderGrid();
+  updateCounts();
+}
+
+function updateStockUnit(key, val) {
+  if (!stock[key]) return;
+  stock[key].unit = val;
+  saveStock();
+}
+
+// ── TEXTAREA BATCH ADD ──
+function addFromTextarea() {
+  const ta = document.getElementById('stock-textarea');
+  const lines = ta.value.split('\n').map(l => l.trim()).filter(Boolean);
+  lines.forEach(line => {
+    const key = normIngredient(line);
+    if (!(key in stock)) stock[key] = { name: line, unit: '', qty: 0 };
+  });
+  saveStock();
+  renderStock();
+  renderCatalog();
+  renderGrid();
+  updateCounts();
+  ta.value = '';
+}
+
+// ── TAB SWITCH ──
+function switchStockTab(id) {
+  document.querySelectorAll('.stock-tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.stock-tab').forEach(el => el.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  const idx = ['mon-stock','catalogue','ajouter'].indexOf(id);
+  document.querySelectorAll('.stock-tab')[idx]?.classList.add('active');
+  if (id === 'catalogue') renderCatalog();
+}
+
+
+</script>
+</body>
+</html>
