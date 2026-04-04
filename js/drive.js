@@ -78,8 +78,18 @@ async function loadFromDrive() {
     if (Array.isArray(data.stock)) {
       stock = data.stock;
       localStorage.setItem('recettes_stock', JSON.stringify(stock));
-      renderStock(); renderCatalog(); renderGrid(); updateCounts();
     }
+    // Recettes custom
+    if (Array.isArray(data.customRecipes) && data.customRecipes.length > 0) {
+      // Retire les anciennes custom et réinjecte depuis Drive
+      data.customRecipes.forEach(r => {
+        r.custom = true;
+        if (!RECIPES.find(x => x.id === r.id)) RECIPES.push(r);
+        else Object.assign(RECIPES.find(x => x.id === r.id), r);
+      });
+      localStorage.setItem(CUSTOM_RECIPES_KEY, JSON.stringify(data.customRecipes));
+    }
+    renderStock(); renderCatalog(); renderGrid(); updateCounts();
     const d = data.updatedAt
       ? new Date(data.updatedAt).toLocaleString('fr-BE', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })
       : '';
@@ -93,7 +103,12 @@ async function loadFromDrive() {
 async function saveToDriveNow() {
   if (!driveAccessToken || !driveReady) return;
   setDriveStatus('Sauvegarde…', 'loading');
-  const body = JSON.stringify({ stock, updatedAt: new Date().toISOString() });
+  const customRecipes = RECIPES.filter(r => r.custom === true);
+  const body = JSON.stringify({
+    stock,
+    customRecipes,
+    updatedAt: new Date().toISOString()
+  });
   try {
     if (!driveFileId) {
       const meta = await fetch('https://www.googleapis.com/drive/v3/files', {
