@@ -41,7 +41,11 @@ function renderGrid() {
   const q = document.getElementById('search-input').value.toLowerCase()
     .normalize('NFD').replace(/[\u0300-\u036f]/g, '');
   let list = RECIPES;
-  if (currentCat !== 'all') list = list.filter(r => r.category === currentCat);
+  if (currentCat === 'custom') {
+    list = list.filter(r => r.custom === true);
+  } else if (currentCat !== 'all') {
+    list = list.filter(r => r.category === currentCat);
+  }
   if (currentFeasFilter)    list = list.filter(r => checkFeasibility(r).status === currentFeasFilter);
   if (q) {
     list = list.filter(r => {
@@ -63,8 +67,9 @@ function renderGrid() {
     const cookInfo = r.cookTime > 0
       ? `<span>⏱ ${r.prepTime + r.cookTime} min</span>`
       : `<span>⚡ ${r.prepTime} min</span>`;
+    const customBadge = r.custom ? `<span class="custom-badge">perso</span>` : '';
     return `<div class="recipe-card" onclick="openModal('${r.id}')">
-      <div class="card-category">${r.categoryLabel}</div>
+      <div class="card-category">${r.categoryLabel}${customBadge}</div>
       <div class="card-name">${r.name}</div>
       <div class="card-meta">${cookInfo}<span>👤 ${r.servings} portion${r.servings > 1 ? 's' : ''}</span></div>
       ${feasibilityBadge(f.status, f.pct)}
@@ -72,10 +77,17 @@ function renderGrid() {
   }).join('');
 }
 
+let currentModalRecipe = null; // recette affichée dans la modal
+
 // ── Modal recette ──
 function openModal(id) {
   const r = RECIPES.find(x => x.id === id);
   if (!r) return;
+  currentModalRecipe = r;
+
+  // Reset feedback
+  document.getElementById('cook-feedback').style.display = 'none';
+  document.getElementById('cook-btn').disabled = false;
   document.getElementById('modal-cat').textContent   = r.categoryLabel;
   document.getElementById('modal-title').textContent = r.name;
   document.getElementById('modal-desc').textContent  = r.description;
@@ -108,8 +120,91 @@ function openModal(id) {
   } else {
     notesEl.style.display = 'none';
   }
+  // Boutons éditer/supprimer pour les recettes custom
+  const customActions = document.getElementById('modal-custom-actions');
+  if (r.custom) {
+    customActions.style.display = '';
+    customActions.innerHTML = `
+      <button class="modal-edit-btn" onclick="closeModalDirect();openRecipeForm('${r.id}')">✏️ Modifier</button>
+      <button class="modal-delete-btn" onclick="deleteCustomRecipe('${r.id}')">🗑 Supprimer</button>`;
+  } else {
+    customActions.style.display = 'none';
+    customActions.innerHTML = '';
+  }
+
   document.getElementById('modal-overlay').classList.add('open');
   document.body.style.overflow = 'hidden';
+}
+
+// ── Préparer un plat → déduire les ingrédients du stock ──
+function cookRecipe() {
+  const r = currentModalRecipe;
+  if (!r) return;
+
+  const stockKeys = Object.keys(stock);
+  const removed   = [];
+  const kept      = [];
+  const missing   = [];
+
+  for (const raw of r.ingredients) {
+    const { name, qty, unit } = parseIngredient(raw);
+    const key = normIngredient(name);
+
+    // Cherche la clé correspondante dans le stock (exact + substring)
+    let stockKey = null;
+    if (key in stock) {
+      stockKey = key;
+    } else {
+      stockKey = stockKeys.find(sk => sk.length >= 3 && key.includes(sk) && key.replace(sk,'').trim().length < 6)
+              || stockKeys.find(sk => key.length >= 3 && sk.includes(key) && sk.replace(key,'').trim().length < 6);
+    }
+
+    if (!stockKey) {
+      missing.push(name);
+      continue;
+    }
+
+    const entry    = stock[stockKey];
+    const usedQty  = toGrams(qty, unit, key);
+    const stockQty = toGrams(String(entry.qty), entry.unit, stockKey);
+
+    if (usedQty > 0 && stockQty > 0) {
+      const newGrams = stockQty - usedQty;
+      if (newGrams <= 0) {
+        // Stock épuisé → on supprime l'entrée
+        delete stock[stockKey];
+        removed.push(name);
+      } else {
+        // On recalcule la quantité restante dans l'unité d'origine
+        const factor = newGrams / stockQty;
+        stock[stockKey].qty = Math.round(entry.qty * factor * 10) / 10;
+        kept.push(`${name} (reste ${stock[stockKey].qty} ${entry.unit || 'u.'})`);
+      }
+    } else {
+      // Pas de quantité précise → on supprime simplement l'entrée
+      delete stock[stockKey];
+      removed.push(name);
+    }
+  }
+
+  saveStock();
+  renderStock();
+  renderCatalog();
+  renderGrid();
+  updateCounts();
+
+  // Feedback dans la modal
+  const btn = document.getElementById('cook-btn');
+  btn.disabled = true;
+  btn.textContent = '✅ Plat préparé !';
+
+  const fb = document.getElementById('cook-feedback');
+  let html = '';
+  if (removed.length)  html += `<div class="removed">🗑 Épuisés : ${removed.join(', ')}</div>`;
+  if (kept.length)     html += `<div class="kept">📦 Mis à jour : ${kept.join(', ')}</div>`;
+  if (missing.length)  html += `<div class="missing">⚠️ Pas en stock : ${missing.join(', ')}</div>`;
+  fb.innerHTML = html;
+  fb.style.display = html ? '' : 'none';
 }
 
 function closeModal(e) {
@@ -127,9 +222,16 @@ function filterCat(cat) {
   currentFeasFilter = null;
   document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('cat-' + cat)?.classList.add('active');
-  const titles = { all: 'Toutes les recettes', repas: 'Repas chauds', tartinade: 'Tartinades & Dips', petitdej: 'Petits-déjeuners' };
+  const titles = {
+    all: 'Toutes les recettes',
+    repas: 'Repas chauds',
+    tartinade: 'Tartinades & Dips',
+    petitdej: 'Petits-déjeuners',
+    custom: 'Mes recettes',
+  };
   document.getElementById('view-title').textContent    = titles[cat] || cat;
-  document.getElementById('view-subtitle').textContent = '';
+  document.getElementById('view-subtitle').textContent = cat === 'custom'
+    ? 'Recettes ajoutées par toi' : '';
   renderGrid();
 }
 
@@ -159,10 +261,14 @@ function updateCounts() {
   });
   document.getElementById('cnt-ok').textContent      = RECIPES.filter(r => checkFeasibility(r).status === 'ok').length;
   document.getElementById('cnt-partial').textContent = RECIPES.filter(r => checkFeasibility(r).status === 'partial').length;
+  const customCount = RECIPES.filter(r => r.custom).length;
+  const customEl = document.getElementById('cnt-custom');
+  if (customEl) customEl.textContent = customCount || '';
 }
 
 // ── Init ──
 document.addEventListener('DOMContentLoaded', () => {
+  loadCustomRecipes();  // ← charge les recettes custom avant tout
   updateCounts();
   renderGrid();
   renderStock();
@@ -178,5 +284,6 @@ document.addEventListener('keydown', e => {
     closeModalDirect();
     closeAddModalDirect();
     closeShoppingPanel();
+    closeRecipeForm();
   }
 });

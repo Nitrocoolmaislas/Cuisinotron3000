@@ -136,7 +136,7 @@ function getColruytNutrition(p) {
 }
 
 // ── Matching ingrédient → produit Colruyt ──
-// Cherche dans LongName (brand + name + contenu) et name
+// Parmi tous les matches : isAvailable=true + prix le plus bas
 function matchColruyt(normKey) {
   if (!colruytData || colruytData.length === 0) return null;
   const bridge = INGREDIENT_BRIDGE[normKey];
@@ -144,12 +144,27 @@ function matchColruyt(normKey) {
 
   for (const term of terms) {
     const t = term.toLowerCase();
-    const match = colruytData.find(p => {
+    const matches = colruytData.filter(p => {
       const hay = ((p.LongName || '') + ' ' + (p.name || '') + ' ' + (p.brand || ''))
         .toLowerCase();
       return hay.includes(t);
     });
-    if (match) return match;
+
+    if (matches.length === 0) continue;
+
+    // Préférer les produits disponibles
+    const available = matches.filter(p => p.isAvailable === true);
+    const pool      = available.length > 0 ? available : matches;
+
+    // Parmi le pool, prendre le prix le plus bas (basicPrice > 0)
+    const withPrice = pool.filter(p => p.price?.basicPrice > 0);
+    if (withPrice.length > 0) {
+      return withPrice.reduce((best, p) =>
+        p.price.basicPrice < best.price.basicPrice ? p : best
+      );
+    }
+
+    return pool[0]; // fallback si aucun prix dispo
   }
   return null;
 }

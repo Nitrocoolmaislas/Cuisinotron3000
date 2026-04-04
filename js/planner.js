@@ -155,9 +155,12 @@ function renderShoppingBody(missing, inStockList) {
         colruytHtml = `<div class="colruyt-match"><span class="colruyt-loading">⏳ Chargement Colruyt…</span></div>`;
       } else if (item.colruytMatch) {
         const price = formatColruytPrice(item.colruytMatch);
+        const nlName = getColruytName(item.colruytMatch);
         colruytHtml = `<div class="colruyt-match">
           <span class="colruyt-logo">COLRUYT</span>
-          <span class="colruyt-product-name">${getColruytName(item.colruytMatch)}</span>
+          <span class="colruyt-product-name">${item.name}
+            <span style="font-size:0.68rem;color:var(--warm-grey);display:block">${nlName}</span>
+          </span>
           ${price ? `<span class="colruyt-price">${price}</span>` : ''}
         </div>`;
       } else {

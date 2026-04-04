@@ -66,9 +66,21 @@
       </button>
     </div>
 
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Mes recettes</div>
+      <button class="cat-btn" onclick="filterCat('custom')" id="cat-custom">
+        <span class="icon">📝</span> Mes recettes
+        <span class="count" id="cnt-custom">0</span>
+      </button>
+    </div>
+
     <button class="stock-toggle-btn" onclick="toggleStock()">
       🛒 Mon stock d'ingrédients
       <span class="stock-count-badge" id="stock-badge">0</span>
+    </button>
+
+    <button class="stock-toggle-btn" style="background:var(--sage);margin-top:8px" onclick="openRecipeForm()">
+      ➕ Ajouter une recette
     </button>
   </aside>
 
@@ -106,6 +118,13 @@
       </div>
     </div>
     <div class="modal-notes" id="modal-notes" style="display:none"></div>
+    <div class="modal-custom-actions" id="modal-custom-actions" style="display:none"></div>
+    <div class="modal-footer">
+      <button class="cook-btn" id="cook-btn" onclick="cookRecipe()">
+        🍳 J'ai préparé ce plat — déduire du stock
+      </button>
+      <div class="cook-feedback" id="cook-feedback" style="display:none"></div>
+    </div>
   </div>
 </div>
 
@@ -343,6 +362,82 @@
      7. app       → logique principale + init
      8. planner   → planificateur + liste de courses
      ══════════════════════════════════════════════ -->
+<!-- ── RECIPE FORM PANEL ── -->
+<div class="recipe-form-panel" id="recipe-form-panel">
+  <div class="rf-header">
+    <h2 id="rf-form-title">➕ Nouvelle recette</h2>
+    <button class="rf-header-close" onclick="closeRecipeForm()">✕</button>
+  </div>
+  <div class="rf-body">
+
+    <!-- Titre -->
+    <div class="rf-field">
+      <label class="rf-label">Titre <span>*</span></label>
+      <input id="rf-title" class="rf-input" type="text" placeholder="Ex: Curry de pois chiches">
+    </div>
+
+    <!-- Catégorie -->
+    <div class="rf-field">
+      <label class="rf-label">Catégorie <span>*</span></label>
+      <select id="rf-category" class="rf-select">
+        <option value="repas">🍲 Repas chauds</option>
+        <option value="tartinade">🥙 Tartinades & Dips</option>
+        <option value="petitdej">🥣 Petits-déjeuners</option>
+      </select>
+    </div>
+
+    <!-- Description -->
+    <div class="rf-field">
+      <label class="rf-label">Description courte</label>
+      <textarea id="rf-desc" class="rf-textarea" placeholder="Quelques mots pour décrire la recette…"></textarea>
+    </div>
+
+    <!-- Temps & portions -->
+    <div class="rf-row">
+      <div class="rf-field">
+        <label class="rf-label">Prép. (min)</label>
+        <input id="rf-prep" class="rf-input" type="number" min="0" placeholder="15">
+      </div>
+      <div class="rf-field">
+        <label class="rf-label">Cuisson (min)</label>
+        <input id="rf-cook" class="rf-input" type="number" min="0" placeholder="30">
+      </div>
+      <div class="rf-field">
+        <label class="rf-label">Portions</label>
+        <input id="rf-servings" class="rf-input" type="number" min="1" placeholder="2" value="2">
+      </div>
+    </div>
+
+    <!-- Ingrédients -->
+    <div class="rf-field">
+      <label class="rf-label">Ingrédients <span>*</span></label>
+      <div id="rf-ingredients"></div>
+      <button class="rf-add-btn" onclick="addIngredientRow()">+ Ajouter un ingrédient</button>
+    </div>
+
+    <!-- Étapes -->
+    <div class="rf-field">
+      <label class="rf-label">Étapes de préparation <span>*</span></label>
+      <div id="rf-steps"></div>
+      <button class="rf-add-btn" onclick="addStepRow()">+ Ajouter une étape</button>
+    </div>
+
+    <!-- Notes -->
+    <div class="rf-field">
+      <label class="rf-label">Notes & variantes</label>
+      <textarea id="rf-notes" class="rf-textarea" placeholder="Conseils, substitutions, variantes…"></textarea>
+    </div>
+
+    <!-- Erreurs -->
+    <div id="rf-errors" class="rf-errors" style="display:none"></div>
+
+  </div>
+  <div class="rf-footer">
+    <button class="rf-submit-btn" id="rf-submit-btn" onclick="submitRecipeForm()">✅ Ajouter la recette</button>
+    <button class="rf-cancel-btn" onclick="closeRecipeForm()">Annuler</button>
+  </div>
+</div>
+
 <script src="js/recipes.js"></script>
 <script src="js/bridge.js"></script>
 <script src="js/utils.js"></script>
@@ -351,6 +446,7 @@
 <script src="js/colruyt.js"></script>
 <script src="js/nutrition_data.js"></script>
 <script src="js/nutrition.js"></script>
+<script src="js/custom_recipes.js"></script>
 <script src="js/app.js"></script>
 <script src="js/planner.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>

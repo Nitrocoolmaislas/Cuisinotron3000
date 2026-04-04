@@ -97,14 +97,21 @@ function addStockItem() {
   const input = document.getElementById('stock-input');
   const val = input.value.trim();
   if (!val) return;
-  const key = normIngredient(val);
+
+  // Canonicalisation : "épinards frais" → "epinards", "filet d'huile" → "huile d olive" + 15ml
+  const parsed = canonicalize(parseIngredient(val));
+  const key    = normIngredient(parsed.name);
+
   if (!(key in stock)) {
-    stock[key] = { name: val, unit: '', qty: 0 };
-    saveStock();
-    renderStock();
-    renderGrid();
-    updateCounts();
+    stock[key] = { name: parsed.name, unit: parsed.unit || '', qty: parseFloat(parsed.qty) || 0 };
+  } else if (parsed.qty) {
+    // Si l'ingrédient existe déjà, on additionne la quantité
+    stock[key].qty = (stock[key].qty || 0) + (parseFloat(parsed.qty) || 0);
   }
+  saveStock();
+  renderStock();
+  renderGrid();
+  updateCounts();
   input.value = '';
   input.focus();
 }
@@ -134,8 +141,13 @@ function addFromTextarea() {
   const ta = document.getElementById('stock-textarea');
   const lines = ta.value.split('\n').map(l => l.trim()).filter(Boolean);
   lines.forEach(line => {
-    const key = normIngredient(line);
-    if (!(key in stock)) stock[key] = { name: line, unit: '', qty: 0 };
+    const parsed = canonicalize(parseIngredient(line));
+    const key    = normIngredient(parsed.name);
+    if (!(key in stock)) {
+      stock[key] = { name: parsed.name, unit: parsed.unit || '', qty: parseFloat(parsed.qty) || 0 };
+    } else if (parsed.qty) {
+      stock[key].qty = (stock[key].qty || 0) + (parseFloat(parsed.qty) || 0);
+    }
   });
   saveStock();
   renderStock();

@@ -2,7 +2,7 @@
 //  GOOGLE DRIVE — Configuration
 //  → Remplace la valeur ci-dessous par ton Client ID Google
 // ══════════════════════════════════════════════
-const GOOGLE_CLIENT_ID = '758662499322-tmh1469ov6fnp5s0vjeqqd6023gm3edv.apps.googleusercontent.com';
+const GOOGLE_CLIENT_ID = 'VOTRE_CLIENT_ID_ICI';
 const DRIVE_FILE_NAME  = 'recettes_clara_stock.json';
 
 let driveTokenClient = null;
