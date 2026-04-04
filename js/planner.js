@@ -209,28 +209,93 @@ function switchShoppingTab(id, btn) {
   if (id === 'nutrition') renderNutritionTab();
 }
 
-// ── Export JSON ──
+// ── Export Excel (SheetJS) ──
 function exportShoppingList() {
   if (_lastShoppingMissing.length === 0) return;
-  const exportData = {
-    generatedAt: new Date().toISOString(),
-    plats: [...plannerSelected].map(id => RECIPES.find(r => r.id === id)?.name).filter(Boolean),
-    liste: _lastShoppingMissing.map(item => ({
-      ingredient: item.name,
-      quantite:   item.rawQties.join(', ') || null,
-      unite:      item.unit || null,
-      recettes:   item.recipes,
-      colruyt:    item.colruytMatch ? {
-        nom:  getColruytName(item.colruytMatch),
-        prix: formatColruytPrice(item.colruytMatch)
-      } : null
-    }))
-  };
-  const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
-  const url  = URL.createObjectURL(blob);
-  const a    = document.createElement('a');
-  a.href = url;
-  a.download = `liste-courses-${new Date().toISOString().slice(0, 10)}.json`;
-  a.click();
-  URL.revokeObjectURL(url);
+
+  const XLSX = window.XLSX;
+  if (!XLSX) { alert('Librairie Excel non chargée, réessaie dans un instant.'); return; }
+
+  const date     = new Date().toISOString().slice(0, 10);
+  const plats    = [...plannerSelected].map(id => RECIPES.find(r => r.id === id)?.name).filter(Boolean);
+  const wb       = XLSX.utils.book_new();
+
+  // ── Feuille 1 : À acheter ──
+  const missingRows = [
+    ['🛍️ LISTE DE COURSES — ' + date],
+    ['Plats : ' + plats.join(', ')],
+    [],
+    ['Ingrédient', 'Quantité', 'Unité', 'Pour les recettes', 'Produit Colruyt', 'Prix', '✓'],
+  ];
+  _lastShoppingMissing.forEach(item => {
+    missingRows.push([
+      item.name,
+      item.rawQties.join(', ') || '',
+      item.unit || '',
+      item.recipes.join(', '),
+      item.colruytMatch ? getColruytName(item.colruytMatch) : '',
+      item.colruytMatch ? (formatColruytPrice(item.colruytMatch) || '') : '',
+      '',  // case à cocher manuelle
+    ]);
+  });
+
+  const ws1 = XLSX.utils.aoa_to_sheet(missingRows);
+
+  // Largeurs de colonnes
+  ws1['!cols'] = [
+    { wch: 28 }, // Ingrédient
+    { wch: 10 }, // Quantité
+    { wch: 8  }, // Unité
+    { wch: 35 }, // Recettes
+    { wch: 40 }, // Produit Colruyt
+    { wch: 8  }, // Prix
+    { wch: 4  }, // ✓
+  ];
+
+  // Fusion cellule titre sur toute la largeur
+  ws1['!merges'] = [
+    { s: { r: 0, c: 0 }, e: { r: 0, c: 6 } },
+    { s: { r: 1, c: 0 }, e: { r: 1, c: 6 } },
+  ];
+
+  XLSX.utils.book_append_sheet(wb, ws1, '🛍️ À acheter');
+
+  // ── Feuille 2 : Déjà en stock ──
+  const stockRows = [
+    ['✅ DÉJÀ EN STOCK'],
+    [],
+    ['Ingrédient', 'Pour les recettes'],
+  ];
+  _lastShoppingInStock.forEach(item => {
+    stockRows.push([item.name, item.recipes.join(', ')]);
+  });
+
+  const ws2 = XLSX.utils.aoa_to_sheet(stockRows);
+  ws2['!cols'] = [{ wch: 28 }, { wch: 50 }];
+  ws2['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 1 } }];
+  XLSX.utils.book_append_sheet(wb, ws2, '✅ En stock');
+
+  // ── Feuille 3 : Plats sélectionnés ──
+  const platsRows = [
+    ['📅 PLATS DE LA SEMAINE — ' + date],
+    [],
+    ['Plat', 'Catégorie', 'Portions', 'Temps total'],
+  ];
+  plats.forEach(name => {
+    const r = RECIPES.find(x => x.name === name);
+    if (r) platsRows.push([
+      r.name,
+      r.categoryLabel,
+      r.servings,
+      (r.prepTime + r.cookTime) + ' min',
+    ]);
+  });
+
+  const ws3 = XLSX.utils.aoa_to_sheet(platsRows);
+  ws3['!cols'] = [{ wch: 45 }, { wch: 20 }, { wch: 10 }, { wch: 12 }];
+  ws3['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 3 } }];
+  XLSX.utils.book_append_sheet(wb, ws3, '📅 Plats');
+
+  // Téléchargement
+  XLSX.writeFile(wb, `liste-courses-${date}.xlsx`);
 }
