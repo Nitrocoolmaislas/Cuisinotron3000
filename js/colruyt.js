@@ -38,12 +38,6 @@ function setColruytStatus(msg, type) {
   if (text) text.textContent = msg;
 }
 
-// ── Parse le XML de listing GCS ──
-function parseGCSListing(xmlText) {
-  const doc = new DOMParser().parseFromString(xmlText, 'text/xml');
-  return [...doc.querySelectorAll('Contents Key')].map(el => el.textContent);
-}
-
 async function fetchColruytLatest(force = false) {
   if (colruytLoading) return;
   if (colruytData && !force) {
@@ -57,19 +51,18 @@ async function fetchColruytLatest(force = false) {
   const PREFIX = 'colruyt-products/';
 
   try {
-    // Lister depuis J-4 pour être sûr d'avoir le dernier fichier
-    const d = new Date();
-    d.setDate(d.getDate() - 4);
-    const marker = PREFIX + d.toISOString().slice(0, 10);
-
-    const listResp = await fetch(`${BASE}?max-keys=10&marker=${encodeURIComponent(marker)}`);
+    // API JSON de GCS (supporte CORS, contrairement à l'API XML)
+    const apiUrl = `https://storage.googleapis.com/storage/v1/b/colruyt-products/o?prefix=${PREFIX}&maxResults=5`;
+    const listResp = await fetch(apiUrl);
     if (!listResp.ok) throw new Error(`Listing échoué (HTTP ${listResp.status})`);
 
-    const keys = parseGCSListing(await listResp.text());
-    if (keys.length === 0) throw new Error('Aucun fichier trouvé');
+    const listData = await listResp.json();
+    const items = (listData.items || []).filter(i => i.name.endsWith('.json'));
+    if (items.length === 0) throw new Error('Aucun fichier trouvé');
 
-    // Dernier fichier = plus récent (tri alpha = chrono)
-    const latestKey = keys[keys.length - 1];
+    // Tri décroissant par nom → le plus récent en premier
+    items.sort((a, b) => b.name.localeCompare(a.name));
+    const latestKey = items[0].name;
     colruytFileName = latestKey.replace(PREFIX, '');
     setColruytStatus(`Téléchargement de ${colruytFileName}…`, 'loading');
 
