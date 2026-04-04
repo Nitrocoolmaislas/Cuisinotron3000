@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carnet de Recettes · Clara</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<!-- Google Identity Services — nécessaire pour la sync Drive -->
+<script src="https://accounts.google.com/gsi/client" onload="onGISLoad()" async defer></script>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Carnet de Recettes · <span>Clara</span></h1>
+    <div class="header-sub">Carnet de recettes personnel</div>
+  </div>
+</header>
+
+<div class="app">
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Catégories</div>
+      <button class="cat-btn active" onclick="filterCat('all')" id="cat-all">
+        <span class="icon">🍽️</span> Toutes les recettes
+        <span class="count" id="cnt-all">0</span>
+      </button>
+      <button class="cat-btn" onclick="filterCat('repas')" id="cat-repas">
+        <span class="icon">🍲</span> Repas chauds
+        <span class="count" id="cnt-repas">0</span>
+      </button>
+      <button class="cat-btn" onclick="filterCat('tartinade')" id="cat-tartinade">
+        <span class="icon">🥙</span> Tartinades & Dips
+        <span class="count" id="cnt-tartinade">0</span>
+      </button>
+      <button class="cat-btn" onclick="filterCat('petitdej')" id="cat-petitdej">
+        <span class="icon">🥣</span> Petits-déjeuners
+        <span class="count" id="cnt-petitdej">0</span>
+      </button>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Faisabilité</div>
+      <button class="cat-btn" onclick="filterFeasibility('ok')" id="cat-ok">
+        <span class="icon">✅</span> Faisables
+        <span class="count" id="cnt-ok">0</span>
+      </button>
+      <button class="cat-btn" onclick="filterFeasibility('partial')" id="cat-partial">
+        <span class="icon">⚡</span> Partielles
+        <span class="count" id="cnt-partial">0</span>
+      </button>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Planification</div>
+      <button class="cat-btn" onclick="showPlanner()" id="cat-planner">
+        <span class="icon">🗓️</span> Planificateur
+        <span class="count" id="cnt-planner"></span>
+      </button>
+      <button class="cat-btn" onclick="toggleShoppingPanel()" id="cat-shopping" style="display:none">
+        <span class="icon">🛍️</span> Liste de courses
+      </button>
+    </div>
+
+    <button class="stock-toggle-btn" onclick="toggleStock()">
+      🛒 Mon stock d'ingrédients
+      <span class="stock-count-badge" id="stock-badge">0</span>
+    </button>
+  </aside>
+
+  <!-- ── MAIN ── -->
+  <main>
+    <div class="search-bar">
+      <input type="text" class="search-input" id="search-input"
+             placeholder="🔍 Rechercher une recette ou un ingrédient…"
+             oninput="renderGrid()">
+    </div>
+    <div class="view-title" id="view-title">Toutes les recettes</div>
+    <div class="view-subtitle" id="view-subtitle"></div>
+    <div class="recipe-grid" id="recipe-grid"></div>
+  </main>
+</div>
+
+<!-- ── RECIPE MODAL ── -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <div class="modal-cat" id="modal-cat"></div>
+      <div class="modal-title" id="modal-title"></div>
+      <div class="modal-desc" id="modal-desc"></div>
+      <div class="modal-meta" id="modal-meta"></div>
+      <button class="modal-close" onclick="closeModalDirect()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div id="modal-ingredients-col">
+        <div class="modal-section-title">Ingrédients</div>
+        <ul class="ingredient-list" id="modal-ingredients"></ul>
+      </div>
+      <div id="modal-steps-col">
+        <div class="modal-section-title">Préparation</div>
+        <ol class="steps-list" id="modal-steps"></ol>
+      </div>
+    </div>
+    <div class="modal-notes" id="modal-notes" style="display:none"></div>
+  </div>
+</div>
+
+<!-- ── ADD-TO-STOCK MINI MODAL ── -->
+<div id="add-stock-overlay" onclick="closeAddModal(event)"
+  style="display:none;position:fixed;inset:0;background:rgba(30,25,20,0.45);z-index:300;
+         align-items:center;justify-content:center;padding:20px;">
+  <div id="add-stock-modal"
+    style="background:var(--white);border-radius:14px;padding:24px 24px 20px;
+           width:100%;max-width:320px;box-shadow:0 12px 40px rgba(0,0,0,0.18);
+           animation:modalIn 0.18s ease-out;">
+    <div style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;
+                color:var(--warm-grey);margin-bottom:6px;" id="asm-label">Ajouter au stock</div>
+    <div style="font-family:'Playfair Display',serif;font-size:1.15rem;margin-bottom:18px;
+                color:var(--charcoal);" id="asm-name"></div>
+    <div style="display:flex;gap:10px;margin-bottom:18px;align-items:center;">
+      <div style="flex:1;">
+        <div style="font-size:0.7rem;color:var(--warm-grey);margin-bottom:5px;">Quantité</div>
+        <input id="asm-qty" type="number" min="0" step="any" placeholder="ex: 500"
+          style="width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:8px;
+                 font-family:'DM Sans',sans-serif;font-size:0.95rem;outline:none;transition:border 0.15s;"
+          onfocus="this.style.borderColor='var(--sage)'"
+          onblur="this.style.borderColor='var(--border)'"
+          onkeydown="if(event.key==='Enter')confirmAddModal()">
+      </div>
+      <div style="flex:1;">
+        <div style="font-size:0.7rem;color:var(--warm-grey);margin-bottom:5px;">Unité</div>
+        <select id="asm-unit"
+          style="width:100%;padding:9px 10px;border:1.5px solid var(--border);border-radius:8px;
+                 font-family:'DM Sans',sans-serif;font-size:0.9rem;background:white;outline:none;
+                 transition:border 0.15s;cursor:pointer;"
+          onfocus="this.style.borderColor='var(--sage)'"
+          onblur="this.style.borderColor='var(--border)'">
+        </select>
+      </div>
+    </div>
+    <div style="display:flex;gap:8px;">
+      <button onclick="confirmAddModal()"
+        style="flex:1;padding:10px;background:var(--sage);color:white;border:none;border-radius:8px;
+               font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:500;cursor:pointer;"
+        onmouseover="this.style.background='var(--sage-light)'"
+        onmouseout="this.style.background='var(--sage)'">✓ Confirmer</button>
+      <button onclick="closeAddModalDirect()"
+        style="padding:10px 16px;background:none;border:1.5px solid var(--border);border-radius:8px;
+               font-family:'DM Sans',sans-serif;font-size:0.9rem;color:var(--warm-grey);cursor:pointer;">
+        Annuler</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── STOCK PANEL ── -->
+<div class="stock-panel" id="stock-panel">
+  <div class="stock-header">
+    <span>🛒</span>
+    <h2>Mon Stock</h2>
+    <button class="stock-header-close" onclick="toggleStock()">✕</button>
+  </div>
+
+  <!-- GOOGLE DRIVE AUTH BAR -->
+  <div class="drive-bar" id="drive-bar">
+    <div id="drive-not-configured" style="display:none">
+      <div class="setup-banner" style="margin:0">
+        <strong>⚙️ Configuration requise</strong>
+        Remplace <code>VOTRE_CLIENT_ID_ICI</code> dans <code>js/drive.js</code> par ton Client ID Google.
+      </div>
+    </div>
+    <div id="drive-signin-row" class="drive-bar-row" style="display:none">
+      <span class="drive-bar-label">☁️ Sync Google Drive désactivée</span>
+      <button class="drive-connect-btn" onclick="driveSignIn()">Se connecter</button>
+    </div>
+    <div id="drive-status-row" class="drive-status" style="display:none">
+      <div class="drive-status-dot" id="drive-dot"></div>
+      <span class="drive-status-text" id="drive-status-text">Connexion…</span>
+      <button class="drive-signout-btn" onclick="driveSignOut()">Déconnecter</button>
+    </div>
+  </div>
+
+  <!-- TABS -->
+  <div class="stock-tabs">
+    <button class="stock-tab active" onclick="switchStockTab('mon-stock')">📦 Mon stock</button>
+    <button class="stock-tab" onclick="switchStockTab('catalogue')">📋 Catalogue</button>
+    <button class="stock-tab" onclick="switchStockTab('ajouter')">✏️ Saisie libre</button>
+  </div>
+
+  <!-- TAB 1 : MON STOCK -->
+  <div class="stock-tab-content active" id="tab-mon-stock">
+    <div class="stock-body" id="stock-body">
+      <div class="stock-empty" id="stock-empty">
+        Aucun ingrédient en stock.<br>Utilisez le <strong>Catalogue</strong> ou<br>la <strong>Saisie libre</strong> pour commencer.
+      </div>
+      <div id="stock-list"></div>
+      <button class="stock-clear-btn" id="stock-clear-btn" style="display:none" onclick="clearStock()">🗑️ Vider le stock</button>
+      <div class="scan-placeholder">
+        <div class="scan-icon">📄</div>
+        <strong>Import ticket de caisse</strong>
+        Fonctionnalité à venir — scannez vos tickets pour alimenter le stock automatiquement.
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 2 : CATALOGUE -->
+  <div class="stock-tab-content" id="tab-catalogue">
+    <div class="catalog-filter" id="catalog-cat-filter">
+      <button class="cat-filter-btn active" onclick="setCatalogCat('all', this)">Tous</button>
+      <button class="cat-filter-btn" onclick="setCatalogCat('repas', this)">Repas</button>
+      <button class="cat-filter-btn" onclick="setCatalogCat('tartinade', this)">Tartinades</button>
+      <button class="cat-filter-btn" onclick="setCatalogCat('petitdej', this)">Petits-déj.</button>
+    </div>
+    <div class="catalog-search">
+      <input type="text" id="catalog-search" placeholder="🔍 Filtrer les ingrédients…" oninput="renderCatalog()">
+    </div>
+    <div class="catalog-scroll">
+      <table class="catalog-table">
+        <thead>
+          <tr>
+            <th>Ingrédient</th>
+            <th class="col-unit">Unité</th>
+            <th class="col-qty">Qté</th>
+            <th class="col-stock">Stock</th>
+            <th class="col-del"></th>
+          </tr>
+        </thead>
+        <tbody id="catalog-tbody"></tbody>
+      </table>
+      <div class="catalog-empty" id="catalog-empty" style="display:none">Aucun ingrédient trouvé.</div>
+      <div id="catalog-restore-bar" style="display:none;text-align:center;padding:10px 0 4px;">
+        <button onclick="restoreAllCatalog()"
+          style="background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;
+                 font-size:0.76rem;color:var(--warm-grey);text-decoration:underline;">
+          🔄 Restaurer les entrées supprimées (<span id="hidden-count">0</span>)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 3 : SAISIE LIBRE -->
+  <div class="stock-tab-content" id="tab-ajouter">
+    <div class="stock-add" style="flex-direction:column;gap:10px;padding:16px 16px 12px;">
+      <div style="font-size:0.78rem;color:var(--warm-grey);line-height:1.5;">
+        Entrez un ingrédient manuellement ou collez une liste (un par ligne).
+      </div>
+      <textarea id="stock-textarea" rows="6" placeholder="Ex :&#10;lait&#10;farine&#10;œufs&#10;champignons…"
+        style="width:100%;padding:10px 12px;border:1.5px solid var(--border);border-radius:8px;
+               font-family:'DM Sans',sans-serif;font-size:0.86rem;resize:vertical;
+               background:var(--cream);outline:none;line-height:1.5;"></textarea>
+      <button onclick="addFromTextarea()"
+        style="width:100%;padding:10px;background:var(--sage);color:white;border:none;border-radius:8px;
+               cursor:pointer;font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:500;"
+        onmouseover="this.style.background='var(--sage-light)'"
+        onmouseout="this.style.background='var(--sage)'">➕ Ajouter au stock</button>
+    </div>
+    <div style="padding:0 16px;">
+      <div style="font-size:0.72rem;color:var(--warm-grey);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;">
+        Saisie rapide individuelle
+      </div>
+      <div style="display:flex;gap:8px;">
+        <input type="text" id="stock-input" placeholder="Un ingrédient…"
+          style="flex:1;padding:8px 12px;border:1.5px solid var(--border);border-radius:7px;
+                 font-family:'DM Sans',sans-serif;font-size:0.86rem;background:var(--cream);outline:none;"
+          onfocus="this.style.borderColor='var(--sage)'" onblur="this.style.borderColor='var(--border)'"
+          onkeydown="if(event.key==='Enter')addStockItem()">
+        <button onclick="addStockItem()"
+          style="padding:8px 14px;background:var(--sage);color:white;border:none;border-radius:7px;
+                 cursor:pointer;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:500;">+</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── PLANNER BAR (barre fixe en bas) ── -->
+<div class="planner-bar" id="planner-bar">
+  <div class="planner-bar-count" id="planner-bar-count">Aucun plat sélectionné</div>
+  <button class="planner-clear-btn" onclick="clearPlanner()">✕ Effacer</button>
+  <button class="planner-generate-btn" id="planner-generate-btn" onclick="generateShoppingList()" disabled>
+    🛍️ Générer la liste de courses
+  </button>
+</div>
+
+<!-- ── SHOPPING PANEL ── -->
+<div class="shopping-panel" id="shopping-panel">
+  <div class="shopping-header">
+    <span>🛍️</span>
+    <h2>Liste de courses</h2>
+    <button class="shopping-header-close" onclick="closeShoppingPanel()">✕</button>
+  </div>
+  <div class="colruyt-status-bar" id="colruyt-status-bar">
+    <div class="colruyt-status-dot" id="colruyt-dot"></div>
+    <span id="colruyt-status-text">Données Colruyt non chargées</span>
+    <button onclick="fetchColruytLatest(true)"
+      style="margin-left:auto;background:none;border:none;cursor:pointer;
+             font-size:0.73rem;color:var(--terracotta);font-family:'DM Sans',sans-serif;">
+      ↻ Actualiser
+    </button>
+  </div>
+  <!-- Tabs -->
+  <div class="shopping-tabs">
+    <button class="shopping-tab active" onclick="switchShoppingTab('liste', this)">🛍️ Liste de courses</button>
+    <button class="shopping-tab"        onclick="switchShoppingTab('nutrition', this)">📊 Nutrition</button>
+  </div>
+
+  <!-- Tab : liste de courses -->
+  <div class="shopping-tab-content active" id="shopping-tab-liste">
+    <div class="shopping-body" id="shopping-body">
+      <div class="shopping-empty">
+        <div class="s-icon">🛍️</div>
+        <p>Sélectionne des plats dans le planificateur pour générer la liste.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tab : nutrition -->
+  <div class="shopping-tab-content" id="shopping-tab-nutrition">
+    <div id="nutrition-body">
+      <div class="shopping-empty">
+        <div class="s-icon">📊</div>
+        <p>Génère d'abord la liste de courses pour voir le bilan nutritionnel.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="shopping-footer">
+    <button class="shopping-export-btn" onclick="exportShoppingList()"
+            id="shopping-export-btn" style="display:none">⬇ Exporter JSON</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SCRIPTS — ordre de chargement important
+     1. recipes   → données RECIPES
+     2. bridge    → INGREDIENT_BRIDGE
+     3. utils     → normIngredient, parseIngredient
+     4. drive     → Google Drive sync
+     5. stock     → gestion stock + catalogue
+     6. colruyt   → fetch bucket + matching
+     7. app       → logique principale + init
+     8. planner   → planificateur + liste de courses
+     ══════════════════════════════════════════════ -->
+<script src="js/recipes.js"></script>
+<script src="js/bridge.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/drive.js"></script>
+<script src="js/stock.js"></script>
+<script src="js/colruyt.js"></script>
+<script src="js/nutrition_data.js"></script>
+<script src="js/nutrition.js"></script>
+<script src="js/app.js"></script>
+<script src="js/planner.js"></script>
+
+</body>
+</html>
