@@ -54,6 +54,7 @@ function openRecipeForm(recipeId = null) {
     document.getElementById('rf-notes').value       = r.notes || '';
     document.getElementById('rf-form-title').textContent = '✏️ Modifier la recette';
     document.getElementById('rf-submit-btn').textContent = '💾 Enregistrer les modifications';
+    document.getElementById('rf-submit-btn-inline').textContent = '💾 Enregistrer les modifications';
     renderIngredientInputs(r.ingredients);
     renderStepInputs(r.steps);
   } else {
