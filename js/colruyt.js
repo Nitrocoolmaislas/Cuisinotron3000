@@ -87,8 +87,9 @@ async function fetchColruytLatest(force = false) {
     colruytFileName = latestKey.replace(PREFIX, '');
     setColruytStatus(`Téléchargement de ${colruytFileName}…`, 'loading');
 
-    // Téléchargement via l'URL publique directe
-    const fileUrl = `https://storage.googleapis.com/colruyt-products/${latestKey}`;
+    // Téléchargement via l'API JSON GCS (supporte CORS, contrairement à l'URL directe)
+    const encodedKey = encodeURIComponent(latestKey);
+    const fileUrl = `https://storage.googleapis.com/storage/v1/b/colruyt-products/o/${encodedKey}?alt=media`;
     const fileResp = await fetch(fileUrl);
     if (!fileResp.ok) throw new Error(`Téléchargement échoué (HTTP ${fileResp.status})`);
 
