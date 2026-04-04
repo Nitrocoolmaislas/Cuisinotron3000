@@ -1009,8 +1009,9 @@
    ══════════════════════════════════════════════ */
 
 .recipe-form-panel {
-  position: fixed; top: 0; right: -560px; width: 520px; max-width: 98vw;
-  height: 100vh; background: var(--white); z-index: 210;
+  position: fixed; top: 0; right: -560px; width: 520px; max-width: 100vw;
+  height: 100vh; height: 100dvh;
+  background: var(--white); z-index: 210;
   box-shadow: -4px 0 30px rgba(0,0,0,0.15);
   display: flex; flex-direction: column;
   transition: right 0.3s cubic-bezier(0.4,0,0.2,1);
@@ -1035,6 +1036,7 @@
 .rf-body {
   flex: 1; overflow-y: auto; padding: 20px;
   display: flex; flex-direction: column; gap: 18px;
+  min-height: 0; /* crucial pour que flex+overflow fonctionne sur mobile */
 }
 .rf-body::-webkit-scrollbar { width: 4px; }
 .rf-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
