@@ -28,7 +28,7 @@ function onGISLoad() {
       await loadFromDrive();
     }
   });
-  driveTokenClient.requestAccessToken({ prompt: '' });
+  // Pas de tentative silencieuse — évite le popup bloqué par le navigateur
 }
 
 function driveSignIn() {
@@ -75,7 +75,7 @@ async function loadFromDrive() {
       { headers: { Authorization: `Bearer ${driveAccessToken}` } }
     );
     const data = await r.json();
-    if (Array.isArray(data.stock)) {
+    if (data.stock && typeof data.stock === 'object' && !Array.isArray(data.stock)) {
       stock = data.stock;
       localStorage.setItem('recettes_stock', JSON.stringify(stock));
     }
