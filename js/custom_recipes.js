@@ -19,7 +19,7 @@ function loadCustomRecipes() {
 function saveCustomRecipes() {
   const customs = RECIPES.filter(r => r.custom === true);
   localStorage.setItem(CUSTOM_RECIPES_KEY, JSON.stringify(customs));
-  scheduleDriveSave();
+  scheduleCustomRecipesSave();
 }
 
 // ── Génère un ID unique depuis le titre ──

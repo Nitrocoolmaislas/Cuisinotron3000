@@ -1,15 +1,17 @@
 // ══════════════════════════════════════════════
 //  GOOGLE DRIVE — Configuration
-//  → Remplace la valeur ci-dessous par ton Client ID Google
 // ══════════════════════════════════════════════
-const GOOGLE_CLIENT_ID = '758662499322-tmh1469ov6fnp5s0vjeqqd6023gm3edv.apps.googleusercontent.com';
-const DRIVE_FILE_NAME  = 'recettes_clara_stock.json';
+const GOOGLE_CLIENT_ID   = '758662499322-tmh1469ov6fnp5s0vjeqqd6023gm3edv.apps.googleusercontent.com';
+const DRIVE_STOCK_FILE   = 'recettes_clara_stock.json';
+const DRIVE_CUSTOMS_FILE = 'recettes_clara_custom.json';
 
-let driveTokenClient = null;
-let driveAccessToken = null;
-let driveFileId      = null;
-let driveReady       = false;
-let driveSaveTimer   = null;
+let driveTokenClient  = null;
+let driveAccessToken  = null;
+let driveStockFileId  = null;
+let driveCustomFileId = null;
+let driveReady        = false;
+let driveSaveTimer    = null;
+let driveCustomTimer  = null;
 
 function onGISLoad() {
   const configured = GOOGLE_CLIENT_ID !== 'VOTRE_CLIENT_ID_ICI';
@@ -38,7 +40,10 @@ function driveSignIn() {
 
 function driveSignOut() {
   if (driveAccessToken) google.accounts.oauth2.revoke(driveAccessToken, () => {});
-  driveAccessToken = null; driveFileId = null; driveReady = false;
+  driveAccessToken = null;
+  driveStockFileId = null;
+  driveCustomFileId = null;
+  driveReady = false;
   document.getElementById('drive-signin-row').style.display  = '';
   document.getElementById('drive-status-row').style.display  = 'none';
 }
@@ -56,85 +61,122 @@ function setDriveStatus(msg, type) {
   dot.className = 'drive-status-dot ' + type;
 }
 
-async function findDriveFile() {
+// ── Trouve un fichier Drive par nom ──
+async function findDriveFileByName(name) {
   const r = await fetch(
-    `https://www.googleapis.com/drive/v3/files?q=name%3D'${DRIVE_FILE_NAME}'+and+trashed%3Dfalse&fields=files(id)`,
+    `https://www.googleapis.com/drive/v3/files?q=name%3D'${name}'+and+trashed%3Dfalse&fields=files(id)`,
     { headers: { Authorization: `Bearer ${driveAccessToken}` } }
   );
   const d = await r.json();
   return d.files?.[0]?.id || null;
 }
 
+// ── Télécharge un fichier Drive par ID ──
+async function fetchDriveFile(fileId) {
+  const r = await fetch(
+    `https://www.googleapis.com/drive/v3/files/${fileId}?alt=media`,
+    { headers: { Authorization: `Bearer ${driveAccessToken}` } }
+  );
+  return r.json();
+}
+
+// ── Crée ou met à jour un fichier Drive ──
+async function saveDriveFile(fileId, fileName, data) {
+  const body = JSON.stringify({ ...data, updatedAt: new Date().toISOString() });
+  if (!fileId) {
+    const meta = await fetch('https://www.googleapis.com/drive/v3/files', {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${driveAccessToken}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: fileName })
+    });
+    fileId = (await meta.json()).id;
+  }
+  await fetch(
+    `https://www.googleapis.com/upload/drive/v3/files/${fileId}?uploadType=media`,
+    {
+      method: 'PATCH',
+      headers: { Authorization: `Bearer ${driveAccessToken}`, 'Content-Type': 'application/json' },
+      body
+    }
+  );
+  return fileId;
+}
+
+// ══════════════════════════════════════════════
+//  CHARGEMENT
+// ══════════════════════════════════════════════
 async function loadFromDrive() {
   setDriveStatus('Chargement…', 'loading');
   try {
-    driveFileId = await findDriveFile();
-    if (!driveFileId) { setDriveStatus('Prêt — aucun fichier encore', 'ok'); return; }
-    const r = await fetch(
-      `https://www.googleapis.com/drive/v3/files/${driveFileId}?alt=media`,
-      { headers: { Authorization: `Bearer ${driveAccessToken}` } }
-    );
-    const data = await r.json();
-    if (data.stock && typeof data.stock === 'object' && !Array.isArray(data.stock)) {
-      stock = data.stock;
-      localStorage.setItem('recettes_stock', JSON.stringify(stock));
+    // Charge le stock
+    driveStockFileId = await findDriveFileByName(DRIVE_STOCK_FILE);
+    if (driveStockFileId) {
+      const data = await fetchDriveFile(driveStockFileId);
+      if (data.stock && typeof data.stock === 'object' && !Array.isArray(data.stock)) {
+        stock = data.stock;
+        localStorage.setItem('recettes_stock', JSON.stringify(stock));
+      }
     }
-    // Recettes custom
-    if (Array.isArray(data.customRecipes) && data.customRecipes.length > 0) {
-      // Retire les anciennes custom et réinjecte depuis Drive
-      data.customRecipes.forEach(r => {
-        r.custom = true;
-        if (!RECIPES.find(x => x.id === r.id)) RECIPES.push(r);
-        else Object.assign(RECIPES.find(x => x.id === r.id), r);
-      });
-      localStorage.setItem(CUSTOM_RECIPES_KEY, JSON.stringify(data.customRecipes));
+
+    // Charge les recettes custom
+    driveCustomFileId = await findDriveFileByName(DRIVE_CUSTOMS_FILE);
+    if (driveCustomFileId) {
+      const data = await fetchDriveFile(driveCustomFileId);
+      if (Array.isArray(data.customRecipes) && data.customRecipes.length > 0) {
+        data.customRecipes.forEach(r => {
+          r.custom = true;
+          if (!RECIPES.find(x => x.id === r.id)) RECIPES.push(r);
+          else Object.assign(RECIPES.find(x => x.id === r.id), r);
+        });
+        localStorage.setItem(CUSTOM_RECIPES_KEY, JSON.stringify(data.customRecipes));
+      }
     }
+
     renderStock(); renderCatalog(); renderGrid(); updateCounts();
-    const d = data.updatedAt
-      ? new Date(data.updatedAt).toLocaleString('fr-BE', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })
-      : '';
-    setDriveStatus('Synchronisé' + (d ? ' · ' + d : ''), 'ok');
+    const now = new Date().toLocaleString('fr-BE', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
+    setDriveStatus('Synchronisé · ' + now, 'ok');
   } catch(e) {
     setDriveStatus('Erreur de chargement', 'error');
     console.error('Drive load error:', e);
   }
 }
 
+// ══════════════════════════════════════════════
+//  SAUVEGARDE STOCK
+// ══════════════════════════════════════════════
 async function saveToDriveNow() {
   if (!driveAccessToken || !driveReady) return;
-  setDriveStatus('Sauvegarde…', 'loading');
-  const customRecipes = RECIPES.filter(r => r.custom === true);
-  const body = JSON.stringify({
-    stock,
-    customRecipes,
-    updatedAt: new Date().toISOString()
-  });
+  setDriveStatus('Sauvegarde stock…', 'loading');
   try {
-    if (!driveFileId) {
-      const meta = await fetch('https://www.googleapis.com/drive/v3/files', {
-        method: 'POST',
-        headers: { Authorization: `Bearer ${driveAccessToken}`, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: DRIVE_FILE_NAME })
-      });
-      driveFileId = (await meta.json()).id;
-    }
-    await fetch(
-      `https://www.googleapis.com/upload/drive/v3/files/${driveFileId}?uploadType=media`,
-      {
-        method: 'PATCH',
-        headers: { Authorization: `Bearer ${driveAccessToken}`, 'Content-Type': 'application/json' },
-        body
-      }
-    );
+    driveStockFileId = await saveDriveFile(driveStockFileId, DRIVE_STOCK_FILE, { stock });
     const now = new Date().toLocaleString('fr-BE', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
     setDriveStatus('Synchronisé · ' + now, 'ok');
   } catch(e) {
-    setDriveStatus('Erreur de sauvegarde', 'error');
-    console.error('Drive save error:', e);
+    setDriveStatus('Erreur sauvegarde stock', 'error');
+    console.error('Drive stock save error:', e);
+  }
+}
+
+// ══════════════════════════════════════════════
+//  SAUVEGARDE RECETTES CUSTOM
+// ══════════════════════════════════════════════
+async function saveCustomRecipesToDrive() {
+  if (!driveAccessToken || !driveReady) return;
+  try {
+    const customRecipes = RECIPES.filter(r => r.custom === true);
+    driveCustomFileId = await saveDriveFile(driveCustomFileId, DRIVE_CUSTOMS_FILE, { customRecipes });
+    console.info('[Drive] Recettes custom sauvegardées :', customRecipes.length);
+  } catch(e) {
+    console.error('Drive custom recipes save error:', e);
   }
 }
 
 function scheduleDriveSave() {
   clearTimeout(driveSaveTimer);
   driveSaveTimer = setTimeout(saveToDriveNow, 1000);
+}
+
+function scheduleCustomRecipesSave() {
+  clearTimeout(driveCustomTimer);
+  driveCustomTimer = setTimeout(saveCustomRecipesToDrive, 1000);
 }
