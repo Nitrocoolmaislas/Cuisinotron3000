@@ -311,3 +311,191 @@ function checkImportHash() {
     history.replaceState(null, '', window.location.pathname);
   }
 }
+
+// ══════════════════════════════════════════════
+//  NIVEAU 1 — IMPORT PAR URL (proxy CORS)
+//  NIVEAU 2 — BOOKMARKLET (déjà géré via #import=)
+//  NIVEAU 3 — IMPORT MANUEL JSON-LD
+// ══════════════════════════════════════════════
+
+// Proxys CORS tentés dans l'ordre — si l'un échoue on passe au suivant
+const CORS_PROXIES = [
+  url => `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`,
+  url => `https://corsproxy.io/?${encodeURIComponent(url)}`,
+];
+
+// ── Fetch HTML via proxy CORS avec fallback ──
+async function _fetchViaProxy(url) {
+  let lastError = null;
+  for (const buildProxyUrl of CORS_PROXIES) {
+    try {
+      const proxyUrl = buildProxyUrl(url);
+      const res = await fetch(proxyUrl, { signal: AbortSignal.timeout(8000) });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const json = await res.json();
+      // allorigins renvoie { contents: '<html>...' }
+      // corsproxy renvoie le body directement en texte
+      return json.contents ?? json;
+    } catch(e) {
+      lastError = e;
+      console.warn('[Importer] Proxy échoué:', e.message);
+    }
+  }
+  throw lastError;
+}
+
+// ── Extraire le JSON-LD depuis un HTML string ──
+function _extractJsonLdFromHtml(html) {
+  const parser   = new DOMParser();
+  const doc      = parser.parseFromString(html, 'text/html');
+  const scripts  = doc.querySelectorAll('script[type="application/ld+json"]');
+
+  for (const s of scripts) {
+    try {
+      const data = JSON.parse(s.textContent);
+      const candidates = Array.isArray(data) ? data
+        : data['@graph'] ? data['@graph']
+        : [data];
+      const recipe = candidates.find(x => {
+        const t = x['@type'];
+        return t === 'Recipe' || (Array.isArray(t) && t.includes('Recipe'));
+      });
+      if (recipe) return recipe;
+    } catch(e) {}
+  }
+  return null;
+}
+
+// ── Importer depuis une URL (niveau 1) ──
+async function importFromUrl() {
+  const input = document.getElementById('import-url-input');
+  if (!input) return;
+
+  const url = input.value.trim();
+  if (!url) return;
+
+  // Validation URL basique
+  try { new URL(url); } catch(e) {
+    _showImportError('URL invalide. Ex: https://www.marmiton.org/recettes/...');
+    return;
+  }
+
+  _setImportLoading(true);
+  _showImportError('');
+
+  try {
+    const html   = await _fetchViaProxy(url);
+    const ld     = _extractJsonLdFromHtml(html);
+    if (!ld) throw new Error('Aucune recette structurée trouvée sur cette page.');
+    if (!ld.url) ld.url = url;
+    const data   = parseRecipeJsonLd(ld);
+    _setImportLoading(false);
+    closeImportUrlPanel();
+    openImportPanel(data);
+  } catch(e) {
+    _setImportLoading(false);
+    _showImportError(e.message);
+    // Affiche les fallbacks niveau 2 & 3
+    _showImportFallbacks(url);
+  }
+}
+
+// ── Importer depuis JSON-LD collé manuellement (niveau 3) ──
+function importFromManualJson() {
+  const textarea = document.getElementById('import-manual-textarea');
+  if (!textarea) return;
+
+  const raw = textarea.value.trim();
+  if (!raw) return;
+
+  try {
+    const parsed = JSON.parse(raw);
+    const data   = parseRecipeJsonLd(parsed);
+    closeImportUrlPanel();
+    openImportPanel(data);
+  } catch(e) {
+    _showImportError('JSON invalide ou pas de recette : ' + e.message);
+  }
+}
+
+// ── Helpers UI ──
+function _setImportLoading(loading) {
+  const btn = document.getElementById('import-url-btn');
+  const spinner = document.getElementById('import-spinner');
+  if (btn)     btn.disabled = loading;
+  if (spinner) spinner.style.display = loading ? 'inline' : 'none';
+}
+
+function _showImportError(msg) {
+  const el = document.getElementById('import-url-error');
+  if (!el) return;
+  el.textContent = msg;
+  el.style.display = msg ? '' : 'none';
+}
+
+function _showImportFallbacks(url) {
+  const el = document.getElementById('import-fallbacks');
+  if (!el) return;
+  el.style.display = '';
+  // Met à jour le lien bookmarklet avec l'URL courante
+  const bkLink = document.getElementById('import-bk-link');
+  if (bkLink) bkLink.href = url;
+}
+
+// ══════════════════════════════════════════════
+//  PANEL URL D'IMPORT
+// ══════════════════════════════════════════════
+function openImportUrlPanel() {
+  const panel = document.getElementById('import-url-panel');
+  if (!panel) return;
+  // Reset état
+  const input = document.getElementById('import-url-input');
+  if (input) input.value = '';
+  _showImportError('');
+  const fb = document.getElementById('import-fallbacks');
+  if (fb) fb.style.display = 'none';
+  const manual = document.getElementById('import-manual-section');
+  if (manual) manual.style.display = 'none';
+  panel.classList.add('open');
+}
+
+function closeImportUrlPanel() {
+  const panel = document.getElementById('import-url-panel');
+  if (panel) panel.classList.remove('open');
+}
+
+function toggleManualSection() {
+  const el = document.getElementById('import-manual-section');
+  if (!el) return;
+  const isOpen = el.style.display !== 'none';
+  el.style.display = isOpen ? 'none' : '';
+}
+
+// ── Copier le bookmarklet dans le presse-papier ──
+function copyBookmarklet() {
+  const code = document.getElementById('bk-code');
+  if (!code) return;
+  navigator.clipboard.writeText(code.textContent.trim())
+    .then(() => showToast('📋 Bookmarklet copié !'))
+    .catch(() => {
+      // Fallback pour navigateurs sans clipboard API
+      const ta = document.createElement('textarea');
+      ta.value = code.textContent.trim();
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      showToast('📋 Bookmarklet copié !');
+    });
+}
+
+function toggleBookmarkletHelp() {
+  const el = document.getElementById('bk-help');
+  if (!el) return;
+  el.style.display = el.style.display === 'none' ? '' : 'none';
+}
+
+// ── Fermer le panel URL sur Escape ──
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeImportUrlPanel();
+});
