@@ -8,6 +8,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/bridge-wizard.css">
+<link rel="stylesheet" href="css/importer.css">
+<!-- Google Identity Services — nécessaire pour la sync Drive -->
 </head>
 <body>
 
@@ -470,8 +472,7 @@
 <script src="data/ciqual_discriminants.js"></script>
 <script src="js/ingredientParser.js"></script>
 <script src="js/drive.js"></script>
-<!-- Google Identity Services — nécessaire pour la sync Drive -->
-<script src="https://accounts.google.com/gsi/client" onload="onGISLoad()" async defer></script>
+<script src="https://accounts.google.com/gsi/client" onload="onGISLoad()" defer></script>
 <script src="js/stock.js"></script>
 <script src="js/colruyt.js"></script>
 <script src="js/nutrition_data.js"></script>
@@ -480,9 +481,14 @@
 <script src="js/custom_recipes.js"></script>
 <script src="js/app.js"></script>
 <script src="js/planner.js"></script>
+<script src="js/importer.js"></script>
 <script src="js/bridgeWizard.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 
 <div id="bridge-wizard-overlay" onclick="closeBridgeWizard()"></div>
+
+<!-- ── IMPORT PANEL ── -->
+<div id="import-panel"></div>
+<div id="import-overlay" onclick="closeImportPanel()"></div>
 </body>
 </html>
