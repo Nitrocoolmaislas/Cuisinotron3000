@@ -87,8 +87,19 @@ function generateShoppingList() {
     const recipe = RECIPES.find(r => r.id === id);
     if (!recipe) continue;
     for (const raw of recipe.ingredients) {
-      const { name, qty, unit } = parseIngredient(raw);
-      const key = normIngredient(name);
+      // Utilise le nouveau parser si disponible, sinon fallback
+      let name, qty, unit, key;
+      if (typeof parseIngredientString !== 'undefined') {
+        const parsed = parseIngredientString(raw);
+        name = parsed.rawName;
+        qty  = parsed.qty ? String(parsed.qty) : '';
+        unit = parsed.unit || '';
+        key  = normIngredient(name);
+      } else {
+        const parsed = parseIngredient(raw);
+        name = parsed.name; qty = parsed.qty; unit = parsed.unit;
+        key  = normIngredient(name);
+      }
       if (!ingredientMap.has(key)) {
         ingredientMap.set(key, { name, unit: unit || '', rawQties: [], recipes: [] });
       }

@@ -1,119 +1,201 @@
 // ══════════════════════════════════════════════
-//  INGREDIENT BRIDGE
-//  Clé   = normIngredient(nom dans les recettes)
-//  terms = mots-clés à chercher dans LongName/name Colruyt (NL)
+//  BRIDGE — mapping FR → NL Colruyt
+//  Clé   = normIngredient(nom ingrédient FR)
+//  Valeur = array de termes NL pour matchColruyt
 //
-//  Confirmé sur le JSON réel du 2026-03-28 :
-//    - noms en néerlandais uniquement
-//    - LongName = "BRAND Naam inhoud" (ex: "BONI Champignons 250g")
-//    - topCategoryName en NL (ex: "Groenten en fruit")
+//  Logique de lookup : bridgeLookup() / bridgeLookupFull() (bridgeWizard.js)
 // ══════════════════════════════════════════════
 
+// ─── Irréguliers — priorité absolue dans bridgeLookup ────────────────────────
+const IRREGULAR_FORMS = {
+  // Pluriels en -eux/-aux
+  'poireaux':       'poireau',
+  'choux':          'chou',
+  'choux fleurs':   'chou fleur',
+  // Ligatures
+  'boeufs':         'boeuf',
+  // Invariables en -x (protège contre strip /s$/ → noi / poi)
+  'noix':           'noix',
+  'pois':           'pois',
+  // Cas où le parser remonte l'unité comme rawName
+  'gousses':        'ail',
+  'gousse':         'ail',
+  // Pluriels irréguliers divers
+  'oignons rouges': 'oignon rouge',
+};
+
+// ─── Bridge principal ─────────────────────────────────────────────────────────
 const INGREDIENT_BRIDGE = {
 
   // ── Légumes ──
-  'champignons de paris':   { terms: ['champignons', 'paddenstoelen'] },
-  'epinards frais':         { terms: ['spinazie'] },
-  'epinards':               { terms: ['spinazie'] },
-  'courgette':              { terms: ['courgette'] },
-  'courge spaghetti':       { terms: ['spaghettipompoen'] },
-  'butternut':              { terms: ['butternut', 'pompoen'] },
-  'poivron rouge':          { terms: ['rode paprika'] },
-  'poivrons rouges':        { terms: ['rode paprika'] },
-  'tomate':                 { terms: ['tomaat', 'tomaten'] },
-  'tomates en des':         { terms: ['tomaten blokjes', 'tomatenblokjes', 'tomaten in stukjes'] },
-  'tomates cerises':        { terms: ['kerstomaat', 'cherrytomaat'] },
-  'oignon blanc':           { terms: ['ui', 'uien'] },
-  'oignon rouge':           { terms: ['rode ui', 'rode uien'] },
-  'oignon':                 { terms: ['ui', 'uien'] },
-  'echalote':               { terms: ['sjalot'] },
-  'ail':                    { terms: ['knoflook'] },
-  'gousses d ail':          { terms: ['knoflook'] },
-  'gousse d ail':           { terms: ['knoflook'] },
-  'brocoli':                { terms: ['broccoli'] },
-  'concombre':              { terms: ['komkommer'] },
-  'carotte':                { terms: ['wortel', 'wortelen'] },
-  'carottes':               { terms: ['wortel', 'wortelen'] },
-  'celeri':                 { terms: ['selder', 'selderij'] },
-  'mais':                   { terms: ['maïs', 'mais'] },
-  'avocat':                 { terms: ['avocado'] },
-  'citron':                 { terms: ['citroen'] },
+  'champignons de paris':   ['champignons', 'paddenstoelen'],
+  'champignon de paris':    ['champignons', 'paddenstoelen'],
+  'champignon':             ['champignons'],
+  'epinards frais':         ['spinazie'],
+  'epinards':               ['spinazie'],
+  'epinard':                ['spinazie'],
+  'courgette':              ['courgette'],
+  'courge spaghetti':       ['spaghettipompoen'],
+  'butternut':              ['butternut', 'pompoen'],
+  'courge':                 ['pompoen'],
+  'poivron rouge':          ['rode paprika'],
+  'poivrons rouges':        ['rode paprika'],
+  'poivron jaune':          ['gele paprika'],
+  'poivron':                ['paprika'],
+  'tomate':                 ['tomaat', 'tomaten'],
+  'tomates en des':         ['tomaten blokjes', 'tomatenblokjes'],
+  'tomate pelee':           ['gepelde tomaten'],
+  'tomate confite':         ['gedroogde tomaat'],
+  'tomates cerises':        ['kerstomaat', 'cherrytomaat'],
+  'tomate cerise':          ['kerstomaat', 'cherrytomaat'],
+  'oignon blanc':           ['ui', 'uien'],
+  'oignon rouge':           ['rode ui', 'rode uien'],
+  'oignon':                 ['ui', 'uien'],
+  'echalote':               ['sjalot'],
+  'ail':                    ['knoflook'],
+  'gousses d ail':          ['knoflook'],
+  'gousse d ail':           ['knoflook'],
+  'brocoli':                ['broccoli'],
+  'concombre':              ['komkommer'],
+  'carotte':                ['wortel', 'wortelen'],
+  'carottes':               ['wortel', 'wortelen'],
+  'celeri':                 ['selder', 'selderij'],
+  'mais':                   ['maïs', 'mais'],
+  'avocat':                 ['avocado'],
+  'citron':                 ['citroen'],
+  'poireau':                ['prei'],
+  'chou fleur':             ['bloemkool'],
+  'chou':                   ['kool'],
+  'petits pois':            ['erwten'],
+  'haricot rouge':          ['rode bonen', 'kidneybonen'],
+  'haricot blanc':          ['witte bonen'],
+  'haricots blancs':        ['witte bonen'],
 
   // ── Féculents & céréales ──
-  'riz':                    { terms: ['rijst'] },
-  'quinoa':                 { terms: ['quinoa'] },
-  'lentilles vertes':       { terms: ['groene linzen'] },
-  'lentilles corail':       { terms: ['rode linzen'] },
-  'lentilles':              { terms: ['linzen'] },
-  'haricots rouges':        { terms: ['rode bonen', 'kidneybonen'] },
-  'pois chiches':           { terms: ['kikkererwten'] },
-  'pates':                  { terms: ['pasta', 'spaghetti', 'penne'] },
-  'flocons d avoine':       { terms: ['havervlokken', 'havermout'] },
-  'nouilles':               { terms: ['noedels', 'noodles'] },
-  'pain de mie':            { terms: ['sandwichbrood', 'sneetjesbrood'] },
-  'pain':                   { terms: ['brood'] },
+  'riz pour risotto':       ['risottorijst'],
+  'riz':                    ['rijst'],
+  'quinoa':                 ['quinoa'],
+  'lentilles vertes':       ['groene linzen'],
+  'lentilles corail':       ['rode linzen'],
+  'lentilles':              ['linzen'],
+  'haricots rouges':        ['rode bonen', 'kidneybonen'],
+  'pois chiches':           ['kikkererwten'],
+  'pois chiche':            ['kikkererwten'],
+  'pates':                  ['pasta', 'spaghetti', 'penne'],
+  'spaghetti':              ['spaghetti'],
+  'flocons d avoine':       ['havervlokken', 'havermout'],
+  'flocon d avoine':        ['havervlokken', 'havermout'],
+  'avoine':                 ['havervlokken'],
+  'nouilles':               ['noedels', 'noodles'],
+  'nouille':                ['noedels', 'noodles'],
+  'pain de mie':            ['sandwichbrood', 'sneetjesbrood'],
+  'pain':                   ['brood'],
+  'farine':                 ['bloem'],
+  'graines de chia':        ['chiazaad', 'chia'],
+  'graine de chia':         ['chiazaad', 'chia'],
 
-  // ── Protéines & viandes ──
-  'boeuf hache':            { terms: ['gehakt', 'rundergehakt'] },
-  'poulet':                 { terms: ['kip', 'kipfilet'] },
-  'lardons':                { terms: ['spekblokjes', 'lardons'] },
-  'saumon':                 { terms: ['zalm'] },
-  'thon':                   { terms: ['tonijn'] },
-  'oeuf':                   { terms: ['eieren', 'ei'] },
-  'oeufs':                  { terms: ['eieren'] },
+  // ── Protéines ──
+  'boeuf hache':            ['gehakt', 'rundergehakt'],
+  'boeuf':                  ['rundvlees'],
+  'poulet':                 ['kip', 'kipfilet'],
+  'lardons':                ['spekblokjes', 'lardons'],
+  'saumon':                 ['zalm'],
+  'thon':                   ['tonijn'],
+  'truite fumee':           ['gerookte forel'],
+  'oeuf':                   ['eieren', 'ei'],
+  'oeufs':                  ['eieren'],
+  'ricotta':                ['ricotta'],
+  'feta':                   ['feta'],
 
   // ── Produits laitiers ──
-  'lait':                   { terms: ['volle melk', 'halfvolle melk'] },
-  'lait de soja':           { terms: ['sojamelk', 'soja drink'] },
-  'lait vegetal':           { terms: ['plantaardige melk', 'havermelk', 'amandelmelk'] },
-  'fromage rape':           { terms: ['geraspte kaas', 'raskaas'] },
-  'fromage frais':          { terms: ['verse kaas', 'smeerkaas'] },
-  'fromage frais aux fines herbes': { terms: ['verse kaas fijne kruiden', 'boursin'] },
-  'feta':                   { terms: ['feta'] },
-  'beurre':                 { terms: ['boter'] },
-  'yaourt':                 { terms: ['yoghurt'] },
-  'creme fraiche':          { terms: ['room', 'crème fraîche', 'creme fraiche'] },
-  'gorgonzola':             { terms: ['gorgonzola'] },
-  'chevre':                 { terms: ['geitenkaas'] },
+  'lait':                   ['volle melk', 'halfvolle melk'],
+  'lait de soja':           ['sojamelk', 'soja drink'],
+  'lait d amande':          ['amandelmelk'],
+  'lait vegetal':           ['plantaardige melk', 'havermelk', 'amandelmelk'],
+  'lait de coco':           ['kokosmelk'],
+  'fromage rape':           ['geraspte kaas', 'raskaas'],
+  'fromage frais':          ['verse kaas', 'smeerkaas'],
+  'fromage frais aux fines herbes': ['verse kaas fijne kruiden', 'boursin'],
+  'fromage':                ['kaas'],
+  'beurre':                 ['boter'],
+  'yaourt':                 ['yoghurt'],
+  'creme fraiche':          ['room', 'crème fraîche', 'creme fraiche'],
+  'gorgonzola':             ['gorgonzola'],
+  'chevre':                 ['geitenkaas'],
+  'parmesan':               ['parmezaan'],
 
   // ── Fruits ──
-  'pomme':                  { terms: ['appel', 'appelen'] },
-  'pommes':                 { terms: ['appel', 'appelen'] },
-  'banane':                 { terms: ['banaan', 'bananen'] },
-  'bananes':                { terms: ['banaan', 'bananen'] },
-  'fruits rouges':          { terms: ['rood fruit', 'bosvruchten', 'rode vruchten'] },
-  'framboises':             { terms: ['frambozen'] },
-  'myrtilles':              { terms: ['bosbessen'] },
+  'pomme':                  ['appel', 'appelen'],
+  'pommes':                 ['appel', 'appelen'],
+  'banane':                 ['banaan', 'bananen'],
+  'bananes':                ['banaan', 'bananen'],
+  'fruits rouges':          ['rood fruit', 'bosvruchten', 'rode vruchten'],
+  'fruit rouge':            ['rood fruit', 'bosvruchten'],
+  'framboises':             ['frambozen'],
+  'myrtilles':              ['bosbessen'],
 
   // ── Petit-déjeuner & sucré ──
-  'graines de chia':        { terms: ['chiazaad', 'chia'] },
-  'granola':                { terms: ['granola', 'muesli'] },
-  'miel':                   { terms: ['honing'] },
-  'sirop d agave':          { terms: ['agavesiroop'] },
-  'raisins secs':           { terms: ['rozijnen'] },
-  'cacao':                  { terms: ['cacaopoeder', 'cacao'] },
-  'vanille':                { terms: ['vanille', 'vanillepoeder'] },
-  'cannelle':               { terms: ['kaneel'] },
+  'granola':                ['granola', 'muesli'],
+  'miel':                   ['honing'],
+  'sirop d agave':          ['agavesiroop'],
+  'raisins secs':           ['rozijnen'],
+  'cacao':                  ['cacaopoeder', 'cacao'],
+  'vanille':                ['vanille', 'vanillepoeder'],
+  'cannelle':               ['kaneel'],
 
-  // ── Épices ──
-  'cumin':                  { terms: ['komijn', 'cumin'] },
-  'paprika':                { terms: ['paprikapoeder', 'paprika poeder'] },
-  'curcuma':                { terms: ['kurkuma', 'curcuma'] },
-  'gingembre':              { terms: ['gember'] },
-  'coriandre':              { terms: ['koriander'] },
-  'thym':                   { terms: ['tijm'] },
-  'laurier':                { terms: ['laurier', 'laurierblad'] },
-  'persil':                 { terms: ['peterselie'] },
+  // ── Épices & herbes ──
+  'cumin':                  ['komijn', 'cumin'],
+  'paprika':                ['paprikapoeder', 'paprika poeder'],
+  'curcuma':                ['kurkuma', 'curcuma'],
+  'gingembre':              ['gember'],
+  'coriandre':              ['koriander'],
+  'thym':                   ['tijm'],
+  'laurier':                ['laurier', 'laurierblad'],
+  'persil':                 ['peterselie'],
+  'basilic':                ['basilicum'],
+  'origan':                 ['oregano'],
+  'aneth':                  ['dille'],
+  'piment':                 ['piment', 'chili'],
+  'garam masala':           ['garam masala'],
+  'wasabi':                 ['wasabi'],
 
-  // ── Sauces & huiles ──
-  'huile d olive':          { terms: ['olijfolie'] },
-  'huile de sesame':        { terms: ['sesamolie'] },
-  'sauce soja':             { terms: ['sojasaus'] },
-  'concentre de tomate':    { terms: ['tomatenpuree'] },
-  'bouillon de legumes':    { terms: ['groentebouillon'] },
-  'bouillon de poulet':     { terms: ['kippenbouillon'] },
-  'lait de coco':           { terms: ['kokosmelk'] },
-  'tahini':                 { terms: ['tahini', 'sesampasta'] },
-  'houmous':                { terms: ['hummus', 'houmous'] },
-  'vinaigre':               { terms: ['azijn'] },
+  // ── Sauces, huiles & condiments ──
+  'huile d olive':          ['olijfolie'],
+  'huile de sesame':        ['sesamolie'],
+  'sauce soja':             ['sojasaus'],
+  'sauce d huitre':         ['oestersaus'],
+  'concentre de tomate':    ['tomatenpuree'],
+  'bouillon de legumes':    ['groentebouillon'],
+  'bouillon de poulet':     ['kippenbouillon'],
+  'bouillon':               ['bouillon'],
+  'tahini':                 ['tahini', 'sesampasta'],
+  'houmous':                ['hummus', 'houmous'],
+  'vinaigre blanc':         ['witte azijn'],
+  'vinaigre':               ['azijn'],
+  'vin blanc':              ['witte wijn'],
+  'jus de citron':          ['citroensap'],
 };
+
+// ─── Lookup avec fallbacks pluriels ──────────────────────────────────────────
+function bridgeLookup(normKey) {
+  // 0. Irréguliers — priorité absolue
+  const canonical = IRREGULAR_FORMS[normKey];
+  if (canonical) return INGREDIENT_BRIDGE[canonical] ?? null;
+
+  // 1. Correspondance exacte
+  if (INGREDIENT_BRIDGE[normKey]) return INGREDIENT_BRIDGE[normKey];
+
+  // 2. Strip s final (pluriels réguliers simples)
+  const s1 = normKey.replace(/s$/, '');
+  if (s1 !== normKey && INGREDIENT_BRIDGE[s1]) return INGREDIENT_BRIDGE[s1];
+
+  // 3. Déplurialiser chaque mot (ex: poivrons rouges → poivron rouge)
+  const deplural = normKey.split(' ').map(w => w.replace(/s$/, '')).join(' ');
+  if (deplural !== normKey && INGREDIENT_BRIDGE[deplural]) return INGREDIENT_BRIDGE[deplural];
+
+  // 4. Premier mot seul (ex: courgettes moyennes → courgette)
+  const firstWord = deplural.split(' ')[0];
+  if (firstWord !== deplural && INGREDIENT_BRIDGE[firstWord]) return INGREDIENT_BRIDGE[firstWord];
+
+  return null;
+}

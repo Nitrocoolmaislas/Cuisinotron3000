@@ -3,15 +3,19 @@
 // ══════════════════════════════════════════════
 const GOOGLE_CLIENT_ID   = '758662499322-tmh1469ov6fnp5s0vjeqqd6023gm3edv.apps.googleusercontent.com';
 const DRIVE_STOCK_FILE   = 'recettes_clara_stock.json';
-const DRIVE_CUSTOMS_FILE = 'recettes_clara_custom.json';
+const DRIVE_CUSTOMS_FILE  = 'recettes_clara_custom.json';
+const DRIVE_BRIDGE_FILE   = 'recettes_clara_bridge_custom.json';
 
 let driveTokenClient  = null;
 let driveAccessToken  = null;
 let driveStockFileId  = null;
 let driveCustomFileId = null;
+  driveBridgeFileId = null;
+let driveBridgeFileId = null;
 let driveReady        = false;
 let driveSaveTimer    = null;
 let driveCustomTimer  = null;
+let driveBridgeTimer  = null;
 
 function onGISLoad() {
   const configured = GOOGLE_CLIENT_ID !== 'VOTRE_CLIENT_ID_ICI';
@@ -43,6 +47,7 @@ function driveSignOut() {
   driveAccessToken = null;
   driveStockFileId = null;
   driveCustomFileId = null;
+  driveBridgeFileId = null;
   driveReady = false;
   document.getElementById('drive-signin-row').style.display  = '';
   document.getElementById('drive-status-row').style.display  = 'none';
@@ -132,6 +137,17 @@ async function loadFromDrive() {
       }
     }
 
+    // Charge le bridge custom
+    driveBridgeFileId = await findDriveFileByName(DRIVE_BRIDGE_FILE);
+    if (driveBridgeFileId) {
+      const data = await fetchDriveFile(driveBridgeFileId);
+      if (data.bridgeCustom && typeof data.bridgeCustom === 'object') {
+        // Drive = source de vérité — écrase le localStorage
+        localStorage.setItem('recettes_bridge_custom', JSON.stringify(data.bridgeCustom));
+        console.info('[Drive] Bridge custom chargé :', Object.keys(data.bridgeCustom).length, 'entrées');
+      }
+    }
+
     renderStock(); renderCatalog(); renderGrid(); updateCounts();
     const now = new Date().toLocaleString('fr-BE', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
     setDriveStatus('Synchronisé · ' + now, 'ok');
@@ -179,4 +195,23 @@ function scheduleDriveSave() {
 function scheduleCustomRecipesSave() {
   clearTimeout(driveCustomTimer);
   driveCustomTimer = setTimeout(saveCustomRecipesToDrive, 1000);
+}
+
+// ══════════════════════════════════════════════
+//  SAUVEGARDE BRIDGE CUSTOM
+// ══════════════════════════════════════════════
+async function saveBridgeCustomToDrive() {
+  if (!driveAccessToken || !driveReady) return;
+  try {
+    const bridgeCustom = JSON.parse(localStorage.getItem('recettes_bridge_custom') || '{}');
+    driveBridgeFileId = await saveDriveFile(driveBridgeFileId, DRIVE_BRIDGE_FILE, { bridgeCustom });
+    console.info('[Drive] Bridge custom sauvegardé :', Object.keys(bridgeCustom).length, 'entrées');
+  } catch(e) {
+    console.error('[Drive] Bridge custom save error:', e);
+  }
+}
+
+function scheduleBridgeSave() {
+  clearTimeout(driveBridgeTimer);
+  driveBridgeTimer = setTimeout(saveBridgeCustomToDrive, 1000);
 }
