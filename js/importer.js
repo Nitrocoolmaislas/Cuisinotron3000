@@ -332,10 +332,22 @@ async function _fetchViaProxy(url) {
       const proxyUrl = buildProxyUrl(url);
       const res = await fetch(proxyUrl, { signal: AbortSignal.timeout(8000) });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const json = await res.json();
-      // allorigins renvoie { contents: '<html>...' }
-      // corsproxy renvoie le body directement en texte
-      return json.contents ?? json;
+
+      // Lire en texte brut d'abord
+      const text = await res.text();
+
+      // allorigins renvoie { contents: '<html>...' } — tenter le parse JSON
+      try {
+        const json = JSON.parse(text);
+        if (json.contents) return json.contents; // allorigins
+      } catch(e) {
+        // Pas du JSON → c'est directement le HTML (corsproxy.io)
+      }
+
+      // Vérifier que c'est bien du HTML et pas une erreur proxy
+      if (text.trim().startsWith('<')) return text;
+      throw new Error('Réponse proxy inattendue : ' + text.slice(0, 80));
+
     } catch(e) {
       lastError = e;
       console.warn('[Importer] Proxy échoué:', e.message);
