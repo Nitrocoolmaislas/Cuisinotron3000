@@ -1,0 +1,273 @@
+/* ══════════════════════════════════════════
+   IMPORTER — panel d'import de recettes
+   ══════════════════════════════════════════ */
+
+/* ── Panel principal ── */
+#import-panel {
+  position: fixed;
+  top: 0;
+  right: -560px;
+  width: 540px;
+  max-width: 100vw;
+  height: 100vh;
+  background: var(--white, #fff);
+  box-shadow: -4px 0 32px rgba(0,0,0,0.14);
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+  transition: right 0.3s cubic-bezier(0.4,0,0.2,1);
+  overflow: hidden;
+  font-family: 'DM Sans', sans-serif;
+}
+#import-panel.open { right: 0; }
+
+/* ── Header ── */
+.ip-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid var(--border, #e8e4df);
+  flex-shrink: 0;
+  gap: 12px;
+}
+.ip-header-left { flex: 1; min-width: 0; }
+.ip-source {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--warm-grey, #9c8f85);
+  margin-bottom: 4px;
+}
+.ip-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: var(--charcoal, #2c2c2c);
+  margin: 0;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ip-close {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  color: var(--warm-grey, #9c8f85);
+  padding: 4px 8px;
+  border-radius: 6px;
+  flex-shrink: 0;
+  transition: background 0.1s;
+}
+.ip-close:hover { background: var(--cream, #f5f0eb); color: var(--charcoal, #2c2c2c); }
+
+/* ── Body ── */
+.ip-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* ── Champs ── */
+.ip-field { display: flex; flex-direction: column; gap: 6px; }
+.ip-label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--warm-grey, #9c8f85);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ip-input, .ip-select, .ip-textarea {
+  padding: 9px 12px;
+  border: 1.5px solid var(--border, #e8e4df);
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  color: var(--charcoal, #2c2c2c);
+  background: var(--cream, #f5f0eb);
+  outline: none;
+  transition: border-color 0.15s;
+}
+.ip-input:focus, .ip-select:focus, .ip-textarea:focus {
+  border-color: var(--sage, #7d9b76);
+}
+.ip-textarea {
+  resize: vertical;
+  min-height: 64px;
+  line-height: 1.5;
+}
+.ip-meta-row {
+  display: flex;
+  gap: 10px;
+}
+.ip-field-sm { flex: 1; }
+
+/* ── Badges statut ── */
+.ip-badge-warn {
+  font-size: 0.7rem;
+  background: #fff8e1;
+  color: #c47d00;
+  border: 1px solid rgba(245,166,35,0.3);
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.ip-badge-ok {
+  font-size: 0.7rem;
+  background: rgba(62,207,142,0.1);
+  color: #1a7a52;
+  border: 1px solid rgba(62,207,142,0.3);
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* ── Liste ingrédients ── */
+.ip-ingredient-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.ip-ing-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ip-ing-input {
+  flex: 1;
+  padding: 7px 10px;
+  border: 1.5px solid var(--border, #e8e4df);
+  border-radius: 7px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.84rem;
+  background: var(--cream, #f5f0eb);
+  outline: none;
+  transition: border-color 0.15s;
+}
+.ip-ing-input:focus { border-color: var(--sage, #7d9b76); }
+.ip-ing-input.ip-ing-unknown { border-color: rgba(245,166,35,0.5); background: #fffbf0; }
+.ip-ing-status { font-size: 0.85rem; flex-shrink: 0; width: 20px; text-align: center; }
+
+/* ── Bouton ajouter ── */
+.ip-add-btn {
+  background: none;
+  border: 1.5px dashed var(--border, #e8e4df);
+  border-radius: 7px;
+  padding: 7px 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  color: var(--warm-grey, #9c8f85);
+  cursor: pointer;
+  margin-top: 4px;
+  transition: border-color 0.15s, color 0.15s;
+  text-align: left;
+}
+.ip-add-btn:hover { border-color: var(--sage, #7d9b76); color: var(--sage, #7d9b76); }
+
+/* ── Étapes ── */
+#ip-steps { display: flex; flex-direction: column; gap: 8px; }
+.ip-step-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.ip-step-num {
+  width: 22px;
+  height: 22px;
+  background: var(--sage, #7d9b76);
+  color: white;
+  border-radius: 50%;
+  font-size: 0.72rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 8px;
+}
+.ip-step-input {
+  flex: 1;
+  padding: 8px 10px;
+  border: 1.5px solid var(--border, #e8e4df);
+  border-radius: 7px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.84rem;
+  background: var(--cream, #f5f0eb);
+  outline: none;
+  resize: vertical;
+  min-height: 52px;
+  line-height: 1.5;
+  transition: border-color 0.15s;
+}
+.ip-step-input:focus { border-color: var(--sage, #7d9b76); }
+
+/* ── Lien source ── */
+.ip-source-link {
+  font-size: 0.8rem;
+  padding: 10px 0 4px;
+}
+.ip-source-link a {
+  color: var(--warm-grey, #9c8f85);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.ip-source-link a:hover { color: var(--sage, #7d9b76); }
+
+/* ── Footer ── */
+.ip-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 16px 24px;
+  border-top: 1px solid var(--border, #e8e4df);
+  flex-shrink: 0;
+}
+.ip-btn-primary {
+  padding: 10px 22px;
+  background: var(--sage, #7d9b76);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.ip-btn-primary:hover { background: var(--sage-light, #6a8a63); }
+.ip-btn-ghost {
+  padding: 10px 16px;
+  background: none;
+  border: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  color: var(--warm-grey, #9c8f85);
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.15s;
+}
+.ip-btn-ghost:hover { background: var(--cream, #f5f0eb); color: var(--charcoal, #2c2c2c); }
+
+/* ── Overlay ── */
+#import-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
+  z-index: 499;
+}
+#import-panel.open ~ #import-overlay,
+body:has(#import-panel.open) #import-overlay {
+  display: block;
+}
