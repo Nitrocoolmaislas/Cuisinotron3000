@@ -8,8 +8,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/bridge-wizard.css">
-<link rel="stylesheet" href="css/importer.css">
 <!-- Google Identity Services — nécessaire pour la sync Drive -->
+<script src="https://accounts.google.com/gsi/client" onload="onGISLoad()" async defer></script>
 </head>
 <body>
 
@@ -73,12 +73,6 @@
         <span class="icon">📝</span> Mes recettes
         <span class="count" id="cnt-custom">0</span>
       </button>
-      <button class="cat-btn" onclick="openRecipeForm()" style="margin-top:4px">
-        <span class="icon">➕</span> Ajouter une recette
-      </button>
-      <button class="cat-btn" onclick="openImportUrlPanel()" style="margin-top:4px;color:var(--terracotta)">
-        <span class="icon">📥</span> Importer une recette
-      </button>
     </div>
 
     <button id="bridge-wizard-btn" onclick="openBridgeWizard()" style="display:none;background:var(--terracotta);">
@@ -91,6 +85,9 @@
       <span class="stock-count-badge" id="stock-badge">0</span>
     </button>
 
+    <button class="stock-toggle-btn" style="background:var(--sage);margin-top:8px" onclick="openRecipeForm()">
+      ➕ Ajouter une recette
+    </button>
   </aside>
 
   <!-- ── MAIN ── -->
@@ -475,7 +472,6 @@
 <script src="data/ciqual_discriminants.js"></script>
 <script src="js/ingredientParser.js"></script>
 <script src="js/drive.js"></script>
-<script src="https://accounts.google.com/gsi/client" onload="onGISLoad()" defer></script>
 <script src="js/stock.js"></script>
 <script src="js/colruyt.js"></script>
 <script src="js/nutrition_data.js"></script>
@@ -484,95 +480,9 @@
 <script src="js/custom_recipes.js"></script>
 <script src="js/app.js"></script>
 <script src="js/planner.js"></script>
-<script src="js/importer.js"></script>
 <script src="js/bridgeWizard.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 
 <div id="bridge-wizard-overlay" onclick="closeBridgeWizard()"></div>
-
-<!-- ── IMPORT URL PANEL ── -->
-
-<!-- ── IMPORT URL PANEL ── -->
-<div id="import-url-panel" class="import-url-panel">
-  <div class="iup-header">
-    <h3>📥 Importer une recette</h3>
-    <button class="iup-close" onclick="closeImportUrlPanel()">✕</button>
-  </div>
-
-  <div class="iup-body">
-
-    <!-- NIVEAU 1 : URL -->
-    <div class="iup-section">
-      <div class="iup-level-badge">Niveau 1</div>
-      <label class="iup-label">Colle l'URL de la recette</label>
-      <p class="iup-hint">Fonctionne avec Marmiton, 750g, AllRecipes, BBC Good Food…</p>
-      <div class="iup-row">
-        <input id="import-url-input" class="iup-input" type="url"
-          placeholder="https://www.marmiton.org/recettes/..."
-          onkeydown="if(event.key==='Enter') importFromUrl()">
-        <button id="import-url-btn" class="iup-btn-primary" onclick="importFromUrl()">
-          <span id="import-spinner" style="display:none">⏳</span>
-          Importer
-        </button>
-      </div>
-      <div id="import-url-error" class="iup-error" style="display:none"></div>
-    </div>
-
-    <!-- FALLBACKS (visibles uniquement si niveau 1 échoue) -->
-    <div id="import-fallbacks" style="display:none">
-
-      <!-- NIVEAU 2 : Bookmarklet -->
-      <div class="iup-divider">Le proxy n'a pas fonctionné ?</div>
-
-      <div class="iup-section iup-section-alt">
-        <div class="iup-level-badge iup-level-2">Niveau 2 — Bookmarklet</div>
-        <label class="iup-label">Utilise le bookmarklet directement sur la page</label>
-        <p class="iup-hint">
-          Va sur la recette dans ton navigateur, puis clique sur le favori
-          <strong>"📥 Importer recette"</strong>.<br>
-          Pas encore installé ?
-          <a href="#" onclick="toggleBookmarkletHelp(); return false;">Voir comment l'installer</a>
-        </p>
-        <div id="bk-help" style="display:none" class="iup-code-block">
-          <p style="margin:0 0 8px;font-size:0.78rem;color:#888;">
-            Crée un favori dans ton navigateur et colle ce code dans le champ URL :
-          </p>
-          <code id="bk-code" class="iup-code">javascript:(function(){var scripts=document.querySelectorAll('script[type="application/ld+json"]');var recipe=null;for(var i=0;i<scripts.length;i++){try{var text=scripts[i].textContent.trim();if(!text)continue;var data=JSON.parse(text);var candidates=Array.isArray(data)?data:data['@graph']?data['@graph']:[data];recipe=candidates.find(function(x){var t=x['@type'];return t==='Recipe'||(Array.isArray(t)&&t.includes('Recipe'))});if(recipe)break;}catch(e){console.warn('LD+JSON parse error index '+i+':',e.message);}}if(!recipe){alert('❌ Aucune recette structurée trouvée.');return;}if(!recipe.url)recipe.url=window.location.href;window.location.href='https://nitrocoolmaislas.github.io/Cuisinotron3000/#import='+encodeURIComponent(JSON.stringify(recipe));})();</code>
-          <button class="iup-copy-btn" onclick="copyBookmarklet()">📋 Copier</button>
-        </div>
-      </div>
-
-      <!-- NIVEAU 3 : JSON-LD manuel -->
-      <div class="iup-section iup-section-alt">
-        <div class="iup-level-badge iup-level-3">Niveau 3 — Import manuel</div>
-        <label class="iup-label">
-          Colle le JSON-LD de la recette
-          <a href="#" onclick="toggleManualSection(); return false;" style="font-weight:400;text-transform:none;letter-spacing:0;">
-            ▼ Afficher
-          </a>
-        </label>
-        <div id="import-manual-section" style="display:none">
-          <p class="iup-hint">
-            Sur la page de la recette : F12 → Console → colle
-            <code>JSON.stringify(document.querySelector('script[type="application/ld+json"]').textContent)</code>
-            → copie le résultat ici.
-          </p>
-          <textarea id="import-manual-textarea" class="iup-textarea"
-            placeholder='{"@type":"Recipe","name":"...","recipeIngredient":[...],...}'
-            rows="6"></textarea>
-          <button class="iup-btn-secondary" onclick="importFromManualJson()">
-            Importer ce JSON
-          </button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-<div id="import-url-overlay" onclick="closeImportUrlPanel()"></div>
-
-<!-- ── IMPORT PANEL ── -->
-<div id="import-panel"></div>
-<div id="import-overlay" onclick="closeImportPanel()"></div>
 </body>
 </html>
