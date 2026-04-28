@@ -16,7 +16,34 @@ function loadStockFromStorage() {
   } catch(e) { return {}; }
 }
 
-let stock = loadStockFromStorage();
+// ─── Migration des clés stock ─────────────────────────────────────────────────
+// L'ancienne version de normIngredient remplaçait les non-alphanum par des espaces
+// (ex: "flocons d avoine") alors que la nouvelle les supprime ("flocons davoine").
+// Cette migration renormalise toutes les clés existantes au chargement.
+function migrateStockKeys(rawStock) {
+  const migrated = {};
+  let changed = false;
+  for (const [oldKey, entry] of Object.entries(rawStock)) {
+    const newKey = normIngredient(entry.name || oldKey);
+    if (newKey !== oldKey) {
+      changed = true;
+      console.info('[Stock] Migration clé:', oldKey, '→', newKey);
+    }
+    // Si collision : additionner les qtés
+    if (migrated[newKey]) {
+      migrated[newKey].qty = (migrated[newKey].qty || 0) + (entry.qty || 0);
+    } else {
+      migrated[newKey] = { ...entry };
+    }
+  }
+  if (changed) {
+    localStorage.setItem('recettes_stock', JSON.stringify(migrated));
+    console.info('[Stock] Migration clés terminée');
+  }
+  return migrated;
+}
+
+let stock = migrateStockKeys(loadStockFromStorage());
 
 // ── Ingrédients masqués dans le catalogue ──
 let hiddenIngredients = new Set(JSON.parse(localStorage.getItem('recettes_hidden_ings') || '[]'));

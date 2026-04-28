@@ -46,7 +46,7 @@ async function fetchNutritionFromOFF(ean) {
 // Note : le dataset Colruyt ne contient pas d'EAN ni de données nutritionnelles
 async function getNutritionFor(normKey, colruytProduct) {
   // 1. Table CIQUAL statique
-  const ciqual = NUTRITION_DATA[normKey];
+  const ciqual = (typeof getNutriData !== "undefined" ? getNutriData(normKey) : NUTRITION_DATA[normKey]);
   if (ciqual) return { ...ciqual, source: 'ciqual' };
 
   return null;

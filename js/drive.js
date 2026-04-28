@@ -10,15 +10,14 @@ let driveTokenClient  = null;
 let driveAccessToken  = null;
 let driveStockFileId  = null;
 let driveCustomFileId = null;
+  driveBridgeFileId = null;
 let driveBridgeFileId = null;
 let driveReady        = false;
 let driveSaveTimer    = null;
 let driveCustomTimer  = null;
 let driveBridgeTimer  = null;
 
-// onGISLoad peut être appelé avant ou après le chargement de drive.js
-// selon la vitesse réseau — on défend dans les deux sens
-function _initGIS() {
+function onGISLoad() {
   const configured = GOOGLE_CLIENT_ID !== 'VOTRE_CLIENT_ID_ICI';
   document.getElementById('drive-not-configured').style.display = configured ? 'none' : '';
   document.getElementById('drive-signin-row').style.display     = configured ? '' : 'none';
@@ -28,26 +27,15 @@ function _initGIS() {
     client_id: GOOGLE_CLIENT_ID,
     scope: 'https://www.googleapis.com/auth/drive.file',
     callback: async (resp) => {
-      if (resp.error) { setDriveStatus("Erreur d'authentification", 'error'); return; }
+      if (resp.error) { setDriveStatus('Erreur d\'authentification', 'error'); return; }
       driveAccessToken = resp.access_token;
       driveReady = true;
       showDriveConnected();
       await loadFromDrive();
     }
   });
+  // Pas de tentative silencieuse — évite le popup bloqué par le navigateur
 }
-
-// Appelé par onload= du tag <script GIS>
-// Robuste : fonctionne que GIS arrive avant ou après drive.js
-function onGISLoad() {
-  window._gisReady = true;
-  if (typeof _initGIS === 'function') _initGIS();
-}
-
-// Si GIS était déjà prêt quand drive.js se charge
-document.addEventListener('DOMContentLoaded', () => {
-  if (window._gisReady) _initGIS();
-});
 
 function driveSignIn() {
   if (!driveTokenClient) return;

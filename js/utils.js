@@ -17,9 +17,11 @@ function unitOptions(selected) {
 
 // ── Normalisation pour déduplication et matching ──
 function normIngredient(str) {
-  return (str || '').toLowerCase()
-    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-    .replace(/[^a-z0-9 ]/g, ' ')
+  return (str || '')
+    .replace(/[\u2018\u2019\u201a\u201b\u2032\u0060]/g, '') // apostrophes → supprimées
+    .toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')          // accents
+    .replace(/[^a-z0-9 ]/g, '')                                  // non-alphanum → supprimés
     .replace(/\s+/g, ' ').trim();
 }
 
