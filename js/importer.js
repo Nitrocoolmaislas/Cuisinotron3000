@@ -103,12 +103,19 @@ function openImportPanel(data) {
       const hasBridge = typeof bridgeLookupFull !== 'undefined'
         ? bridgeLookupFull(normKey) !== null
         : false;
-      return { raw, rawName: p.rawName, normKey, hasBridge };
+      // Vérifier si l'unité est mappée dans UNIT_WEIGHTS / custom
+      const unitMapped = typeof isUnitMapped !== 'undefined'
+        ? isUnitMapped(p.unit)
+        : true;
+      return { raw, rawName: p.rawName, normKey, unit: p.unit, qty: p.qty, hasBridge, unitMapped };
     }
-    return { raw, rawName: raw, normKey: '', hasBridge: false };
+    return { raw, rawName: raw, normKey: '', unit: null, qty: null, hasBridge: false, unitMapped: true };
   });
 
-  const unknownCount = parsedIngredients.filter(p => !p.hasBridge).length;
+  const unknownCount   = parsedIngredients.filter(p => !p.hasBridge).length;
+  const unknownUnits   = [...new Set(
+    parsedIngredients.filter(p => p.unit && !p.unitMapped).map(p => p.unit)
+  )];
 
   panel.innerHTML = `
     <div class="ip-header">
@@ -180,6 +187,33 @@ function openImportPanel(data) {
         </div>
         <button class="ip-add-btn" onclick="importAddIngredient()">+ Ajouter</button>
       </div>
+
+      <!-- Unités non mappées -->
+      ${unknownUnits.length > 0 ? `
+      <div class="ip-field">
+        <label class="ip-label">
+          ⚖️ Unités inconnues
+          <span class="ip-badge-warn">${unknownUnits.length} sans équivalent grammes</span>
+        </label>
+        <p style="font-size:0.78rem;color:#9c8f85;margin:0 0 8px">
+          Ces unités ne sont pas encore connues. Donne leur un équivalent en grammes
+          pour que la déduction de stock fonctionne correctement.
+        </p>
+        <div id="ip-unit-weights">
+          ${unknownUnits.map(u => `
+            <div class="ip-unit-row">
+              <span class="ip-unit-label">1 <strong>${u}</strong> =</span>
+              <input class="ip-unit-input" type="number" min="0" step="0.1"
+                id="ip-unit-${u.replace(/[^a-z]/gi,'_')}"
+                placeholder="grammes">
+              <span class="ip-unit-suffix">g</span>
+            </div>
+          `).join('')}
+        </div>
+        <button class="ip-add-btn" onclick="saveImportUnitWeights()">
+          💾 Sauvegarder ces équivalences
+        </button>
+      </div>` : ''}
 
       <!-- Étapes -->
       <div class="ip-field">
@@ -322,6 +356,7 @@ function checkImportHash() {
 const CORS_PROXIES = [
   url => `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`,
   url => `https://corsproxy.io/?${encodeURIComponent(url)}`,
+  url => `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(url)}`,
 ];
 
 // ── Fetch HTML via proxy CORS avec fallback ──
@@ -330,12 +365,24 @@ async function _fetchViaProxy(url) {
   for (const buildProxyUrl of CORS_PROXIES) {
     try {
       const proxyUrl = buildProxyUrl(url);
-      const res = await fetch(proxyUrl, { signal: AbortSignal.timeout(8000) });
+      const res = await fetch(proxyUrl, { signal: AbortSignal.timeout(15000) });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const json = await res.json();
-      // allorigins renvoie { contents: '<html>...' }
-      // corsproxy renvoie le body directement en texte
-      return json.contents ?? json;
+
+      // Lire en texte brut d'abord
+      const text = await res.text();
+
+      // allorigins renvoie { contents: '<html>...' } — tenter le parse JSON
+      try {
+        const json = JSON.parse(text);
+        if (json.contents) return json.contents; // allorigins
+      } catch(e) {
+        // Pas du JSON → c'est directement le HTML (corsproxy.io)
+      }
+
+      // Vérifier que c'est bien du HTML et pas une erreur proxy
+      if (text.trim().startsWith('<')) return text;
+      throw new Error('Réponse proxy inattendue : ' + text.slice(0, 80));
+
     } catch(e) {
       lastError = e;
       console.warn('[Importer] Proxy échoué:', e.message);
@@ -499,3 +546,38 @@ function toggleBookmarkletHelp() {
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeImportUrlPanel();
 });
+
+// ─── Sauvegarder les équivalences d'unités depuis le panel import ─────────────
+function saveImportUnitWeights() {
+  const container = document.getElementById('ip-unit-weights');
+  if (!container) return;
+
+  const inputs = container.querySelectorAll('input[type="number"]');
+  let saved = 0;
+
+  inputs.forEach(input => {
+    // Extraire l'unité depuis l'id "ip-unit-UNIT"
+    const unitRaw = input.id.replace('ip-unit-', '').replace(/_/g, ' ');
+    // Retrouver l'unité originale depuis le label (plus fiable)
+    const label = input.closest('.ip-unit-row')?.querySelector('strong')?.textContent;
+    const unit  = label || unitRaw;
+    const grams = parseFloat(input.value);
+
+    if (!unit || isNaN(grams) || grams <= 0) return;
+
+    if (typeof addUnitWeightCustom === 'function') {
+      addUnitWeightCustom(unit, grams);
+      saved++;
+    }
+  });
+
+  if (saved > 0) {
+    showToast(`⚖️ ${saved} équivalence${saved > 1 ? 's' : ''} sauvegardée${saved > 1 ? 's' : ''} !`);
+    // Rafraîchir les statuts dans le panel
+    container.querySelectorAll('.ip-unit-row').forEach(row => {
+      row.style.opacity = '0.5';
+    });
+  } else {
+    showToast('⚠️ Remplis au moins une valeur avant de sauvegarder');
+  }
+}
