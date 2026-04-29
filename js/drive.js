@@ -4,20 +4,22 @@
 const GOOGLE_CLIENT_ID   = '758662499322-tmh1469ov6fnp5s0vjeqqd6023gm3edv.apps.googleusercontent.com';
 const DRIVE_STOCK_FILE   = 'recettes_clara_stock.json';
 const DRIVE_CUSTOMS_FILE  = 'recettes_clara_custom.json';
-const DRIVE_BRIDGE_FILE   = 'recettes_clara_bridge_custom.json';
+const DRIVE_BRIDGE_FILE        = 'recettes_clara_bridge_custom.json';
+const DRIVE_UNIT_WEIGHTS_FILE  = 'recettes_clara_unit_weights.json';
 
 let driveTokenClient  = null;
 let driveAccessToken  = null;
 let driveStockFileId  = null;
 let driveCustomFileId = null;
-  driveBridgeFileId = null;
-let driveBridgeFileId = null;
+let driveBridgeFileId      = null;
+let driveUnitWeightsFileId = null;
 let driveReady        = false;
-let driveSaveTimer    = null;
+let driveSaveTimer         = null;
+let driveUnitWeightsTimer  = null;
 let driveCustomTimer  = null;
 let driveBridgeTimer  = null;
 
-function onGISLoad() {
+function _initGIS() {
   const configured = GOOGLE_CLIENT_ID !== 'VOTRE_CLIENT_ID_ICI';
   document.getElementById('drive-not-configured').style.display = configured ? 'none' : '';
   document.getElementById('drive-signin-row').style.display     = configured ? '' : 'none';
@@ -27,15 +29,25 @@ function onGISLoad() {
     client_id: GOOGLE_CLIENT_ID,
     scope: 'https://www.googleapis.com/auth/drive.file',
     callback: async (resp) => {
-      if (resp.error) { setDriveStatus('Erreur d\'authentification', 'error'); return; }
+      if (resp.error) { setDriveStatus("Erreur d'authentification", 'error'); return; }
       driveAccessToken = resp.access_token;
       driveReady = true;
       showDriveConnected();
       await loadFromDrive();
     }
   });
-  // Pas de tentative silencieuse — évite le popup bloqué par le navigateur
 }
+
+function onGISLoad() {
+  window._gisReady = true;
+  if (typeof _initGIS === 'function') _initGIS();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (window._gisReady) _initGIS();
+});
+
+
 
 function driveSignIn() {
   if (!driveTokenClient) return;
@@ -47,7 +59,8 @@ function driveSignOut() {
   driveAccessToken = null;
   driveStockFileId = null;
   driveCustomFileId = null;
-  driveBridgeFileId = null;
+  driveBridgeFileId      = null;
+  driveUnitWeightsFileId = null;
   driveReady = false;
   document.getElementById('drive-signin-row').style.display  = '';
   document.getElementById('drive-status-row').style.display  = 'none';
@@ -148,6 +161,15 @@ async function loadFromDrive() {
       }
     }
 
+    // Charge les unit weights custom
+    driveUnitWeightsFileId = await findDriveFileByName(DRIVE_UNIT_WEIGHTS_FILE);
+    if (driveUnitWeightsFileId) {
+      const uwData = await fetchDriveFile(driveUnitWeightsFileId);
+      if (uwData.unitWeights && typeof uwData.unitWeights === 'object') {
+        localStorage.setItem('recettes_unit_weights_custom', JSON.stringify(uwData.unitWeights));
+      }
+    }
+
     renderStock(); renderCatalog(); renderGrid(); updateCounts();
     const now = new Date().toLocaleString('fr-BE', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
     setDriveStatus('Synchronisé · ' + now, 'ok');
@@ -214,4 +236,19 @@ async function saveBridgeCustomToDrive() {
 function scheduleBridgeSave() {
   clearTimeout(driveBridgeTimer);
   driveBridgeTimer = setTimeout(saveBridgeCustomToDrive, 1000);
+}
+
+async function saveUnitWeightsToDrive() {
+  if (!driveAccessToken || !driveReady) return;
+  try {
+    const unitWeights = JSON.parse(localStorage.getItem('recettes_unit_weights_custom') || '{}');
+    driveUnitWeightsFileId = await saveDriveFile(driveUnitWeightsFileId, DRIVE_UNIT_WEIGHTS_FILE, { unitWeights });
+  } catch(e) {
+    console.error('[Drive] Unit weights save error:', e);
+  }
+}
+
+function scheduleDriveSaveUnitWeights() {
+  clearTimeout(driveUnitWeightsTimer);
+  driveUnitWeightsTimer = setTimeout(saveUnitWeightsToDrive, 1000);
 }

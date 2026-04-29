@@ -272,6 +272,8 @@ document.addEventListener('DOMContentLoaded', () => {
   updateCounts();
   renderGrid();
   renderStock();
+  // Détection import bookmarklet (#import=...)
+  if (typeof checkImportHash === 'function') checkImportHash();
   document.getElementById('stock-input').addEventListener('keydown', e => {
     if (e.key === 'Enter') addStockItem();
   });

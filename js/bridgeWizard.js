@@ -105,12 +105,22 @@ function fuzzyMatchCiqual(normKey, topN = 3) {
 
 // ─── Fetch produits Colruyt ───────────────────────────────────────────────────
 /**
- * Cherche dans le bucket BelgianNoise les produits correspondant à un terme NL.
- * Retourne les 3 produits disponibles les moins chers.
- */
-async function fetchColruytProducts(searchTerm) {
-  try {
-    // Récupérer le dernier snapshot disponible
+// ─── Cache mémoire du catalogue Colruyt ──────────────────────────────────────
+// Téléchargé une seule fois par session — évite de re-fetcher à chaque recherche
+let _colruytCache = null;
+let _colruytCacheLoading = null; // Promise en cours si fetch en cours
+
+async function _getColruytCatalog() {
+  // Réutiliser le catalogue déjà chargé par colruyt.js si disponible
+  if (typeof colruytData !== 'undefined' && colruytData?.length) {
+    return colruytData;
+  }
+  // Déjà en cache wizard → retour immédiat
+  if (_colruytCache) return _colruytCache;
+  // Fetch déjà en cours → attendre la même Promise
+  if (_colruytCacheLoading) return _colruytCacheLoading;
+
+  _colruytCacheLoading = (async () => {
     const listUrl = 'https://storage.googleapis.com/storage/v1/b/colruyt-products/o?maxResults=1&fields=items(name)';
     const listRes = await fetch(listUrl);
     const listData = await listRes.json();
@@ -119,20 +129,44 @@ async function fetchColruytProducts(searchTerm) {
 
     const dataUrl = `https://storage.googleapis.com/storage/v1/b/colruyt-products/o/${encodeURIComponent(latestFile)}?alt=media`;
     const dataRes = await fetch(dataUrl);
-    const products = await dataRes.json();
+    _colruytCache = await dataRes.json();
+    _colruytCacheLoading = null;
+    console.info('[Colruyt] Catalogue chargé :', _colruytCache.length, 'produits');
+    return _colruytCache;
+  })();
+
+  return _colruytCacheLoading;
+}
+
+/**
+ * Cherche dans le bucket BelgianNoise les produits correspondant à un terme NL.
+ * Retourne les produits disponibles correspondant au terme, triés par prix.
+ * Pas de limite stricte — retourne tous les matches (max 20 pour l'UI).
+ */
+const p_avail = p => p.isAvailable !== false;
+
+async function fetchColruytProducts(searchTerm) {
+  try {
+    const products = await _getColruytCatalog();
+    if (!products.length) return [];
 
     const term = searchTerm.toLowerCase();
     return products
       .filter(p =>
-        p.isAvailable &&
-        (p.name?.toLowerCase().includes(term) ||
-         p.LongName?.toLowerCase().includes(term))
+        p.name?.toLowerCase().includes(term) ||
+        p.LongName?.toLowerCase().includes(term)
       )
-      .sort((a, b) => (a.price?.basicPrice ?? 999) - (b.price?.basicPrice ?? 999))
-      .slice(0, 3)
+      .sort((a, b) => {
+        // Disponibles en premier, puis tri par prix
+        if (p_avail(a) && !p_avail(b)) return -1;
+        if (!p_avail(a) && p_avail(b)) return 1;
+        return (a.price?.basicPrice ?? 999) - (b.price?.basicPrice ?? 999);
+      })
+      .slice(0, 20)
       .map(p => ({
         name: p.LongName || p.name,
         price: p.price?.basicPrice ?? null,
+        available: p.isAvailable ?? true,
         term: searchTerm,
       }));
   } catch (err) {
@@ -271,9 +305,9 @@ async function searchColruytFromWizard() {
   }
 
   resultsDiv.innerHTML = products.map((p, i) => `
-    <label class="bw-option ${i === 0 ? 'selected' : ''}" data-product="${i}">
+    <label class="bw-option ${i === 0 ? 'selected' : ''} ${p.available === false ? 'bw-option-unavailable' : ''}" data-product="${i}">
       <input type="radio" name="colruyt_product" value="${i}" ${i === 0 ? 'checked' : ''}>
-      <span class="bw-option-name">${p.name}</span>
+      <span class="bw-option-name">${p.name}${p.available === false ? ' <em>(indisponible)</em>' : ''}</span>
       <span class="bw-option-price">${p.price != null ? p.price.toFixed(2) + ' €' : '–'}</span>
     </label>
   `).join('');

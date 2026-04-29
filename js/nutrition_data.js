@@ -113,26 +113,89 @@ const NUTRITION_DATA = {
 //  CONVERSION UNITÉS → GRAMMES
 // ══════════════════════════════════════════════
 const UNIT_WEIGHTS = {
-  'g':        (q) => q,
-  'kg':       (q) => q * 1000,
-  'ml':       (q) => q,           // densité ≈ 1 (eau / liquides légers)
-  'cl':       (q) => q * 10,
-  'L':        (q) => q * 1000,
-  'càs':      (_) => 15,          // 1 càs ≈ 15g
-  'càc':      (_) => 5,           // 1 càc ≈ 5g
-  'conserve': (_) => 400,         // 1 conserve ≈ 400g
-  'boîte':    (_) => 400,
-  'sachet':   (_) => 10,
-  'gousse':   (q) => q * 6,       // 1 gousse d'ail ≈ 6g
-  'brin':     (_) => 3,
-  'feuille':  (_) => 1,
-  'filet':    (_) => 10,
-  'pot':      (_) => 200,
-  'verre':    (_) => 200,
-  'trait':    (_) => 5,
-  'pièce':    (_) => null,        // dépend de l'ingrédient → defaultWeight
-  '':         (_) => null,        // idem
+  // ── Masse ──
+  'g':          (q) => q,
+  'kg':         (q) => q * 1000,
+  // ── Volume ──
+  'ml':         (q) => q,           // densité ≈ 1
+  'cl':         (q) => q * 10,
+  'dl':         (q) => q * 100,
+  'l':          (q) => q * 1000,
+  'L':          (q) => q * 1000,
+  // ── Mesures cuisine ──
+  'c. à soupe': (_) => 15,
+  'c. à café':  (_) => 5,
+  'càs':        (_) => 15,
+  'càc':        (_) => 5,
+  'tasse':      (_) => 240,
+  'bol':        (_) => 350,
+  // ── Contenants ──
+  'conserve':   (_) => 400,
+  'boîte':      (_) => 400,
+  'boite':      (_) => 400,
+  'sachet':     (_) => 10,
+  'pot':        (_) => 200,
+  'verre':      (_) => 200,
+  // ── Unités comptables avec poids approx ──
+  'gousse':     (q) => q * 6,
+  'brin':       (_) => 3,
+  'feuille':    (_) => 1,
+  'tranche':    (_) => 30,
+  'filet':      (_) => 10,
+  'trait':      (_) => 5,
+  'boule':      (_) => 80,
+  'cube':       (_) => 4,           // cube de bouillon
+  'noix de':    (_) => 15,          // "une noix de beurre"
+  // ── Unités sans conversion fixe → defaultWeight ──
+  'pièce':      (_) => null,
+  'branche':    (_) => null,
+  'botte':      (_) => null,
+  '':           (_) => null,
 };
+
+// ─── Unit Weights Custom (localStorage + Drive) ───────────────────────────────
+// Permet à l'utilisateur de définir des équivalences grammes pour les unités
+// inconnues rencontrées lors d'un import.
+const UNIT_WEIGHTS_CUSTOM_KEY = 'recettes_unit_weights_custom';
+
+function loadUnitWeightsCustom() {
+  try { return JSON.parse(localStorage.getItem(UNIT_WEIGHTS_CUSTOM_KEY) || '{}'); }
+  catch { return {}; }
+}
+
+function saveUnitWeightsCustom(custom) {
+  localStorage.setItem(UNIT_WEIGHTS_CUSTOM_KEY, JSON.stringify(custom));
+  if (typeof scheduleDriveSaveUnitWeights === 'function') scheduleDriveSaveUnitWeights();
+}
+
+function addUnitWeightCustom(unit, gramsPerUnit) {
+  const custom = loadUnitWeightsCustom();
+  custom[unit.trim().toLowerCase()] = parseFloat(gramsPerUnit);
+  saveUnitWeightsCustom(custom);
+}
+
+// ─── getUnitGrams — lookup unifié builtin + custom ───────────────────────────
+// Remplace l'accès direct à UNIT_WEIGHTS dans toGrams()
+function getUnitGrams(unit, qty) {
+  if (!unit) return null;
+  const u = unit.trim().toLowerCase();
+  // 1. Builtin
+  if (UNIT_WEIGHTS[u]) return UNIT_WEIGHTS[u](qty);
+  if (UNIT_WEIGHTS[unit]) return UNIT_WEIGHTS[unit](qty);
+  // 2. Custom
+  const custom = loadUnitWeightsCustom();
+  if (custom[u] != null) return custom[u] * qty;
+  return null;
+}
+
+// ─── isUnitMapped — pour le panel d'import ───────────────────────────────────
+function isUnitMapped(unit) {
+  if (!unit) return true; // pas d'unité = comptable, ok
+  const u = unit.trim().toLowerCase();
+  if (UNIT_WEIGHTS[u] !== undefined || UNIT_WEIGHTS[unit] !== undefined) return true;
+  const custom = loadUnitWeightsCustom();
+  return custom[u] != null;
+}
 
 // Convertit qty + unit en grammes pour un ingrédient donné
 function toGrams(qty, unit, normKey) {
@@ -147,9 +210,7 @@ function toGrams(qty, unit, normKey) {
     q = parseFloat(qty);
   }
 
-  const converter = UNIT_WEIGHTS[unit] || UNIT_WEIGHTS[''];
-  const grams     = converter(q);
-
+  const grams = getUnitGrams(unit, q);
   if (grams !== null) return grams;
 
   // Fallback → defaultWeight de l'ingrédient × quantité
