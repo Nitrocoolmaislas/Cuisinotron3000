@@ -147,8 +147,25 @@ const p_avail = p => p.isAvailable !== false;
 
 async function fetchColruytProducts(searchTerm) {
   try {
-    const products = await _getColruytCatalog();
-    if (!products.length) return [];
+    // Réutiliser colruytData de colruyt.js si déjà chargé, sinon le cache wizard
+    let products = (typeof colruytData !== 'undefined' && colruytData?.length)
+      ? colruytData
+      : _colruytCache;
+
+    // Sinon fetch direct (même logique que colruyt.js)
+    if (!products?.length) {
+      const listUrl = 'https://storage.googleapis.com/storage/v1/b/colruyt-products/o?maxResults=1&fields=items(name)';
+      const listRes = await fetch(listUrl);
+      const listData = await listRes.json();
+      const latestFile = listData.items?.[0]?.name;
+      if (!latestFile) return [];
+      const dataUrl = `https://storage.googleapis.com/storage/v1/b/colruyt-products/o/${encodeURIComponent(latestFile)}?alt=media`;
+      const dataRes = await fetch(dataUrl);
+      products = await dataRes.json();
+      _colruytCache = products;
+    }
+
+    if (!products?.length) return [];
 
     const term = searchTerm.toLowerCase();
     return products
@@ -157,7 +174,6 @@ async function fetchColruytProducts(searchTerm) {
         p.LongName?.toLowerCase().includes(term)
       )
       .sort((a, b) => {
-        // Disponibles en premier, puis tri par prix
         if (p_avail(a) && !p_avail(b)) return -1;
         if (!p_avail(a) && p_avail(b)) return 1;
         return (a.price?.basicPrice ?? 999) - (b.price?.basicPrice ?? 999);
