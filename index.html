@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/bridge-wizard.css">
+<link rel="stylesheet" href="css/importer.css">
 <!-- Google Identity Services — nécessaire pour la sync Drive -->
 <script src="https://accounts.google.com/gsi/client" onload="onGISLoad()" async defer></script>
 </head>
@@ -73,6 +74,12 @@
         <span class="icon">📝</span> Mes recettes
         <span class="count" id="cnt-custom">0</span>
       </button>
+      <button class="cat-btn" onclick="openRecipeForm()" style="margin-top:4px">
+        <span class="icon">➕</span> Ajouter une recette
+      </button>
+      <button class="cat-btn" onclick="openImportUrlPanel()" style="margin-top:4px;color:var(--terracotta)">
+        <span class="icon">📥</span> Importer une recette
+      </button>
     </div>
 
     <button id="bridge-wizard-btn" onclick="openBridgeWizard()" style="display:none;background:var(--terracotta);">
@@ -83,10 +90,6 @@
     <button class="stock-toggle-btn" onclick="toggleStock()">
       🛒 Mon stock d'ingrédients
       <span class="stock-count-badge" id="stock-badge">0</span>
-    </button>
-
-    <button class="stock-toggle-btn" style="background:var(--sage);margin-top:8px" onclick="openRecipeForm()">
-      ➕ Ajouter une recette
     </button>
   </aside>
 
@@ -213,6 +216,7 @@
     <button class="stock-tab active" onclick="switchStockTab('mon-stock')">📦 Mon stock</button>
     <button class="stock-tab" onclick="switchStockTab('catalogue')">📋 Catalogue</button>
     <button class="stock-tab" onclick="switchStockTab('ajouter')">✏️ Saisie libre</button>
+    <button class="stock-tab" onclick="switchStockTab('contribuer'); renderContributorPanel()">⚙️ Contribuer</button>
   </div>
 
   <!-- TAB 1 : MON STOCK -->
@@ -297,6 +301,11 @@
                  cursor:pointer;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:500;">+</button>
       </div>
     </div>
+  </div>
+
+  <!-- TAB 4 : CONTRIBUER -->
+  <div class="stock-tab-content" id="tab-contribuer">
+    <!-- Rendu dynamiquement par renderContributorPanel() -->
   </div>
 </div>
 
@@ -480,9 +489,77 @@
 <script src="js/custom_recipes.js"></script>
 <script src="js/app.js"></script>
 <script src="js/planner.js"></script>
+<script src="js/contributor.js"></script>
+<script src="js/importer.js"></script>
 <script src="js/bridgeWizard.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 
 <div id="bridge-wizard-overlay" onclick="closeBridgeWizard()"></div>
+
+<!-- ── IMPORT URL PANEL ── -->
+<div id="import-url-panel" class="import-url-panel">
+  <div class="iup-header">
+    <h3>📥 Importer une recette</h3>
+    <button class="iup-close" onclick="closeImportUrlPanel()">✕</button>
+  </div>
+  <div class="iup-body">
+    <div class="iup-section">
+      <div class="iup-level-badge">Niveau 1</div>
+      <label class="iup-label">Colle l'URL de la recette</label>
+      <p class="iup-hint">Fonctionne avec Marmiton, 750g, AllRecipes, BBC Good Food…</p>
+      <div class="iup-row">
+        <input id="import-url-input" class="iup-input" type="url"
+          placeholder="https://www.marmiton.org/recettes/..."
+          onkeydown="if(event.key==='Enter') importFromUrl()">
+        <button id="import-url-btn" class="iup-btn-primary" onclick="importFromUrl()">
+          <span id="import-spinner" style="display:none">⏳</span>
+          Importer
+        </button>
+      </div>
+      <div id="import-url-error" class="iup-error" style="display:none"></div>
+    </div>
+
+    <div id="import-fallbacks" style="display:none">
+      <div class="iup-divider">Le proxy n'a pas fonctionné ?</div>
+
+      <div class="iup-section iup-section-alt">
+        <div class="iup-level-badge iup-level-2">Niveau 2 — Bookmarklet</div>
+        <label class="iup-label">Utilise le bookmarklet directement sur la page</label>
+        <p class="iup-hint">
+          Va sur la recette dans ton navigateur, puis clique sur le favori
+          <strong>"📥 Importer recette"</strong>.<br>
+          Pas encore installé ?
+          <a href="#" onclick="toggleBookmarkletHelp(); return false;">Voir comment l'installer</a>
+        </p>
+        <div id="bk-help" style="display:none" class="iup-code-block">
+          <p style="margin:0 0 8px;font-size:0.78rem;color:#888;">Crée un favori et colle ce code dans le champ URL :</p>
+          <code id="bk-code" class="iup-code">javascript:(function(){var scripts=document.querySelectorAll('script[type="application/ld+json"]');var recipe=null;for(var i=0;i&lt;scripts.length;i++){try{var text=scripts[i].textContent.trim();if(!text)continue;var data=JSON.parse(text);var candidates=Array.isArray(data)?data:data['@graph']?data['@graph']:[data];recipe=candidates.find(function(x){var t=x['@type'];return t==='Recipe'||(Array.isArray(t)&amp;&amp;t.includes('Recipe'))});if(recipe)break;}catch(e){console.warn('LD+JSON parse error index '+i+':',e.message);}}if(!recipe){alert('❌ Aucune recette structurée trouvée.');return;}if(!recipe.url)recipe.url=window.location.href;window.location.href='https://nitrocoolmaislas.github.io/Cuisinotron3000/#import='+encodeURIComponent(JSON.stringify(recipe));})();</code>
+          <button class="iup-copy-btn" onclick="copyBookmarklet()">📋 Copier</button>
+        </div>
+      </div>
+
+      <div class="iup-section iup-section-alt">
+        <div class="iup-level-badge iup-level-3">Niveau 3 — Import manuel</div>
+        <label class="iup-label">
+          Colle le JSON-LD de la recette
+          <a href="#" onclick="toggleManualSection(); return false;" style="font-weight:400;text-transform:none;letter-spacing:0;">▼ Afficher</a>
+        </label>
+        <div id="import-manual-section" style="display:none">
+          <p class="iup-hint">Sur la page : F12 → Console → copie le contenu du script JSON-LD de type Recipe</p>
+          <textarea id="import-manual-textarea" class="iup-textarea"
+            placeholder='{"@type":"Recipe","name":"...","recipeIngredient":[...],...}'
+            rows="6"></textarea>
+          <button class="iup-btn-secondary" onclick="importFromManualJson()">Importer ce JSON</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="import-url-overlay" onclick="closeImportUrlPanel()"></div>
+
+<!-- ── IMPORT PANEL (confirmation) ── -->
+<div id="import-panel"></div>
+<div id="import-overlay" onclick="closeImportPanel()"></div>
+
 </body>
 </html>
