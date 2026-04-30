@@ -274,6 +274,12 @@ document.addEventListener('DOMContentLoaded', () => {
   renderStock();
   // Détection import bookmarklet (#import=...)
   if (typeof checkImportHash === 'function') checkImportHash();
+
+  // Précharger le catalogue Colruyt en arrière-plan
+  // pour que le Bridge Wizard soit prêt sans attendre la liste de courses
+  if (typeof fetchColruytLatest === 'function') {
+    setTimeout(() => fetchColruytLatest(), 2000);
+  }
   document.getElementById('stock-input').addEventListener('keydown', e => {
     if (e.key === 'Enter') addStockItem();
   });

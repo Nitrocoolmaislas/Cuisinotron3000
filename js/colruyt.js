@@ -38,12 +38,48 @@ function setColruytStatus(msg, type) {
   if (text) text.textContent = msg;
 }
 
+const COLRUYT_CACHE_TTL = 23 * 60 * 60 * 1000; // 23h en ms
+
+// ── IndexedDB helpers ─────────────────────────────────────────────────────────
+async function _idbGetColruyt() {
+  try {
+    const db = await idb.openDB('cuisinotron', 1, {
+      upgrade(db) { db.createObjectStore('colruyt'); }
+    });
+    return await db.get('colruyt', 'cache');
+  } catch(e) { return null; }
+}
+
+async function _idbSetColruyt(data) {
+  try {
+    const db = await idb.openDB('cuisinotron', 1, {
+      upgrade(db) { db.createObjectStore('colruyt'); }
+    });
+    await db.put('colruyt', { data, ts: Date.now() }, 'cache');
+  } catch(e) { console.warn('[Colruyt] IDB write error:', e.message); }
+}
+
 async function fetchColruytLatest(force = false) {
   if (colruytLoading) return;
   if (colruytData && !force) {
     setColruytStatus(`✓ ${colruytFileName} — ${colruytData.length} produits`, 'ok');
+
+    // Sauvegarder en cache IndexedDB (pas de limite de taille)
+    _idbSetColruyt(colruytData);
     return;
   }
+
+  // Vérifier le cache IndexedDB (valide 23h)
+  if (!force) {
+    const cached = await _idbGetColruyt();
+    if (cached && Date.now() - cached.ts < COLRUYT_CACHE_TTL) {
+      colruytData = cached.data;
+      setColruytStatus(`✓ Cache local — ${colruytData.length} produits`, 'ok');
+      console.info('[Colruyt] Chargé depuis IDB:', colruytData.length, 'produits');
+      return;
+    }
+  }
+
   colruytLoading = true;
   setColruytStatus('Recherche du fichier Colruyt le plus récent…', 'loading');
 
@@ -101,6 +137,9 @@ async function fetchColruytLatest(force = false) {
 
     setColruytStatus(`✓ ${colruytFileName} — ${colruytData.length} produits`, 'ok');
 
+    // Sauvegarder en cache IndexedDB (pas de limite de taille)
+    _idbSetColruyt(colruytData);
+
     if (_lastShoppingMissing.length > 0) {
       renderShoppingBody(_lastShoppingMissing, _lastShoppingInStock);
       renderNutritionTab();
@@ -139,7 +178,8 @@ function getColruytNutrition(p) {
 // Parmi tous les matches : isAvailable=true + prix le plus bas
 function matchColruyt(normKey) {
   if (!colruytData || colruytData.length === 0) return null;
-  const terms = (typeof bridgeLookupFull !== 'undefined' ? bridgeLookupFull(normKey) : bridgeLookup(normKey)) ?? [normKey];
+  const bridge = INGREDIENT_BRIDGE[normKey];
+  const terms  = bridge ? bridge.terms : [normKey];
 
   for (const term of terms) {
     const t = term.toLowerCase();
