@@ -140,14 +140,22 @@ async function loadFromDrive() {
     driveCustomFileId = await findDriveFileByName(DRIVE_CUSTOMS_FILE);
     if (driveCustomFileId) {
       const data = await fetchDriveFile(driveCustomFileId);
-      if (Array.isArray(data.customRecipes) && data.customRecipes.length > 0) {
-        data.customRecipes.forEach(r => {
-          r.custom = true;
-          if (!RECIPES.find(x => x.id === r.id)) RECIPES.push(r);
-          else Object.assign(RECIPES.find(x => x.id === r.id), r);
-        });
-        localStorage.setItem(CUSTOM_RECIPES_KEY, JSON.stringify(data.customRecipes));
-      }
+      // Fusionner Drive + localStorage
+      // Drive peut être en retard si une recette a été créée hors-ligne ou entre deux syncs
+      const driveRecipes = Array.isArray(data.customRecipes) ? data.customRecipes : [];
+      const localRecipes = JSON.parse(localStorage.getItem(CUSTOM_RECIPES_KEY) || '[]');
+      const merged = [...driveRecipes];
+      localRecipes.forEach(r => {
+        if (!merged.find(x => x.id === r.id)) merged.push(r);
+      });
+      merged.forEach(r => {
+        r.custom = true;
+        if (!RECIPES.find(x => x.id === r.id)) RECIPES.push(r);
+        else Object.assign(RECIPES.find(x => x.id === r.id), r);
+      });
+      localStorage.setItem(CUSTOM_RECIPES_KEY, JSON.stringify(merged));
+      // Si des recettes locales manquaient sur Drive → forcer une resync
+      if (merged.length > driveRecipes.length) scheduleCustomRecipesSave();
     }
 
     // Charge le bridge custom
