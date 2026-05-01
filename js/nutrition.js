@@ -45,10 +45,21 @@ async function fetchNutritionFromOFF(ean) {
 // 2. Open Food Facts par nom si pas de correspondance CIQUAL (futur)
 // Note : le dataset Colruyt ne contient pas d'EAN ni de données nutritionnelles
 async function getNutritionFor(normKey, colruytProduct) {
-  // 1. Table CIQUAL statique
-  const ciqual = (typeof getNutriData !== "undefined" ? getNutriData(normKey) : NUTRITION_DATA[normKey]);
-  if (ciqual) return { ...ciqual, source: 'ciqual' };
-
+  // Source unique : CIQUAL_FR via getNutriData() (ciqual_fr.js)
+  if (typeof getNutriData !== 'undefined') {
+    const ciqual = getNutriData(normKey);
+    if (ciqual) return {
+      kcal: ciqual.kcal ?? 0,
+      p:    ciqual.prot ?? 0,
+      c:    ciqual.gluc ?? 0,
+      f:    ciqual.lip  ?? 0,
+      fb:   ciqual.fib  ?? 0,
+      source: 'ciqual'
+    };
+  }
+  // Fallback legacy (si ciqual_fr.js pas encore chargé)
+  const legacy = NUTRITION_DATA[normKey];
+  if (legacy) return { ...legacy, source: 'ciqual_legacy' };
   return null;
 }
 
@@ -66,7 +77,13 @@ async function calcWeeklyNutrition(selectedIds) {
     const recipeNutri = { kcal: 0, p: 0, c: 0, f: 0, fb: 0 };
 
     for (const raw of recipe.ingredients) {
-      const { name, qty, unit } = parseIngredient(raw);
+      let name, qty, unit;
+      if (typeof parseIngredientString !== 'undefined') {
+        const p = parseIngredientString(raw);
+        name = p.rawName; qty = p.qty ? String(p.qty) : ''; unit = p.unit || '';
+      } else {
+        ({ name, qty, unit } = parseIngredient(raw));
+      }
       const key   = normIngredient(name);
       const grams = toGrams(qty, unit, key);
       total++;

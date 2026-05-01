@@ -24,6 +24,9 @@ const UNITS = {
   'botte':'botte','bottes':'botte','gousse':'gousse','gousses':'gousse',
   'branche':'branche','branches':'branche','brin':'brin','brins':'brin',
   'filet':'filet','trait':'trait',
+  'pot':'pot','pots':'pot',
+  'boule':'boule','boules':'boule',
+  'cube':'cube','cubes':'cube',
 };
 
 const STRIP_QUALIFIERS_FALLBACK = new Set([
@@ -55,10 +58,20 @@ const FRACTIONS = {'½':0.5,'⅓':0.333,'⅔':0.667,'¼':0.25,'¾':0.75,'⅕':0.
 function cleanIngredientName(raw) {
   let name = raw.toLowerCase().trim();
   name = name.replace(/\s+ou\b.*$/, '');
-  name = name.replace(/\s*\/.*$/, '');
+  // Tronquage au '/' seulement si ce n'est pas une fraction (chiffre/chiffre)
+  name = name.replace(/(?<!\d)\/(?!\d).*$/, '').trim();
+
+  // Tronquage aux groupes prépositionnels finalistes
+  // ex: "pour la décoration", "pour le service", "selon le goût"
+  name = name.replace(/\s+(?:pour|selon|en option|si désiré|si desire|au goût|au gout)\b.*$/i, '').trim();
   name = name.replace(/\b(au naturel|en boite|en boîte|de type\s+\S+)\b/gi, '');
   name = name.replace(/\s+\d+\s*%$/, '').trim();
   name = name.replace(/\([^)]*\)/g, '');
+
+  // Strip modificateurs d'unité en tête de nom (avant règle de position)
+  // ex: "bombées de cacao" → "cacao"
+  name = name.replace(/^(?:bomb[eé]e?s?|rase?s?|comble?s?|bien pleines?|pleines?)\s+(?:de\s+|d['\u2019]\s*)?/i, '');
+
   const words = name.split(/\s+/).filter(Boolean);
   name = words.filter((w, i) => {
     if (i === 0) return true;                  // nom de base — toujours conservé
@@ -110,6 +123,9 @@ function parseIngredientString(str) {
       break;
     }
   }
+
+  // Strip modificateurs d'unité résiduels (bombées, rases, combles...)
+  s = s.replace(/^(?:bomb[eé]e?s?|rase?s?|comble?s?|bien pleines?|pleines?)\s+/i, '');
 
   return { qty, unit, rawName: cleanIngredientName(s), original };
 }
