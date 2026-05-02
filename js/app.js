@@ -13,8 +13,11 @@ function checkFeasibility(recipe) {
   let matched = 0;
   const missing = [];
   for (const ing of recipe.ingredients) {
-    const { name } = parseIngredient(ing);
-    const key = normIngredient(name);
+    // Utiliser le nouveau parser si disponible (gère 1/2, fractions, pots...)
+    const parsedName = typeof parseIngredientString !== 'undefined'
+      ? parseIngredientString(ing).rawName
+      : parseIngredient(ing).name;
+    const key = normIngredient(parsedName);
     let found = key in stock;
     if (!found) found = stockKeys.some(sk => sk.length >= 3 && key.includes(sk) && key.replace(sk, '').trim().length < 6);
     if (!found) found = stockKeys.some(sk => key.length >= 3 && sk.includes(key) && sk.replace(key, '').trim().length < 6);
@@ -68,7 +71,7 @@ function renderGrid() {
       ? `<span>⏱ ${r.prepTime + r.cookTime} min</span>`
       : `<span>⚡ ${r.prepTime} min</span>`;
     const customBadge = r.custom ? `<span class="custom-badge">perso</span>` : '';
-    return `<div class="recipe-card" onclick="openModal('${r.id}')">
+    return `<div class="recipe-card" onclick="openModal(this.dataset.id)" data-id="${escapeAttr(r.id)}">
       <div class="card-category">${r.categoryLabel}${customBadge}</div>
       <div class="card-name">${r.name}</div>
       <div class="card-meta">${cookInfo}<span>👤 ${r.servings} portion${r.servings > 1 ? 's' : ''}</span></div>
@@ -100,8 +103,10 @@ function openModal(id) {
 
   const stockKeys       = Object.keys(stock);
   const ingredientsHTML = r.ingredients.map(ing => {
-    const { name } = parseIngredient(ing);
-    const key = normIngredient(name);
+    const parsedName = typeof parseIngredientString !== 'undefined'
+      ? parseIngredientString(ing).rawName
+      : parseIngredient(ing).name;
+    const key = normIngredient(parsedName);
     let inStock = key in stock;
     if (!inStock) inStock = stockKeys.some(sk => sk.length >= 3 && key.includes(sk) && key.replace(sk, '').trim().length < 6);
     if (!inStock) inStock = stockKeys.some(sk => key.length >= 3 && sk.includes(key) && sk.replace(key, '').trim().length < 6);
