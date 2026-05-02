@@ -22,7 +22,9 @@ let driveBridgeTimer  = null;
 function _initGIS() {
   const configured = GOOGLE_CLIENT_ID !== 'VOTRE_CLIENT_ID_ICI';
   document.getElementById('drive-not-configured').style.display = configured ? 'none' : '';
-  document.getElementById('drive-signin-row').style.display     = configured ? '' : 'none';
+  if (!driveReady) {
+    document.getElementById('drive-signin-row').style.display = configured ? '' : 'none';
+  }
   if (!configured) return;
 
   driveTokenClient = google.accounts.oauth2.initTokenClient({
@@ -32,6 +34,9 @@ function _initGIS() {
       if (resp.error) { setDriveStatus("Erreur d'authentification", 'error'); return; }
       driveAccessToken = resp.access_token;
       driveReady = true;
+      const expiry = Date.now() + (resp.expires_in || 3600) * 1000;
+      localStorage.setItem('drive_token', resp.access_token);
+      localStorage.setItem('drive_token_expiry', String(expiry));
       showDriveConnected();
       await loadFromDrive();
     }
@@ -45,6 +50,13 @@ function onGISLoad() {
 
 document.addEventListener('DOMContentLoaded', () => {
   if (window._gisReady) _initGIS();
+  const savedToken  = localStorage.getItem('drive_token');
+  const tokenExpiry = parseInt(localStorage.getItem('drive_token_expiry') || '0');
+  if (savedToken && Date.now() < tokenExpiry - 60000) {
+    driveAccessToken = savedToken;
+    driveReady = true;
+    setTimeout(() => { showDriveConnected(); loadFromDrive(); }, 300);
+  }
 });
 
 
@@ -57,6 +69,8 @@ function driveSignIn() {
 function driveSignOut() {
   if (driveAccessToken) google.accounts.oauth2.revoke(driveAccessToken, () => {});
   driveAccessToken = null;
+  localStorage.removeItem('drive_token');
+  localStorage.removeItem('drive_token_expiry');
   driveStockFileId = null;
   driveCustomFileId = null;
   driveBridgeFileId      = null;
