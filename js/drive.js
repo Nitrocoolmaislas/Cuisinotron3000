@@ -22,9 +22,7 @@ let driveBridgeTimer  = null;
 function _initGIS() {
   const configured = GOOGLE_CLIENT_ID !== 'VOTRE_CLIENT_ID_ICI';
   document.getElementById('drive-not-configured').style.display = configured ? 'none' : '';
-  if (!driveReady) {
-    document.getElementById('drive-signin-row').style.display = configured ? '' : 'none';
-  }
+  document.getElementById('drive-signin-row').style.display     = configured ? '' : 'none';
   if (!configured) return;
 
   driveTokenClient = google.accounts.oauth2.initTokenClient({
@@ -34,11 +32,13 @@ function _initGIS() {
       if (resp.error) { setDriveStatus("Erreur d'authentification", 'error'); return; }
       driveAccessToken = resp.access_token;
       driveReady = true;
-      const expiry = Date.now() + (resp.expires_in || 3600) * 1000;
-      localStorage.setItem('drive_token', resp.access_token);
-      localStorage.setItem('drive_token_expiry', String(expiry));
       showDriveConnected();
       await loadFromDrive();
+      // Sync les données locales vers Drive (bridge, unit weights créés hors-ligne)
+      const localBridge = JSON.parse(localStorage.getItem('recettes_bridge_custom') || '{}');
+      if (Object.keys(localBridge).length > 0) scheduleBridgeSave();
+      const localWeights = JSON.parse(localStorage.getItem('recettes_unit_weights_custom') || '{}');
+      if (Object.keys(localWeights).length > 0) scheduleDriveSaveUnitWeights();
     }
   });
 }
@@ -50,13 +50,6 @@ function onGISLoad() {
 
 document.addEventListener('DOMContentLoaded', () => {
   if (window._gisReady) _initGIS();
-  const savedToken  = localStorage.getItem('drive_token');
-  const tokenExpiry = parseInt(localStorage.getItem('drive_token_expiry') || '0');
-  if (savedToken && Date.now() < tokenExpiry - 60000) {
-    driveAccessToken = savedToken;
-    driveReady = true;
-    setTimeout(() => { showDriveConnected(); loadFromDrive(); }, 300);
-  }
 });
 
 
@@ -69,8 +62,6 @@ function driveSignIn() {
 function driveSignOut() {
   if (driveAccessToken) google.accounts.oauth2.revoke(driveAccessToken, () => {});
   driveAccessToken = null;
-  localStorage.removeItem('drive_token');
-  localStorage.removeItem('drive_token_expiry');
   driveStockFileId = null;
   driveCustomFileId = null;
   driveBridgeFileId      = null;
@@ -195,6 +186,21 @@ async function loadFromDrive() {
     renderStock(); renderCatalog(); renderGrid(); updateCounts();
     const now = new Date().toLocaleString('fr-BE', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
     setDriveStatus('Synchronisé · ' + now, 'ok');
+
+    // Syncer les données locales qui n'existent pas encore sur Drive
+    // (créées hors-ligne ou avant la première connexion)
+    const localBridge = JSON.parse(localStorage.getItem('recettes_bridge_custom') || '{}');
+    if (!driveBridgeFileId && Object.keys(localBridge).length > 0) {
+      saveBridgeCustomToDrive();
+    }
+    const localWeights = JSON.parse(localStorage.getItem('recettes_unit_weights_custom') || '{}');
+    if (!driveUnitWeightsFileId && Object.keys(localWeights).length > 0) {
+      saveUnitWeightsToDrive();
+    }
+    const localCiqual = JSON.parse(localStorage.getItem('recettes_ciqual_custom') || '{}');
+    if (typeof saveCiqualCustomToDrive === 'function' && Object.keys(localCiqual).length > 0) {
+      saveCiqualCustomToDrive();
+    }
   } catch(e) {
     setDriveStatus('Erreur de chargement', 'error');
     console.error('Drive load error:', e);
