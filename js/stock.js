@@ -2,6 +2,8 @@
 //  STOCK — état global + gestion
 // ══════════════════════════════════════════════
 
+let _mergeSelection = new Set();
+
 function loadStockFromStorage() {
   try {
     const raw = JSON.parse(localStorage.getItem('recettes_stock') || 'null');
@@ -24,7 +26,10 @@ function migrateStockKeys(rawStock) {
   const migrated = {};
   let changed = false;
   for (const [oldKey, entry] of Object.entries(rawStock)) {
-    const newKey = normIngredient(entry.name || oldKey);
+    // Ignorer les entrées corrompues (nom commençant par / ou chiffre isolé)
+    const entryName = entry.name || oldKey;
+    if (/^[\/\d]/.test(entryName.trim())) { changed = true; continue; }
+    const newKey = normIngredient(entryName);
     if (newKey !== oldKey) {
       changed = true;
       console.info('[Stock] Migration clé:', oldKey, '→', newKey);
@@ -91,10 +96,13 @@ function renderStock() {
   }
   empty.style.display = 'none';
   clrBtn.style.display = '';
+  const mergeItems = _mergeSelection.size > 0;
   list.innerHTML = keys.sort().map(k => {
     const e = stock[k];
-    return `<div class="stock-item">
-      <span style="color:var(--success);font-size:0.8rem;flex-shrink:0">●</span>
+    const selected = _mergeSelection.has(k);
+    return `<div class="stock-item ${selected ? 'stock-item-selected' : ''}">
+      <span class="stock-merge-cb" onclick="toggleMergeSelect('${k}')" title="Sélectionner pour fusionner"
+        style="cursor:pointer;font-size:0.9rem;flex-shrink:0;color:${selected ? 'var(--sage)' : 'var(--border)'}">${selected ? '☑' : '☐'}</span>
       <span class="stock-item-name" style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${e.name}</span>
       <input type="number" min="0" step="any" value="${e.qty || ''}"
         placeholder="qté"
@@ -106,6 +114,96 @@ function renderStock() {
       <button class="stock-item-remove" onclick="removeStock('${k}')" title="Retirer">✕</button>
     </div>`;
   }).join('');
+
+  // Bouton fusion flottant
+  let mergeBtn = document.getElementById('stock-merge-btn');
+  if (!mergeBtn) {
+    mergeBtn = document.createElement('button');
+    mergeBtn.id = 'stock-merge-btn';
+    mergeBtn.style.cssText = 'display:none;position:sticky;bottom:8px;width:100%;padding:10px;background:var(--sage);color:white;border:none;border-radius:8px;font-family:DM Sans,sans-serif;font-weight:500;cursor:pointer;margin-top:8px;';
+    mergeBtn.onclick = openMergePanel;
+    list.parentNode.appendChild(mergeBtn);
+  }
+  mergeBtn.style.display = _mergeSelection.size >= 2 ? '' : 'none';
+  mergeBtn.textContent = '🔀 Fusionner (' + _mergeSelection.size + ' sélectionnées)';
+}
+
+function toggleMergeSelect(key) {
+  if (_mergeSelection.has(key)) _mergeSelection.delete(key);
+  else _mergeSelection.add(key);
+  renderStock();
+}
+
+function openMergePanel() {
+  if (_mergeSelection.size < 2) return;
+  const entries = [..._mergeSelection].map(k => ({ key: k, ...stock[k] }));
+  const panel = document.getElementById('merge-panel');
+  if (!panel) return;
+  panel.innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 20px 12px;border-bottom:1px solid var(--border)">
+      <h3 style="margin:0;font-family:'Playfair Display',serif;font-size:1rem">🔀 Fusionner des entrées</h3>
+      <button onclick="closeMergePanel()" style="background:none;border:none;font-size:1.1rem;cursor:pointer">✕</button>
+    </div>
+    <div style="padding:16px 20px;display:flex;flex-direction:column;gap:12px">
+      <p style="font-size:0.8rem;color:var(--warm-grey);margin:0">Choisis la clé canonique à conserver. Les quantités des autres seront additionnées puis supprimées.</p>
+      ${entries.map(e => `
+        <label style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--cream);border-radius:8px;cursor:pointer">
+          <input type="radio" name="merge_target" value="${e.key}" ${entries[0].key === e.key ? 'checked' : ''}>
+          <span style="flex:1">
+            <div style="font-weight:500;font-size:0.88rem">${e.name}</div>
+            <div style="font-size:0.72rem;color:var(--warm-grey);font-family:monospace">${e.key}</div>
+          </span>
+          <span style="font-size:0.8rem;color:var(--warm-grey)">${e.qty || 0} ${e.unit || ''}</span>
+        </label>
+      `).join('')}
+      <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:4px">
+        <button onclick="closeMergePanel()" style="padding:8px 14px;background:none;border:none;font-family:'DM Sans',sans-serif;color:var(--warm-grey);cursor:pointer">Annuler</button>
+        <button onclick="confirmMerge()" style="padding:8px 18px;background:var(--sage);color:white;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-weight:500;cursor:pointer">🔀 Fusionner</button>
+      </div>
+    </div>
+  `;
+  panel.style.display = '';
+}
+
+function closeMergePanel() {
+  const panel = document.getElementById('merge-panel');
+  if (panel) panel.style.display = 'none';
+  _mergeSelection.clear();
+  renderStock();
+}
+
+function confirmMerge() {
+  const radio = document.querySelector('input[name="merge_target"]:checked');
+  if (!radio) return;
+  const targetKey = radio.value;
+
+  let totalGrams = 0;
+  for (const key of _mergeSelection) {
+    const e = stock[key];
+    if (!e) continue;
+    const g = typeof toGrams !== 'undefined' ? (toGrams(String(e.qty || 0), e.unit, key) || (e.qty || 0)) : (e.qty || 0);
+    totalGrams += g;
+    if (key !== targetKey) delete stock[key];
+  }
+
+  // Mettre à jour la cible
+  const target = stock[targetKey];
+  if (target.unit && target.unit !== '' && target.unit !== '—') {
+    // Recalculer dans l'unité d'origine
+    const factor = totalGrams / (typeof toGrams !== 'undefined' ? (toGrams('1', target.unit, targetKey) || 1) : 1);
+    target.qty = Math.round(factor * 10) / 10;
+  } else {
+    target.qty = Math.round(totalGrams * 10) / 10;
+    target.unit = 'g';
+  }
+
+  saveStock();
+  closeMergePanel();
+  renderStock();
+  renderCatalog();
+  renderGrid();
+  updateCounts();
+  showToast('✅ Fusionné → ' + targetKey);
 }
 
 function updateStockQty(key, val) {
@@ -125,15 +223,19 @@ function addStockItem() {
   const val = input.value.trim();
   if (!val) return;
 
-  // Canonicalisation : "épinards frais" → "epinards", "filet d'huile" → "huile d olive" + 15ml
-  const parsed = canonicalize(parseIngredient(val));
-  const key    = normIngredient(parsed.name);
+  const p = typeof parseIngredientString !== 'undefined'
+    ? (() => { const r = parseIngredientString(val); return { name: r.rawName, unit: r.unit || '', qty: r.qty ? String(r.qty) : '' }; })()
+    : canonicalize(parseIngredient(val));
 
-  if (!(key in stock)) {
-    stock[key] = { name: parsed.name, unit: parsed.unit || '', qty: parseFloat(parsed.qty) || 0 };
-  } else if (parsed.qty) {
-    // Si l'ingrédient existe déjà, on additionne la quantité
-    stock[key].qty = (stock[key].qty || 0) + (parseFloat(parsed.qty) || 0);
+  const key = normIngredient(p.name);
+
+  if (key in stock) {
+    // Doublon : additionner la quantité + feedback
+    if (p.qty) stock[key].qty = (stock[key].qty || 0) + (parseFloat(p.qty) || 0);
+    if (typeof showToast === 'function') showToast(`📦 "${stock[key].name}" déjà en stock — quantité mise à jour`);
+  } else {
+    stock[key] = { name: p.name, unit: p.unit, qty: parseFloat(p.qty) || 0 };
+    if (typeof showToast === 'function') showToast(`✅ "${p.name}" ajouté`);
   }
   saveStock();
   renderStock();
@@ -167,13 +269,18 @@ function clearStock() {
 function addFromTextarea() {
   const ta = document.getElementById('stock-textarea');
   const lines = ta.value.split('\n').map(l => l.trim()).filter(Boolean);
+  let added = 0, updated = 0;
   lines.forEach(line => {
-    const parsed = canonicalize(parseIngredient(line));
-    const key    = normIngredient(parsed.name);
-    if (!(key in stock)) {
-      stock[key] = { name: parsed.name, unit: parsed.unit || '', qty: parseFloat(parsed.qty) || 0 };
-    } else if (parsed.qty) {
-      stock[key].qty = (stock[key].qty || 0) + (parseFloat(parsed.qty) || 0);
+    const p = typeof parseIngredientString !== 'undefined'
+      ? (() => { const r = parseIngredientString(line); return { name: r.rawName, unit: r.unit || '', qty: r.qty ? String(r.qty) : '' }; })()
+      : canonicalize(parseIngredient(line));
+    const key = normIngredient(p.name);
+    if (key in stock) {
+      if (p.qty) stock[key].qty = (stock[key].qty || 0) + (parseFloat(p.qty) || 0);
+      updated++;
+    } else {
+      stock[key] = { name: p.name, unit: p.unit, qty: parseFloat(p.qty) || 0 };
+      added++;
     }
   });
   saveStock();
@@ -182,6 +289,10 @@ function addFromTextarea() {
   renderGrid();
   updateCounts();
   ta.value = '';
+  const parts = [];
+  if (added)   parts.push(added + ' ajouté' + (added > 1 ? 's' : ''));
+  if (updated) parts.push(updated + ' mis à jour');
+  if (typeof showToast === 'function' && parts.length) showToast('📦 ' + parts.join(', '));
 }
 
 // ══════════════════════════════════════════════
@@ -207,7 +318,12 @@ function buildIngredientMap(catFilter) {
   RECIPES.forEach(r => {
     if (catFilter !== 'all' && r.category !== catFilter) return;
     r.ingredients.forEach(raw => {
-      const { qty, unit, name } = parseIngredient(raw);
+      const _p = typeof parseIngredientString !== 'undefined'
+        ? parseIngredientString(raw)
+        : parseIngredient(raw);
+      const qty = _p.qty ? String(_p.qty) : (_p.qty || '');
+      const unit = _p.unit || '';
+      const name = _p.rawName || _p.name || '';
       const key = normIngredient(name);
       if (!map.has(key)) {
         map.set(key, { name, unit, qties: [], recipes: new Set(), cats: new Set() });
@@ -335,4 +451,5 @@ function switchStockTab(id) {
   const idx = ['mon-stock', 'catalogue', 'ajouter'].indexOf(id);
   document.querySelectorAll('.stock-tab')[idx]?.classList.add('active');
   if (id === 'catalogue') renderCatalog();
-}
+          }
+    
