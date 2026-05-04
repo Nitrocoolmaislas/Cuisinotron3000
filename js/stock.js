@@ -3,6 +3,7 @@
 // ══════════════════════════════════════════════
 
 let _mergeSelection = new Set();
+let _catalogMergeSelection = new Set();
 
 function loadStockFromStorage() {
   try {
@@ -128,6 +129,12 @@ function renderStock() {
   mergeBtn.textContent = '🔀 Fusionner (' + _mergeSelection.size + ' sélectionnées)';
 }
 
+function toggleCatalogMerge(key) {
+  if (_catalogMergeSelection.has(key)) _catalogMergeSelection.delete(key);
+  else _catalogMergeSelection.add(key);
+  renderCatalog();
+}
+
 function toggleMergeSelect(key) {
   if (_mergeSelection.has(key)) _mergeSelection.delete(key);
   else _mergeSelection.add(key);
@@ -136,7 +143,11 @@ function toggleMergeSelect(key) {
 
 function openMergePanel() {
   if (_mergeSelection.size < 2) return;
-  const entries = [..._mergeSelection].map(k => ({ key: k, ...stock[k] }));
+  const sel = _catalogMergeSelection.size > 0 ? _catalogMergeSelection : _mergeSelection;
+  const entries = [...sel].map(k => {
+    const s = stock[k];
+    return { key: k, name: s?.name || k, unit: s?.unit || '', qty: s?.qty || 0 };
+  });
   const panel = document.getElementById('merge-panel');
   if (!panel) return;
   panel.innerHTML = `
@@ -169,7 +180,9 @@ function closeMergePanel() {
   const panel = document.getElementById('merge-panel');
   if (panel) panel.style.display = 'none';
   _mergeSelection.clear();
+  _catalogMergeSelection.clear();
   renderStock();
+  renderCatalog();
 }
 
 function confirmMerge() {
@@ -428,9 +441,12 @@ function renderCatalog() {
       ? `<button class="toggle-stock-btn remove" onclick="catalogRemove('${key}')" title="Retirer du stock">−</button>`
       : `<button class="toggle-stock-btn add"    onclick="catalogExpand('${key}')" title="Ajouter au stock">+</button>`;
 
-    return `<tr class="${rowClass}">
+    const catSelected = _catalogMergeSelection.has(key);
+    return `<tr class="${rowClass} ${catSelected ? 'catalog-row-selected' : ''}">
       <td>
-        <div class="ing-name">${v.name}</div>
+        <span onclick="toggleCatalogMerge('${key}')" title="Sélectionner pour fusionner"
+          style="cursor:pointer;margin-right:6px;color:${catSelected ? 'var(--sage)' : 'var(--border)'}">${catSelected ? '☑' : '☐'}</span>
+        <div class="ing-name" style="display:inline">${v.name}</div>
         <span class="ing-recipes">×${v.recipes.size} recette${v.recipes.size > 1 ? 's' : ''}</span>
       </td>
       <td class="col-unit">${unitCell}</td>
@@ -441,6 +457,18 @@ function renderCatalog() {
       </td>
     </tr>`;
   }).join('');
+
+  // Bouton fusion flottant
+  let mergeBtn = document.getElementById('catalog-merge-btn');
+  if (!mergeBtn) {
+    mergeBtn = document.createElement('button');
+    mergeBtn.id = 'catalog-merge-btn';
+    mergeBtn.style.cssText = 'display:none;position:sticky;bottom:8px;width:calc(100% - 32px);margin:8px 16px;padding:10px;background:var(--sage);color:white;border:none;border-radius:8px;font-family:DM Sans,sans-serif;font-weight:500;cursor:pointer;';
+    mergeBtn.onclick = openMergePanel;
+    tbody.parentNode.parentNode.appendChild(mergeBtn);
+  }
+  mergeBtn.style.display = _catalogMergeSelection.size >= 2 ? '' : 'none';
+  mergeBtn.textContent = '🔀 Fusionner (' + _catalogMergeSelection.size + ' sélectionnées)';
 }
 
 // ── Tabs du panneau stock ──
@@ -451,5 +479,5 @@ function switchStockTab(id) {
   const idx = ['mon-stock', 'catalogue', 'ajouter'].indexOf(id);
   document.querySelectorAll('.stock-tab')[idx]?.classList.add('active');
   if (id === 'catalogue') renderCatalog();
-          }
+                                                 }
     
