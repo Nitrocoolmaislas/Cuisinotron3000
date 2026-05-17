@@ -81,19 +81,24 @@ function fuzzyMatchCiqual(normKey, topN = 3) {
   const queryWords = normKey.split(' ').filter(w => w.length > 2);
   if (!queryWords.length) return [];
 
+  // Dé-pluraliser pour le matching
+  const depWords = queryWords.map(w => w.replace(/s$/, ''));
+  const headWord = depWords[0]; // nom de tête — obligatoire en début d'entrée
+
   const scored = CIQUAL_FR.map(entry => {
-    let score = 0;
     // Correspondance exacte = score max
-    if (entry.norm === normKey) score = 100;
-    else if (entry.norm.includes(normKey)) score = 80;
-    else {
-      // Score par mots communs
-      for (const w of queryWords) {
-        if (entry.norm.includes(w)) score += 10;
-      }
-      // Bonus si commence par le même mot
-      if (entry.norm.startsWith(queryWords[0])) score += 5;
+    if (entry.norm === normKey || entry.k === normKey) return { ...entry, score: 100 };
+
+    // Le nom de tête DOIT commencer la clé courte CIQUAL (pas le norm complet)
+    if (!entry.k.startsWith(headWord)) return { ...entry, score: 0 };
+
+    let score = 20;
+    for (let i = 1; i < depWords.length; i++) {
+      if (entry.k.includes(depWords[i])) score += 8;
     }
+    const entryWords = entry.k.split(' ').length;
+    if (entryWords > queryWords.length + 2) score -= (entryWords - queryWords.length) * 2;
+
     return { ...entry, score };
   });
 
@@ -106,9 +111,7 @@ function fuzzyMatchCiqual(normKey, topN = 3) {
 // ─── Fetch produits Colruyt ───────────────────────────────────────────────────
 /**
 // ─── Cache mémoire du catalogue Colruyt ──────────────────────────────────────
-// Téléchargé une seule fois par session — évite de re-fetcher à chaque recherche
-let _colruytCache = null;
-let _colruytCacheLoading = null; // Promise en cours si fetch en cours
+let _colruytCache = null; // cache mémoire session
 
 async function _getColruytCatalog() {
   // Réutiliser le catalogue déjà chargé par colruyt.js si disponible
@@ -258,13 +261,13 @@ async function renderWizardStep(panel, pending, index) {
           <div class="bw-options" id="bw-ciqual-options">
             ${ciqualMatches.map((m, i) => `
               <label class="bw-option ${i === 0 ? 'selected' : ''}" data-idx="${i}">
-                <input type="radio" name="ciqual" value="${i}" ${i === 0 ? 'checked' : ''}>
+                <input type="radio" name="ciqual_match" value="${m.k || m.norm}" ${i === 0 ? 'checked' : ''}>
                 <span class="bw-option-name">${m.nom}</span>
                 <span class="bw-option-sub">${m.ssgrp}</span>
               </label>
             `).join('')}
             <label class="bw-option" data-idx="none">
-              <input type="radio" name="ciqual" value="none">
+              <input type="radio" name="ciqual_match" value="none">
               <span class="bw-option-name">Aucune correspondance</span>
             </label>
           </div>
@@ -277,7 +280,7 @@ async function renderWizardStep(panel, pending, index) {
         <div class="bw-search-row">
           <input type="text" id="bw-colruyt-term"
             placeholder="Ex: havervlokken"
-            value="${bestCiqual ? '' : ''}"
+            value="${(typeof whitelistEntry !== 'undefined' && whitelistEntry(normKey)?.sku) || ''}"
             class="bw-input"/>
           <button class="bw-btn-secondary" onclick="searchColruytFromWizard()">Rechercher</button>
         </div>
@@ -294,7 +297,7 @@ async function renderWizardStep(panel, pending, index) {
   `;
 
   // Interaction sélection option CIQUAL
-  panel.querySelectorAll('input[name="ciqual"]').forEach(radio => {
+  panel.querySelectorAll('input[name="ciqual_match"]').forEach(radio => {
     radio.addEventListener('change', () => {
       panel.querySelectorAll('.bw-option').forEach(o => o.classList.remove('selected'));
       radio.closest('.bw-option').classList.add('selected');
@@ -355,12 +358,19 @@ function confirmWizardStep(normKey, index) {
   const selectedIdx = selectedRadio ? parseInt(selectedRadio.value) : 0;
   const chosen = products[selectedIdx];
 
-  // Sauvegarder dans le bridge custom
+  // Sauvegarder dans le bridge custom (Colruyt)
   const custom = loadBridgeCustom();
   custom[normKey] = [chosen.term];
   saveBridgeCustom(custom);
 
+  // Sauvegarder la correspondance CIQUAL choisie (persistance nutritionnelle)
+  const ciqualRadio = document.querySelector('input[name="ciqual_match"]:checked');
+  if (ciqualRadio && ciqualRadio.value && typeof setCiqualCustom === 'function') {
+    setCiqualCustom(normKey, ciqualRadio.value);
+  }
+
   // Retirer des pending
+  removePending(normKey);
   removePending(normKey);
 
   // Étape suivante

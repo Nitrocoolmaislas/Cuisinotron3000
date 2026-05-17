@@ -68,6 +68,10 @@ function cleanIngredientName(raw) {
   name = name.replace(/\s+\d+\s*%$/, '').trim();
   name = name.replace(/\([^)]*\)/g, '');
 
+  // Strip fraction résiduelle en tête : "/2 sachet" → "sachet"
+  // Se produit quand "1 /2" (avec espace) n'est pas reconnu comme fraction
+  name = name.replace(/^\/\d+\s*/g, '').trim();
+
   // Strip modificateurs d'unité en tête de nom (avant règle de position)
   // ex: "bombées de cacao" → "cacao"
   name = name.replace(/^(?:bomb[eé]e?s?|rase?s?|comble?s?|bien pleines?|pleines?)\s+(?:de\s+|d['\u2019]\s*)?/i, '');
@@ -127,7 +131,18 @@ function parseIngredientString(str) {
   // Strip modificateurs d'unité résiduels (bombées, rases, combles...)
   s = s.replace(/^(?:bomb[eé]e?s?|rase?s?|comble?s?|bien pleines?|pleines?)\s+/i, '');
 
-  return { qty, unit, rawName: cleanIngredientName(s), original };
+  let rawName = cleanIngredientName(s);
+
+  // Lookup whitelist sémantique : "spaghetti" → "Pâtes blanches"
+  if (typeof whitelistLookup !== 'undefined' && typeof normIngredient !== 'undefined') {
+    const canonicalKey = whitelistLookup(normIngredient(rawName));
+    if (canonicalKey) {
+      const entry = typeof whitelistEntry !== 'undefined' ? whitelistEntry(canonicalKey) : null;
+      if (entry) rawName = entry.name;
+    }
+  }
+
+  return { qty, unit, rawName, original };
 }
 
 if (typeof module !== 'undefined') module.exports = { parseIngredientString };

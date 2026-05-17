@@ -30,7 +30,19 @@ function migrateStockKeys(rawStock) {
     // Ignorer les entrées corrompues (nom commençant par / ou chiffre isolé)
     const entryName = entry.name || oldKey;
     if (/^[\/\d]/.test(entryName.trim())) { changed = true; continue; }
-    const newKey = normIngredient(entryName);
+
+    let newKey = normIngredient(entryName);
+
+    // Canonicaliser via whitelist sémantique
+    if (typeof whitelistLookup !== 'undefined') {
+      const canonical = whitelistLookup(newKey);
+      if (canonical && canonical !== newKey) {
+        const wEntry = typeof whitelistEntry !== 'undefined' ? whitelistEntry(canonical) : null;
+        if (wEntry) entry.name = wEntry.name;
+        newKey = canonical;
+      }
+    }
+
     if (newKey !== oldKey) {
       changed = true;
       console.info('[Stock] Migration clé:', oldKey, '→', newKey);
@@ -142,8 +154,10 @@ function toggleMergeSelect(key) {
 }
 
 function openMergePanel() {
-  if (_mergeSelection.size < 2) return;
-  const sel = _catalogMergeSelection.size > 0 ? _catalogMergeSelection : _mergeSelection;
+  const sel = _catalogMergeSelection.size >= 2 ? _catalogMergeSelection
+            : _mergeSelection.size >= 2 ? _mergeSelection
+            : null;
+  if (!sel) return;
   const entries = [...sel].map(k => {
     const s = stock[k];
     return { key: k, name: s?.name || k, unit: s?.unit || '', qty: s?.qty || 0 };
@@ -479,5 +493,4 @@ function switchStockTab(id) {
   const idx = ['mon-stock', 'catalogue', 'ajouter'].indexOf(id);
   document.querySelectorAll('.stock-tab')[idx]?.classList.add('active');
   if (id === 'catalogue') renderCatalog();
-                                                 }
-    
+}

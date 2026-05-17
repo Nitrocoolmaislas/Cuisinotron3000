@@ -178,7 +178,13 @@ const INGREDIENT_BRIDGE = {
 
 // ─── Lookup avec fallbacks pluriels ──────────────────────────────────────────
 function bridgeLookup(normKey) {
-  // 0. Irréguliers — priorité absolue
+  // 0. Whitelist : si colruyt_sku renseigné → retourner directement
+  if (typeof whitelistEntry !== 'undefined') {
+    const wEntry = whitelistEntry(normKey);
+    if (wEntry?.sku) return [wEntry.sku];
+  }
+
+  // 1. Irréguliers — priorité absolue
   const canonical = IRREGULAR_FORMS[normKey];
   if (canonical) return INGREDIENT_BRIDGE[canonical] ?? null;
 
