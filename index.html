@@ -43,6 +43,10 @@
         <span class="icon">🥣</span> Petits-déjeuners
         <span class="count" id="cnt-petitdej">0</span>
       </button>
+      <button class="cat-btn" onclick="filterCat('dessert')" id="cat-dessert">
+        <span class="icon">🍮</span> Desserts
+        <span class="count" id="cnt-dessert">0</span>
+      </button>
     </div>
 
     <div class="sidebar-section">
@@ -242,6 +246,7 @@
       <button class="cat-filter-btn" onclick="setCatalogCat('repas', this)">Repas</button>
       <button class="cat-filter-btn" onclick="setCatalogCat('tartinade', this)">Tartinades</button>
       <button class="cat-filter-btn" onclick="setCatalogCat('petitdej', this)">Petits-déj.</button>
+      <button class="cat-filter-btn" onclick="setCatalogCat('dessert', this)">Desserts</button>
     </div>
     <div class="catalog-search">
       <input type="text" id="catalog-search" placeholder="🔍 Filtrer les ingrédients…" oninput="renderCatalog()">
@@ -402,6 +407,7 @@
         <option value="repas">🍲 Repas chauds</option>
         <option value="tartinade">🥙 Tartinades & Dips</option>
         <option value="petitdej">🥣 Petits-déjeuners</option>
+        <option value="dessert">🍮 Desserts</option>
       </select>
     </div>
 
