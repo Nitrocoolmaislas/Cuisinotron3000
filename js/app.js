@@ -233,6 +233,7 @@ function filterCat(cat) {
     tartinade: 'Tartinades & Dips',
     petitdej: 'Petits-déjeuners',
     custom: 'Mes recettes',
+    dessert: 'Desserts',
   };
   document.getElementById('view-title').textContent    = titles[cat] || cat;
   document.getElementById('view-subtitle').textContent = cat === 'custom'
@@ -261,7 +262,7 @@ function filterFeasibility(status) {
 // ── Compteurs sidebar ──
 function updateCounts() {
   document.getElementById('cnt-all').textContent     = RECIPES.length;
-  ['repas', 'tartinade', 'petitdej'].forEach(cat => {
+  ['repas', 'tartinade', 'petitdej', 'dessert'].forEach(cat => {
     document.getElementById('cnt-' + cat).textContent = RECIPES.filter(r => r.category === cat).length;
   });
   document.getElementById('cnt-ok').textContent      = RECIPES.filter(r => checkFeasibility(r).status === 'ok').length;
