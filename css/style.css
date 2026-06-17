@@ -668,19 +668,27 @@
 
   .catalog-empty { text-align: center; padding: 24px; color: var(--warm-grey); font-size: 0.82rem; }
 
-  /* receipt scan placeholder */
-  .scan-placeholder {
+  /* receipt scan button */
+  .scan-ticket-btn {
+    display: block;
+    width: 100%;
     margin: 14px 0 0;
-    padding: 14px;
+    padding: 13px;
     border: 1.5px dashed var(--border);
     border-radius: 8px;
-    text-align: center;
+    background: none;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
     color: var(--warm-grey);
-    font-size: 0.8rem;
-    line-height: 1.5;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+    text-align: center;
   }
-  .scan-placeholder .scan-icon { font-size: 1.8rem; margin-bottom: 6px; }
-  .scan-placeholder strong { display: block; color: var(--charcoal); font-size: 0.82rem; margin-bottom: 4px; }
+  .scan-ticket-btn:hover {
+    border-color: var(--sage);
+    color: var(--charcoal);
+    background: rgba(143,168,126,0.06);
+  }
 
   /* ── NO RESULTS ── */
   .no-results { text-align: center; padding: 48px 0; color: var(--warm-grey); }

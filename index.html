@@ -231,11 +231,9 @@
       </div>
       <div id="stock-list"></div>
       <button class="stock-clear-btn" id="stock-clear-btn" style="display:none" onclick="clearStock()">🗑️ Vider le stock</button>
-      <div class="scan-placeholder">
-        <div class="scan-icon">📄</div>
-        <strong>Import ticket de caisse</strong>
-        Fonctionnalité à venir — scannez vos tickets pour alimenter le stock automatiquement.
-      </div>
+      <button class="scan-ticket-btn" onclick="openBillScanner()">
+        📄 Scanner un ticket Colruyt
+      </button>
     </div>
   </div>
 
@@ -483,7 +481,8 @@
   13. app          → logique principale + init
   14. planner      → planificateur + liste de courses
   15. bridgeWizard → bridgeLookupFull, wizard UI (dépend de tout le reste)
-  16. xlsx         → export Excel
+  16. billScanner  → OCR ticket Colruyt + PLU DB (dépend de utils, stock, idb)
+  17. xlsx         → export Excel
 ═══════════════════════════════════════════════ -->
 <!-- idb : IndexedDB wrapper (cache catalogue Colruyt) -->
 <script src="https://cdn.jsdelivr.net/npm/idb@7/build/umd.js"></script>
@@ -505,6 +504,7 @@
 <script src="js/contributor.js"></script>
 <script src="js/importer.js"></script>
 <script src="js/bridgeWizard.js"></script>
+<script src="js/billScanner.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 
 <div id="bridge-wizard-overlay" onclick="closeBridgeWizard()"></div>
@@ -578,6 +578,45 @@
 <!-- ── IMPORT PANEL (confirmation) ── -->
 <div id="import-panel"></div>
 <div id="import-overlay" onclick="closeImportPanel()"></div>
+
+<!-- ── BILL SCANNER PANEL ── -->
+<div id="bill-scanner-panel" class="bill-scanner-panel">
+  <div class="bs-header">
+    <h3>📄 Scanner un ticket Colruyt</h3>
+    <button class="bs-close" onclick="closeBillScanner()">✕</button>
+  </div>
+  <div class="bs-body">
+    <img id="bs-preview" class="bs-preview-img" style="display:none" alt="Aperçu ticket">
+    <div id="bs-upload-zone" class="bs-upload-zone">
+      <input type="file" id="bs-file-input" accept="image/*" capture="environment"
+             onchange="handleBillImage(this.files[0])" style="display:none">
+      <label for="bs-file-input" class="bs-upload-label">
+        <span class="bs-upload-icon">📷</span>
+        <strong>Prendre une photo ou choisir une image</strong>
+        <span>Ticket Colruyt — JPG, PNG, HEIC…</span>
+      </label>
+    </div>
+    <div id="bs-progress" class="bs-progress" style="display:none">
+      <div class="bs-progress-bar"><div id="bs-progress-fill" class="bs-progress-fill"></div></div>
+      <span id="bs-progress-label">Chargement…</span>
+    </div>
+    <div id="bs-results" style="display:none">
+      <div class="bs-results-header">
+        <span id="bs-results-count" class="bs-count"></span>
+        <div class="bs-sel-btns">
+          <button onclick="bsToggleAll(true)">Tout sélect.</button>
+          <button onclick="bsToggleAll(false)">Tout désélect.</button>
+        </div>
+      </div>
+      <div id="bs-results-table" class="bs-results-table"></div>
+    </div>
+  </div>
+  <div class="bs-footer" id="bs-footer" style="display:none">
+    <button class="bs-cancel-btn" onclick="closeBillScanner()">Annuler</button>
+    <button class="bs-confirm-btn" onclick="confirmBillItems()">➕ Ajouter au stock</button>
+  </div>
+</div>
+<div id="bill-scanner-overlay" onclick="closeBillScanner()"></div>
 
 </body>
 </html>
