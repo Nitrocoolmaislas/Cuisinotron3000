@@ -6,18 +6,14 @@
 
 let _bsItems = [];
 
-// ── Chargement Tesseract.js à la demande ─────────────────────────────────────
-
-async function _loadTesseract() {
-  if (typeof Tesseract !== 'undefined') return;
-  return new Promise((resolve, reject) => {
-    const s = document.createElement('script');
-    s.src = 'https://unpkg.com/tesseract.js@5/dist/tesseract.min.js';
-    s.onload  = resolve;
-    s.onerror = () => reject(new Error('Impossible de charger Tesseract.js'));
-    document.head.appendChild(s);
-  });
-}
+// Tesseract.js is loaded statically via js/vendor/tesseract.min.js.
+// Worker, core WASM, and language data are all served locally.
+const _TESS_OPTS = {
+  workerPath: 'js/vendor/tesseract.worker.min.js',
+  corePath:   'js/vendor/',
+  langPath:   'data/tessdata/',
+  cacheMethod: 'none',
+};
 
 // ── PLU IndexedDB ─────────────────────────────────────────────────────────────
 
@@ -111,9 +107,8 @@ async function handleBillImage(file) {
   fillEl.style.width = '0';
 
   try {
-    await _loadTesseract();
-
     const { data: { text } } = await Tesseract.recognize(file, 'fra', {
+      ..._TESS_OPTS,
       logger(m) {
         if (m.status === 'recognizing text') {
           const pct = Math.round(m.progress * 100);
