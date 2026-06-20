@@ -139,10 +139,16 @@ async function handleBillImage(file) {
     if (_bsItems.length === 0) {
       document.getElementById('bs-progress').style.display = '';
       fillEl.style.display = 'none';
+      const rawId = 'bs-raw-' + Date.now();
       labelEl.innerHTML = `Aucun article détecté.<br>
         <details style="text-align:left;margin-top:8px;font-size:0.75rem;cursor:pointer">
           <summary style="color:var(--sage)">Voir le texte lu par l'OCR</summary>
-          <pre style="white-space:pre-wrap;max-height:180px;overflow:auto;margin-top:4px;
+          <button onclick="navigator.clipboard.writeText(document.getElementById('${rawId}').textContent).then(()=>this.textContent='✅ Copié').catch(()=>this.textContent='❌')"
+            style="margin:6px 0;padding:4px 10px;font-size:0.75rem;border:1px solid var(--border);
+            border-radius:6px;background:var(--cream);cursor:pointer;font-family:'DM Sans',sans-serif">
+            📋 Copier le texte
+          </button>
+          <pre id="${rawId}" style="white-space:pre-wrap;max-height:180px;overflow:auto;margin-top:4px;
             font-size:0.68rem;background:var(--cream);padding:8px;border-radius:6px;
             border:1px solid var(--border)">${_bsEsc(_bsRawText || '(vide)')}</pre>
         </details>`;
