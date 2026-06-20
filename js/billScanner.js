@@ -173,11 +173,21 @@ const _BS_SKIP = /TOTAL|SUBTOTAL|BTW|TVA|MANAGER|COLRUYT|DATUM|TICKET|DANK\s*U|A
 
 let _bsRawText = '';
 
-function _parseReceiptLine(line) {
-  const s = line.trim();
+function _cleanOcrLine(line) {
+  return line
+    .replace(/^[\s\\|/]+/, '')   // strip leading \| / artefacts (table borders)
+    .replace(/[|/]/g, ' ')        // remaining | and / → space (e.g. 27227IBONI → handled below)
+    .replace(/[\s.,|]+$/, '')     // strip trailing noise
+    .replace(/\s{2,}/g, ' ')
+    .trim();
+}
 
-  // Line must have a PLU (3-6 digits) near the start, optionally preceded by tax letter
-  const pluM = s.match(/^[A-Za-z]?\s*(\d{3,6})\s+(.{2,})/);
+function _parseReceiptLine(line) {
+  const s = _cleanOcrLine(line);
+  if (s.length < 5) return null;
+
+  // PLU (3-6 digits) near the start; [I]? handles "27227IBONI" where OCR reads border as I
+  const pluM = s.match(/^[A-Za-z]?\s*(\d{3,6})[I]?\s*(.{2,})/);
   if (!pluM) return null;
 
   const plu = pluM[1];
@@ -215,8 +225,7 @@ function _parseColruytText(rawText) {
   _bsRawText = rawText;
   return rawText
     .split('\n')
-    .map(l => l.trim())
-    .filter(l => l.length > 5 && /[a-zA-Z]/.test(l) && !_BS_SKIP.test(l))
+    .filter(l => /[a-zA-Z]/.test(l) && !_BS_SKIP.test(l))
     .map(_parseReceiptLine)
     .filter(Boolean);
 }
