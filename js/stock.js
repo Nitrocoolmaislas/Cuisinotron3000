@@ -457,6 +457,11 @@ function renderCatalog() {
       : `<button class="toggle-stock-btn add"    onclick="catalogExpand('${key}')" title="Ajouter au stock">+</button>`;
 
     const catSelected = _catalogMergeSelection.has(key);
+    const colruytMatch = typeof matchColruyt === 'function' ? matchColruyt(key) : null;
+    const priceStr = colruytMatch ? formatColruytPrice(colruytMatch) : null;
+    const priceCell = priceStr
+      ? `<span class="cat-price-hint" title="${escapeAttr(colruytMatch.LongName || colruytMatch.name || '')}">~${priceStr}</span>`
+      : `<span style="color:var(--border)">—</span>`;
     return `<tr class="${rowClass} ${catSelected ? 'catalog-row-selected' : ''}">
       <td>
         <span onclick="toggleCatalogMerge('${key}')" title="Sélectionner pour fusionner"
@@ -466,6 +471,7 @@ function renderCatalog() {
       </td>
       <td class="col-unit">${unitCell}</td>
       <td class="col-qty">${qtyCell}</td>
+      <td class="col-price">${priceCell}</td>
       <td class="col-stock">${stockBtn}</td>
       <td class="col-del">
         <button class="del-ing-btn" onclick="deleteCatalogEntry('${key}')" title="Masquer">🗑</button>

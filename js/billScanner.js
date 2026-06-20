@@ -242,14 +242,26 @@ function _extractPackageSize(denom) {
 }
 
 function _denomToStockName(denom) {
-  const s = denom
+  // Strip package markers and sizes
+  const stripped = denom
     .replace(/\bSG\b/g, '')
     .replace(/\b\d+[,.]?\d*\s*(?:g|kg|ml|cl|l|pcs?)\b/gi, '')
-    .replace(/^(?:[A-Z][A-Z0-9'&.]*\s+)+/, '')
     .replace(/\s{2,}/g, ' ')
-    .trim()
-    .toLowerCase();
-  return s || denom.toLowerCase().trim();
+    .trim();
+
+  // Try whitelist on the stripped form (e.g. "BEURRE DOUX" → "beurre doux")
+  const wl1 = whitelistLookup(normIngredient(stripped));
+  if (wl1) return wl1;
+
+  // Strip leading all-caps brand words (e.g. "LIDL BEURRE DOUX" → "BEURRE DOUX")
+  const noBrand = stripped.replace(/^(?:[A-Z][A-Z0-9'&.]*\s+)+/, '').trim();
+  if (noBrand && noBrand !== stripped) {
+    const wl2 = whitelistLookup(normIngredient(noBrand));
+    if (wl2) return wl2;
+  }
+
+  const fallback = (noBrand || stripped).toLowerCase().trim();
+  return fallback || denom.toLowerCase().trim();
 }
 
 // ── Review UI ─────────────────────────────────────────────────────────────────
