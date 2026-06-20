@@ -81,63 +81,22 @@ async function fetchColruytLatest(force = false) {
   }
 
   colruytLoading = true;
-  setColruytStatus('Recherche du fichier Colruyt le plus récent…', 'loading');
-
-  const BASE   = 'https://storage.googleapis.com/colruyt-products/';
-  const PREFIX = 'colruyt-products/';
+  setColruytStatus('Chargement du catalogue Colruyt…', 'loading');
 
   try {
-    let latestKey = null;
-
-    // Stratégie 1 : API JSON GCS avec startOffset sur les 7 derniers jours
-    // → retourne uniquement les fichiers récents, on prend le dernier
-    try {
-      const d = new Date();
-      d.setDate(d.getDate() - 7);
-      const startOffset = PREFIX + d.toISOString().slice(0, 10);
-      const apiUrl = `https://storage.googleapis.com/storage/v1/b/colruyt-products/o` +
-                     `?prefix=${encodeURIComponent(PREFIX)}` +
-                     `&startOffset=${encodeURIComponent(startOffset)}` +
-                     `&maxResults=20`;
-      const listResp = await fetch(apiUrl);
-      if (listResp.ok) {
-        const listData = await listResp.json();
-        const items = (listData.items || []).filter(i => i.name.endsWith('.json'));
-        if (items.length > 0) {
-          items.sort((a, b) => b.name.localeCompare(a.name));
-          latestKey = items[0].name;
-        }
-      }
-    } catch(e) {
-      console.warn('[Colruyt] Listing API échoué, fallback direct:', e.message);
+    const res = await fetch('./data/colruyt-latest.json');
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    if (!Array.isArray(data) || data.length === 0) {
+      throw new Error('Catalogue vide — déclenche l\'Action GitHub "Mirror Colruyt catalog" pour le mettre à jour');
     }
 
-    // Stratégie 2 (fallback) : construire l'URL avec mediaLink connu
-    // Le scraper tourne à 08:00 UTC → on essaie le fichier du jour connu
-    if (!latestKey) {
-      // On tente de récupérer le mediaLink depuis les métadonnées d'un objet récent
-      // en cherchant le fichier le plus récent connu
-      throw new Error('Impossible de lister le bucket — vérifie ta connexion');
-    }
+    colruytData     = data;
+    colruytFileName = 'colruyt-latest.json';
 
-    colruytFileName = latestKey.replace(PREFIX, '');
-    setColruytStatus(`Téléchargement de ${colruytFileName}…`, 'loading');
-
-    // Téléchargement via l'API JSON GCS (supporte CORS, contrairement à l'URL directe)
-    const encodedKey = encodeURIComponent(latestKey);
-    const fileUrl = `https://storage.googleapis.com/storage/v1/b/colruyt-products/o/${encodedKey}?alt=media`;
-    const fileResp = await fetch(fileUrl);
-    if (!fileResp.ok) throw new Error(`Téléchargement échoué (HTTP ${fileResp.status})`);
-
-    colruytData = await fileResp.json();
-
-    console.info('[Colruyt] Fichier :', colruytFileName);
     console.info('[Colruyt] Produits :', colruytData.length);
-    console.info('[Colruyt] Exemple :', colruytData[0]);
+    setColruytStatus(`✓ ${colruytData.length} produits`, 'ok');
 
-    setColruytStatus(`✓ ${colruytFileName} — ${colruytData.length} produits`, 'ok');
-
-    // Sauvegarder en cache IndexedDB (pas de limite de taille)
     _idbSetColruyt(colruytData);
 
     if (_lastShoppingMissing.length > 0) {
