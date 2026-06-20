@@ -6,6 +6,13 @@
 let currentCat        = 'all';
 let currentFeasFilter = null;
 
+// Retourne true si needle apparaît comme mot entier dans haystack
+// (haystack et needle sont déjà normalisés : a-z0-9 + espaces uniquement)
+function _wordIn(haystack, needle) {
+  if (!needle || needle.length < 2 || !haystack) return false;
+  return new RegExp('(?:^| )' + needle + '(?= |$)').test(haystack);
+}
+
 // ── Faisabilité ──
 function checkFeasibility(recipe) {
   const stockKeys = Object.keys(stock);
@@ -19,8 +26,8 @@ function checkFeasibility(recipe) {
       : parseIngredient(ing).name;
     const key = normIngredient(parsedName);
     let found = key in stock;
-    if (!found) found = stockKeys.some(sk => sk.length >= 3 && key.includes(sk) && key.replace(sk, '').trim().length < 6);
-    if (!found) found = stockKeys.some(sk => key.length >= 3 && sk.includes(key) && sk.replace(key, '').trim().length < 6);
+    if (!found) found = stockKeys.some(sk => _wordIn(key, sk));
+    if (!found) found = stockKeys.some(sk => _wordIn(sk, key));
     if (found) matched++;
     else missing.push(ing);
   }
@@ -108,8 +115,8 @@ function openModal(id) {
       : parseIngredient(ing).name;
     const key = normIngredient(parsedName);
     let inStock = key in stock;
-    if (!inStock) inStock = stockKeys.some(sk => sk.length >= 3 && key.includes(sk) && key.replace(sk, '').trim().length < 6);
-    if (!inStock) inStock = stockKeys.some(sk => key.length >= 3 && sk.includes(key) && sk.replace(key, '').trim().length < 6);
+    if (!inStock) inStock = stockKeys.some(sk => _wordIn(key, sk));
+    if (!inStock) inStock = stockKeys.some(sk => _wordIn(sk, key));
     const dotClass = stockKeys.length === 0 ? '' : (inStock ? 'in-stock' : 'out-stock');
     return `<li><span class="ing-dot ${dotClass}"></span>${ing}</li>`;
   }).join('');
@@ -160,8 +167,8 @@ function cookRecipe() {
     if (key in stock) {
       stockKey = key;
     } else {
-      stockKey = stockKeys.find(sk => sk.length >= 3 && key.includes(sk) && key.replace(sk,'').trim().length < 6)
-              || stockKeys.find(sk => key.length >= 3 && sk.includes(key) && sk.replace(key,'').trim().length < 6);
+      stockKey = stockKeys.find(sk => _wordIn(key, sk))
+              || stockKeys.find(sk => _wordIn(sk, key));
     }
 
     if (!stockKey) {
