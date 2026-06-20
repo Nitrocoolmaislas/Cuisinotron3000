@@ -13,18 +13,34 @@ function _wordIn(haystack, needle) {
   return new RegExp('(?:^| )' + needle + '(?= |$)').test(haystack);
 }
 
+// Pour les recettes custom dont notes est une liste CSV d'ingrédients
+// (ex: "oeuf, sucre, huile"), retourne les noms normalisés dans l'ordre
+// de ingredients[]. Retourne null si inapplicable.
+function _customNoteNames(r) {
+  if (!r.custom || !r.notes) return null;
+  if (r.notes.startsWith('http') || r.notes.includes('Recette import')) return null;
+  const names = r.notes.split(',').map(s => normIngredient(s.trim())).filter(Boolean);
+  return names.length > 0 ? names : null;
+}
+
 // ── Faisabilité ──
 function checkFeasibility(recipe) {
   const stockKeys = Object.keys(stock);
   if (stockKeys.length === 0) return { status: 'unknown', pct: 0, missing: [] };
   let matched = 0;
   const missing = [];
-  for (const ing of recipe.ingredients) {
-    // Utiliser le nouveau parser si disponible (gère 1/2, fractions, pots...)
-    const parsedName = typeof parseIngredientString !== 'undefined'
-      ? parseIngredientString(ing).rawName
-      : parseIngredient(ing).name;
-    const key = normIngredient(parsedName);
+  const noteNames = _customNoteNames(recipe);
+  for (let i = 0; i < recipe.ingredients.length; i++) {
+    const ing = recipe.ingredients[i];
+    let key;
+    if (noteNames && i < noteNames.length && noteNames[i]) {
+      key = noteNames[i];
+    } else {
+      const parsedName = typeof parseIngredientString !== 'undefined'
+        ? parseIngredientString(ing).rawName
+        : parseIngredient(ing).name;
+      key = normIngredient(parsedName);
+    }
     let found = key in stock;
     if (!found) found = stockKeys.some(sk => _wordIn(key, sk));
     if (!found) found = stockKeys.some(sk => _wordIn(sk, key));
@@ -109,11 +125,17 @@ function openModal(id) {
     cookInfo + `<span>👤 ${r.servings} portion${r.servings > 1 ? 's' : ''}</span>`;
 
   const stockKeys       = Object.keys(stock);
-  const ingredientsHTML = r.ingredients.map(ing => {
-    const parsedName = typeof parseIngredientString !== 'undefined'
-      ? parseIngredientString(ing).rawName
-      : parseIngredient(ing).name;
-    const key = normIngredient(parsedName);
+  const modalNoteNames  = _customNoteNames(r);
+  const ingredientsHTML = r.ingredients.map((ing, i) => {
+    let key;
+    if (modalNoteNames && i < modalNoteNames.length && modalNoteNames[i]) {
+      key = modalNoteNames[i];
+    } else {
+      const parsedName = typeof parseIngredientString !== 'undefined'
+        ? parseIngredientString(ing).rawName
+        : parseIngredient(ing).name;
+      key = normIngredient(parsedName);
+    }
     let inStock = key in stock;
     if (!inStock) inStock = stockKeys.some(sk => _wordIn(key, sk));
     if (!inStock) inStock = stockKeys.some(sk => _wordIn(sk, key));
@@ -153,14 +175,18 @@ function cookRecipe() {
   const r = currentModalRecipe;
   if (!r) return;
 
-  const stockKeys = Object.keys(stock);
-  const removed   = [];
-  const kept      = [];
-  const missing   = [];
+  const stockKeys  = Object.keys(stock);
+  const removed    = [];
+  const kept       = [];
+  const missing    = [];
+  const cookNoteNames = _customNoteNames(r);
 
-  for (const raw of r.ingredients) {
+  for (let i = 0; i < r.ingredients.length; i++) {
+    const raw = r.ingredients[i];
     const { name, qty, unit } = parseIngredient(raw);
-    const key = normIngredient(name);
+    const key = (cookNoteNames && i < cookNoteNames.length && cookNoteNames[i])
+      ? cookNoteNames[i]
+      : normIngredient(name);
 
     // Cherche la clé correspondante dans le stock (exact + substring)
     let stockKey = null;
