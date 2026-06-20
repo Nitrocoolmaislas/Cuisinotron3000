@@ -137,9 +137,15 @@ async function handleBillImage(file) {
     document.getElementById('bs-progress').style.display = 'none';
 
     if (_bsItems.length === 0) {
-      labelEl.textContent = 'Aucun article détecté — vérifiez la qualité de l\'image.';
       document.getElementById('bs-progress').style.display = '';
       fillEl.style.display = 'none';
+      labelEl.innerHTML = `Aucun article détecté.<br>
+        <details style="text-align:left;margin-top:8px;font-size:0.75rem;cursor:pointer">
+          <summary style="color:var(--sage)">Voir le texte lu par l'OCR</summary>
+          <pre style="white-space:pre-wrap;max-height:180px;overflow:auto;margin-top:4px;
+            font-size:0.68rem;background:var(--cream);padding:8px;border-radius:6px;
+            border:1px solid var(--border)">${_bsEsc(_bsRawText || '(vide)')}</pre>
+        </details>`;
       return;
     }
 
@@ -159,35 +165,37 @@ async function handleBillImage(file) {
 
 const _BS_SKIP = /TOTAL|SUBTOTAL|BTW|TVA|MANAGER|COLRUYT|DATUM|TICKET|DANK\s*U|AANTAL|KORTING|COUPON|PUNTEN|KAART|BETAALD|TERUG|VIDANGE|MARCHANDISE|PAYER|BANCONTACT|EDENRED|SWIFT|IBAN|RPM|T[EÉ]L|N°\.ART|D[EÉ]NOM|VOTRE|CAISSIER|HEURES|OUVERTURE|CONDITIONS|QUALIT[EÉ]/i;
 
+let _bsRawText = '';
+
 function _parseReceiptLine(line) {
-  let s = line.trim();
-  const priceRe = /(\d{1,4}[,\.]\d{2})\s*$/;
+  const s = line.trim();
 
-  // Extract total (rightmost XX,XX)
-  let m = s.match(priceRe);
-  if (!m) return null;
-  const total = parseFloat(m[1].replace(',', '.'));
-  s = s.slice(0, s.lastIndexOf(m[1])).trim();
+  // Line must have a PLU (3-6 digits) near the start, optionally preceded by tax letter
+  const pluM = s.match(/^[A-Za-z]?\s*(\d{3,6})\s+(.{2,})/);
+  if (!pluM) return null;
 
-  // Extract unit price
-  m = s.match(priceRe);
-  if (!m) return null;
-  const unitPrice = parseFloat(m[1].replace(',', '.'));
-  s = s.slice(0, s.lastIndexOf(m[1])).trim();
+  const plu = pluM[1];
+  let   rest = pluM[2];
 
-  // Extract purchase quantity (integer at end)
-  m = s.match(/\s+(\d{1,3})\s*$/);
-  if (!m) return null;
-  const qty = parseInt(m[1], 10);
-  s = s.slice(0, s.lastIndexOf(m[0])).trim();
+  // Strip rightmost price (X,XX or X.XX) from a string
+  const stripPrice = str => {
+    const m = str.match(/\s+(\d{1,4}[,\.]\d{2})\s*$/);
+    return m
+      ? { val: parseFloat(m[1].replace(',', '.')), str: str.slice(0, str.length - m[0].length).trim() }
+      : null;
+  };
 
-  // Extract PLU + denomination
-  m = s.match(/^[A-Z]?\s*(\d{3,6})\s+(.+)$/i);
-  if (!m) return null;
+  // Prices and qty are optional — OCR from a photo may not preserve column spacing
+  let total = null, unitPrice = null, qty = 1;
+  const p1 = stripPrice(rest);
+  if (p1) { total     = p1.val; rest = p1.str; }
+  const p2 = stripPrice(rest);
+  if (p2) { unitPrice = p2.val; rest = p2.str; }
+  const qtyM = rest.match(/\s+(\d{1,3})\s*$/);
+  if (qtyM) { qty = parseInt(qtyM[1], 10); rest = rest.slice(0, rest.length - qtyM[0].length).trim(); }
 
-  const plu         = m[1];
-  const denomination = m[2].trim();
-  if (denomination.length < 3) return null;
+  const denomination = rest.trim();
+  if (denomination.length < 2) return null;
 
   const pkg       = _extractPackageSize(denomination);
   const stockQty  = pkg ? +(pkg.qty * qty).toFixed(1) : qty;
@@ -198,10 +206,11 @@ function _parseReceiptLine(line) {
 }
 
 function _parseColruytText(rawText) {
+  _bsRawText = rawText;
   return rawText
     .split('\n')
     .map(l => l.trim())
-    .filter(l => l.length > 6 && /[a-zA-Z]/.test(l) && !_BS_SKIP.test(l))
+    .filter(l => l.length > 5 && /[a-zA-Z]/.test(l) && !_BS_SKIP.test(l))
     .map(_parseReceiptLine)
     .filter(Boolean);
 }
@@ -259,7 +268,7 @@ function _renderBsResults(items) {
         <div class="bs-receipt-line">
           <span class="bs-plu">#${_bsEsc(it.plu)}</span>
           <span class="bs-denom" title="${_bsEsc(it.denomination)}">${_bsEsc(it.denomination)}</span>
-          <span class="bs-receipt-qty">${it.qty} × ${it.unitPrice.toFixed(2).replace('.',',')} € = ${it.total.toFixed(2).replace('.',',')} €</span>
+          <span class="bs-receipt-qty">${it.unitPrice != null ? `${it.qty} × ${it.unitPrice.toFixed(2).replace('.',',')} € = ${it.total.toFixed(2).replace('.',',')} €` : `qté : ${it.qty}`}</span>
           <span class="bs-badge ${cls}">${label}</span>
           ${inStock ? '<span class="bs-badge bs-badge-instock">📦 En stock</span>' : ''}
         </div>
