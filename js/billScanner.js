@@ -111,13 +111,16 @@ async function handleBillImage(file) {
     const { data: { text } } = await Tesseract.recognize(file, 'fra', {
       ..._TESS_OPTS,
       logger(m) {
-        if (m.status === 'recognizing text') {
-          const pct = Math.round(m.progress * 100);
-          fillEl.style.width = pct + '%';
-          labelEl.textContent = `Reconnaissance… ${pct}%`;
-        } else {
-          labelEl.textContent = m.status.replace(/-/g, ' ');
-        }
+        const pct = Math.round((m.progress || 0) * 100);
+        const labels = {
+          'loading tesseract core':       `Chargement moteur OCR… ${pct}%`,
+          'initializing tesseract':       `Initialisation… ${pct}%`,
+          'loading language traineddata': `Chargement modèle français… ${pct}%`,
+          'initializing api':             `Préparation…`,
+          'recognizing text':             `Reconnaissance… ${pct}%`,
+        };
+        labelEl.textContent = labels[m.status] || m.status;
+        if (pct > 0) fillEl.style.width = pct + '%';
       }
     });
 
