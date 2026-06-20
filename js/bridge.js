@@ -62,7 +62,9 @@ const INGREDIENT_BRIDGE = {
   'celeri':                 ['selder', 'selderij'],
   'mais':                   ['maïs', 'mais'],
   'avocat':                 ['avocado'],
-  'citron':                 ['citroen'],
+  'citron':                 ['citroenen', 'citroen bio'],
+  'citrons':                ['citroenen'],
+  'ciboulette':             ['bieslook'],
   'poireau':                ['prei'],
   'chou fleur':             ['bloemkool'],
   'chou':                   ['kool'],
@@ -145,7 +147,10 @@ const INGREDIENT_BRIDGE = {
 
   // ── Épices & herbes ──
   'cumin':                  ['komijn', 'cumin'],
-  'paprika':                ['paprikapoeder', 'paprika poeder'],
+  'paprika':                ['paprikapoeder', 'paprika poeder', 'paprika spezerij'],
+  'poivre noir':            ['zwarte peper'],
+  'poivre blanc':           ['witte peper'],
+  'poivre':                 ['peper'],
   'curcuma':                ['kurkuma', 'curcuma'],
   'gingembre':              ['gember'],
   'coriandre':              ['koriander'],
@@ -174,6 +179,11 @@ const INGREDIENT_BRIDGE = {
   'vinaigre':               ['azijn'],
   'vin blanc':              ['witte wijn'],
   'jus de citron':          ['citroensap'],
+  'sauce cocktail':         ['cocktailsaus'],
+  'mayonnaise':             ['mayonaise', 'mayo'],
+  'moutarde':               ['mosterd'],
+  'cornichon':              ['augurk', 'augurken'],
+  'cornichons':             ['augurken', 'cornichon'],
 };
 
 // ─── Lookup avec fallbacks pluriels ──────────────────────────────────────────
