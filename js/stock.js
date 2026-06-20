@@ -345,7 +345,7 @@ function buildIngredientMap(catFilter) {
 
   RECIPES.forEach(r => {
     if (catFilter !== 'all' && r.category !== catFilter) return;
-    r.ingredients.forEach(raw => {
+    (r.ingredients || []).forEach(raw => {
       const _p = typeof parseIngredientString !== 'undefined'
         ? parseIngredientString(raw)
         : parseIngredient(raw);
@@ -458,7 +458,7 @@ function renderCatalog() {
 
     const catSelected = _catalogMergeSelection.has(key);
     const colruytMatch = typeof matchColruyt === 'function' ? matchColruyt(key) : null;
-    const priceStr = colruytMatch ? formatColruytPrice(colruytMatch) : null;
+    const priceStr = colruytMatch && typeof formatColruytPrice === 'function' ? formatColruytPrice(colruytMatch) : null;
     const priceCell = priceStr
       ? `<span class="cat-price-hint" title="${escapeAttr(colruytMatch.LongName || colruytMatch.name || '')}">~${priceStr}</span>`
       : `<span style="color:var(--border)">—</span>`;

@@ -201,7 +201,6 @@ async function loadFromDrive() {
       }
     }
 
-    renderStock(); renderCatalog(); renderGrid(); updateCounts();
     const now = new Date().toLocaleString('fr-BE', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
     setDriveStatus('Synchronisé · ' + now, 'ok');
 
@@ -220,9 +219,10 @@ async function loadFromDrive() {
       saveCiqualCustomToDrive();
     }
   } catch(e) {
-    setDriveStatus('Erreur de chargement', 'error');
+    setDriveStatus('Erreur · ' + (e.message || e), 'error');
     console.error('Drive load error:', e);
   }
+  renderStock(); renderCatalog(); renderGrid(); updateCounts();
 }
 
 // ══════════════════════════════════════════════
