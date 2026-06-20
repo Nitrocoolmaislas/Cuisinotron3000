@@ -574,8 +574,14 @@
   }
   .catalog-table th.col-unit { width: 62px; }
   .catalog-table th.col-qty  { width: 72px; }
+  .catalog-table th.col-price { width: 62px; text-align: right; }
   .catalog-table th.col-stock { width: 44px; text-align: center; }
   .catalog-table th.col-del   { width: 32px; }
+  .cat-price-hint {
+    font-size: 0.75rem; color: var(--warm-grey); font-variant-numeric: tabular-nums;
+    white-space: nowrap; cursor: default;
+  }
+  .catalog-row td.col-price { text-align: right; padding-right: 10px; }
 
   .catalog-row { border-bottom: 1px solid var(--parchment); transition: background 0.1s; }
   .catalog-row:hover { background: var(--parchment); }
