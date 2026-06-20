@@ -7,12 +7,13 @@
 let _bsItems = [];
 
 // Tesseract.js is loaded statically via js/vendor/tesseract.min.js.
-// Worker, core WASM, and language data are all served locally.
+// Paths must be absolute so the Web Worker resolves them correctly
+// regardless of the page URL depth.
+const _bsRoot = window.location.href.replace(/[^/]*$/, '');
 const _TESS_OPTS = {
-  workerPath: 'js/vendor/tesseract.worker.min.js',
-  corePath:   'js/vendor/',
-  langPath:   'data/tessdata/',
-  cacheMethod: 'none',
+  workerPath: _bsRoot + 'js/vendor/tesseract.worker.min.js',
+  corePath:   _bsRoot + 'js/vendor/',
+  langPath:   _bsRoot + 'data/tessdata/',
 };
 
 // ── PLU IndexedDB ─────────────────────────────────────────────────────────────
@@ -145,7 +146,8 @@ async function handleBillImage(file) {
 
   } catch (err) {
     document.getElementById('bs-progress').style.display = '';
-    labelEl.textContent = `Erreur : ${err.message}`;
+    const msg = err?.message || (typeof err === 'string' ? err : JSON.stringify(err));
+    labelEl.textContent = `Erreur OCR : ${msg || 'échec inattendu — voir console'}`;
     console.error('[BillScanner] OCR error:', err);
   }
 }
