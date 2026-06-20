@@ -8,8 +8,6 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/bridge-wizard.css">
 <link rel="stylesheet" href="css/importer.css">
-<!-- Google Identity Services — nécessaire pour la sync Drive -->
-<script src="https://accounts.google.com/gsi/client" onload="onGISLoad()" async defer></script>
 </head>
 <body>
 
@@ -195,17 +193,25 @@
     <button class="stock-header-close" onclick="toggleStock()">✕</button>
   </div>
 
-  <!-- GOOGLE DRIVE AUTH BAR -->
+  <!-- GITHUB GIST SYNC BAR -->
   <div class="drive-bar" id="drive-bar">
-    <div id="drive-not-configured" style="display:none">
-      <div class="setup-banner" style="margin:0">
-        <strong>⚙️ Configuration requise</strong>
-        Remplace <code>VOTRE_CLIENT_ID_ICI</code> dans <code>js/drive.js</code> par ton Client ID Google.
-      </div>
+    <div id="drive-signin-row" class="drive-bar-row">
+      <span class="drive-bar-label">☁️ Sync GitHub Gist désactivée</span>
+      <button class="drive-connect-btn" onclick="driveSignIn()">Configurer</button>
     </div>
-    <div id="drive-signin-row" class="drive-bar-row" style="display:none">
-      <span class="drive-bar-label">☁️ Sync Google Drive désactivée</span>
-      <button class="drive-connect-btn" onclick="driveSignIn()">Se connecter</button>
+    <div id="drive-setup-row" style="display:none">
+      <div class="drive-setup-fields">
+        <input type="password" id="gist-pat-input"
+               placeholder="Personal Access Token GitHub (scope : gist)"
+               autocomplete="off" style="width:100%;box-sizing:border-box;margin-bottom:6px;padding:6px 8px;border:1px solid var(--border);border-radius:6px;font-size:0.8rem;font-family:inherit">
+        <input type="text" id="gist-id-input"
+               placeholder="Gist ID (optionnel — laisse vide pour créer automatiquement)"
+               style="width:100%;box-sizing:border-box;margin-bottom:8px;padding:6px 8px;border:1px solid var(--border);border-radius:6px;font-size:0.8rem;font-family:inherit">
+        <div style="display:flex;gap:8px">
+          <button class="drive-connect-btn" onclick="gistSaveConfig()">Connecter</button>
+          <button class="drive-signout-btn" onclick="gistCancelConfig()">Annuler</button>
+        </div>
+      </div>
     </div>
     <div id="drive-status-row" class="drive-status" style="display:none">
       <div class="drive-status-dot" id="drive-dot"></div>
@@ -377,7 +383,7 @@
      1. recipes   → données RECIPES
      2. bridge    → INGREDIENT_BRIDGE
      3. utils     → normIngredient, parseIngredient
-     4. drive     → Google Drive sync
+     4. drive     → GitHub Gist sync
      5. stock     → gestion stock + catalogue
      6. colruyt   → fetch bucket + matching
      7. app       → logique principale + init
@@ -470,7 +476,7 @@
   3. utils         → normIngredient, parseIngredient, canonicalize
   4. ciqual_disc   → DISCRIMINANTS_GLOBAUX (liste blanche parser)
   5. parser        → parseIngredientString
-  6. drive         → Google Drive sync
+  6. drive         → GitHub Gist sync
   7. stock         → gestion stock + catalogue
   8. colruyt       → fetch bucket + matching (utilise bridgeLookupFull)
   9. nutrition_data → CIQUAL statique
