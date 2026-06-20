@@ -347,49 +347,9 @@ function checkImportHash() {
 }
 
 // ══════════════════════════════════════════════
-//  NIVEAU 1 — IMPORT PAR URL (proxy CORS)
-//  NIVEAU 2 — BOOKMARKLET (déjà géré via #import=)
-//  NIVEAU 3 — IMPORT MANUEL JSON-LD
+//  NIVEAU 1 — BOOKMARKLET (via #import=)
+//  NIVEAU 2 — IMPORT MANUEL JSON-LD
 // ══════════════════════════════════════════════
-
-// Proxys CORS tentés dans l'ordre — si l'un échoue on passe au suivant
-const CORS_PROXIES = [
-  url => `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`,
-  url => `https://corsproxy.io/?${encodeURIComponent(url)}`,
-  url => `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(url)}`,
-];
-
-// ── Fetch HTML via proxy CORS avec fallback ──
-async function _fetchViaProxy(url) {
-  let lastError = null;
-  for (const buildProxyUrl of CORS_PROXIES) {
-    try {
-      const proxyUrl = buildProxyUrl(url);
-      const res = await fetch(proxyUrl, { signal: AbortSignal.timeout(15000) });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-
-      // Lire en texte brut d'abord
-      const text = await res.text();
-
-      // allorigins renvoie { contents: '<html>...' } — tenter le parse JSON
-      try {
-        const json = JSON.parse(text);
-        if (json.contents) return json.contents; // allorigins
-      } catch(e) {
-        // Pas du JSON → c'est directement le HTML (corsproxy.io)
-      }
-
-      // Vérifier que c'est bien du HTML et pas une erreur proxy
-      if (text.trim().startsWith('<')) return text;
-      throw new Error('Réponse proxy inattendue : ' + text.slice(0, 80));
-
-    } catch(e) {
-      lastError = e;
-      console.warn('[Importer] Proxy échoué:', e.message);
-    }
-  }
-  throw lastError;
-}
 
 // ── Extraire le JSON-LD depuis un HTML string ──
 function _extractJsonLdFromHtml(html) {
@@ -413,38 +373,16 @@ function _extractJsonLdFromHtml(html) {
   return null;
 }
 
-// ── Importer depuis une URL (niveau 1) ──
-async function importFromUrl() {
+// ── Importer depuis une URL (niveau 1 supprimé — CORS) ──
+function importFromUrl() {
   const input = document.getElementById('import-url-input');
-  if (!input) return;
-
-  const url = input.value.trim();
-  if (!url) return;
-
-  // Validation URL basique
-  try { new URL(url); } catch(e) {
+  const url   = input?.value.trim() || '';
+  try { if (url) new URL(url); } catch(e) {
     _showImportError('URL invalide. Ex: https://www.marmiton.org/recettes/...');
     return;
   }
-
-  _setImportLoading(true);
-  _showImportError('');
-
-  try {
-    const html   = await _fetchViaProxy(url);
-    const ld     = _extractJsonLdFromHtml(html);
-    if (!ld) throw new Error('Aucune recette structurée trouvée sur cette page.');
-    if (!ld.url) ld.url = url;
-    const data   = parseRecipeJsonLd(ld);
-    _setImportLoading(false);
-    closeImportUrlPanel();
-    openImportPanel(data);
-  } catch(e) {
-    _setImportLoading(false);
-    _showImportError(e.message);
-    // Affiche les fallbacks niveau 2 & 3
-    _showImportFallbacks(url);
-  }
+  _showImportError("L'import direct par URL n'est pas disponible (restrictions CORS). Utilise le bookmarklet ou le paste JSON-LD ci-dessous.");
+  _showImportFallbacks(url);
 }
 
 // ── Importer depuis JSON-LD collé manuellement (niveau 3) ──

@@ -1,0 +1,36 @@
+name: Mirror Colruyt catalog
+
+on:
+  schedule:
+    - cron: '30 9 * * *'   # 09:30 UTC daily (after scraper runs at ~08:00 UTC)
+  workflow_dispatch:
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch latest Colruyt JSON
+        run: |
+          TODAY=$(date -u +%Y-%m-%d)
+          YESTERDAY=$(date -u -d yesterday +%Y-%m-%d)
+          BASE="https://storage.googleapis.com/storage/v1/b/colruyt-products/o"
+          URL_TODAY="${BASE}/colruyt-products%2F${TODAY}.json?alt=media"
+          URL_YESTERDAY="${BASE}/colruyt-products%2F${YESTERDAY}.json?alt=media"
+          if curl -sf "$URL_TODAY" -o data/colruyt-latest.json; then
+            echo "Fetched today's catalog ($TODAY)"
+          elif curl -sf "$URL_YESTERDAY" -o data/colruyt-latest.json; then
+            echo "Fetched yesterday's catalog ($YESTERDAY)"
+          else
+            echo "No catalog available for $TODAY or $YESTERDAY — keeping existing file"
+            exit 0
+          fi
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/colruyt-latest.json
+          git diff --cached --quiet || git commit -m "chore: update Colruyt catalog $(date -u +%Y-%m-%d)"
+          git push
