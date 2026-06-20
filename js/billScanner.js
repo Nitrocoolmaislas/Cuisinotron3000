@@ -139,10 +139,16 @@ async function handleBillImage(file) {
     if (_bsItems.length === 0) {
       document.getElementById('bs-progress').style.display = '';
       fillEl.style.display = 'none';
+      const rawId = 'bs-raw-' + Date.now();
       labelEl.innerHTML = `Aucun article détecté.<br>
         <details style="text-align:left;margin-top:8px;font-size:0.75rem;cursor:pointer">
           <summary style="color:var(--sage)">Voir le texte lu par l'OCR</summary>
-          <pre style="white-space:pre-wrap;max-height:180px;overflow:auto;margin-top:4px;
+          <button onclick="navigator.clipboard.writeText(document.getElementById('${rawId}').textContent).then(()=>this.textContent='✅ Copié').catch(()=>this.textContent='❌')"
+            style="margin:6px 0;padding:4px 10px;font-size:0.75rem;border:1px solid var(--border);
+            border-radius:6px;background:var(--cream);cursor:pointer;font-family:'DM Sans',sans-serif">
+            📋 Copier le texte
+          </button>
+          <pre id="${rawId}" style="white-space:pre-wrap;max-height:180px;overflow:auto;margin-top:4px;
             font-size:0.68rem;background:var(--cream);padding:8px;border-radius:6px;
             border:1px solid var(--border)">${_bsEsc(_bsRawText || '(vide)')}</pre>
         </details>`;
@@ -167,11 +173,21 @@ const _BS_SKIP = /TOTAL|SUBTOTAL|BTW|TVA|MANAGER|COLRUYT|DATUM|TICKET|DANK\s*U|A
 
 let _bsRawText = '';
 
-function _parseReceiptLine(line) {
-  const s = line.trim();
+function _cleanOcrLine(line) {
+  return line
+    .replace(/^[\s\\|/]+/, '')   // strip leading \| / artefacts (table borders)
+    .replace(/[|/]/g, ' ')        // remaining | and / → space (e.g. 27227IBONI → handled below)
+    .replace(/[\s.,|]+$/, '')     // strip trailing noise
+    .replace(/\s{2,}/g, ' ')
+    .trim();
+}
 
-  // Line must have a PLU (3-6 digits) near the start, optionally preceded by tax letter
-  const pluM = s.match(/^[A-Za-z]?\s*(\d{3,6})\s+(.{2,})/);
+function _parseReceiptLine(line) {
+  const s = _cleanOcrLine(line);
+  if (s.length < 5) return null;
+
+  // PLU (3-6 digits) near the start; [I]? handles "27227IBONI" where OCR reads border as I
+  const pluM = s.match(/^[A-Za-z]?\s*(\d{3,6})[I]?\s*(.{2,})/);
   if (!pluM) return null;
 
   const plu = pluM[1];
@@ -209,8 +225,7 @@ function _parseColruytText(rawText) {
   _bsRawText = rawText;
   return rawText
     .split('\n')
-    .map(l => l.trim())
-    .filter(l => l.length > 5 && /[a-zA-Z]/.test(l) && !_BS_SKIP.test(l))
+    .filter(l => /[a-zA-Z]/.test(l) && !_BS_SKIP.test(l))
     .map(_parseReceiptLine)
     .filter(Boolean);
 }
