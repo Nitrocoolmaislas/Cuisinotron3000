@@ -205,7 +205,8 @@ function confirmMerge() {
   const targetKey = radio.value;
 
   let totalGrams = 0;
-  for (const key of _mergeSelection) {
+  const _activeMergeSet = _catalogMergeSelection.size >= 2 ? _catalogMergeSelection : _mergeSelection;
+  for (const key of _activeMergeSet) {
     const e = stock[key];
     if (!e) continue;
     const g = typeof toGrams !== 'undefined' ? (toGrams(String(e.qty || 0), e.unit, key) || (e.qty || 0)) : (e.qty || 0);
