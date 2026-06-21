@@ -192,6 +192,10 @@ const INGREDIENT_BRIDGE = {
   'germes de soja':         ['tauge', 'sojascheuten'],
   'cerneaux de noix':       ['walnoten'],
   'levure chimique':        ['bakpoeder'],
+  'bicarbonate':            ['natriumbicarbonaat', 'baking soda'],
+  'bicarbonate de soude':   ['natriumbicarbonaat', 'baking soda'],
+  'sauce d huitre':         ['oestersaus'],
+  'sauce huitre':           ['oestersaus'],
 
   // ── Sauces, huiles & condiments ──
   'huile d olive':          ['olijfolie'],

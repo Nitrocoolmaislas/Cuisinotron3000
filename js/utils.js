@@ -92,6 +92,14 @@ const CANONICAL_MAP = {
   'conserve de tomates en des':  { canonical: 'tomates concassees', qty: '400', unit: 'g' },
   'tomates cerises':             { canonical: 'tomates cerises',  qty: null,  unit: null },
 
+  // ── Beurre ──
+  'noix de beurre':              { canonical: 'beurre',           qty: '10',  unit: 'g'  },
+  'noisette de beurre':          { canonical: 'beurre',           qty: '5',   unit: 'g'  },
+
+  // ── Sauce huître ──
+  'sauce huitre':                { canonical: 'sauce d huitre',   qty: null,  unit: null },
+  'sauce aux huitres':           { canonical: 'sauce d huitre',   qty: null,  unit: null },
+
   // ── Bouillon ──
   'bouillon de legumes':         { canonical: 'bouillon',         qty: null,  unit: null },
   'bouillon de poulet':          { canonical: 'bouillon',         qty: null,  unit: null },
@@ -116,10 +124,11 @@ function _isAlwaysAvailable(normKey) {
 
 // ── Conversions d'unités vagues → ml/g ──
 const VAGUE_UNIT_CONVERSIONS = {
-  'filet':  { qty: 15, unit: 'ml' },
-  'trait':  { qty: 5,  unit: 'ml' },
-  'pincee': { qty: 2,  unit: 'g'  },
-  'peu':    { qty: 10, unit: 'ml' },
+  'filet':    { qty: 15, unit: 'ml' },
+  'trait':    { qty: 5,  unit: 'ml' },
+  'pincee':   { qty: 2,  unit: 'g'  },
+  'peu':      { qty: 10, unit: 'ml' },
+  'cuillere': { qty: 15, unit: 'ml' },
 };
 
 // ══════════════════════════════════════════════
