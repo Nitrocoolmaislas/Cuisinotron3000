@@ -105,6 +105,15 @@ const CANONICAL_MAP = {
   'epices a chili':              { canonical: 'epices chili',     qty: null,  unit: null },
 };
 
+// ── Ingrédients toujours disponibles (pas à acheter) ──
+// Eau de cuisson, eau… ne doivent pas bloquer la faisabilité ni encombrer le catalogue.
+const _ALWAYS_AVAILABLE = new Set([
+  'eau', 'eau tiede', 'eau chaude', 'eau froide', 'eau salee', 'eau de source',
+]);
+function _isAlwaysAvailable(normKey) {
+  return _ALWAYS_AVAILABLE.has(normKey) || normKey.startsWith('eau de cuisson');
+}
+
 // ── Conversions d'unités vagues → ml/g ──
 const VAGUE_UNIT_CONVERSIONS = {
   'filet':  { qty: 15, unit: 'ml' },

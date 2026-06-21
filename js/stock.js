@@ -352,9 +352,25 @@ function buildIngredientMap(catFilter) {
       const qty = _p.qty ? String(_p.qty) : (_p.qty || '');
       const unit = _p.unit || '';
       const name = _p.rawName || _p.name || '';
-      const key = normIngredient(name);
+      const rawKey = normIngredient(name);
+
+      // Ingrédients de préparation (eau de cuisson…) → exclus du catalogue
+      if (typeof _isAlwaysAvailable !== 'undefined' && _isAlwaysAvailable(rawKey)) return;
+
+      // Résolution whitelist → clé canonique (ex: "spaghetti" → "pates blanches")
+      let key = rawKey;
+      let displayName = name;
+      if (typeof whitelistLookup !== 'undefined') {
+        const wKey = whitelistLookup(rawKey);
+        if (wKey) {
+          key = wKey;
+          const wEntry = typeof whitelistEntry !== 'undefined' ? whitelistEntry(wKey) : null;
+          if (wEntry?.name) displayName = wEntry.name;
+        }
+      }
+
       if (!map.has(key)) {
-        map.set(key, { name, unit, qties: [], recipes: new Set(), cats: new Set() });
+        map.set(key, { name: displayName, unit, qties: [], recipes: new Set(), cats: new Set() });
       }
       const entry = map.get(key);
       if (!entry.unit && unit) entry.unit = unit;
