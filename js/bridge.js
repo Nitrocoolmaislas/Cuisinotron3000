@@ -12,8 +12,11 @@ const IRREGULAR_FORMS = {
   'poireaux':       'poireau',
   'choux':          'chou',
   'choux fleurs':   'chou fleur',
-  // Ligatures
+  // Ligatures (normIngredient les corrige, mais IRREGULAR_FORMS sert de filet)
   'boeufs':         'boeuf',
+  'ufs':            'oeuf',        // "œufs" si normIngredient rate la ligature
+  'buf':            'boeuf',       // "bœuf" seul
+  'buf hache':      'boeuf hache', // "bœuf haché"
   // Invariables en -x (protège contre strip /s$/ → noi / poi)
   'noix':           'noix',
   'pois':           'pois',
@@ -55,6 +58,8 @@ const INGREDIENT_BRIDGE = {
   'ail':                    ['knoflook'],
   'gousses d ail':          ['knoflook'],
   'gousse d ail':           ['knoflook'],
+  'gousses dail':           ['knoflook'],  // "d'" sans espace
+  'gousse dail':            ['knoflook'],
   'brocoli':                ['broccoli'],
   'concombre':              ['komkommer'],
   'carotte':                ['wortel', 'wortelen'],
@@ -62,7 +67,9 @@ const INGREDIENT_BRIDGE = {
   'celeri':                 ['selder', 'selderij'],
   'mais':                   ['maïs', 'mais'],
   'avocat':                 ['avocado'],
-  'citron':                 ['citroen'],
+  'citron':                 ['citroenen', 'citroen bio'],
+  'citrons':                ['citroenen'],
+  'ciboulette':             ['bieslook'],
   'poireau':                ['prei'],
   'chou fleur':             ['bloemkool'],
   'chou':                   ['kool'],
@@ -85,6 +92,8 @@ const INGREDIENT_BRIDGE = {
   'spaghetti':              ['spaghetti'],
   'flocons d avoine':       ['havervlokken', 'havermout'],
   'flocon d avoine':        ['havervlokken', 'havermout'],
+  'flocons davoine':        ['havervlokken', 'havermout'],  // "d'" sans espace après normIngredient
+  'flocon davoine':         ['havervlokken', 'havermout'],
   'avoine':                 ['havervlokken'],
   'nouilles':               ['noedels', 'noodles'],
   'nouille':                ['noedels', 'noodles'],
@@ -104,6 +113,7 @@ const INGREDIENT_BRIDGE = {
   'truite fumee':           ['gerookte forel'],
   'oeuf':                   ['eieren', 'ei'],
   'oeufs':                  ['eieren'],
+  'tofu':                   ['tofu'],
   'ricotta':                ['ricotta'],
   'feta':                   ['feta'],
 
@@ -111,6 +121,7 @@ const INGREDIENT_BRIDGE = {
   'lait':                   ['volle melk', 'halfvolle melk'],
   'lait de soja':           ['sojamelk', 'soja drink'],
   'lait d amande':          ['amandelmelk'],
+  'lait damande':           ['amandelmelk'],  // "d'" sans espace
   'lait vegetal':           ['plantaardige melk', 'havermelk', 'amandelmelk'],
   'lait de coco':           ['kokosmelk'],
   'fromage rape':           ['geraspte kaas', 'raskaas'],
@@ -138,14 +149,22 @@ const INGREDIENT_BRIDGE = {
   'granola':                ['granola', 'muesli'],
   'miel':                   ['honing'],
   'sirop d agave':          ['agavesiroop'],
+  'sirop dagave':           ['agavesiroop'],           // "d'" sans espace
+  'sirop derable':          ['esdoornsiroop', 'ahornsirup'], // sirop d'érable
   'raisins secs':           ['rozijnen'],
   'cacao':                  ['cacaopoeder', 'cacao'],
   'vanille':                ['vanille', 'vanillepoeder'],
+  'extrait de vanille':     ['vanille-extract', 'vanille extract'],
+  'sucre vanille':          ['vanillesuiker'],
   'cannelle':               ['kaneel'],
 
   // ── Épices & herbes ──
   'cumin':                  ['komijn', 'cumin'],
-  'paprika':                ['paprikapoeder', 'paprika poeder'],
+  'curry':                  ['kerrie', 'currypoeder'],
+  'paprika':                ['paprikapoeder', 'paprika poeder', 'paprika spezerij'],
+  'poivre noir':            ['zwarte peper'],
+  'poivre blanc':           ['witte peper'],
+  'poivre':                 ['peper'],
   'curcuma':                ['kurkuma', 'curcuma'],
   'gingembre':              ['gember'],
   'coriandre':              ['koriander'],
@@ -157,13 +176,30 @@ const INGREDIENT_BRIDGE = {
   'aneth':                  ['dille'],
   'piment':                 ['piment', 'chili'],
   'garam masala':           ['garam masala'],
+  'garam':                  ['garam masala'],
+  'masala':                 ['garam masala'],
+  'epices chili':           ['chilipoeder', 'chilipeper'],
+  'epices a chili':         ['chilipoeder', 'chilipeper'],
   'wasabi':                 ['wasabi'],
+  'sel':                    ['zout'],
+  'soja':                   ['tauge', 'sojascheuten'],  // "germes de soja" → "soja" après strip
+
+  // ── Légumes supplémentaires ──
+  'aubergine':              ['aubergine'],
+  'olive':                  ['olijven'],
+  'olives':                 ['olijven'],
+  'jeunes oignons':         ['bosui', 'lenteui'],
+  'germes de soja':         ['tauge', 'sojascheuten'],
+  'cerneaux de noix':       ['walnoten'],
+  'levure chimique':        ['bakpoeder'],
 
   // ── Sauces, huiles & condiments ──
   'huile d olive':          ['olijfolie'],
+  'huile dolive':           ['olijfolie'],              // "d'" sans espace
   'huile de sesame':        ['sesamolie'],
   'sauce soja':             ['sojasaus'],
   'sauce d huitre':         ['oestersaus'],
+  'sauce dhuitre':          ['oestersaus'],             // "d'" sans espace
   'concentre de tomate':    ['tomatenpuree'],
   'bouillon de legumes':    ['groentebouillon'],
   'bouillon de poulet':     ['kippenbouillon'],
@@ -173,7 +209,14 @@ const INGREDIENT_BRIDGE = {
   'vinaigre blanc':         ['witte azijn'],
   'vinaigre':               ['azijn'],
   'vin blanc':              ['witte wijn'],
+  'vin blanc sec':          ['droge witte wijn', 'witte wijn'],
   'jus de citron':          ['citroensap'],
+  'jus de citron vert':     ['limoensap'],
+  'sauce cocktail':         ['cocktailsaus'],
+  'mayonnaise':             ['mayonaise', 'mayo'],
+  'moutarde':               ['mosterd'],
+  'cornichon':              ['augurk', 'augurken'],
+  'cornichons':             ['augurken', 'cornichon'],
 };
 
 // ─── Lookup avec fallbacks pluriels ──────────────────────────────────────────

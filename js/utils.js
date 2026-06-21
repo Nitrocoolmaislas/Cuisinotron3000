@@ -17,6 +17,8 @@ function unitOptions(selected) {
 
 // ── Normalisation pour déduplication et matching ──
 function normIngredient(str) {
+  // ligatures œ→oe æ→ae (NFD ne les décompose pas)
+  str = (str || "").replace(/\u0153/g, "oe").replace(/\u00e6/g, "ae");
   return (str || '')
     .replace(/[\u2018\u2019\u201a\u201b\u2032\u0060]/g, '') // apostrophes → supprimées
     .toLowerCase()
@@ -54,11 +56,15 @@ const CANONICAL_MAP = {
   'ail hache':                   { canonical: 'ail',              qty: null,  unit: null },
   'gousses d ail hachees':       { canonical: 'ail',              qty: null,  unit: null },
   'gousse d ail hachee':         { canonical: 'ail',              qty: null,  unit: null },
+  'gousses dail hachees':        { canonical: 'ail',              qty: null,  unit: null },
+  'gousse dail hachee':          { canonical: 'ail',              qty: null,  unit: null },
 
   // ── Citron ──
   'citron':                      { canonical: 'citron',           qty: null,  unit: null },
   'jus de citron':               { canonical: 'citron',           qty: null,  unit: null },
   'jus d un citron':             { canonical: 'citron',           qty: '1',   unit: 'pièce' },
+  'jus dun citron':              { canonical: 'citron',           qty: '1',   unit: 'pièce' },
+  'jus d citron':                { canonical: 'citron',           qty: '0.5', unit: 'pièce' },
   'jus d 0 5 citron':            { canonical: 'citron',           qty: '0.5', unit: 'pièce' },
 
   // ── Fromage frais ──
@@ -71,6 +77,7 @@ const CANONICAL_MAP = {
 
   // ── Miel / sucrant ──
   'miel ou sirop d agave':       { canonical: 'miel',             qty: null,  unit: null },
+  'miel ou sirop dagave':        { canonical: 'miel',             qty: null,  unit: null },
 
   // ── Épinards ──
   'epinards frais':              { canonical: 'epinards',         qty: null,  unit: null },
@@ -94,6 +101,7 @@ const CANONICAL_MAP = {
   'herbes de provence':          { canonical: 'herbes sechees',   qty: null,  unit: null },
   'fines herbes':                { canonical: 'herbes sechees',   qty: null,  unit: null },
   'melange d epices a chili':    { canonical: 'epices chili',     qty: null,  unit: null },
+  'melange depices a chili':     { canonical: 'epices chili',     qty: null,  unit: null },
   'epices a chili':              { canonical: 'epices chili',     qty: null,  unit: null },
 };
 

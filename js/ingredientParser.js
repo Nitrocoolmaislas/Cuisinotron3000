@@ -41,7 +41,8 @@ const STRIP_QUALIFIERS_FALLBACK = new Set([
 ]);
 
 function _normWord(w) {
-  return w.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/g,'');
+  return w.replace(/\u0153/g,'oe').replace(/\u00e6/g,'ae')
+    .toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/g,'');
 }
 
 function _shouldStrip(word) {
@@ -67,6 +68,7 @@ function cleanIngredientName(raw) {
   name = name.replace(/\b(au naturel|en boite|en boîte|de type\s+\S+)\b/gi, '');
   name = name.replace(/\s+\d+\s*%$/, '').trim();
   name = name.replace(/\([^)]*\)/g, '');
+  name = name.replace(/\s*\([^)]*$/, '').trim(); // parenthèse non fermée (ex: "(en conserve ou…")
 
   // Strip fraction résiduelle en tête : "/2 sachet" → "sachet"
   // Se produit quand "1 /2" (avec espace) n'est pas reconnu comme fraction
@@ -84,6 +86,8 @@ function cleanIngredientName(raw) {
   }).join(' ');
   let prev;
   do { prev = name; name = name.replace(LEADING_NOISE, ''); } while (name !== prev);
+  // "quelques" seul restant après strip des discriminants
+  name = name.replace(/^quelques?\s*/i, '').trim();
   return name.replace(/[,;:]+$/, '').replace(/\s{2,}/g, ' ').trim();
 }
 
