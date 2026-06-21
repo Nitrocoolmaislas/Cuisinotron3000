@@ -25,9 +25,19 @@ function checkFeasibility(recipe) {
       ? parseIngredientString(ing).rawName
       : parseIngredient(ing).name;
     const key = normIngredient(parsedName);
-    let found = key in stock;
-    if (!found) found = stockKeys.some(sk => _wordIn(key, sk));
-    if (!found) found = stockKeys.some(sk => _wordIn(sk, key));
+
+    // Ingrédients toujours disponibles (eau de cuisson…) — pas besoin d'être en stock
+    if (typeof _isAlwaysAvailable !== 'undefined' && _isAlwaysAvailable(key)) {
+      matched++;
+      continue;
+    }
+
+    // Résolution whitelist : "spaghetti" → "pates blanches" si c'est ça qui est en stock
+    const canonKey = (typeof whitelistLookup !== 'undefined' ? whitelistLookup(key) : null) || key;
+
+    let found = key in stock || (canonKey !== key && canonKey in stock);
+    if (!found) found = stockKeys.some(sk => _wordIn(key, sk) || (canonKey !== key && _wordIn(canonKey, sk)));
+    if (!found) found = stockKeys.some(sk => _wordIn(sk, key) || (canonKey !== key && _wordIn(sk, canonKey)));
     if (found) matched++;
     else missing.push(ing);
   }
