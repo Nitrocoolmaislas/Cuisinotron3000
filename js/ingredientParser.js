@@ -27,6 +27,8 @@ const UNITS = {
   'pot':'pot','pots':'pot',
   'boule':'boule','boules':'boule',
   'cube':'cube','cubes':'cube',
+  'cuillere':'cuillere','cuilleres':'cuillere',
+  'cuillère':'cuillere','cuillères':'cuillere',
 };
 
 const STRIP_QUALIFIERS_FALLBACK = new Set([
@@ -52,13 +54,17 @@ function _shouldStrip(word) {
   return STRIP_QUALIFIERS_FALLBACK.has(n);
 }
 
-const LEADING_NOISE = /^(?:de\s+(?:l[ae](?=\s)|l[\u2019']|la(?=\s)|les(?=\s))?\s*|d[\u2019']\s*|du\s+|des\s+|le\s+|la\s+|les\s+|l[\u2019']\s*|quelques?\s+|environ\s+|à\s+)/i;
+const LEADING_NOISE = /^(?:de\s+(?:l[ae](?=\s)|l[\u2019']|la(?=\s)|les(?=\s))?\s*|d[\u2019']\s*|d\s+|du\s+|des\s+|le\s+|la\s+|les\s+|l[\u2019']\s*|quelques?\s+|environ\s+|à\s+)/i;
 
 const FRACTIONS = {'½':0.5,'⅓':0.333,'⅔':0.667,'¼':0.25,'¾':0.75,'⅕':0.2,'⅖':0.4,'⅗':0.6,'⅘':0.8,'⅙':0.167,'⅚':0.833,'⅛':0.125,'⅜':0.375,'⅝':0.625,'⅞':0.875};
 
 function cleanIngredientName(raw) {
   let name = raw.toLowerCase().trim();
+  // Si commence par une parenthèse, la supprimer avant tout
+  name = name.replace(/^\s*\([^)]*\)\s*/, '');
   name = name.replace(/\s+ou\b.*$/, '');
+  // Tronquer à la première virgule (évite "cumin, sel, poivre" → "cumin, sel, poivre")
+  name = name.replace(/,.*$/, '').trim();
   // Tronquage au '/' seulement si ce n'est pas une fraction (chiffre/chiffre)
   name = name.replace(/(?<!\d)\/(?!\d).*$/, '').trim();
 
@@ -78,7 +84,7 @@ function cleanIngredientName(raw) {
   // ex: "bombées de cacao" → "cacao"
   name = name.replace(/^(?:bomb[eé]e?s?|rase?s?|comble?s?|bien pleines?|pleines?)\s+(?:de\s+|d['\u2019]\s*)?/i, '');
 
-  const words = name.split(/\s+/).filter(Boolean);
+  const words = name.split(/[\s’']+/).filter(Boolean);
   name = words.filter((w, i) => {
     if (i === 0) return true;                  // nom de base — toujours conservé
     if (!_shouldStrip(w)) return true;         // discriminant CIQUAL — conservé
