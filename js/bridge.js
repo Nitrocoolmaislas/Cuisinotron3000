@@ -47,6 +47,7 @@ const INGREDIENT_BRIDGE = {
   'poivron':                ['paprika'],
   'tomate':                 ['tomaat', 'tomaten'],
   'tomates en des':         ['tomaten blokjes', 'tomatenblokjes'],
+  'tomates en':             ['tomaten blokjes', 'tomatenblokjes'],
   'tomate pelee':           ['gepelde tomaten'],
   'tomate confite':         ['gedroogde tomaat'],
   'tomates cerises':        ['kerstomaat', 'cherrytomaat'],
@@ -201,10 +202,10 @@ const INGREDIENT_BRIDGE = {
   'masala':                 ['garam masala'],
   'epices chili':           ['chilipoeder', 'chilipeper'],
   'epices a chili':         ['chilipoeder', 'chilipeper'],
-  'melange d epices a chili': ['chilipoeder', 'chilipeper'],
-  'melange depices a chili':  ['chilipoeder', 'chilipeper'],
+  'melange d epices a chili': ['chili mengeling', 'mexicaans chili'],
+  'melange depices a chili':  ['chili mengeling', 'mexicaans chili'],
   'wasabi':                 ['wasabi'],
-  'sel':                    ['zout'],
+  'sel':                    ['zeezout', 'tafelzout'],
   'soja':                   ['tauge', 'sojascheuten'],  // "germes de soja" → "soja" après strip
 
   // ── Légumes supplémentaires ──
