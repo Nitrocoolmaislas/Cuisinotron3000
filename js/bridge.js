@@ -158,6 +158,22 @@ const INGREDIENT_BRIDGE = {
   'framboises':             ['frambozen'],
   'myrtilles':              ['bosbessen'],
 
+  // ── Chocolat ──
+  'chocolat noir':          ['chocolade puur'],
+  'chocolat au lait':       ['melkchocolade'],
+  'chocolat blanc':         ['chocolade wit'],
+  'chocolat':               ['chocolade puur'],
+
+  // ── Fruits secs & poissons ──
+  'anchois':                ['ansjovis'],
+  'amandes':                ['witte amandelen'],
+  'amande':                 ['witte amandelen'],
+  'noix de cajou':          ['cashewnoten'],
+
+  // ── Sucre ──
+  'sucre roux':             ['rietsuiker', 'cassonade'],
+  'cassonade':              ['cassonade', 'rietsuiker'],
+
   // ── Petit-déjeuner & sucré ──
   'granola':                ['granola', 'muesli'],
   'miel':                   ['honing'],
@@ -196,6 +212,8 @@ const INGREDIENT_BRIDGE = {
   'aneth':                  ['dille'],
   'brins d aneth':          ['dille'],
   'brins daneth':           ['dille'],
+  'menthe':                 ['munt vers'],
+  'menthe fraiche':         ['munt vers'],
   'piment':                 ['piment', 'chili'],
   'garam masala':           ['garam masala'],
   'garam':                  ['garam masala'],
@@ -230,6 +248,11 @@ const INGREDIENT_BRIDGE = {
   'sauce d huitre':         ['oestersaus'],
   'sauce dhuitre':          ['oestersaus'],             // "d'" sans espace
   'concentre de tomate':    ['tomatenpuree'],
+  'puree de tomate':        ['tomatenpuree'],
+  'coulis de tomate':       ['tomatenpuree'],
+  'tapenade':               ['tapenade'],
+  'tapenade verte':         ['tapenade'],
+  'tapenade noire':         ['tapenade'],
   'bouillon de legumes':    ['bouillon groenten'],
   'bouillon de volaille':   ['bouillon kip'],
   'bouillon de poulet':     ['bouillon kip', 'kippenbouillon'],

@@ -23,6 +23,7 @@ const UNITS = {
   'tranche':'tranche','tranches':'tranche','feuille':'feuille','feuilles':'feuille',
   'botte':'botte','bottes':'botte','gousse':'gousse','gousses':'gousse',
   'goutte':'goutte','gouttes':'goutte',
+  'bouquet':'bouquet','bouquets':'bouquet',
   'branche':'branche','branches':'branche','brin':'brin','brins':'brin',
   'filet':'filet','trait':'trait',
   'poignée':'poignée','poignées':'poignée','poignee':'poignée','poignees':'poignée',
@@ -65,6 +66,7 @@ function cleanIngredientName(raw) {
   // Si commence par une parenthèse, la supprimer avant tout
   name = name.replace(/^\s*\([^)]*\)\s*/, '');
   name = name.replace(/\s+ou\b.*$/, '');
+  name = name.replace(/\s+et\b.*$/, '');
   // Tronquer à la première virgule (évite "cumin, sel, poivre" → "cumin, sel, poivre")
   name = name.replace(/,.*$/, '').trim();
   // Tronquage au '/' seulement si ce n'est pas une fraction (chiffre/chiffre)
@@ -86,6 +88,17 @@ function cleanIngredientName(raw) {
   // ex: "bombées de cacao" → "cacao"
   name = name.replace(/^(?:bomb[eé]e?s?|rase?s?|comble?s?|bien pleines?|pleines?)\s+(?:de\s+|d['\u2019]\s*)?/i, '');
 
+  // Tronquer les expressions composées avec "+" (ex: "beurre + 1 noix de beurre" → "beurre")
+  name = name.replace(/\s*\+.*$/, '').trim();
+  // Tronquer les approximations "environ" (ex: "poulets à d'environ 1,5 kg" → "poulets")
+  name = name.replace(/\s+(?:(?:à\s+)?d['\u2019]?\s*)?environ\b.*$/i, '').trim();
+  // Qualificatifs de préparation : "en petits morceaux", "en poudre"
+  name = name.replace(/\s+en\s+(?:petits?|gros|fins?)\s+\w+\b.*$/i, '').trim();
+  name = name.replace(/\s+en\s+poudre\b.*$/i, '').trim();
+  // Variantes produit : "à l'huile", "au sel/naturel"
+  name = name.replace(/\s+à\s+l['\u2019]?\s*huile\b.*$/i, '').trim();
+  name = name.replace(/\s+au\s+(?:sel|naturel|vinaigre|sirop)\b.*$/i, '').trim();
+
   const words = name.split(/[\s’']+/).filter(Boolean);
   name = words.filter((w, i) => {
     if (i === 0) return true;                  // nom de base — toujours conservé
@@ -96,6 +109,9 @@ function cleanIngredientName(raw) {
   do { prev = name; name = name.replace(LEADING_NOISE, ''); } while (name !== prev);
   // "quelques" seul restant après strip des discriminants
   name = name.replace(/^quelques?\s*/i, '').trim();
+  // Strip prépositions résiduelles en fin (laissées par le filtre de mots)
+  name = name.replace(/\s+à\s*$/, '').trim();
+  name = name.replace(/\s+en\s*$/, '').trim();
   return name.replace(/[,;:]+$/, '').replace(/\s{2,}/g, ' ').trim();
 }
 
