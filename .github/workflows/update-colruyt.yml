@@ -5,6 +5,9 @@ on:
     - cron: '30 9 * * *'   # 09:30 UTC daily (after scraper runs at ~08:00 UTC)
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   mirror:
     runs-on: ubuntu-latest
@@ -16,10 +19,23 @@ jobs:
           BASE="https://storage.googleapis.com/storage/v1/b/colruyt-products/o"
           for i in 0 1 2 3 4 5 6; do
             DATE=$(date -u -d "$i days ago" +%Y-%m-%d)
-            URL="${BASE}/colruyt-products%2F${DATE}.json?alt=media"
-            if curl -sf "$URL" -o data/colruyt-latest.json; then
-              echo "Fetched catalog for $DATE"
-              exit 0
+            # Les fichiers ont un timestamp : "YYYY-MM-DD-HH-MM-SS.json"
+            # On liste les objets qui commencent par cette date et on prend le dernier
+            MATCH=$(curl -sf "${BASE}?prefix=colruyt-products%2F${DATE}" | \
+              python3 -c "
+import json,sys
+data=json.load(sys.stdin)
+items=data.get('items',[])
+if items:
+    print(items[-1]['name'])
+" 2>/dev/null)
+            if [ -n "$MATCH" ]; then
+              ENCODED=$(python3 -c "import urllib.parse,sys; print(urllib.parse.quote(sys.argv[1], safe=''))" "$MATCH")
+              if curl -sf "https://storage.googleapis.com/storage/v1/b/colruyt-products/o/${ENCODED}?alt=media" \
+                   -o data/colruyt-latest.json; then
+                echo "Fetched catalog: $MATCH"
+                exit 0
+              fi
             fi
           done
           echo "No catalog available for last 7 days — keeping existing file"
