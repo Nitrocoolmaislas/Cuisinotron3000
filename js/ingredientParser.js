@@ -24,6 +24,7 @@ const UNITS = {
   'botte':'botte','bottes':'botte','gousse':'gousse','gousses':'gousse',
   'goutte':'goutte','gouttes':'goutte',
   'bouquet':'bouquet','bouquets':'bouquet',
+  'louche':'louche','louches':'louche','paquet':'paquet','paquets':'paquet',
   'branche':'branche','branches':'branche','brin':'brin','brins':'brin',
   'filet':'filet','trait':'trait',
   'poignée':'poignée','poignées':'poignée','poignee':'poignée','poignees':'poignée',
@@ -94,7 +95,9 @@ function cleanIngredientName(raw) {
   name = name.replace(/\s+(?:(?:à\s+)?d['\u2019]?\s*)?environ\b.*$/i, '').trim();
   // Qualificatifs de préparation : "en petits morceaux", "en poudre"
   name = name.replace(/\s+en\s+(?:petits?|gros|fins?)\s+\w+\b.*$/i, '').trim();
-  name = name.replace(/\s+en\s+poudre\b.*$/i, '').trim();
+  name = name.replace(/\s+en\s+(?:poudre|bloc|cube)s?\b.*$/i, '').trim();
+  // Taille qualifiers : "de belle taille", "de petite taille"
+  name = name.replace(/\s+de\s+(?:petite|belle|grande|grosse|moyenne)s?\s+taille\b.*$/i, '').trim();
   // Variantes produit : "à l'huile", "au sel/naturel"
   name = name.replace(/\s+à\s+l['\u2019]?\s*huile\b.*$/i, '').trim();
   name = name.replace(/\s+au\s+(?:sel|naturel|vinaigre|sirop)\b.*$/i, '').trim();

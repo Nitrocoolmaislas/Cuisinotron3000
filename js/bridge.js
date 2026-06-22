@@ -234,6 +234,7 @@ const INGREDIENT_BRIDGE = {
   'germes de soja':         ['tauge', 'sojascheuten'],
   'cerneaux de noix':       ['walnoten'],
   'levure chimique':        ['bakpoeder'],
+  'levure':                 ['gist'],
   'bicarbonate':            ['natriumbicarbonaat', 'baking soda'],
   'bicarbonate de soude':   ['natriumbicarbonaat', 'baking soda'],
   'sauce d huitre':         ['oestersaus'],
