@@ -13,19 +13,16 @@ jobs:
 
       - name: Fetch latest Colruyt JSON
         run: |
-          TODAY=$(date -u +%Y-%m-%d)
-          YESTERDAY=$(date -u -d yesterday +%Y-%m-%d)
           BASE="https://storage.googleapis.com/storage/v1/b/colruyt-products/o"
-          URL_TODAY="${BASE}/colruyt-products%2F${TODAY}.json?alt=media"
-          URL_YESTERDAY="${BASE}/colruyt-products%2F${YESTERDAY}.json?alt=media"
-          if curl -sf "$URL_TODAY" -o data/colruyt-latest.json; then
-            echo "Fetched today's catalog ($TODAY)"
-          elif curl -sf "$URL_YESTERDAY" -o data/colruyt-latest.json; then
-            echo "Fetched yesterday's catalog ($YESTERDAY)"
-          else
-            echo "No catalog available for $TODAY or $YESTERDAY — keeping existing file"
-            exit 0
-          fi
+          for i in 0 1 2 3 4 5 6; do
+            DATE=$(date -u -d "$i days ago" +%Y-%m-%d)
+            URL="${BASE}/colruyt-products%2F${DATE}.json?alt=media"
+            if curl -sf "$URL" -o data/colruyt-latest.json; then
+              echo "Fetched catalog for $DATE"
+              exit 0
+            fi
+          done
+          echo "No catalog available for last 7 days — keeping existing file"
 
       - name: Commit if changed
         run: |

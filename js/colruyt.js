@@ -137,8 +137,8 @@ function getColruytNutrition(p) {
 // Parmi tous les matches : isAvailable=true + prix le plus bas
 function matchColruyt(normKey) {
   if (!colruytData || colruytData.length === 0) return null;
-  const bridge = INGREDIENT_BRIDGE[normKey];
-  const terms  = Array.isArray(bridge) ? bridge : (bridge?.terms ?? [normKey]);
+  const bridgeTerms = bridgeLookup(normKey);
+  const terms = Array.isArray(bridgeTerms) ? bridgeTerms : [normKey];
 
   for (const term of terms) {
     const t = term.toLowerCase();
