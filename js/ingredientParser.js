@@ -24,6 +24,7 @@ const UNITS = {
   'botte':'botte','bottes':'botte','gousse':'gousse','gousses':'gousse',
   'branche':'branche','branches':'branche','brin':'brin','brins':'brin',
   'filet':'filet','trait':'trait',
+  'poignée':'poignée','poignées':'poignée','poignee':'poignée','poignees':'poignée',
   'pot':'pot','pots':'pot',
   'boule':'boule','boules':'boule',
   'cube':'cube','cubes':'cube',
