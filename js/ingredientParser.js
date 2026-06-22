@@ -46,6 +46,53 @@ const STRIP_QUALIFIERS_FALLBACK = new Set([
   'emince','emincee','presse','pressee',
 ]);
 
+// \u2500\u2500\u2500 Blacklist LanguaL (facettes E\u00b7H\u00b7J) \u2014 priorit\u00e9 sur la whitelist CIQUAL \u2500\u2500\u2500\u2500\u2500
+// Exclus intentionnellement (discriminants bridge) : hache/ee, rape/ee,
+// frais/fraiche, fume/fumee, pelee, confite.
+const CULINARY_QUALIFIERS = new Set([
+  // Facette H \u2014 \u00e9tat de cuisson
+  'cru','crue','crus','crues',
+  'cuit','cuite','cuits','cuites',
+  'bouilli','bouillie','bouillis','bouillies',
+  'grille','grilee','grilles','grillees',
+  'roti','rotie','rotis','roties',
+  'saute','sautee','sautes','sautees',
+  'poele','poelee','poeles','poelees',
+  'pane','panee','panes','panees',
+  'dore','doree','dores','dorees',
+  'caramelise','caramelisee','caramelises','caramelisees',
+  'blanchi','blanchie','blanchis','blanchies',
+  'marine','marinee','marines','marinees',
+  'torrefie','torrefiee','torrefies','torrefiees',
+  'surgele','surgelee','surgeles','surgelees',
+  'congele','congelee','congeles','congelees',
+  'seche','sechee','seches','sechees',
+  'deshydrate','deshydratee','deshydrates','deshydratees',
+  // Facette H \u2014 transformation m\u00e9canique
+  'emince','emincee','eminces','emincees',
+  'coupe','coupee','coupes','coupees',
+  'pile','pilee','piles','pilees',
+  'ecrase','ecrasee','ecrases','ecrasees',
+  'broye','broyee','broyes','broyees',
+  'moulu','moulue','moulus','moulues',
+  'presse','pressee','presses','pressees',
+  'concasse','concassee','concasses','concassees',
+  // Facette E \u2014 forme physique
+  'entier','entiere','entiers','entieres',
+  'effile','effilees','effiles',
+  'finement','grossierement',
+  // Facette J \u2014 conditionnement
+  'egoutte','egouttee','egouttees','egouttes',
+  'appertise','appertisee',
+  'preemballe','preemballee',
+  // Qualificatifs g\u00e9n\u00e9raux
+  'bio',
+  'nature','naturel','naturelle','naturels','naturelles',
+  'mur','mure','murs','mures',
+  'moyen','moyenne','moyens','moyennes',
+  'facultatif','facultative','facultatifs','facultatives',
+]);
+
 function _normWord(w) {
   return w.replace(/\u0153/g,'oe').replace(/\u00e6/g,'ae')
     .toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/g,'');
@@ -54,6 +101,7 @@ function _normWord(w) {
 function _shouldStrip(word) {
   const n = _normWord(word);
   if (n.length <= 2) return false;
+  if (CULINARY_QUALIFIERS.has(n)) return true;  // blacklist LanguaL \u2014 priorit\u00e9 sur CIQUAL
   if (typeof DISCRIMINANTS_GLOBAUX !== 'undefined') return !DISCRIMINANTS_GLOBAUX.has(n);
   return STRIP_QUALIFIERS_FALLBACK.has(n);
 }
