@@ -150,7 +150,8 @@ const INGREDIENT_BRIDGE = {
   'miel':                   ['honing'],
   'sirop d agave':          ['agavesiroop'],
   'sirop dagave':           ['agavesiroop'],           // "d'" sans espace
-  'sirop derable':          ['esdoornsiroop', 'ahornsirup'], // sirop d'érable
+  'sirop d erable':         ['esdoornsiroop', 'ahornsirup'],
+  'sirop derable':          ['esdoornsiroop', 'ahornsirup'],
   'raisins secs':           ['rozijnen'],
   'cacao':                  ['cacaopoeder', 'cacao'],
   'vanille':                ['vanille', 'vanillepoeder'],
@@ -174,12 +175,16 @@ const INGREDIENT_BRIDGE = {
   'basilic':                ['basilicum'],
   'origan':                 ['oregano'],
   'aneth':                  ['dille'],
+  'brins d aneth':          ['dille'],
+  'brins daneth':           ['dille'],
   'piment':                 ['piment', 'chili'],
   'garam masala':           ['garam masala'],
   'garam':                  ['garam masala'],
   'masala':                 ['garam masala'],
   'epices chili':           ['chilipoeder', 'chilipeper'],
   'epices a chili':         ['chilipoeder', 'chilipeper'],
+  'melange d epices a chili': ['chilipoeder', 'chilipeper'],
+  'melange depices a chili':  ['chilipoeder', 'chilipeper'],
   'wasabi':                 ['wasabi'],
   'sel':                    ['zout'],
   'soja':                   ['tauge', 'sojascheuten'],  // "germes de soja" → "soja" après strip
@@ -215,6 +220,8 @@ const INGREDIENT_BRIDGE = {
   'vin blanc':              ['witte wijn'],
   'vin blanc sec':          ['droge witte wijn', 'witte wijn'],
   'jus de citron':          ['citroensap'],
+  'jus d citron':           ['citroensap'],   // "jus d'½ citron" / "jus d'un citron"
+  'jus d un citron':        ['citroensap'],
   'jus de citron vert':     ['limoensap'],
   'sauce cocktail':         ['cocktailsaus'],
   'mayonnaise':             ['mayonaise', 'mayo'],
