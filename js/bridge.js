@@ -64,7 +64,7 @@ const INGREDIENT_BRIDGE = {
   'concombre':              ['komkommer'],
   'carotte':                ['wortel', 'wortelen'],
   'carottes':               ['wortel', 'wortelen'],
-  'celeri':                 ['selder', 'selderij'],
+  'celeri':                 ['groene selder'],
   'mais':                   ['maïs', 'mais'],
   'avocat':                 ['avocado'],
   'citron':                 ['citroenen', 'citroen bio'],
@@ -72,6 +72,7 @@ const INGREDIENT_BRIDGE = {
   'ciboulette':             ['bieslook'],
   'poireau':                ['prei'],
   'chou fleur':             ['bloemkool'],
+  'chou vert':              ['spitskool', 'witte kool'],
   'chou':                   ['kool'],
   'petits pois':            ['erwten'],
   'haricot rouge':          ['rode bonen', 'kidneybonen'],
@@ -88,7 +89,8 @@ const INGREDIENT_BRIDGE = {
   'haricots rouges':        ['rode bonen', 'kidneybonen'],
   'pois chiches':           ['kikkererwten'],
   'pois chiche':            ['kikkererwten'],
-  'pates':                  ['pasta', 'spaghetti', 'penne'],
+  'pates':                  ['spaghetti', 'penne', 'noedels'],
+  'pate':                   ['spaghetti', 'penne', 'noedels'],  // firstWord de "pâtes blanches"
   'spaghetti':              ['spaghetti'],
   'flocons d avoine':       ['havervlokken', 'havermout'],
   'flocon d avoine':        ['havervlokken', 'havermout'],
@@ -105,8 +107,15 @@ const INGREDIENT_BRIDGE = {
 
   // ── Protéines ──
   'boeuf hache':            ['gehakt', 'rundergehakt'],
-  'boeuf':                  ['rundvlees'],
+  'boeuf maigre':           ['rundergehakt extra mager', 'mager rundergehakt'],
+  'boeuf':                  ['rundergehakt', 'biefstuk'],
   'poulet':                 ['kip', 'kipfilet'],
+  'cuisses de poulet':      ['kippenbout'],
+  'cuisse de poulet':       ['kippenbout'],
+  'cuisse':                 ['kippenbout'],
+  'aiguillettes de poulet': ['kipfilet'],
+  'aiguillette de poulet':  ['kipfilet'],
+  'aiguillette':            ['kipfilet'],
   'lardons':                ['spekblokjes', 'lardons'],
   'saumon':                 ['zalm'],
   'thon':                   ['tonijn'],
@@ -120,6 +129,9 @@ const INGREDIENT_BRIDGE = {
   // ── Produits laitiers ──
   'lait':                   ['volle melk', 'halfvolle melk'],
   'lait de soja':           ['sojadrink'],
+  'lait de coco':           ['kokosmelk'],
+  'creme de coco':          ['kokosroom', 'kokosmelk'],
+  'crème de coco':          ['kokosroom', 'kokosmelk'],
   'lait d amande':          ['amandelmelk'],
   'lait damande':           ['amandelmelk'],  // "d'" sans espace
   'lait vegetal':           ['plantaardige melk', 'havermelk', 'amandelmelk'],
@@ -133,7 +145,7 @@ const INGREDIENT_BRIDGE = {
   'creme fraiche':          ['room', 'crème fraîche', 'creme fraiche'],
   'gorgonzola':             ['gorgonzola'],
   'chevre':                 ['geitenkaas'],
-  'parmesan':               ['parmezaan'],
+  'parmesan':               ['parmigiano', 'parmezaan'],
 
   // ── Fruits ──
   'pomme':                  ['appel', 'appelen'],
@@ -162,6 +174,12 @@ const INGREDIENT_BRIDGE = {
   // ── Épices & herbes ──
   'cumin':                  ['komijn', 'cumin'],
   'curry':                  ['curry'],
+  'curry jaune':            ['curry'],
+  'pate de curry rouge':    ['curry rood', 'currypasta rode'],
+  'pate de curry':          ['currypasta'],
+  'herbes de provence':     ['provençaalse'],
+  'herbe de provence':      ['provençaalse'],
+  'herbe':                  ['kruiden'],
   'paprika':                ['kruiden paprika'],
   'poivre noir':            ['zwarte peper'],
   'poivre blanc':           ['witte peper'],
@@ -203,6 +221,7 @@ const INGREDIENT_BRIDGE = {
   'sauce huitre':           ['oestersaus'],
 
   // ── Sauces, huiles & condiments ──
+  'huile de tournesol':     ['zonnebloemolie'],
   'huile d olive':          ['olijfolie'],
   'huile dolive':           ['olijfolie'],              // "d'" sans espace
   'huile de sesame':        ['sesamolie'],
@@ -211,7 +230,8 @@ const INGREDIENT_BRIDGE = {
   'sauce dhuitre':          ['oestersaus'],             // "d'" sans espace
   'concentre de tomate':    ['tomatenpuree'],
   'bouillon de legumes':    ['bouillon groenten'],
-  'bouillon de poulet':     ['kippenbouillon'],
+  'bouillon de volaille':   ['bouillon kip'],
+  'bouillon de poulet':     ['bouillon kip', 'kippenbouillon'],
   'bouillon':               ['bouillon'],
   'tahini':                 ['tahini', 'sesampasta'],
   'houmous':                ['hummus', 'houmous'],
