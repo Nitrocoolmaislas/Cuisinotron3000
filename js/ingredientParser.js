@@ -22,6 +22,7 @@ const UNITS = {
   'sachet':'sachet','sachets':'sachet',
   'tranche':'tranche','tranches':'tranche','feuille':'feuille','feuilles':'feuille',
   'botte':'botte','bottes':'botte','gousse':'gousse','gousses':'gousse',
+  'goutte':'goutte','gouttes':'goutte',
   'branche':'branche','branches':'branche','brin':'brin','brins':'brin',
   'filet':'filet','trait':'trait',
   'poignée':'poignée','poignées':'poignée','poignee':'poignée','poignees':'poignée',
@@ -103,6 +104,7 @@ function parseIngredientString(str) {
   let s = original.replace(/\u2019/g,"'").replace(/\s+/g,' ').trim();
   s = s.replace(/\b(c[àa][cs]|c\.\s*à\s*caf[eé]|c\.\s*à\s*soupe)\./gi, '$1');
   s = s.replace(/^(?:le\s+|la\s+|les?\s+|l[''])\s*/i, '');
+  s = s.replace(/^quelques?\s+/i, '');
   s = s.replace(/^(?:petite?s?|grande?s?|gross[eo]s?|bonne?s?)\s+/i, '');
 
   let qty = null;
