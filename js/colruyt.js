@@ -62,10 +62,7 @@ async function _idbSetColruyt(data) {
 async function fetchColruytLatest(force = false) {
   if (colruytLoading) return;
   if (colruytData && !force) {
-    setColruytStatus(`✓ ${colruytFileName} — ${colruytData.length} produits`, 'ok');
-
-    // Sauvegarder en cache IndexedDB (pas de limite de taille)
-    _idbSetColruyt(colruytData);
+    setColruytStatus(`✓ ${colruytFileName || 'Cache local'} — ${colruytData.length} produits`, 'ok');
     return;
   }
 
