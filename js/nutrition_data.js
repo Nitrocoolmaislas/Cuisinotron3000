@@ -146,6 +146,14 @@ const UNIT_WEIGHTS = {
   'boule':      (_) => 80,
   'cube':       (_) => 4,           // cube de bouillon
   'noix de':    (_) => 15,          // "une noix de beurre"
+  // ── Unités culinaires courantes ──
+  'pincée':     (_) => 1,
+  'pincee':     (_) => 1,
+  'louche':     (q) => q * 200,
+  'paquet':     (_) => 10,
+  'poignée':    (_) => 30,
+  'poignee':    (_) => 30,
+  'bouquet':    (_) => 5,
   // ── Unités sans conversion fixe → defaultWeight ──
   'pièce':      (_) => null,
   'branche':    (_) => null,

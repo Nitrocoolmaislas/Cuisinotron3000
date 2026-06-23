@@ -169,7 +169,10 @@ function cookRecipe() {
   const missing   = [];
 
   for (const raw of r.ingredients) {
-    const { name, qty, unit } = parseIngredient(raw);
+    const _pp = typeof parseIngredientString !== 'undefined'
+      ? (() => { const r = parseIngredientString(raw); return { name: r.rawName, qty: r.qty ? String(r.qty) : '', unit: r.unit || '' }; })()
+      : parseIngredient(raw);
+    const { name, qty, unit } = _pp;
     const key = normIngredient(name);
 
     // Cherche la clé correspondante dans le stock (exact + substring)
