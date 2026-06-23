@@ -23756,14 +23756,10 @@ Object.entries(_CQ_ALIASES).forEach(([alias, target]) => {
 function getNutriData(normKey) {
   if (!normKey) return null;
 
-  // 0a. Whitelist : si ciqual_code renseigné → lookup direct O(1)
+  // 0a. Whitelist : si ciqual renseigné → lookup O(1) par clé k
   if (typeof whitelistEntry !== 'undefined') {
     const wEntry = whitelistEntry(normKey);
-    if (wEntry?.ciqual) {
-      // Chercher l'entrée CIQUAL par son code (champ 'ciqual' = code numérique)
-      const byCode = CIQUAL_FR.find(e => e.code === wEntry.ciqual);
-      if (byCode) return byCode;
-    }
+    if (wEntry?.ciqual && _CQ_IDX[wEntry.ciqual]) return _CQ_IDX[wEntry.ciqual];
   }
 
   // 0b. Correspondance validée par l'utilisateur (persistante)
