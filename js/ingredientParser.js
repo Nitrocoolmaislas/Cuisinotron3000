@@ -98,9 +98,18 @@ function _normWord(w) {
     .toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/g,'');
 }
 
+// Discriminants bridge absents de DISCRIMINANTS_GLOBAUX \u2014 ne jamais stripper
+const FORCE_KEEP = new Set([
+  'frais','fraiche',     // "fromage frais", "cr\u00e8me fra\u00eeche"
+  'hache','hachee',      // "boeuf hach\u00e9"
+  'rape','rapee',        // "fromage r\u00e2p\u00e9"
+  'confite','confites',  // "tomate confite"
+]);
+
 function _shouldStrip(word) {
   const n = _normWord(word);
   if (n.length <= 2) return false;
+  if (FORCE_KEEP.has(n)) return false;          // bridge discriminants \u2014 jamais stripp\u00e9s
   if (CULINARY_QUALIFIERS.has(n)) return true;  // blacklist LanguaL \u2014 priorit\u00e9 sur CIQUAL
   if (typeof DISCRIMINANTS_GLOBAUX !== 'undefined') return !DISCRIMINANTS_GLOBAUX.has(n);
   return STRIP_QUALIFIERS_FALLBACK.has(n);
@@ -149,14 +158,23 @@ function cleanIngredientName(raw) {
   // Variantes produit : "à l'huile", "au sel/naturel"
   name = name.replace(/\s+à\s+l['\u2019]?\s*huile\b.*$/i, '').trim();
   name = name.replace(/\s+au\s+(?:sel|naturel|vinaigre|sirop)\b.*$/i, '').trim();
+  // 1ère passe LEADING_NOISE — avant le filtre de mots pour éviter rawName="de"
+  // quand le substantif n’est pas dans DISCRIMINANTS_GLOBAUX
+  let prev;
+  do { prev = name; name = name.replace(LEADING_NOISE, ''); } while (name !== prev);
 
-  const words = name.split(/[\s’']+/).filter(Boolean);
+  // Préfixes nominaux — après LEADING_NOISE pour voir "extrait de…" sans le "d’" initial
+  name = name.replace(/^extrait\s+de\s+/i, '').trim();     // "extrait de vanille" → "vanille"
+  name = name.replace(/^cerneaux?\s+de\s+/i, '').trim();   // "cerneaux de noix" → "noix"
+  name = name.replace(/^jeunes?\s+/i, '').trim();          // "jeunes oignons" → "oignons"
+
+  const words = name.split(/[\s'']+/).filter(Boolean);
   name = words.filter((w, i) => {
     if (i === 0) return true;                  // nom de base — toujours conservé
     if (!_shouldStrip(w)) return true;         // discriminant CIQUAL — conservé
     return false;                              // non-discriminant — strippé
   }).join(' ');
-  let prev;
+  // 2ème passe — après le filtre pour les préfixes révélés par stripping
   do { prev = name; name = name.replace(LEADING_NOISE, ''); } while (name !== prev);
   // "quelques" seul restant après strip des discriminants
   name = name.replace(/^quelques?\s*/i, '').trim();
