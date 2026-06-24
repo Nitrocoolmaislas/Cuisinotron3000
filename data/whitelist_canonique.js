@@ -23,7 +23,8 @@ const WHITELIST = [
       "yaourt blanc",
       "laitage fermente",
       "yaourt nature entier"
-    ]
+    ],
+    "ciqual": "yaourt ou specialite laitiere nature aliment moyen"
   },
   {
     "id": 2,
@@ -36,7 +37,8 @@ const WHITELIST = [
       "yaourt allege",
       "yaourt ecreme",
       "yogourt 0"
-    ]
+    ],
+    "ciqual": "yaourt ou specialite laitiere nature aliment moyen"
   },
   {
     "id": 3,
@@ -49,7 +51,8 @@ const WHITELIST = [
       "yaourt framboise",
       "yaourt peche",
       "yaourt abricot"
-    ]
+    ],
+    "ciqual": "yaourt ou specialite laitiere aux fruits aliment moyen"
   },
   {
     "id": 4,
@@ -62,7 +65,8 @@ const WHITELIST = [
       "yaourt citron",
       "yaourt caramel",
       "yaourt saveur"
-    ]
+    ],
+    "ciqual": "yaourt"
   },
   {
     "id": 5,
@@ -75,7 +79,8 @@ const WHITELIST = [
       "yogourt grec",
       "yaourt epais",
       "strained yogurt"
-    ]
+    ],
+    "ciqual": "yaourt a la grecque"
   },
   {
     "id": 6,
@@ -87,7 +92,8 @@ const WHITELIST = [
       "fromage frais islandais",
       "yaourt skyr",
       "laitage islandais"
-    ]
+    ],
+    "ciqual": "yaourt"
   },
   {
     "id": 7,
@@ -99,7 +105,8 @@ const WHITELIST = [
       "boisson lactee fermentee",
       "yaourt buvable",
       "dairy drink"
-    ]
+    ],
+    "ciqual": "yaourt"
   },
   {
     "id": 8,
@@ -111,7 +118,8 @@ const WHITELIST = [
       "kephir",
       "lait fermente kefir",
       "boisson probiotique"
-    ]
+    ],
+    "ciqual": "kefir de lait"
   },
   {
     "id": 9,
@@ -123,7 +131,8 @@ const WHITELIST = [
       "fromage blanc demigras",
       "fromage blanc 20",
       "caillebotte"
-    ]
+    ],
+    "ciqual": "fromage blanc nature"
   },
   {
     "id": 10,
@@ -135,7 +144,8 @@ const WHITELIST = [
       "fromage blanc 0",
       "fromage blanc allege",
       "fromage blanc ecreme"
-    ]
+    ],
+    "ciqual": "fromage blanc nature"
   },
   {
     "id": 11,
@@ -147,7 +157,8 @@ const WHITELIST = [
       "fromage blanc entier",
       "fromage blanc 40",
       "fromage blanc riche"
-    ]
+    ],
+    "ciqual": "fromage blanc nature"
   },
   {
     "id": 12,
@@ -159,7 +170,8 @@ const WHITELIST = [
       "gervais",
       "fromage frais enfant",
       "fromage frais petit pot"
-    ]
+    ],
+    "ciqual": "fromage frais type petit suisse"
   },
   {
     "id": 13,
@@ -171,7 +183,8 @@ const WHITELIST = [
       "brousse",
       "serac",
       "fromage de lactoserum"
-    ]
+    ],
+    "ciqual": "ricotta"
   },
   {
     "id": 14,
@@ -185,7 +198,8 @@ const WHITELIST = [
       "creme vanille",
       "dessert lacte",
       "danette"
-    ]
+    ],
+    "ciqual": "creme dessert"
   },
   {
     "id": 15,
@@ -197,7 +211,8 @@ const WHITELIST = [
       "fromage frais en faisselle",
       "caillebotte",
       "lait caille egoutte"
-    ]
+    ],
+    "ciqual": "faisselle"
   },
   {
     "id": 16,
@@ -208,7 +223,8 @@ const WHITELIST = [
       "camembert de normandie",
       "camembert au lait cru",
       "fromage a croute fleurie"
-    ]
+    ],
+    "ciqual": "camembert"
   },
   {
     "id": 17,
@@ -221,7 +237,8 @@ const WHITELIST = [
       "brie de melun",
       "coulommiers",
       "fromage brie"
-    ]
+    ],
+    "ciqual": "brie"
   },
   {
     "id": 18,
@@ -233,7 +250,8 @@ const WHITELIST = [
       "munster alsacien",
       "fromage alsacien",
       "munster au lait cru"
-    ]
+    ],
+    "ciqual": "munster"
   },
   {
     "id": 19,
@@ -245,7 +263,8 @@ const WHITELIST = [
       "fromage savoyard",
       "fromage a tartiflette",
       "reblochon fermier"
-    ]
+    ],
+    "ciqual": "reblochon"
   },
   {
     "id": 20,
@@ -260,7 +279,8 @@ const WHITELIST = [
       "fromage fort",
       "fromage puant",
       "fromage croute lavee"
-    ]
+    ],
+    "ciqual": "fromage a pate molle et croute lavee aliment moyen"
   },
   {
     "id": 21,
@@ -273,7 +293,8 @@ const WHITELIST = [
       "buchette fraiche",
       "chevre doux",
       "fromage caprin frais"
-    ]
+    ],
+    "ciqual": "fromage de chevre frais"
   },
   {
     "id": 22,
@@ -288,7 +309,8 @@ const WHITELIST = [
       "fromage caprin",
       "picodon",
       "pouligny"
-    ]
+    ],
+    "ciqual": "fromage de chevre a tartiner"
   },
   {
     "id": 23,
@@ -302,7 +324,8 @@ const WHITELIST = [
       "fromage brebis basque",
       "fromage ovin",
       "brebis pyrenees"
-    ]
+    ],
+    "ciqual": "fromage de lactoserum de brebis"
   },
   {
     "id": 24,
@@ -316,7 +339,8 @@ const WHITELIST = [
       "fromage a trous",
       "emmenthal",
       "fromage fondu gratine"
-    ]
+    ],
+    "ciqual": "emmental ou emmenthal"
   },
   {
     "id": 25,
@@ -330,7 +354,8 @@ const WHITELIST = [
       "fromage a pate dure",
       "fromage fondu",
       "fromage a gratiner"
-    ]
+    ],
+    "ciqual": "gruyere"
   },
   {
     "id": 26,
@@ -343,7 +368,8 @@ const WHITELIST = [
       "grana padano",
       "parmesan rape",
       "fromage italien dur"
-    ]
+    ],
+    "ciqual": "grana padano"
   },
   {
     "id": 27,
@@ -356,7 +382,8 @@ const WHITELIST = [
       "gouda vieux",
       "fromage hollandais",
       "edam"
-    ]
+    ],
+    "ciqual": "gouda"
   },
   {
     "id": 28,
@@ -369,7 +396,8 @@ const WHITELIST = [
       "cheddar rape",
       "fromage anglais",
       "fromage burger"
-    ]
+    ],
+    "ciqual": "cheddar"
   },
   {
     "id": 29,
@@ -383,7 +411,8 @@ const WHITELIST = [
       "cantal",
       "laguiole",
       "fromage montagnard"
-    ]
+    ],
+    "ciqual": "fromage a pate molle et croute lavee aliment moyen"
   },
   {
     "id": 30,
@@ -398,7 +427,8 @@ const WHITELIST = [
       "gorgonzola",
       "fromage bleu",
       "bleu persille"
-    ]
+    ],
+    "ciqual": "roquefort"
   },
   {
     "id": 31,
@@ -411,7 +441,8 @@ const WHITELIST = [
       "fromage de brebis grec",
       "feta aop",
       "fromage en saumure"
-    ]
+    ],
+    "ciqual": "feta aop"
   },
   {
     "id": 32,
@@ -424,7 +455,8 @@ const WHITELIST = [
       "mozzarella pizza",
       "fromage file",
       "burrata"
-    ]
+    ],
+    "ciqual": "mozzarella au lait de vache"
   },
   {
     "id": 33,
@@ -438,7 +470,8 @@ const WHITELIST = [
       "fromage a tartiner",
       "creme de gruyere",
       "portion fondue"
-    ]
+    ],
+    "ciqual": "fromage frais type petit suisse"
   },
   {
     "id": 34,
@@ -450,7 +483,8 @@ const WHITELIST = [
       "creme mascarpone",
       "fromage a tiramisu",
       "fromage cremeux italien"
-    ]
+    ],
+    "ciqual": "mascarpone"
   },
   {
     "id": 35,
@@ -463,7 +497,8 @@ const WHITELIST = [
       "fromage frais tartiner",
       "fromage frais cremeux",
       "st moret"
-    ]
+    ],
+    "ciqual": "fromage frais type petit suisse"
   },
   {
     "id": 36,
@@ -475,7 +510,8 @@ const WHITELIST = [
       "lait frais entier",
       "lait 35",
       "lait riche en matieres grasses"
-    ]
+    ],
+    "ciqual": "lait entier"
   },
   {
     "id": 37,
@@ -488,7 +524,8 @@ const WHITELIST = [
       "lait frais",
       "lait 15",
       "lait demi"
-    ]
+    ],
+    "ciqual": "lait demiecreme"
   },
   {
     "id": 38,
@@ -500,7 +537,8 @@ const WHITELIST = [
       "lait 0",
       "lait allege",
       "lait ecreme frais"
-    ]
+    ],
+    "ciqual": "lait ecreme"
   },
   {
     "id": 39,
@@ -512,7 +550,8 @@ const WHITELIST = [
       "poudre de lait",
       "lait en poudre entier",
       "lait instantane"
-    ]
+    ],
+    "ciqual": "lait en poudre"
   },
   {
     "id": 40,
@@ -524,7 +563,8 @@ const WHITELIST = [
       "soja drink",
       "boisson au soja",
       "lait vegetal soja"
-    ]
+    ],
+    "ciqual": "boisson au soja"
   },
   {
     "id": 41,
@@ -537,7 +577,8 @@ const WHITELIST = [
       "boisson a lavoine",
       "lait vegetal avoine",
       "oat drink"
-    ]
+    ],
+    "ciqual": "boisson a base davoine"
   },
   {
     "id": 42,
@@ -549,7 +590,8 @@ const WHITELIST = [
       "almond milk",
       "boisson aux amandes",
       "lait vegetal amande"
-    ]
+    ],
+    "ciqual": "boisson a lamande"
   },
   {
     "id": 43,
@@ -562,7 +604,8 @@ const WHITELIST = [
       "creme entiere epaisse",
       "creme normande",
       "creme acidulee"
-    ]
+    ],
+    "ciqual": "creme fraiche epaisse"
   },
   {
     "id": 44,
@@ -576,7 +619,8 @@ const WHITELIST = [
       "creme a fouetter",
       "creme uht",
       "heavy cream"
-    ]
+    ],
+    "ciqual": "creme fraiche liquide fleurette"
   },
   {
     "id": 45,
@@ -588,7 +632,8 @@ const WHITELIST = [
       "creme 15",
       "creme semiepaisse allegee",
       "creme legere epaisse"
-    ]
+    ],
+    "ciqual": "creme de lait ou specialite a base de creme legere"
   },
   {
     "id": 46,
@@ -600,7 +645,8 @@ const WHITELIST = [
       "coconut cream",
       "creme noix de coco",
       "creme de noix de coco"
-    ]
+    ],
+    "ciqual": "lait de coco ou creme de coco"
   },
   {
     "id": 47,
@@ -616,7 +662,8 @@ const WHITELIST = [
       "boeuf hache 20",
       "mince beef",
       "ground beef"
-    ]
+    ],
+    "ciqual": "boeuf hache"
   },
   {
     "id": 48,
@@ -631,7 +678,8 @@ const WHITELIST = [
       "filet de boeuf",
       "bifteck",
       "tournedos"
-    ]
+    ],
+    "ciqual": "boeuf"
   },
   {
     "id": 49,
@@ -644,7 +692,8 @@ const WHITELIST = [
       "piece de boeuf rotie",
       "noix de boeuf",
       "tende de tranche"
-    ]
+    ],
+    "ciqual": "boeuf"
   },
   {
     "id": 50,
@@ -657,7 +706,8 @@ const WHITELIST = [
       "rib steak",
       "ribeye",
       "cote a los"
-    ]
+    ],
+    "ciqual": "boeuf"
   },
   {
     "id": 51,
@@ -670,7 +720,8 @@ const WHITELIST = [
       "escalope de poulet",
       "poitrine de poulet",
       "chicken breast"
-    ]
+    ],
+    "ciqual": "poulet var blanc"
   },
   {
     "id": 52,
@@ -683,7 +734,8 @@ const WHITELIST = [
       "haut de cuisse",
       "chicken thigh",
       "chicken drumstick"
-    ]
+    ],
+    "ciqual": "poulet"
   },
   {
     "id": 53,
@@ -696,7 +748,8 @@ const WHITELIST = [
       "volaille entiere",
       "poulet de chair",
       "coquelet"
-    ]
+    ],
+    "ciqual": "poulet"
   },
   {
     "id": 54,
@@ -709,7 +762,8 @@ const WHITELIST = [
       "dinde hachee",
       "filet de dinde",
       "turkey"
-    ]
+    ],
+    "ciqual": "dinde"
   },
   {
     "id": 55,
@@ -722,7 +776,8 @@ const WHITELIST = [
       "longe de porc",
       "cotelette de porc",
       "porc maigre"
-    ]
+    ],
+    "ciqual": "porc"
   },
   {
     "id": 56,
@@ -735,7 +790,8 @@ const WHITELIST = [
       "palette de porc",
       "porc roti",
       "cochon roti"
-    ]
+    ],
+    "ciqual": "epaule de porc"
   },
   {
     "id": 57,
@@ -748,7 +804,8 @@ const WHITELIST = [
       "noix de veau",
       "filet de veau",
       "piccata"
-    ]
+    ],
+    "ciqual": "veau"
   },
   {
     "id": 58,
@@ -762,7 +819,8 @@ const WHITELIST = [
       "epaule dagneau",
       "agneau hache",
       "selle dagneau"
-    ]
+    ],
+    "ciqual": "agneau"
   },
   {
     "id": 59,
@@ -774,7 +832,8 @@ const WHITELIST = [
       "filet de canard",
       "magret seche",
       "magret fume"
-    ]
+    ],
+    "ciqual": "canard"
   },
   {
     "id": 60,
@@ -785,7 +844,8 @@ const WHITELIST = [
       "confit de canard",
       "cuisse de canard confite",
       "cuisse confite"
-    ]
+    ],
+    "ciqual": "confit de canard"
   },
   {
     "id": 61,
@@ -798,7 +858,8 @@ const WHITELIST = [
       "cuisse de lapin",
       "rable de lapin",
       "lapin en morceaux"
-    ]
+    ],
+    "ciqual": "lapin"
   },
   {
     "id": 62,
@@ -810,7 +871,8 @@ const WHITELIST = [
       "foie de canard",
       "foie volaille",
       "abats de volaille"
-    ]
+    ],
+    "ciqual": "foie"
   },
   {
     "id": 63,
@@ -822,7 +884,8 @@ const WHITELIST = [
       "foie de boeuf",
       "foie de genisse",
       "foie gras de veau"
-    ]
+    ],
+    "ciqual": "foie"
   },
   {
     "id": 64,
@@ -835,7 +898,8 @@ const WHITELIST = [
       "poitrine fumee en des",
       "bacon en des",
       "lardons allumettes"
-    ]
+    ],
+    "ciqual": "lardon fume"
   },
   {
     "id": 65,
@@ -850,7 +914,8 @@ const WHITELIST = [
       "coeur de boeuf",
       "cervelle",
       "amourettes"
-    ]
+    ],
+    "ciqual": "abat"
   },
   {
     "id": 66,
@@ -863,7 +928,8 @@ const WHITELIST = [
       "jambon superieur",
       "jambon degraisse",
       "jambon tranche"
-    ]
+    ],
+    "ciqual": "jambon cuit"
   },
   {
     "id": 67,
@@ -879,7 +945,8 @@ const WHITELIST = [
       "jambon pata negra",
       "jambon de parme",
       "bresaola"
-    ]
+    ],
+    "ciqual": "jambon cru"
   },
   {
     "id": 68,
@@ -892,7 +959,8 @@ const WHITELIST = [
       "ventreche",
       "lard fume",
       "pancetta"
-    ]
+    ],
+    "ciqual": "lardon fume"
   },
   {
     "id": 69,
@@ -906,7 +974,8 @@ const WHITELIST = [
       "saucisson darles",
       "saucisse seche",
       "fuet"
-    ]
+    ],
+    "ciqual": "saucisson sec"
   },
   {
     "id": 70,
@@ -919,7 +988,8 @@ const WHITELIST = [
       "chorizo espagnol",
       "chorizo piquant",
       "txistorra"
-    ]
+    ],
+    "ciqual": "chorizo"
   },
   {
     "id": 71,
@@ -932,7 +1002,8 @@ const WHITELIST = [
       "salame",
       "salami italien",
       "salami hongrois"
-    ]
+    ],
+    "ciqual": "salami porc et boeuf"
   },
   {
     "id": 72,
@@ -944,7 +1015,8 @@ const WHITELIST = [
       "merguez boeuf",
       "saucisse merguez",
       "saucisse epicee"
-    ]
+    ],
+    "ciqual": "merguez"
   },
   {
     "id": 73,
@@ -957,7 +1029,8 @@ const WHITELIST = [
       "saucisse de toulouse",
       "crepinette",
       "saucisse porc"
-    ]
+    ],
+    "ciqual": "chipolata"
   },
   {
     "id": 74,
@@ -971,7 +1044,8 @@ const WHITELIST = [
       "frankfurter",
       "saucisse viennoise",
       "wiener"
-    ]
+    ],
+    "ciqual": "saucisse de francfort"
   },
   {
     "id": 75,
@@ -984,7 +1058,8 @@ const WHITELIST = [
       "terrine maison",
       "pate maison",
       "pate rustique"
-    ]
+    ],
+    "ciqual": "pate ou terrine de campagne"
   },
   {
     "id": 76,
@@ -996,7 +1071,8 @@ const WHITELIST = [
       "pate de foie gras",
       "mousse de foie",
       "foie gras"
-    ]
+    ],
+    "ciqual": "pate de foie doie"
   },
   {
     "id": 77,
@@ -1009,7 +1085,8 @@ const WHITELIST = [
       "rillettes de canard",
       "rillettes de saumon",
       "rillettes maison"
-    ]
+    ],
+    "ciqual": "rillettes de poulet"
   },
   {
     "id": 78,
@@ -1021,7 +1098,8 @@ const WHITELIST = [
       "black pudding",
       "morcilla",
       "boudin antillais"
-    ]
+    ],
+    "ciqual": "boudin noir"
   },
   {
     "id": 79,
@@ -1033,7 +1111,8 @@ const WHITELIST = [
       "mortadelle italienne",
       "bologna",
       "saucisson cuit italien"
-    ]
+    ],
+    "ciqual": "mortadelle"
   },
   {
     "id": 80,
@@ -1047,7 +1126,8 @@ const WHITELIST = [
       "pave de saumon",
       "saumon delevage",
       "darne de saumon"
-    ]
+    ],
+    "ciqual": "saumon"
   },
   {
     "id": 81,
@@ -1059,7 +1139,8 @@ const WHITELIST = [
       "saumon fume ecossais",
       "saumon froid fume",
       "tranche de saumon fume"
-    ]
+    ],
+    "ciqual": "saumon fume"
   },
   {
     "id": 82,
@@ -1072,7 +1153,8 @@ const WHITELIST = [
       "thon a leau",
       "thon au naturel",
       "conserve de thon"
-    ]
+    ],
+    "ciqual": "thon"
   },
   {
     "id": 83,
@@ -1084,7 +1166,8 @@ const WHITELIST = [
       "thon huile dolive",
       "thon en boite a lhuile",
       "thon micuit"
-    ]
+    ],
+    "ciqual": "thon a lhuile de tournesol"
   },
   {
     "id": 84,
@@ -1099,7 +1182,8 @@ const WHITELIST = [
       "filet de cabillaud",
       "brandade",
       "cod"
-    ]
+    ],
+    "ciqual": "cabillaud"
   },
   {
     "id": 85,
@@ -1112,7 +1196,8 @@ const WHITELIST = [
       "coalfish",
       "colin noir",
       "lieu jaune"
-    ]
+    ],
+    "ciqual": "lieu noir"
   },
   {
     "id": 86,
@@ -1125,7 +1210,8 @@ const WHITELIST = [
       "dorade grise",
       "sparide",
       "sea bream"
-    ]
+    ],
+    "ciqual": "dorade royale ou daurade ou vraie daurade"
   },
   {
     "id": 87,
@@ -1138,7 +1224,8 @@ const WHITELIST = [
       "bar de ligne",
       "sea bass",
       "loup mediterraneen"
-    ]
+    ],
+    "ciqual": "bar commun ou loup"
   },
   {
     "id": 88,
@@ -1151,7 +1238,8 @@ const WHITELIST = [
       "maquereau atlantique",
       "maquereau frais",
       "maquereau de ligne"
-    ]
+    ],
+    "ciqual": "maquereau"
   },
   {
     "id": 89,
@@ -1162,7 +1250,8 @@ const WHITELIST = [
       "maquereau fume entier",
       "filet de maquereau fume",
       "maquereau poivre fume"
-    ]
+    ],
+    "ciqual": "maquereau"
   },
   {
     "id": 90,
@@ -1174,7 +1263,8 @@ const WHITELIST = [
       "sardines a lhuile",
       "sardines au naturel",
       "conserve de sardines"
-    ]
+    ],
+    "ciqual": "sardine"
   },
   {
     "id": 91,
@@ -1186,7 +1276,8 @@ const WHITELIST = [
       "petites sardines",
       "sardine de mediterranee",
       "sardine atlantique"
-    ]
+    ],
+    "ciqual": "sardine"
   },
   {
     "id": 92,
@@ -1200,7 +1291,8 @@ const WHITELIST = [
       "rollmops",
       "kipper",
       "bouffi"
-    ]
+    ],
+    "ciqual": "hareng"
   },
   {
     "id": 93,
@@ -1212,7 +1304,8 @@ const WHITELIST = [
       "filet de sole",
       "sole commune",
       "dover sole"
-    ]
+    ],
+    "ciqual": "sole"
   },
   {
     "id": 94,
@@ -1226,7 +1319,8 @@ const WHITELIST = [
       "merlu",
       "whiting",
       "hake"
-    ]
+    ],
+    "ciqual": "merlan"
   },
   {
     "id": 95,
@@ -1238,7 +1332,8 @@ const WHITELIST = [
       "truite saumonee",
       "truite fumee",
       "filet de truite"
-    ]
+    ],
+    "ciqual": "truite"
   },
   {
     "id": 96,
@@ -1249,7 +1344,8 @@ const WHITELIST = [
       "filet de tilapia",
       "tilapia delevage",
       "perche du nil"
-    ]
+    ],
+    "ciqual": "tilapia"
   },
   {
     "id": 97,
@@ -1262,7 +1358,8 @@ const WHITELIST = [
       "filets danchois",
       "pate danchois",
       "anchoiade"
-    ]
+    ],
+    "ciqual": "anchois"
   },
   {
     "id": 98,
@@ -1275,7 +1372,8 @@ const WHITELIST = [
       "goujonnettes",
       "batonnets de poisson",
       "fish sticks"
-    ]
+    ],
+    "ciqual": "poisson pane"
   },
   {
     "id": 99,
@@ -1290,7 +1388,8 @@ const WHITELIST = [
       "crevette decortiquee",
       "shrimp",
       "prawn"
-    ]
+    ],
+    "ciqual": "crevette"
   },
   {
     "id": 100,
@@ -1303,7 +1402,8 @@ const WHITELIST = [
       "moule de zelande",
       "bivalve",
       "mussel"
-    ]
+    ],
+    "ciqual": "moule"
   },
   {
     "id": 101,
@@ -1316,7 +1416,8 @@ const WHITELIST = [
       "petoncle",
       "coquille",
       "scallop"
-    ]
+    ],
+    "ciqual": "coquille saintjacques"
   },
   {
     "id": 102,
@@ -1330,7 +1431,8 @@ const WHITELIST = [
       "anneaux de calamar",
       "tentacules de calamar",
       "chipirons"
-    ]
+    ],
+    "ciqual": "calmar ou calamar ou encornet"
   },
   {
     "id": 103,
@@ -1343,7 +1445,8 @@ const WHITELIST = [
       "crabe des neiges",
       "chair de crabe",
       "surimi crabe"
-    ]
+    ],
+    "ciqual": "crabe"
   },
   {
     "id": 104,
@@ -1356,7 +1459,8 @@ const WHITELIST = [
       "ostreiculture",
       "oyster",
       "huitre de marennes"
-    ]
+    ],
+    "ciqual": "huitre"
   },
   {
     "id": 105,
@@ -1370,7 +1474,8 @@ const WHITELIST = [
       "vongole",
       "clovisses",
       "praires"
-    ]
+    ],
+    "ciqual": "palourde cuite"
   },
   {
     "id": 106,
@@ -1383,7 +1488,8 @@ const WHITELIST = [
       "langoustine",
       "lobster",
       "queue de langouste"
-    ]
+    ],
+    "ciqual": "homard"
   },
   {
     "id": 107,
@@ -1399,7 +1505,8 @@ const WHITELIST = [
       "oeuf bio",
       "oeuf coque",
       "oeuf dur"
-    ]
+    ],
+    "ciqual": "oeuf"
   },
   {
     "id": 108,
@@ -1411,7 +1518,8 @@ const WHITELIST = [
       "jaune",
       "yolk",
       "jaune doeuf frais"
-    ]
+    ],
+    "ciqual": "jaune doeuf"
   },
   {
     "id": 109,
@@ -1424,7 +1532,8 @@ const WHITELIST = [
       "albumen",
       "egg white",
       "blanc doeuf frais"
-    ]
+    ],
+    "ciqual": "blanc doeuf"
   },
   {
     "id": 110,
@@ -1438,7 +1547,8 @@ const WHITELIST = [
       "tomate allongee",
       "tomate roma",
       "tomates fraiches"
-    ]
+    ],
+    "ciqual": "tomate"
   },
   {
     "id": 111,
@@ -1451,7 +1561,8 @@ const WHITELIST = [
       "tomate cocktail",
       "tomate raisin",
       "mini tomate"
-    ]
+    ],
+    "ciqual": "tomate cerise"
   },
   {
     "id": 112,
@@ -1464,7 +1575,8 @@ const WHITELIST = [
       "tomates en boite",
       "pulpe de tomate",
       "tomates entieres pelees"
-    ]
+    ],
+    "ciqual": "tomate"
   },
   {
     "id": 113,
@@ -1476,7 +1588,8 @@ const WHITELIST = [
       "concombre mini",
       "cornichon frais",
       "cucurbitacee"
-    ]
+    ],
+    "ciqual": "concombre"
   },
   {
     "id": 114,
@@ -1489,7 +1602,8 @@ const WHITELIST = [
       "zucchini",
       "courgette ronde",
       "baby courgette"
-    ]
+    ],
+    "ciqual": "courgette"
   },
   {
     "id": 115,
@@ -1502,7 +1616,8 @@ const WHITELIST = [
       "eggplant",
       "brinjal",
       "melanzane"
-    ]
+    ],
+    "ciqual": "aubergine"
   },
   {
     "id": 116,
@@ -1514,7 +1629,8 @@ const WHITELIST = [
       "red pepper",
       "pimiento rojo",
       "capsicum rouge"
-    ]
+    ],
+    "ciqual": "poivron rouge"
   },
   {
     "id": 117,
@@ -1526,7 +1642,8 @@ const WHITELIST = [
       "green pepper",
       "pimiento verde",
       "capsicum vert"
-    ]
+    ],
+    "ciqual": "poivron vert"
   },
   {
     "id": 118,
@@ -1537,7 +1654,8 @@ const WHITELIST = [
       "poivron jaune",
       "yellow pepper",
       "capsicum jaune"
-    ]
+    ],
+    "ciqual": "poivron jaune"
   },
   {
     "id": 119,
@@ -1550,7 +1668,8 @@ const WHITELIST = [
       "carotte fane",
       "carotte botte",
       "carottes rapees"
-    ]
+    ],
+    "ciqual": "carotte"
   },
   {
     "id": 120,
@@ -1563,7 +1682,8 @@ const WHITELIST = [
       "brocoli vert",
       "broccoli",
       "fleurettes de brocoli"
-    ]
+    ],
+    "ciqual": "brocoli"
   },
   {
     "id": 121,
@@ -1576,7 +1696,8 @@ const WHITELIST = [
       "fleurettes de choufleur",
       "tete de choufleur",
       "choufleur blanc"
-    ]
+    ],
+    "ciqual": "choufleur"
   },
   {
     "id": 122,
@@ -1588,7 +1709,8 @@ const WHITELIST = [
       "chou pomme blanc",
       "white cabbage",
       "chou en chiffonnade"
-    ]
+    ],
+    "ciqual": "chou blanc"
   },
   {
     "id": 123,
@@ -1600,7 +1722,8 @@ const WHITELIST = [
       "red cabbage",
       "chou violet",
       "chou lactofermente rouge"
-    ]
+    ],
+    "ciqual": "chou rouge"
   },
   {
     "id": 124,
@@ -1612,7 +1735,8 @@ const WHITELIST = [
       "brussels sprouts",
       "minichoux",
       "chou de bruxelles surgele"
-    ]
+    ],
+    "ciqual": "chou de bruxelles"
   },
   {
     "id": 125,
@@ -1626,7 +1750,8 @@ const WHITELIST = [
       "pousses depinard",
       "spinach",
       "feuilles depinard"
-    ]
+    ],
+    "ciqual": "epinard"
   },
   {
     "id": 126,
@@ -1642,7 +1767,8 @@ const WHITELIST = [
       "iceberg",
       "romaine",
       "sucrine"
-    ]
+    ],
+    "ciqual": "salade verte"
   },
   {
     "id": 127,
@@ -1655,7 +1781,8 @@ const WHITELIST = [
       "salade roquette",
       "roquette sauvage",
       "eruca"
-    ]
+    ],
+    "ciqual": "roquette"
   },
   {
     "id": 128,
@@ -1667,7 +1794,8 @@ const WHITELIST = [
       "doucette",
       "valerianelle",
       "lambs lettuce"
-    ]
+    ],
+    "ciqual": "mache"
   },
   {
     "id": 129,
@@ -1680,7 +1808,8 @@ const WHITELIST = [
       "endive belge",
       "chicoree witloof",
       "belgian endive"
-    ]
+    ],
+    "ciqual": "endive"
   },
   {
     "id": 130,
@@ -1693,7 +1822,8 @@ const WHITELIST = [
       "aneth doux",
       "finocchio",
       "fennel"
-    ]
+    ],
+    "ciqual": "fenouil"
   },
   {
     "id": 131,
@@ -1706,7 +1836,8 @@ const WHITELIST = [
       "celery",
       "celeri a cotes",
       "celeri vert"
-    ]
+    ],
+    "ciqual": "celeri branche"
   },
   {
     "id": 132,
@@ -1719,7 +1850,8 @@ const WHITELIST = [
       "boule de celeri",
       "celeri tubereux",
       "remoulade"
-    ]
+    ],
+    "ciqual": "celeri rave"
   },
   {
     "id": 133,
@@ -1732,7 +1864,8 @@ const WHITELIST = [
       "vert de poireau",
       "leek",
       "poireau de gennevilliers"
-    ]
+    ],
+    "ciqual": "poireau"
   },
   {
     "id": 134,
@@ -1746,7 +1879,8 @@ const WHITELIST = [
       "oignon hache",
       "oignon emince",
       "oignon doux des cevennes"
-    ]
+    ],
+    "ciqual": "oignon"
   },
   {
     "id": 135,
@@ -1758,7 +1892,8 @@ const WHITELIST = [
       "oignon rouge de toulouges",
       "red onion",
       "oignon cru rouge"
-    ]
+    ],
+    "ciqual": "oignon rouge"
   },
   {
     "id": 136,
@@ -1771,7 +1906,8 @@ const WHITELIST = [
       "shallot",
       "echalote francaise",
       "ciboule"
-    ]
+    ],
+    "ciqual": "echalote"
   },
   {
     "id": 137,
@@ -1787,7 +1923,8 @@ const WHITELIST = [
       "ail hache",
       "ail en poudre",
       "garlic"
-    ]
+    ],
+    "ciqual": "ail"
   },
   {
     "id": 138,
@@ -1800,7 +1937,8 @@ const WHITELIST = [
       "champignon emince",
       "champignon de couche",
       "agaric"
-    ]
+    ],
+    "ciqual": "champignon de paris ou champignon de couche"
   },
   {
     "id": 139,
@@ -1818,7 +1956,8 @@ const WHITELIST = [
       "champignons des bois",
       "champignons seches",
       "champignons forestiers"
-    ]
+    ],
+    "ciqual": "champignon"
   },
   {
     "id": 140,
@@ -1831,7 +1970,8 @@ const WHITELIST = [
       "asperge violette",
       "pointe dasperge",
       "asparagus"
-    ]
+    ],
+    "ciqual": "asperge"
   },
   {
     "id": 141,
@@ -1845,7 +1985,8 @@ const WHITELIST = [
       "green beans",
       "haricot mangetout",
       "haricot plat"
-    ]
+    ],
+    "ciqual": "haricot vert"
   },
   {
     "id": 142,
@@ -1859,7 +2000,8 @@ const WHITELIST = [
       "pois surgeles",
       "pois de senteur",
       "garden peas"
-    ]
+    ],
+    "ciqual": "petits pois"
   },
   {
     "id": 143,
@@ -1873,7 +2015,8 @@ const WHITELIST = [
       "corn",
       "mais surgele",
       "mais cuit"
-    ]
+    ],
+    "ciqual": "mais doux"
   },
   {
     "id": 144,
@@ -1886,7 +2029,8 @@ const WHITELIST = [
       "artichaut breton",
       "artichaut violet",
       "artichoke"
-    ]
+    ],
+    "ciqual": "artichaut"
   },
   {
     "id": 145,
@@ -1900,7 +2044,8 @@ const WHITELIST = [
       "beet",
       "beet root",
       "betterave chioggia"
-    ]
+    ],
+    "ciqual": "betterave rouge"
   },
   {
     "id": 146,
@@ -1914,7 +2059,8 @@ const WHITELIST = [
       "radis noir",
       "daikon",
       "raphanus"
-    ]
+    ],
+    "ciqual": "radis noir"
   },
   {
     "id": 147,
@@ -1927,7 +2073,8 @@ const WHITELIST = [
       "turnip",
       "navet long",
       "navet rond"
-    ]
+    ],
+    "ciqual": "navet"
   },
   {
     "id": 148,
@@ -1938,7 +2085,8 @@ const WHITELIST = [
       "panais blanc",
       "parsnip",
       "racine de panais"
-    ]
+    ],
+    "ciqual": "panais"
   },
   {
     "id": 149,
@@ -1950,7 +2098,8 @@ const WHITELIST = [
       "rhubarbe fraiche",
       "rhubarbe a confiture",
       "rhubarb"
-    ]
+    ],
+    "ciqual": "rhubarbe"
   },
   {
     "id": 150,
@@ -1964,7 +2113,8 @@ const WHITELIST = [
       "chard",
       "bette a carde",
       "swiss chard"
-    ]
+    ],
+    "ciqual": "bette ou blette"
   },
   {
     "id": 151,
@@ -1980,7 +2130,8 @@ const WHITELIST = [
       "courge musquee",
       "giraumon",
       "jack be little"
-    ]
+    ],
+    "ciqual": "courge doubeurre butternut"
   },
   {
     "id": 152,
@@ -1992,7 +2143,8 @@ const WHITELIST = [
       "courge hokkaido",
       "red kuri squash",
       "courge japonaise"
-    ]
+    ],
+    "ciqual": "potimarron"
   },
   {
     "id": 153,
@@ -2006,7 +2158,8 @@ const WHITELIST = [
       "avocado",
       "avocat a point",
       "guacamole"
-    ]
+    ],
+    "ciqual": "avocat"
   },
   {
     "id": 154,
@@ -2019,7 +2172,8 @@ const WHITELIST = [
       "chou chinois",
       "bette chinoise",
       "chou de shanghai"
-    ]
+    ],
+    "ciqual": "pak choi"
   },
   {
     "id": 155,
@@ -2032,7 +2186,8 @@ const WHITELIST = [
       "ginger",
       "gingembre rape",
       "rhizome de gingembre"
-    ]
+    ],
+    "ciqual": "gingembre"
   },
   {
     "id": 156,
@@ -2047,7 +2202,8 @@ const WHITELIST = [
       "jalapeno",
       "serrano",
       "piment fort"
-    ]
+    ],
+    "ciqual": "piment"
   },
   {
     "id": 157,
@@ -2060,7 +2216,8 @@ const WHITELIST = [
       "olives kalamata",
       "olives denoyautees",
       "tapenade"
-    ]
+    ],
+    "ciqual": "olive noire"
   },
   {
     "id": 158,
@@ -2073,7 +2230,8 @@ const WHITELIST = [
       "gherkin",
       "cornichon malossol",
       "pickle"
-    ]
+    ],
+    "ciqual": "cornichon"
   },
   {
     "id": 159,
@@ -2085,7 +2243,8 @@ const WHITELIST = [
       "capres en saumure",
       "caprons",
       "capers"
-    ]
+    ],
+    "ciqual": "capres"
   },
   {
     "id": 160,
@@ -2097,7 +2256,8 @@ const WHITELIST = [
       "palmito",
       "heart of palm",
       "palm heart"
-    ]
+    ],
+    "ciqual": "coeur de palmier"
   },
   {
     "id": 161,
@@ -2111,7 +2271,8 @@ const WHITELIST = [
       "brocoli tige",
       "tenderstem",
       "choufleur romanesco"
-    ]
+    ],
+    "ciqual": "brocoli"
   },
   {
     "id": 162,
@@ -2126,7 +2287,8 @@ const WHITELIST = [
       "pomme gala",
       "pomme cox",
       "pomme de terre sucree"
-    ]
+    ],
+    "ciqual": "pomme"
   },
   {
     "id": 163,
@@ -2139,7 +2301,8 @@ const WHITELIST = [
       "poire bosc",
       "poire comice",
       "poire bartlett"
-    ]
+    ],
+    "ciqual": "poire"
   },
   {
     "id": 164,
@@ -2152,7 +2315,8 @@ const WHITELIST = [
       "banana",
       "banane cavendish",
       "banane des antilles"
-    ]
+    ],
+    "ciqual": "banane"
   },
   {
     "id": 165,
@@ -2165,7 +2329,8 @@ const WHITELIST = [
       "orange valencia",
       "jus dorange",
       "oranges fraiches"
-    ]
+    ],
+    "ciqual": "orange"
   },
   {
     "id": 166,
@@ -2179,7 +2344,8 @@ const WHITELIST = [
       "jus de citron",
       "zeste de citron",
       "citron non traite"
-    ]
+    ],
+    "ciqual": "citron"
   },
   {
     "id": 167,
@@ -2192,7 +2358,8 @@ const WHITELIST = [
       "jus de citron vert",
       "zeste de citron vert",
       "kaffir lime"
-    ]
+    ],
+    "ciqual": "citron vert ou lime"
   },
   {
     "id": 168,
@@ -2205,7 +2372,8 @@ const WHITELIST = [
       "pamplemousse rose",
       "pamplemousse jaune",
       "pomelo"
-    ]
+    ],
+    "ciqual": "pamplemousse chinois"
   },
   {
     "id": 169,
@@ -2218,7 +2386,8 @@ const WHITELIST = [
       "tangerine",
       "clementine de corse",
       "satsuma"
-    ]
+    ],
+    "ciqual": "clementine ou mandarine"
   },
   {
     "id": 170,
@@ -2230,7 +2399,8 @@ const WHITELIST = [
       "raisin muscat blanc",
       "raisin chasselas",
       "grapes"
-    ]
+    ],
+    "ciqual": "raisin blanc"
   },
   {
     "id": 171,
@@ -2242,7 +2412,8 @@ const WHITELIST = [
       "raisin muscat noir",
       "raisin cardinal",
       "red grapes"
-    ]
+    ],
+    "ciqual": "raisin noir"
   },
   {
     "id": 172,
@@ -2256,7 +2427,8 @@ const WHITELIST = [
       "fraise charlotte",
       "strawberry",
       "fraise de plein champ"
-    ]
+    ],
+    "ciqual": "fraise"
   },
   {
     "id": 173,
@@ -2268,7 +2440,8 @@ const WHITELIST = [
       "framboise fraiche",
       "raspberry",
       "framboise surgelee"
-    ]
+    ],
+    "ciqual": "framboise"
   },
   {
     "id": 174,
@@ -2281,7 +2454,8 @@ const WHITELIST = [
       "airelle noire",
       "bilberry",
       "myrtille sauvage"
-    ]
+    ],
+    "ciqual": "myrtille"
   },
   {
     "id": 175,
@@ -2295,7 +2469,8 @@ const WHITELIST = [
       "cerise noire",
       "cherry",
       "cerise fraiche"
-    ]
+    ],
+    "ciqual": "cerise"
   },
   {
     "id": 176,
@@ -2309,7 +2484,8 @@ const WHITELIST = [
       "peche blanche",
       "peche jaune",
       "peach"
-    ]
+    ],
+    "ciqual": "peche blanche"
   },
   {
     "id": 177,
@@ -2321,7 +2497,8 @@ const WHITELIST = [
       "abricot bergeron",
       "apricot",
       "abricot frais"
-    ]
+    ],
+    "ciqual": "abricot"
   },
   {
     "id": 178,
@@ -2335,7 +2512,8 @@ const WHITELIST = [
       "reineclaude",
       "plum",
       "prune dagen"
-    ]
+    ],
+    "ciqual": "prune"
   },
   {
     "id": 179,
@@ -2348,7 +2526,8 @@ const WHITELIST = [
       "figue blanche",
       "fig",
       "figue de barbarie"
-    ]
+    ],
+    "ciqual": "figue"
   },
   {
     "id": 180,
@@ -2361,7 +2540,8 @@ const WHITELIST = [
       "kiwi gold",
       "actinidia",
       "zespri"
-    ]
+    ],
+    "ciqual": "kiwi"
   },
   {
     "id": 181,
@@ -2374,7 +2554,8 @@ const WHITELIST = [
       "mangue alphonso",
       "mango",
       "mangue tommy"
-    ]
+    ],
+    "ciqual": "mangue"
   },
   {
     "id": 182,
@@ -2387,7 +2568,8 @@ const WHITELIST = [
       "ananas victoria",
       "pineapple",
       "ananas tranche"
-    ]
+    ],
+    "ciqual": "ananas"
   },
   {
     "id": 183,
@@ -2399,7 +2581,8 @@ const WHITELIST = [
       "melon deau",
       "watermelon",
       "pasteque sans pepins"
-    ]
+    ],
+    "ciqual": "pasteque"
   },
   {
     "id": 184,
@@ -2413,7 +2596,8 @@ const WHITELIST = [
       "cantaloupe",
       "honeydew",
       "gallia"
-    ]
+    ],
+    "ciqual": "melon"
   },
   {
     "id": 185,
@@ -2426,7 +2610,8 @@ const WHITELIST = [
       "coco rapee",
       "coconut",
       "noix de coco sechee"
-    ]
+    ],
+    "ciqual": "noix de coco"
   },
   {
     "id": 186,
@@ -2439,7 +2624,8 @@ const WHITELIST = [
       "grenadille",
       "fruit passion",
       "pulpe de passion"
-    ]
+    ],
+    "ciqual": "fruit de la passion ou maracudja"
   },
   {
     "id": 187,
@@ -2451,7 +2637,8 @@ const WHITELIST = [
       "litchis",
       "letchi",
       "lichi"
-    ]
+    ],
+    "ciqual": "litchi"
   },
   {
     "id": 188,
@@ -2463,7 +2650,8 @@ const WHITELIST = [
       "arilles de grenade",
       "pomegranate",
       "grains de grenade"
-    ]
+    ],
+    "ciqual": "grenade"
   },
   {
     "id": 189,
@@ -2475,7 +2663,8 @@ const WHITELIST = [
       "papaye verte",
       "pawpaw",
       "papaye tropicale"
-    ]
+    ],
+    "ciqual": "papaye"
   },
   {
     "id": 190,
@@ -2487,7 +2676,8 @@ const WHITELIST = [
       "dattes medjool",
       "dattes deglet nour",
       "date fruit"
-    ]
+    ],
+    "ciqual": "datte"
   },
   {
     "id": 191,
@@ -2499,7 +2689,8 @@ const WHITELIST = [
       "pruneaux secs",
       "prune sechee",
       "dried plum"
-    ]
+    ],
+    "ciqual": "pruneau"
   },
   {
     "id": 192,
@@ -2513,7 +2704,8 @@ const WHITELIST = [
       "raisins dores",
       "dried grapes",
       "currants"
-    ]
+    ],
+    "ciqual": "raisin blanc"
   },
   {
     "id": 193,
@@ -2525,7 +2717,8 @@ const WHITELIST = [
       "abricot seche",
       "dried apricots",
       "abricots moelleux"
-    ]
+    ],
+    "ciqual": "abricot"
   },
   {
     "id": 194,
@@ -2536,7 +2729,8 @@ const WHITELIST = [
       "figue seche",
       "figues deshydratees",
       "dried figs"
-    ]
+    ],
+    "ciqual": "figue"
   },
   {
     "id": 195,
@@ -2549,7 +2743,8 @@ const WHITELIST = [
       "canneberge",
       "cranberries sechees",
       "airelle americaine"
-    ]
+    ],
+    "ciqual": "canneberge ou cranberry"
   },
   {
     "id": 196,
@@ -2561,7 +2756,8 @@ const WHITELIST = [
       "mure de ronce",
       "blackberry",
       "mure de bourgogne"
-    ]
+    ],
+    "ciqual": "mure de ronce"
   },
   {
     "id": 197,
@@ -2574,7 +2770,8 @@ const WHITELIST = [
       "cassis",
       "redcurrant",
       "blackcurrant"
-    ]
+    ],
+    "ciqual": "groseille"
   },
   {
     "id": 198,
@@ -2587,7 +2784,8 @@ const WHITELIST = [
       "banane verte",
       "alloco",
       "tostones"
-    ]
+    ],
+    "ciqual": "banane plantain"
   },
   {
     "id": 199,
@@ -2600,7 +2798,8 @@ const WHITELIST = [
       "lentilles blondes",
       "lentilles beluga",
       "green lentils"
-    ]
+    ],
+    "ciqual": "lentilles vertes"
   },
   {
     "id": 200,
@@ -2612,7 +2811,8 @@ const WHITELIST = [
       "red lentils",
       "lentilles oranges",
       "masoor dal"
-    ]
+    ],
+    "ciqual": "lentilles corail"
   },
   {
     "id": 201,
@@ -2626,7 +2826,8 @@ const WHITELIST = [
       "houmous",
       "ceci",
       "pois chiches cuits"
-    ]
+    ],
+    "ciqual": "pois chiches"
   },
   {
     "id": 202,
@@ -2640,7 +2841,8 @@ const WHITELIST = [
       "white beans",
       "haricots tarbais",
       "flageolets"
-    ]
+    ],
+    "ciqual": "haricots blancs"
   },
   {
     "id": 203,
@@ -2652,7 +2854,8 @@ const WHITELIST = [
       "haricots rouges en boite",
       "kidney beans",
       "haricots a la mexicaine"
-    ]
+    ],
+    "ciqual": "haricots rouges"
   },
   {
     "id": 204,
@@ -2664,7 +2867,8 @@ const WHITELIST = [
       "haricots noirs mexicains",
       "frijoles negros",
       "turtle beans"
-    ]
+    ],
+    "ciqual": "haricot noir cuit"
   },
   {
     "id": 205,
@@ -2676,7 +2880,8 @@ const WHITELIST = [
       "pois casses verts",
       "split peas",
       "puree de pois"
-    ]
+    ],
+    "ciqual": "pois casse"
   },
   {
     "id": 206,
@@ -2689,7 +2894,8 @@ const WHITELIST = [
       "broad beans",
       "feve de marais",
       "ful medames"
-    ]
+    ],
+    "ciqual": "feve"
   },
   {
     "id": 207,
@@ -2702,7 +2908,8 @@ const WHITELIST = [
       "feve de soja",
       "green soybeans",
       "mukimame"
-    ]
+    ],
+    "ciqual": "edamame"
   },
   {
     "id": 208,
@@ -2721,7 +2928,8 @@ const WHITELIST = [
       "vapeur",
       "puree",
       "frites"
-    ]
+    ],
+    "ciqual": "pomme de terre"
   },
   {
     "id": 209,
@@ -2734,7 +2942,8 @@ const WHITELIST = [
       "patate douce violette",
       "batata",
       "camote"
-    ]
+    ],
+    "ciqual": "patate douce"
   },
   {
     "id": 210,
@@ -2747,7 +2956,8 @@ const WHITELIST = [
       "tapioca",
       "farine de manioc",
       "racine de manioc"
-    ]
+    ],
+    "ciqual": "manioc"
   },
   {
     "id": 211,
@@ -2759,7 +2969,8 @@ const WHITELIST = [
       "artichaut de jerusalem",
       "soleil vivace",
       "poire de terre"
-    ]
+    ],
+    "ciqual": "topinambour"
   },
   {
     "id": 212,
@@ -2771,7 +2982,8 @@ const WHITELIST = [
       "igname blanc",
       "igname violet",
       "tubercule africain"
-    ]
+    ],
+    "ciqual": "igname"
   },
   {
     "id": 213,
@@ -2793,7 +3005,8 @@ const WHITELIST = [
       "capellini",
       "orecchiette",
       "conchiglie"
-    ]
+    ],
+    "ciqual": "pates"
   },
   {
     "id": 214,
@@ -2806,7 +3019,8 @@ const WHITELIST = [
       "penne completes",
       "whole wheat pasta",
       "pates integrales"
-    ]
+    ],
+    "ciqual": "pates"
   },
   {
     "id": 215,
@@ -2819,7 +3033,8 @@ const WHITELIST = [
       "pates fraiches",
       "egg pasta",
       "pates jaunes"
-    ]
+    ],
+    "ciqual": "pates ou nouilles asiatiques au ble et aux oeufs"
   },
   {
     "id": 216,
@@ -2832,7 +3047,8 @@ const WHITELIST = [
       "pates gluten free",
       "pasta sans gluten",
       "pates coeliaques"
-    ]
+    ],
+    "ciqual": "pates"
   },
   {
     "id": 217,
@@ -2846,7 +3062,8 @@ const WHITELIST = [
       "riz cuit",
       "white rice",
       "riz etuve"
-    ]
+    ],
+    "ciqual": "riz blanc"
   },
   {
     "id": 218,
@@ -2859,7 +3076,8 @@ const WHITELIST = [
       "riz integral",
       "riz semicomplet",
       "whole grain rice"
-    ]
+    ],
+    "ciqual": "riz complet"
   },
   {
     "id": 219,
@@ -2872,7 +3090,8 @@ const WHITELIST = [
       "riz parfume",
       "basmati blanc",
       "riz a curry"
-    ]
+    ],
+    "ciqual": "riz basmati"
   },
   {
     "id": 220,
@@ -2885,7 +3104,8 @@ const WHITELIST = [
       "vialone nano",
       "riz a risotto",
       "riz italien"
-    ]
+    ],
+    "ciqual": "riz"
   },
   {
     "id": 221,
@@ -2899,7 +3119,8 @@ const WHITELIST = [
       "semoule moyenne",
       "semoule grosse",
       "couscous precuit"
-    ]
+    ],
+    "ciqual": "semoule de ble dur"
   },
   {
     "id": 222,
@@ -2912,7 +3133,8 @@ const WHITELIST = [
       "quinoa noir",
       "quinoa tricolore",
       "quinoa cuit"
-    ]
+    ],
+    "ciqual": "quinoa"
   },
   {
     "id": 223,
@@ -2925,7 +3147,8 @@ const WHITELIST = [
       "polenta precuite",
       "polenta italienne",
       "cornmeal"
-    ]
+    ],
+    "ciqual": "polenta ou semoule de mais"
   },
   {
     "id": 224,
@@ -2940,7 +3163,8 @@ const WHITELIST = [
       "taboule",
       "freekeh",
       "epeautre"
-    ]
+    ],
+    "ciqual": "boulgour de ble"
   },
   {
     "id": 225,
@@ -2953,7 +3177,8 @@ const WHITELIST = [
       "kasha",
       "buckwheat",
       "gruau de sarrasin"
-    ]
+    ],
+    "ciqual": "sarrasin entier"
   },
   {
     "id": 226,
@@ -2969,7 +3194,8 @@ const WHITELIST = [
       "flocons fins",
       "flocons epais",
       "gruau davoine"
-    ]
+    ],
+    "ciqual": "flocons davoine"
   },
   {
     "id": 227,
@@ -2982,7 +3208,8 @@ const WHITELIST = [
       "pearl barley",
       "barley",
       "orge cuit"
-    ]
+    ],
+    "ciqual": "orge perlee"
   },
   {
     "id": 228,
@@ -2994,7 +3221,8 @@ const WHITELIST = [
       "millet jaune",
       "millet blanc",
       "cereale millet"
-    ]
+    ],
+    "ciqual": "millet grain cuit"
   },
   {
     "id": 229,
@@ -3009,7 +3237,8 @@ const WHITELIST = [
       "pain tradition",
       "ficelle",
       "pain boulanger"
-    ]
+    ],
+    "ciqual": "pain blanc maison avec farine pour machine a pain"
   },
   {
     "id": 230,
@@ -3022,7 +3251,8 @@ const WHITELIST = [
       "pain americain",
       "pain toast",
       "pain en tranches"
-    ]
+    ],
+    "ciqual": "pain de mie"
   },
   {
     "id": 231,
@@ -3036,7 +3266,8 @@ const WHITELIST = [
       "pain multicereales",
       "wholemeal bread",
       "pain integral"
-    ]
+    ],
+    "ciqual": "pain aux raisins viennoiserie"
   },
   {
     "id": 232,
@@ -3049,7 +3280,8 @@ const WHITELIST = [
       "pumpernickel",
       "pain nordique",
       "knackebrod"
-    ]
+    ],
+    "ciqual": "pain de seigle"
   },
   {
     "id": 233,
@@ -3061,7 +3293,8 @@ const WHITELIST = [
       "pain coeliaques",
       "pain de riz",
       "pain sans gluten tranche"
-    ]
+    ],
+    "ciqual": "pain"
   },
   {
     "id": 234,
@@ -3077,7 +3310,8 @@ const WHITELIST = [
       "tortilla de ble",
       "wrap",
       "lavash"
-    ]
+    ],
+    "ciqual": "pain pita"
   },
   {
     "id": 235,
@@ -3089,7 +3323,8 @@ const WHITELIST = [
       "tartine grillee",
       "zwiebach",
       "toast grille"
-    ]
+    ],
+    "ciqual": "biscotte briochee"
   },
   {
     "id": 236,
@@ -3103,7 +3338,8 @@ const WHITELIST = [
       "galette de riz",
       "wasa",
       "ryvita"
-    ]
+    ],
+    "ciqual": "crackers de table au froment"
   },
   {
     "id": 237,
@@ -3117,7 +3353,8 @@ const WHITELIST = [
       "panko",
       "chapelure maison",
       "croutons"
-    ]
+    ],
+    "ciqual": "chapelure"
   },
   {
     "id": 238,
@@ -3132,7 +3369,8 @@ const WHITELIST = [
       "beurre frais",
       "beurre fondu",
       "noix de beurre"
-    ]
+    ],
+    "ciqual": "beurre a 82 mg"
   },
   {
     "id": 239,
@@ -3144,7 +3382,8 @@ const WHITELIST = [
       "beurre breton",
       "beurre de baratte",
       "salted butter"
-    ]
+    ],
+    "ciqual": "beurre a 82 mg"
   },
   {
     "id": 240,
@@ -3156,7 +3395,8 @@ const WHITELIST = [
       "beurre light",
       "beurre 41",
       "beurre reduit en graisses"
-    ]
+    ],
+    "ciqual": "beurre a teneur en matiere grasse inconnue allege ou non"
   },
   {
     "id": 241,
@@ -3169,7 +3409,8 @@ const WHITELIST = [
       "beurre purifie",
       "clarified butter",
       "samn"
-    ]
+    ],
+    "ciqual": "ghee"
   },
   {
     "id": 242,
@@ -3181,7 +3422,8 @@ const WHITELIST = [
       "matiere grasse vegetale",
       "flora",
       "margarine allegee"
-    ]
+    ],
+    "ciqual": "matiere grasse vegetale ou margarine"
   },
   {
     "id": 243,
@@ -3194,7 +3436,8 @@ const WHITELIST = [
       "evoo",
       "huile olive",
       "olive oil"
-    ]
+    ],
+    "ciqual": "huile dolive"
   },
   {
     "id": 244,
@@ -3206,7 +3449,8 @@ const WHITELIST = [
       "huile neutre",
       "sunflower oil",
       "huile de friture"
-    ]
+    ],
+    "ciqual": "huile de tournesol"
   },
   {
     "id": 245,
@@ -3218,7 +3462,8 @@ const WHITELIST = [
       "rapeseed oil",
       "canola oil",
       "huile colza vierge"
-    ]
+    ],
+    "ciqual": "huile de colza"
   },
   {
     "id": 246,
@@ -3229,7 +3474,8 @@ const WHITELIST = [
       "huile de noix vierge",
       "walnut oil",
       "huile de noix premiere pression"
-    ]
+    ],
+    "ciqual": "huile de noix"
   },
   {
     "id": 247,
@@ -3241,7 +3487,8 @@ const WHITELIST = [
       "coconut oil",
       "huile coco vierge",
       "huile de coprah"
-    ]
+    ],
+    "ciqual": "huile ou graisse de coco coprah"
   },
   {
     "id": 248,
@@ -3254,7 +3501,8 @@ const WHITELIST = [
       "lard fondu",
       "graisse de canard",
       "schmaltz"
-    ]
+    ],
+    "ciqual": "saindoux"
   },
   {
     "id": 249,
@@ -3268,7 +3516,8 @@ const WHITELIST = [
       "poudre damande",
       "almonds",
       "amande grillee"
-    ]
+    ],
+    "ciqual": "amande"
   },
   {
     "id": 250,
@@ -3281,7 +3530,8 @@ const WHITELIST = [
       "hazelnuts",
       "praline noisette",
       "poudre de noisette"
-    ]
+    ],
+    "ciqual": "noisette"
   },
   {
     "id": 251,
@@ -3294,7 +3544,8 @@ const WHITELIST = [
       "walnuts",
       "noix fraiche",
       "noix seche"
-    ]
+    ],
+    "ciqual": "noix"
   },
   {
     "id": 252,
@@ -3307,7 +3558,8 @@ const WHITELIST = [
       "cashew",
       "noix cajou grillee",
       "cashew nuts"
-    ]
+    ],
+    "ciqual": "noix de cajou"
   },
   {
     "id": 253,
@@ -3320,7 +3572,8 @@ const WHITELIST = [
       "pistache decortiquee",
       "pistaches salees",
       "pistachios"
-    ]
+    ],
+    "ciqual": "pistache"
   },
   {
     "id": 254,
@@ -3333,7 +3586,8 @@ const WHITELIST = [
       "peanuts",
       "cacahuetes grillees",
       "cacahuetes salees"
-    ]
+    ],
+    "ciqual": "cacahuete ou arachide"
   },
   {
     "id": 255,
@@ -3344,7 +3598,8 @@ const WHITELIST = [
       "macadamia",
       "noix hawaienne",
       "macadamia nuts"
-    ]
+    ],
+    "ciqual": "noix de macadamia"
   },
   {
     "id": 256,
@@ -3356,7 +3611,8 @@ const WHITELIST = [
       "brazil nuts",
       "bertholletia",
       "noix damazonie"
-    ]
+    ],
+    "ciqual": "noix du bresil"
   },
   {
     "id": 257,
@@ -3368,7 +3624,8 @@ const WHITELIST = [
       "pine nuts",
       "pinones",
       "pignoli"
-    ]
+    ],
+    "ciqual": "pignon de pin"
   },
   {
     "id": 258,
@@ -3381,7 +3638,8 @@ const WHITELIST = [
       "sesame noir",
       "sesame seeds",
       "sesame grille"
-    ]
+    ],
+    "ciqual": "sesame"
   },
   {
     "id": 259,
@@ -3393,7 +3651,8 @@ const WHITELIST = [
       "graines de soleil",
       "sunflower seeds",
       "pepitas de tournesol"
-    ]
+    ],
+    "ciqual": "tournesol"
   },
   {
     "id": 260,
@@ -3406,7 +3665,8 @@ const WHITELIST = [
       "pumpkin seeds",
       "graines vertes",
       "kurbiskerne"
-    ]
+    ],
+    "ciqual": "graine de courge"
   },
   {
     "id": 261,
@@ -3419,7 +3679,8 @@ const WHITELIST = [
       "flaxseed",
       "graines de lin moulues",
       "linseed"
-    ]
+    ],
+    "ciqual": "graine de lin"
   },
   {
     "id": 262,
@@ -3431,7 +3692,8 @@ const WHITELIST = [
       "graines de chia blanc",
       "chia seeds",
       "chia noir"
-    ]
+    ],
+    "ciqual": "graine de chia"
   },
   {
     "id": 263,
@@ -3443,7 +3705,8 @@ const WHITELIST = [
       "graines de coquelicot",
       "poppy seeds",
       "mohn"
-    ]
+    ],
+    "ciqual": "graine de pavot"
   },
   {
     "id": 264,
@@ -3456,7 +3719,8 @@ const WHITELIST = [
       "pecan nuts",
       "noix pecan",
       "cerneaux de pecan"
-    ]
+    ],
+    "ciqual": "noix de pecan"
   },
   {
     "id": 265,
@@ -3471,7 +3735,8 @@ const WHITELIST = [
       "sel rose",
       "sel de table",
       "salt"
-    ]
+    ],
+    "ciqual": "sel au celeri"
   },
   {
     "id": 266,
@@ -3485,7 +3750,8 @@ const WHITELIST = [
       "black pepper",
       "poivre de kampot",
       "mignonette"
-    ]
+    ],
+    "ciqual": "poivre noir"
   },
   {
     "id": 267,
@@ -3498,7 +3764,8 @@ const WHITELIST = [
       "paprika fort",
       "pimenton",
       "sweet paprika"
-    ]
+    ],
+    "ciqual": "paprika"
   },
   {
     "id": 268,
@@ -3511,7 +3778,8 @@ const WHITELIST = [
       "cumin seeds",
       "graines de cumin",
       "comino"
-    ]
+    ],
+    "ciqual": "cumin"
   },
   {
     "id": 269,
@@ -3523,7 +3791,8 @@ const WHITELIST = [
       "coriandre en poudre",
       "graines de coriandre",
       "coriander powder"
-    ]
+    ],
+    "ciqual": "coriandre"
   },
   {
     "id": 270,
@@ -3539,7 +3808,8 @@ const WHITELIST = [
       "madras curry",
       "curry mild",
       "curry fort"
-    ]
+    ],
+    "ciqual": "curry"
   },
   {
     "id": 271,
@@ -3551,7 +3821,8 @@ const WHITELIST = [
       "safran des indes",
       "turmeric",
       "kurkuma"
-    ]
+    ],
+    "ciqual": "curcuma"
   },
   {
     "id": 272,
@@ -3564,7 +3835,8 @@ const WHITELIST = [
       "cannelle de ceylan",
       "cinnamon",
       "cassia"
-    ]
+    ],
+    "ciqual": "cannelle"
   },
   {
     "id": 273,
@@ -3576,7 +3848,8 @@ const WHITELIST = [
       "muscade rapee",
       "nutmeg",
       "noix de muscade entiere"
-    ]
+    ],
+    "ciqual": "noix de muscade"
   },
   {
     "id": 274,
@@ -3590,7 +3863,8 @@ const WHITELIST = [
       "piment despelette",
       "piment rouge moulu",
       "cayenne pepper"
-    ]
+    ],
+    "ciqual": "piment"
   },
   {
     "id": 275,
@@ -3603,7 +3877,8 @@ const WHITELIST = [
       "thym frais",
       "thyme",
       "serpolet"
-    ]
+    ],
+    "ciqual": "thym"
   },
   {
     "id": 276,
@@ -3616,7 +3891,8 @@ const WHITELIST = [
       "romarin seche",
       "rosemary",
       "rosmarin"
-    ]
+    ],
+    "ciqual": "romarin"
   },
   {
     "id": 277,
@@ -3628,7 +3904,8 @@ const WHITELIST = [
       "laurier sauce",
       "bay leaf",
       "laurier seche"
-    ]
+    ],
+    "ciqual": "laurier"
   },
   {
     "id": 278,
@@ -3642,7 +3919,8 @@ const WHITELIST = [
       "basilic seche",
       "basil",
       "basilic thai"
-    ]
+    ],
+    "ciqual": "basilic"
   },
   {
     "id": 279,
@@ -3656,7 +3934,8 @@ const WHITELIST = [
       "persil hache",
       "parsley",
       "persil seche"
-    ]
+    ],
+    "ciqual": "persil"
   },
   {
     "id": 280,
@@ -3669,7 +3948,8 @@ const WHITELIST = [
       "chives",
       "civette",
       "ciboulette ciselee"
-    ]
+    ],
+    "ciqual": "ciboule ou ciboulette"
   },
   {
     "id": 281,
@@ -3682,7 +3962,8 @@ const WHITELIST = [
       "origanum",
       "marjolaine sauvage",
       "oregano"
-    ]
+    ],
+    "ciqual": "origan"
   },
   {
     "id": 282,
@@ -3697,7 +3978,8 @@ const WHITELIST = [
       "mint",
       "menthe sechee",
       "menthe marocaine"
-    ]
+    ],
+    "ciqual": "menthe"
   },
   {
     "id": 283,
@@ -3709,7 +3991,8 @@ const WHITELIST = [
       "estragon francais",
       "tarragon",
       "estragon seche"
-    ]
+    ],
+    "ciqual": "estragon"
   },
   {
     "id": 284,
@@ -3722,7 +4005,8 @@ const WHITELIST = [
       "sauge sechee",
       "sage",
       "salvia"
-    ]
+    ],
+    "ciqual": "sauge"
   },
   {
     "id": 285,
@@ -3735,7 +4019,8 @@ const WHITELIST = [
       "fenouil batard",
       "aneth seche",
       "brins daneth"
-    ]
+    ],
+    "ciqual": "aneth"
   },
   {
     "id": 286,
@@ -3747,7 +4032,8 @@ const WHITELIST = [
       "cerfeuil hache",
       "chervil",
       "cerfeuil seche"
-    ]
+    ],
+    "ciqual": "cerfeuil"
   },
   {
     "id": 287,
@@ -3759,7 +4045,8 @@ const WHITELIST = [
       "herbes provencales",
       "bouquet garni",
       "fines herbes"
-    ]
+    ],
+    "ciqual": "herbes de provence"
   },
   {
     "id": 288,
@@ -3771,7 +4058,8 @@ const WHITELIST = [
       "epices marocaines",
       "melange maghrebin",
       "epices orientales"
-    ]
+    ],
+    "ciqual": null
   },
   {
     "id": 289,
@@ -3783,7 +4071,8 @@ const WHITELIST = [
       "melange quatre epices",
       "epices charcuterie",
       "allspice blend"
-    ]
+    ],
+    "ciqual": "quatre epices"
   },
   {
     "id": 290,
@@ -3797,7 +4086,8 @@ const WHITELIST = [
       "cardamome en poudre",
       "gousses de cardamome",
       "elachi"
-    ]
+    ],
+    "ciqual": "cardamome"
   },
   {
     "id": 291,
@@ -3812,7 +4102,8 @@ const WHITELIST = [
       "farine t45",
       "farine patissiere",
       "allpurpose flour"
-    ]
+    ],
+    "ciqual": "farine de ble tendre ou froment t110"
   },
   {
     "id": 292,
@@ -3826,7 +4117,8 @@ const WHITELIST = [
       "farine t110",
       "farine t150",
       "farine brune"
-    ]
+    ],
+    "ciqual": "farine de ble tendre ou froment t110"
   },
   {
     "id": 293,
@@ -3839,7 +4131,8 @@ const WHITELIST = [
       "cornflour",
       "maizena jaune",
       "farine de mais jaune"
-    ]
+    ],
+    "ciqual": "farine de mais"
   },
   {
     "id": 294,
@@ -3853,7 +4146,8 @@ const WHITELIST = [
       "cornstarch",
       "amidon de mais",
       "epaississant"
-    ]
+    ],
+    "ciqual": "amidon de mais ou fecule de mais"
   },
   {
     "id": 295,
@@ -3865,7 +4159,8 @@ const WHITELIST = [
       "rice flour",
       "farine de riz complet",
       "amidon de riz"
-    ]
+    ],
+    "ciqual": "farine de riz"
   },
   {
     "id": 296,
@@ -3878,7 +4173,8 @@ const WHITELIST = [
       "poudre levante",
       "levure alsacienne",
       "sachet de levure"
-    ]
+    ],
+    "ciqual": "levure chimique ou poudre a lever"
   },
   {
     "id": 297,
@@ -3892,7 +4188,8 @@ const WHITELIST = [
       "instant yeast",
       "dry yeast",
       "sachet levure boulanger"
-    ]
+    ],
+    "ciqual": "levure de boulanger"
   },
   {
     "id": 298,
@@ -3904,7 +4201,8 @@ const WHITELIST = [
       "baking soda",
       "bicarbonate alimentaire",
       "carbonate de sodium"
-    ]
+    ],
+    "ciqual": "bicarbonate de soude"
   },
   {
     "id": 299,
@@ -3918,7 +4216,8 @@ const WHITELIST = [
       "cocoa powder",
       "cacao amer",
       "van houten"
-    ]
+    ],
+    "ciqual": "cacao"
   },
   {
     "id": 300,
@@ -3932,7 +4231,8 @@ const WHITELIST = [
       "vanilline",
       "arome vanille",
       "vanilla extract"
-    ]
+    ],
+    "ciqual": "vanille"
   },
   {
     "id": 301,
@@ -3945,7 +4245,8 @@ const WHITELIST = [
       "gelatine",
       "colle de poisson",
       "feuilles dor"
-    ]
+    ],
+    "ciqual": "gelatine"
   },
   {
     "id": 302,
@@ -3958,7 +4259,8 @@ const WHITELIST = [
       "agaragar en poudre",
       "kanten",
       "gelatine vegane"
-    ]
+    ],
+    "ciqual": "agar algue"
   },
   {
     "id": 303,
@@ -3971,7 +4273,8 @@ const WHITELIST = [
       "lait de noix de coco",
       "lait de coco entier",
       "lait coco leger"
-    ]
+    ],
+    "ciqual": "lait de coco ou creme de coco"
   },
   {
     "id": 304,
@@ -3985,7 +4288,8 @@ const WHITELIST = [
       "tahine",
       "pate de sesame",
       "sesame paste"
-    ]
+    ],
+    "ciqual": "tahin ou puree de sesame"
   },
   {
     "id": 305,
@@ -3999,7 +4303,8 @@ const WHITELIST = [
       "pate miso",
       "miso paste",
       "hatcho miso"
-    ]
+    ],
+    "ciqual": "miso"
   },
   {
     "id": 306,
@@ -4012,7 +4317,8 @@ const WHITELIST = [
       "mayonnaise allegee",
       "aioli",
       "sauce mayo"
-    ]
+    ],
+    "ciqual": "mayonnaise 70 mg min"
   },
   {
     "id": 307,
@@ -4026,7 +4332,8 @@ const WHITELIST = [
       "mustard",
       "moutarde douce",
       "moutarde miforte"
-    ]
+    ],
+    "ciqual": "moutarde"
   },
   {
     "id": 308,
@@ -4039,7 +4346,8 @@ const WHITELIST = [
       "tomato ketchup",
       "catsup",
       "sauce tomate sucree"
-    ]
+    ],
+    "ciqual": "ketchup"
   },
   {
     "id": 309,
@@ -4054,7 +4362,8 @@ const WHITELIST = [
       "soy sauce",
       "sauce soja salee",
       "soja sans gluten"
-    ]
+    ],
+    "ciqual": "sauce soja"
   },
   {
     "id": 310,
@@ -4067,7 +4376,8 @@ const WHITELIST = [
       "white vinegar",
       "vinaigre de vin blanc",
       "vinaigre de cidre"
-    ]
+    ],
+    "ciqual": "vinaigre"
   },
   {
     "id": 311,
@@ -4080,7 +4390,8 @@ const WHITELIST = [
       "balsamic vinegar",
       "condiment balsamique",
       "creme balsamique"
-    ]
+    ],
+    "ciqual": "vinaigre balsamique"
   },
   {
     "id": 312,
@@ -4094,7 +4405,8 @@ const WHITELIST = [
       "sugo",
       "salsa di pomodoro",
       "sauce bolognaise de base"
-    ]
+    ],
+    "ciqual": "sauce tomate au fromage"
   },
   {
     "id": 313,
@@ -4107,7 +4419,8 @@ const WHITELIST = [
       "tomato paste",
       "puree de tomate concentree",
       "extrait de tomate"
-    ]
+    ],
+    "ciqual": "concentre de tomate"
   },
   {
     "id": 314,
@@ -4123,7 +4436,8 @@ const WHITELIST = [
       "bouillon de boeuf",
       "dashi",
       "broth"
-    ]
+    ],
+    "ciqual": "bouillon de legumes"
   },
   {
     "id": 315,
@@ -4135,7 +4449,8 @@ const WHITELIST = [
       "sesame oil",
       "huile sesame toaste",
       "huile de sesame asiatique"
-    ]
+    ],
+    "ciqual": "huile de sesame"
   },
   {
     "id": 316,
@@ -4147,7 +4462,8 @@ const WHITELIST = [
       "sauce anglaise",
       "lea perrins",
       "worcester sauce"
-    ]
+    ],
+    "ciqual": null
   },
   {
     "id": 317,
@@ -4161,7 +4477,8 @@ const WHITELIST = [
       "sucre en poudre",
       "white sugar",
       "sucre de table"
-    ]
+    ],
+    "ciqual": "sucre blanc"
   },
   {
     "id": 318,
@@ -4175,7 +4492,8 @@ const WHITELIST = [
       "brown sugar",
       "raw sugar",
       "sucre de canne"
-    ]
+    ],
+    "ciqual": "sucre roux"
   },
   {
     "id": 319,
@@ -4188,7 +4506,8 @@ const WHITELIST = [
       "powdered sugar",
       "icing sugar",
       "sucre a glacer"
-    ]
+    ],
+    "ciqual": "sucre blanc"
   },
   {
     "id": 320,
@@ -4200,7 +4519,8 @@ const WHITELIST = [
       "sirop derable pur",
       "sirop erable grade a",
       "sirop derable canadien"
-    ]
+    ],
+    "ciqual": "sirop derable"
   },
   {
     "id": 321,
@@ -4214,7 +4534,8 @@ const WHITELIST = [
       "honey",
       "miel liquide",
       "miel cremeux"
-    ]
+    ],
+    "ciqual": "miel"
   },
   {
     "id": 322,
@@ -4228,7 +4549,8 @@ const WHITELIST = [
       "jam",
       "gelee de fruits",
       "confiture maison"
-    ]
+    ],
+    "ciqual": "confiture"
   },
   {
     "id": 323,
@@ -4242,7 +4564,8 @@ const WHITELIST = [
       "dark chocolate",
       "chocolat patissier",
       "chocolat a cuire"
-    ]
+    ],
+    "ciqual": "chocolat"
   },
   {
     "id": 324,
@@ -4254,7 +4577,8 @@ const WHITELIST = [
       "milk chocolate",
       "chocolat lait",
       "chocolat dessert lait"
-    ]
+    ],
+    "ciqual": "chocolat au lait"
   },
   {
     "id": 325,
@@ -4266,7 +4590,8 @@ const WHITELIST = [
       "white chocolate",
       "chocolat ivoire",
       "couverture ivoire"
-    ]
+    ],
+    "ciqual": "chocolat blanc"
   },
   {
     "id": 326,
@@ -4279,7 +4604,8 @@ const WHITELIST = [
       "chocolate chips",
       "chunks de chocolat",
       "pastilles de chocolat"
-    ]
+    ],
+    "ciqual": "chocolat"
   },
   {
     "id": 327,
@@ -4292,7 +4618,8 @@ const WHITELIST = [
       "spread chocolat",
       "creme noisette chocolat",
       "pate noisette"
-    ]
+    ],
+    "ciqual": "pate a tartiner chocolat et noisette"
   },
   {
     "id": 328,
@@ -4304,7 +4631,8 @@ const WHITELIST = [
       "creme darachide",
       "beurre darachide",
       "pate de cacahuete"
-    ]
+    ],
+    "ciqual": "beurre de cacahuete ou pate darachide"
   },
   {
     "id": 329,
@@ -4317,7 +4645,8 @@ const WHITELIST = [
       "chips salees",
       "chips nature",
       "snack croustillant"
-    ]
+    ],
+    "ciqual": "chipolata"
   },
   {
     "id": 330,
@@ -4332,7 +4661,8 @@ const WHITELIST = [
       "digestive",
       "cookies",
       "biscuit sec"
-    ]
+    ],
+    "ciqual": "biscuit sec type tuile"
   },
   {
     "id": 331,
@@ -4346,7 +4676,8 @@ const WHITELIST = [
       "frosties",
       "breakfast cereals",
       "cereales soufflees"
-    ]
+    ],
+    "ciqual": "cereales chocolatees pour petit dejeuner"
   },
   {
     "id": 332,
@@ -4360,7 +4691,8 @@ const WHITELIST = [
       "granola avoine",
       "muesli croustillant",
       "trail mix"
-    ]
+    ],
+    "ciqual": "muesli croustillant"
   }
 ];
 
