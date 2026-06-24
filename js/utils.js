@@ -96,6 +96,7 @@ const CANONICAL_MAP = {
   // ── Fèves ──
   'fevette fraiches':            { canonical: 'feve',              qty: null,  unit: null },
   'fevettes fraiches':           { canonical: 'feve',              qty: null,  unit: null },
+  'feves fraiches':              { canonical: 'feve',              qty: null,  unit: null },
 
   // ── Beurre ──
   'noix de beurre':              { canonical: 'beurre',           qty: '10',  unit: 'g'  },
