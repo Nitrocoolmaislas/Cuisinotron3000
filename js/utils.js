@@ -91,6 +91,11 @@ const CANONICAL_MAP = {
   'tomates en des':              { canonical: 'tomates concassees', qty: null, unit: null },
   'conserve de tomates en des':  { canonical: 'tomates concassees', qty: '400', unit: 'g' },
   'tomates cerises':             { canonical: 'tomates cerises',  qty: null,  unit: null },
+  'pieces de tomate':            { canonical: 'tomates concassees', qty: null, unit: null },
+
+  // ── Fèves ──
+  'fevette fraiches':            { canonical: 'feve',              qty: null,  unit: null },
+  'fevettes fraiches':           { canonical: 'feve',              qty: null,  unit: null },
 
   // ── Beurre ──
   'noix de beurre':              { canonical: 'beurre',           qty: '10',  unit: 'g'  },
