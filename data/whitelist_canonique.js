@@ -605,7 +605,7 @@ const WHITELIST = [
       "creme normande",
       "creme acidulee"
     ],
-    "ciqual": null
+    "ciqual": "creme fraiche epaisse"
   },
   {
     "id": 44,
@@ -620,7 +620,7 @@ const WHITELIST = [
       "creme uht",
       "heavy cream"
     ],
-    "ciqual": null
+    "ciqual": "creme fraiche liquide fleurette"
   },
   {
     "id": 45,
@@ -1475,7 +1475,7 @@ const WHITELIST = [
       "clovisses",
       "praires"
     ],
-    "ciqual": null
+    "ciqual": "palourde cuite"
   },
   {
     "id": 106,
@@ -1519,7 +1519,7 @@ const WHITELIST = [
       "yolk",
       "jaune doeuf frais"
     ],
-    "ciqual": null
+    "ciqual": "jaune doeuf"
   },
   {
     "id": 109,
@@ -1533,7 +1533,7 @@ const WHITELIST = [
       "egg white",
       "blanc doeuf frais"
     ],
-    "ciqual": null
+    "ciqual": "blanc doeuf"
   },
   {
     "id": 110,
@@ -2173,7 +2173,7 @@ const WHITELIST = [
       "bette chinoise",
       "chou de shanghai"
     ],
-    "ciqual": null
+    "ciqual": "pak choi"
   },
   {
     "id": 155,
@@ -2868,7 +2868,7 @@ const WHITELIST = [
       "frijoles negros",
       "turtle beans"
     ],
-    "ciqual": null
+    "ciqual": "haricot noir cuit"
   },
   {
     "id": 205,
@@ -2909,7 +2909,7 @@ const WHITELIST = [
       "green soybeans",
       "mukimame"
     ],
-    "ciqual": null
+    "ciqual": "edamame"
   },
   {
     "id": 208,
@@ -3222,7 +3222,7 @@ const WHITELIST = [
       "millet blanc",
       "cereale millet"
     ],
-    "ciqual": null
+    "ciqual": "millet grain cuit"
   },
   {
     "id": 229,
@@ -3410,7 +3410,7 @@ const WHITELIST = [
       "clarified butter",
       "samn"
     ],
-    "ciqual": null
+    "ciqual": "ghee"
   },
   {
     "id": 242,
@@ -3666,7 +3666,7 @@ const WHITELIST = [
       "graines vertes",
       "kurbiskerne"
     ],
-    "ciqual": null
+    "ciqual": "graine de courge"
   },
   {
     "id": 261,
@@ -3680,7 +3680,7 @@ const WHITELIST = [
       "graines de lin moulues",
       "linseed"
     ],
-    "ciqual": null
+    "ciqual": "graine de lin"
   },
   {
     "id": 262,
@@ -3693,7 +3693,7 @@ const WHITELIST = [
       "chia seeds",
       "chia noir"
     ],
-    "ciqual": null
+    "ciqual": "graine de chia"
   },
   {
     "id": 263,
@@ -3706,7 +3706,7 @@ const WHITELIST = [
       "poppy seeds",
       "mohn"
     ],
-    "ciqual": null
+    "ciqual": "graine de pavot"
   },
   {
     "id": 264,
@@ -4420,7 +4420,7 @@ const WHITELIST = [
       "puree de tomate concentree",
       "extrait de tomate"
     ],
-    "ciqual": null
+    "ciqual": "concentre de tomate"
   },
   {
     "id": 314,
