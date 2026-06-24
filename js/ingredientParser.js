@@ -168,7 +168,7 @@ function cleanIngredientName(raw) {
   name = name.replace(/^cerneaux?\s+de\s+/i, '').trim();   // "cerneaux de noix" → "noix"
   name = name.replace(/^jeunes?\s+/i, '').trim();          // "jeunes oignons" → "oignons"
 
-  const words = name.split(/[\s'']+/).filter(Boolean);
+  const words = name.split(/\s+/).filter(Boolean);
   name = words.filter((w, i) => {
     if (i === 0) return true;                  // nom de base — toujours conservé
     if (!_shouldStrip(w)) return true;         // discriminant CIQUAL — conservé

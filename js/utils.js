@@ -18,7 +18,7 @@ function unitOptions(selected) {
 // ── Normalisation pour déduplication et matching ──
 function normIngredient(str) {
   // ligatures œ→oe æ→ae (NFD ne les décompose pas)
-  str = (str || "").replace(/\u0153/g, "oe").replace(/\u00e6/g, "ae");
+  str = (str || "").replace(/[\u0153\u0152]/g, "oe").replace(/[\u00e6\u00c6]/g, "ae");
   return (str || '')
     .replace(/[\u2018\u2019\u201a\u201b\u2032\u0060]/g, '') // apostrophes → supprimées
     .toLowerCase()
