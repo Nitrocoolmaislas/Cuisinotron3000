@@ -218,6 +218,9 @@ function submitRecipeForm() {
   renderGrid();
   updateCounts();
 
+  // Détecter les ingrédients sans couverture CIQUAL → les ajouter au wizard
+  if (typeof checkCiqualGaps === 'function') checkCiqualGaps({ ingredients });
+
   // Flash de confirmation
   showToast(_editingRecipeId ? '✏️ Recette modifiée !' : '✅ Recette ajoutée !');
 }

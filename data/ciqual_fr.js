@@ -2240,5 +2240,23 @@ function getNutriData(normKey) {
     if (score > bestScore) { bestScore = score; best = e; }
   }
 
+  // 3b. Jaccard fallback — seulement si step 3 n'a rien trouvé (head word absent du catalogue CIQUAL)
+  // Evite les faux positifs sur les ingrédients courants dont le head word est dans CIQUAL
+  if (!best) {
+    const depSet = new Set(depWords.filter(w => w.length > 2));
+    if (depSet.size > 0) {
+      let jaccardBest = null, jaccardBestScore = 0.55;
+      for (const e of CIQUAL_FR) {
+        const eWords = new Set(e.k.split(' ').map(w => w.replace(/s$/, '')).filter(w => w.length > 2));
+        if (!eWords.size) continue;
+        const inter = [...depSet].filter(w => eWords.has(w)).length;
+        if (!inter) continue;
+        const score = inter / (depSet.size + eWords.size - inter);
+        if (score > jaccardBestScore) { jaccardBestScore = score; jaccardBest = e; }
+      }
+      best = jaccardBest;
+    }
+  }
+
   return best;
 }
