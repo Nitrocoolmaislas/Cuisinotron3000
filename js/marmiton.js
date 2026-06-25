@@ -222,9 +222,12 @@ function _mRenderResults(hits) {
           ${score  ? _mScoreBadge(score.pct) : ''}
         </div>
       </div>
-      <button class="marm-btn-import" onclick="marmImportHit(${i})" id="marm-btn-${i}">
-        📥 Importer
-      </button>
+      <div class="marm-hit-btns">
+        <button class="marm-btn-url" onclick="marmOpenUrl(${i})" title="Ouvrir dans l'import URL">🔗</button>
+        <button class="marm-btn-import" onclick="marmImportHit(${i})" id="marm-btn-${i}">
+          📥 Importer
+        </button>
+      </div>
     </div>`;
   }).join('');
   document.getElementById('marmiton-results').innerHTML = rows;
@@ -355,7 +358,26 @@ async function marmImportHit(idx) {
     closeMarmitonPanel();
     openImportPanel(ld);
   } catch (e) {
-    alert(`Erreur lors de l'import : ${e.message}`);
+    // JSON-LD fetch failed — fall back to the URL import panel with the URL pre-filled
     if (btn) { btn.disabled = false; btn.textContent = '📥 Importer'; }
+    const fullUrl = MARMITON_BASE + hit.url;
+    closeMarmitonPanel();
+    _mOpenImportUrl(fullUrl);
   }
+}
+
+// Open the recipe URL in the import URL panel (pre-filled)
+function marmOpenUrl(idx) {
+  const hit = _mResults[idx];
+  if (!hit) return;
+  closeMarmitonPanel();
+  _mOpenImportUrl(MARMITON_BASE + hit.url);
+}
+
+function _mOpenImportUrl(url) {
+  const input = document.getElementById('import-url-input');
+  if (input) input.value = url;
+  openImportUrlPanel();
+  // Also try direct import in case the proxy works on this URL
+  if (typeof importFromUrl === 'function') importFromUrl();
 }
