@@ -223,17 +223,25 @@ async function renderNutritionTab() {
   </div>`;
 
   // Détail recettes
-  html += `<div class="nutri-section-title">🍽️ Par recette (toutes portions)</div>`;
+  html += `<div class="nutri-section-title">🍽️ Par recette</div>`;
   html += details.map(d => `
     <div class="nutri-recipe-row">
       <div class="nutri-recipe-name">${d.recipe.name}</div>
-      <div class="nutri-recipe-sub">${d.recipe.servings} portion${d.recipe.servings > 1 ? 's' : ''}</div>
+      <div class="nutri-recipe-sub">Total (${d.recipe.servings} portion${d.recipe.servings > 1 ? 's' : ''})</div>
       <div class="nutri-recipe-chips">
         <span class="nutri-r-chip kcal">${d.total.kcal} kcal</span>
         <span class="nutri-r-chip prot">${d.total.p}g prot.</span>
         <span class="nutri-r-chip carb">${d.total.c}g gluc.</span>
         <span class="nutri-r-chip fat">${d.total.f}g lip.</span>
         <span class="nutri-r-chip" style="background:#F0FAF0;color:#3A7A3A">${d.total.fb}g fibres</span>
+      </div>
+      <div class="nutri-recipe-sub" style="margin-top:4px">Par portion</div>
+      <div class="nutri-recipe-chips nutri-recipe-chips--per-serving">
+        <span class="nutri-r-chip kcal">${d.perServing.kcal} kcal</span>
+        <span class="nutri-r-chip prot">${d.perServing.p}g prot.</span>
+        <span class="nutri-r-chip carb">${d.perServing.c}g gluc.</span>
+        <span class="nutri-r-chip fat">${d.perServing.f}g lip.</span>
+        <span class="nutri-r-chip" style="background:#F0FAF0;color:#3A7A3A">${d.perServing.fb}g fibres</span>
       </div>
     </div>`).join('');
 

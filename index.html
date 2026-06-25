@@ -83,6 +83,9 @@
       <button class="cat-btn" onclick="openImportUrlPanel()" style="margin-top:4px;color:var(--terracotta)">
         <span class="icon">📥</span> Importer une recette
       </button>
+      <button class="cat-btn" onclick="openMarmitonPanel()" style="margin-top:4px;color:#C1551A">
+        <span class="icon">🔍</span> Chercher sur Marmiton
+      </button>
     </div>
 
     <button id="bridge-wizard-btn" onclick="openBridgeWizard()" style="display:none;background:var(--terracotta);">
@@ -503,6 +506,7 @@
 <script src="js/planner.js"></script>
 <script src="js/contributor.js"></script>
 <script src="js/importer.js"></script>
+<script src="js/marmiton.js"></script>
 <script src="js/bridgeWizard.js"></script>
 <script src="js/vendor/tesseract.min.js"></script>
 <script src="js/billScanner.js"></script>
@@ -514,6 +518,36 @@
 <div id="merge-panel" style="display:none;position:fixed;bottom:0;left:50%;transform:translateX(-50%);
   width:520px;max-width:100vw;background:white;border-radius:16px 16px 0 0;
   box-shadow:0 -4px 30px rgba(0,0,0,0.15);z-index:700;font-family:'DM Sans',sans-serif;"></div>
+
+<!-- ── MARMITON SEARCH PANEL ── -->
+<div id="marmiton-panel" class="marm-panel" style="display:none">
+  <div class="marm-inner">
+    <div class="marm-header">
+      <h3>🔍 Chercher sur Marmiton</h3>
+      <button class="marm-close" onclick="closeMarmitonPanel()">✕</button>
+    </div>
+    <div class="marm-body">
+      <div class="marm-search-row">
+        <input id="marmiton-query" class="marm-input" type="text"
+               placeholder="risotto, tarte aux poireaux, curry…"
+               onkeydown="if(event.key==='Enter') marmSearch()">
+        <select id="marmiton-category" class="marm-select">
+          <option value="repas">Repas</option>
+          <option value="tartinade">Tartinade</option>
+          <option value="petitdej">Petit-déj</option>
+          <option value="dessert">Dessert</option>
+        </select>
+        <button class="marm-btn-search" onclick="marmSearch()">Rechercher</button>
+      </div>
+      <button class="marm-stock-btn" onclick="marmStockSearch()">
+        🥕 Suggestions basées sur mon stock
+        <span class="marm-stock-hint">— analyse les recettes faisables avec ce que tu as</span>
+      </button>
+      <div id="marmiton-results" class="marm-results"></div>
+    </div>
+  </div>
+</div>
+<div id="marmiton-panel-overlay" class="marm-overlay" onclick="closeMarmitonPanel()" style="display:none"></div>
 
 <!-- ── IMPORT URL PANEL ── -->
 <div id="import-url-panel" class="import-url-panel">
