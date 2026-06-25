@@ -376,15 +376,46 @@ function _extractJsonLdFromHtml(html) {
   return null;
 }
 
-// ── Importer depuis une URL (niveau 1 supprimé — CORS) ──
-function importFromUrl() {
+// ── Importer depuis une URL — tente le proxy CORS (marmiton.js) ──
+async function importFromUrl() {
   const input = document.getElementById('import-url-input');
   const url   = input?.value.trim() || '';
   try { if (url) new URL(url); } catch(e) {
     _showImportError('URL invalide. Ex: https://www.marmiton.org/recettes/...');
     return;
   }
-  _showImportError("L'import direct par URL n'est pas disponible (restrictions CORS). Utilise le bookmarklet ou le paste JSON-LD ci-dessous.");
+  if (!url) return;
+
+  // Try proxy fetch if marmiton.js is loaded
+  if (typeof _mGetRecipe === 'function') {
+    const btn = document.getElementById('import-url-btn');
+    const spinner = document.getElementById('import-spinner');
+    if (btn) btn.disabled = true;
+    if (spinner) spinner.style.display = 'inline';
+    try {
+      const uri = url.replace('https://www.marmiton.org', '');
+      const detail = await _mGetRecipe(uri.startsWith('/') ? uri : url);
+      const ld = {
+        '@type': 'Recipe',
+        name: detail.name, description: detail.description,
+        recipeIngredient: detail.ingredients,
+        recipeInstructions: detail.steps.map(s => ({ '@type': 'HowToStep', text: s })),
+        recipeYield: String(detail.servings),
+        prepTime: `PT${detail.prepTime}M`, cookTime: `PT${detail.cookTime}M`,
+        url: detail.sourceUrl, image: detail.image || '',
+      };
+      closeImportUrlPanel();
+      openImportPanel(ld);
+      return;
+    } catch (e) {
+      // Proxy failed — fall through to bookmarklet instructions
+    } finally {
+      if (btn) btn.disabled = false;
+      if (spinner) spinner.style.display = 'none';
+    }
+  }
+
+  _showImportError("Le proxy n'a pas pu récupérer la recette. Utilise le bookmarklet ci-dessous.");
   _showImportFallbacks(url);
 }
 
