@@ -276,12 +276,15 @@ async function marmStockSearch() {
   _mSetStatus('<div class="marm-loading">⏳ Recherche de recettes basées sur ton stock…</div>');
 
   try {
-    // Gather hits for top 4 stock ingredients — no category filter so we don't miss results
+    // Search all 4 ingredients IN PARALLEL
+    const searchResults = await Promise.allSettled(
+      tops.slice(0, 4).map(ing => _mSearch(ing, { noCat: true, n: 6 }))
+    );
     const seen = new Set();
     const allHits = [];
-    for (const ing of tops.slice(0, 4)) {
-      const hits = await _mSearch(ing, { noCat: true, n: 6 });
-      for (const h of hits) {
+    for (const r of searchResults) {
+      if (r.status !== 'fulfilled') continue;
+      for (const h of r.value) {
         if (!seen.has(h.url)) { seen.add(h.url); allHits.push(h); }
       }
     }
@@ -291,28 +294,30 @@ async function marmStockSearch() {
       return;
     }
 
-    // Fetch each recipe to get ingredients, then score
-    const limit = Math.min(allHits.length, 14);
-    const statusEl = () => document.querySelector('#marmiton-results .marm-loading');
-    _mSetStatus(`<div class="marm-loading">⏳ Analyse de la faisabilité… (0/${limit})</div>`);
+    // Show results immediately (unscored) so the user isn't waiting
+    _mRenderResults(allHits);
+
+    // Then fetch all recipe details IN PARALLEL to get scores
+    const limit = Math.min(allHits.length, 8);
+    _mSetStatus(`<div class="marm-loading">⏳ Calcul du score stock… (${limit} recettes en parallèle)</div>`);
+
+    const fetched = await Promise.allSettled(
+      allHits.slice(0, limit).map(h => _mGetRecipe(h.url))
+    );
 
     const scored = [];
-    for (let i = 0; i < limit; i++) {
-      const el = statusEl();
-      if (el) el.textContent = `⏳ Analyse… (${i + 1}/${limit})`;
-      try {
-        const detail = await _mGetRecipe(allHits[i].url);
-        const score  = _mScoreIngredients(detail.ingredients);
-        scored.push({ ...allHits[i], name: detail.name || allHits[i].name, detail, score });
-      } catch { /* skip failed recipes */ }
+    for (let i = 0; i < fetched.length; i++) {
+      if (fetched[i].status !== 'fulfilled') continue;
+      const detail = fetched[i].value;
+      const score  = _mScoreIngredients(detail.ingredients);
+      scored.push({ ...allHits[i], name: detail.name || allHits[i].name, detail, score });
     }
 
     if (scored.length) {
-      // Sort by stock match descending
       scored.sort((a, b) => b.score.pct - a.score.pct);
       _mRenderResults(scored);
     } else {
-      // Recipe page fetches all failed (anti-bot) — show unscored results anyway
+      // Score fetch failed — keep the unscored results already shown
       _mRenderResults(allHits);
     }
   } catch (e) {
