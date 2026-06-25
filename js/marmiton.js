@@ -6,9 +6,11 @@
 // ══════════════════════════════════════════════════════════════════════
 
 const MARMITON_BASE  = 'https://www.marmiton.org';
-// Primary: allorigins passes headers more transparently than corsproxy.io
-const MARMITON_CORS  = 'https://api.allorigins.win/raw?url=';
-const MARMITON_CORS2 = 'https://corsproxy.io/?url=';
+const _M_PROXIES = [
+  'https://api.allorigins.win/raw?url=',
+  'https://corsproxy.io/?url=',
+  'https://api.codetabs.com/v1/proxy/?quest=',
+];
 
 const MARMITON_CATS = {
   repas:     { label: 'Repas',        dt: 'platprincipal' },
@@ -20,13 +22,17 @@ const MARMITON_CATS = {
 // ── HTTP ──────────────────────────────────────────────────────────────
 
 async function _mFetch(url) {
-  for (const proxy of [MARMITON_CORS, MARMITON_CORS2]) {
+  for (const proxy of _M_PROXIES) {
     try {
       const r = await fetch(proxy + encodeURIComponent(url), { cache: 'no-store' });
-      if (r.ok) return r.text();
+      if (!r.ok) continue;
+      const html = await r.text();
+      // Reject bot-detection / consent pages (no useful content)
+      if (html.length < 2000 || (!html.includes('marmiton') && !html.includes('recette'))) continue;
+      return html;
     } catch { /* try next proxy */ }
   }
-  throw new Error(`Impossible de contacter Marmiton (proxies CORS indisponibles)`);
+  throw new Error('Proxies CORS indisponibles — Marmiton bloque les requêtes automatiques');
 }
 
 // Extract a readable name from a Marmiton recipe URL slug
@@ -80,7 +86,17 @@ async function _mSearch(query, { category = 'repas', noCat = false, n = 8 } = {}
     for (const h of hits) {
       let slug = h.urlFriendlyName || h.url || '';
       if (slug && !slug.startsWith('/')) slug = '/recettes/' + slug;
-      if (slug) results.push({ url: slug, name: h.name || h.title || '' });
+      if (!slug) continue;
+      // Extract partial detail when available (avoids fetching individual pages)
+      const ings = h.ingredients || h.recipeIngredient || [];
+      const detail = ings.length ? {
+        name: h.name || h.title || '',
+        ingredients: ings.map(i => String(i.name||i).trim()).filter(Boolean),
+        steps: [], description: '', prepTime: h.prepTime||0,
+        cookTime: h.cookTime||0, servings: parseInt(h.recipeYield)||2,
+        sourceUrl: MARMITON_BASE + slug, image: h.image||h.mainImage||'',
+      } : null;
+      results.push({ url: slug, name: h.name || h.title || '', detail });
     }
   }
 
@@ -102,11 +118,40 @@ async function _mSearch(query, { category = 'repas', noCat = false, n = 8 } = {}
 
 // ── Recipe detail ─────────────────────────────────────────────────────
 
+function _mRecipeFromNextData(nd) {
+  // Try several known paths in Marmiton's __NEXT_DATA__
+  const r = nd?.props?.pageProps?.recipe
+         || nd?.props?.pageProps?.SSRRecipe
+         || nd?.props?.pageProps?.recipeDetails
+         || nd?.props?.pageProps?.data?.recipe;
+  if (!r?.name || !r?.recipeIngredient?.length) return null;
+  const _min = v => { const m = String(v||'').match(/(?:(\d+)H)?(?:(\d+)M)?/); return m?(+m[1]||0)*60+(+m[2]||0):0; };
+  return {
+    name:        r.name.trim(),
+    ingredients: (r.recipeIngredient||[]).map(i=>String(i).trim()).filter(Boolean),
+    steps:       (r.recipeInstructions||[]).map(s=>typeof s==='string'?s:(s.text||s.name||'')).filter(Boolean),
+    description: (r.description||'').trim(),
+    prepTime:    _min(r.prepTime),
+    cookTime:    _min(r.cookTime||r.totalTime),
+    servings:    parseInt(String(Array.isArray(r.recipeYield)?r.recipeYield[0]:r.recipeYield||'').match(/\d+/)?.[0])||2,
+    sourceUrl:   MARMITON_BASE + (r.url||''),
+    image:       (Array.isArray(r.image)?r.image[0]?.url||r.image[0]:r.image?.url||r.image||''),
+  };
+}
+
 async function _mGetRecipe(uri) {
   const url = MARMITON_BASE + (uri.startsWith('/') ? uri : '/' + uri);
   const html = await _mFetch(url);
-  const ld   = _mJsonLd(html);
-  if (!ld) throw new Error('Aucune donnée structurée trouvée sur cette page');
+
+  // 1. JSON-LD (preferred)
+  const ld = _mJsonLd(html);
+  if (!ld) {
+    // 2. __NEXT_DATA__ fallback (works when JSON-LD missing from SSR page)
+    const nd  = _mNextData(html);
+    const rec = nd ? _mRecipeFromNextData(nd) : null;
+    if (rec) return rec;
+    throw new Error('Aucune donnée de recette trouvée (Marmiton a peut-être servi une page de consentement)');
+  }
 
   const _min = prop => {
     const v = String(ld[prop] || '');
