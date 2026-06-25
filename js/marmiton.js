@@ -289,7 +289,7 @@ async function marmTriggerScrape() {
 async function _mLoadCatalog() {
   if (_mCatalog) return _mCatalog;
   try {
-    const r = await fetch('data/marmiton_catalog.json', { cache: 'no-store' });
+    const r = await fetch('data/marmiton_catalog.json', { cache: 'no-cache' });
     if (!r.ok) return null;
     const d = await r.json();
     _mCatalog = d.customRecipes || d.catalog || [];
