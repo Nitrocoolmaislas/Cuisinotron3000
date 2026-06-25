@@ -521,7 +521,7 @@ async function marmImportHit(idx) {
       name:               detail.name,
       description:        detail.description,
       recipeIngredient:   detail.ingredients,
-      recipeInstructions: detail.steps.map(s => ({ '@type': 'HowToStep', text: s })),
+      recipeInstructions: (detail.steps || []).map(s => ({ '@type': 'HowToStep', text: s })),
       recipeYield:        String(detail.servings),
       prepTime:           `PT${detail.prepTime}M`,
       cookTime:           `PT${detail.cookTime}M`,
@@ -532,11 +532,24 @@ async function marmImportHit(idx) {
     closeMarmitonPanel();
     openImportPanel(ld);
   } catch (e) {
-    // JSON-LD fetch failed — fall back to the URL import panel with the URL pre-filled
     if (btn) { btn.disabled = false; btn.textContent = '📥 Importer'; }
     const fullUrl = MARMITON_BASE + hit.url;
-    closeMarmitonPanel();
-    _mOpenImportUrl(fullUrl);
+    _mSetStatus(`<div class="marm-error">
+      <strong>Import impossible via proxy</strong><br>
+      <small>La recette n'est pas dans le catalogue local.</small>
+      <div class="marm-fallback-btns">
+        <button onclick="navigator.clipboard?.writeText('${fullUrl}').then(()=>this.textContent='✅ Copié!')">
+          📋 Copier l'URL
+        </button>
+        <a href="${fullUrl}" target="_blank" rel="noopener" class="marm-btn-open">
+          Ouvrir dans le navigateur ↗
+        </a>
+      </div>
+      <small style="margin-top:6px;display:block">
+        Copie l'URL → reviens dans l'app → "Importer une recette" → colle l'URL.<br>
+        Ou mets à jour le catalogue (🔄) pour importer directement.
+      </small>
+    </div>`);
   }
 }
 
