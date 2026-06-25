@@ -375,9 +375,8 @@ function marmOpenUrl(idx) {
 }
 
 function _mOpenImportUrl(url) {
+  openImportUrlPanel();               // ouvre et reset le champ
   const input = document.getElementById('import-url-input');
-  if (input) input.value = url;
-  openImportUrlPanel();
-  // Also try direct import in case the proxy works on this URL
-  if (typeof importFromUrl === 'function') importFromUrl();
+  if (input) input.value = url;       // pré-remplit APRÈS le reset
+  _showImportFallbacks(url);          // affiche directement le bookmarklet + lien Marmiton
 }
