@@ -966,6 +966,7 @@
 .nutri-recipe-name { font-size: 0.85rem; font-weight: 500; color: var(--charcoal); margin-bottom: 2px; }
 .nutri-recipe-sub  { font-size: 0.72rem; color: var(--warm-grey); margin-bottom: 6px; }
 .nutri-recipe-chips { display: flex; gap: 5px; flex-wrap: wrap; }
+.nutri-recipe-chips--per-serving .nutri-r-chip { opacity: 0.72; font-style: italic; }
 .nutri-r-chip {
   font-size: 0.7rem; padding: 2px 8px; border-radius: 10px; font-weight: 500;
 }
