@@ -301,6 +301,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // Détection import bookmarklet (#import=...)
   if (typeof checkImportHash === 'function') checkImportHash();
 
+  // Scan CIQUAL gaps sur les recettes custom existantes (après chargement)
+  // Délai pour laisser ciqual_fr.js finir son initialisation async
+  if (typeof initCiqualGapScan === 'function') {
+    setTimeout(() => initCiqualGapScan(), 500);
+  }
+
   // Précharger le catalogue Colruyt en arrière-plan
   // pour que le Bridge Wizard soit prêt sans attendre la liste de courses
   if (typeof fetchColruytLatest === 'function') {

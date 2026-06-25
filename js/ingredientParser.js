@@ -155,6 +155,9 @@ function cleanIngredientName(raw) {
   name = name.replace(/\s+en\s+(?:poudre|bloc|cube)s?\b.*$/i, '').trim();
   // Taille qualifiers : "de belle taille", "de petite taille"
   name = name.replace(/\s+de\s+(?:petite|belle|grande|grosse|moyenne)s?\s+taille\b.*$/i, '').trim();
+  // Qualité/température résiduelles
+  name = name.replace(/\s+de\s+(?:tr[\u00e8e]s\s+)?bonne?\s+qualit[\u00e9e].*$/i, '').trim();
+  name = name.replace(/\s+(?:froid|froide|froids|froides|chaud|chaude|ti[\u00e8e]de)\b.*$/i, '').trim();
   // Variantes produit : "à l'huile", "au sel/naturel"
   name = name.replace(/\s+à\s+l['\u2019]?\s*huile\b.*$/i, '').trim();
   name = name.replace(/\s+au\s+(?:sel|naturel|vinaigre|sirop)\b.*$/i, '').trim();
@@ -168,7 +171,7 @@ function cleanIngredientName(raw) {
   name = name.replace(/^cerneaux?\s+de\s+/i, '').trim();   // "cerneaux de noix" → "noix"
   name = name.replace(/^jeunes?\s+/i, '').trim();          // "jeunes oignons" → "oignons"
 
-  const words = name.split(/[\s'']+/).filter(Boolean);
+  const words = name.split(/\s+/).filter(Boolean);
   name = words.filter((w, i) => {
     if (i === 0) return true;                  // nom de base — toujours conservé
     if (!_shouldStrip(w)) return true;         // discriminant CIQUAL — conservé

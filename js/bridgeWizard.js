@@ -50,6 +50,33 @@ function removePending(normKey) {
   refreshBadge();
 }
 
+// ─── Détection des ingrédients sans données CIQUAL ───────────────────────────
+// Appelé après import ou ajout de recette.
+// Ajoute au pending les ingrédients dont getNutriData retourne null.
+function checkCiqualGaps(recipe) {
+  if (typeof getNutriData === 'undefined') return;
+  if (typeof parseIngredientString === 'undefined') return;
+  const existing = new Set(loadPending());
+
+  for (const raw of (recipe.ingredients || [])) {
+    const p = parseIngredientString(raw);
+    const normKey = normIngredient(p.rawName);
+    if (!normKey) continue;
+    if (typeof _isAlwaysAvailable === 'function' && _isAlwaysAvailable(normKey)) continue;
+    if (getNutriData(normKey)) continue;
+    if (!existing.has(normKey)) {
+      addPending(normKey);
+      existing.add(normKey);
+    }
+  }
+}
+
+// Scan initial des recettes custom existantes (au démarrage).
+function initCiqualGapScan() {
+  if (typeof RECIPES === 'undefined') return;
+  RECIPES.filter(r => r.custom).forEach(r => checkCiqualGaps(r));
+}
+
 // ─── bridgeLookup étendu (builtin + custom) ───────────────────────────────────
 /**
  * À appeler à la place de bridgeLookup() partout dans l'app.

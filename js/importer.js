@@ -324,6 +324,9 @@ function confirmImport() {
   // Les ingrédients non mappés ont été ajoutés en pending par bridgeLookupFull
   // → le badge Bridge Wizard se mettra à jour automatiquement
   if (typeof refreshBadge === 'function') refreshBadge();
+
+  // Détecter les ingrédients sans couverture CIQUAL → les ajouter au wizard
+  if (typeof checkCiqualGaps === 'function') checkCiqualGaps(recipe);
 }
 
 // ══════════════════════════════════════════════

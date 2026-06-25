@@ -103,13 +103,13 @@ async function calcWeeklyNutrition(selectedIds) {
       }
     }
 
-    const perServing = roundMacros({ ...recipeNutri });
-    const recipeTotal = roundMacros({
-      kcal: recipeNutri.kcal * recipe.servings,
-      p:    recipeNutri.p    * recipe.servings,
-      c:    recipeNutri.c    * recipe.servings,
-      f:    recipeNutri.f    * recipe.servings,
-      fb:   recipeNutri.fb   * recipe.servings,
+    const recipeTotal = roundMacros({ ...recipeNutri });
+    const perServing = roundMacros({
+      kcal: recipeNutri.kcal / recipe.servings,
+      p:    recipeNutri.p    / recipe.servings,
+      c:    recipeNutri.c    / recipe.servings,
+      f:    recipeNutri.f    / recipe.servings,
+      fb:   recipeNutri.fb   / recipe.servings,
     });
 
     details.push({ recipe, perServing, total: recipeTotal });
