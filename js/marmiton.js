@@ -29,6 +29,8 @@ async function _mFetch(url) {
       const html = await r.text();
       // Reject bot-detection / consent pages (no useful content)
       if (html.length < 2000 || (!html.includes('marmiton') && !html.includes('recette'))) continue;
+      // Reject consent/captcha pages — valid pages always have structured data
+      if (!html.includes('__NEXT_DATA__') && !html.includes('application/ld+json')) continue;
       return html;
     } catch { /* try next proxy */ }
   }
@@ -224,13 +226,51 @@ function _mTopStockIngredients(n = 6) {
 
 let _mResults    = [];
 let _mSearching  = false;
+let _mCatalog    = null;   // cache in-memory du catalogue statique
+
+// ── Catalogue statique (data/marmiton_catalog.json) ───────────────────
+
+async function _mLoadCatalog() {
+  if (_mCatalog) return _mCatalog;
+  try {
+    const r = await fetch('data/marmiton_catalog.json', { cache: 'force-cache' });
+    if (!r.ok) return null;
+    const d = await r.json();
+    _mCatalog = d.customRecipes || d.catalog || [];
+    return _mCatalog;
+  } catch { return null; }
+}
+
+function _mSearchCatalog(query, { category = null, n = 12 } = {}) {
+  if (!_mCatalog?.length) return [];
+  const words = normIngredient(query).split(/\s+/).filter(w => w.length > 2);
+  const base = category ? _mCatalog.filter(r => r.category === category) : _mCatalog;
+  if (!words.length) {
+    return base.slice(0, n).map(r => ({ url: (r.sourceUrl || '').replace(MARMITON_BASE, ''), name: r.name, detail: r }));
+  }
+  return base
+    .map(r => {
+      const norm = normIngredient(r.name);
+      const score = words.filter(w => norm.includes(w)).length / words.length;
+      return { r, score };
+    })
+    .filter(x => x.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, n)
+    .map(({ r }) => ({ url: (r.sourceUrl || '').replace(MARMITON_BASE, ''), name: r.name, detail: r }));
+}
 
 // ── Panel helpers ─────────────────────────────────────────────────────
 
-function openMarmitonPanel() {
+async function openMarmitonPanel() {
   document.getElementById('marmiton-panel').style.display = 'flex';
   document.getElementById('marmiton-panel-overlay').style.display = 'block';
   setTimeout(() => document.getElementById('marmiton-query').focus(), 100);
+  const cat = await _mLoadCatalog();
+  const el = document.getElementById('marm-catalog-status');
+  if (el) el.textContent = cat?.length
+    ? `📚 ${cat.length} recettes en cache`
+    : '⚠ Catalogue vide — lance le workflow GitHub Actions';
 }
 
 function closeMarmitonPanel() {
@@ -294,16 +334,23 @@ async function marmSearch() {
   _mSetStatus('<div class="marm-loading">⏳ Recherche en cours…</div>');
 
   try {
+    // Try static catalog first (instant, no proxy needed)
+    const catalog = await _mLoadCatalog();
+    if (catalog?.length) {
+      const hits = _mSearchCatalog(query, { category, n: 12 });
+      if (hits.length) { _mRenderResults(hits); return; }
+    }
+    // Fallback: CORS proxy (may be blocked by Marmiton bot detection)
     const hits = await _mSearch(query, { category, n: 8 });
     if (!hits.length) {
       _mSetStatus(`<div class="marm-empty">Aucun résultat pour "<em>${_esc(query)}</em>".<br>
-        <small>Vérifie que corsproxy.io est accessible depuis ton navigateur.</small></div>`);
+        <small>Le catalogue ne contient pas encore cette recette.</small></div>`);
       return;
     }
     _mRenderResults(hits);
   } catch (e) {
     _mSetStatus(`<div class="marm-error">❌ ${_esc(e.message)}<br>
-      <small>Le proxy CORS (corsproxy.io) est peut-être temporairement indisponible.</small></div>`);
+      <small>Lance le workflow GitHub Actions pour générer le catalogue hors-ligne.</small></div>`);
   } finally {
     _mSearching = false;
   }
@@ -324,6 +371,26 @@ async function marmStockSearch() {
   _mSetStatus('<div class="marm-loading">⏳ Recherche de recettes basées sur ton stock…</div>');
 
   try {
+    // Try static catalog first (instant, no proxy needed)
+    const catalog = await _mLoadCatalog();
+    if (catalog?.length) {
+      const seen = new Set();
+      const allHits = [];
+      for (const ing of tops) {
+        for (const h of _mSearchCatalog(ing, { n: 6 })) {
+          if (!seen.has(h.name)) { seen.add(h.name); allHits.push(h); }
+        }
+      }
+      if (allHits.length) {
+        const scored = allHits
+          .map(h => ({ ...h, score: _mScoreIngredients(h.detail?.ingredients) }))
+          .sort((a, b) => b.score.pct - a.score.pct);
+        _mRenderResults(scored);
+        return;
+      }
+    }
+
+    // Fallback: CORS proxy search
     // Search all 4 ingredients IN PARALLEL
     const searchResults = await Promise.allSettled(
       tops.slice(0, 4).map(ing => _mSearch(ing, { noCat: true, n: 6 }))
