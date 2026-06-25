@@ -5,8 +5,10 @@
 //              importer.js (openImportPanel)
 // ══════════════════════════════════════════════════════════════════════
 
-const MARMITON_BASE = 'https://www.marmiton.org';
-const MARMITON_CORS = 'https://corsproxy.io/?url=';
+const MARMITON_BASE  = 'https://www.marmiton.org';
+// Primary: allorigins passes headers more transparently than corsproxy.io
+const MARMITON_CORS  = 'https://api.allorigins.win/raw?url=';
+const MARMITON_CORS2 = 'https://corsproxy.io/?url=';
 
 const MARMITON_CATS = {
   repas:     { label: 'Repas',        dt: 'platprincipal' },
@@ -18,9 +20,22 @@ const MARMITON_CATS = {
 // ── HTTP ──────────────────────────────────────────────────────────────
 
 async function _mFetch(url) {
-  const r = await fetch(MARMITON_CORS + encodeURIComponent(url));
-  if (!r.ok) throw new Error(`HTTP ${r.status} pour ${url}`);
-  return r.text();
+  for (const proxy of [MARMITON_CORS, MARMITON_CORS2]) {
+    try {
+      const r = await fetch(proxy + encodeURIComponent(url), { cache: 'no-store' });
+      if (r.ok) return r.text();
+    } catch { /* try next proxy */ }
+  }
+  throw new Error(`Impossible de contacter Marmiton (proxies CORS indisponibles)`);
+}
+
+// Extract a readable name from a Marmiton recipe URL slug
+// /recettes/recette_gateau-au-chocolat-fondant_12345.aspx → "Gateau au chocolat fondant"
+function _mNameFromSlug(url) {
+  const m = url.match(/recette_([^_]+(?:_[^_\d][^_]*)*)_\d/);
+  if (!m) return '';
+  return m[1].replace(/-/g, ' ')
+    .replace(/\b\w/g, c => c.toUpperCase());
 }
 
 function _mNextData(html) {
@@ -47,10 +62,10 @@ function _mJsonLd(html) {
 
 // ── Search ────────────────────────────────────────────────────────────
 
-async function _mSearch(query, { category = 'repas', n = 8 } = {}) {
+async function _mSearch(query, { category = 'repas', noCat = false, n = 8 } = {}) {
   const cat = MARMITON_CATS[category] || MARMITON_CATS.repas;
   const params = new URLSearchParams({ aqt: query, sort: 'markdesc' });
-  if (cat.dt) params.set('dt', cat.dt);
+  if (!noCat && cat.dt) params.set('dt', cat.dt);
   const url = `${MARMITON_BASE}/recettes/recherche.aspx?${params}`;
 
   const html = await _mFetch(url);
@@ -75,6 +90,11 @@ async function _mSearch(query, { category = 'repas', n = 8 } = {}) {
     for (const m of html.matchAll(/href="(\/recettes\/recette_[^"?#]+)"/g)) {
       if (!seen.has(m[1])) { seen.add(m[1]); results.push({ url: m[1], name: '' }); }
     }
+  }
+
+  // Fill missing names from slug
+  for (const r of results) {
+    if (!r.name) r.name = _mNameFromSlug(r.url);
   }
 
   return results.slice(0, n * 3);
@@ -140,11 +160,19 @@ function _mScoreIngredients(ingredients) {
   return { matched, total: ingredients.length, pct: Math.round(matched / ingredients.length * 100) };
 }
 
+// Simplify a stock display name to a Marmiton-friendly search term (max 2 words)
+const _M_STOP = /\b(doux|douce|epaisse?|liquide|entier|entiere|frais|fraiche|blanc|blanche|noire?|rouge|vert|verte|maison|nature|bio|surgele[es]?|crue?s?|cuites?|cube[s]?|rapee?|hache[e]?|fonde?|demi|semi|leger|legere|jeune[s]?)\b/gi;
+function _mSimplify(name) {
+  const clean = name.replace(_M_STOP, '').replace(/\s+/g, ' ').trim();
+  return clean.split(' ').slice(0, 2).join(' ') || name.split(' ')[0];
+}
+
 function _mTopStockIngredients(n = 6) {
   return Object.values(stock)
     .sort((a, b) => (b.qty || 0) - (a.qty || 0))
     .slice(0, n)
-    .map(v => v.name);
+    .map(v => _mSimplify(v.name))
+    .filter((s, i, arr) => s && arr.indexOf(s) === i); // dedupe
 }
 
 // ── State ─────────────────────────────────────────────────────────────
@@ -248,11 +276,11 @@ async function marmStockSearch() {
   _mSetStatus('<div class="marm-loading">⏳ Recherche de recettes basées sur ton stock…</div>');
 
   try {
-    // Gather hits for top 3 stock ingredients
+    // Gather hits for top 4 stock ingredients — no category filter so we don't miss results
     const seen = new Set();
     const allHits = [];
-    for (const ing of tops.slice(0, 3)) {
-      const hits = await _mSearch(ing, { category: 'repas', n: 6 });
+    for (const ing of tops.slice(0, 4)) {
+      const hits = await _mSearch(ing, { noCat: true, n: 6 });
       for (const h of hits) {
         if (!seen.has(h.url)) { seen.add(h.url); allHits.push(h); }
       }
@@ -279,9 +307,14 @@ async function marmStockSearch() {
       } catch { /* skip failed recipes */ }
     }
 
-    // Sort by stock match descending
-    scored.sort((a, b) => b.score.pct - a.score.pct);
-    _mRenderResults(scored);
+    if (scored.length) {
+      // Sort by stock match descending
+      scored.sort((a, b) => b.score.pct - a.score.pct);
+      _mRenderResults(scored);
+    } else {
+      // Recipe page fetches all failed (anti-bot) — show unscored results anyway
+      _mRenderResults(allHits);
+    }
   } catch (e) {
     _mSetStatus(`<div class="marm-error">❌ ${_esc(e.message)}</div>`);
   } finally {
