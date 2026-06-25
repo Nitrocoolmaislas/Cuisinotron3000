@@ -456,9 +456,14 @@ function _showImportFallbacks(url) {
   const el = document.getElementById('import-fallbacks');
   if (!el) return;
   el.style.display = '';
-  // Met à jour le lien bookmarklet avec l'URL courante
   const bkLink = document.getElementById('import-bk-link');
   if (bkLink) bkLink.href = url;
+  // Bouton "Ouvrir ↗" — utile sur Android où le bookmarklet ne fonctionne pas
+  const openLink = document.getElementById('import-open-link');
+  if (openLink && url && url.startsWith('http')) {
+    openLink.href = url;
+    openLink.style.display = 'block';
+  }
 }
 
 // ══════════════════════════════════════════════
