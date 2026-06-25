@@ -1259,3 +1259,29 @@
 }
 .marm-btn-import:hover:not(:disabled) { background: var(--terracotta); color: white; }
 .marm-btn-import:disabled { opacity: 0.5; cursor: default; }
+.marm-refresh-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px 6px;
+}
+.marm-refresh-row small { font-size: 11px; color: #888; }
+.marm-btn-refresh {
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--sage, #7a9b6e);
+  background: transparent;
+  cursor: pointer;
+  color: var(--charcoal);
+  white-space: nowrap;
+}
+.marm-btn-refresh:hover { background: #eef4eb; }
+.marm-btn-refresh:disabled { opacity: 0.5; cursor: default; }
+.marm-settings { padding: 0 16px 10px; font-size: 12px; border-top: 1px solid var(--border, #eee); }
+.marm-settings summary { cursor: pointer; color: #888; padding: 8px 0 4px; list-style: none; }
+.marm-settings summary::-webkit-details-marker { display: none; }
+.marm-settings-body { display: flex; flex-direction: column; gap: 6px; padding-top: 4px; }
+.marm-settings-body small { color: #999; line-height: 1.4; }
+.marm-settings-body input { width: 100%; padding: 5px 8px; border: 1px solid #ddd; border-radius: 6px; font-size: 12px; box-sizing: border-box; }
+.marm-settings-body button { align-self: flex-start; padding: 4px 12px; border-radius: 6px; border: 1px solid #ccc; background: #f5f5f5; cursor: pointer; font-size: 12px; }
