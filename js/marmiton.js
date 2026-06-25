@@ -6,6 +6,8 @@
 // ══════════════════════════════════════════════════════════════════════
 
 const MARMITON_BASE  = 'https://www.marmiton.org';
+const _M_REPO        = 'Nitrocoolmaislas/Cuisinotron3000';
+const _M_WF          = 'marmiton-scrape.yml';
 const _M_PROXIES = [
   'https://api.allorigins.win/raw?url=',
   'https://corsproxy.io/?url=',
@@ -29,6 +31,8 @@ async function _mFetch(url) {
       const html = await r.text();
       // Reject bot-detection / consent pages (no useful content)
       if (html.length < 2000 || (!html.includes('marmiton') && !html.includes('recette'))) continue;
+      // Reject consent/captcha pages — valid pages always have structured data
+      if (!html.includes('__NEXT_DATA__') && !html.includes('application/ld+json')) continue;
       return html;
     } catch { /* try next proxy */ }
   }
@@ -222,15 +226,109 @@ function _mTopStockIngredients(n = 6) {
 
 // ── State ─────────────────────────────────────────────────────────────
 
-let _mResults    = [];
-let _mSearching  = false;
+let _mResults        = [];
+let _mSearching      = false;
+let _mCatalog        = null;   // cache in-memory du catalogue statique
+let _mCatalogUpdated = null;   // date de mise à jour (champ `updated` du JSON)
+
+// ── GitHub token ──────────────────────────────────────────────────────
+
+function _mGhToken() {
+  return localStorage.getItem('marmiton_gh_token') || '';
+}
+
+function marmSaveGhToken() {
+  const val = document.getElementById('marm-gh-token')?.value.trim() || '';
+  if (val) localStorage.setItem('marmiton_gh_token', val);
+  else localStorage.removeItem('marmiton_gh_token');
+  const btn = event?.target;
+  if (btn) { const prev = btn.textContent; btn.textContent = '✅'; setTimeout(() => btn.textContent = prev, 2000); }
+}
+
+async function marmTriggerScrape() {
+  const token = _mGhToken();
+  if (!token) {
+    window.open(`https://github.com/${_M_REPO}/actions/workflows/${_M_WF}`, '_blank', 'noopener');
+    return;
+  }
+  const btn = document.getElementById('marm-refresh-btn');
+  if (btn) { btn.disabled = true; btn.textContent = '⏳ Démarrage…'; }
+  try {
+    const r = await fetch(
+      `https://api.github.com/repos/${_M_REPO}/actions/workflows/${_M_WF}/dispatches`,
+      {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: 'application/vnd.github+json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ ref: 'main' }),
+      }
+    );
+    if (r.status === 204) {
+      if (btn) btn.textContent = '✅ Lancé ! (~5 min)';
+      setTimeout(() => { if (btn) { btn.disabled = false; btn.textContent = '🔄 Mettre à jour'; } }, 8000);
+    } else {
+      const err = await r.json().catch(() => ({}));
+      if (btn) { btn.disabled = false; btn.textContent = '🔄 Mettre à jour'; }
+      alert(`Erreur GitHub API ${r.status}: ${err.message || 'token invalide?'}`);
+    }
+  } catch (e) {
+    if (btn) { btn.disabled = false; btn.textContent = '🔄 Mettre à jour'; }
+    alert(`Erreur réseau : ${e.message}`);
+  }
+}
+
+// ── Catalogue statique (data/marmiton_catalog.json) ───────────────────
+
+async function _mLoadCatalog() {
+  if (_mCatalog) return _mCatalog;
+  try {
+    const r = await fetch('data/marmiton_catalog.json', { cache: 'force-cache' });
+    if (!r.ok) return null;
+    const d = await r.json();
+    _mCatalog = d.customRecipes || d.catalog || [];
+    _mCatalogUpdated = d.updated || null;
+    return _mCatalog;
+  } catch { return null; }
+}
+
+function _mSearchCatalog(query, { category = null, n = 12 } = {}) {
+  if (!_mCatalog?.length) return [];
+  const words = normIngredient(query).split(/\s+/).filter(w => w.length > 2);
+  const base = category ? _mCatalog.filter(r => r.category === category) : _mCatalog;
+  if (!words.length) {
+    return base.slice(0, n).map(r => ({ url: (r.sourceUrl || '').replace(MARMITON_BASE, ''), name: r.name, detail: r }));
+  }
+  return base
+    .map(r => {
+      const norm = normIngredient(r.name);
+      const score = words.filter(w => norm.includes(w)).length / words.length;
+      return { r, score };
+    })
+    .filter(x => x.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, n)
+    .map(({ r }) => ({ url: (r.sourceUrl || '').replace(MARMITON_BASE, ''), name: r.name, detail: r }));
+}
 
 // ── Panel helpers ─────────────────────────────────────────────────────
 
-function openMarmitonPanel() {
+async function openMarmitonPanel() {
   document.getElementById('marmiton-panel').style.display = 'flex';
   document.getElementById('marmiton-panel-overlay').style.display = 'block';
   setTimeout(() => document.getElementById('marmiton-query').focus(), 100);
+  const tokenInput = document.getElementById('marm-gh-token');
+  if (tokenInput) tokenInput.value = _mGhToken();
+  const cat = await _mLoadCatalog();
+  const el = document.getElementById('marm-catalog-status');
+  if (el) {
+    const date = _mCatalogUpdated || 'jamais';
+    el.textContent = cat?.length
+      ? `📚 ${cat.length} recettes · mis à jour le ${date}`
+      : '⚠ Catalogue vide — lance le workflow GitHub Actions';
+  }
 }
 
 function closeMarmitonPanel() {
@@ -294,16 +392,23 @@ async function marmSearch() {
   _mSetStatus('<div class="marm-loading">⏳ Recherche en cours…</div>');
 
   try {
+    // Try static catalog first (instant, no proxy needed)
+    const catalog = await _mLoadCatalog();
+    if (catalog?.length) {
+      const hits = _mSearchCatalog(query, { category, n: 12 });
+      if (hits.length) { _mRenderResults(hits); return; }
+    }
+    // Fallback: CORS proxy (may be blocked by Marmiton bot detection)
     const hits = await _mSearch(query, { category, n: 8 });
     if (!hits.length) {
       _mSetStatus(`<div class="marm-empty">Aucun résultat pour "<em>${_esc(query)}</em>".<br>
-        <small>Vérifie que corsproxy.io est accessible depuis ton navigateur.</small></div>`);
+        <small>Le catalogue ne contient pas encore cette recette.</small></div>`);
       return;
     }
     _mRenderResults(hits);
   } catch (e) {
     _mSetStatus(`<div class="marm-error">❌ ${_esc(e.message)}<br>
-      <small>Le proxy CORS (corsproxy.io) est peut-être temporairement indisponible.</small></div>`);
+      <small>Lance le workflow GitHub Actions pour générer le catalogue hors-ligne.</small></div>`);
   } finally {
     _mSearching = false;
   }
@@ -324,6 +429,26 @@ async function marmStockSearch() {
   _mSetStatus('<div class="marm-loading">⏳ Recherche de recettes basées sur ton stock…</div>');
 
   try {
+    // Try static catalog first (instant, no proxy needed)
+    const catalog = await _mLoadCatalog();
+    if (catalog?.length) {
+      const seen = new Set();
+      const allHits = [];
+      for (const ing of tops) {
+        for (const h of _mSearchCatalog(ing, { n: 6 })) {
+          if (!seen.has(h.name)) { seen.add(h.name); allHits.push(h); }
+        }
+      }
+      if (allHits.length) {
+        const scored = allHits
+          .map(h => ({ ...h, score: _mScoreIngredients(h.detail?.ingredients) }))
+          .sort((a, b) => b.score.pct - a.score.pct);
+        _mRenderResults(scored);
+        return;
+      }
+    }
+
+    // Fallback: CORS proxy search
     // Search all 4 ingredients IN PARALLEL
     const searchResults = await Promise.allSettled(
       tops.slice(0, 4).map(ing => _mSearch(ing, { noCat: true, n: 6 }))

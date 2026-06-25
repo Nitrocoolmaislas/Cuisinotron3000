@@ -526,6 +526,19 @@
       <h3>🔍 Chercher sur Marmiton</h3>
       <button class="marm-close" onclick="closeMarmitonPanel()">✕</button>
     </div>
+    <div class="marm-refresh-row">
+      <small id="marm-catalog-status">⏳ Chargement…</small>
+      <button id="marm-refresh-btn" class="marm-btn-refresh" onclick="marmTriggerScrape()">🔄 Mettre à jour</button>
+    </div>
+    <details class="marm-settings">
+      <summary>🔑 Token GitHub (optionnel)</summary>
+      <div class="marm-settings-body">
+        <small>PAT avec scope <code>workflow</code> — pour déclencher la mise à jour sans quitter l'app.</small>
+        <input type="password" id="marm-gh-token" placeholder="ghp_…" autocomplete="off">
+        <button onclick="marmSaveGhToken()">Enregistrer</button>
+        <small><a href="https://github.com/settings/tokens/new?scopes=workflow&description=Cuisinotron3000" target="_blank" rel="noopener">Créer un token ↗</a> · Sans token : redirige vers GitHub Actions.</small>
+      </div>
+    </details>
     <div class="marm-body">
       <div class="marm-search-row">
         <input id="marmiton-query" class="marm-input" type="text"
