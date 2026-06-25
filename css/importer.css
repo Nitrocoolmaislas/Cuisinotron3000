@@ -764,3 +764,10 @@ body:has(.import-url-panel.open) #import-url-overlay { display: block; }
   font-family: 'DM Sans', sans-serif; font-size: 0.88rem; font-weight: 500;
 }
 .bs-confirm-btn:hover { background: var(--sage-light, #a8c495); }
+.iup-btn-open {
+  display: block; width: 100%; padding: 12px 16px; text-align: center;
+  background: var(--charcoal, #2c2c2c); color: white; border-radius: 8px;
+  font-family: 'DM Sans', sans-serif; font-size: 0.88rem; font-weight: 600;
+  text-decoration: none; transition: background 0.15s;
+}
+.iup-btn-open:hover { background: #444; }
