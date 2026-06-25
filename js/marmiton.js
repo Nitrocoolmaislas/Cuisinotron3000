@@ -267,7 +267,11 @@ async function marmTriggerScrape() {
       }
     );
     if (r.status === 204) {
-      if (btn) btn.textContent = '✅ Lancé ! (~5 min)';
+      // Invalider le cache catalogue pour que la prochaine ouverture du panel charge la version fraîche
+      _mCatalog = null; _mCatalogUpdated = null;
+      if (btn) btn.textContent = '✅ Lancé — reviens dans ~5 min';
+      const el = document.getElementById('marm-catalog-status');
+      if (el) el.textContent = '⏳ Scrape en cours… recharge le panel dans 5 min';
       setTimeout(() => { if (btn) { btn.disabled = false; btn.textContent = '🔄 Mettre à jour'; } }, 8000);
     } else {
       const err = await r.json().catch(() => ({}));
@@ -285,7 +289,7 @@ async function marmTriggerScrape() {
 async function _mLoadCatalog() {
   if (_mCatalog) return _mCatalog;
   try {
-    const r = await fetch('data/marmiton_catalog.json', { cache: 'force-cache' });
+    const r = await fetch('data/marmiton_catalog.json', { cache: 'no-cache' });
     if (!r.ok) return null;
     const d = await r.json();
     _mCatalog = d.customRecipes || d.catalog || [];
