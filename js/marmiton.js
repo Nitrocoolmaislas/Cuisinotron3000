@@ -322,6 +322,7 @@ function _mSearchCatalog(query, { category = null, n = 12 } = {}) {
 async function openMarmitonPanel() {
   document.getElementById('marmiton-panel').style.display = 'flex';
   document.getElementById('marmiton-panel-overlay').style.display = 'block';
+  document.getElementById('marmiton-results').innerHTML = '';
   setTimeout(() => document.getElementById('marmiton-query').focus(), 100);
   const tokenInput = document.getElementById('marm-gh-token');
   if (tokenInput) tokenInput.value = _mGhToken();
@@ -541,9 +542,9 @@ async function marmImportHit(idx) {
         <button onclick="navigator.clipboard?.writeText('${fullUrl}').then(()=>this.textContent='✅ Copié!')">
           📋 Copier l'URL
         </button>
-        <a href="${fullUrl}" target="_blank" rel="noopener" class="marm-btn-open">
+        <button class="marm-btn-open" onclick="window.open('${fullUrl}', '_blank', 'noopener,noreferrer')">
           Ouvrir dans le navigateur ↗
-        </a>
+        </button>
       </div>
       <small style="margin-top:6px;display:block">
         Copie l'URL → reviens dans l'app → "Importer une recette" → colle l'URL.<br>
