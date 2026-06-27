@@ -530,14 +530,15 @@ async function marmImportHit(idx) {
       image:              detail.image || '',
     };
 
+    const parsed = parseRecipeJsonLd(ld);
     closeMarmitonPanel();
-    openImportPanel(ld);
+    openImportPanel(parsed);
   } catch (e) {
     if (btn) { btn.disabled = false; btn.textContent = '📥 Importer'; }
     const fullUrl = MARMITON_BASE + hit.url;
     _mSetStatus(`<div class="marm-error">
-      <strong>Import impossible via proxy</strong><br>
-      <small>La recette n'est pas dans le catalogue local.</small>
+      <strong>Import impossible</strong><br>
+      <small>${e.message || 'Recette incomplète ou proxy bloqué.'}</small>
       <div class="marm-fallback-btns">
         <button onclick="navigator.clipboard?.writeText('${fullUrl}').then(()=>this.textContent='✅ Copié!')">
           📋 Copier l'URL
