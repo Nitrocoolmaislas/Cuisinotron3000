@@ -1,0 +1,31 @@
+name: 750g Catalog Scrape
+
+on:
+  schedule:
+    - cron: '0 6 * * 0'   # Dimanche 6h UTC (1h après Marmiton)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install beautifulsoup4
+
+      - name: Scrape 750g.com
+        run: python 750g_scraper.py --output data/750g_catalog.json --per-query 5 --delay 3.0
+
+      - uses: EndBug/add-and-commit@v9
+        with:
+          message: 'chore(data): update 750g_catalog.json [skip ci]'
+          add: data/750g_catalog.json
+          default_author: github_actions
