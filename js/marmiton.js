@@ -289,11 +289,18 @@ async function marmTriggerScrape() {
 async function _mLoadCatalog() {
   if (_mCatalog) return _mCatalog;
   try {
-    const r = await fetch('data/marmiton_catalog.json', { cache: 'no-cache' });
-    if (!r.ok) return null;
-    const d = await r.json();
-    _mCatalog = d.customRecipes || d.catalog || [];
-    _mCatalogUpdated = d.updated || null;
+    const settled = await Promise.allSettled([
+      fetch('data/marmiton_catalog.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : null),
+      fetch('data/750g_catalog.json',     { cache: 'no-cache' }).then(r => r.ok ? r.json() : null),
+    ]);
+    let catalog = [], updated = null;
+    for (const r of settled) {
+      if (r.status !== 'fulfilled' || !r.value) continue;
+      catalog  = catalog.concat(r.value.customRecipes || r.value.catalog || []);
+      if (!updated) updated = r.value.updated || null;
+    }
+    _mCatalog        = catalog;
+    _mCatalogUpdated = updated;
     return _mCatalog;
   } catch { return null; }
 }
@@ -535,7 +542,7 @@ async function marmImportHit(idx) {
     openImportPanel(parsed);
   } catch (e) {
     if (btn) { btn.disabled = false; btn.textContent = '📥 Importer'; }
-    const fullUrl = MARMITON_BASE + hit.url;
+    const fullUrl = hit.detail?.sourceUrl || (hit.url.startsWith('http') ? hit.url : MARMITON_BASE + hit.url);
     _mSetStatus(`<div class="marm-error">
       <strong>Import impossible</strong><br>
       <small>${e.message || 'Recette incomplète ou proxy bloqué.'}</small>
