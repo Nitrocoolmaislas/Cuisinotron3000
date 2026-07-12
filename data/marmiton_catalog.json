@@ -1,69 +1,6 @@
 {
   "customRecipes": [
     {
-      "id": "soupe-de-legumes-poeles",
-      "custom": true,
-      "category": "repas",
-      "categoryLabel": "Repas chauds",
-      "name": "Soupe de légumes poêlés",
-      "description": "",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 4,
-      "ingredients": [
-        "3 carottes",
-        "3 pommes de terre",
-        "1 oignons (taille moyenne)",
-        "1 tomates",
-        "1 poireaux",
-        "1 cubes de bouillon (légume ou volaille)"
-      ],
-      "steps": [
-        "Epluchez, lavez et coupez vos légumes.",
-        "Faites revenir dans une cocotte - avec trois cuillères huile et un morceau de beurre - les carottes, les pommes de terre et le poireau, avec deux grosses pincées de sel, pendant 10 minutes.",
-        "Rajoutez l'oignon coupé en rondelles et laissez sur le feu encore 5 min en remuant régulièrement.",
-        "Ajoutez de l'eau de façon à ce qu'elle recouvre largement les légumes, portez à ébullition, ajoutez le cube de volaille et la tomate coupée en quartier.",
-        "Mettez le couvercle et laissez cuire à feu doux pendant environ une heure, puis passez les légumes au mixeur."
-      ],
-      "notes": "carotte, pomme de terre, oignon, tomate, poireau, cube de bouillon",
-      "sourceUrl": "https://www.marmiton.org/recettes/recette_soupe-de-legumes-poeles_30894.aspx"
-    },
-    {
-      "id": "soupe-aux-7-legumes",
-      "custom": true,
-      "category": "repas",
-      "categoryLabel": "Repas chauds",
-      "name": "Soupe aux 7 légumes",
-      "description": "",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 6,
-      "ingredients": [
-        "1 poireaux",
-        "6 carottes",
-        "1 navets",
-        "1 branches de céleri",
-        "2 pommes de terre",
-        "2 tomates",
-        "1 courgettes",
-        "1 oignons",
-        "1 bouillons",
-        "10 cl de crème fraîche",
-        "beurre"
-      ],
-      "steps": [
-        "Peler, laver et couper les légumes en petits morceaux.",
-        "Faire revenir le poireau dans le beurre 10 minutes environ.",
-        "Dans une autre marmite, mettre les autres légumes et les recouvrir d'eau.\nAjouter la moitié du bouillon cube et faire cuire 30 minutes ou 10 minutes à l'autocuiseur.",
-        "Recouvrir le poireau d'eau et y ajouter le reste du bouillon cube. Faire cuire 20 minutes environ.",
-        "Lorsque les légumes (carottes, navet, tomates... mais pas le poireau !) sont cuits, les mixer et assaisonner à votre goût.",
-        "Ajouter la crème fraiche et le poireau non mixé.",
-        "Mélanger le tout et déguster. Bon appétit."
-      ],
-      "notes": "poireau, carotte, navet, céleri, pomme de terre, tomate, courgette, oignon, bouillon, crème fraîche, beurre",
-      "sourceUrl": "https://www.marmiton.org/recettes/recette_soupe-aux-7-legumes_65063.aspx"
-    },
-    {
       "id": "soupe-de-legumes-entiers-a-l-indienne",
       "custom": true,
       "category": "repas",
@@ -126,36 +63,122 @@
       "sourceUrl": "https://www.marmiton.org/recettes/recette_ma-super-soupe-de-legumes_52499.aspx"
     },
     {
-      "id": "soupe-aux-legumes-des-jours-de-rhume",
+      "id": "soupe-7-legumes-au-curry",
       "custom": true,
       "category": "repas",
       "categoryLabel": "Repas chauds",
-      "name": "Soupe aux légumes des jours de rhume",
+      "name": "Soupe 7 légumes au curry",
       "description": "",
       "prepTime": 0,
       "cookTime": 0,
       "servings": 6,
       "ingredients": [
+        "1 poireaux",
         "5 carottes",
-        "3 courgettes moyennes",
-        "4 pommes de terre",
+        "1 navets",
+        "2 courgettes moyennes",
         "2 tomates",
-        "1 oignons",
-        "poivre",
+        "3 pommes de terre",
+        "1 branches de céleri",
+        "2 échalotes",
         "sel",
-        "curry ou curcuma en poudre",
+        "poivre",
         "beurre",
-        "1 doses de crème fraîche"
+        "1 cubes de bouillon de volaille dégraissé",
+        "curry ou Curcuma",
+        "crème fraîche"
       ],
       "steps": [
-        "Prenez votre courage à deux mains et épluchez tous les légumes, puis coupez les en gros tronçons (penser à peler et epépiner les tomates!)",
-        "Jetez le tout dans une marmite bouillonnante (même l'oignon cru), que vous aurez péalablement salée et poivrée avant le parachutage.",
-        "Laissez cuire le temps qu'il faut -prévoir un livre- (N.B: quand les carottes sont cuites, c'est que tout est cuit!) et rajoutez de l'eau si nécéssaire -pour éviter l'effet purée!",
-        "Mixez le tout, ajoutez une cuillère à café de curry, un bon morceau de beurre, et de la crème fraîche pour finir en beauté... (quand on est malade, on ne pense pas aux calories!)",
-        "Dégustez!"
+        "Laver et éplucher tous les légumes! Bon courage!",
+        "Les couper en morceaux.",
+        "Émincer les échalotes et faites-les revenir avec les tronçons de poireau dans un peu de beurre dans votre fait-tout à feu moyen.",
+        "Quand les poireaux sont translucides, rajoutez tous les autres légumes.",
+        "Recouvrez d'eau, salez et poivrez.",
+        "Ajouter un peu de curry en poudre (suivant la sensibilité des papilles des convives!).",
+        "Laissez mijoter 1h à feu doux.",
+        "Mixer avec un petit robot plongeant.",
+        "Rajouter un peu de crème fraîche au dernier moment.",
+        "C'est prêt, à table!"
       ],
-      "notes": "carotte, courgette, pomme de terre, tomate, oignon, poivre, sel, curry, beurre, crème fraîche",
-      "sourceUrl": "https://www.marmiton.org/recettes/recette_soupe-aux-legumes-des-jours-de-rhume_36336.aspx"
+      "notes": "poireau, carotte, navet, courgette, tomate, pomme de terre, céleri, échalote, sel, poivre, beurre, cube de bouillon, curry, crème fraîche",
+      "sourceUrl": "https://www.marmiton.org/recettes/recette_soupe-7-legumes-au-curry_165545.aspx"
+    },
+    {
+      "id": "chorba-soupe-aux-legumes-algerienne",
+      "custom": true,
+      "category": "repas",
+      "categoryLabel": "Repas chauds",
+      "name": "Chorba (soupe aux légumes algérienne)",
+      "description": "",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 4,
+      "ingredients": [
+        "200 g de mouton",
+        "500 g de tomate bien mûres ou 2 cuillerées à soupe de concentré de tomates diluées dans 1 verre d'eau",
+        "1 poignées de pois chiches trempés de la veille",
+        "1/2 louches d'huile d'olive ou 100 gr de beurre",
+        "1 oignons",
+        "1 pommes de terre",
+        "1 carottes",
+        "1 courgettes",
+        "2 branches de céleri",
+        "1 bouquets de coriandre",
+        "1/2 cuillères à soupe de poivre rouge",
+        "1 pincées de poivre noir",
+        "1 pincées de cannelle",
+        "100 g de vermicelles fins",
+        "citron"
+      ],
+      "steps": [
+        "Lavez les tomates et coupez-lez en quatre.",
+        "Passez-les à la moulinette.",
+        "Coupez la viande en petits morceaux.",
+        "Nettoyez puis coupez en dés très fins les légumes.",
+        "Faites revenir dans l'huile les dés de viande avec l'oignon râpé, les tomates, la moitié du bouquet de coriandre haché, les épices et le sel.",
+        "Mouillez avec 1 litre d'eau. Amenez à ébullition.",
+        "Jetez les légumes, les pois chiches et les branches de céleri dans le bouillon.",
+        "Couvrez et laissez cuire en vérifiant l'eau de temps en temps.",
+        "Une fois la viande et les légumes bien cuits, ajoutez de l'eau froide (pour avoir une quantité de soupe suffisante).",
+        "Jetez les vermicelles en pluie et saupoudrez de coriandre hachée.",
+        "Laissez cuire encore quelques minutes. Vérifiez l'assaisonnement.",
+        "Servez avec un filet de citron.",
+        "En saison, ajoutez une poignée de petits pois et de fèves tendres."
+      ],
+      "notes": "mouton, tomate, pois chiches, huile d'olive, oignon, pomme de terre, carotte, courgette, céleri, coriandre, poivre, poivre, cannelle, vermicelles, citron",
+      "sourceUrl": "https://www.marmiton.org/recettes/recette_chorba-soupe-aux-legumes-algerienne_12187.aspx"
+    },
+    {
+      "id": "soupe-de-legumes-a-l-emmental-et-au-curry",
+      "custom": true,
+      "category": "repas",
+      "categoryLabel": "Repas chauds",
+      "name": "Soupe de légumes à l'emmental et au curry",
+      "description": "",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 5,
+      "ingredients": [
+        "150 g d'emmental",
+        "6 carottes",
+        "2 tomates",
+        "6 pommes de terre",
+        "2 poireaux",
+        "2 navets",
+        "2 cuillères à soupe de curry",
+        "5 cubes de bouillon de boeuf",
+        "poivre selon goût",
+        "sel"
+      ],
+      "steps": [
+        "Eplucher les légumes, couper les plus gros les mettre dans une cocotte, les recouvrir d'eau, ajouter les cubes et une des deux cuillère à soupe de curry.",
+        "Laisser cuire 30 min environ (compter 1/4 d'heure après mise en route du sifflet de la cocotte).",
+        "Après cuisson retirer une casserole d'eau de taille moyenne de la cocotte et conserver l'eau de cuisson.",
+        "Ajouter les 150 g d'emmental, la cuillere de curry et mixer le tout.",
+        "Rajouter l'eau de cuisson selon votre goût afin d'obtenir une soupe épaisse et onctueuse."
+      ],
+      "notes": "emmental, carotte, tomate, pomme de terre, poireau, navet, curry, cube de bouillon, poivre, sel",
+      "sourceUrl": "https://www.marmiton.org/recettes/recette_soupe-de-legumes-a-l-emmental-et-au-curry_42197.aspx"
     },
     {
       "id": "poulet-roti-simple",
@@ -182,43 +205,6 @@
       ],
       "notes": "poulet, huile",
       "sourceUrl": "https://www.marmiton.org/recettes/recette_poulet-roti-simple_57676.aspx"
-    },
-    {
-      "id": "poulet-roti-et-ses-pommes-de-terre",
-      "custom": true,
-      "category": "repas",
-      "categoryLabel": "Repas chauds",
-      "name": "Poulet rôti et ses pommes de terre",
-      "description": "",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 4,
-      "ingredients": [
-        "1 poulets à rôtir d'environ 1,2 kg",
-        "50 g de beurre",
-        "herbes de Provence",
-        "sel",
-        "poivre",
-        "20 pommes de terre"
-      ],
-      "steps": [
-        "Cette recette est extrêmement simple.",
-        "Il vous suffit de mettre le poulet dans un plat à four.",
-        "Pendant ce temps-là, préchauffer le four à 210-240°C (thermostat 7-8).",
-        "Prenez le beurre et découpez-le en morceaux pour le mettre sur le poulet un peu partout.",
-        "Salez, poivrez et herbez la bête...",
-        "Ensuite, attaquez-vous au patates... Il faut les éplucher et puis les faire tremper dans l'eau pour les rincer et les essuyer.",
-        "Il faut après les découper.",
-        "Alors, là, c'est comme vous le sentez... faites de jolies formes si vous le voulez, moi, je fais simplement des carrés.",
-        "En fait, je prends la pomme de terre, la découpe en longueur, la tourne, et puis après la découpe dans l'autre longueur et puis je la tourne dans l'autre sens pour la découper en largeur... et ça, ça fait des sortes de carrés.",
-        "Et je mets toutes les pommes de terres dans le plat autour du poulet. Les sale.",
-        "Et puis direction le four après avoir arrosé le tout d'un demi-verre d'eau.",
-        "Je laisse cuire 1h15... plus ou moins en fonction du poulet et des pommes de terre.",
-        "Je le tourne régulièrement pendant la cuisson, sur chaque face... Et puis s'il le faut je réarrose d'eau... comme ça, les pommes de terre baignent dans le jus.",
-        "Une fois que c'est prêt et bien il suffit de servir !"
-      ],
-      "notes": "poulet, beurre, herbes de Provence, sel, poivre, pomme de terre",
-      "sourceUrl": "https://www.marmiton.org/recettes/recette_poulet-roti-et-ses-pommes-de-terre_43958.aspx"
     },
     {
       "id": "poulet-roti-en-cocotte-au-four",
@@ -322,6 +308,35 @@
       "sourceUrl": "https://www.marmiton.org/recettes/recette_poulet-roti-aux-herbes_16634.aspx"
     },
     {
+      "id": "poulet-roti-au-citron-et-a-l-ail",
+      "custom": true,
+      "category": "repas",
+      "categoryLabel": "Repas chauds",
+      "name": "Poulet rôti au citron et à l'ail",
+      "description": "",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 4,
+      "ingredients": [
+        "1 poulets fermier",
+        "1 citrons non traité",
+        "3 gousses d'ail",
+        "thym et laurier",
+        "huile d'olive"
+      ],
+      "steps": [
+        "Faire préchauffer le four à 240°C (thermostat 8).",
+        "Eplucher l'ail, couper la gousse en 2 et frotter le poulet avec celle-ci.",
+        "Saler et poivrer l'intérieur du poulet.",
+        "Couper le citron en 2, mettre le jus du citron à l'intérieur du poulet ainsi que le thym, le laurier, l'ail et le citron dont on a extrait le jus.",
+        "Passer de l'huile d'olive au pinceau sur le poulet, mettre dans un plat puis enfourner.",
+        "Baisser un peu la température du four une fois qu'il commence à bien dorer et laisser cuire en fonction du poids du poulet.",
+        "Si besoin, ajouter un peu d'eau pour déglacer le suc 10 minutes avant la fin de cuisson pour plus de jus."
+      ],
+      "notes": "poulet, citron, ail, thym, huile d'olive",
+      "sourceUrl": "https://www.marmiton.org/recettes/recette_poulet-roti-au-citron-et-a-l-ail_54869.aspx"
+    },
+    {
       "id": "pates-sauce-bolognaise-ragu-bolognese",
       "custom": true,
       "category": "repas",
@@ -391,32 +406,6 @@
       ],
       "notes": "spaghetti, boeuf haché, concentré de tomates, oignon, ail, sauce Worcester, parmesan râpé, huile d'olive, poivre, sel",
       "sourceUrl": "https://www.marmiton.org/recettes/recette_pates-a-la-bolognaise-facile_20482.aspx"
-    },
-    {
-      "id": "gratin-de-pate-bolognaise-express",
-      "custom": true,
-      "category": "repas",
-      "categoryLabel": "Repas chauds",
-      "name": "Gratin de pâte bolognaise express",
-      "description": "",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 4,
-      "ingredients": [
-        "1 sachets de pâtes (ou reste de pâtes)",
-        "1 petites boîtes de sauce bolognaise",
-        "gruyère râpé (ou autre fromage)",
-        "1 petits pots de crème liquide",
-        "sel"
-      ],
-      "steps": [
-        "Préchauffer le four à 210°C (thermostat 7), faire cuire les pâtes normalement.",
-        "Pendant ce temps, mettre dans un bol la sauce bolognaise, y ajouter la crème jusqu'à ce que la couleur du mélange soit orange très clair.",
-        "Egoutter les pâtes, mettre 1 première couche de pâtes dans un plat ovale, la recouvrir d'une couche de sauce, recommencer l'opération puis y recouvrir de gruyère râpé.",
-        "Laisser au four jusqu'a ce que le fromage soir fondu et légèrement gratiné (environ 5 à 8 min)"
-      ],
-      "notes": "pâtes, sauce bolognaise, gruyère râpé, crème liquide, sel",
-      "sourceUrl": "https://www.marmiton.org/recettes/recette_gratin-de-pate-bolognaise-express_42094.aspx"
     },
     {
       "id": "pates-bolognaise",
@@ -490,6 +479,41 @@
       ],
       "notes": "pesto, tomates concassées, olives noires, origan, poivre, sel, huile d'olive",
       "sourceUrl": "https://www.marmiton.org/recettes/recette_sauce-pour-pates-pseudo-bolognaise-vegetarienne_33256.aspx"
+    },
+    {
+      "id": "gratin-de-pates-bolognaise-aux-aubergines",
+      "custom": true,
+      "category": "repas",
+      "categoryLabel": "Repas chauds",
+      "name": "Gratin de pâtes bolognaise aux aubergines",
+      "description": "",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 6,
+      "ingredients": [
+        "3 aubergines",
+        "350 g de boeuf haché",
+        "1 grosses boîtes de tomates pelées",
+        "2 cuillères à soupe de herbes de Provence",
+        "250 g de penne ou torsades",
+        "1 pincées de sel",
+        "2 cuillères à soupe d'huile d'olive",
+        "150 g de gruyère râpé",
+        "250 g de mozzarella"
+      ],
+      "steps": [
+        "Éplucher les aubergines et les couper en tranches de 3 mm d'épaisseur dans le sens de la longueur.",
+        "Faire frire les tranches d'aubergines dans l'huile d'olive jusqu'à ce qu'elles soient colorées.",
+        "Dans le même temps, dans une autre poêle, faire revenir la viande hachée dans de l'huile d'olive.",
+        "Dès que celle-ci est cuite, y ajouter les tomates pelées avec leur jus, les herbes de Provence et le sel.",
+        "Laisser mijoter pendant 30 minutes.",
+        "Faire cuire les pâtes.",
+        "Dans un grand plat allant au four, verser la moitié des pâtes, puis la moitié de la sauce, positionner la moitié des tranches d'aubergines et parsemer avec le gruyère rapé.",
+        "Recommencer avec les pâtes, la sauce, les aubergines et terminer par la mozzarella coupée en fines tranches.",
+        "Mettre le plat au four à 200°C (thermostat 6-7) en position gril jusqu'à ce que le dessus soit bien gratiné."
+      ],
+      "notes": "aubergine, boeuf haché, tomates pelées, herbes de Provence, penne, sel, huile d'olive, gruyère râpé, mozzarella",
+      "sourceUrl": "https://www.marmiton.org/recettes/recette_gratin-de-pates-bolognaise-aux-aubergines_82547.aspx"
     },
     {
       "id": "curry-de-legumes-vegetarien",
@@ -611,103 +635,90 @@
       "sourceUrl": "https://www.marmiton.org/recettes/recette_poulet-au-curry-et-petits-legumes_26874.aspx"
     },
     {
-      "id": "poulet-saute-au-curry-petits-legumes-et-banane",
+      "id": "lotte-mijotee-au-curry-de-legumes",
       "custom": true,
       "category": "repas",
       "categoryLabel": "Repas chauds",
-      "name": "Poulet sauté au curry, petits légumes et banane",
+      "name": "Lotte mijotée au curry de légumes",
       "description": "",
       "prepTime": 0,
       "cookTime": 0,
       "servings": 4,
       "ingredients": [
-        "4 blancs de poulet",
+        "1 queues de lotte de 1 kg",
         "1 oignons",
-        "1 demis de poivron vert",
-        "1 bananes",
-        "1 pots de crème fraîche",
-        "curry en poudre"
-      ],
-      "steps": [
-        "Hachez grossièrement l'oignon.",
-        "Faites le revenir à l'huile d'olive dans une grande poêle sauteuse.",
-        "Coupez le demi poivron en petits cubes puis ajoutez le aux oignons.",
-        "Pendant que l'oignon et le poivron reviennent à feu moyen, couper le poulet en morceaux. Moi, je le fais au ciseaux, c'est plus pratique qu'avec un couteau.",
-        "Normalement, le temps de couper le poulet (environ 10 mn), oignon et poivron sont prêts.",
-        "Ajoutez alors les morceaux de poulet. Salez, poivrez.",
-        "Une fois que les morceaux de poulet sont blancs, ajoutez la crème fraîche et le curry.",
-        "Laissez mijoter quelques minutes en remuant régulièrement, puis rajoutez de la crème fraîche et du curry. Cette opération est à renouveler 3 ou 4 fois en goûtant: c'est que du bonheur!",
-        "1 minute avant de retirer la poêle du feu, ajoutez une banane coupée en rondelle et remuez légèrement.",
-        "Voilà c'est prêt!"
-      ],
-      "notes": "blanc de poulet, oignon, poivron vert, banane, crème fraîche, curry",
-      "sourceUrl": "https://www.marmiton.org/recettes/recette_poulet-saute-au-curry-petits-legumes-et-banane_18533.aspx"
-    },
-    {
-      "id": "nouilles-chinoises-au-curry-de-legumes",
-      "custom": true,
-      "category": "repas",
-      "categoryLabel": "Repas chauds",
-      "name": "Nouilles chinoises au curry de légumes",
-      "description": "",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 4,
-      "ingredients": [
-        "1 oignons",
-        "1 carottes",
-        "1/4 choux chinois",
-        "1 poivrons",
-        "1 boîtes de lait de coco",
-        "1 paquets de nouilles chinoises",
-        "2 escalopes de poulet",
-        "curry (2 cuillères à soupe)",
+        "4 carottes",
+        "3 courgettes",
+        "200 g de champignons de Paris frais",
+        "1 gousses d'ail",
+        "1 cuillères à soupe de curry (ou de raz-el-hanout, ou d'épice pour massale ou autre mélange à votre goût)",
+        "10 cl de vin blanc sec",
+        "20 cl d'eau",
+        "50 g de beurre",
+        "cuillère à soupe d'huile d'olive",
+        "farine",
         "poivre",
-        "sel",
-        "huile"
+        "sel"
       ],
       "steps": [
-        "Emincez l'oignon et le chou finement. Râpez la carotte, coupez le poivron et le poulet en petits dés.",
-        "Dans un wok, faites sauter le poulet; salez, poivrez et réservez.",
-        "Ensuite, faites sauter les légumes, salez, poivrez et laissez cuire 15 min pour qu'ils soient bien fondants.",
-        "Ajoutez la viande, le lait de coco et le curry.",
-        "Faites cuire les nouilles chinoises comme indiqué sur le paquet.",
-        "Ajoutez à la préparation avec les légumes, mélangez et servez."
+        "Emincez l'oignon. Réservez.",
+        "Epluchez les carottes, les couper en 2 dans le sens de la longueur (ou en 4 si elles sont grosses), puis en tronçons de 2cm environ. réservez.",
+        "Coupez, les courgettes en 4 dans le sens de la longueur, puis en tronçons de 2 cm environ. Réservez.",
+        "Epluchez soigneusement la lotte (enlevez la peau noire, si votre poissonnier ne l'a pas fait, mais aussi l'autre membrane translucide qui recouvre la chair car elle durcit à la cuisson), enlevez l'épine dorsale et coupez-la en morceau de 5 à 7 cm.",
+        "Dans une cocotte, faites fondre le beurre avec l'huile à feu moyen.",
+        "Salez et poivrez les morceaux de lotte. Farinez-les. Faites-les dorer de chaque côté dans la cocotte, puis réservez-les.",
+        "Videz l'excédant de graisse (il doit rester la valeur d'une cuiller à soupe), puis faites fondre l'oignon émincé à feu doux avec un peu de sel, en remuant de temps en temps. Quand l'oignon est translucide, ajoutez les carottes et le curry. Faites-les revenir quelques minutes.",
+        "Ajoutez 10 cl d'eau, et portez à ébullition. Quand les carottes commencent à être tendres, ajoutez les courgettes, l'ail, le reste de l'eau et le vin blanc. Laissez mijoter 30 minutes à feu doux et à couvert.",
+        "Pendant ce temps, coupez les champignons en gros dés de 3cm de côté environ, et faites-les revenir à feu vif dans une poêle avec le reste du beurre.",
+        "Quand ils sont cuits, ajoutez-les dans la cocotte.",
+        "Au bout des 30 minutes, remettez les morceaux de lotte dans la cocotte et poursuivez la cuisson à couvert pendant 10 minutes.",
+        "A la fin de la cuisson, faites éventuellement réduire la sauce si elle est trop liquide (après avoir enlevé les morceaux de lotte).",
+        "Ajustez l'assaisonnement.",
+        "Servez avec un riz Thaï ou Basmati."
       ],
-      "notes": "oignon, carotte, chou chinois, poivron, lait de coco, nouilles chinoises, escalope de poulet, curry, poivre, sel, huile",
-      "sourceUrl": "https://www.marmiton.org/recettes/recette_nouilles-chinoises-au-curry-de-legumes_52266.aspx"
+      "notes": "queue, oignon, carotte, courgette, champignons de Paris, ail, curry, vin blanc sec, eau, beurre, huile d'olive, farine, poivre, sel",
+      "sourceUrl": "https://www.marmiton.org/recettes/recette_lotte-mijotee-au-curry-de-legumes_166173.aspx"
     },
     {
-      "id": "risotto-aux-poireaux",
+      "id": "saute-de-porc-au-curry-et-ses-legumes",
       "custom": true,
       "category": "repas",
       "categoryLabel": "Repas chauds",
-      "name": "risotto aux poireaux",
+      "name": "Sauté de porc au curry et ses légumes",
       "description": "",
       "prepTime": 0,
       "cookTime": 0,
       "servings": 4,
       "ingredients": [
-        "3 poireaux de belle taille",
-        "4 louches de riz pour risotto",
-        "1 cubes de bouillon de légumes ou un Kub Or",
-        "1 vin blanc sec",
-        "parmesan râpé",
-        "beurre",
-        "crème fraîche"
+        "1 kg de sauté de porc",
+        "2 courgettes",
+        "2 aubergines",
+        "6 pommes de terre",
+        "3 gousses d'ail",
+        "4 cuillères à soupe de curry",
+        "1 citrons",
+        "1 cubes de bouillon de volaille",
+        "30 cl d'eau",
+        "2 feuilles de laurier",
+        "6 branches de thym",
+        "huile d'olive",
+        "sel",
+        "poivre"
       ],
       "steps": [
-        "Emincer le blanc des poireaux.",
-        "Faire fondre le bouillon cube dans 3/4 litre d'eau bouillante.",
-        "Faire fondre 25 g de beurre dans une casserole ou une sauteuse à revêtement anti adhésif.",
-        "Mettre les poireaux à étuver sans qu'ils brunissent (5 mn environ).",
-        "Ajouter le riz. Remuer et laisser le riz devenir translucide sur feu vif.",
-        "Ajouter le vin blanc et attendre qu'il s'évapore.",
-        "Ajouter le bouillon, baisser le feu, et attendre qu'il soit totalement absorbé (environ 20 mn).",
-        "A la fin, ajouter 3 cuillères à soupe de crème fraîche, du poivre et du parmesan râpé. Remuer la préparation, puis la laisser reposer 3 mn hors du feu, avec un couvercle. Goûter pour vérifier s'il est nécessaire de saler (le bouillon et le fromage l'étant déjà). Servir bien chaud."
+        "Pour commencer, préparer une marinade à partir du jus de citron, de l'ail finement coupé et écrasé, et d'une cuillère à soupe de curry. Saler et poivrer.",
+        "Laisser mariner la viande dans cette préparation pendant 30 min environ.",
+        "Préparer un bouillon de volaille (1 cube pour 30 cl d'eau) dans une casserole à part.",
+        "Eplucher les pommes de terre, laver les courgettes et les aubergines, puis découper le tout en gros dés de même taille.",
+        "Dans un fait-tout suffisamment grand, verser un trait d'huile d'olive et faire chauffer à feu vif.",
+        "Faire revenir la viande préalablement égouttée (réserver la marinade) à feu fort pendant 5 min.",
+        "Ensuite, ajouter les légumes et faire revenir à feu fort pendant 5 min également. Y ajouter 3 cuillères à soupe de curry.",
+        "Puis, ajouter le bouillon à la marinade et mélanger cette préparation à la viande et aux légumes.",
+        "Enfin, ajouter le laurier et le thym, saler et poivrer à votre convenance.",
+        "Laisser mijoter à couvert et à feu doux pendant 1 heure environ."
       ],
-      "notes": "poireau, riz pour risotto, cube de bouillon, vin blanc sec, parmesan râpé, beurre, crème fraîche",
-      "sourceUrl": "https://www.marmiton.org/recettes/recette_risotto-aux-poireaux_19753.aspx"
+      "notes": "sauté de porc, courgette, aubergine, pomme de terre, ail, curry, citron, cube de bouillon, eau, feuille de laurier, thym, huile d'olive, sel, poivre",
+      "sourceUrl": "https://www.marmiton.org/recettes/recette_saute-de-proc-au-curry_171335.aspx"
     },
     {
       "id": "risotto-aux-asperges-fraiches",
@@ -819,82 +830,69 @@
       "sourceUrl": "https://www.marmiton.org/recettes/recette_risotto-aux-champignons-recette-italienne-du-risotto-alla-fungaiola_29870.aspx"
     },
     {
-      "id": "risotto-aux-champignons-la-vraie-recette",
+      "id": "risotto-de-courgettes-aux-champignons",
       "custom": true,
       "category": "repas",
       "categoryLabel": "Repas chauds",
-      "name": "Risotto aux champignons : la vraie recette",
+      "name": "Risotto de courgettes aux champignons",
       "description": "",
       "prepTime": 0,
       "cookTime": 0,
-      "servings": 2,
+      "servings": 4,
       "ingredients": [
-        "250 g de champignon (des cèpes de préférence)",
-        "200 g de riz carnaroli",
-        "1 filets d'huile d'olive",
-        "1 noix de beurre",
-        "1 bouillon de légumes",
-        "20 cl de vin blanc sec",
-        "1 cuillères à soupe de parmesan",
+        "250 g de riz rond",
+        "1 l de bouillon de légumes",
+        "2 courgettes",
+        "250 g de champignons de Paris",
         "1 oignons",
-        "1 gousses d'ail",
-        "1 échalotes",
-        "2 brins de persil plat",
-        "1 pincées de sel",
-        "1 pincées de poivre"
+        "10 cl de vin blanc sec",
+        "25 cl de crème fraîche",
+        "50 g de parmesan",
+        "30 g de beurre",
+        "basilic frais",
+        "sel",
+        "poivre"
       ],
       "steps": [
-        "Il existe sur la toile deux écoles du risotto aux champignons, à savoir celle du champignon qui cuit dans le riz, et celle des champignons poêlés ajoutés à la dernière minute. Ayant longtemps pratiqué les deux recettes, je souhaitais vous communiquer la mienne :",
-        "Séparer les champignons en deux (préférer des cèpes) : une partie servira à élaborer le bouillon et cuira avec le riz. L'autre partie sera poêlé au dernier moment pour la présentation et mettre en avant le champignon tout en conservant une texture ferme.\nEmincer un petit peu d'ail, d'échalote et de persil séparément et réserver.",
-        "Nettoyer les champignons et les couper en morceaux.",
-        "Faire blondir dans une casserole un demi-oignon émincé dans un mélange de beurre et d'huile d'olive.",
-        "Ajouter et poêler les champignons.",
-        "Ajouter du bouillon de légumes ou de poule (assez pour nourrir le risotto).",
-        "Laisser mijoter le bouillon pour qu'il s'imprègne bien du goût et des saveurs des champignons.",
-        "Chauffer une nouvelle casserole (qui accueillera le risotto), ajouter un peu d'huile d'olive et de beurre que vous ferez blondir.",
-        "Ajouter le riz carnaroli et remuer jusqu'à le rendre translucide (attention à la température, le riz ne doit pas coller).",
-        "Déglacer avec un verre de vin blanc sec. Continuer à remuer pour que le riz n'adhère pas et laisser réduire l'alcool.",
-        "Verser une louche de bouillon que vous avez laissé mijoter et continuer à remuer constamment jusqu'à l'absorption totale du riz.",
-        "Réitérer l'étape 11 jusqu'au point de cuisson (préférer al dente).",
-        "Juste avant la fin, faire fondre du beurre et un peu d'huile d'olive dans une poêle tout en remuant le risotto.",
-        "Faire blondir l'échalote émincée dans la poêle puis ajouter l'ail (attention à ne pas le brûler).",
-        "Faire poêler les champignons tout en remuant le risotto, assaisonner et ajouter le persil émincé en fin de cuisson avec un tour de moulin à poivre puis réserver.",
-        "Assaisonner le risotto juste avant la fin.",
-        "Ciseler du persil et en parsemer au dessus.",
-        "Dresser le riz dans des assiettes creuses. Placer soigneusement sur le haut les champignons poêlés.",
-        "Servir avec un tour de moulin à poivre et du parmesan.",
-        "Le gras du beurre va s'opposer au salé du parmesan et à l'amertume du cèpe en arrière plan. Les puristes privilégieront un rouge italien d'âge moyen avec une structure légère mais à la fois ronde et consistante. Personnellement, je préfère un blanc sec minéral un peu évolué au accent de sous-bois. Un bourgogne fera parfaitement l'affaire. Bon appétit"
+        "Faites revenir l’oignon émincé et les champignons émincés dans le beurre.",
+        "Pendant ce temps, couper les courgettes en rondelles fines.",
+        "Ajoutez le riz au mélange oignon-champignon. Lorsqu’il est devenu translucide, mouillez avec le vin blanc. Attendez que le vin soit évaporé pour ajouter les courgettes. Laissez cuire 2 minutes puis, toujours sans arrêter de remuer, ajouter une louche de bouillon bien chaud.",
+        "Attendez que le riz absorbe le bouillon avant d'en ajouter une autre louche et ainsi de suite jusqu'à ce que le riz soit cuit (soit environ 15 à 20 minutes).",
+        "Faites cuire à feu doux, en mouillant régulièrement avec le reste du bouillon (n’hésitez pas à en ajouter, si vous avez épuisé le litre).",
+        "Ajoutez alors la crème et le parmesan, couvrez 2 minutes remuez. Rectifiez l'assaisonnement et ajoutez du basilic.",
+        "Servez immédiatement."
       ],
-      "notes": "champignon, riz, huile d'olive, beurre, bouillon de légumes, vin blanc sec, parmesan, oignon, ail, échalote, persil, sel, poivre",
-      "sourceUrl": "https://www.marmiton.org/recettes/recette_risotto-aux-champignons_312215.aspx"
+      "notes": "riz rond, bouillon de légumes, courgette, champignons de Paris, oignon, vin blanc sec, crème fraîche, parmesan, beurre, basilic frais, sel, poivre",
+      "sourceUrl": "https://www.marmiton.org/recettes/recette_risotto-de-courgettes-aux-champignons_44901.aspx"
     },
     {
-      "id": "omelette-aux-pommes-de-terre-et-lardons",
+      "id": "risotto-au-potiron",
       "custom": true,
       "category": "repas",
       "categoryLabel": "Repas chauds",
-      "name": "Omelette aux pommes de terre et lardons",
+      "name": "Risotto au potiron",
       "description": "",
       "prepTime": 0,
       "cookTime": 0,
-      "servings": 2,
+      "servings": 4,
       "ingredients": [
-        "5 oeufs",
-        "2 pommes de terre \"moyennes\"",
-        "1 poignées de lardons natures ou fumés",
-        "poivre",
-        "sel",
-        "huile"
+        "350 g de riz",
+        "500 g de potiron",
+        "1 oignons blancs",
+        "1/2 bouillons",
+        "40 g de beurre",
+        "1 verres de lait",
+        "parmesan rapé",
+        "1 cuillères de persil haché"
       ],
       "steps": [
-        "Eplucher 2 pommes de terre et les couper en dés. Les faire cuire 10 mn à la vapeur ainsi coupées (pour gagner du temps !).",
-        "Mettre 1 à 2 cuillères à soupe d'huile \"neutre\" (tournesol par exemple) dans un poêle et y rajouter les pommes de terre.",
-        "Faire dorer 10 mn environ et juste un peu avant la fin de la cuisson, y rajouter une poignée de lardons.",
-        "Incorporer les oeufs battus assaisonnés de poivre et de sel (pas trop, les lardons sont déjà suffisamment salés) à la préparation dans la poêle en remuant 30 secondes.",
-        "Laisser cuire à votre convenance, selon si vous l'aimez baveuse ou pas)."
+        "Pelez le potiron, éliminez les graines et coupez-le en tranches fines.",
+        "Hachez menu l'oignon et faites-le revenir dans 20 g de beurre, ajoutez le poiton, salez et laissez cuire à feu lent, en mélangeant et en versant un peu de bouillon.",
+        "Quand le potiron est défait, versez le riz et faites-le cuire pendant 18 minutes en rajoutant du bouillon chaud au fur et à mesure qu'il est absorbé.",
+        "Ajoutez le lait, mélangez à feu vif, ajouter le poivre, le persil et une bonne dose de parmesan. Mélangez rapidement avant de servir de façon que tous les ingrédients soient parfaitement amalgamés."
       ],
-      "notes": "oeuf, pomme de terre, lardons, poivre, sel, huile",
-      "sourceUrl": "https://www.marmiton.org/recettes/recette_omelette-aux-pommes-de-terre-et-lardons_19387.aspx"
+      "notes": "riz, potiron, oignon blanc, bouillon, beurre, lait, parmesan, persil",
+      "sourceUrl": "https://www.marmiton.org/recettes/recette_risotto-au-potiron_12764.aspx"
     },
     {
       "id": "omelette-espagnole-tortilla-autentica",
@@ -979,41 +977,61 @@
       "sourceUrl": "https://www.marmiton.org/recettes/recette_omelette-aux-epinards-et-mozzarella_30264.aspx"
     },
     {
-      "id": "omelette-a-l-ancienne-oignon-lardon-pomme-de-terre",
+      "id": "l-omelette-tendresse",
       "custom": true,
       "category": "repas",
       "categoryLabel": "Repas chauds",
-      "name": "Omelette à l'ancienne (oignon-lardon-pomme de terre)",
+      "name": "L'omelette tendresse...",
       "description": "",
       "prepTime": 0,
       "cookTime": 0,
-      "servings": 4,
+      "servings": 3,
       "ingredients": [
         "6 oeufs",
-        "100 g de lardons nature",
-        "3 pommes de terre",
-        "2 oignons",
-        "1 cuillères à café de moutarde à l'ancienne",
-        "10 cl de crème semi-épaisse",
-        "gruyère",
-        "sel",
-        "poivre",
-        "ail",
-        "persil",
-        "huile d'olive"
+        "100 g de lardons fumés",
+        "2 oignons de taille moyenne",
+        "1 poivrons verts",
+        "3 champignons de Paris",
+        "gruyère râpé",
+        "tomates cerise"
       ],
       "steps": [
-        "Pour gagner du temps je fais cuire les pommes de terre dans l'eau, la veille. Froides, elles sont plus faciles à peler et à couper en dès.",
-        "Ensuite, je les fais revenir à la poêle avec l'ail, le persil et l'huile d'olive. Résrvez.",
-        "Puis faites cuire les oignons émincés. Une fois colorés, ajoutez les lardons.",
-        "Pendant ce temps, battre les oeufs avec la crème et la moutarde. Salez poivrez.",
-        "Remettre les pommes de terre dans la poêle et versez par dessus la préparation oeufs-crème-moutarde. Parsemez de gruyère.",
-        "Remuez un peu mais pas trop. Ce ne sont pas des oeufs brouillés!",
-        "Si vous l'aimez baveuse, faites la cuire 5min.",
-        "Bon appétit!"
+        "Peler et découper l'oignon en petits bouts.",
+        "Découper le poivron en lamelles",
+        "Faire dorer le tout à la poêle.",
+        "Rajouter les lardons un peu plus tard, puis les champignons finement coupés, à feu vif.",
+        "Lorsque la poêlée est grillée, battre les oeufs, et les ajouter dans la poêle, en baissant le feu.",
+        "Une fois l'omelette bien prise, saupoudrer généreusement de gruyère râpé.",
+        "Couper en deux les tomates cerises, et les rajouter en formant un motif... selon votre coeur!",
+        "Bon appétit !"
       ],
-      "notes": "oeuf, lardons, pomme de terre, oignon, moutarde à l'ancienne, crème semi-épaisse, gruyère, sel, poivre, ail, persil, huile d'olive",
-      "sourceUrl": "https://www.marmiton.org/recettes/recette_omelette-a-l-ancienne-oignon-lardon-pomme-de-terre_169283.aspx"
+      "notes": "oeuf, lardons fumés, oignon, poivron vert, champignons de Paris, gruyère râpé, tomates cerise",
+      "sourceUrl": "https://www.marmiton.org/recettes/recette_l-omelette-tendresse_42367.aspx"
+    },
+    {
+      "id": "omelette-norvegienne-facile",
+      "custom": true,
+      "category": "repas",
+      "categoryLabel": "Repas chauds",
+      "name": "Omelette norvégienne facile",
+      "description": "",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 6,
+      "ingredients": [
+        "1 l de glace vanille",
+        "3 blancs d'oeuf",
+        "150 g de sucre glace",
+        "6 biscuits à la cuillère"
+      ],
+      "steps": [
+        "Préchauffer le four à la température maximum.",
+        "Battre les blancs d'oeuf en neige très fermes et ajouter le sucre glace tout en continuant à battre.",
+        "Démouler la glace sur les biscuits à la cuillère. Verser la préparation blancs d'oeuf + sucre sur le glace.",
+        "Passer 5 minutes à four très chaud."
+      ],
+      "notes": "glace vanille, blanc d'oeuf, sucre glace, biscuits à la cuillère",
+      "sourceUrl": "https://www.marmiton.org/recettes/recette_omelette-norvegienne-facile_15701.aspx"
     },
     {
       "id": "quiche-lorraine-maison",
@@ -1083,97 +1101,103 @@
       "sourceUrl": "https://www.marmiton.org/recettes/recette_quiche-lorraine-de-sophie_57113.aspx"
     },
     {
-      "id": "quiche-lorraine-sans-pate",
+      "id": "quiche-lorraine-facon-anna",
       "custom": true,
       "category": "repas",
       "categoryLabel": "Repas chauds",
-      "name": "Quiche lorraine sans pâte",
+      "name": "Quiche Lorraine façon Anna",
       "description": "",
       "prepTime": 0,
       "cookTime": 0,
       "servings": 4,
-      "ingredients": [
-        "100 g de jambon",
-        "200 g de lardons revenus à la poêle",
-        "4 oeufs entiers",
-        "1/4 l de lait",
-        "1 petits pots de crème fraîche",
-        "100 g de farine",
-        "poivre",
-        "sel"
-      ],
-      "steps": [
-        "Mélanger le tout.",
-        "Verser dans un moule beurré.",
-        "Faire cuire pendant 35 min."
-      ],
-      "notes": "jambon, lardons, oeuf, lait, crème fraîche, farine, poivre, sel",
-      "sourceUrl": "https://www.marmiton.org/recettes/recette_quiche-lorraine-sans-pate_16958.aspx"
-    },
-    {
-      "id": "quiche-lorraine-de-mamz-elle-amelie",
-      "custom": true,
-      "category": "repas",
-      "categoryLabel": "Repas chauds",
-      "name": "Quiche lorraine de Mamz'elle Amélie",
-      "description": "",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 6,
       "ingredients": [
         "1 pâtes feuilletées",
         "200 g de lardons",
-        "3 oeufs entiers",
-        "2 cuillères à soupe de crème fraîche",
+        "75 g de champignons de Paris émincés",
+        "5 saucisses de Strasbourg",
+        "75 g de fromage râpé",
+        "4 jaunes d'oeuf",
+        "8 cuillères à soupe de crème fraîche",
         "25 cl de lait",
-        "1 cuillères à café de sucre roux",
-        "1 pincées de muscade râpée",
-        "poivre",
-        "sel"
+        "1 cuillères à soupe d'huile"
       ],
       "steps": [
-        "Garnissez le fond de votre moule à tarte de la pâte feuilletée.",
-        "Avec une fourchette, piquez la pâte feuilletée.",
-        "Préchauffez le four à 220°C ou (thermostat 7).",
-        "Dans une poêle, faites revenir à feu vif les lardons pendant 3 minutes. Égouttez-les dans une passoire, puis essorez-les avec du papier essuie-tout afin d’absorber la graisse.",
-        "Dans un saladier, mélangez avec une spatule les œufs, la crème fraîche et le lait. Ajoutez le sucre roux, une pincée de noix de muscade. Salez très légèrement (les lardons apportent déjà un goût salé à la quiche) et poivrez.",
-        "Garnissez le fond de la pâte feuilletée des lardons puis ajoutez l’appareil.",
-        "Enfournez pendant 25 à 30 minutes."
+        "Préchauffer le four à 180°C (thermostat 6).",
+        "Faire chauffer un fond d'huile dans une poêle et y ajouter les lardons. Quand ceux-ci sont bien revenus, y ajouter les champignons et laisser cuire quelques min, le temps que l'eau des champignons s'évapore.",
+        "Pendant ce temps, mélanger, les jaunes d’œufs, la crème fraîche et le lait dans un saladier. Y ajouter le fromage râpé.",
+        "Couper les saucisses de Strasbourg en rondelles.",
+        "Dans un plat à tarte, étaler la pâte feuilletée.",
+        "Déposer en premier temps  les rondelles de saucisses de Strasbourg, ajouter les lardons et champignons et terminer par le mélange œufs-crème fraîche.",
+        "Enfourner au niveau 1 du four à 180°C (thermostat 6) pendant 1 h environ (dès que le dessus de la quiche est dorée, environ 30 min, recouvrir avec un papier d'alu )."
       ],
-      "notes": "pâte feuilletée, lardons, oeuf, crème fraîche, lait, sucre roux, muscade, poivre, sel",
-      "sourceUrl": "https://www.marmiton.org/recettes/recette_quiche-lorraine-de-mamz-elle-amelie_68070.aspx"
+      "notes": "pâte feuilletée, lardons, champignons de Paris, saucisse de Strasbourg, fromage râpé, jaune d'oeuf, crème fraîche, lait, huile",
+      "sourceUrl": "https://www.marmiton.org/recettes/recette_quiche-lorraine-facon-anna_308884.aspx"
     },
     {
-      "id": "quiche-lorraine-au-curry",
+      "id": "quiche-lorraine-aux-legumes-du-soleil",
       "custom": true,
       "category": "repas",
       "categoryLabel": "Repas chauds",
-      "name": "Quiche Lorraine au curry",
+      "name": "Quiche lorraine aux légumes du soleil",
       "description": "",
       "prepTime": 0,
       "cookTime": 0,
       "servings": 4,
       "ingredients": [
-        "1 rouleaux de pâte brisée",
-        "3 oeufs",
-        "20 cl de crème",
-        "150 g de lardons",
+        "1 pâtes brisées ou feuilletée",
+        "2 oeufs",
+        "40 cl de crème liquide semi-épaisse",
+        "poivron (rouge, vert)environ moitié de chaque",
+        "3 tomates",
+        "1 demis d'aubergine",
+        "sel",
+        "poivre",
+        "herbes de Provence",
         "fromage râpé",
-        "muscade",
-        "curry",
-        "piment d'Espelette",
+        "ail (falcutatif)"
+      ],
+      "steps": [
+        "Coupez vos légumes en petits dés,faites les revenir dans un tout petit peu d'huile d'olive, à feux vif , puis baisser le feu et laisser cuire une dizaine de minutes à feux moyen.",
+        "Pendant ce temps, battez les oeufs en omelette, puis ajouter la crème , sel , poivre et les herbes de provence.",
+        "Mettez votre pate dans un moule à tarte,piquez lz fond avec une fourchette.",
+        "Disposez vos petits légumes sur le fond de la pate, puis ajoutez votre mélange crème oeufs épices.",
+        "Recouvrez de fromage rapé,ou de buchette de chèvre ou encore de parmesan.",
+        "Mettez au four à 210° pendant 25 min."
+      ],
+      "notes": "pâte brisée, oeuf, crème liquide, poivron, tomate, aubergine, sel, poivre, herbes de Provence, fromage râpé, ail",
+      "sourceUrl": "https://www.marmiton.org/recettes/recette_quiche-lorraine-aux-legumes-du-soleil_166564.aspx"
+    },
+    {
+      "id": "quiche-lorraine-au-fromage-blanc-legere",
+      "custom": true,
+      "category": "repas",
+      "categoryLabel": "Repas chauds",
+      "name": "Quiche lorraine au fromage blanc légère",
+      "description": "",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 4,
+      "ingredients": [
+        "1 pâtes feuilletées",
+        "400 g de fromage blanc à 0%",
+        "200 g de dés de jambon",
+        "200 g d'emmental râpé",
+        "3 oeufs",
+        "1 cuillères à soupe de moutarde",
+        "1 oignons",
         "poivre",
         "sel"
       ],
       "steps": [
-        "Préchauffer le four à 200°C (thermostat 6-7).",
-        "Dérouler la pâte et piquer le fond après l'avoir mis dans un plat.",
-        "Faire dorer les lardons. Mélanger les oeufs battus et la crème fraîche, et ajouter les lardons doré.",
-        "Saler, poivrer et mettre la muscade, le curry et le piment à la convenance.",
-        "Verser la préparation sur la pâte, mettre une belle couche de fromage et enfourner 30 minutes."
+        "Sortir la pâte puis la dérouler dans un moule.",
+        "Préchauffer votre four à 180°C (thermostat 6).",
+        "Dans une poêle, faire revenir l'oignon, les dés de jambon et 100 g de fromage blanc pendant 15 minutes.",
+        "Pendant ce temps, mélanger dans un saladier les oeufs, le fromage blanc, la moutarde et y ajouter l'emmental.",
+        "Incorporer le premier mélange au second puis mélanger et verser dans le moule.",
+        "Enfourner pendant 30 minutes."
       ],
-      "notes": "pâte brisée, oeuf, crème, lardons, fromage râpé, muscade, curry, piment d'Espelette, poivre, sel",
-      "sourceUrl": "https://www.marmiton.org/recettes/recette_quiche-lorraine-au-curry_81273.aspx"
+      "notes": "pâte feuilletée, fromage blanc, dés de jambon, emmental, oeuf, moutarde, oignon, poivre, sel",
+      "sourceUrl": "https://www.marmiton.org/recettes/recette_quiche-lorraine-au-fromage-blanc-legere_81902.aspx"
     },
     {
       "id": "salade-nicoise-l-authentique-nicoise",
@@ -1213,84 +1237,6 @@
       ],
       "notes": "tomate, oeuf, oignon cébette, févette, poivron vert, thon, anchois, olives noires, basilic, radis, vinaigre de vin, huile d'olive, artichaut violet, poivre, sel",
       "sourceUrl": "https://www.marmiton.org/recettes/recette_salade-nicoise-l-authentique-nicoise_30330.aspx"
-    },
-    {
-      "id": "salade-de-riz-nicoise",
-      "custom": true,
-      "category": "repas",
-      "categoryLabel": "Repas chauds",
-      "name": "salade de riz niçoise",
-      "description": "",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 4,
-      "ingredients": [
-        "250 g de riz",
-        "150 g de thon nature",
-        "150 g de maïs",
-        "4 tomates",
-        "1/2 poivrons verts",
-        "1/2 poivrons rouges",
-        "5 cuillères à soupe d'huile",
-        "3 cuillères à soupe de vinaigre",
-        "2 cuillères à soupe de nuoc mam",
-        "poivre",
-        "sel"
-      ],
-      "steps": [
-        "* Cuire le riz.",
-        "* Découper les tomates en petit dés, ainsi que les poivrons.",
-        "* Egoutter le thon et le maïs.",
-        "* Une fois le riz cuit, le refroidir à l'eau froide.",
-        "* Dans un saladier, verser tout ces ingrédients: riz, tomates, poivrons, thon, maïs.",
-        "* Ajouter la vinaigrette: 5 cuillères à soupe d'huile, 3 cuillères à soupe de vinaigre, 2 cuillères à soupe de nuoc man.",
-        "* Saler et poivrer à votre goût."
-      ],
-      "notes": "riz, thon, maïs, tomate, poivron vert, poivron rouge, huile, vinaigre, nuoc mam, poivre, sel",
-      "sourceUrl": "https://www.marmiton.org/recettes/recette_salade-de-riz-nicoise_71418.aspx"
-    },
-    {
-      "id": "salade-nicoise-a-ma-facon",
-      "custom": true,
-      "category": "repas",
-      "categoryLabel": "Repas chauds",
-      "name": "Salade niçoise à ma façon",
-      "description": "",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 2,
-      "ingredients": [
-        "130 g de thon au naturel",
-        "8 tomates cerise",
-        "1 salades verte de saison (batavia, laitue, romaine, mâche...)",
-        "1 oignons rouges",
-        "1 cuillères à soupe de câpres égouttées",
-        "1 cuillères à soupe d'olives noires dénoyautées",
-        "1 cuillères à soupe d'olives vertes dénoyautées",
-        "1/2 poivrons rouges (ou 3 petits pimentos del pequillo en conserve)",
-        "1 oeufs",
-        "4 filets d'anchois à l'huile au naturel égouttées",
-        "4 cuillères à soupe d'huile d'olive de bonne qualité",
-        "2 cuillères à soupe de jus de citron",
-        "sel",
-        "poivre"
-      ],
-      "steps": [
-        "Mettre l'oeuf dans un casserole d'eau froide, porter à ébullition légère et cuire pendant 8-9 minutes. Plonger l'oeuf dans de l'eau très froide en fin de cuisson, l'écaler sous l'eau froide, réserver au frais.",
-        "Pendant la cuisson de l'oeuf, égoutter le thon et le mettre dans un saladier.",
-        "Couper les olives vertes et noires en tout petits morceaux.",
-        "Couper le poivron en fines lanières.",
-        "Mélanger harmonieusement les olives, câpres, poivron avec le thon en incorporant 1 cuillère à soupe d'huile d'olive, réserver au frais pendant 10 min.",
-        "Peler, couper l'oignon rouge en 4 et l'émincer en fines lanières.",
-        "Préparer une vinaigrette avec l'huile restante, le jus de citron, du sel et du poivre.",
-        "Dans un plat (ou présentation à l'assiette), déposer la salade en périphérie, couper les tomates en deux et les répartir autour de la salade.",
-        "Répartir les lanières d'oignons sur la salade",
-        "Déposer le mélange thon, olives... au centre du plat.",
-        "Couper l'oeuf en quatre, répartir au-dessus de la salade en alternant avec les filets d'anchois",
-        "Servir frais en assaisonnant de vinaigrette au dernier moment."
-      ],
-      "notes": "thon, tomates cerise, salade, oignon rouge, câpres, olives noires, olives vertes, poivron rouge, oeuf, anchois, huile d'olive, jus de citron, sel, poivre",
-      "sourceUrl": "https://www.marmiton.org/recettes/recette_salade-nicoise-a-ma-facon_253900.aspx"
     },
     {
       "id": "vraie-salade-nicoise",
@@ -1366,6 +1312,73 @@
       ],
       "notes": "pomme de terre, haricots verts, poivron rouge, thon, espadon, oeuf, tomates cerise, roquette, salade, anchois, pignons, huile d'olive, vinaigre balsamique, jus de citron",
       "sourceUrl": "https://www.marmiton.org/recettes/recette_salade-nicoise-tres-revisitee_309927.aspx"
+    },
+    {
+      "id": "salade-nicoise",
+      "custom": true,
+      "category": "repas",
+      "categoryLabel": "Repas chauds",
+      "name": "Salade niçoise",
+      "description": "",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 4,
+      "ingredients": [
+        "1 salades type Scarole ou frisée",
+        "250 g de tomates cerise",
+        "1 grosses boîtes de thon en tranches",
+        "3 oeufs durs",
+        "100 g d'olives noires",
+        "8 pommes de terre Grenailles",
+        "poivre",
+        "sel",
+        "huile d'olive",
+        "jus de citron",
+        "vinaigre balsamique",
+        "1 cuillères à soupe de persil et ciboulette haché",
+        "10 feuilles de basilic frais"
+      ],
+      "steps": [
+        "Faites cuire les pommes de terre à la vapeur environ 10 minutes.",
+        "Laissez-les refroidir.",
+        "Lavez les tomates et la salade.",
+        "Effeuillez la salade et disposez-la dans un saladier.",
+        "Coupez les tomates cerises et ajoutez-les, ainsi que le thon égoutté et séparé en tranches.",
+        "Rajoutez les pommes de terres coupées en rondelles.",
+        "Ecalez les oeufs et coupez-les en 4, ajoutez-les à la salade avec les olives noires.",
+        "Préparez la sauce avec 3 cuillères à soupe d'huile, 1 cuillère à soupe de jus de citron et 1 de vinaigre, sel, poivre et les herbes hachées.",
+        "Mélangez la salade avec la vinaigrette et décorez de feuilles de basilic entières."
+      ],
+      "notes": "salade, tomates cerise, thon, oeuf, olives noires, pomme de terre, poivre, sel, huile d'olive, jus de citron, vinaigre balsamique, persil, basilic frais",
+      "sourceUrl": "https://www.marmiton.org/recettes/recette_salade-nicoise_25614.aspx"
+    },
+    {
+      "id": "salade-d-artichauts-a-la-nicoise",
+      "custom": true,
+      "category": "repas",
+      "categoryLabel": "Repas chauds",
+      "name": "Salade d'artichauts à la niçoise",
+      "description": "",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 6,
+      "ingredients": [
+        "6 artichauts violets",
+        "12 filets d'anchois au sel (ou 2 cuillères à soupe d'anchoiade en tube toute prête)",
+        "huile d'olive",
+        "2 citrons"
+      ],
+      "steps": [
+        "Préparer les artichauts: enlever les premières feuilles dures ; couper le pied ; les rincer abondamment à l'eau claire en écartant le coeur.",
+        "Les couper en 4 ; les ébarber ; couper chaque quartier en lamelles dans un saladier ; verser par-dessus le jus d'un citron, pour éviter qu'ils noircissent.",
+        "Préparer la sauce:",
+        "écraser les anchois ; bien les mélanger au jus du 2ème citron ; ajouter un filet d'huile d'olive ; poivrer sans saler.",
+        "Verser sur les artichauts et bien mélanger.",
+        "Pour les amateurs, on peut aussi rajouter un peu d'ail pilé.",
+        "Servir très frais."
+      ],
+      "notes": "artichaut violet, anchois, huile d'olive, citron",
+      "sourceUrl": "https://www.marmiton.org/recettes/recette_salade-d-artichauts-a-la-nicoise_20888.aspx"
     },
     {
       "id": "gratin-dauphinois-recette-originale-et-peu-chere",
@@ -1526,44 +1539,6 @@
       "sourceUrl": "https://www.marmiton.org/recettes/recette_gratin-dauphinois-tres-facile_58956.aspx"
     },
     {
-      "id": "wok-de-legumes",
-      "custom": true,
-      "category": "repas",
-      "categoryLabel": "Repas chauds",
-      "name": "Wok de légumes",
-      "description": "",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 4,
-      "ingredients": [
-        "1 poivrons rouges frais ou surgelés",
-        "1 poivrons verts frais ou surgelés",
-        "1 poivrons jaunes frais ou surgelés",
-        "200 g de haricots verts frais ou surgelés",
-        "2 courgettes fraîches ou surgelées",
-        "5 carottes",
-        "4 cuillères à soupe d'huile d'arachide",
-        "4 cuillères à soupe de soja",
-        "2 cuillères à soupe de miel liquide",
-        "1/2 citrons (le jus)",
-        "3 gingembre (ou gingembre en poudre)",
-        "1 cuillères à soupe de vinaigre de riz",
-        "4 gousses d'ail",
-        "2 cuillères à soupe d'arachide écrasées",
-        "1 oignons"
-      ],
-      "steps": [
-        "Emincer très finement les légumes.",
-        "Faire revenir les oignons, poivrons et les carottes coupées en lamelles dans l'huile chaude pendant 5 min.",
-        "Incorporer les courgettes et les haricots (surgelés ou précuits dans l'eau).",
-        "Laisser cuire à feu vif et en remuant constamment 10 min.",
-        "Préparer la sauce en mixant la sauce soja, la miel, l'ail, le vinaigre de riz, le citron et le gingembre.",
-        "Verser la sauce et les cacahuètes au dernier moment, juste avant de servir."
-      ],
-      "notes": "poivron rouge, poivron vert, poivron jaune, haricots verts, courgette, carotte, huile d'arachide, soja, miel liquide, citron, gingembre, vinaigre de riz, ail, arachide, oignon",
-      "sourceUrl": "https://www.marmiton.org/recettes/recette_wok-de-legumes_71867.aspx"
-    },
-    {
       "id": "wok-de-legumes-aux-crevettes-et-vermicelles-de-riz",
       "custom": true,
       "category": "repas",
@@ -1637,44 +1612,6 @@
       "sourceUrl": "https://www.marmiton.org/recettes/recette_saute-de-porc-vermicels-et-legumes-au-wok_51290.aspx"
     },
     {
-      "id": "saute-de-poulet-et-petits-legumes-au-wok",
-      "custom": true,
-      "category": "repas",
-      "categoryLabel": "Repas chauds",
-      "name": "Sauté de poulet et petits légumes au wok",
-      "description": "",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 4,
-      "ingredients": [
-        "4 escalopes de poulet",
-        "1 demis de poivron vert",
-        "1 demis de poivron rouge",
-        "2 oignons",
-        "1 carottes",
-        "1 poignées de germes de soja",
-        "4 gousses d'ail",
-        "5 cuillères à soupe de sauce soja",
-        "2 cuillères à soupe de Poisson (nuoc mam)",
-        "1 petits piments rouge",
-        "1 bonnes cuillères à soupe d'huile au goût neutre comme l'huile de tournesol"
-      ],
-      "steps": [
-        "Coupez le poulet en petits dés d'environ 1 cm d'épaisseur.",
-        "Pour la marinade, mélangez la sauce soja et la sauce nuoc mam avec les gousses d'ail épluchées et hachées, ainsi que le petit piment découpé en petites rondelles et égrainez.",
-        "Laissez mariner la viande le plus longtemps possible, au minimum 30 min.",
-        "Préparez vos légumes:",
-        "Coupez carotte et poivrons en petits bâtonnets, ils s'attendriront facilement à la cuisson.",
-        "Emincez les oignons en fines lamelles.",
-        "Faites chauffer l'huile sur le wok, et ajoutez les oignons pour les faire revenir doucement. Lorsqu'ils commencent à colorer légèrement, ajoutez carotte et poivrons. Remuez fréquemment et faites revenir à feu doux 15 min. Puis réservez dans une assiette à part.",
-        "Egouttez un peu le poulet, en réservant la marinade, et faites-le revenir au wok. Il doit bien commencer à dorer. Poivrer généreusement.",
-        "Lorsque le poulet commence à devenir doré, ajoutez les légumes, bien remuer, et ajoutez petit à petit les restes de marinade, le fond ne doit pas attacher. Ajoutez la poignée de soja.",
-        "Remuez bien le tout, et goûter régulièrement legumes et poulet, car en ce qui concerne les légumes, on peut les aimer plus ou moins croquants."
-      ],
-      "notes": "escalope de poulet, poivron vert, poivron rouge, oignon, carotte, germes de soja, ail, sauce soja, Poisson, petit piment, huile",
-      "sourceUrl": "https://www.marmiton.org/recettes/recette_saute-de-poulet-et-petits-legumes-au-wok_81268.aspx"
-    },
-    {
       "id": "wok-de-legumes-verts",
       "custom": true,
       "category": "repas",
@@ -1708,34 +1645,72 @@
       "sourceUrl": "https://www.marmiton.org/recettes/recette_wok-de-legumes-verts_51127.aspx"
     },
     {
-      "id": "soupe-aux-lentilles-corail",
+      "id": "wok-de-legumes-et-pates-sautees",
       "custom": true,
       "category": "repas",
       "categoryLabel": "Repas chauds",
-      "name": "Soupe aux lentilles corail",
+      "name": "Wok de légumes et pâtes sautées",
+      "description": "",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 2,
+      "ingredients": [
+        "1 bouquets de brocoli",
+        "2 carottes",
+        "1 filets de poulet",
+        "3 nouilles",
+        "1 bouillons",
+        "1 cuillères à café de gingembre en poudre",
+        "1 cuillères à café de sésame grillées",
+        "sauce soja"
+      ],
+      "steps": [
+        "Séparer le brocoli en tous petits bouquets. Découper le tronc du brocoli et les carottes en rondelles.",
+        "Faire sauter le tout dans le wok avec une cuillère à soupe d'huile d'olive.",
+        "Pendant ce temps découper le filet de poulet en fines tranches. Faire fondre le bouillon cube dans 1/2 litre d'eau tiède. Y plonger les morceaux de poulet. Faire cuire le poulet à feu extrêmement doux pour que le poulet s'imprègne du bouillon.",
+        "Lorsque les légumes sont colorés, saupoudrer du gingembre et du sésame, puis ajouter le poulet et la moitié du bouillon. Laisser évaporer.",
+        "Faire tremper les pâtes chinoises 2 mn dans l'eau froide puis les faire cuire dans le reste du bouillon complété avec de l'eau.",
+        "Lorsque les pâtes sont cuites les égoutter et les mettre dans le wok. Assaisoner avec la sauce au soja et bien mélanger."
+      ],
+      "notes": "brocoli, carotte, filet de poulet, nouilles, bouillon, gingembre, sésame, sauce soja",
+      "sourceUrl": "https://www.marmiton.org/recettes/recette_wok-de-legumes-et-pates-sautees_35197.aspx"
+    },
+    {
+      "id": "wok-asiatique-de-legumes-poireaux-carottes-gingembre",
+      "custom": true,
+      "category": "repas",
+      "categoryLabel": "Repas chauds",
+      "name": "Wok asiatique de légumes Poireaux-Carottes-Gingembre",
       "description": "",
       "prepTime": 0,
       "cookTime": 0,
       "servings": 4,
       "ingredients": [
-        "250 g de lentilles corail",
-        "1 poireaux",
-        "1 carottes",
-        "50 cl de bouillon de légumes",
-        "1 cuillères à soupe d'huile",
-        "2 cuillères à soupe de jus de citron",
-        "1 cuillères à café de citron râpé",
-        "1/2 cuillères à café de cumin en poudre"
+        "2 poireaux",
+        "2 carottes",
+        "1 gingembre frais",
+        "1 poignées de germes de soja",
+        "2 cuillères à soupe d'huile de sésame",
+        "2 cuillères à soupe de sauce soja",
+        "blanc de poulet",
+        "bouquet de brocoli"
       ],
       "steps": [
-        "Nettoyer le poireau et le couper en rondelles. Peler la carotte et la couper en rondelles.",
-        "Dans une grande casserole à fond épais, faire chauffer l'huile, puis ajouter le poireau, la carotte, le zeste de citron et le cumin, et faire cuire à feu moyen 2 mn environ en remuant.",
-        "Ajouter les lentilles, le bouillon, et 50 cl d'eau et porter à ébullition. Puis baisser le feu, et laisser mijoter 15 à 20 mn, jusqu'à ce que les lentilles soient tendres (vérifier sur l'emballage des lentilles : parfois elles cuisent plus vite, alors il peut être nécessaire d'attendre un peu avant de les rajouter, pour que poireau et carotte aient le temps de cuire).",
-        "Mixer la soupe, saler et poivrer, et rajouter le jus de citron. Servir dans des bols chauds.",
-        "Remarque: la soupe obtenue est assez épaisse. Pour une soupe plus liquide, rajouter un peu plus d'eau ou de bouillon."
+        "Éplucher les carottes, et en faire des lamelles toujours avec l'épluche-légumes. Réserver.",
+        "Couper les poireaux en biseaux. Réserver.",
+        "Éplucher et râper 30g de gingembre.",
+        "Faire chauffer 2 cuillères d'huile de sésame dans un wok. Le feu ne doit spécialement être au maximum, il ne faut pas que ça brûle.",
+        "Mettre les carottes, les poireaux et le gingembre à cuire pendant 4 minutes.",
+        "Une fois que les légumes commencent à blondir, y incorporer 1 cuillère à soupe de sauce soja. Couvrir pendant 5 minutes encore en remuant 2 fois.",
+        "Ajouter le soja avec une 2ème cuillère de sauce soja et couvrir à nouveau pendant 3 minutes.",
+        "Et voila! C'est fini!  Je vous conseille de servir cela avec un pavé de saumon en papillote (juste un filer d'huile d'olive, un peu de citron, du thym et un peu de piment si vous aimez)",
+        "FACULTATIF!",
+        "Si vous êtes plutôt carnivore, faites revenir un blanc de poulet coupé en petit dés dans une cuillère d'huile sésame. Au bout de 1 minute, ajouter une cuillère de soja et du gingembre frais râpé. Couvrez et laissez cuire 3 minutes. Vous ajouterez cela au wok, c'est aussi très bon!",
+        "Et pour les amateurs de brocoli, faites cuire un bouquet de brocoli émietté dans une casserole d'eau salé pendant 5 minutes. Égouttez et passez sous l'eau froide pour que le brocoli garde sa couleur verte.",
+        "Vous ajouterez le brocoli 3 minutes avant la fin de la cuisson du wok."
       ],
-      "notes": "lentilles corail, poireau, carotte, bouillon de légumes, huile, jus de citron, citron, cumin en poudre",
-      "sourceUrl": "https://www.marmiton.org/recettes/recette_soupe-aux-lentilles-corail_27918.aspx"
+      "notes": "poireau, carotte, gingembre, germes de soja, huile de sésame, sauce soja, blanc de poulet, brocoli",
+      "sourceUrl": "https://www.marmiton.org/recettes/recette_wok-asiatique-de-legumes-poireaux-carottes-gingembre_312863.aspx"
     },
     {
       "id": "soupe-de-lentilles-au-cumin-egypte",
@@ -1865,6 +1840,40 @@
       "sourceUrl": "https://www.marmiton.org/recettes/recette_soupe-campagnarde-aux-lentilles_42406.aspx"
     },
     {
+      "id": "soupe-de-lentilles-vertes-au-lard",
+      "custom": true,
+      "category": "repas",
+      "categoryLabel": "Repas chauds",
+      "name": "Soupe de lentilles vertes au lard",
+      "description": "",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 4,
+      "ingredients": [
+        "1 blancs de poireaux",
+        "1 carottes",
+        "1 oignons",
+        "1 échalotes",
+        "150 g de lentilles vertes",
+        "300 g de sel fumée en tranche.",
+        "3 cuillères à soupe d'huile d'olive .",
+        "1 bouillons",
+        "1.5 l d'eau"
+      ],
+      "steps": [
+        "Éplucher le blanc de poireau, la carotte, l'oignon et l'échalote, et couper en mirepoix (petits dés)",
+        "Dans une cocote en fonte de préférence, mettre trois cuillères à soupe d'huile d'olive, et faire dorer les tranches de lard.",
+        "Les retirer, et remplacer par les légumes qui vont suer ainsi 5 à 10 minutes à feu doux.",
+        "Ajouter les lentilles en les mélangeant bien aux légumes afin qu'elles deviennent translucides et qu'elles s'imprègnent bien des arômes des légumes et du lard.",
+        "Ajouter 1 litre 1/2 d'eau, un bouillon cube, remettre les tranches de poitrine, et laisser mijoter 3/4 d'heure, sur le poêle si vous en avez un c'est top et économique!",
+        "Pas de sel, la poitrine 1/2 sel s'en charge.",
+        "3/4 d'heure à 1 heure plus tard, retirer les tranches de lard, mixer la préparation (pas de moulinette, le mixer laisse des petits morceaux, consistance plus sympa)et au final remettre les tranches de poitrine coupées en deux.",
+        "Servir bien chaud."
+      ],
+      "notes": "blanc de poireau, carotte, oignon, échalote, lentilles vertes, sel, huile d'olive, bouillon, eau",
+      "sourceUrl": "https://www.marmiton.org/recettes/recette_soupe-de-lentilles-vertes-au-lard_164499.aspx"
+    },
+    {
       "id": "houmous-5eme-rencontre",
       "custom": true,
       "category": "tartinade",
@@ -1894,121 +1903,117 @@
       "sourceUrl": "https://www.marmiton.org/recettes/recette_hoummous-5eme-rencontre_29597.aspx"
     },
     {
-      "id": "houmous-puree-de-pois-chiches",
+      "id": "houmous-de-thon",
       "custom": true,
       "category": "tartinade",
       "categoryLabel": "Tartinades & Dips",
-      "name": "Houmous (purée de pois chiches)",
+      "name": "Houmous de thon",
       "description": "",
       "prepTime": 0,
       "cookTime": 0,
-      "servings": 7,
+      "servings": 8,
       "ingredients": [
-        "500 g de pois chiches",
-        "3 gousses d'ail",
-        "1 feuilles de laurier",
-        "2 citrons",
-        "huile d'olive très fruitée ou huile de sésame",
-        "paprika",
-        "piment fort en poudre",
-        "olives noires"
+        "1 boîtes de thon au naturel (140 g)",
+        "150 g de pois chiches en boîte égouttés",
+        "2 petits suisses (selon la consistance voulue)",
+        "huile d'olive",
+        "demi de citron",
+        "curry",
+        "moutarde",
+        "sel",
+        "poivre"
       ],
       "steps": [
-        "La veille, mettre à tremper les pois chiches dans de l'eau froide.",
-        "Les mettre dans 2 l d'eau froide avec le laurier et 1 gousse d'ail, porter à ébullition et laisser cuire 1 h 30 à 2 h.",
-        "Saler et poivrer à mi-cuisson.",
-        "Egoutter les pois chiches, conserver l'eau de cuisson.",
-        "Mixer les pois chiches en purée, remettre dans une casserole et chauffer à feu doux.",
-        "Incorporer 10 cl d'huile tiède en fouettant, allonger un peu de jus de cuissons et du jus de citron.",
-        "Piler l'ail au mortier avec 2 cuillerées d'huile, rajouter cela dans la casserole hors du feu, saupoudrer 1 pincée de piment.",
-        "Servir saupoudré de paprika, garni d'olives noires et accompagné de quartiers de citrons.",
-        "Sans oublier le pain grillé ou le pain libanais !"
+        "Mixer ensemble les petits suisses, le jus de citron et les pois chiches avec un filet d'huile d'olive, jusqu'à obtenir une consistance crémeuse.",
+        "Puis ajouter le thon émietté et mixer le tout une nouvelle fois.",
+        "Assaisonner à votre convenance avec du curry, du sel, du poivre et de la moutarde.",
+        "A servir dans un bol et à déguster en tartines ou avec des légumes crus en bâtonnets."
       ],
-      "notes": "pois chiches, ail, feuille de laurier, citron, huile d'olive, paprika, piment fort, olives noires",
-      "sourceUrl": "https://www.marmiton.org/recettes/recette_houmous-puree-de-pois-chiches_29761.aspx"
+      "notes": "thon, pois chiches, petit suisse, huile d'olive, citron, curry, moutarde, sel, poivre",
+      "sourceUrl": "https://www.marmiton.org/recettes/recette_houmous-de-thon_220541.aspx"
     },
     {
-      "id": "soupe-glacee-de-concombre-et-houmous",
+      "id": "tartine-houmous-champignons-avocats",
       "custom": true,
       "category": "tartinade",
       "categoryLabel": "Tartinades & Dips",
-      "name": "Soupe glacée de concombre et houmous",
+      "name": "Tartine houmous, champignons, avocats",
       "description": "",
       "prepTime": 0,
       "cookTime": 0,
       "servings": 2,
       "ingredients": [
-        "1 concombres",
-        "2 cuillères à soupe de houmous",
-        "crème fraîche liquide",
+        "2 tranches de pain de mie",
+        "3 champignons de Paris",
+        "1 avocats",
+        "4 cuillères de houmous",
+        "1 citrons",
+        "1 pointes de piment d'Espelette",
+        "1 pincées de sel de guérande",
+        "2 cuillères à café d'huile d'olive"
+      ],
+      "steps": [
+        "Commencez par toaster le pain de mie (j'ai testé avec du pain de campagne ça marche aussi).",
+        "Détaillez les champignons de paris et l'avocat en tranches puis arrosez de jus de citron.",
+        "Quand les tranches de pain sont grillées, badigeonnez généreusement de houmous.",
+        "Disposez ensuite les lamelles de champignons et d'avocats  sur la tartine de houmous en les intercalant un peu comme pour une tarte aux pommes.",
+        "Ajoutez un peu de fleur de sel,de piment d'Espelette et un filet d'huile d'olive.",
+        "Pour éviter aux champignons et à l'avocat de noircir, dégustez rapidement."
+      ],
+      "notes": "pain de mie, champignons de Paris, avocat, houmous, citron, piment d'Espelette, sel, huile d'olive",
+      "sourceUrl": "https://www.marmiton.org/recettes/recette_tartine-houmous-champignons-avocats_309300.aspx"
+    },
+    {
+      "id": "le-houmous-de-aure-atika",
+      "custom": true,
+      "category": "tartinade",
+      "categoryLabel": "Tartinades & Dips",
+      "name": "Le houmous de Aure Atika",
+      "description": "",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 4,
+      "ingredients": [
+        "1 boîtes de 400 g de pois chiches",
+        "2 cuillères à soupe de tahini",
         "1 gousses d'ail",
-        "1 petites bottes de ciboulette",
-        "feuille d'estragon",
-        "paprika",
-        "1 cuillères à soupe d'huile d'olive",
-        "poivre",
-        "sel"
-      ],
-      "steps": [
-        "Epluchez et coupez le concombre en dés (retirez les pépins). Hachez la gousse d’ail.",
-        "Mettez les dés de concombres, l'ail, la ciboulette hachée et l’estragon dans le bol du mixer. Ajoutez la cuillère d’huile d’olive et mixez. Ajoutez ensuite le houmous, le paprika à volonté et mixez de nouveau.",
-        "Incorporez enfin la crème fraiche liquide jusqu'à obtenir une texture à votre goût (personnellement, j'aime quand ce n'est pas trop liquide).",
-        "Salez, poivrez et goûtez pour ajuster !",
-        "Laissez enfin au frais (30 minutes à 1 heure) pour obtenir l’effet glacé."
-      ],
-      "notes": "concombre, houmous, crème fraîche liquide, ail, ciboulette, estragon, paprika, huile d'olive, poivre, sel",
-      "sourceUrl": "https://www.marmiton.org/recettes/recette_soupe-glacee-de-concombre-et-houmous_70983.aspx"
-    },
-    {
-      "id": "dip-betteraves-houmous",
-      "custom": true,
-      "category": "tartinade",
-      "categoryLabel": "Tartinades & Dips",
-      "name": "Dip betteraves houmous",
-      "description": "",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 4,
-      "ingredients": [
-        "250 g de betterave",
-        "300 g de houmous",
+        "1 citrons",
         "huile d'olive",
-        "poivre du moulin"
+        "coriandre (facultatif)",
+        "cumin en poudre ou zaatar ou poudre de Chili"
       ],
       "steps": [
-        "Mettre les betteraves et l'houmous dans un robot.",
-        "Mélanger jusqu'à l'obtention d'une pâte.",
-        "Ajouter un petit filet d'une très bonne huile d'olive, un tour de moulin...",
-        "C'est prêt !"
+        "Egoutter les pois chiches et les peler.",
+        "Les mettre dans le bol du mixeur avec le tahini, la gousse d'ail épluchée et dégermée, le jus du citron.",
+        "Mixer en ajoutant progressivement un peu d'eau si nécessaire jusqu'à obtention de la texture désirée : un houmous plus ou moins dense.",
+        "Mettre dans un bol et agrémenter d'un filet d'huile d'olive, d'un voile de paprika ou de cumin et quelques feuilles de coriandre (ou persil)."
       ],
-      "notes": "betterave, houmous, huile d'olive, poivre",
-      "sourceUrl": "https://www.marmiton.org/recettes/recette_dip-betteraves-houmous_58830.aspx"
+      "notes": "pois chiches, tahini, ail, citron, huile d'olive, coriandre, cumin en poudre",
+      "sourceUrl": "https://www.marmiton.org/recettes/recette_le-houmous-de-aure-atika_392183.aspx"
     },
     {
-      "id": "houmous-de-pois-chiches",
+      "id": "houmous-au-monsieur-cuisine",
       "custom": true,
       "category": "tartinade",
       "categoryLabel": "Tartinades & Dips",
-      "name": "Houmous de pois chiches",
+      "name": "Houmous au Monsieur Cuisine",
       "description": "",
       "prepTime": 0,
       "cookTime": 0,
       "servings": 4,
       "ingredients": [
-        "200 g de pois chiches",
-        "3 cuillères à soupe d'huile d'olive",
-        "3 cuillères à soupe de tahiné ou autre purée d'oléagineux",
-        "sel",
-        "poivre",
-        "épices (cumin, coriandre, fenouil, ...)"
+        "300 g de pois chiches en conserve",
+        "2 gousses d'ail",
+        "4 cuillères à soupe de tahiné",
+        "4 cuillères à soupe de jus de citron",
+        "2.5 cuillères à soupe d'huile d'olive"
       ],
       "steps": [
-        "Mixer les pois chiches.",
-        "Ajouter la purée d'oléagnieux et l'huile d'olive.",
-        "Assaisonner suivant l'envie et l'inspiration."
+        "Versez les pois chiches et leur jus dans la cuve de votre Monsieur Cuisine, puis faites chauffer pendant 6 min / vit. 1 / 120°C.",
+        "Pelez les gousses d’ail, puis enlevez leur germe. Versez dans la cuve avec le tahini, le jus de citron et l’huile d’olive, puis mixez finement pendant 30 sec / vit. 4 à 10 / 0 °C. Réservez au moins 2 heures au réfrigérateur."
       ],
-      "notes": "pois chiches, huile d'olive, tahiné, sel, poivre, épices",
-      "sourceUrl": "https://www.marmiton.org/recettes/recette_houmous-de-pois-chiches_372865.aspx"
+      "notes": "pois chiches, ail, tahiné, jus de citron, huile d'olive",
+      "sourceUrl": "https://www.marmiton.org/recettes/recette_houmous-au-monsieur-cuisine_382858.aspx"
     },
     {
       "id": "bricks-au-chevre-frais-et-a-la-tapenade",
@@ -2041,33 +2046,6 @@
       ],
       "notes": "brick, chèvre frais, tapenade verte, tomate, paprika, ciboulette, ail",
       "sourceUrl": "https://www.marmiton.org/recettes/recette_bricks-au-chevre-frais-et-a-la-tapenade_11567.aspx"
-    },
-    {
-      "id": "palmiers-a-la-tapenade",
-      "custom": true,
-      "category": "tartinade",
-      "categoryLabel": "Tartinades & Dips",
-      "name": "Palmiers à la tapenade",
-      "description": "",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 4,
-      "ingredients": [
-        "1 rouleaux de pâte feuilletée",
-        "1 pots d'olives noires"
-      ],
-      "steps": [
-        "Étaler la pâte feuilletée en un grand rectangle,",
-        "puis la recouvrir entièrement de tapenade, en une couche assez épaisse.",
-        "Rouler la pâte d'un côté et s'arrêter en son milieu.",
-        "Rouler l'autre côté de pâte. Mouiller avec un peu d'eau les 2 rouleaux, afin qu'ils soient collés ensemble.",
-        "Débiter ensuite le rouleau double de pâte en petits palmiers d'1/2 cm de large.",
-        "Les poser sur une plaque allant au four.",
-        "Ça ne ressemble pas à grand chose lorsque ce n'est pas cuit; mais une fois passés au four un bon quart d'heure, à 180°C (à surveiller car cela dépend des fours), vous avez de beaux palmiers à déguster à l'apéritif, qui changeront des éternelles cacahuètes...",
-        "Déguster"
-      ],
-      "notes": "pâte feuilletée, olives noires",
-      "sourceUrl": "https://www.marmiton.org/recettes/recette_palmiers-a-la-tapenade_28666.aspx"
     },
     {
       "id": "tapenade-noire",
@@ -2132,99 +2110,75 @@
       "sourceUrl": "https://www.marmiton.org/recettes/recette_tapenade-rouge-aux-tomates-sechees_30677.aspx"
     },
     {
-      "id": "mignons-de-porc-a-la-tapenade",
+      "id": "tarte-fine-tapenade-poireaux-et-chevre",
       "custom": true,
       "category": "tartinade",
       "categoryLabel": "Tartinades & Dips",
-      "name": "Mignons de porc à la tapenade",
+      "name": "Tarte fine tapenade, poireaux et chèvre",
       "description": "",
       "prepTime": 0,
       "cookTime": 0,
-      "servings": 4,
+      "servings": 6,
       "ingredients": [
-        "500 g de filet mignon",
-        "100 g d'olives noires dénoyautées",
-        "1 cuillères à café de concentré de tomates",
-        "1/2 verres de vin blanc",
-        "1 échalotes",
-        "2 gousses d'ail",
-        "30 cl de crème fraîche",
-        "basilic",
-        "persil",
-        "ciboulette",
-        "romarin",
-        "50 g de beurre",
-        "huile d'olive",
+        "1 pâtes feuilletées",
+        "4 poireaux",
+        "1 bûches de chèvre",
+        "1 petits pots de tapenade verte",
+        "10 cl de vin blanc sec",
+        "thym",
         "poivre",
         "sel"
       ],
       "steps": [
-        "Hâcher les olives. Poivrer et saler les mignons de porc. Les laisser mariner dans l'huile d'olive, l'ail écrasé et le romarin pendant 2 heures.",
-        "Les faire revenir dans du beurre sur chaque face pendant 10mn. Les réserver. Dans la poêle, mettre l'échalote hâchée, le vin blanc, la crème et le concentré de tomates. Mélanger et ajouter le beurre. Ajouter les herbes, du sel et du poivre et les olives.",
-        "Verser la sauce sur les mignons de porc."
+        "Dérouler la pâte sur la plaque du four, de façon à avoir une tarte fine et plus étendue. Rouler légèrement les bords et piquer le fond avec une fourchette.",
+        "Précuire la pâte environ 10 min à 200°C.",
+        "Couper les poireaux en rondelles, les cuire à l'eau bouillante ou à la vapeur.",
+        "Quand les poireaux sont cuits, les faire revenir dans un peu de beurre avec du thym et sel, poivre, jusqu'à ce qu'ils soient fondants et grillés.",
+        "Ajouter le vin blanc et faire mijoter jusqu'à ce qu'il soit évaporé.",
+        "Couper le chèvre en rondelles.",
+        "Sortir la pâte du four, laisser un peu refroidir.",
+        "Tartiner le fond de pâte de tapenade.",
+        "Verser les poireaux, bien répartir, parsemer de rondelles de chèvre et de branches de thym frais.",
+        "Faire cuire environ 15 min à 200°C, jusqu'à ce que le chèvre ait fondu autour et grillé sur le dessus."
       ],
-      "notes": "filet mignon, olives noires, concentré de tomates, vin blanc, échalote, ail, crème fraîche, basilic, persil, ciboulette, romarin, beurre, huile d'olive, poivre, sel",
-      "sourceUrl": "https://www.marmiton.org/recettes/recette_mignons-de-porc-a-la-tapenade_18129.aspx"
+      "notes": "pâte feuilletée, poireau, bûche de chèvre, tapenade verte, vin blanc sec, thym, poivre, sel",
+      "sourceUrl": "https://www.marmiton.org/recettes/recette_tarte-fine-tapenade-poireaux-et-chevre_35753.aspx"
     },
     {
-      "id": "guacamole-tres-facile",
+      "id": "tapenade-maison-3eme-rencontre",
       "custom": true,
       "category": "tartinade",
       "categoryLabel": "Tartinades & Dips",
-      "name": "Guacamole très facile",
+      "name": "Tapenade maison  (3ème rencontre)",
       "description": "",
       "prepTime": 0,
       "cookTime": 0,
-      "servings": 4,
+      "servings": 1,
       "ingredients": [
-        "2 avocats",
-        "2 tomates coupées en morceaux",
-        "1/2 oignons coupée en cubes",
-        "sel",
-        "1/2 citrons",
-        "coriandre",
-        "sauce piquante"
+        "80 g de câpres",
+        "200 g d'olives noires à la grecque (pesées avec les noyaux)",
+        "2 gousses d'ail",
+        "10 filets d'anchois à l’huile",
+        "1 poignées d'amandes effilées",
+        "thym",
+        "8 cl d'huile d'olive"
       ],
       "steps": [
-        "Enlevez la peau des avocats.",
-        "En vous aidant d'une fourchette, écrasez les avocats.",
-        "Dans un plat, mélangez l'avocat avec l'oignon et en dernier les tomates.",
-        "Ajoutez le sel ainsi que du citron (et la sauce piquante).",
-        "Le guacamole accompagne parfaitement chips, nachos ou biscuits salés."
+        "Dénoyauter les olives et les couper en petitss morceaux.",
+        "Passer les câpres sous l’eau.",
+        "Passer les anchois sous l’eau, les éponger et les couper en petits morceaux.",
+        "Presser l’ail.",
+        "Faire griller les amandes effilées à la poêle et les réserver.",
+        "Mélanger olives + câpres + anchois + ail.",
+        "Réduire cette préparation en purée, soit à l’aide d’un mixeur si vous voulez un préparation lisse, soit à l’aide d’un pilon si vous souhaitez conserver une texture granuleuse.",
+        "Ajouter le thym. Ne saler pas car les anchois et les câpres sont déjà salés....",
+        "Ajouter l’huile d’olive au filet (comme une mayonnaise) et tournant la préparation toujours dans le même sens, à l’aide d’une fourchette.",
+        "Ajouter les amandes effilées légèrement émiettées.",
+        "Goûter la préparation avec un peu de pain. Si vous trouvez cela trop salé ajouter une pincée de sucre.",
+        "Cette préparation peut se conserver plusieurs semaines au frigo."
       ],
-      "notes": "avocat, tomate, oignon, sel, citron, coriandre, sauce piquante",
-      "sourceUrl": "https://www.marmiton.org/recettes/recette_guacamole-tres-facile_13111.aspx"
-    },
-    {
-      "id": "guacamole-maison",
-      "custom": true,
-      "category": "tartinade",
-      "categoryLabel": "Tartinades & Dips",
-      "name": "Guacamole maison",
-      "description": "",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 4,
-      "ingredients": [
-        "2 avocats mûrs",
-        "1 oignons moyen",
-        "1/2 citrons verts",
-        "1 gousses d'ail (très petite)",
-        "1 tomates",
-        "goutte de tabasco",
-        "sel"
-      ],
-      "steps": [
-        "Ébouillantez la tomate 30 secondes; rafraîchissez, épluchez, et coupez-la en 2.",
-        "Épépinez la tomate et tranchez sa chair au couteau en petits dés.",
-        "Épluchez et hachez finement l'oignon et l'ail.",
-        "Coupez les avocats en 2, dans le sens de la longueur, ôtez les noyaux, et épluchez les.",
-        "Dans un saladier, écrasez la chair des avocats à la fourchette (en bois si possible, pour éviter l'oxydation des chairs).",
-        "Incorporez ensuite le jus de citron, l'ail, l'oignon et la tomate. Salez et ajoutez quelques gouttes de tabasco.",
-        "Couvrez d'un film étirable, et placez au frais pendant 2 h."
-      ],
-      "notes": "avocat, oignon, citron vert, ail, tomate, tabasco, sel",
-      "sourceUrl": "https://www.marmiton.org/recettes/recette_guacamole-maison_17637.aspx"
+      "notes": "câpres, olives noires, ail, anchois, amandes effilées, thym, huile d'olive",
+      "sourceUrl": "https://www.marmiton.org/recettes/recette_tapenade-maison-3eme-rencontre_28614.aspx"
     },
     {
       "id": "guacamole",
@@ -2319,6 +2273,63 @@
       ],
       "notes": "avocat, citron, oignon, ail, tomate, coriandre, crème fraîche, mélange d'épices mexicaines, cumin, graines de coriandre, piment, poivre blanc, poivre, sel",
       "sourceUrl": "https://www.marmiton.org/recettes/recette_guacamole-mexicain-maison_37651.aspx"
+    },
+    {
+      "id": "dip-a-la-ricotta-et-au-pesto-guacamole-version",
+      "custom": true,
+      "category": "tartinade",
+      "categoryLabel": "Tartinades & Dips",
+      "name": "Dip à la ricotta et au pesto (Guacamole version)",
+      "description": "",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 6,
+      "ingredients": [
+        "250 g de ricotta",
+        "3 cuillères à soupe de pesto (déjà tout fait)",
+        "5 tomates séchées coupées en dés",
+        "poivre",
+        "sel"
+      ],
+      "steps": [
+        "Dans un bol, mélanger la ricotta, le pesto, les dés de tomates séchées et assaisonner selon les goûts.",
+        "Servir frais avec des tacos et à déguster sans modération !!! :-)"
+      ],
+      "notes": "ricotta, pesto, tomate séchée, poivre, sel",
+      "sourceUrl": "https://www.marmiton.org/recettes/recette_dip-a-la-ricotta-et-au-pesto-guacamole-version_64786.aspx"
+    },
+    {
+      "id": "guacamole-a-ma-facon-epices-et-coriandre",
+      "custom": true,
+      "category": "tartinade",
+      "categoryLabel": "Tartinades & Dips",
+      "name": "Guacamole à ma façon (épices et coriandre)",
+      "description": "",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 1,
+      "ingredients": [
+        "2 avocats bien mûrs",
+        "1 tomates pelées",
+        "1 oignons vert",
+        "1/4 poivrons rouges",
+        "1 cuillères à café de cumin moulu",
+        "1 cuillères à café rases de piment doux moulu",
+        "1 pointes de couteau de purée de piment (ou un petit piment émincé)",
+        "4 branches de coriandre fraîche",
+        "1 cuillères à soupe de jus de citron",
+        "poivre",
+        "sel"
+      ],
+      "steps": [
+        "Epluchez les avocats et écrasez la chair à la fourchette dans un bol (ou au mixer).",
+        "Arrosez de jus de citron pour éviter que l'avocat noircisse.",
+        "Emincez la tomate, le poivron rouge, l'oignon vert et la coriandre puis ajoutez-les à la purée d'avocat.",
+        "Assaisonnez de sel, de poivre, de cumin et de piment. Goûtez et rectifiez.",
+        "Réfrigérez au moins 15 minutes avant de déguster."
+      ],
+      "notes": "avocat, tomates pelées, oignon, poivron rouge, cumin, piment, couteau, coriandre, jus de citron, poivre, sel",
+      "sourceUrl": "https://www.marmiton.org/recettes/recette_guacamole-a-ma-facon-epices-et-coriandre_50203.aspx"
     },
     {
       "id": "tzatziki-grece",
@@ -2614,38 +2625,6 @@
       "sourceUrl": "https://www.marmiton.org/recettes/recette_bouillie-de-flocon-d-avoine-porridge-coco-banane-pomme_218399.aspx"
     },
     {
-      "id": "porridge-au-son-d-avoine",
-      "custom": true,
-      "category": "petitdej",
-      "categoryLabel": "Petits-déjeuners",
-      "name": "Porridge au son d'avoine",
-      "description": "",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 1,
-      "ingredients": [
-        "3 cuillères à soupe d'avoine",
-        "lait de soja ou d'amande ou lait de vache",
-        "fruits secs (figues, abricots, raisins secs)",
-        "noix",
-        "noisettes",
-        "noix de coco ...",
-        "fleur d'oranger ...."
-      ],
-      "steps": [
-        "Le mieux est de préparer cette recette la veille au soir pour le lendemain matin.",
-        "Verser le son d'avoine dans un bol",
-        "recouvrir du lait choisi",
-        "Mettre au micro-onde pendant 2 min",
-        "Puis laisser refroidir pour que le son gonfle bien : Couvrir le bol d'une assiette ou d'un film plastique et laisser au frigo jusqu'au lendemain",
-        "Préparer les fruits secs en les faisant tremper dans de l'eau chaude et des épices ou fleur d'oranger.",
-        "Le matin faire chauffer au micro-onde 2 min et ajouter les fruit et noix ou noisettes.",
-        "Déguster et profiter des bienfaits d'un petit-déjeuner équilibré"
-      ],
-      "notes": "avoine, lait de soja, fruits secs, noix, noisettes, noix de coco, fleur d'oranger",
-      "sourceUrl": "https://www.marmiton.org/recettes/recette_porridge-au-son-d-avoine_334286.aspx"
-    },
-    {
       "id": "porridge-allege-au-son-d-avoine",
       "custom": true,
       "category": "petitdej",
@@ -2698,28 +2677,61 @@
       "sourceUrl": "https://www.marmiton.org/recettes/recette_porridge_35407.aspx"
     },
     {
-      "id": "porridge-ou-home-made-oatmeal",
+      "id": "porridge-fruite-au-fromage-blanc",
       "custom": true,
       "category": "petitdej",
       "categoryLabel": "Petits-déjeuners",
-      "name": "Porridge ou home made oatmeal",
+      "name": "Porridge fruité au fromage blanc",
       "description": "",
       "prepTime": 0,
       "cookTime": 0,
-      "servings": 2,
+      "servings": 1,
       "ingredients": [
-        "5 cuillères à soupe de flocons d'avoine",
-        "25 cl de lait",
-        "2 cuillères à soupe de sucre"
+        "50 g de flocons d'avoine",
+        "40 cl d'eau chaude",
+        "1 pots de fromage blanc",
+        "1 pots de compote ou compote maison (parfum au choix)",
+        "fruits secs au choix",
+        "sucre roux",
+        "cannelle"
       ],
       "steps": [
-        "Porter à ébullition le lait mélangé au sucre.",
-        "Verser dans la casserole les flocons d'avoines, laisser cuire à feu doux 15 minutes en remuant de temps en temps.",
-        "L'avoine doit absorber le lait.",
-        "Se consomme chaud au petit déjeuner, typique chez les américains et les anglais."
+        "Ajoutez les flocons d'avoine à l'eau chaude et faites-les mijoter jusqu'à ce l'eau soit absorbée.",
+        "Laissez tiédir, ajouter le fromage blanc, la compote et les fruits secs.",
+        "Saupoudrez de cannelle et sucrez à votre convenance.",
+        "Dégustez."
       ],
-      "notes": "flocons d'avoine, lait, sucre",
-      "sourceUrl": "https://www.marmiton.org/recettes/recette_porridge-ou-home-made-oatmeal_82705.aspx"
+      "notes": "flocons d'avoine, eau, fromage blanc, compote, fruits secs, sucre roux, cannelle",
+      "sourceUrl": "https://www.marmiton.org/recettes/recette_porridge-fruite-au-fromage-blanc_49044.aspx"
+    },
+    {
+      "id": "porridge-au-miel",
+      "custom": true,
+      "category": "petitdej",
+      "categoryLabel": "Petits-déjeuners",
+      "name": "Porridge au miel",
+      "description": "",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 4,
+      "ingredients": [
+        "1 l d'eau",
+        "160 g de flocons d'avoine",
+        "30 cl de lait froid",
+        "2 cuillères à soupe de miel",
+        "1 pincées de sel",
+        "fruits secs",
+        "pomme",
+        "vanille",
+        "cannelle ...(facultatif)"
+      ],
+      "steps": [
+        "Versez les flocons d'avoine en pluie dans l'eau avec une pincée de sel. A feu doux, laissez-les gonfler tout en remuant sans cesse avec une cuillère en bois. La préparation doit épaissir, cela prend 15-20 minutes.",
+        "Répartissez dans des assiettes creuses et arrosez de lait froid.",
+        "Chauffez le miel, versez-le sur le porridge et ajoutez des morceaux de pomme, des fruits secs ou des épices selon les goûts."
+      ],
+      "notes": "eau, flocons d'avoine, lait, miel, sel, fruits secs, pomme, vanille, cannelle",
+      "sourceUrl": "https://www.marmiton.org/recettes/recette_porridge-au-miel_20943.aspx"
     },
     {
       "id": "pancakes-faciles-et-rapides",
@@ -2846,36 +2858,34 @@
       "sourceUrl": "https://www.marmiton.org/recettes/recette_pancakes-americains_33697.aspx"
     },
     {
-      "id": "les-meilleurs-american-pancakes",
+      "id": "les-pancakes-de-nanou",
       "custom": true,
       "category": "petitdej",
       "categoryLabel": "Petits-déjeuners",
-      "name": "Les meilleurs American Pancakes",
+      "name": "Les pancakes de Nanou",
       "description": "",
       "prepTime": 0,
       "cookTime": 0,
-      "servings": 12,
+      "servings": 2,
       "ingredients": [
-        "250 g de farine",
-        "2 oeufs",
-        "60 g de sucre en poudre",
-        "1 sachets de sucre vanillé",
-        "1 sachets de levure chimique (11 g)",
-        "70 g de beurre fondu",
-        "20 cl de lait"
+        "125 g de farine",
+        "1.5 cuillères à café de levure",
+        "1.5 cuillères à café de bicarbonate",
+        "30 g de sucre",
+        "240 ml de lait fermenté (lait ribot, buttermilk, etc.)",
+        "1 oeufs",
+        "1 pincées de sel",
+        "1 cuillères à soupe de beurre fondu ou d'huile (facultatif car les pancakes sont déja très moelleux)"
       ],
       "steps": [
-        "Versez dans un grand bol la farine, la levure, le sel et le sucre.",
-        "Mélangez et faites un puits au centre.",
-        "Versez les oeufs et mélangez au fouet.",
-        "Ajoutez ensuite progressivement le lait et le beurre fondu jusqu'à obtenir une pâte lisse. Elle est assez épaisse, c'est normal.",
-        "Maintenant, laissez reposer à température ambiante pendant 20 à 30 minutes. Faites chauffer votre poêle à crêpes et graissez-la.",
-        "Lorsque la poêle est bien chaude, versez l'équivalent d'une louche de pâte pour chaque pancake.",
-        "Faites cuire à feu doux quelques minutes en retournant le pancake quand vous voyez apparaître des petites bulles.",
-        "Maintenant dévorez-les avec du sirop d’érable, de la confiture..."
+        "Dans un saladier, mélanger la farine, le sucre, la levure, le sel et le bicarbonate, creuser un puits.",
+        "Dans un autre saladier, mélanger le lait fermenté, les oeufs, l'huile (ou le beurre) et verser dans le puits.",
+        "Ne pas trop travailler la pâte.",
+        "On peut ajouter éventuellement de la cannelle, de la vanille ou encore du rhum pour agrémenter la préparation.",
+        "Faire cuire les pancakes dans une poêle chaude et déguster avec du sirop d'érable, un morceau de beurre que l'on laisse fondre et du sucre, de la confiture, du nutella, bref, accomoder selon son goût!"
       ],
-      "notes": "farine, oeuf, sucre en poudre, sucre vanillé, levure chimique, beurre, lait",
-      "sourceUrl": "https://www.marmiton.org/recettes/recette_les-meilleurs-american-pancakes_333230.aspx"
+      "notes": "farine, levure, bicarbonate, sucre, lait fermenté, oeuf, sel, beurre",
+      "sourceUrl": "https://www.marmiton.org/recettes/recette_les-pancakes-de-nanou_66752.aspx"
     },
     {
       "id": "granola-cruesli-maison",
@@ -2943,35 +2953,6 @@
       ],
       "notes": "flocons d'avoine, noisettes, amandes, graines de courge, huile de coco, miel toutes fleurs, pépites de chocolat",
       "sourceUrl": "https://www.marmiton.org/recettes/recette_granola-maison-healthy_538954.aspx"
-    },
-    {
-      "id": "granola-maison-sain-et-croustillant-au-airfryer",
-      "custom": true,
-      "category": "petitdej",
-      "categoryLabel": "Petits-déjeuners",
-      "name": "Granola maison sain et croustillant au Airfryer",
-      "description": "",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 4,
-      "ingredients": [
-        "300 g de flocons d'avoine",
-        "100 g d'amandes",
-        "50 g de graines de chia",
-        "60 ml de miel",
-        "3 cuillères à soupe d'huile de coco",
-        "1 cuillères à café de cannelle",
-        "1 pincées de sel",
-        "100 g de fruits secs"
-      ],
-      "steps": [
-        "Dans un grand saladier, mélangez les flocons d’avoine, les noix et les graines. Saupoudrez de cannelle et ajoutez une pincée de sel pour intensifier les arômes. Remuez soigneusement afin que tous les ingrédients soient bien mélangés.",
-        "Dans un autre récipient, mélangez l’huile de coco fondue et le miel, jusqu’à obtenir une consistance lisse. Versez ce mélange sur les ingrédients secs et mélangez bien pour enrober uniformément les flocons et les noix.",
-        "Répartissez le granola de manière égale dans le panier. Si nécessaire, préparez-le en plusieurs parties pour ne pas surcharger le Airfryer. Laissez cuire environ 10 minutes à 180°C, en agitant à mi-cuisson pour assurer une cuisson uniforme.",
-        "Une fois la cuisson terminée, laissez le granola refroidir entièrement avant d’ajouter les fruits secs."
-      ],
-      "notes": "flocons d'avoine, amandes, graines de chia, miel, huile de coco, cannelle, sel, fruits secs",
-      "sourceUrl": "https://www.marmiton.org/recettes/recette_granola-maison-sain-et-croustillant-au-airfryer_538031.aspx"
     },
     {
       "id": "muffins-a-la-banane",
@@ -3133,35 +3114,6 @@
       "sourceUrl": "https://www.marmiton.org/recettes/recette_muffins-choco-banane_43091.aspx"
     },
     {
-      "id": "porridge-overnight-oats-facon-tiramisu",
-      "custom": true,
-      "category": "petitdej",
-      "categoryLabel": "Petits-déjeuners",
-      "name": "Porridge \"overnight oats\" façon tiramisu",
-      "description": "",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 1,
-      "ingredients": [
-        "1/2 pots de flocons d'avoine",
-        "1/2 pots de lait demi-écrémé (laisser 2 centimètres, ne pas remplir à rabord)",
-        "1 cuillères à soupe de miel",
-        "1 cuillères à soupe de mascarpone",
-        "3 cuillères à soupe de café expresso froid",
-        "20 g de pépites de chocolat",
-        "1 cuillères à soupe bombées de cacao en poudre pour la décoration",
-        "10 cl de crème fraîche liquide au moins 30% de matière grasse)",
-        "1 cuillères à soupe bombées de sucre en poudre"
-      ],
-      "steps": [
-        "Commencer par verser les flocons d'avoine. Ajouter le miel, le café froid, le mascarpone et le lait. Mélanger bien pour obtenir une préparation homogène. Finir par ajouter quelques pépites de chocolat et mélanger délicatement à l'aide d'une cuillère.",
-        "Réserver au réfrigérateur pendant 4h minimum, pot fermé.",
-        "Ouvrir le pot, puis ajouter la crème fouettée préalablement préparée par dessus, en égalisant les rebords. Saupoudrer de cacao en poudre, puis parsemer de pépites de chocolat."
-      ],
-      "notes": "flocons d'avoine, lait demi-écrémé, miel, mascarpone, café, pépites de chocolat, cacao en poudre, crème fraîche liquide, sucre en poudre",
-      "sourceUrl": "https://www.marmiton.org/recettes/recette_porridge-overnight-oats-facon-tiramisu_533374.aspx"
-    },
-    {
       "id": "overnight-oats",
       "custom": true,
       "category": "petitdej",
@@ -3188,5 +3140,5 @@
       "sourceUrl": "https://www.marmiton.org/recettes/recette_overnight-oats_529141.aspx"
     }
   ],
-  "updated": "2026-07-05"
+  "updated": "2026-07-12"
 }
