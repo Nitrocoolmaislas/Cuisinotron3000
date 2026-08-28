@@ -93,7 +93,7 @@ const WHITELIST = [
   {"id": 72, "k": "merguez", "name": "Merguez", "cat": "Charcuteries", "aliases": ["merguez dagneau", "merguez boeuf", "saucisse merguez", "saucisse epicee"], "ciqual": "merguez"},
   {"id": 73, "k": "chipolata saucisse fraiche", "name": "Chipolata / saucisse fraîche", "cat": "Charcuteries", "aliases": ["chipolata", "saucisse fraiche", "saucisse de toulouse", "crepinette", "saucisse porc"], "ciqual": "chipolata"},
   {"id": 74, "k": "saucisse de francfort", "name": "Saucisse de Francfort", "cat": "Charcuteries", "aliases": ["knack", "saucisse knack", "hotdog", "frankfurter", "saucisse viennoise", "wiener"], "ciqual": "saucisse de francfort"},
-  {"id": 75, "k": "pate de campagne", "name": "Pâté de campagne", "cat": "Charcuteries", "aliases": ["pate", "terrine de campagne", "terrine maison", "pate maison", "pate rustique", "pate brisee", "pate a ravioli"], "ciqual": "pate ou terrine de campagne"},
+  {"id": 75, "k": "pate de campagne", "name": "Pâté de campagne", "cat": "Charcuteries", "aliases": ["pate", "terrine de campagne", "terrine maison", "pate maison", "pate rustique"], "ciqual": "pate ou terrine de campagne"},
   {"id": 76, "k": "pate de foie", "name": "Pâté de foie", "cat": "Charcuteries", "aliases": ["pate de foie de porc", "pate de foie gras", "mousse de foie", "foie gras"], "ciqual": "pate de foie doie"},
   {"id": 77, "k": "rillettes", "name": "Rillettes", "cat": "Charcuteries", "aliases": ["rillettes de porc", "rillettes du mans", "rillettes de canard", "rillettes de saumon", "rillettes maison"], "ciqual": "rillettes de poulet"},
   {"id": 78, "k": "boudin noir", "name": "Boudin noir", "cat": "Charcuteries", "aliases": ["boudin", "black pudding", "morcilla", "boudin antillais"], "ciqual": "boudin noir"},
@@ -232,7 +232,7 @@ const WHITELIST = [
   {"id": 210, "k": "manioc", "name": "Manioc", "cat": "Tubercules", "aliases": ["cassava", "yuca", "tapioca", "farine de manioc", "racine de manioc"], "ciqual": "manioc"},
   {"id": 211, "k": "topinambour", "name": "Topinambour", "cat": "Tubercules", "aliases": ["jerusalem artichoke", "artichaut de jerusalem", "soleil vivace", "poire de terre"], "ciqual": "topinambour"},
   {"id": 212, "k": "igname", "name": "Igname", "cat": "Tubercules", "aliases": ["yam", "igname blanc", "igname violet", "tubercule africain"], "ciqual": "igname"},
-  {"id": 213, "k": "pates blanches", "name": "Pâtes blanches", "cat": "Féculents & céréales", "aliases": ["spaghetti", "penne", "tagliatelles", "fusilli", "farfalle", "rigatoni", "macaroni", "linguine", "fettuccine", "pates", "vermicelles", "capellini", "orecchiette", "conchiglie", "nouilles", "nouilles chinoises", "pates feuilletees"], "ciqual": "pates"},
+  {"id": 213, "k": "pates blanches", "name": "Pâtes blanches", "cat": "Féculents & céréales", "aliases": ["spaghetti", "penne", "tagliatelles", "fusilli", "farfalle", "rigatoni", "macaroni", "linguine", "fettuccine", "pates", "vermicelles", "capellini", "orecchiette", "conchiglie", "nouilles", "nouilles chinoises"], "ciqual": "pates"},
   {"id": 214, "k": "pates completes", "name": "Pâtes complètes", "cat": "Féculents & céréales", "aliases": ["pates de ble complet", "spaghetti complets", "penne completes", "whole wheat pasta", "pates integrales"], "ciqual": "pates"},
   {"id": 215, "k": "pates aux oeufs", "name": "Pâtes aux œufs", "cat": "Féculents & céréales", "aliases": ["tagliatelles aux oeufs", "pappardelle", "pates fraiches", "egg pasta", "pates jaunes"], "ciqual": "pates ou nouilles asiatiques au ble et aux oeufs"},
   {"id": 216, "k": "pates sans gluten", "name": "Pâtes sans gluten", "cat": "Féculents & céréales", "aliases": ["pates de riz", "pates de mais", "pates gluten free", "pasta sans gluten", "pates coeliaques"], "ciqual": "pates"},
@@ -466,9 +466,9 @@ const WHITELIST = [
   {"id":351,"k":"riz","name":"Riz","cat":"À catégoriser","aliases":[],"ciqual":null,"colruytTerms":["rijst"]},
   {"id":350,"k":"riz pour risotto","name":"Riz Pour Risotto","cat":"À catégoriser","aliases":[],"ciqual":null,"colruytTerms":["risottorijst"]},
   {"id":453,"k":"sauce cocktail","name":"Sauce Cocktail","cat":"À catégoriser","aliases":[],"ciqual":null,"colruytTerms":["cocktailsaus"]},
-  {"id":432,"k":"sauce d huitre","name":"Sauce D Huitre","cat":"À catégoriser","aliases":[],"ciqual":null,"colruytTerms":["oestersaus"]},
-  {"id":435,"k":"sauce dhuitre","name":"Sauce Dhuitre","cat":"À catégoriser","aliases":[],"ciqual":null,"colruytTerms":["oestersaus"]},
-  {"id":433,"k":"sauce huitre","name":"Sauce Huitre","cat":"À catégoriser","aliases":[],"ciqual":null,"colruytTerms":["oestersaus"]},
+  {"id":432,"k":"sauce d huitre","name":"Sauce d'huître","cat":"À catégoriser","aliases":[],"ciqual":"sauce nuoc mam ou sauce au poisson","colruytTerms":["oestersaus"]},
+  {"id":435,"k":"sauce dhuitre","name":"Sauce d'huître","cat":"À catégoriser","aliases":[],"ciqual":"sauce nuoc mam ou sauce au poisson","colruytTerms":["oestersaus"]},
+  {"id":433,"k":"sauce huitre","name":"Sauce d'huître","cat":"À catégoriser","aliases":[],"ciqual":"sauce nuoc mam ou sauce au poisson","colruytTerms":["oestersaus"]},
   {"id":375,"k":"saumon","name":"Saumon","cat":"À catégoriser","aliases":[],"ciqual":null,"colruytTerms":["zalm"]},
   {"id":400,"k":"sirop d agave","name":"Sirop D Agave","cat":"À catégoriser","aliases":[],"ciqual":null,"colruytTerms":["agavesiroop"]},
   {"id":402,"k":"sirop d erable","name":"Sirop D Erable","cat":"À catégoriser","aliases":[],"ciqual":null,"colruytTerms":["esdoornsiroop","ahornsirup"]},
@@ -486,6 +486,15 @@ const WHITELIST = [
   {"id":448,"k":"vin blanc sec","name":"Vin Blanc Sec","cat":"À catégoriser","aliases":[],"ciqual":null,"colruytTerms":["droge witte wijn","witte wijn"]},
   {"id":447,"k":"vinaigre","name":"Vinaigre","cat":"À catégoriser","aliases":[],"ciqual":null,"colruytTerms":["azijn"]},
   {"id":389,"k":"yaourt","name":"Yaourt","cat":"À catégoriser","aliases":[],"ciqual":null,"colruytTerms":["yoghurt"]},
+
+  // ── Corrections identifiées lors de l'audit de couverture 2026-08 ──
+  // "pate brisee"/"pate a ravioli" étaient des alias de "pate de campagne"
+  // (le charcutier, pâté avec accent) suite à une collision d'accents lors
+  // de la génération — "pâte" et "pâté" se normalisent tous deux en "pate".
+  // "pates feuilletees" était de même un alias erroné de "pates blanches".
+  {"id":454,"k":"pate brisee","name":"Pâte brisée","cat":"Féculents & céréales","aliases":["rouleau de pate brisee","pate a tarte brisee"],"ciqual":"pate brisee","colruytTerms":["kruimeldeeg","korstdeeg"]},
+  {"id":455,"k":"pate feuilletee","name":"Pâte feuilletée","cat":"Féculents & céréales","aliases":["rouleau de pate feuilletee","pate feuilletee pur beurre"],"ciqual":"pate feuilletee","colruytTerms":["bladerdeeg"]},
+  {"id":456,"k":"feuille de brick","name":"Feuille de brick","cat":"Féculents & céréales","aliases":["brick","feuilles de brick"],"ciqual":"feuille de brick","colruytTerms":["brickvellen","loempiavellen"]},
 ];
 
 // ── Index plat alias → canonical normKey (O(1)) ──────────────
@@ -2028,10 +2037,13 @@ const WL_IDX = {
   "patate douce violette": "patate douce",
   "patates douces": "patate douce",
   "pate": "pate de campagne",
-  "pate a ravioli": "pate de campagne",
+  "pate a ravioli": "pates aux oeufs",
   "pate a tartiner chocolat": "pate a tartiner type nutella",
   "pate a tartiner type nutella": "pate a tartiner type nutella",
-  "pate brisee": "pate de campagne",
+  "pate brisee": "pate brisee",
+  "pate feuilletee": "pate feuilletee",
+  "brick": "feuille de brick",
+  "feuille de brick": "feuille de brick",
   "pate danchois": "anchois",
   "pate de cacahuete": "beurre de cacahuete",
   "pate de campagne": "pate de campagne",
@@ -2055,7 +2067,7 @@ const WL_IDX = {
   "pates de ble complet": "pates completes",
   "pates de mais": "pates sans gluten",
   "pates de riz": "pates sans gluten",
-  "pates feuilletees": "pates blanches",
+  "pates feuilletees": "pate feuilletee",
   "pates fraiches": "pates aux oeufs",
   "pates gluten free": "pates sans gluten",
   "pates integrales": "pates completes",
