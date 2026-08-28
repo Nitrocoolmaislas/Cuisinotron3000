@@ -163,6 +163,9 @@ function renderGoalsPanel() {
 
   const strictBox = document.getElementById('goal-strict');
   if (strictBox) strictBox.checked = !!state.strict;
+
+  const catSelect = document.getElementById('goal-category');
+  if (catSelect) catSelect.value = (typeof currentCat !== 'undefined' && currentCat !== 'custom') ? currentCat : 'all';
 }
 
 function _toggleGoalRow(key) {
@@ -186,7 +189,13 @@ function applyGoals() {
   saveGoalsState(state);
   closeGoalsPanel();
   renderGoalsChips();
-  renderGrid();
+
+  // filterCat() gère aussi le rendu de la grille (et remet en évidence le
+  // bon bouton catégorie dans la sidebar) — pas besoin d'appeler renderGrid()
+  // en plus.
+  const cat = document.getElementById('goal-category')?.value || 'all';
+  if (typeof filterCat === 'function') filterCat(cat);
+  else renderGrid();
 }
 
 function clearAllGoals() {
