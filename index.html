@@ -379,7 +379,7 @@
 <!-- ══════════════════════════════════════════════
      SCRIPTS — ordre de chargement important
      1. recipes   → données RECIPES
-     2. bridge    → INGREDIENT_BRIDGE
+     2. bridge    → bridgeLookup, IRREGULAR_FORMS (lit WHITELIST.colruytTerms au runtime)
      3. utils     → normIngredient, parseIngredient
      4. drive     → Google Drive sync
      5. stock     → gestion stock + catalogue
@@ -470,9 +470,11 @@
 
 <!-- ══ Ordre de chargement — NE PAS modifier ══
   1. recipes       → données RECIPES
-  2. bridge        → INGREDIENT_BRIDGE, IRREGULAR_FORMS, bridgeLookup
+  2. bridge        → IRREGULAR_FORMS, bridgeLookup (appelle whitelistEntry() au runtime,
+                      donc OK même chargé avant whitelist_canonique.js)
   3. utils         → normIngredient, parseIngredient, canonicalize
   4. ciqual_disc   → DISCRIMINANTS_GLOBAUX (liste blanche parser)
+  4b. whitelist    → WHITELIST (ciqual + colruytTerms + aliases), whitelistLookup/whitelistEntry
   5. parser        → parseIngredientString
   6. drive         → Google Drive sync
   7. stock         → gestion stock + catalogue

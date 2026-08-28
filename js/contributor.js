@@ -72,7 +72,9 @@ function renderContributorPanel() {
           Ils apparaissent ici quand tu résous des ingrédients via le Bridge Wizard.</p>
         ` : `
           <p class="contrib-hint">
-            À ajouter dans <code>js/bridge.js</code>, dans <code>INGREDIENT_BRIDGE</code> :
+            À ajouter dans <code>data/whitelist_canonique.js</code>, dans <code>WHITELIST</code> —
+            si un ingrédient proche existe déjà, ajoute plutôt <code>colruytTerms</code> à son
+            entrée existante au lieu de coller une nouvelle ligne :
           </p>
           <div class="contrib-snippet" id="snippet-bridge">
             <pre class="contrib-code">${_generateBridgeSnippet(bridgeCustom)}</pre>
@@ -81,9 +83,9 @@ function renderContributorPanel() {
             </button>
           </div>
           <div class="contrib-actions">
-            <a href="https://github.com/Nitrocoolmaislas/Cuisinotron3000/edit/main/js/bridge.js"
+            <a href="https://github.com/Nitrocoolmaislas/Cuisinotron3000/edit/main/data/whitelist_canonique.js"
                target="_blank" class="contrib-github-btn">
-              ✏️ Ouvrir bridge.js sur GitHub
+              ✏️ Ouvrir whitelist_canonique.js sur GitHub
             </a>
           </div>
         `}
@@ -125,10 +127,9 @@ function _generateBridgeSnippet(bridgeCustom) {
   const lines = Object.entries(bridgeCustom)
     .sort(([a], [b]) => a.localeCompare(b))
     .map(([normKey, terms]) => {
-      const pad = Math.max(0, 26 - normKey.length);
-      const spaces = ' '.repeat(pad);
-      const termsStr = JSON.stringify(terms);
-      return `  '${normKey}':${spaces}${termsStr},`;
+      const name = normKey.replace(/\b\w/g, c => c.toUpperCase());
+      const entry = { k: normKey, name, cat: 'À catégoriser', aliases: [], ciqual: null, colruytTerms: terms };
+      return `  ${JSON.stringify(entry)},`;
     });
   return lines.join('\n');
 }

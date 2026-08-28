@@ -452,46 +452,40 @@ classDiagram
 
 ### 6a. `bridgeLookup()` — traduction FR → termes NL
 
+Depuis la fusion `INGREDIENT_BRIDGE` → `WHITELIST` (2026-08), il n'y a
+qu'une seule table d'identité ingrédient (`WHITELIST`, `data/whitelist_canonique.js`).
+`bridgeLookup()` teste des variantes morphologiques (singulier/pluriel) du
+normKey directement contre les clés canoniques `k` de `WHITELIST` et
+retourne `entry.colruytTerms` — il ne suit jamais `aliases[]`, réservé aux
+regroupements nutritionnels CIQUAL (ex: "nouilles" alias de "pates blanches"),
+pour ne jamais chercher le mauvais produit sur Colruyt.
+
 ```mermaid
 flowchart TD
     NK["normKey\nex: 'courgettes'"]
 
-    WL{"whitelistEntry(normKey)\n→ .sku défini ?"}
-    WL -->|oui| WL1["return [wEntry.sku]\nSKU Colruyt direct"]
-    WL -->|non| IR
-
     IR{"IRREGULAR_FORMS\n[normKey] ?"}
-    IR -->|"oui\n'choux' → 'chou'"| IR1["INGREDIENT_BRIDGE[canonical]"]
-    IR -->|non| EX
+    IR -->|"oui\n'choux' → 'chou'"| START["start = canonical"]
+    IR -->|non| START2["start = normKey"]
+    START --> VAR
+    START2 --> VAR
 
-    EX{"INGREDIENT_BRIDGE\n[normKey] ?"}
-    EX -->|"oui\n'courgette' → ['courgette']"| EX1["return termes NL"]
-    EX -->|non| S1
+    VAR["variants(start)\nexact, strip-s, +s,\ndépluralisé mot-à-mot,\nrepluralisé mot-à-mot,\npremier mot (±s)"]
 
-    S1["s1 = normKey.replace(/s$/, '')"]
-    S1B{"INGREDIENT_BRIDGE[s1] ?\n'courgettes' → 'courgette'"}
-    S1 --> S1B
-    S1B -->|oui| S1R["return termes NL"]
-    S1B -->|non| DEP
+    LOOP["Pour chaque variante v"]
+    VAR --> LOOP
 
-    DEP["deplural = chaque mot\n.replace(/s$/, '')\n'poivrons rouges' → 'poivron rouge'"]
-    DEPB{"INGREDIENT_BRIDGE\n[deplural] ?"}
-    DEP --> DEPB
-    DEPB -->|oui| DEPR["return termes NL"]
-    DEPB -->|non| FW
+    WLK{"whitelistEntry(v)\n→ .k existe ?"}
+    LOOP --> WLK
+    WLK -->|non| LOOP
+    WLK -->|oui| CT{"entry.colruytTerms\ndéfini ?"}
+    CT -->|oui| FOUND["return entry.colruytTerms"]
+    CT -->|non| LOOP
 
-    FW["firstWord = deplural.split(' ')[0]"]
-    FWB{"INGREDIENT_BRIDGE\n[firstWord] ?"}
-    FW --> FWB
-    FWB -->|oui| FWR["return termes NL"]
-    FWB -->|non| NULL["return null\n→ ajouté en pending Bridge Wizard\n(si bridgeLookupFull appelé)"]
+    LOOP -->|"toutes variantes épuisées"| NULLR["return null\n→ ajouté en pending Bridge Wizard\n(si bridgeLookupFull appelé)"]
 
-    style WL1 fill:#d4edda
-    style EX1 fill:#d4edda
-    style S1R fill:#d4edda
-    style DEPR fill:#d4edda
-    style FWR fill:#d4edda
-    style NULL fill:#f8d7da
+    style FOUND fill:#d4edda
+    style NULLR fill:#f8d7da
 ```
 
 ### 6b. `matchColruyt()` — recherche dans le catalogue NL
@@ -751,15 +745,24 @@ classDiagram
     note for ColruytProduct "Pas d'EAN · Pas de données nutritionnelles"
 ```
 
-### Bridge FR → NL (`js/bridge.js`)
+### Ingrédient canonique (`data/whitelist_canonique.js`) — source unique
+
+`INGREDIENT_BRIDGE` (`js/bridge.js`) a été fusionné dans `WHITELIST` en
+2026-08 : ce n'est plus une table séparée, mais un champ `colruytTerms` sur
+les mêmes entrées que `ciqual`/`aliases`. `js/bridge.js` ne garde que la
+logique de lookup (`bridgeLookup()`) et les 12 exceptions linguistiques
+(`IRREGULAR_FORMS`) qu'une cascade morphologique ne peut pas déduire seule.
 
 ```mermaid
 classDiagram
-    class INGREDIENT_BRIDGE {
-        "normKey FR" termes_NL[]
-        "ex: 'courgette'" "['courgette']"
-        "ex: 'champignons'" "['champignons', 'paddenstoelen']"
-        "ex: 'flocons davoine'" "['havervlokken', 'havermout']"
+    class WHITELIST_Entry {
+        +Number id
+        +String k            "normKey canonique"
+        +String name
+        +String cat
+        +String[] aliases    "synonymes FR — usage CIQUAL/stock uniquement"
+        +String ciqual       "code CIQUAL statique, ou null"
+        +String[] colruytTerms "termes NL Colruyt, ou absent"
     }
     class IRREGULAR_FORMS {
         "forme irrégulière" "forme canonique"
@@ -767,7 +770,7 @@ classDiagram
         "ex: 'poireaux'" "'poireau'"
         "ex: 'gousses'" "'ail'"
     }
-    note for INGREDIENT_BRIDGE "Lookup via bridgeLookup(normKey)\navec 5 niveaux de fallback"
+    note for WHITELIST_Entry "aliases[] et colruytTerms[] ne sont PAS interchangeables :\naliases regroupe par proximité nutritionnelle (CIQUAL),\ncolruytTerms n'est attaché qu'à des variantes morphologiques\nde k (jamais via aliases) pour ne pas chercher le mauvais\nproduit sur Colruyt (ex: 'nouilles' alias de 'pates blanches')."
 ```
 
 ---
@@ -780,7 +783,7 @@ classDiagram
 | `cleanIngredientName(raw)` | `ingredientParser.js` | `"ail haché"` | `"ail"` |
 | `normIngredient(str)` | `utils.js` | `"Ail haché"` | `"ail hache"` |
 | `canonicalize(parsed)` | `utils.js` | `{name:'noix de beurre', qty:1}` | `{name:'beurre', qty:'10', unit:'g'}` |
-| `bridgeLookup(normKey)` | `bridge.js` | `"courgettes"` | `['courgette']` |
+| `bridgeLookup(normKey)` | `bridge.js` | `"courgettes"` | `whitelistEntry(...).colruytTerms` |
 | `bridgeLookupFull(normKey)` | `bridgeWizard.js` | `"courgettes"` | `['courgette']` + pending si null |
 | `matchColruyt(normKey)` | `colruyt.js` | `"courgette"` | `ColruytProduct` ou null |
 | `getNutriData(normKey)` | `ciqual_fr.js` | `"carotte"` | `{kcal:35, prot:0.8, ...}` |

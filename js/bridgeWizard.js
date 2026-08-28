@@ -307,7 +307,7 @@ async function renderWizardStep(panel, pending, index) {
         <div class="bw-search-row">
           <input type="text" id="bw-colruyt-term"
             placeholder="Ex: havervlokken"
-            value="${(typeof whitelistEntry !== 'undefined' && whitelistEntry(normKey)?.sku) || ''}"
+            value="${(typeof whitelistEntry !== 'undefined' && whitelistEntry(normKey)?.colruytTerms?.[0]) || ''}"
             class="bw-input"/>
           <button class="bw-btn-secondary" onclick="searchColruytFromWizard()">Rechercher</button>
         </div>

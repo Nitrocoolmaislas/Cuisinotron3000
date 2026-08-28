@@ -2,7 +2,7 @@
  * ingredientParser.js
  * Parse une string brute d'ingrédient en { qty, unit, rawName }
  *
- * Pipeline: parseIngredientString(str) → rawName → normIngredient() → INGREDIENT_BRIDGE
+ * Pipeline: parseIngredientString(str) → rawName → normIngredient() → bridgeLookup() (WHITELIST.colruytTerms)
  *
  * Dépendance optionnelle : ciqual_discriminants.js (DISCRIMINANTS_GLOBAUX)
  * Si présent → liste blanche CIQUAL
