@@ -61,6 +61,14 @@
     </div>
 
     <div class="sidebar-section">
+      <div class="sidebar-section-title">Objectifs</div>
+      <button class="cat-btn" onclick="openGoalsPanel()" id="cat-goals">
+        <span class="icon">🎯</span> Objectifs nutritionnels
+        <span class="count" id="cnt-goals"></span>
+      </button>
+    </div>
+
+    <div class="sidebar-section">
       <div class="sidebar-section-title">Planification</div>
       <button class="cat-btn" onclick="showPlanner()" id="cat-planner">
         <span class="icon">🗓️</span> Planificateur
@@ -106,6 +114,7 @@
              placeholder="🔍 Rechercher une recette ou un ingrédient…"
              oninput="renderGrid()">
     </div>
+    <div class="goals-chips" id="goals-chips"></div>
     <div class="view-title" id="view-title">Toutes les recettes</div>
     <div class="view-subtitle" id="view-subtitle"></div>
     <div class="recipe-grid" id="recipe-grid"></div>
@@ -468,6 +477,30 @@
   </div>
 </div>
 
+<!-- ── OBJECTIFS NUTRITIONNELS PANEL ── -->
+<div class="recipe-form-panel" id="goals-panel">
+  <div class="rf-header">
+    <h2>🎯 Objectifs nutritionnels</h2>
+    <button class="rf-header-close" onclick="closeGoalsPanel()">✕</button>
+  </div>
+  <div class="rf-body">
+    <p style="font-size:0.85rem;color:var(--warm-grey);line-height:1.5;margin-bottom:4px;">
+      Active un ou plusieurs objectifs (cumulables) avec un seuil par portion.
+      Les recettes qui y correspondent remontent en premier dans la grille,
+      avec un badge 🎯.
+    </p>
+    <div id="goals-body" style="display:flex;flex-direction:column;gap:10px;"></div>
+    <label class="goal-strict-row">
+      <input type="checkbox" id="goal-strict">
+      🔒 Filtre strict — ne montrer que les recettes qui correspondent à TOUS les objectifs actifs
+    </label>
+  </div>
+  <div class="rf-footer">
+    <button class="rf-submit-btn" onclick="applyGoals()">✅ Appliquer</button>
+    <button class="rf-cancel-btn" onclick="clearAllGoals()">Tout effacer</button>
+  </div>
+</div>
+
 <!-- ══ Ordre de chargement — NE PAS modifier ══
   1. recipes       → données RECIPES
   2. bridge        → IRREGULAR_FORMS, bridgeLookup (appelle whitelistEntry() au runtime,
@@ -482,6 +515,7 @@
   9. nutrition_data → CIQUAL statique
   10. ciqual_fr    → CIQUAL_FR complet (fuzzy match wizard)
   11. nutrition    → résumé nutritionnel
+  11b. goals       → objectifs nutritionnels cumulables (macros par recette, panel, badges)
   12. custom       → recettes custom
   13. app          → logique principale + init
   14. planner      → planificateur + liste de courses
@@ -503,6 +537,7 @@
 <script src="js/nutrition_data.js"></script>
 <script src="data/ciqual_fr.js"></script>
 <script src="js/nutrition.js"></script>
+<script src="js/goals.js"></script>
 <script src="js/custom_recipes.js"></script>
 <script src="js/app.js"></script>
 <script src="js/planner.js"></script>
