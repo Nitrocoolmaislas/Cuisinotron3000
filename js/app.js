@@ -75,10 +75,26 @@ function renderGrid() {
     });
   }
 
+  // \u2500\u2500 Objectifs nutritionnels cumulables \u2500\u2500
+  // Mode par d\u00e9faut : trier les recettes qui correspondent en premier sans
+  // rien cacher (une recette qui n'y r\u00e9pond qu'\u00e0 moiti\u00e9 reste visible plus
+  // bas). Mode strict (case \u00e0 cocher dans le panel) : ne garder que celles
+  // qui satisfont TOUS les objectifs actifs.
+  if (typeof activeGoalDefs === 'function' && activeGoalDefs().length) {
+    const strict = typeof loadGoalsState === 'function' && loadGoalsState().strict;
+    const withMatch = list.map(r => ({ r, m: recipeGoalMatch(r) }));
+    const filtered = strict ? withMatch.filter(x => x.m.matches) : withMatch;
+    filtered.sort((a, b) => (b.m.metCount - a.m.metCount) || (b.m.score - a.m.score));
+    list = filtered.map(x => x.r);
+  }
+
   const grid = document.getElementById('recipe-grid');
   if (list.length === 0) {
+    const strictActive = typeof loadGoalsState === 'function' && loadGoalsState().strict
+      && typeof activeGoalDefs === 'function' && activeGoalDefs().length;
     grid.innerHTML = `<div class="no-results" style="grid-column:1/-1">
-      <div class="nr-icon">🍽️</div><p>Aucune recette trouvée.</p>
+      <div class="nr-icon">🍽️</div>
+      <p>Aucune recette trouvée.${strictActive ? ' Essaie d\'assouplir tes objectifs nutritionnels.' : ''}</p>
     </div>`;
     return;
   }
@@ -88,11 +104,12 @@ function renderGrid() {
       ? `<span>⏱ ${r.prepTime + r.cookTime} min</span>`
       : `<span>⚡ ${r.prepTime} min</span>`;
     const customBadge = r.custom ? `<span class="custom-badge">perso</span>` : '';
+    const goalBadge = typeof goalsBadgeHtml === 'function' ? goalsBadgeHtml(r) : '';
     return `<div class="recipe-card" onclick="openModal(this.dataset.id)" data-id="${escapeAttr(r.id)}">
       <div class="card-category">${r.categoryLabel}${customBadge}</div>
       <div class="card-name">${r.name}</div>
       <div class="card-meta">${cookInfo}<span>👤 ${r.servings} portion${r.servings > 1 ? 's' : ''}</span></div>
-      ${feasibilityBadge(f.status, f.pct)}
+      <div class="card-badges">${feasibilityBadge(f.status, f.pct)}${goalBadge}</div>
     </div>`;
   }).join('');
 }
@@ -317,7 +334,23 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   const origRenderStock = renderStock;
   window.renderStock = function() { origRenderStock(); updateCounts(); };
+
+  // Fermer le tiroir mobile dès qu'un bouton de la sidebar est cliqué
+  // (catégorie, objectifs, planificateur, stock…) — évite un tap en trop.
+  document.getElementById('sidebar')?.addEventListener('click', e => {
+    if (e.target.closest('button')) closeSidebar();
+  });
 });
+
+// ── Menu mobile (sidebar en tiroir sous 860px) ──
+function toggleSidebar() {
+  document.getElementById('sidebar')?.classList.toggle('open');
+  document.getElementById('sidebar-overlay')?.classList.toggle('open');
+}
+function closeSidebar() {
+  document.getElementById('sidebar')?.classList.remove('open');
+  document.getElementById('sidebar-overlay')?.classList.remove('open');
+}
 
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
@@ -325,5 +358,6 @@ document.addEventListener('keydown', e => {
     closeAddModalDirect();
     closeShoppingPanel();
     closeRecipeForm();
+    closeSidebar();
   }
 });

@@ -2,7 +2,7 @@
  * ingredientParser.js
  * Parse une string brute d'ingrédient en { qty, unit, rawName }
  *
- * Pipeline: parseIngredientString(str) → rawName → normIngredient() → INGREDIENT_BRIDGE
+ * Pipeline: parseIngredientString(str) → rawName → normIngredient() → bridgeLookup() (WHITELIST.colruytTerms)
  *
  * Dépendance optionnelle : ciqual_discriminants.js (DISCRIMINANTS_GLOBAUX)
  * Si présent → liste blanche CIQUAL
@@ -30,6 +30,7 @@ const UNITS = {
   'poignée':'poignée','poignées':'poignée','poignee':'poignée','poignees':'poignée',
   'pot':'pot','pots':'pot',
   'boule':'boule','boules':'boule',
+  'rouleau':'rouleau','rouleaux':'rouleau',
   'cube':'cube','cubes':'cube',
   'cuillere':'cuillere','cuilleres':'cuillere',
   'cuillère':'cuillere','cuillères':'cuillere',
@@ -104,15 +105,35 @@ const FORCE_KEEP = new Set([
   'hache','hachee',      // "boeuf hach\u00e9"
   'rape','rapee',        // "fromage r\u00e2p\u00e9"
   'confite','confites',  // "tomate confite"
+  'brisee','brisees',    // "pâte brisée" (≠ pâte feuilletée)
 ]);
+
+// FORCE_KEEP / CULINARY_QUALIFIERS / DISCRIMINANTS_GLOBAUX ne listent chacun
+// qu'une forme (le plus souvent singulier) \u2014 "chiche" y est mais pas "chiches",
+// "hache" mais pas "hach\u00e9s". Sans d\u00e9pluralisation, un accord pluriel dans la
+// recette ("3 steaks hach\u00e9s", "pois chiches") fait rater le mot par toutes
+// ces listes, alors que sa forme singuli\u00e8re y est d\u00e9j\u00e0. On teste donc les deux.
+function _has(set, n) {
+  if (set.has(n)) return true;
+  const s = n.replace(/s$/, '');
+  if (s !== n && set.has(s)) return true;
+  // Élision collée en milieu de chaîne ("sauce d'huître" → mot testé
+  // "d'huître" → normalisé en "dhuitre") — LEADING_NOISE ne traite que le
+  // tout début de la chaîne, donc un "d'"/"l'" au milieu reste collé au nom
+  // qui suit. On ne modifie pas le mot gardé (pour ne pas casser des cas
+  // comme "d'un" → "un" qu'on veut au contraire stripper), seulement le
+  // test d'appartenance à la whitelist.
+  if ((n[0] === 'd' || n[0] === 'l') && n.length > 4 && set.has(n.slice(1))) return true;
+  return false;
+}
 
 function _shouldStrip(word) {
   const n = _normWord(word);
   if (n.length <= 2) return false;
-  if (FORCE_KEEP.has(n)) return false;          // bridge discriminants \u2014 jamais stripp\u00e9s
-  if (CULINARY_QUALIFIERS.has(n)) return true;  // blacklist LanguaL \u2014 priorit\u00e9 sur CIQUAL
-  if (typeof DISCRIMINANTS_GLOBAUX !== 'undefined') return !DISCRIMINANTS_GLOBAUX.has(n);
-  return STRIP_QUALIFIERS_FALLBACK.has(n);
+  if (_has(FORCE_KEEP, n)) return false;          // bridge discriminants \u2014 jamais stripp\u00e9s
+  if (_has(CULINARY_QUALIFIERS, n)) return true;  // blacklist LanguaL \u2014 priorit\u00e9 sur CIQUAL
+  if (typeof DISCRIMINANTS_GLOBAUX !== 'undefined') return !_has(DISCRIMINANTS_GLOBAUX, n);
+  return _has(STRIP_QUALIFIERS_FALLBACK, n);
 }
 
 const LEADING_NOISE = /^(?:de\s+(?:l[ae](?=\s)|l[\u2019']|la(?=\s)|les(?=\s))?\s*|d[\u2019']\s*|d\s+|du\s+|des\s+|le\s+|la\s+|les\s+|l[\u2019']\s*|quelques?\s+|environ\s+|à\s+)/i;

@@ -177,6 +177,7 @@ async function loadFromDrive() {
         else Object.assign(RECIPES.find(x => x.id === r.id), r);
       });
       localStorage.setItem(CUSTOM_RECIPES_KEY, JSON.stringify(merged));
+      if (typeof invalidateRecipeMacroCache === 'function') invalidateRecipeMacroCache();
       // Si des recettes locales manquaient sur Drive → forcer une resync
       if (merged.length > driveRecipes.length) scheduleCustomRecipesSave();
     }

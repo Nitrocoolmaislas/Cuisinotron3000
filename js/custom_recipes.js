@@ -20,6 +20,7 @@ function saveCustomRecipes() {
   const customs = RECIPES.filter(r => r.custom === true);
   localStorage.setItem(CUSTOM_RECIPES_KEY, JSON.stringify(customs));
   scheduleCustomRecipesSave();
+  if (typeof invalidateRecipeMacroCache === 'function') invalidateRecipeMacroCache();
 }
 
 // ── Génère un ID unique depuis le titre ──

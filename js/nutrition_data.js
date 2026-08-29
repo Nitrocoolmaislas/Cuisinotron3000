@@ -110,6 +110,49 @@ const NUTRITION_DATA = {
 };
 
 // ══════════════════════════════════════════════
+//  POIDS PAR DÉFAUT — ingrédients comptés à la pièce
+//  sans unité écrite ("1 poivron", "3 pommes de terre")
+//
+//  Séparé de NUTRITION_DATA : ces ingrédients ont déjà leurs macros
+//  via CIQUAL (getNutriData), il ne leur manquait qu'un poids/pièce —
+//  pas la peine de dupliquer des valeurs nutritionnelles déjà justes.
+//  Clé = normKey canonique WHITELIST (celui produit après le
+//  whitelistLookup() de parseIngredientString, pas l'alias d'origine).
+// ══════════════════════════════════════════════
+const DEFAULT_ITEM_WEIGHTS = {
+  'oeuf de poule':            60,   // 1 œuf moyen
+  'poivron vert':              150,
+  'poivron jaune':             150,
+  'poivron':                   150,
+  'pomme de terre':            150,
+  'poireau':                   150,
+  'piment frais':               15,
+  'poulet blanc filet':        150,  // 1 blanc / aiguillette
+  'poulet cuisse pilon':       150,
+  'poulet entier':            1400,
+  'citron vert':                60,
+  'aubergine':                  250,
+  'patate douce':               200,
+  'artichaut':                  120,
+  'yaourt a la grecque':        125,  // 1 pot
+  'potiron courge butternut':   800,
+  'navet':                      100,
+  'bouillon cube fond':          10,  // 1 cube
+  'radis':                       15,
+  'basilic':                     15,  // 1 bouquet
+  'gingembre frais':             15,  // 1 morceau
+  'fromage de chevre frais':    100,  // 1 buchette
+  'celeri branche':               40,  // 1 branche
+  'olives':                        4,  // 1 olive
+  'asperge':                     250,  // 1 botte
+  'chorizo':                     200,
+  'tomates rondes fermes':       120,
+  'ciboulette':                   15,  // 1 botte
+  'tomate cerise':                15,  // 1 tomate cerise
+  'pate feuilletee':             230,  // 1 rouleau (format standard)
+};
+
+// ══════════════════════════════════════════════
 //  CONVERSION UNITÉS → GRAMMES
 // ══════════════════════════════════════════════
 const UNIT_WEIGHTS = {
@@ -146,6 +189,8 @@ const UNIT_WEIGHTS = {
   'boule':      (_) => 80,
   'cube':       (_) => 4,           // cube de bouillon
   'noix de':    (_) => 15,          // "une noix de beurre"
+  'cuillere':   (_) => 15,          // "cuillère" sans précision → assimilée à une c. à soupe
+  'rouleau':    (_) => 230,         // pâte brisée/feuilletée en rouleau (format standard)
   // ── Unités culinaires courantes ──
   'pincée':     (_) => 1,
   'pincee':     (_) => 1,
@@ -225,5 +270,29 @@ function toGrams(qty, unit, normKey) {
   const nutData = NUTRITION_DATA[normKey];
   if (nutData?.defaultWeight) return q * nutData.defaultWeight;
 
+  // Fallback → DEFAULT_ITEM_WEIGHTS, avec variantes singulier/pluriel
+  // (mêmes tables consultées via des clés parfois légèrement différentes :
+  // "tomate cerise" vs "tomates cerises" selon l'accord dans la recette)
+  for (const v of _ndVariants(normKey)) {
+    if (DEFAULT_ITEM_WEIGHTS[v]) return q * DEFAULT_ITEM_WEIGHTS[v];
+    if (NUTRITION_DATA[v]?.defaultWeight) return q * NUTRITION_DATA[v].defaultWeight;
+  }
+
   return 0;
+}
+
+function _ndVariants(normKey) {
+  const words = normKey.split(' ');
+  // Ne (dé)pluraliser que le premier mot ("champignon de paris" →
+  // "champignons de paris") — pluraliser CHAQUE mot casserait les petits
+  // mots de liaison ("de" → "des").
+  const first = words[0];
+  const rest = words.slice(1);
+  const firstDeplur = first.replace(/s$/, '');
+  const firstPlur = first.endsWith('s') ? first : first + 's';
+  return [
+    normKey,
+    [firstDeplur, ...rest].join(' '),
+    [firstPlur, ...rest].join(' '),
+  ];
 }
