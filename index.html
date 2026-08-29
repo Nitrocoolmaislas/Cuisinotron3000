@@ -14,6 +14,7 @@
 <body>
 
 <header>
+  <button class="mobile-menu-btn" onclick="toggleSidebar()" aria-label="Menu">☰</button>
   <div>
     <h1>Carnet de Recettes · <span>Clara</span></h1>
     <div class="header-sub">Carnet de recettes personnel</div>
@@ -22,8 +23,10 @@
 
 <div class="app">
 
+  <div class="sidebar-overlay" id="sidebar-overlay" onclick="closeSidebar()"></div>
+
   <!-- ── SIDEBAR ── -->
-  <aside class="sidebar">
+  <aside class="sidebar" id="sidebar">
     <div class="sidebar-section">
       <div class="sidebar-section-title">Catégories</div>
       <button class="cat-btn active" onclick="filterCat('all')" id="cat-all">

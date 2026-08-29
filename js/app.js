@@ -334,7 +334,23 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   const origRenderStock = renderStock;
   window.renderStock = function() { origRenderStock(); updateCounts(); };
+
+  // Fermer le tiroir mobile dès qu'un bouton de la sidebar est cliqué
+  // (catégorie, objectifs, planificateur, stock…) — évite un tap en trop.
+  document.getElementById('sidebar')?.addEventListener('click', e => {
+    if (e.target.closest('button')) closeSidebar();
+  });
 });
+
+// ── Menu mobile (sidebar en tiroir sous 860px) ──
+function toggleSidebar() {
+  document.getElementById('sidebar')?.classList.toggle('open');
+  document.getElementById('sidebar-overlay')?.classList.toggle('open');
+}
+function closeSidebar() {
+  document.getElementById('sidebar')?.classList.remove('open');
+  document.getElementById('sidebar-overlay')?.classList.remove('open');
+}
 
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
@@ -342,5 +358,6 @@ document.addEventListener('keydown', e => {
     closeAddModalDirect();
     closeShoppingPanel();
     closeRecipeForm();
+    closeSidebar();
   }
 });
