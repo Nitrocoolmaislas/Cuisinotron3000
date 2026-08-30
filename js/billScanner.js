@@ -329,12 +329,13 @@ function confirmBillItems() {
     const qty  = parseFloat(document.getElementById(`bs-sq-${i}`)?.value) || 0;
     const unit = document.getElementById(`bs-su-${i}`)?.value || '';
     if (!name) return;
-    const key = normIngredient(name);
+    const key = typeof canonicalIngredientKey === 'function' ? canonicalIngredientKey(name) : normIngredient(name);
     if (!key) return;
     if (key in stock) {
       stock[key].qty = (stock[key].qty || 0) + qty;
     } else {
       stock[key] = { name, qty, unit };
+      if (typeof checkStockDuplicate === 'function') checkStockDuplicate(key);
     }
     added++;
   });

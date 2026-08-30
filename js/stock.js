@@ -88,6 +88,59 @@ function saveStock() {
   scheduleDriveSave();
 }
 
+// ══════════════════════════════════════════════
+//  DÉDOUBLONNAGE DE STOCK — file d'attente pour le Bridge Wizard
+//  canonicalIngredientKey() ne résout que les alias déjà connus de WL_IDX.
+//  Un nouvel ingrédient de stock qui n'y figure pas devient sa propre ligne
+//  au lieu de fusionner avec une entrée existante — on détecte ces paires
+//  candidates (mot entier partagé) et on les propose dans le Bridge Wizard,
+//  qui délègue la fusion réelle au panneau de fusion déjà existant
+//  (openMergePanel/confirmMerge, cf. plus bas) pour ne pas dupliquer la
+//  logique d'addition des quantités.
+// ══════════════════════════════════════════════
+const STOCK_DEDUP_PENDING_KEY = 'recettes_stock_dedup_pending';
+const STOCK_DEDUP_IGNORED_KEY = 'recettes_stock_dedup_ignored';
+
+function loadStockDedupPending() {
+  try { return JSON.parse(localStorage.getItem(STOCK_DEDUP_PENDING_KEY) || '[]'); }
+  catch { return []; }
+}
+function saveStockDedupPending(list) {
+  localStorage.setItem(STOCK_DEDUP_PENDING_KEY, JSON.stringify(list));
+}
+function loadStockDedupIgnored() {
+  try { return new Set(JSON.parse(localStorage.getItem(STOCK_DEDUP_IGNORED_KEY) || '[]')); }
+  catch { return new Set(); }
+}
+function saveStockDedupIgnored(set) {
+  localStorage.setItem(STOCK_DEDUP_IGNORED_KEY, JSON.stringify([...set]));
+}
+
+// Cherche, parmi les autres clés déjà en stock, un candidat doublon pour
+// newKey (mot entier partagé dans un sens ou l'autre) et l'ajoute en pending
+// si ce n'est ni déjà en file, ni déjà tranché "différents" par l'utilisateur.
+function checkStockDuplicate(newKey) {
+  if (typeof _wordIn !== 'function') return;
+  const ignored = loadStockDedupIgnored();
+  const candidate = Object.keys(stock).find(sk =>
+    sk !== newKey && (_wordIn(newKey, sk) || _wordIn(sk, newKey))
+  );
+  if (!candidate) return;
+  const sig = _dedupSig(newKey, candidate);
+  if (ignored.has(sig)) return;
+  const pending = loadStockDedupPending();
+  if (pending.some(([a, b]) => _dedupSig(a, b) === sig)) return;
+  pending.push([newKey, candidate]);
+  saveStockDedupPending(pending);
+  if (typeof refreshBadge === 'function') refreshBadge();
+}
+
+function removeStockDedupPendingPair(a, b) {
+  const sig = _dedupSig(a, b);
+  saveStockDedupPending(loadStockDedupPending().filter(([x, y]) => _dedupSig(x, y) !== sig));
+  if (typeof refreshBadge === 'function') refreshBadge();
+}
+
 // ── Panneau stock ──
 function toggleStock() {
   document.getElementById('stock-panel').classList.toggle('open');
@@ -264,6 +317,7 @@ function addStockItem() {
   } else {
     stock[key] = { name: p.name, unit: p.unit, qty: parseFloat(p.qty) || 0 };
     if (typeof showToast === 'function') showToast(`✅ "${p.name}" ajouté`);
+    checkStockDuplicate(key);
   }
   saveStock();
   renderStock();
@@ -309,6 +363,7 @@ function addFromTextarea() {
     } else {
       stock[key] = { name: p.name, unit: p.unit, qty: parseFloat(p.qty) || 0 };
       added++;
+      checkStockDuplicate(key);
     }
   });
   saveStock();

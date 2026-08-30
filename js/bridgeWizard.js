@@ -272,11 +272,23 @@ async function fetchColruytProducts(searchTerm) {
   }
 }
 
+// ─── File combinée : ingrédients non mappés (CIQUAL/Colruyt) + doublons de
+//     stock détectés (recettes_stock_dedup_pending, cf. stock.js) ─────────────
+function _bwBuildSteps() {
+  const bridgePending = loadPending();
+  const dedupPending = typeof loadStockDedupPending === 'function' ? loadStockDedupPending() : [];
+  return [
+    ...bridgePending.map(k => ({ type: 'bridge', normKey: k })),
+    ...dedupPending.map(([a, b]) => ({ type: 'dedup', a, b })),
+  ];
+}
+
 // ─── Badge notification ───────────────────────────────────────────────────────
 function refreshBadge() {
   const badge = document.getElementById('bridge-wizard-badge');
   if (!badge) return;
-  const count = loadPending().length;
+  const dedupCount = typeof loadStockDedupPending === 'function' ? loadStockDedupPending().length : 0;
+  const count = loadPending().length + dedupCount;
   badge.textContent = count;
   badge.style.display = count > 0 ? 'inline-flex' : 'none';
 
@@ -286,8 +298,8 @@ function refreshBadge() {
 
 // ─── UI : ouvrir le wizard ────────────────────────────────────────────────────
 function openBridgeWizard() {
-  const pending = loadPending();
-  if (!pending.length) return;
+  const steps = _bwBuildSteps();
+  if (!steps.length) return;
 
   let panel = document.getElementById('bridge-wizard-panel');
   if (!panel) {
@@ -296,7 +308,7 @@ function openBridgeWizard() {
     document.body.appendChild(panel);
   }
 
-  renderWizardStep(panel, pending, 0);
+  renderWizardStep(panel, steps, 0);
   panel.classList.add('open');
 }
 
@@ -306,25 +318,31 @@ function closeBridgeWizard() {
 }
 
 // ─── Render d'une étape du wizard ─────────────────────────────────────────────
-async function renderWizardStep(panel, pending, index) {
-  if (index >= pending.length) {
+async function renderWizardStep(panel, steps, index) {
+  if (index >= steps.length) {
     panel.innerHTML = `
       <div class="bw-header">
-        <h3>✅ Tous les ingrédients sont mappés</h3>
+        <h3>✅ Tout est à jour</h3>
         <button class="bw-close" onclick="closeBridgeWizard()">✕</button>
       </div>`;
     refreshBadge();
     return;
   }
 
-  const normKey = pending[index];
+  const step = steps[index];
+  if (step.type === 'dedup') {
+    renderDedupStep(panel, steps, index);
+    return;
+  }
+
+  const normKey = step.normKey;
   const ciqualMatches = fuzzyMatchCiqual(normKey);
   const bestCiqual = ciqualMatches[0] ?? null;
 
   panel.innerHTML = `
     <div class="bw-header">
       <h3>Ingrédients non mappés
-        <span class="bw-counter">${index + 1} / ${pending.length}</span>
+        <span class="bw-counter">${index + 1} / ${steps.length}</span>
       </h3>
       <button class="bw-close" onclick="closeBridgeWizard()">✕</button>
     </div>
@@ -545,21 +563,83 @@ function confirmWizardStep(normKey, index) {
   removePending(normKey);
 
   // Étape suivante
-  const pending = loadPending();
+  const steps = _bwBuildSteps();
   const panel = document.getElementById('bridge-wizard-panel');
-  renderWizardStep(panel, pending, index < pending.length ? index : 0);
+  renderWizardStep(panel, steps, index < steps.length ? index : 0);
 }
 
 // ─── Passer une étape ─────────────────────────────────────────────────────────
 function skipWizardStep(index) {
-  const pending = loadPending();
+  const steps = _bwBuildSteps();
   const panel = document.getElementById('bridge-wizard-panel');
   const nextIndex = index + 1;
-  if (nextIndex >= pending.length) {
+  if (nextIndex >= steps.length) {
     closeBridgeWizard();
   } else {
-    renderWizardStep(panel, pending, nextIndex);
+    renderWizardStep(panel, steps, nextIndex);
   }
+}
+
+// ─── Doublon de stock détecté (checkStockDuplicate, stock.js) ─────────────────
+// Ne réimplémente pas l'addition des quantités : délègue au panneau de
+// fusion existant (openMergePanel/confirmMerge) qui gère déjà la conversion
+// d'unité et laisse choisir quel nom/clé garder.
+function renderDedupStep(panel, steps, index) {
+  const { a, b } = steps[index];
+  const eA = (typeof stock !== 'undefined' && stock[a]) || null;
+  const eB = (typeof stock !== 'undefined' && stock[b]) || null;
+
+  panel.innerHTML = `
+    <div class="bw-header">
+      <h3>Doublon de stock possible
+        <span class="bw-counter">${index + 1} / ${steps.length}</span>
+      </h3>
+      <button class="bw-close" onclick="closeBridgeWizard()">✕</button>
+    </div>
+    <div class="bw-body">
+      <p class="bw-hint">
+        Ces deux entrées de stock semblent désigner le même ingrédient.
+        Fusionne-les si c'est le cas — les quantités seront additionnées —
+        ou indique que ce sont deux ingrédients différents.
+      </p>
+      <div class="bw-options">
+        <label class="bw-option selected">
+          <span class="bw-option-name">${eA?.name || a}</span>
+          <span class="bw-option-sub">${eA?.qty ?? 0} ${eA?.unit || ''} · clé : ${a}</span>
+        </label>
+        <label class="bw-option selected">
+          <span class="bw-option-name">${eB?.name || b}</span>
+          <span class="bw-option-sub">${eB?.qty ?? 0} ${eB?.unit || ''} · clé : ${b}</span>
+        </label>
+      </div>
+    </div>
+    <div class="bw-footer">
+      <button class="bw-btn-ghost" onclick="dismissDedupStep('${a}', '${b}', ${index})">Ingrédients différents</button>
+      <button class="bw-btn-primary" onclick="mergeDedupStep('${a}', '${b}')">🔀 Fusionner</button>
+    </div>
+  `;
+}
+
+function mergeDedupStep(a, b) {
+  if (typeof removeStockDedupPendingPair === 'function') removeStockDedupPendingPair(a, b);
+  closeBridgeWizard();
+  // Réutilise le panneau de fusion existant (choix du nom à garder + addition
+  // des quantités avec conversion d'unité) plutôt que de dupliquer cette logique.
+  if (typeof _mergeSelection !== 'undefined') _mergeSelection = new Set([a, b]);
+  if (typeof openMergePanel === 'function') openMergePanel();
+}
+
+function dismissDedupStep(a, b, index) {
+  if (typeof loadStockDedupIgnored === 'function' && typeof saveStockDedupIgnored === 'function') {
+    const ignored = loadStockDedupIgnored();
+    ignored.add(_dedupSig(a, b));
+    saveStockDedupIgnored(ignored);
+  }
+  if (typeof removeStockDedupPendingPair === 'function') removeStockDedupPendingPair(a, b);
+
+  const steps = _bwBuildSteps();
+  const panel = document.getElementById('bridge-wizard-panel');
+  renderWizardStep(panel, steps, index < steps.length ? index : 0);
 }
 
 // ─── Init ─────────────────────────────────────────────────────────────────────

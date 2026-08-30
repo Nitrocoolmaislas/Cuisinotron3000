@@ -43,6 +43,18 @@ function canonicalIngredientKey(name) {
   return raw;
 }
 
+// ── needle présent comme mot entier (pas juste sous-chaîne) dans haystack ──
+function _wordIn(haystack, needle) {
+  if (!needle || needle.length < 2 || !haystack) return false;
+  return new RegExp('(?:^| )' + needle + '(?= |$)').test(haystack);
+}
+
+// ── Signature stable d'une paire de clés (ordre indépendant) — sert à retenir
+//    les paires de doublons de stock déjà tranchées par l'utilisateur ──
+function _dedupSig(a, b) {
+  return [a, b].sort().join('|||');
+}
+
 // ══════════════════════════════════════════════
 //  CANONICAL MAP
 //  Résout les variantes d'un ingrédient vers :
