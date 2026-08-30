@@ -135,6 +135,54 @@ function fuzzyMatchCiqual(normKey, topN = 3) {
     .slice(0, topN);
 }
 
+// Recherche libre dans toute la base CIQUAL_FR (repli quand fuzzyMatchCiqual
+// ne trouve rien — nom de tête absent du catalogue — ou pour corriger une
+// suggestion fuzzy incorrecte).
+function searchCiqualFull(query, topN = 10) {
+  if (typeof CIQUAL_FR === 'undefined') return [];
+  const q = query.toLowerCase().trim();
+  if (!q) return [];
+  return CIQUAL_FR
+    .filter(e => e.k.includes(q) || (e.n || '').includes(q))
+    .sort((a, b) => (b._q || 0) - (a._q || 0))
+    .slice(0, topN);
+}
+
+// ─── Rendu des options CIQUAL (fuzzy ou recherche libre) ──────────────────────
+// CIQUAL_FR n'a que { k, n, kcal, ... } — pas de champs "nom"/"ssgrp".
+function _bwCiqualOptionsHtml(matches, startSelected) {
+  return matches.map((m, i) => `
+    <label class="bw-option ${startSelected && i === 0 ? 'selected' : ''}" data-idx="${i}">
+      <input type="radio" name="ciqual_match" value="${m.k}" ${startSelected && i === 0 ? 'checked' : ''}>
+      <span class="bw-option-name">${m.k}</span>
+      <span class="bw-option-sub">${m.n || ''}${m.kcal != null ? ' · ' + m.kcal + ' kcal/100g' : ''}</span>
+    </label>
+  `).join('');
+}
+
+function _bwAttachCiqualListeners(scope) {
+  scope.querySelectorAll('input[name="ciqual_match"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+      document.querySelectorAll('.bw-option').forEach(o => o.classList.remove('selected'));
+      radio.closest('.bw-option').classList.add('selected');
+      _bwUpdateConfirmState();
+    });
+  });
+}
+
+async function searchCiqualFromWizard() {
+  const input = document.getElementById('bw-ciqual-search');
+  const resultsDiv = document.getElementById('bw-ciqual-manual-results');
+  if (!input || !resultsDiv) return;
+  const matches = searchCiqualFull(input.value);
+  if (!matches.length) {
+    resultsDiv.innerHTML = '<p class="bw-empty">Aucun résultat CIQUAL pour cette recherche.</p>';
+    return;
+  }
+  resultsDiv.innerHTML = _bwCiqualOptionsHtml(matches, false);
+  _bwAttachCiqualListeners(resultsDiv);
+}
+
 // ─── Fetch produits Colruyt ───────────────────────────────────────────────────
 /**
 // ─── Cache mémoire du catalogue Colruyt ──────────────────────────────────────
@@ -284,21 +332,20 @@ async function renderWizardStep(panel, pending, index) {
       <!-- Étape 1 : CIQUAL -->
       <div class="bw-section">
         <label class="bw-label">Correspondance CIQUAL</label>
-        ${ciqualMatches.length ? `
-          <div class="bw-options" id="bw-ciqual-options">
-            ${ciqualMatches.map((m, i) => `
-              <label class="bw-option ${i === 0 ? 'selected' : ''}" data-idx="${i}">
-                <input type="radio" name="ciqual_match" value="${m.k || m.norm}" ${i === 0 ? 'checked' : ''}>
-                <span class="bw-option-name">${m.nom}</span>
-                <span class="bw-option-sub">${m.ssgrp}</span>
-              </label>
-            `).join('')}
-            <label class="bw-option" data-idx="none">
-              <input type="radio" name="ciqual_match" value="none">
-              <span class="bw-option-name">Aucune correspondance</span>
-            </label>
-          </div>
-        ` : `<p class="bw-empty">Aucun résultat CIQUAL pour "${normKey}"</p>`}
+        <div class="bw-options" id="bw-ciqual-options">
+          ${ciqualMatches.length ? _bwCiqualOptionsHtml(ciqualMatches, true) : `<p class="bw-empty">Aucun résultat CIQUAL pour "${normKey}"</p>`}
+          <label class="bw-option" data-idx="none">
+            <input type="radio" name="ciqual_match" value="none">
+            <span class="bw-option-name">Aucune correspondance</span>
+          </label>
+        </div>
+        <div class="bw-search-row">
+          <input type="text" id="bw-ciqual-search"
+            placeholder="Recherche libre dans CIQUAL (si la suggestion est absente/fausse)"
+            class="bw-input"/>
+          <button class="bw-btn-secondary" onclick="searchCiqualFromWizard()">Rechercher</button>
+        </div>
+        <div id="bw-ciqual-manual-results" class="bw-options"></div>
       </div>
 
       <!-- Étape 2 : Colruyt -->
@@ -331,13 +378,14 @@ async function renderWizardStep(panel, pending, index) {
   `;
 
   // Interaction sélection option CIQUAL
-  panel.querySelectorAll('input[name="ciqual_match"]').forEach(radio => {
-    radio.addEventListener('change', () => {
-      panel.querySelectorAll('.bw-option').forEach(o => o.classList.remove('selected'));
-      radio.closest('.bw-option').classList.add('selected');
-      _bwUpdateConfirmState();
+  _bwAttachCiqualListeners(panel);
+
+  const ciqualSearchInput = document.getElementById('bw-ciqual-search');
+  if (ciqualSearchInput) {
+    ciqualSearchInput.addEventListener('keydown', e => {
+      if (e.key === 'Enter') { e.preventDefault(); searchCiqualFromWizard(); }
     });
-  });
+  }
 
   _bwUpdateConfirmState();
 }
