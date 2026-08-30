@@ -32,11 +32,31 @@ function hidePlanner() {
 // ── Rendu des cartes du planificateur ──
 function renderPlanner() {
   const grid = document.getElementById('recipe-grid');
-  grid.innerHTML = RECIPES.map(r => {
+
+  // ── Objectifs nutritionnels (mêmes règles que renderGrid) ──
+  let list = RECIPES;
+  if (typeof activeGoalDefs === 'function' && activeGoalDefs().length) {
+    const strict = typeof loadGoalsState === 'function' && loadGoalsState().strict;
+    const withMatch = list.map(r => ({ r, m: recipeGoalMatch(r) }));
+    const filtered = strict ? withMatch.filter(x => x.m.matches) : withMatch;
+    filtered.sort((a, b) => (b.m.metCount - a.m.metCount) || (b.m.score - a.m.score));
+    list = filtered.map(x => x.r);
+  }
+
+  if (list.length === 0) {
+    grid.innerHTML = `<div class="no-results" style="grid-column:1/-1">
+      <div class="nr-icon">🍽️</div>
+      <p>Aucune recette ne correspond. Essaie d'assouplir tes objectifs nutritionnels.</p>
+    </div>`;
+    return;
+  }
+
+  grid.innerHTML = list.map(r => {
     const sel      = plannerSelected.has(r.id);
     const cookInfo = r.cookTime > 0
       ? `⏱ ${r.prepTime + r.cookTime} min`
       : `⚡ ${r.prepTime} min`;
+    const goalBadge = typeof goalsBadgeHtml === 'function' ? goalsBadgeHtml(r) : '';
     return `<div class="recipe-card planner-card ${sel ? 'planner-selected' : ''}"
          onclick="togglePlannerRecipe('${r.id}')">
       <div class="planner-check">${sel ? '✓' : ''}</div>
@@ -46,6 +66,7 @@ function renderPlanner() {
         <span>${cookInfo}</span>
         <span>👤 ${r.servings} portion${r.servings > 1 ? 's' : ''}</span>
       </div>
+      ${goalBadge ? `<div class="card-badges">${goalBadge}</div>` : ''}
     </div>`;
   }).join('');
 }

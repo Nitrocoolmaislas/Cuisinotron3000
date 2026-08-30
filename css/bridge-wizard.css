@@ -162,6 +162,20 @@
 }
 .bw-input:focus { border-color: #f5a623; }
 
+.bw-hint {
+  font-size: 0.78rem;
+  color: #888;
+  line-height: 1.4;
+  margin: -4px 0 2px;
+}
+.bw-translate-hint {
+  font-size: 0.8rem;
+  color: #c47d00;
+  background: #fff8e1;
+  border-radius: 6px;
+  padding: 6px 10px;
+}
+
 /* ── États ────────────────────────────────────────────────────────── */
 .bw-loading { font-size: 0.85rem; color: #888; padding: 8px 0; }
 .bw-empty   { font-size: 0.85rem; color: #aaa; padding: 8px 0; }
