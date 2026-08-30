@@ -100,9 +100,13 @@ function openImportPanel(data) {
     if (typeof parseIngredientString !== 'undefined') {
       const p = parseIngredientString(raw);
       const normKey = typeof canonicalIngredientKey === 'function' ? canonicalIngredientKey(p.rawName) : normIngredient(p.rawName);
-      const hasBridge = typeof bridgeLookupFull !== 'undefined'
-        ? bridgeLookupFull(normKey) !== null
-        : false;
+      // Eau, eau tiède… n'ont pas de produit Colruyt et ne doivent jamais
+      // finir en pending (bridgeLookupFull() y ajoute en cas d'échec) — même
+      // garde que matchColruyt()/checkCiqualGaps().
+      const alwaysAvailable = typeof _isAlwaysAvailable === 'function' && _isAlwaysAvailable(normKey);
+      const hasBridge = alwaysAvailable
+        ? true
+        : (typeof bridgeLookupFull !== 'undefined' ? bridgeLookupFull(normKey) !== null : false);
       // Vérifier si l'unité est mappée dans UNIT_WEIGHTS / custom
       const unitMapped = typeof isUnitMapped !== 'undefined'
         ? isUnitMapped(p.unit)

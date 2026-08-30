@@ -154,7 +154,7 @@ function cleanIngredientName(raw) {
   // Tronquage aux groupes prépositionnels finalistes
   // ex: "pour la décoration", "pour le service", "selon le goût"
   name = name.replace(/\s+(?:pour|selon|en option|si désiré|si desire|au goût|au gout)\b.*$/i, '').trim();
-  name = name.replace(/\b(au naturel|en boite|en boîte|de type\s+\S+)\b/gi, '');
+  name = name.replace(/\b(au naturel|en boite|en boîte|en conserve|de type\s+\S+)\b/gi, '');
   name = name.replace(/\s+\d+\s*%$/, '').trim();
   name = name.replace(/\([^)]*\)/g, '');
   name = name.replace(/\s*\([^)]*$/, '').trim(); // parenthèse non fermée (ex: "(en conserve ou…")
@@ -191,6 +191,11 @@ function cleanIngredientName(raw) {
   name = name.replace(/^extrait\s+de\s+/i, '').trim();     // "extrait de vanille" → "vanille"
   name = name.replace(/^cerneaux?\s+de\s+/i, '').trim();   // "cerneaux de noix" → "noix"
   name = name.replace(/^jeunes?\s+/i, '').trim();          // "jeunes oignons" → "oignons"
+  // Double mention contenant/unité ("1 boîte de conserve de pois") : la
+  // détection d'unité en tête ne consomme que le premier mot ("boîte"),
+  // laissant le second ("conserve") au tout début du nom restant, où il est
+  // pris à tort pour le nom de base (toujours gardé, index 0).
+  name = name.replace(/^(?:conserve|boite|boîte|sachet|pot|paquet)s?\s+(?:de\s+|d['’]\s*)/i, '').trim();
 
   const words = name.split(/\s+/).filter(Boolean);
   name = words.filter((w, i) => {
