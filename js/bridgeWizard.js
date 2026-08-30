@@ -305,9 +305,10 @@ async function renderWizardStep(panel, pending, index) {
       <div class="bw-section">
         <label class="bw-label">Terme de recherche Colruyt (NL)</label>
         <p class="bw-hint">
-          Cherche en français si tu préfères — clique 🌐 pour traduire,
-          puis vérifie/corrige le terme néerlandais avant de valider
-          (c'est ce terme-là qui sera enregistré, pas le français).
+          Cherche directement en français — si ça ne trouve rien, la
+          traduction néerlandaise se fait automatiquement (bouton 🌐 pour
+          traduire sans chercher). Vérifie/corrige le terme néerlandais
+          affiché avant de valider : c'est lui qui sera enregistré.
         </p>
         <div class="bw-search-row">
           <input type="text" id="bw-colruyt-term"
@@ -355,6 +356,17 @@ function _bwUpdateConfirmState() {
 }
 
 // ─── Traduction FR → NL (MyMemory, gratuit, sans clé) ─────────────────────────
+async function _translateFrToNl(text) {
+  try {
+    const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=fr|nl`;
+    const resp = await fetch(url);
+    const data = await resp.json();
+    return data?.responseData?.translatedText || null;
+  } catch (e) {
+    return null;
+  }
+}
+
 async function translateWizardTerm() {
   const termInput = document.getElementById('bw-colruyt-term');
   const hint = document.getElementById('bw-translate-hint');
@@ -366,40 +378,57 @@ async function translateWizardTerm() {
   if (btn) btn.disabled = true;
   if (hint) { hint.style.display = ''; hint.textContent = '⏳ Traduction en cours…'; }
 
-  try {
-    const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=fr|nl`;
-    const resp = await fetch(url);
-    const data = await resp.json();
-    const translated = data?.responseData?.translatedText;
-    if (translated) {
-      termInput.value = translated.toLowerCase();
-      if (hint) hint.textContent = `🌐 "${text}" → "${termInput.value}" — vérifie/corrige avant de valider`;
-      _bwUpdateConfirmState();
-    } else if (hint) {
-      hint.textContent = '⚠️ Traduction indisponible, tape le terme néerlandais toi-même.';
-    }
-  } catch (e) {
-    if (hint) hint.textContent = '⚠️ Erreur de traduction, tape le terme néerlandais toi-même.';
-  } finally {
-    if (btn) btn.disabled = false;
+  const translated = await _translateFrToNl(text);
+  if (translated) {
+    termInput.value = translated.toLowerCase();
+    if (hint) hint.textContent = `🌐 "${text}" → "${termInput.value}" — vérifie/corrige avant de valider`;
+    _bwUpdateConfirmState();
+  } else if (hint) {
+    hint.textContent = '⚠️ Traduction indisponible, tape le terme néerlandais toi-même.';
   }
+  if (btn) btn.disabled = false;
 }
 
 // ─── Recherche Colruyt depuis le wizard ───────────────────────────────────────
+// Cherche directement avec le terme tapé (français ou néerlandais). Si ça ne
+// donne rien, traduit automatiquement en néerlandais (catalogue Colruyt) et
+// réessaie — l'utilisateur n'a pas besoin de connaître le mot néerlandais ni
+// de cliquer 🌐 lui-même. Le terme réellement utilisé (et donc à valider)
+// reste affiché et modifiable dans le champ.
 async function searchColruytFromWizard() {
   const termInput = document.getElementById('bw-colruyt-term');
   const resultsDiv = document.getElementById('bw-colruyt-results');
+  const hint = document.getElementById('bw-translate-hint');
   if (!termInput || !resultsDiv) return;
 
-  const term = termInput.value.trim();
-  if (!term) return;
+  const original = termInput.value.trim();
+  if (!original) return;
 
   resultsDiv.innerHTML = '<p class="bw-loading">Recherche en cours…</p>';
+  if (hint) hint.style.display = 'none';
 
-  const products = await fetchColruytProducts(term);
+  let term = original;
+  let products = await fetchColruytProducts(term);
 
   if (!products.length) {
-    resultsDiv.innerHTML = '<p class="bw-empty">Aucun produit trouvé. Essayez un autre terme.</p>';
+    resultsDiv.innerHTML = '<p class="bw-loading">Aucun résultat pour "' + original + '" — essai en néerlandais…</p>';
+    const translated = await _translateFrToNl(original);
+    if (translated && translated.toLowerCase() !== original.toLowerCase()) {
+      const translatedProducts = await fetchColruytProducts(translated);
+      if (translatedProducts.length) {
+        term = translated.toLowerCase();
+        products = translatedProducts;
+        termInput.value = term;
+        if (hint) {
+          hint.style.display = '';
+          hint.textContent = `🌐 "${original}" → "${term}" — vérifie/corrige avant de valider`;
+        }
+      }
+    }
+  }
+
+  if (!products.length) {
+    resultsDiv.innerHTML = '<p class="bw-empty">Aucun produit trouvé (même traduit). Essaie un autre terme.</p>';
     return;
   }
 
