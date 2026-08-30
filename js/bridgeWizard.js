@@ -304,13 +304,20 @@ async function renderWizardStep(panel, pending, index) {
       <!-- Étape 2 : Colruyt -->
       <div class="bw-section">
         <label class="bw-label">Terme de recherche Colruyt (NL)</label>
+        <p class="bw-hint">
+          Cherche en français si tu préfères — clique 🌐 pour traduire,
+          puis vérifie/corrige le terme néerlandais avant de valider
+          (c'est ce terme-là qui sera enregistré, pas le français).
+        </p>
         <div class="bw-search-row">
           <input type="text" id="bw-colruyt-term"
-            placeholder="Ex: havervlokken"
+            placeholder="Ex: flocons d'avoine, ou havervlokken"
             value="${(typeof whitelistEntry !== 'undefined' && whitelistEntry(normKey)?.colruytTerms?.[0]) || ''}"
-            class="bw-input"/>
+            class="bw-input" oninput="_bwUpdateConfirmState()"/>
+          <button class="bw-btn-secondary" id="bw-translate-btn" onclick="translateWizardTerm()" title="Traduire FR → NL">🌐</button>
           <button class="bw-btn-secondary" onclick="searchColruytFromWizard()">Rechercher</button>
         </div>
+        <div id="bw-translate-hint" class="bw-translate-hint" style="display:none"></div>
         <div id="bw-colruyt-results" class="bw-options"></div>
       </div>
     </div>
@@ -318,8 +325,7 @@ async function renderWizardStep(panel, pending, index) {
     <div class="bw-footer">
       <button class="bw-btn-ghost" onclick="skipWizardStep(${index})">Passer</button>
       <button class="bw-btn-primary" id="bw-confirm-btn"
-        onclick="confirmWizardStep('${normKey}', ${index})"
-        disabled>Confirmer</button>
+        onclick="confirmWizardStep('${normKey}', ${index})">Confirmer</button>
     </div>
   `;
 
@@ -328,8 +334,55 @@ async function renderWizardStep(panel, pending, index) {
     radio.addEventListener('change', () => {
       panel.querySelectorAll('.bw-option').forEach(o => o.classList.remove('selected'));
       radio.closest('.bw-option').classList.add('selected');
+      _bwUpdateConfirmState();
     });
   });
+
+  _bwUpdateConfirmState();
+}
+
+// ─── Active/désactive Confirmer selon ce qu'il y a à sauvegarder ──────────────
+// Ne dépend plus d'avoir trouvé un produit Colruyt en direct : un terme tapé
+// (ou traduit) à la main, ou juste une correspondance CIQUAL, suffisent —
+// c'est déjà une amélioration même sans produit du catalogue du jour trouvé.
+function _bwUpdateConfirmState() {
+  const btn = document.getElementById('bw-confirm-btn');
+  if (!btn) return;
+  const ciqualChecked = document.querySelector('input[name="ciqual_match"]:checked');
+  const hasCiqual = !!(ciqualChecked && ciqualChecked.value && ciqualChecked.value !== 'none');
+  const term = document.getElementById('bw-colruyt-term')?.value.trim();
+  btn.disabled = !hasCiqual && !term;
+}
+
+// ─── Traduction FR → NL (MyMemory, gratuit, sans clé) ─────────────────────────
+async function translateWizardTerm() {
+  const termInput = document.getElementById('bw-colruyt-term');
+  const hint = document.getElementById('bw-translate-hint');
+  const btn = document.getElementById('bw-translate-btn');
+  if (!termInput) return;
+  const text = termInput.value.trim();
+  if (!text) return;
+
+  if (btn) btn.disabled = true;
+  if (hint) { hint.style.display = ''; hint.textContent = '⏳ Traduction en cours…'; }
+
+  try {
+    const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=fr|nl`;
+    const resp = await fetch(url);
+    const data = await resp.json();
+    const translated = data?.responseData?.translatedText;
+    if (translated) {
+      termInput.value = translated.toLowerCase();
+      if (hint) hint.textContent = `🌐 "${text}" → "${termInput.value}" — vérifie/corrige avant de valider`;
+      _bwUpdateConfirmState();
+    } else if (hint) {
+      hint.textContent = '⚠️ Traduction indisponible, tape le terme néerlandais toi-même.';
+    }
+  } catch (e) {
+    if (hint) hint.textContent = '⚠️ Erreur de traduction, tape le terme néerlandais toi-même.';
+  } finally {
+    if (btn) btn.disabled = false;
+  }
 }
 
 // ─── Recherche Colruyt depuis le wizard ───────────────────────────────────────
@@ -362,9 +415,7 @@ async function searchColruytFromWizard() {
   resultsDiv.dataset.products = JSON.stringify(products);
   resultsDiv.dataset.term = term;
 
-  // Activer le bouton Confirmer
-  const confirmBtn = document.getElementById('bw-confirm-btn');
-  if (confirmBtn) confirmBtn.disabled = false;
+  _bwUpdateConfirmState();
 
   // Interaction sélection
   resultsDiv.querySelectorAll('input[name="colruyt_product"]').forEach(radio => {
@@ -376,28 +427,41 @@ async function searchColruytFromWizard() {
 }
 
 // ─── Confirmer une étape ──────────────────────────────────────────────────────
+// Ne dépend plus d'un résultat de recherche Colruyt trouvé : un terme tapé
+// (ou traduit) à la main est un choix valide — le catalogue change tous les
+// jours, l'absence de résultat aujourd'hui ne veut pas dire que le terme est
+// faux. Priorité : produit choisi dans les résultats > terme tapé/traduit.
 function confirmWizardStep(normKey, index) {
   const resultsDiv = document.getElementById('bw-colruyt-results');
-  if (!resultsDiv || !resultsDiv.dataset.products) return;
+  let colruytTerm = null;
 
-  const products = JSON.parse(resultsDiv.dataset.products);
-  const selectedRadio = resultsDiv.querySelector('input[name="colruyt_product"]:checked');
-  const selectedIdx = selectedRadio ? parseInt(selectedRadio.value) : 0;
-  const chosen = products[selectedIdx];
+  if (resultsDiv?.dataset.products) {
+    const products = JSON.parse(resultsDiv.dataset.products);
+    const selectedRadio = resultsDiv.querySelector('input[name="colruyt_product"]:checked');
+    if (selectedRadio) colruytTerm = products[parseInt(selectedRadio.value)]?.term ?? null;
+  }
+  if (!colruytTerm) {
+    const typed = document.getElementById('bw-colruyt-term')?.value.trim();
+    if (typed) colruytTerm = typed;
+  }
 
-  // Sauvegarder dans le bridge custom (Colruyt)
-  const custom = loadBridgeCustom();
-  custom[normKey] = [chosen.term];
-  saveBridgeCustom(custom);
+  const ciqualRadio = document.querySelector('input[name="ciqual_match"]:checked');
+  const hasCiqual = ciqualRadio && ciqualRadio.value && ciqualRadio.value !== 'none';
+
+  if (!colruytTerm && !hasCiqual) return; // rien à sauvegarder
+
+  if (colruytTerm) {
+    const custom = loadBridgeCustom();
+    custom[normKey] = [colruytTerm];
+    saveBridgeCustom(custom);
+  }
 
   // Sauvegarder la correspondance CIQUAL choisie (persistance nutritionnelle)
-  const ciqualRadio = document.querySelector('input[name="ciqual_match"]:checked');
-  if (ciqualRadio && ciqualRadio.value && typeof setCiqualCustom === 'function') {
+  if (hasCiqual && typeof setCiqualCustom === 'function') {
     setCiqualCustom(normKey, ciqualRadio.value);
   }
 
   // Retirer des pending
-  removePending(normKey);
   removePending(normKey);
 
   // Étape suivante

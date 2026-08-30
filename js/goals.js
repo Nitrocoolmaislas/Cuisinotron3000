@@ -190,6 +190,14 @@ function applyGoals() {
   closeGoalsPanel();
   renderGoalsChips();
 
+  // En mode planificateur, filterCat() nous en ferait sortir (hidePlanner())
+  // — on reste dedans et on se contente de re-render avec les objectifs.
+  // Le sélecteur "type de plat" ne s'applique qu'à la grille normale.
+  if (typeof plannerMode !== 'undefined' && plannerMode) {
+    renderPlanner();
+    return;
+  }
+
   // filterCat() gère aussi le rendu de la grille (et remet en évidence le
   // bon bouton catégorie dans la sidebar) — pas besoin d'appeler renderGrid()
   // en plus.
