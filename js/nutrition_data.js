@@ -166,39 +166,43 @@ const UNIT_WEIGHTS = {
   'l':          (q) => q * 1000,
   'L':          (q) => q * 1000,
   // ── Mesures cuisine ──
-  'c. à soupe': (_) => 15,
-  'c. à café':  (_) => 5,
-  'càs':        (_) => 15,
-  'càc':        (_) => 5,
-  'tasse':      (_) => 240,
-  'bol':        (_) => 350,
+  // Toutes ces fonctions DOIVENT multiplier par q : "3 càs" = 3 × 15g, pas 15g.
+  // (_) => N ignorait silencieusement la quantité tapée par l'utilisateur —
+  // trouvé en creusant un écart de quantité après fusion de stock (2 pots +
+  // 1 pot = 2 pots au lieu de 3, car toGrams('pot', 1) === toGrams('pot', 2)).
+  'c. à soupe': (q) => q * 15,
+  'c. à café':  (q) => q * 5,
+  'càs':        (q) => q * 15,
+  'càc':        (q) => q * 5,
+  'tasse':      (q) => q * 240,
+  'bol':        (q) => q * 350,
   // ── Contenants ──
-  'conserve':   (_) => 400,
-  'boîte':      (_) => 400,
-  'boite':      (_) => 400,
-  'sachet':     (_) => 10,
-  'pot':        (_) => 200,
-  'verre':      (_) => 200,
+  'conserve':   (q) => q * 400,
+  'boîte':      (q) => q * 400,
+  'boite':      (q) => q * 400,
+  'sachet':     (q) => q * 10,
+  'pot':        (q) => q * 200,
+  'verre':      (q) => q * 200,
   // ── Unités comptables avec poids approx ──
   'gousse':     (q) => q * 6,
-  'brin':       (_) => 3,
-  'feuille':    (_) => 1,
-  'tranche':    (_) => 30,
-  'filet':      (_) => 10,
-  'trait':      (_) => 5,
-  'boule':      (_) => 80,
-  'cube':       (_) => 4,           // cube de bouillon
-  'noix de':    (_) => 15,          // "une noix de beurre"
-  'cuillere':   (_) => 15,          // "cuillère" sans précision → assimilée à une c. à soupe
-  'rouleau':    (_) => 230,         // pâte brisée/feuilletée en rouleau (format standard)
+  'brin':       (q) => q * 3,
+  'feuille':    (q) => q * 1,
+  'tranche':    (q) => q * 30,
+  'filet':      (q) => q * 10,
+  'trait':      (q) => q * 5,
+  'boule':      (q) => q * 80,
+  'cube':       (q) => q * 4,           // cube de bouillon
+  'noix de':    (q) => q * 15,          // "une noix de beurre"
+  'cuillere':   (q) => q * 15,          // "cuillère" sans précision → assimilée à une c. à soupe
+  'rouleau':    (q) => q * 230,         // pâte brisée/feuilletée en rouleau (format standard)
   // ── Unités culinaires courantes ──
-  'pincée':     (_) => 1,
-  'pincee':     (_) => 1,
+  'pincée':     (q) => q * 1,
+  'pincee':     (q) => q * 1,
   'louche':     (q) => q * 200,
-  'paquet':     (_) => 10,
-  'poignée':    (_) => 30,
-  'poignee':    (_) => 30,
-  'bouquet':    (_) => 5,
+  'paquet':     (q) => q * 10,
+  'poignée':    (q) => q * 30,
+  'poignee':    (q) => q * 30,
+  'bouquet':    (q) => q * 5,
   // ── Unités sans conversion fixe → defaultWeight ──
   'pièce':      (_) => null,
   'branche':    (_) => null,

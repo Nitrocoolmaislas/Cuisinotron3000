@@ -60,7 +60,10 @@ function checkCiqualGaps(recipe) {
 
   for (const raw of (recipe.ingredients || [])) {
     const p = parseIngredientString(raw);
-    const normKey = normIngredient(p.rawName);
+    // canonicalIngredientKey() résout d'abord via WL_IDX (synonyme connu →
+    // SKU canonique) : sans ça, un ingrédient déjà couvert sous son nom
+    // canonique repartait en pending sous son texte brut à chaque import.
+    const normKey = typeof canonicalIngredientKey === 'function' ? canonicalIngredientKey(p.rawName) : normIngredient(p.rawName);
     if (!normKey) continue;
     if (typeof _isAlwaysAvailable === 'function' && _isAlwaysAvailable(normKey)) continue;
     if (getNutriData(normKey)) continue;
@@ -133,6 +136,54 @@ function fuzzyMatchCiqual(normKey, topN = 3) {
     .filter(e => e.score > 0)
     .sort((a, b) => b.score - a.score)
     .slice(0, topN);
+}
+
+// Recherche libre dans toute la base CIQUAL_FR (repli quand fuzzyMatchCiqual
+// ne trouve rien — nom de tête absent du catalogue — ou pour corriger une
+// suggestion fuzzy incorrecte).
+function searchCiqualFull(query, topN = 10) {
+  if (typeof CIQUAL_FR === 'undefined') return [];
+  const q = query.toLowerCase().trim();
+  if (!q) return [];
+  return CIQUAL_FR
+    .filter(e => e.k.includes(q) || (e.n || '').includes(q))
+    .sort((a, b) => (b._q || 0) - (a._q || 0))
+    .slice(0, topN);
+}
+
+// ─── Rendu des options CIQUAL (fuzzy ou recherche libre) ──────────────────────
+// CIQUAL_FR n'a que { k, n, kcal, ... } — pas de champs "nom"/"ssgrp".
+function _bwCiqualOptionsHtml(matches, startSelected) {
+  return matches.map((m, i) => `
+    <label class="bw-option ${startSelected && i === 0 ? 'selected' : ''}" data-idx="${i}">
+      <input type="radio" name="ciqual_match" value="${m.k}" ${startSelected && i === 0 ? 'checked' : ''}>
+      <span class="bw-option-name">${m.k}</span>
+      <span class="bw-option-sub">${m.n || ''}${m.kcal != null ? ' · ' + m.kcal + ' kcal/100g' : ''}</span>
+    </label>
+  `).join('');
+}
+
+function _bwAttachCiqualListeners(scope) {
+  scope.querySelectorAll('input[name="ciqual_match"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+      document.querySelectorAll('.bw-option').forEach(o => o.classList.remove('selected'));
+      radio.closest('.bw-option').classList.add('selected');
+      _bwUpdateConfirmState();
+    });
+  });
+}
+
+async function searchCiqualFromWizard() {
+  const input = document.getElementById('bw-ciqual-search');
+  const resultsDiv = document.getElementById('bw-ciqual-manual-results');
+  if (!input || !resultsDiv) return;
+  const matches = searchCiqualFull(input.value);
+  if (!matches.length) {
+    resultsDiv.innerHTML = '<p class="bw-empty">Aucun résultat CIQUAL pour cette recherche.</p>';
+    return;
+  }
+  resultsDiv.innerHTML = _bwCiqualOptionsHtml(matches, false);
+  _bwAttachCiqualListeners(resultsDiv);
 }
 
 // ─── Fetch produits Colruyt ───────────────────────────────────────────────────
@@ -221,11 +272,23 @@ async function fetchColruytProducts(searchTerm) {
   }
 }
 
+// ─── File combinée : ingrédients non mappés (CIQUAL/Colruyt) + doublons de
+//     stock détectés (recettes_stock_dedup_pending, cf. stock.js) ─────────────
+function _bwBuildSteps() {
+  const bridgePending = loadPending();
+  const dedupPending = typeof loadStockDedupPending === 'function' ? loadStockDedupPending() : [];
+  return [
+    ...bridgePending.map(k => ({ type: 'bridge', normKey: k })),
+    ...dedupPending.map(([a, b]) => ({ type: 'dedup', a, b })),
+  ];
+}
+
 // ─── Badge notification ───────────────────────────────────────────────────────
 function refreshBadge() {
   const badge = document.getElementById('bridge-wizard-badge');
   if (!badge) return;
-  const count = loadPending().length;
+  const dedupCount = typeof loadStockDedupPending === 'function' ? loadStockDedupPending().length : 0;
+  const count = loadPending().length + dedupCount;
   badge.textContent = count;
   badge.style.display = count > 0 ? 'inline-flex' : 'none';
 
@@ -235,8 +298,8 @@ function refreshBadge() {
 
 // ─── UI : ouvrir le wizard ────────────────────────────────────────────────────
 function openBridgeWizard() {
-  const pending = loadPending();
-  if (!pending.length) return;
+  const steps = _bwBuildSteps();
+  if (!steps.length) return;
 
   let panel = document.getElementById('bridge-wizard-panel');
   if (!panel) {
@@ -245,7 +308,7 @@ function openBridgeWizard() {
     document.body.appendChild(panel);
   }
 
-  renderWizardStep(panel, pending, 0);
+  renderWizardStep(panel, steps, 0);
   panel.classList.add('open');
 }
 
@@ -255,25 +318,31 @@ function closeBridgeWizard() {
 }
 
 // ─── Render d'une étape du wizard ─────────────────────────────────────────────
-async function renderWizardStep(panel, pending, index) {
-  if (index >= pending.length) {
+async function renderWizardStep(panel, steps, index) {
+  if (index >= steps.length) {
     panel.innerHTML = `
       <div class="bw-header">
-        <h3>✅ Tous les ingrédients sont mappés</h3>
+        <h3>✅ Tout est à jour</h3>
         <button class="bw-close" onclick="closeBridgeWizard()">✕</button>
       </div>`;
     refreshBadge();
     return;
   }
 
-  const normKey = pending[index];
+  const step = steps[index];
+  if (step.type === 'dedup') {
+    renderDedupStep(panel, steps, index);
+    return;
+  }
+
+  const normKey = step.normKey;
   const ciqualMatches = fuzzyMatchCiqual(normKey);
   const bestCiqual = ciqualMatches[0] ?? null;
 
   panel.innerHTML = `
     <div class="bw-header">
       <h3>Ingrédients non mappés
-        <span class="bw-counter">${index + 1} / ${pending.length}</span>
+        <span class="bw-counter">${index + 1} / ${steps.length}</span>
       </h3>
       <button class="bw-close" onclick="closeBridgeWizard()">✕</button>
     </div>
@@ -284,21 +353,20 @@ async function renderWizardStep(panel, pending, index) {
       <!-- Étape 1 : CIQUAL -->
       <div class="bw-section">
         <label class="bw-label">Correspondance CIQUAL</label>
-        ${ciqualMatches.length ? `
-          <div class="bw-options" id="bw-ciqual-options">
-            ${ciqualMatches.map((m, i) => `
-              <label class="bw-option ${i === 0 ? 'selected' : ''}" data-idx="${i}">
-                <input type="radio" name="ciqual_match" value="${m.k || m.norm}" ${i === 0 ? 'checked' : ''}>
-                <span class="bw-option-name">${m.nom}</span>
-                <span class="bw-option-sub">${m.ssgrp}</span>
-              </label>
-            `).join('')}
-            <label class="bw-option" data-idx="none">
-              <input type="radio" name="ciqual_match" value="none">
-              <span class="bw-option-name">Aucune correspondance</span>
-            </label>
-          </div>
-        ` : `<p class="bw-empty">Aucun résultat CIQUAL pour "${normKey}"</p>`}
+        <div class="bw-options" id="bw-ciqual-options">
+          ${ciqualMatches.length ? _bwCiqualOptionsHtml(ciqualMatches, true) : `<p class="bw-empty">Aucun résultat CIQUAL pour "${normKey}"</p>`}
+          <label class="bw-option" data-idx="none">
+            <input type="radio" name="ciqual_match" value="none">
+            <span class="bw-option-name">Aucune correspondance</span>
+          </label>
+        </div>
+        <div class="bw-search-row">
+          <input type="text" id="bw-ciqual-search"
+            placeholder="Recherche libre dans CIQUAL (si la suggestion est absente/fausse)"
+            class="bw-input"/>
+          <button class="bw-btn-secondary" onclick="searchCiqualFromWizard()">Rechercher</button>
+        </div>
+        <div id="bw-ciqual-manual-results" class="bw-options"></div>
       </div>
 
       <!-- Étape 2 : Colruyt -->
@@ -331,13 +399,14 @@ async function renderWizardStep(panel, pending, index) {
   `;
 
   // Interaction sélection option CIQUAL
-  panel.querySelectorAll('input[name="ciqual_match"]').forEach(radio => {
-    radio.addEventListener('change', () => {
-      panel.querySelectorAll('.bw-option').forEach(o => o.classList.remove('selected'));
-      radio.closest('.bw-option').classList.add('selected');
-      _bwUpdateConfirmState();
+  _bwAttachCiqualListeners(panel);
+
+  const ciqualSearchInput = document.getElementById('bw-ciqual-search');
+  if (ciqualSearchInput) {
+    ciqualSearchInput.addEventListener('keydown', e => {
+      if (e.key === 'Enter') { e.preventDefault(); searchCiqualFromWizard(); }
     });
-  });
+  }
 
   _bwUpdateConfirmState();
 }
@@ -494,21 +563,83 @@ function confirmWizardStep(normKey, index) {
   removePending(normKey);
 
   // Étape suivante
-  const pending = loadPending();
+  const steps = _bwBuildSteps();
   const panel = document.getElementById('bridge-wizard-panel');
-  renderWizardStep(panel, pending, index < pending.length ? index : 0);
+  renderWizardStep(panel, steps, index < steps.length ? index : 0);
 }
 
 // ─── Passer une étape ─────────────────────────────────────────────────────────
 function skipWizardStep(index) {
-  const pending = loadPending();
+  const steps = _bwBuildSteps();
   const panel = document.getElementById('bridge-wizard-panel');
   const nextIndex = index + 1;
-  if (nextIndex >= pending.length) {
+  if (nextIndex >= steps.length) {
     closeBridgeWizard();
   } else {
-    renderWizardStep(panel, pending, nextIndex);
+    renderWizardStep(panel, steps, nextIndex);
   }
+}
+
+// ─── Doublon de stock détecté (checkStockDuplicate, stock.js) ─────────────────
+// Ne réimplémente pas l'addition des quantités : délègue au panneau de
+// fusion existant (openMergePanel/confirmMerge) qui gère déjà la conversion
+// d'unité et laisse choisir quel nom/clé garder.
+function renderDedupStep(panel, steps, index) {
+  const { a, b } = steps[index];
+  const eA = (typeof stock !== 'undefined' && stock[a]) || null;
+  const eB = (typeof stock !== 'undefined' && stock[b]) || null;
+
+  panel.innerHTML = `
+    <div class="bw-header">
+      <h3>Doublon de stock possible
+        <span class="bw-counter">${index + 1} / ${steps.length}</span>
+      </h3>
+      <button class="bw-close" onclick="closeBridgeWizard()">✕</button>
+    </div>
+    <div class="bw-body">
+      <p class="bw-hint">
+        Ces deux entrées de stock semblent désigner le même ingrédient.
+        Fusionne-les si c'est le cas — les quantités seront additionnées —
+        ou indique que ce sont deux ingrédients différents.
+      </p>
+      <div class="bw-options">
+        <label class="bw-option selected">
+          <span class="bw-option-name">${eA?.name || a}</span>
+          <span class="bw-option-sub">${eA?.qty ?? 0} ${eA?.unit || ''} · clé : ${a}</span>
+        </label>
+        <label class="bw-option selected">
+          <span class="bw-option-name">${eB?.name || b}</span>
+          <span class="bw-option-sub">${eB?.qty ?? 0} ${eB?.unit || ''} · clé : ${b}</span>
+        </label>
+      </div>
+    </div>
+    <div class="bw-footer">
+      <button class="bw-btn-ghost" onclick="dismissDedupStep('${a}', '${b}', ${index})">Ingrédients différents</button>
+      <button class="bw-btn-primary" onclick="mergeDedupStep('${a}', '${b}')">🔀 Fusionner</button>
+    </div>
+  `;
+}
+
+function mergeDedupStep(a, b) {
+  if (typeof removeStockDedupPendingPair === 'function') removeStockDedupPendingPair(a, b);
+  closeBridgeWizard();
+  // Réutilise le panneau de fusion existant (choix du nom à garder + addition
+  // des quantités avec conversion d'unité) plutôt que de dupliquer cette logique.
+  if (typeof _mergeSelection !== 'undefined') _mergeSelection = new Set([a, b]);
+  if (typeof openMergePanel === 'function') openMergePanel();
+}
+
+function dismissDedupStep(a, b, index) {
+  if (typeof loadStockDedupIgnored === 'function' && typeof saveStockDedupIgnored === 'function') {
+    const ignored = loadStockDedupIgnored();
+    ignored.add(_dedupSig(a, b));
+    saveStockDedupIgnored(ignored);
+  }
+  if (typeof removeStockDedupPendingPair === 'function') removeStockDedupPendingPair(a, b);
+
+  const steps = _bwBuildSteps();
+  const panel = document.getElementById('bridge-wizard-panel');
+  renderWizardStep(panel, steps, index < steps.length ? index : 0);
 }
 
 // ─── Init ─────────────────────────────────────────────────────────────────────

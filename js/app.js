@@ -6,14 +6,9 @@
 let currentCat        = 'all';
 let currentFeasFilter = null;
 
-// Retourne true si needle apparaît comme mot entier dans haystack
-// (haystack et needle sont déjà normalisés : a-z0-9 + espaces uniquement)
-function _wordIn(haystack, needle) {
-  if (!needle || needle.length < 2 || !haystack) return false;
-  return new RegExp('(?:^| )' + needle + '(?= |$)').test(haystack);
-}
-
 // ── Faisabilité ──
+// _wordIn() est défini dans utils.js (partagé avec stock.js pour la
+// détection de doublons de stock).
 function checkFeasibility(recipe) {
   const stockKeys = Object.keys(stock);
   if (stockKeys.length === 0) return { status: 'unknown', pct: 0, missing: [] };

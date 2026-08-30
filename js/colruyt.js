@@ -134,7 +134,16 @@ function getColruytNutrition(p) {
 // Parmi tous les matches : isAvailable=true + prix le plus bas
 function matchColruyt(normKey) {
   if (!colruytData || colruytData.length === 0) return null;
-  const bridgeTerms = bridgeLookup(normKey);
+  // Eau, eau tiède… n'ont pas de produit Colruyt et ne doivent pas polluer
+  // la file d'attente du Bridge Wizard (voir garde plus bas).
+  if (typeof _isAlwaysAvailable === 'function' && _isAlwaysAvailable(normKey)) return null;
+  // bridgeLookupFull() lit d'abord recettes_bridge_custom (les confirmations
+  // du Bridge Wizard) avant de retomber sur bridgeLookup()/WHITELIST — sans
+  // ça, valider un match dans le wizard n'avait aucun effet ici, seulement
+  // sur le badge du panel d'import. Si un ingrédient reste introuvable, il
+  // est aussi ajouté en pending pour le wizard (même effet de bord que pour
+  // l'import).
+  const bridgeTerms = typeof bridgeLookupFull === 'function' ? bridgeLookupFull(normKey) : bridgeLookup(normKey);
   const terms = Array.isArray(bridgeTerms) ? bridgeTerms : [normKey];
 
   for (const term of terms) {
