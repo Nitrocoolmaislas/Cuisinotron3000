@@ -370,7 +370,7 @@ const WHITELIST = [
   {"id":374,"k":"aiguillette","name":"Aiguillette","cat":"À catégoriser","aliases":[],"ciqual":null,"colruytTerms":["kipfilet"]},
   {"id":373,"k":"aiguillette de poulet","name":"Aiguillette De Poulet","cat":"À catégoriser","aliases":[],"ciqual":null,"colruytTerms":["kipfilet"]},
   {"id":372,"k":"aiguillettes de poulet","name":"Aiguillettes De Poulet","cat":"À catégoriser","aliases":[],"ciqual":null,"colruytTerms":["kipfilet"]},
-  {"id":359,"k":"avoine","name":"Avoine","cat":"À catégoriser","aliases":[],"ciqual":null,"colruytTerms":["havervlokken"]},
+  {"id":359,"k":"avoine","name":"Avoine","cat":"À catégoriser","aliases":[],"ciqual":null,"colruytTerms":["havervlokken","havermout"]},
   {"id":388,"k":"beurre","name":"Beurre","cat":"À catégoriser","aliases":[],"ciqual":null,"colruytTerms":["boter"]},
   {"id":431,"k":"bicarbonate","name":"Bicarbonate","cat":"À catégoriser","aliases":[],"ciqual":null,"colruytTerms":["natriumbicarbonaat","baking soda"]},
   {"id":367,"k":"boeuf","name":"Boeuf","cat":"À catégoriser","aliases":["boeufs","buf"],"ciqual":null,"colruytTerms":["rundergehakt","biefstuk"]},
