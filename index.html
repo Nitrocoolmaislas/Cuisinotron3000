@@ -600,12 +600,25 @@
           <option value="petitdej">Petit-déj</option>
           <option value="dessert">Dessert</option>
         </select>
+        <select id="marmiton-diet" class="marm-select" title="Filtre régime (heuristique — déduit des ingrédients)">
+          <option value="">Tous régimes</option>
+          <option value="vegetarien">🥦 Végétarien</option>
+          <option value="vegan">🌱 Végan</option>
+        </select>
         <button class="marm-btn-search" onclick="marmSearch()">Rechercher</button>
       </div>
       <button class="marm-stock-btn" onclick="marmStockSearch()">
         🥕 Suggestions basées sur mon stock
         <span class="marm-stock-hint">— analyse les recettes faisables avec ce que tu as</span>
       </button>
+      <div class="marm-sort-row">
+        <label>Trier par :
+          <select id="marmiton-sort" class="marm-select" onchange="marmSearch()">
+            <option value="pertinence">Pertinence</option>
+            <option value="stock">% en stock</option>
+          </select>
+        </label>
+      </div>
       <div id="marmiton-results" class="marm-results"></div>
     </div>
   </div>

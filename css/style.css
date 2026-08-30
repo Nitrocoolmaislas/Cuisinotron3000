@@ -1219,6 +1219,13 @@
 .marm-stock-btn:hover { background: #EEE8DC; }
 .marm-stock-hint { font-size: 0.75rem; color: var(--warm-grey); }
 
+.marm-sort-row {
+  display: flex; justify-content: flex-end; align-items: center;
+  margin-bottom: 8px; font-size: 0.8rem; color: var(--warm-grey);
+  font-family: 'DM Sans', sans-serif;
+}
+.marm-sort-row .marm-select { padding: 5px 6px; font-size: 0.78rem; margin-left: 6px; }
+
 .marm-results { display: flex; flex-direction: column; gap: 8px; }
 
 .marm-loading, .marm-empty, .marm-error {

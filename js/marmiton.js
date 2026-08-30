@@ -199,7 +199,7 @@ function _mScoreIngredients(ingredients) {
   let matched = 0;
   for (const raw of ingredients) {
     const { rawName } = parseIngredientString(raw);
-    const key = normIngredient(rawName);
+    const key = typeof canonicalIngredientKey === 'function' ? canonicalIngredientKey(rawName) : normIngredient(rawName);
     if (!key || key.length < 2) continue;
     if (stock[key]) { matched++; continue; }
     // substring fallback
@@ -207,6 +207,37 @@ function _mScoreIngredients(ingredients) {
       matched++;
   }
   return { matched, total: ingredients.length, pct: Math.round(matched / ingredients.length * 100) };
+}
+
+// ── Régime alimentaire (heuristique) ───────────────────────────────────
+// Best-effort, pas une garantie médicale : déduit de la catégorie WHITELIST
+// (data/whitelist_canonique.js) de chaque ingrédient. "Laits & boissons
+// végétales" mélange lait animal et boissons végétales — trop ambigu pour
+// trancher le végan, volontairement exclu (un faux "végan" reste possible
+// si une recette contient du lait de vache non catégorisé plus finement).
+const _M_MEAT_FISH_CATS = new Set(['Viandes', 'Charcuteries', 'Poissons', 'Fruits de mer']);
+const _M_DAIRY_EGG_CATS = new Set(['Œufs', 'Fromages', 'Crèmes', 'Produits laitiers frais']);
+
+function _mDietFlags(ingredients) {
+  let hasMeatFish = false, hasDairyEgg = false;
+  for (const raw of (ingredients || [])) {
+    let rawName;
+    try { rawName = parseIngredientString(raw).rawName; } catch { rawName = raw; }
+    const key = typeof canonicalIngredientKey === 'function' ? canonicalIngredientKey(rawName) : normIngredient(rawName);
+    const entry = typeof whitelistEntry === 'function' ? whitelistEntry(key) : null;
+    if (!entry?.cat) continue; // ingrédient non couvert par WHITELIST → ignoré, pas de faux négatif
+    if (_M_MEAT_FISH_CATS.has(entry.cat)) hasMeatFish = true;
+    if (_M_DAIRY_EGG_CATS.has(entry.cat)) hasDairyEgg = true;
+  }
+  return { vegetarian: !hasMeatFish, vegan: !hasMeatFish && !hasDairyEgg };
+}
+
+function _mDietMatch(recipe, diet) {
+  if (!diet) return true;
+  const flags = _mDietFlags(recipe.ingredients);
+  if (diet === 'vegan') return flags.vegan;
+  if (diet === 'vegetarien') return flags.vegetarian;
+  return true;
 }
 
 // Simplify a stock display name to a Marmiton-friendly search term (max 2 words)
@@ -305,19 +336,34 @@ async function _mLoadCatalog() {
   } catch { return null; }
 }
 
-function _mSearchCatalog(query, { category = null, n = 12 } = {}) {
+// Score de pertinence texte, titre dominant : un match dans le nom compte
+// plus qu'un match perdu dans les ingrédients ou la description, pour éviter
+// que la recherche élargie noie les vrais matchs de titre sous des faux
+// positifs (ex: chercher "poulet" ne doit pas faire remonter en premier une
+// salade qui en contient une trace au milieu de 15 ingrédients).
+function _mTextScore(r, words) {
+  const nameNorm = normIngredient(r.name);
+  const ingNorm  = normIngredient((r.ingredients || []).join(' '));
+  const descNorm = normIngredient(r.description || '');
+  let score = 0;
+  for (const w of words) {
+    if (nameNorm.includes(w))      score += 3;
+    else if (ingNorm.includes(w))  score += 1.5;
+    else if (descNorm.includes(w)) score += 0.5;
+  }
+  return score;
+}
+
+function _mSearchCatalog(query, { category = null, diet = null, n = 12 } = {}) {
   if (!_mCatalog?.length) return [];
   const words = normIngredient(query).split(/\s+/).filter(w => w.length > 2);
-  const base = category ? _mCatalog.filter(r => r.category === category) : _mCatalog;
+  let base = category ? _mCatalog.filter(r => r.category === category) : _mCatalog;
+  if (diet) base = base.filter(r => _mDietMatch(r, diet));
   if (!words.length) {
     return base.slice(0, n).map(r => ({ url: (r.sourceUrl || '').replace(MARMITON_BASE, ''), name: r.name, detail: r }));
   }
   return base
-    .map(r => {
-      const norm = normIngredient(r.name);
-      const score = words.filter(w => norm.includes(w)).length / words.length;
-      return { r, score };
-    })
+    .map(r => ({ r, score: _mTextScore(r, words) }))
     .filter(x => x.score > 0)
     .sort((a, b) => b.score - a.score)
     .slice(0, n)
@@ -399,6 +445,8 @@ async function marmSearch() {
   const query = document.getElementById('marmiton-query').value.trim();
   if (!query) return;
   const category = document.getElementById('marmiton-category').value;
+  const diet     = document.getElementById('marmiton-diet')?.value || null;
+  const sortBy   = document.getElementById('marmiton-sort')?.value || 'pertinence';
 
   _mSearching = true;
   _mSetStatus('<div class="marm-loading">⏳ Recherche en cours…</div>');
@@ -407,7 +455,15 @@ async function marmSearch() {
     // Try static catalog first (instant, no proxy needed)
     const catalog = await _mLoadCatalog();
     if (catalog?.length) {
-      const hits = _mSearchCatalog(query, { category, n: 12 });
+      // Prend un peu plus que n avant de trier par % stock, pour ne pas
+      // couper la liste avant d'avoir pu la réordonner.
+      let hits = _mSearchCatalog(query, { category, diet, n: sortBy === 'stock' ? 30 : 12 });
+      hits = hits.map(h => ({
+        ...h,
+        score: h.detail?.ingredients ? _mScoreIngredients(h.detail.ingredients) : null,
+      }));
+      if (sortBy === 'stock') hits.sort((a, b) => (b.score?.pct || 0) - (a.score?.pct || 0));
+      hits = hits.slice(0, 12);
       if (hits.length) { _mRenderResults(hits); return; }
     }
     // Fallback: CORS proxy (may be blocked by Marmiton bot detection)
@@ -436,6 +492,8 @@ async function marmStockSearch() {
     return;
   }
 
+  const diet = document.getElementById('marmiton-diet')?.value || null;
+
   _mSearching = true;
   document.getElementById('marmiton-query').value = tops.slice(0, 3).join(', ');
   _mSetStatus('<div class="marm-loading">⏳ Recherche de recettes basées sur ton stock…</div>');
@@ -447,7 +505,7 @@ async function marmStockSearch() {
       const seen = new Set();
       const allHits = [];
       for (const ing of tops) {
-        for (const h of _mSearchCatalog(ing, { n: 6 })) {
+        for (const h of _mSearchCatalog(ing, { diet, n: 6 })) {
           if (!seen.has(h.name)) { seen.add(h.name); allHits.push(h); }
         }
       }
