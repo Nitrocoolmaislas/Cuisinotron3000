@@ -27,9 +27,22 @@ function saveBridgeCustom(custom) {
 
 // ─── Charger/sauver la liste des normKeys en attente ─────────────────────────
 function loadPending() {
+  let list;
   try {
-    return JSON.parse(localStorage.getItem(BRIDGE_PENDING_KEY) || '[]');
+    list = JSON.parse(localStorage.getItem(BRIDGE_PENDING_KEY) || '[]');
   } catch { return []; }
+  // Auto-nettoyage : "eau"/"eau tiède"… n'auraient jamais dû finir en pending
+  // (garde ajoutée après coup à matchColruyt()/checkCiqualGaps()/l'import) —
+  // sans ce filtre, une entrée déjà en file avant la garde y restait pour
+  // toujours puisque rien ne la retirait automatiquement.
+  if (typeof _isAlwaysAvailable === 'function') {
+    const filtered = list.filter(k => !_isAlwaysAvailable(k));
+    if (filtered.length !== list.length) {
+      localStorage.setItem(BRIDGE_PENDING_KEY, JSON.stringify(filtered));
+      list = filtered;
+    }
+  }
+  return list;
 }
 
 function savePending(list) {
