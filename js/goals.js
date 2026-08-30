@@ -54,7 +54,7 @@ function computeRecipeMacros(recipe) {
     } else {
       ({ name, qty, unit } = parseIngredient(raw));
     }
-    const key = normIngredient(name);
+    const key = canonicalIngredientKey(name);
     total++;
 
     const grams = typeof toGrams !== 'undefined' ? toGrams(qty, unit, key) : 0;

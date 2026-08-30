@@ -60,7 +60,10 @@ function checkCiqualGaps(recipe) {
 
   for (const raw of (recipe.ingredients || [])) {
     const p = parseIngredientString(raw);
-    const normKey = normIngredient(p.rawName);
+    // canonicalIngredientKey() résout d'abord via WL_IDX (synonyme connu →
+    // SKU canonique) : sans ça, un ingrédient déjà couvert sous son nom
+    // canonique repartait en pending sous son texte brut à chaque import.
+    const normKey = typeof canonicalIngredientKey === 'function' ? canonicalIngredientKey(p.rawName) : normIngredient(p.rawName);
     if (!normKey) continue;
     if (typeof _isAlwaysAvailable === 'function' && _isAlwaysAvailable(normKey)) continue;
     if (getNutriData(normKey)) continue;

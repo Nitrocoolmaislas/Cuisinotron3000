@@ -255,7 +255,7 @@ function addStockItem() {
     ? (() => { const r = parseIngredientString(val); return { name: r.rawName, unit: r.unit || '', qty: r.qty ? String(r.qty) : '' }; })()
     : canonicalize(parseIngredient(val));
 
-  const key = normIngredient(p.name);
+  const key = typeof canonicalIngredientKey === 'function' ? canonicalIngredientKey(p.name) : normIngredient(p.name);
 
   if (key in stock) {
     // Doublon : additionner la quantité + feedback
@@ -302,7 +302,7 @@ function addFromTextarea() {
     const p = typeof parseIngredientString !== 'undefined'
       ? (() => { const r = parseIngredientString(line); return { name: r.rawName, unit: r.unit || '', qty: r.qty ? String(r.qty) : '' }; })()
       : canonicalize(parseIngredient(line));
-    const key = normIngredient(p.name);
+    const key = typeof canonicalIngredientKey === 'function' ? canonicalIngredientKey(p.name) : normIngredient(p.name);
     if (key in stock) {
       if (p.qty) stock[key].qty = (stock[key].qty || 0) + (parseFloat(p.qty) || 0);
       updated++;

@@ -115,11 +115,11 @@ function generateShoppingList() {
         name = parsed.rawName;
         qty  = parsed.qty ? String(parsed.qty) : '';
         unit = parsed.unit || '';
-        key  = normIngredient(name);
+        key  = canonicalIngredientKey(name);
       } else {
         const parsed = parseIngredient(raw);
         name = parsed.name; qty = parsed.qty; unit = parsed.unit;
-        key  = normIngredient(name);
+        key  = canonicalIngredientKey(name);
       }
       if (!ingredientMap.has(key)) {
         ingredientMap.set(key, { name, unit: unit || '', rawQties: [], recipes: [] });

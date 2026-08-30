@@ -99,7 +99,7 @@ function openImportPanel(data) {
   const parsedIngredients = data.ingredients.map(raw => {
     if (typeof parseIngredientString !== 'undefined') {
       const p = parseIngredientString(raw);
-      const normKey = normIngredient(p.rawName);
+      const normKey = typeof canonicalIngredientKey === 'function' ? canonicalIngredientKey(p.rawName) : normIngredient(p.rawName);
       const hasBridge = typeof bridgeLookupFull !== 'undefined'
         ? bridgeLookupFull(normKey) !== null
         : false;

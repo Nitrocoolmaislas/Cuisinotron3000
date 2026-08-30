@@ -84,7 +84,7 @@ async function calcWeeklyNutrition(selectedIds) {
       } else {
         ({ name, qty, unit } = parseIngredient(raw));
       }
-      const key   = normIngredient(name);
+      const key   = canonicalIngredientKey(name);
       const grams = toGrams(qty, unit, key);
       total++;
 
