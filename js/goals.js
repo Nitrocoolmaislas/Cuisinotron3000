@@ -12,6 +12,25 @@ const GOAL_DEFS = [
   { key: 'kcal', label: 'Calories',  unit: 'kcal', icon: '🔥', defaultMode: 'max', defaultThreshold: 600 },
   { key: 'c',    label: 'Glucides',  unit: 'g',    icon: '🍞', defaultMode: 'max', defaultThreshold: 40  },
   { key: 'f',    label: 'Lipides',   unit: 'g',    icon: '🫒', defaultMode: 'max', defaultThreshold: 20  },
+  { key: 'suc',  label: 'Sucres',    unit: 'g',    icon: '🍬', defaultMode: 'max', defaultThreshold: 10  },
+];
+
+// ── Préréglages — activent plusieurs objectifs d'un coup ──
+// Repère indicatif basé sur des principes diététiques courants (sucres
+// limités, glucides modérés, fibres/protéines suffisantes pour ralentir
+// l'absorption du glucose) — ne remplace pas un avis médical/diététique.
+const GOAL_PRESETS = [
+  {
+    key: 'insulino',
+    label: 'Résistance à l\'insuline',
+    icon: '🩸',
+    goals: {
+      suc: { enabled: true, mode: 'max', threshold: 15 },
+      c:   { enabled: true, mode: 'max', threshold: 45 },
+      fb:  { enabled: true, mode: 'min', threshold: 3  },
+      p:   { enabled: true, mode: 'min', threshold: 12 },
+    },
+  },
 ];
 
 // ── Persistance ──
@@ -43,7 +62,7 @@ function invalidateRecipeMacroCache(id) {
 function computeRecipeMacros(recipe) {
   if (_recipeMacroCache.has(recipe.id)) return _recipeMacroCache.get(recipe.id);
 
-  const totals = { kcal: 0, p: 0, c: 0, f: 0, fb: 0 };
+  const totals = { kcal: 0, p: 0, c: 0, f: 0, fb: 0, suc: 0 };
   let covered = 0, total = 0;
 
   for (const raw of (recipe.ingredients || [])) {
@@ -67,6 +86,7 @@ function computeRecipeMacros(recipe) {
       totals.c    += (nutri.gluc ?? 0) * factor;
       totals.f    += (nutri.lip  ?? 0) * factor;
       totals.fb   += (nutri.fib  ?? 0) * factor;
+      totals.suc  += (nutri.suc  ?? 0) * factor;
       covered++;
     }
   }
@@ -78,6 +98,7 @@ function computeRecipeMacros(recipe) {
     c:    totals.c    / servings,
     f:    totals.f    / servings,
     fb:   totals.fb   / servings,
+    suc:  totals.suc  / servings,
   };
   const coverage = total > 0 ? covered / total : 0;
 
@@ -140,6 +161,14 @@ function renderGoalsPanel() {
   const body = document.getElementById('goals-body');
   if (!body) return;
 
+  const presetsEl = document.getElementById('goal-presets');
+  if (presetsEl) {
+    presetsEl.innerHTML = GOAL_PRESETS.map(p => `
+      <button type="button" class="goal-preset-btn" onclick="applyGoalPreset('${p.key}')">
+        ${p.icon} ${p.label}
+      </button>`).join('');
+  }
+
   body.innerHTML = GOAL_DEFS.map(def => {
     const g = state.goals[def.key] || { enabled: false, mode: def.defaultMode, threshold: def.defaultThreshold };
     return `
@@ -186,6 +215,25 @@ function applyGoals() {
       threshold: isNaN(threshold) ? def.defaultThreshold : threshold,
     };
   }
+  _applyGoalsState(state);
+}
+
+// Préréglage : active d'un coup toutes les combinaisons de GOAL_PRESETS.
+// Réutilise le même chemin d'application que le formulaire manuel
+// (chips/badge/tri/filtre grille+planificateur) plutôt que de dupliquer la
+// logique de rendu — seule la construction de `state` diffère.
+function applyGoalPreset(key) {
+  const preset = GOAL_PRESETS.find(p => p.key === key);
+  if (!preset) return;
+  const state = { strict: false, goals: {} };
+  for (const def of GOAL_DEFS) {
+    state.goals[def.key] = preset.goals[def.key]
+      || { enabled: false, mode: def.defaultMode, threshold: def.defaultThreshold };
+  }
+  _applyGoalsState(state);
+}
+
+function _applyGoalsState(state) {
   saveGoalsState(state);
   closeGoalsPanel();
   renderGoalsChips();

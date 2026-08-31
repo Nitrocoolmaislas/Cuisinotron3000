@@ -1324,6 +1324,16 @@
 }
 .goal-chip-remove:hover { opacity: 1; background: rgba(0,0,0,0.06); }
 
+/* Préréglages (combinaisons d'objectifs en un clic) */
+.goal-preset-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 12px; border-radius: 20px; font-size: 0.82rem; font-weight: 500;
+  background: white; color: var(--charcoal); border: 1.5px solid var(--border);
+  cursor: pointer; font-family: 'DM Sans', sans-serif;
+  transition: border-color 0.15s, background 0.15s;
+}
+.goal-preset-btn:hover { border-color: #6B4FA0; background: #F0E9FB; }
+
 /* Panel de configuration (réutilise .recipe-form-panel / .rf-* pour le look) */
 .goal-row {
   display: flex; flex-direction: column; gap: 10px;
