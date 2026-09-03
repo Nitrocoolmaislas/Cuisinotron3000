@@ -13,18 +13,24 @@ const GOAL_DEFS = [
   { key: 'c',    label: 'Glucides',  unit: 'g',    icon: '🍞', defaultMode: 'max', defaultThreshold: 40  },
   { key: 'f',    label: 'Lipides',   unit: 'g',    icon: '🫒', defaultMode: 'max', defaultThreshold: 20  },
   { key: 'suc',  label: 'Sucres',    unit: 'g',    icon: '🍬', defaultMode: 'max', defaultThreshold: 10  },
+  { key: 'gl',   label: 'Charge glycémique', unit: '', icon: '📉', defaultMode: 'max', defaultThreshold: 10 },
 ];
 
 // ── Préréglages — activent plusieurs objectifs d'un coup ──
-// Repère indicatif basé sur des principes diététiques courants (sucres
-// limités, glucides modérés, fibres/protéines suffisantes pour ralentir
-// l'absorption du glucose) — ne remplace pas un avis médical/diététique.
+// Repère indicatif basé sur des principes diététiques courants — ne
+// remplace pas un avis médical/diététique. "gl" (charge glycémique,
+// seuil clinique standard "CG faible" ≤10) est le critère principal ;
+// quand la couverture IG d'une recette est insuffisante (voir
+// js/glycemic.js, GL_COVERAGE_THRESHOLD), gl est ignoré pour CETTE
+// recette (ni pour ni contre — cf. recipeGoalMatch) et les critères
+// macro (sucres/glucides/fibres/protéines) servent de repli.
 const GOAL_PRESETS = [
   {
     key: 'insulino',
     label: 'Résistance à l\'insuline',
     icon: '🩸',
     goals: {
+      gl:  { enabled: true, mode: 'max', threshold: 10 },
       suc: { enabled: true, mode: 'max', threshold: 15 },
       c:   { enabled: true, mode: 'max', threshold: 45 },
       fb:  { enabled: true, mode: 'min', threshold: 3  },
@@ -99,6 +105,7 @@ function computeRecipeMacros(recipe) {
     f:    totals.f    / servings,
     fb:   totals.fb   / servings,
     suc:  totals.suc  / servings,
+    gl:   typeof computeRecipeGlycemicLoad === 'function' ? computeRecipeGlycemicLoad(recipe).glPerServing : null,
   };
   const coverage = total > 0 ? covered / total : 0;
 
@@ -118,10 +125,17 @@ function recipeGoalMatch(recipe) {
   const state = loadGoalsState();
   const { perServing, coverage } = computeRecipeMacros(recipe);
 
-  let metCount = 0, score = 0;
+  let metCount = 0, score = 0, evaluable = 0;
   for (const def of defs) {
     const g = state.goals[def.key];
-    const val = perServing[def.key] || 0;
+    const rawVal = perServing[def.key];
+    // Objectif non évaluable pour cette recette (ex: charge glycémique
+    // faute de couverture IG suffisante, cf. js/glycemic.js) — ignoré,
+    // ni pour ni contre, plutôt que traité comme 0 (qui aurait
+    // artificiellement validé tout objectif "max").
+    if (rawVal === null || rawVal === undefined) continue;
+    evaluable++;
+    const val = rawVal;
     const threshold = g.threshold;
     const ok = g.mode === 'min' ? val >= threshold : val <= threshold;
     if (ok) metCount++;
@@ -131,7 +145,7 @@ function recipeGoalMatch(recipe) {
       : (threshold > 0 ? (threshold - val) / threshold : 0);
   }
 
-  return { hasGoals: true, matches: metCount === defs.length, metCount, total: defs.length, score, coverage };
+  return { hasGoals: true, matches: evaluable > 0 && metCount === evaluable, metCount, total: evaluable, score, coverage };
 }
 
 function goalsBadgeHtml(recipe) {

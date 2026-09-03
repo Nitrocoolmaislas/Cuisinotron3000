@@ -141,6 +141,53 @@ function removeStockDedupPendingPair(a, b) {
   if (typeof refreshBadge === 'function') refreshBadge();
 }
 
+// ── Note stock : types de riz et leur charge glycémique ──────────────────
+// Affichée seulement si le stock contient au moins un SKU de la famille
+// riz — contextuelle, pas un panneau permanent qui encombre pour rien.
+// CG calculée sur une portion de référence partagée (150g de riz cuit,
+// ~28g de glucides/100g cuit toutes variétés confondues) plutôt que sur
+// les valeurs CIQUAL crues de chaque SKU (bases crue/cuite incohérentes
+// selon le type — cf. audit whitelist_canonique.js) : la comparaison
+// entre riz doit se faire sur la même base pour avoir un sens.
+const RICE_FAMILY_KEYS = ['riz blanc', 'riz basmati', 'riz complet', 'riz risotto arborio'];
+const RICE_COOKED_CARBS_PER_100G = 28; // g glucides / 100g de riz cuit, valeur courante toutes variétés
+
+function _renderRiceGlycemicNote() {
+  const container = document.getElementById('stock-rice-note');
+  if (!container) return;
+  const stockKeys = Object.keys(stock);
+  const hasRice = RICE_FAMILY_KEYS.some(k => stockKeys.includes(k));
+  if (!hasRice || typeof getGlycemicIndex !== 'function' || typeof whitelistEntry !== 'function') {
+    container.innerHTML = '';
+    return;
+  }
+
+  const rows = RICE_FAMILY_KEYS.map(k => {
+    const gi = getGlycemicIndex(k);
+    if (gi == null) return null;
+    const name = whitelistEntry(k)?.name || k;
+    const gl150 = Math.round(gi * (RICE_COOKED_CARBS_PER_100G * 1.5) / 100);
+    return { name, gi, gl150 };
+  }).filter(Boolean);
+  if (!rows.length) { container.innerHTML = ''; return; }
+
+  container.innerHTML = `
+    <details class="stock-rice-note">
+      <summary>🍚 Types de riz et charge glycémique</summary>
+      <div class="stock-rice-note-body">
+        <table class="stock-rice-table">
+          <thead><tr><th>Riz</th><th>IG</th><th>CG (150g cuit)</th></tr></thead>
+          <tbody>
+            ${rows.map(r => `<tr><td>${r.name}</td><td>${r.gi}</td><td>${r.gl150}</td></tr>`).join('')}
+          </tbody>
+        </table>
+        <p>À 150g de riz cuit, toutes les variétés retombent en charge glycémique
+        "élevée" (≥20) — la taille de la portion pèse plus lourd que le type de
+        riz à cette échelle. Repère indicatif, pas un avis médical.</p>
+      </div>
+    </details>`;
+}
+
 // ── Panneau stock ──
 function toggleStock() {
   document.getElementById('stock-panel').classList.toggle('open');
@@ -158,6 +205,7 @@ function renderStock() {
     empty.style.display = '';
     list.innerHTML = '';
     clrBtn.style.display = 'none';
+    _renderRiceGlycemicNote();
     return;
   }
   empty.style.display = 'none';
@@ -192,6 +240,8 @@ function renderStock() {
   }
   mergeBtn.style.display = _mergeSelection.size >= 2 ? '' : 'none';
   mergeBtn.textContent = '🔀 Fusionner (' + _mergeSelection.size + ' sélectionnées)';
+
+  _renderRiceGlycemicNote();
 }
 
 function toggleCatalogMerge(key) {

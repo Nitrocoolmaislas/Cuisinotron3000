@@ -178,6 +178,7 @@ async function loadFromDrive() {
       });
       localStorage.setItem(CUSTOM_RECIPES_KEY, JSON.stringify(merged));
       if (typeof invalidateRecipeMacroCache === 'function') invalidateRecipeMacroCache();
+      if (typeof invalidateGLCache === 'function') invalidateGLCache();
       // Si des recettes locales manquaient sur Drive → forcer une resync
       if (merged.length > driveRecipes.length) scheduleCustomRecipesSave();
     }

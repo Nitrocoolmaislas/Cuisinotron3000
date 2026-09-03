@@ -21,6 +21,7 @@ function saveCustomRecipes() {
   localStorage.setItem(CUSTOM_RECIPES_KEY, JSON.stringify(customs));
   scheduleCustomRecipesSave();
   if (typeof invalidateRecipeMacroCache === 'function') invalidateRecipeMacroCache();
+  if (typeof invalidateGLCache === 'function') invalidateGLCache();
 }
 
 // ── Génère un ID unique depuis le titre ──

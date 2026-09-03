@@ -244,6 +244,7 @@
         Aucun ingrédient en stock.<br>Utilisez le <strong>Catalogue</strong> ou<br>la <strong>Saisie libre</strong> pour commencer.
       </div>
       <div id="stock-list"></div>
+      <div id="stock-rice-note"></div>
       <button class="stock-clear-btn" id="stock-clear-btn" style="display:none" onclick="clearStock()">🗑️ Vider le stock</button>
       <button class="scan-ticket-btn" onclick="openBillScanner()">
         📄 Scanner un ticket Colruyt
@@ -497,6 +498,7 @@
       <div id="goal-presets" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
       <p style="font-size:0.72rem;color:var(--warm-grey);margin-top:6px;">
         Repère indicatif basé sur des principes diététiques courants — ne remplace pas un avis médical.
+        La charge glycémique est estimée à partir d'un index glycémique par ingrédient sourcé d'une base publiée (variable selon variété/cuisson) — non calculable pour les recettes dont les glucides ne sont pas assez couverts par cette base.
       </p>
     </div>
     <div class="rf-field">
@@ -556,6 +558,8 @@
 <script src="js/colruyt.js"></script>
 <script src="js/nutrition_data.js"></script>
 <script src="data/ciqual_fr.js"></script>
+<script src="data/glycemic_index.js"></script>
+<script src="js/glycemic.js"></script>
 <script src="js/nutrition.js"></script>
 <script src="js/goals.js"></script>
 <script src="js/custom_recipes.js"></script>
