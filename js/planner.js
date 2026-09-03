@@ -173,8 +173,13 @@ function renderShoppingBody(missing, inStockList) {
       <p>Tout est en stock !<br>Rien à acheter.</p>
     </div>`;
   } else {
+    const totalPrice = missing.reduce((sum, item) => {
+      const v = item.colruytMatch ? getColruytPriceValue(item.colruytMatch) : null;
+      return sum + (v || 0);
+    }, 0);
     html += `<div class="shopping-section-title">
       À acheter <span class="s-badge">${missing.length}</span>
+      ${totalPrice > 0 ? `<span class="shopping-total">≈ ${totalPrice.toFixed(2)} €</span>` : ''}
     </div>`;
     html += missing.map(item => {
       const qtyStr = item.rawQties.length > 0
@@ -262,19 +267,44 @@ function exportShoppingList() {
     [],
     ['Ingrédient', 'Quantité', 'Unité', 'Pour les recettes', 'Produit Colruyt', 'Prix', '✓'],
   ];
+  const firstDataRow = missingRows.length; // 0-based, ligne juste après les en-têtes
+  let totalPrice = 0;
   _lastShoppingMissing.forEach(item => {
+    // Valeur numérique brute (float), pas la string formatée "2.99 €" —
+    // sinon Excel stocke du texte et la colonne n'est ni sommable ni
+    // reconnue comme monétaire (demande explicite : "doit stocker des
+    // floats et pas du texte").
+    const priceValue = item.colruytMatch ? getColruytPriceValue(item.colruytMatch) : null;
+    if (priceValue != null) totalPrice += priceValue;
     missingRows.push([
       item.name,
       item.rawQties.join(', ') || '',
       item.unit || '',
       item.recipes.join(', '),
       item.colruytMatch ? getColruytName(item.colruytMatch) : '',
-      item.colruytMatch ? (formatColruytPrice(item.colruytMatch) || '') : '',
+      priceValue != null ? priceValue : '',
       '',  // case à cocher manuelle
     ]);
   });
+  const lastDataRow = missingRows.length - 1; // 0-based, dernière ligne d'ingrédient
+  const totalRow = missingRows.length;        // 0-based, ligne du total (ajoutée juste après)
+  missingRows.push(['', '', '', '', 'Total', totalPrice, '']);
 
   const ws1 = XLSX.utils.aoa_to_sheet(missingRows);
+
+  // Colonne Prix (F) en type numérique/monétaire — la ligne Total porte en
+  // plus une vraie formule Excel =SUM(...), recalculée si le prix d'une
+  // ligne est modifié à la main dans le fichier.
+  const PRICE_FMT = '0.00" €"';
+  for (let r = firstDataRow; r <= lastDataRow; r++) {
+    const cell = ws1['F' + (r + 1)];
+    if (cell && cell.t === 'n') cell.z = PRICE_FMT;
+  }
+  const totalCellRef = 'F' + (totalRow + 1);
+  ws1[totalCellRef] = {
+    t: 'n', v: totalPrice, z: PRICE_FMT,
+    f: `SUM(F${firstDataRow + 1}:F${lastDataRow + 1})`,
+  };
 
   // Largeurs de colonnes
   ws1['!cols'] = [

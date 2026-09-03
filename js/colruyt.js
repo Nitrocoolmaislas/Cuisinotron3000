@@ -114,10 +114,18 @@ function getColruytName(p) {
 }
 
 // ── Prix (imbriqué dans price.basicPrice) ──
-function formatColruytPrice(p) {
+// Valeur numérique brute — à utiliser pour toute somme/calcul (total liste
+// de courses, export Excel en float) plutôt que de re-parser la string
+// formatée de formatColruytPrice().
+function getColruytPriceValue(p) {
   const price = p.price?.basicPrice;
   if (price == null || price === 0) return null;
-  return parseFloat(price).toFixed(2) + ' €';
+  return parseFloat(price);
+}
+
+function formatColruytPrice(p) {
+  const value = getColruytPriceValue(p);
+  return value == null ? null : value.toFixed(2) + ' €';
 }
 
 // ── Pas d'EAN dans ce dataset ──
