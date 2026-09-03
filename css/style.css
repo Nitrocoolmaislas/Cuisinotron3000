@@ -492,6 +492,15 @@
   }
   .stock-clear-btn:hover { background: var(--border); color: var(--danger); }
 
+  .stock-rice-note { margin-top: 10px; font-size: 0.8rem; }
+  .stock-rice-note summary { cursor: pointer; color: var(--warm-grey); padding: 6px 0; list-style: none; }
+  .stock-rice-note summary::-webkit-details-marker { display: none; }
+  .stock-rice-note-body { padding: 6px 0 2px; }
+  .stock-rice-table { width: 100%; border-collapse: collapse; font-size: 0.78rem; margin-bottom: 8px; }
+  .stock-rice-table th, .stock-rice-table td { text-align: left; padding: 4px 6px; border-bottom: 1px solid var(--border); }
+  .stock-rice-table th { color: var(--warm-grey); font-weight: 500; }
+  .stock-rice-note-body p { font-size: 0.72rem; color: var(--warm-grey); line-height: 1.4; margin: 0; }
+
   /* ── CATALOG TAB SYSTEM ── */
   .stock-tabs {
     display: flex;
