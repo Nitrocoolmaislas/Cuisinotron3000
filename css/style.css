@@ -810,6 +810,10 @@
     padding: 1px 7px; font-size: 0.7rem; font-weight: 600;
   }
   .shopping-section-title .s-badge.ok { background: var(--success); }
+  .shopping-total {
+    margin-left: auto; font-size: 0.78rem; font-weight: 600;
+    letter-spacing: normal; text-transform: none; color: var(--terracotta);
+  }
 
   .shopping-item {
     padding: 10px 16px; border-bottom: 1px solid var(--border);
