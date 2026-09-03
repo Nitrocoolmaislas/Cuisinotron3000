@@ -10,6 +10,7 @@
   width: 540px;
   max-width: 100vw;
   height: 100vh;
+  height: 100dvh;
   background: var(--white, #fff);
   box-shadow: -4px 0 32px rgba(0,0,0,0.14);
   z-index: 500;
@@ -569,6 +570,7 @@ body:has(.import-url-panel.open) #import-url-overlay { display: block; }
   top: 0; right: -560px;
   width: 540px; max-width: 100vw;
   height: 100vh;
+  height: 100dvh;
   background: var(--cream, #faf7f2);
   box-shadow: -4px 0 32px rgba(0,0,0,0.14);
   z-index: 500;
