@@ -12,6 +12,12 @@
     --success: #5B8A5B;
     --danger: #B85454;
     --warning: #C49A3A;
+
+    /* Constantes de layout — une seule source, réutilisée partout au lieu
+       de valeurs dupliquées (cause du bug "left: 260px" resté figé quand
+       la sidebar est devenue un tiroir mobile). */
+    --sidebar-width: 260px;
+    --header-height: 68px;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -49,8 +55,8 @@
   /* ── LAYOUT ── */
   .app {
     display: grid;
-    grid-template-columns: 260px 1fr;
-    min-height: calc(100vh - 68px);
+    grid-template-columns: var(--sidebar-width) 1fr;
+    min-height: calc(100vh - var(--header-height));
   }
 
   /* ── SIDEBAR ── */
@@ -59,8 +65,8 @@
     color: var(--cream);
     padding: 24px 0;
     position: sticky;
-    top: 68px;
-    height: calc(100vh - 68px);
+    top: var(--header-height);
+    height: calc(100vh - var(--header-height));
     overflow-y: auto;
     display: flex;
     flex-direction: column;
@@ -387,9 +393,9 @@
   .stock-panel {
     display: none;
     position: fixed;
-    top: 68px; right: 0;
+    top: var(--header-height); right: 0;
     width: 360px; max-width: 100vw;
-    height: calc(100vh - 68px); height: calc(100dvh - 68px);
+    height: calc(100vh - var(--header-height)); height: calc(100dvh - var(--header-height));
     background: var(--white);
     border-left: 1.5px solid var(--border);
     z-index: 150;
@@ -734,7 +740,7 @@
   /* ── PLANNER BAR (bottom sticky) ── */
   .planner-bar {
     display: none;
-    position: fixed; bottom: 0; left: 260px; right: 0; z-index: 90;
+    position: fixed; bottom: 0; left: var(--sidebar-width); right: 0; z-index: 90;
     background: var(--charcoal); color: var(--cream);
     padding: 14px 28px; border-top: 3px solid var(--terracotta);
     display: none; align-items: center; gap: 16px;
@@ -1379,6 +1385,12 @@
   cursor: pointer; flex-shrink: 0; margin-right: 14px;
 }
 
+/* Base display:none hors media query — sans ça, .sidebar-overlay (un <div>,
+   display:block par défaut) devient un 3ᵉ item du grid 2 colonnes de .app
+   sur desktop, décalant la sidebar d'une colonne et poussant <main> hors
+   champ. Bug réel trouvé en vérifiant les valeurs codées en dur du layout. */
+.sidebar-overlay { display: none; }
+
 @media (max-width: 860px) {
   header { padding: 14px 16px; gap: 10px; }
   .mobile-menu-btn { display: flex; align-items: center; justify-content: center; }
@@ -1395,7 +1407,6 @@
   .sidebar.open { transform: translateX(0); }
 
   .sidebar-overlay {
-    display: none;
     position: fixed; inset: 0; z-index: 255;
     background: rgba(20,16,12,0.5);
   }
