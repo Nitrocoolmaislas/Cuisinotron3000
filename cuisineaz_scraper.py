@@ -106,14 +106,47 @@ def _json_ld(html):
 def discover():
     print(f"🔎  Diagnostic {BASE_URL}\n", flush=True)
 
-    for path in ("/robots.txt", "/sitemap.xml"):
+    sitemap_urls = []
+    try:
+        robots = _read(_open(BASE_URL + "/robots.txt"))
+        print(f"── /robots.txt ({len(robots)} octets) ──", flush=True)
+        print(robots[:2000], flush=True)
+        sitemap_urls = re.findall(r"(?im)^Sitemap:\s*(\S+)", robots)
+        print(f"   Sitemaps déclarés : {sitemap_urls}\n", flush=True)
+    except Exception as e:
+        print(f"── /robots.txt : {e} ──\n", flush=True)
+
+    for sm_url in sitemap_urls[:2]:
         try:
-            html = _read(_open(BASE_URL + path))
-            print(f"── {path} ({len(html)} octets) ──", flush=True)
-            print(html[:3000], flush=True)
-            print("", flush=True)
+            xml = _read(_open(sm_url))
         except Exception as e:
-            print(f"── {path} : {e} ──\n", flush=True)
+            print(f"── {sm_url} : {e} ──\n", flush=True)
+            continue
+        is_index = "<sitemapindex" in xml[:500]
+        locs = re.findall(r"<loc>([^<]+)</loc>", xml)
+        print(f"── {sm_url} ({len(xml)} octets) — {'INDEX' if is_index else 'URLSET'}, {len(locs)} <loc> ──", flush=True)
+        for l in locs[:15]:
+            print(f"     {l}", flush=True)
+        recipe_locs = [l for l in locs if _RECIPE_RE.search(l)]
+        print(f"   → {len(recipe_locs)} correspondent au motif recette, échantillon :", flush=True)
+        for l in recipe_locs[:10]:
+            print(f"     {l}", flush=True)
+        print("", flush=True)
+
+        # Si c'est un index, suivre un sous-sitemap dont le nom évoque les
+        # recettes (sinon le premier) pour voir la structure d'une feuille.
+        if is_index and locs:
+            leaf = next((l for l in locs if re.search(r"recette", l, re.I)), locs[0])
+            try:
+                leaf_xml = _read(_open(leaf))
+                leaf_locs = re.findall(r"<loc>([^<]+)</loc>", leaf_xml)
+                leaf_recipes = [l for l in leaf_locs if _RECIPE_RE.search(l)]
+                print(f"── sous-sitemap {leaf} ({len(leaf_xml)} octets) — {len(leaf_locs)} <loc>, {len(leaf_recipes)} recettes ──", flush=True)
+                for l in leaf_locs[:15]:
+                    print(f"     {l}", flush=True)
+                print("", flush=True)
+            except Exception as e:
+                print(f"── sous-sitemap {leaf} : {e} ──\n", flush=True)
 
     for path in ("/", "/recettes"):
         try:
@@ -146,39 +179,74 @@ def discover():
         print("", flush=True)
 
 # ── Search ────────────────────────────────────────────────────────────
+# cuisineaz.com interdit explicitement le crawl de sa recherche (robots.txt :
+# Disallow /recettes/recherche*, sous toutes ses variantes — confirmé en
+# CI, cf. --discover). En revanche il publie lui-même un sitemap pour le
+# crawl (Sitemap: dans robots.txt) : c'est ce canal, explicitement autorisé,
+# qu'on utilise pour découvrir les recettes, avec un filtrage par mot-clé
+# fait localement sur le slug de chaque URL plutôt qu'une requête distante.
 
-# Recettes cuisineaz.com : URLs historiquement en /recettes/<slug>-<id>.aspx
+# Recettes cuisineaz.com : URLs en /recettes/<slug>-<id>.aspx (confirmé sur
+# les 10000 <loc> du premier sous-sitemap recettes, 100% de correspondance).
 _RECIPE_RE = re.compile(r"/recettes/[^/?#]+-\d+\.aspx$")
 
-def search(query, n=12):
-    results, seen = [], set()
-    q = urllib.parse.quote(query)
-    for url in [
-        f"{BASE_URL}/recettes/recherche.aspx?Recherche={q}",
-        f"{BASE_URL}/recettes/recherche.aspx?rech={q}",
-        f"{BASE_URL}/recherche?q={q}",
-    ]:
+_SITEMAP_INDEX = f"{BASE_URL}/xml/sitemap.xml"
+_sitemap_urls_cache = None
+
+def _load_sitemap_recipe_urls():
+    global _sitemap_urls_cache
+    if _sitemap_urls_cache is not None:
+        return _sitemap_urls_cache
+
+    sub_sitemaps = []
+    try:
+        idx_xml = _read(_open(_SITEMAP_INDEX))
+        sub_sitemaps = [l for l in re.findall(r"<loc>([^<]+)</loc>", idx_xml) if "recette" in l.lower()]
+    except Exception as e:
+        print(f"    ⚠️  sitemap index : {e}", flush=True)
+
+    urls = []
+    # Un seul sous-sitemap recettes (10000 URLs) suffit largement pour les
+    # ~100 recettes visées au total — éviter de télécharger les ~10 sous-
+    # sitemaps recettes (~35 Mo au total) pour rien.
+    for sm in sub_sitemaps[:1]:
         try:
-            html = _read(_open(url))
+            xml = _read(_open(sm))
         except Exception as e:
-            print(f"    ⚠️  {url}: {e}", flush=True)
+            print(f"    ⚠️  {sm} : {e}", flush=True)
             continue
-        soup = BeautifulSoup(html, "html.parser")
-        for a in soup.find_all("a", href=True):
-            href = a["href"]
-            if not href: continue
-            if href.startswith("/"): href = BASE_URL + href
-            if not _RECIPE_RE.search(href) or href in seen: continue
-            seen.add(href)
-            name = ""
-            for el in [a.find(re.compile(r"^h[1-4]$")), a]:
-                if el:
-                    t = el.get_text(" ", strip=True)
-                    if t and len(t) > 3:
-                        name = t[:80]; break
-            results.append({"url": href, "name": name})
-            if len(results) >= n: break
-        if results: break
+        urls.extend(l for l in re.findall(r"<loc>([^<]+)</loc>", xml) if _RECIPE_RE.search(l))
+
+    _sitemap_urls_cache = urls
+    print(f"    📚  {len(urls)} URLs recettes chargées depuis le sitemap\n", flush=True)
+    return urls
+
+def search(query, n=12):
+    pool = _load_sitemap_recipe_urls()
+    if not pool:
+        return []
+    words = [w for w in slugify(query).split("-") if len(w) > 2]
+    if not words:
+        return []
+    # Majorité des mots plutôt que tous : une requête à 3 mots ("bowl quinoa
+    # légumes") ne matchera presque jamais un slug réel mot-pour-mot.
+    threshold = max(1, (len(words) + 1) // 2)
+
+    scored = []
+    for url in pool:
+        slug = slugify(urllib.parse.unquote(url))
+        matched = sum(1 for w in words if w in slug)
+        if matched >= threshold:
+            scored.append((matched, url))
+    scored.sort(key=lambda x: -x[0])
+
+    results = []
+    for matched, url in scored[:n]:
+        # Nom provisoire pour l'affichage log — get_recipe() récupère le vrai
+        # titre (JSON-LD) au moment de la récupération de chaque recette.
+        stem = url.rsplit("/", 1)[-1]
+        name = re.sub(r"-\d+\.aspx$", "", stem).replace("-", " ").capitalize()
+        results.append({"url": url, "name": name})
     return results
 
 # ── Get recipe ────────────────────────────────────────────────────────
