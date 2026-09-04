@@ -360,8 +360,9 @@ async function _mLoadCatalog() {
   if (_mCatalog) return _mCatalog;
   try {
     const settled = await Promise.allSettled([
-      fetch('data/marmiton_catalog.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : null),
-      fetch('data/750g_catalog.json',     { cache: 'no-cache' }).then(r => r.ok ? r.json() : null),
+      fetch('data/marmiton_catalog.json',  { cache: 'no-cache' }).then(r => r.ok ? r.json() : null),
+      fetch('data/750g_catalog.json',      { cache: 'no-cache' }).then(r => r.ok ? r.json() : null),
+      fetch('data/cuisineaz_catalog.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : null),
     ]);
     let catalog = [], updated = null;
     for (const r of settled) {
