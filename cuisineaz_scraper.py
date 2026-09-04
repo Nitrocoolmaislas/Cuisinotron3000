@@ -97,6 +97,54 @@ def _json_ld(html):
             continue
     return None
 
+# ── Discovery (diagnostic) ──────────────────────────────────────────────
+# Le motif réel de recherche/URL du site n'a pas pu être vérifié depuis
+# l'environnement de dev (réseau sortant restreint sur ce domaine) — cette
+# commande tourne sur le runner GitHub Actions (accès internet complet) pour
+# remonter dans les logs de quoi corriger search()/_RECIPE_RE sans deviner.
+
+def discover():
+    print(f"🔎  Diagnostic {BASE_URL}\n", flush=True)
+
+    for path in ("/robots.txt", "/sitemap.xml"):
+        try:
+            html = _read(_open(BASE_URL + path))
+            print(f"── {path} ({len(html)} octets) ──", flush=True)
+            print(html[:3000], flush=True)
+            print("", flush=True)
+        except Exception as e:
+            print(f"── {path} : {e} ──\n", flush=True)
+
+    for path in ("/", "/recettes"):
+        try:
+            html = _read(_open(BASE_URL + path))
+        except Exception as e:
+            print(f"── {path} : {e} ──\n", flush=True)
+            continue
+        soup = BeautifulSoup(html, "html.parser")
+        title = soup.title.get_text(strip=True) if soup.title else ""
+        print(f"── {path} ({len(html)} octets) — <title>: {title} ──", flush=True)
+
+        forms = soup.find_all("form")
+        for f in forms[:5]:
+            action = f.get("action", "")
+            inputs = [i.get("name") for i in f.find_all("input") if i.get("name")]
+            print(f"   <form action=\"{action}\"> inputs={inputs}", flush=True)
+
+        hrefs = []
+        for a in soup.find_all("a", href=True):
+            href = a["href"]
+            if re.search(r"recette", href, re.I):
+                hrefs.append(href)
+        seen = set()
+        print(f"   {len(hrefs)} liens contenant 'recette', échantillon :", flush=True)
+        for h in hrefs:
+            if h in seen: continue
+            seen.add(h)
+            print(f"     {h}", flush=True)
+            if len(seen) >= 25: break
+        print("", flush=True)
+
 # ── Search ────────────────────────────────────────────────────────────
 
 # Recettes cuisineaz.com : URLs historiquement en /recettes/<slug>-<id>.aspx
@@ -279,7 +327,13 @@ if __name__ == "__main__":
     p.add_argument("--output",    "-o", default="data/cuisineaz_catalog.json")
     p.add_argument("--merge",     "-m", metavar="EXISTING", default=None)
     p.add_argument("--delay",     "-d", type=float, default=DELAY_SECONDS)
+    p.add_argument("--discover",  action="store_true",
+                   help="Diagnostic (robots.txt, sitemap, page d'accueil) — n'écrit rien, imprime dans les logs")
     args = p.parse_args()
+
+    if args.discover:
+        discover()
+        sys.exit(0)
 
     if args.query:
         queries = [(args.query.capitalize(), args.query, args.category)]
