@@ -40,14 +40,34 @@ DEFAULT_QUERIES = [
     ("Wok de légumes",          "wok légumes tofu",           "repas"),
     ("Salade niçoise",          "salade niçoise",             "repas"),
     ("Gratin de courgettes",    "gratin courgettes light",    "repas"),
+    ("Riz sauté légumes",       "riz sauté légumes",          "repas"),
+    ("Pâtes complètes légumes", "pâtes complètes légumes",    "repas"),
+    ("Chili végétarien",        "chili végétarien",           "repas"),
+    ("Ratatouille",             "ratatouille légumes",        "repas"),
+    ("Tajine de légumes",       "tajine légumes",             "repas"),
+    ("Buddha bowl",             "buddha bowl légumes",        "repas"),
+    ("Salade de pâtes",         "salade pâtes légumes",       "repas"),
+    ("Soupe de lentilles corail","soupe lentilles corail",    "repas"),
     ("Houmous maison",          "houmous maison",             "tartinade"),
     ("Tzatziki",                "tzatziki maison",            "tartinade"),
     ("Guacamole",               "guacamole maison",           "tartinade"),
     ("Caviar d'aubergines",     "caviar aubergines",          "tartinade"),
+    ("Pesto maison",            "pesto maison",                "tartinade"),
+    ("Tapenade",                "tapenade olives",             "tartinade"),
     ("Porridge avoine",         "porridge avoine",            "petitdej"),
     ("Smoothie bowl",           "smoothie bowl fruits",       "petitdej"),
     ("Overnight oats",          "overnight oats",             "petitdej"),
     ("Pancakes protéinés",      "pancakes protéinés",         "petitdej"),
+    ("Granola maison",          "granola maison",              "petitdej"),
+    ("Chia pudding",            "chia pudding",                 "petitdej"),
+    ("Compote de pommes",       "compote pommes légère",       "dessert"),
+    ("Salade de fruits",        "salade fruits frais",         "dessert"),
+    ("Tarte aux fruits légère", "tarte fruits légère",         "dessert"),
+    ("Mousse au chocolat légère","mousse chocolat légère",     "dessert"),
+    ("Sorbet aux fruits",       "sorbet fruits maison",        "dessert"),
+    ("Cookies à l'avoine",      "cookies avoine",               "dessert"),
+    ("Crumble aux fruits léger","crumble fruits léger",        "dessert"),
+    ("Fruits rôtis au miel",    "fruits rôtis miel",           "dessert"),
 ]
 
 CATEGORY_LABELS = {
@@ -206,10 +226,12 @@ def _load_sitemap_recipe_urls():
         print(f"    ⚠️  sitemap index : {e}", flush=True)
 
     urls = []
-    # Un seul sous-sitemap recettes (10000 URLs) suffit largement pour les
-    # ~100 recettes visées au total — éviter de télécharger les ~10 sous-
-    # sitemaps recettes (~35 Mo au total) pour rien.
-    for sm in sub_sitemaps[:1]:
+    # 3 sous-sitemaps recettes (30000 URLs) — plus que le nécessaire strict,
+    # mais un seul (10000) faisait ressortir trop de doublons sur les mots
+    # fréquents ("maison", "légère"...) une fois DEFAULT_QUERIES élargi.
+    # Les 10 sous-sitemaps recettes existants représentent ~35 Mo au total ;
+    # 3 restent largement raisonnables pour un run hebdomadaire.
+    for sm in sub_sitemaps[:3]:
         try:
             xml = _read(_open(sm))
         except Exception as e:
