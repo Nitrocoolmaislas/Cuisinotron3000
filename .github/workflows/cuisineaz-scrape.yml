@@ -4,6 +4,12 @@ on:
   schedule:
     - cron: '0 7 * * 0'   # Dimanche 7h UTC (2h après Marmiton, 1h après 750g)
   workflow_dispatch:
+    inputs:
+      mode:
+        description: 'scrape (normal) ou discover (diagnostic robots.txt/sitemap/page d''accueil dans les logs, ne commit rien)'
+        type: choice
+        options: [scrape, discover]
+        default: scrape
 
 permissions:
   contents: write
@@ -21,10 +27,16 @@ jobs:
       - name: Install dependencies
         run: pip install beautifulsoup4
 
+      - name: Discover cuisineaz.com structure
+        if: github.event.inputs.mode == 'discover'
+        run: python cuisineaz_scraper.py --discover
+
       - name: Scrape cuisineaz.com
+        if: github.event.inputs.mode != 'discover'
         run: python cuisineaz_scraper.py --output data/cuisineaz_catalog.json --per-query 5 --delay 3.0
 
       - uses: EndBug/add-and-commit@v9
+        if: github.event.inputs.mode != 'discover'
         with:
           message: 'chore(data): update cuisineaz_catalog.json [skip ci]'
           add: data/cuisineaz_catalog.json
