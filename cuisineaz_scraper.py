@@ -40,6 +40,7 @@ DEFAULT_QUERIES = [
     ("Wok de légumes",          "wok légumes tofu",           "repas"),
     ("Salade niçoise",          "salade niçoise",             "repas"),
     ("Gratin de courgettes",    "gratin courgettes light",    "repas"),
+    ("Quiche légère",           "quiche légère légumes",      "repas"),
     ("Riz sauté légumes",       "riz sauté légumes",          "repas"),
     ("Pâtes complètes légumes", "pâtes complètes légumes",    "repas"),
     ("Chili végétarien",        "chili végétarien",           "repas"),

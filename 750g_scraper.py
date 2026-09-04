@@ -32,6 +32,7 @@ DEFAULT_QUERIES = [
     ("Wok de légumes",          "wok légumes tofu",           "repas"),
     ("Salade niçoise",          "salade niçoise",             "repas"),
     ("Gratin de courgettes",    "gratin courgettes light",    "repas"),
+    ("Quiche légère",           "quiche légère légumes",      "repas"),
     ("Houmous maison",          "houmous maison",             "tartinade"),
     ("Tzatziki",                "tzatziki maison",            "tartinade"),
     ("Guacamole",               "guacamole maison",           "tartinade"),
