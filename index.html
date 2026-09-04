@@ -589,7 +589,13 @@
     </div>
     <div class="marm-refresh-row">
       <small id="marm-catalog-status">⏳ Chargement…</small>
-      <button id="marm-refresh-btn" class="marm-btn-refresh" onclick="marmTriggerScrape()">🔄 Mettre à jour</button>
+      <div class="marm-refresh-btns">
+        <button id="marm-refresh-btn" class="marm-btn-refresh" onclick="marmTriggerScrape()">🔄 Mettre à jour</button>
+        <a class="marm-btn-refresh marm-btn-refresh-link" href="https://github.com/Nitrocoolmaislas/Cuisinotron3000/actions/workflows/marmiton-scrape.yml"
+           target="_blank" rel="noopener" title="Ouvre la page GitHub Actions — clique « Run workflow » là-bas, aucun token requis">
+          ↗ Lancer sur GitHub
+        </a>
+      </div>
     </div>
     <details class="marm-settings">
       <summary>🔑 Token GitHub (optionnel)</summary>
