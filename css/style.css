@@ -1245,6 +1245,12 @@
 }
 .marm-sort-row .marm-select { padding: 5px 6px; font-size: 0.78rem; margin-left: 6px; }
 
+.marm-goals-hint {
+  font-size: 0.78rem; color: #6B4FA0; background: #F0E9FB;
+  border-radius: 8px; padding: 7px 12px; margin-bottom: 8px;
+  font-family: 'DM Sans', sans-serif;
+}
+
 .marm-results { display: flex; flex-direction: column; gap: 8px; }
 
 .marm-loading, .marm-empty, .marm-error {
