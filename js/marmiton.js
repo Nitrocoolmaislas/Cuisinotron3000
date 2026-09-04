@@ -14,13 +14,6 @@ const _M_PROXIES = [
   'https://api.codetabs.com/v1/proxy/?quest=',
 ];
 
-const MARMITON_CATS = {
-  repas:     { label: 'Repas',        dt: 'platprincipal' },
-  tartinade: { label: 'Tartinade',    dt: null            },
-  petitdej:  { label: 'Petit-déj',    dt: null            },
-  dessert:   { label: 'Dessert',      dt: 'dessert'       },
-};
-
 // ── HTTP ──────────────────────────────────────────────────────────────
 
 // Délai max par proxy — sans ça, un proxy public lent/mort (allorigins,
@@ -49,15 +42,6 @@ async function _mFetch(url) {
   throw new Error('Proxies CORS indisponibles — Marmiton bloque les requêtes automatiques');
 }
 
-// Extract a readable name from a Marmiton recipe URL slug
-// /recettes/recette_gateau-au-chocolat-fondant_12345.aspx → "Gateau au chocolat fondant"
-function _mNameFromSlug(url) {
-  const m = url.match(/recette_([^_]+(?:_[^_\d][^_]*)*)_\d/);
-  if (!m) return '';
-  return m[1].replace(/-/g, ' ')
-    .replace(/\b\w/g, c => c.toUpperCase());
-}
-
 function _mNextData(html) {
   const m = html.match(/<script[^>]*id="__NEXT_DATA__"[^>]*>([\s\S]*?)<\/script>/);
   if (!m) return null;
@@ -78,56 +62,6 @@ function _mJsonLd(html) {
     } catch { /* skip malformed */ }
   }
   return null;
-}
-
-// ── Search ────────────────────────────────────────────────────────────
-
-async function _mSearch(query, { category = 'repas', noCat = false, n = 8 } = {}) {
-  const cat = MARMITON_CATS[category] || MARMITON_CATS.repas;
-  const params = new URLSearchParams({ aqt: query, sort: 'markdesc' });
-  if (!noCat && cat.dt) params.set('dt', cat.dt);
-  const url = `${MARMITON_BASE}/recettes/recherche.aspx?${params}`;
-
-  const html = await _mFetch(url);
-  const results = [];
-
-  // Try __NEXT_DATA__ first (modern Marmiton React structure)
-  const nd = _mNextData(html);
-  if (nd) {
-    const hits = nd?.props?.pageProps?.searchResults?.hits
-              || nd?.props?.pageProps?.recipes
-              || [];
-    for (const h of hits) {
-      let slug = h.urlFriendlyName || h.url || '';
-      if (slug && !slug.startsWith('/')) slug = '/recettes/' + slug;
-      if (!slug) continue;
-      // Extract partial detail when available (avoids fetching individual pages)
-      const ings = h.ingredients || h.recipeIngredient || [];
-      const detail = ings.length ? {
-        name: h.name || h.title || '',
-        ingredients: ings.map(i => String(i.name||i).trim()).filter(Boolean),
-        steps: [], description: '', prepTime: h.prepTime||0,
-        cookTime: h.cookTime||0, servings: parseInt(h.recipeYield)||2,
-        sourceUrl: MARMITON_BASE + slug, image: h.image||h.mainImage||'',
-      } : null;
-      results.push({ url: slug, name: h.name || h.title || '', detail });
-    }
-  }
-
-  // Fallback: parse anchor hrefs
-  if (!results.length) {
-    const seen = new Set();
-    for (const m of html.matchAll(/href="(\/recettes\/recette_[^"?#]+)"/g)) {
-      if (!seen.has(m[1])) { seen.add(m[1]); results.push({ url: m[1], name: '' }); }
-    }
-  }
-
-  // Fill missing names from slug
-  for (const r of results) {
-    if (!r.name) r.name = _mNameFromSlug(r.url);
-  }
-
-  return results.slice(0, n * 3);
 }
 
 // ── Recipe detail ─────────────────────────────────────────────────────
@@ -523,46 +457,36 @@ async function marmSearch() {
   _mSetStatus('<div class="marm-loading">⏳ Recherche en cours…</div>');
 
   try {
-    // Try static catalog first (instant, no proxy needed)
+    // Recherche exclusivement dans le catalogue hors-ligne — aucune requête
+    // vers un site externe (ni Marmiton ni un proxy CORS tiers). Si la
+    // recette voulue n'y est pas encore, lance le workflow GitHub Actions
+    // correspondant (liens en haut du panel) pour l'ajouter au catalogue.
     const catalog = await _mLoadCatalog();
-    if (catalog?.length) {
-      // Prend un peu plus que n avant de trier par % stock, pour ne pas
-      // couper la liste avant d'avoir pu la réordonner.
-      let hits = _mSearchCatalog(query, { category, diet, n: sortBy === 'stock' ? 30 : 12 });
-      const catalogHadMatches = hits.length > 0;
-      hits = hits.map(h => ({
-        ...h,
-        score: h.detail?.ingredients ? _mScoreIngredients(h.detail.ingredients) : null,
-      }));
-      if (sortBy === 'stock') hits.sort((a, b) => (b.score?.pct || 0) - (a.score?.pct || 0));
-      // Objectifs actifs : priment sur le tri choisi (même règle que la
-      // grille/planificateur) — appliqué juste avant la coupe à 12 pour ne
-      // pas perdre de candidats potentiellement mieux notés côté objectifs.
-      hits = _mApplyGoals(hits);
-      hits = hits.slice(0, 12);
-      if (hits.length) { _mRenderResults(hits); return; }
-      // Le catalogue avait des résultats mais le mode strict des objectifs
-      // les a tous filtrés — ce n'est PAS "le catalogue n'a rien trouvé".
-      // Basculer sur le fallback proxy live serait trompeur (lent, et sans
-      // rapport avec le vrai problème) : on le dit clairement à la place.
-      if (catalogHadMatches) {
-        _mSetStatus(`<div class="marm-empty">Le catalogue a des résultats pour "<em>${_esc(query)}</em>",
-          mais aucun ne respecte tous tes objectifs nutritionnels actifs.<br>
-          <small>Essaie d'assouplir tes objectifs (panel 🎯 Objectifs) ou désactive le mode strict.</small></div>`);
-        return;
-      }
-    }
-    // Fallback: CORS proxy (may be blocked by Marmiton bot detection). Pas
-    // de _mApplyGoals() ici : ces détails n'ont pas d'id (cf. _mApplyGoals),
-    // donc rien n'y serait évaluable — en mode strict ça viderait la liste
-    // au lieu de laisser ces résultats non vérifiés visibles.
-    const hits = await _mSearch(query, { category, n: 8 });
-    if (!hits.length) {
-      _mSetStatus(`<div class="marm-empty">Aucun résultat pour "<em>${_esc(query)}</em>".<br>
-        <small>Le catalogue ne contient pas encore cette recette.</small></div>`);
+    let hits = catalog?.length
+      ? _mSearchCatalog(query, { category, diet, n: sortBy === 'stock' ? 30 : 12 })
+      : [];
+    const catalogHadMatches = hits.length > 0;
+    hits = hits.map(h => ({
+      ...h,
+      score: h.detail?.ingredients ? _mScoreIngredients(h.detail.ingredients) : null,
+    }));
+    if (sortBy === 'stock') hits.sort((a, b) => (b.score?.pct || 0) - (a.score?.pct || 0));
+    // Objectifs actifs : priment sur le tri choisi (même règle que la
+    // grille/planificateur) — appliqué juste avant la coupe à 12 pour ne
+    // pas perdre de candidats potentiellement mieux notés côté objectifs.
+    hits = _mApplyGoals(hits);
+    hits = hits.slice(0, 12);
+    if (hits.length) { _mRenderResults(hits); return; }
+    // Le catalogue avait des résultats mais le mode strict des objectifs
+    // les a tous filtrés — à distinguer de "le catalogue n'a rien trouvé".
+    if (catalogHadMatches) {
+      _mSetStatus(`<div class="marm-empty">Le catalogue a des résultats pour "<em>${_esc(query)}</em>",
+        mais aucun ne respecte tous tes objectifs nutritionnels actifs.<br>
+        <small>Essaie d'assouplir tes objectifs (panel 🎯 Objectifs) ou désactive le mode strict.</small></div>`);
       return;
     }
-    _mRenderResults(hits);
+    _mSetStatus(`<div class="marm-empty">Aucun résultat pour "<em>${_esc(query)}</em>" dans le catalogue hors-ligne.<br>
+      <small>Lance une mise à jour du catalogue (🔄 ou les liens ↗ en haut) pour l'ajouter.</small></div>`);
   } catch (e) {
     _mSetStatus(`<div class="marm-error">❌ ${_esc(e.message)}<br>
       <small>Lance le workflow GitHub Actions pour générer le catalogue hors-ligne.</small></div>`);
@@ -588,72 +512,29 @@ async function marmStockSearch() {
   _mSetStatus('<div class="marm-loading">⏳ Recherche de recettes basées sur ton stock…</div>');
 
   try {
-    // Try static catalog first (instant, no proxy needed)
+    // Recherche exclusivement dans le catalogue hors-ligne (même règle que
+    // marmSearch() — aucune requête vers un site externe).
     const catalog = await _mLoadCatalog();
+    const seen = new Set();
+    const allHits = [];
     if (catalog?.length) {
-      const seen = new Set();
-      const allHits = [];
       for (const ing of tops) {
         for (const h of _mSearchCatalog(ing, { diet, n: 6 })) {
           if (!seen.has(h.name)) { seen.add(h.name); allHits.push(h); }
         }
       }
-      if (allHits.length) {
-        let scored = allHits
-          .map(h => ({ ...h, score: _mScoreIngredients(h.detail?.ingredients) }))
-          .sort((a, b) => b.score.pct - a.score.pct);
-        scored = _mApplyGoals(scored);
-        _mRenderResults(scored);
-        return;
-      }
-    }
-
-    // Fallback: CORS proxy search (pas de _mApplyGoals ici non plus — mêmes
-    // details sans id que ci-dessus, cf. _mApplyGoals)
-    // Search all 4 ingredients IN PARALLEL
-    const searchResults = await Promise.allSettled(
-      tops.slice(0, 4).map(ing => _mSearch(ing, { noCat: true, n: 6 }))
-    );
-    const seen = new Set();
-    const allHits = [];
-    for (const r of searchResults) {
-      if (r.status !== 'fulfilled') continue;
-      for (const h of r.value) {
-        if (!seen.has(h.url)) { seen.add(h.url); allHits.push(h); }
-      }
     }
 
     if (!allHits.length) {
-      _mSetStatus('<div class="marm-empty">Aucun résultat pour ce stock.</div>');
+      _mSetStatus('<div class="marm-empty">Aucun résultat pour ce stock dans le catalogue hors-ligne.</div>');
       return;
     }
 
-    // Show results immediately (unscored) so the user isn't waiting
-    _mRenderResults(allHits);
-
-    // Then fetch all recipe details IN PARALLEL to get scores
-    const limit = Math.min(allHits.length, 8);
-    _mSetStatus(`<div class="marm-loading">⏳ Calcul du score stock… (${limit} recettes en parallèle)</div>`);
-
-    const fetched = await Promise.allSettled(
-      allHits.slice(0, limit).map(h => _mGetRecipe(h.url))
-    );
-
-    const scored = [];
-    for (let i = 0; i < fetched.length; i++) {
-      if (fetched[i].status !== 'fulfilled') continue;
-      const detail = fetched[i].value;
-      const score  = _mScoreIngredients(detail.ingredients);
-      scored.push({ ...allHits[i], name: detail.name || allHits[i].name, detail, score });
-    }
-
-    if (scored.length) {
-      scored.sort((a, b) => b.score.pct - a.score.pct);
-      _mRenderResults(scored);
-    } else {
-      // Score fetch failed — keep the unscored results already shown
-      _mRenderResults(allHits);
-    }
+    let scored = allHits
+      .map(h => ({ ...h, score: _mScoreIngredients(h.detail?.ingredients) }))
+      .sort((a, b) => b.score.pct - a.score.pct);
+    scored = _mApplyGoals(scored);
+    _mRenderResults(scored);
   } catch (e) {
     _mSetStatus(`<div class="marm-error">❌ ${_esc(e.message)}</div>`);
   } finally {
