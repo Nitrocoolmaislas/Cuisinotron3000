@@ -23,10 +23,20 @@ const MARMITON_CATS = {
 
 // ── HTTP ──────────────────────────────────────────────────────────────
 
+// Délai max par proxy — sans ça, un proxy public lent/mort (allorigins,
+// corsproxy.io, codetabs sont connus pour être capricieux) peut faire
+// traîner fetch() très longtemps avant d'échouer, et comme les 3 sont
+// essayés en séquence, une recherche hors catalogue peut rester bloquée
+// sur "Recherche en cours…" pendant très longtemps sur mobile.
+const _M_PROXY_TIMEOUT_MS = 6000;
+
 async function _mFetch(url) {
   for (const proxy of _M_PROXIES) {
     try {
-      const r = await fetch(proxy + encodeURIComponent(url), { cache: 'no-store' });
+      const r = await fetch(proxy + encodeURIComponent(url), {
+        cache: 'no-store',
+        signal: AbortSignal.timeout(_M_PROXY_TIMEOUT_MS),
+      });
       if (!r.ok) continue;
       const html = await r.text();
       // Reject bot-detection / consent pages (no useful content)
@@ -34,7 +44,7 @@ async function _mFetch(url) {
       // Reject consent/captcha pages — valid pages always have structured data
       if (!html.includes('__NEXT_DATA__') && !html.includes('application/ld+json')) continue;
       return html;
-    } catch { /* try next proxy */ }
+    } catch { /* timeout ou erreur réseau — passe au proxy suivant */ }
   }
   throw new Error('Proxies CORS indisponibles — Marmiton bloque les requêtes automatiques');
 }
@@ -519,6 +529,7 @@ async function marmSearch() {
       // Prend un peu plus que n avant de trier par % stock, pour ne pas
       // couper la liste avant d'avoir pu la réordonner.
       let hits = _mSearchCatalog(query, { category, diet, n: sortBy === 'stock' ? 30 : 12 });
+      const catalogHadMatches = hits.length > 0;
       hits = hits.map(h => ({
         ...h,
         score: h.detail?.ingredients ? _mScoreIngredients(h.detail.ingredients) : null,
@@ -530,6 +541,16 @@ async function marmSearch() {
       hits = _mApplyGoals(hits);
       hits = hits.slice(0, 12);
       if (hits.length) { _mRenderResults(hits); return; }
+      // Le catalogue avait des résultats mais le mode strict des objectifs
+      // les a tous filtrés — ce n'est PAS "le catalogue n'a rien trouvé".
+      // Basculer sur le fallback proxy live serait trompeur (lent, et sans
+      // rapport avec le vrai problème) : on le dit clairement à la place.
+      if (catalogHadMatches) {
+        _mSetStatus(`<div class="marm-empty">Le catalogue a des résultats pour "<em>${_esc(query)}</em>",
+          mais aucun ne respecte tous tes objectifs nutritionnels actifs.<br>
+          <small>Essaie d'assouplir tes objectifs (panel 🎯 Objectifs) ou désactive le mode strict.</small></div>`);
+        return;
+      }
     }
     // Fallback: CORS proxy (may be blocked by Marmiton bot detection). Pas
     // de _mApplyGoals() ici : ces détails n'ont pas d'id (cf. _mApplyGoals),
