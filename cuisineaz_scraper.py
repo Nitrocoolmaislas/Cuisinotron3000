@@ -106,14 +106,47 @@ def _json_ld(html):
 def discover():
     print(f"🔎  Diagnostic {BASE_URL}\n", flush=True)
 
-    for path in ("/robots.txt", "/sitemap.xml"):
+    sitemap_urls = []
+    try:
+        robots = _read(_open(BASE_URL + "/robots.txt"))
+        print(f"── /robots.txt ({len(robots)} octets) ──", flush=True)
+        print(robots[:2000], flush=True)
+        sitemap_urls = re.findall(r"(?im)^Sitemap:\s*(\S+)", robots)
+        print(f"   Sitemaps déclarés : {sitemap_urls}\n", flush=True)
+    except Exception as e:
+        print(f"── /robots.txt : {e} ──\n", flush=True)
+
+    for sm_url in sitemap_urls[:2]:
         try:
-            html = _read(_open(BASE_URL + path))
-            print(f"── {path} ({len(html)} octets) ──", flush=True)
-            print(html[:3000], flush=True)
-            print("", flush=True)
+            xml = _read(_open(sm_url))
         except Exception as e:
-            print(f"── {path} : {e} ──\n", flush=True)
+            print(f"── {sm_url} : {e} ──\n", flush=True)
+            continue
+        is_index = "<sitemapindex" in xml[:500]
+        locs = re.findall(r"<loc>([^<]+)</loc>", xml)
+        print(f"── {sm_url} ({len(xml)} octets) — {'INDEX' if is_index else 'URLSET'}, {len(locs)} <loc> ──", flush=True)
+        for l in locs[:15]:
+            print(f"     {l}", flush=True)
+        recipe_locs = [l for l in locs if _RECIPE_RE.search(l)]
+        print(f"   → {len(recipe_locs)} correspondent au motif recette, échantillon :", flush=True)
+        for l in recipe_locs[:10]:
+            print(f"     {l}", flush=True)
+        print("", flush=True)
+
+        # Si c'est un index, suivre un sous-sitemap dont le nom évoque les
+        # recettes (sinon le premier) pour voir la structure d'une feuille.
+        if is_index and locs:
+            leaf = next((l for l in locs if re.search(r"recette", l, re.I)), locs[0])
+            try:
+                leaf_xml = _read(_open(leaf))
+                leaf_locs = re.findall(r"<loc>([^<]+)</loc>", leaf_xml)
+                leaf_recipes = [l for l in leaf_locs if _RECIPE_RE.search(l)]
+                print(f"── sous-sitemap {leaf} ({len(leaf_xml)} octets) — {len(leaf_locs)} <loc>, {len(leaf_recipes)} recettes ──", flush=True)
+                for l in leaf_locs[:15]:
+                    print(f"     {l}", flush=True)
+                print("", flush=True)
+            except Exception as e:
+                print(f"── sous-sitemap {leaf} : {e} ──\n", flush=True)
 
     for path in ("/", "/recettes"):
         try:
