@@ -356,24 +356,41 @@ async function marmTriggerScrape() {
 
 // ── Catalogue statique (data/marmiton_catalog.json) ───────────────────
 
+// Verrou sur le fetch en cours — sans ça, deux appels concurrents (ex:
+// openMarmitonPanel() puis marmSearch() lancé avant que le premier fetch
+// n'ait fini) déclenchaient chacun leur propre fetch des 3 catalogues
+// (jusqu'à ~1.6 Mo téléchargés et parsés deux fois), plutôt que le second
+// appel attende le résultat du premier.
+let _mCatalogPromise = null;
+
 async function _mLoadCatalog() {
   if (_mCatalog) return _mCatalog;
-  try {
-    const settled = await Promise.allSettled([
-      fetch('data/marmiton_catalog.json',  { cache: 'no-cache' }).then(r => r.ok ? r.json() : null),
-      fetch('data/750g_catalog.json',      { cache: 'no-cache' }).then(r => r.ok ? r.json() : null),
-      fetch('data/cuisineaz_catalog.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : null),
-    ]);
-    let catalog = [], updated = null;
-    for (const r of settled) {
-      if (r.status !== 'fulfilled' || !r.value) continue;
-      catalog  = catalog.concat(r.value.customRecipes || r.value.catalog || []);
-      if (!updated) updated = r.value.updated || null;
+  if (_mCatalogPromise) return _mCatalogPromise;
+
+  _mCatalogPromise = (async () => {
+    try {
+      const settled = await Promise.allSettled([
+        fetch('data/marmiton_catalog.json',  { cache: 'no-cache' }).then(r => r.ok ? r.json() : null),
+        fetch('data/750g_catalog.json',      { cache: 'no-cache' }).then(r => r.ok ? r.json() : null),
+        fetch('data/cuisineaz_catalog.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : null),
+      ]);
+      let catalog = [], updated = null;
+      for (const r of settled) {
+        if (r.status !== 'fulfilled' || !r.value) continue;
+        catalog  = catalog.concat(r.value.customRecipes || r.value.catalog || []);
+        if (!updated) updated = r.value.updated || null;
+      }
+      _mCatalog        = catalog;
+      _mCatalogUpdated = updated;
+      return _mCatalog;
+    } catch {
+      return null;
+    } finally {
+      _mCatalogPromise = null;
     }
-    _mCatalog        = catalog;
-    _mCatalogUpdated = updated;
-    return _mCatalog;
-  } catch { return null; }
+  })();
+
+  return _mCatalogPromise;
 }
 
 // Score de pertinence texte, titre dominant : un match dans le nom compte
