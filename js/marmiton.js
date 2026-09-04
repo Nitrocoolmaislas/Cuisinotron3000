@@ -240,6 +240,45 @@ function _mDietMatch(recipe, diet) {
   return true;
 }
 
+// ── Objectifs nutritionnels ─────────────────────────────────────────────
+// Même règle que renderGrid()/renderPlanner() (app.js, planner.js) : trie les
+// résultats qui correspondent le mieux en premier, et en mode strict (case du
+// panel Objectifs) ne garde que ceux qui satisfont TOUS les objectifs actifs.
+// Réutilise directement recipeGoalMatch()/computeRecipeMacros() — les entrées
+// catalogue (id/ingredients/servings) ont la même forme qu'une recette
+// classique, aucun calcul dupliqué ici.
+function _mApplyGoals(hits) {
+  if (typeof activeGoalDefs !== 'function' || !activeGoalDefs().length) return hits;
+  const strict = typeof loadGoalsState === 'function' && loadGoalsState().strict;
+  const withMatch = hits.map(h => ({
+    h,
+    // Évaluable seulement pour les résultats catalogue (id + ingrédients +
+    // portions présents). computeRecipeMacros() met son résultat en cache
+    // par recipe.id — un detail sans id (recherche proxy live, hors
+    // catalogue) collisionnerait dans ce cache plutôt que de donner un
+    // mauvais résultat, on ne l'évalue donc pas du tout.
+    m: h.detail?.id ? recipeGoalMatch(h.detail) : null,
+  }));
+  const filtered = strict ? withMatch.filter(x => x.m && x.m.matches) : withMatch;
+  filtered.sort((a, b) => {
+    if (!a.m && !b.m) return 0;
+    if (!a.m) return 1;   // non évaluables relégués en fin de liste
+    if (!b.m) return -1;
+    return (b.m.metCount - a.m.metCount) || (b.m.score - a.m.score);
+  });
+  return filtered.map(x => x.h);
+}
+
+function _mGoalsHint() {
+  const el = document.getElementById('marmiton-goals-hint');
+  if (!el) return;
+  const defs = typeof activeGoalDefs === 'function' ? activeGoalDefs() : [];
+  if (!defs.length) { el.style.display = 'none'; return; }
+  const strict = typeof loadGoalsState === 'function' && loadGoalsState().strict;
+  el.style.display = '';
+  el.textContent = `🎯 ${defs.length} objectif${defs.length > 1 ? 's' : ''} nutritionnel${defs.length > 1 ? 's' : ''} actif${defs.length > 1 ? 's' : ''} — résultats ${strict ? 'filtrés' : 'triés'} en conséquence`;
+}
+
 // Simplify a stock display name to a Marmiton-friendly search term (max 2 words)
 const _M_STOP = /\b(doux|douce|epaisse?|liquide|entier|entiere|frais|fraiche|blanc|blanche|noire?|rouge|vert|verte|maison|nature|bio|surgele[es]?|crue?s?|cuites?|cube[s]?|rapee?|hache[e]?|fonde?|demi|semi|leger|legere|jeune[s]?)\b/gi;
 function _mSimplify(name) {
@@ -379,6 +418,7 @@ async function openMarmitonPanel() {
   setTimeout(() => document.getElementById('marmiton-query').focus(), 100);
   const tokenInput = document.getElementById('marm-gh-token');
   if (tokenInput) tokenInput.value = _mGhToken();
+  _mGoalsHint();
   const cat = await _mLoadCatalog();
   const el = document.getElementById('marm-catalog-status');
   if (el) {
@@ -405,6 +445,7 @@ function _mScoreBadge(pct) {
 }
 
 function _mRenderResults(hits) {
+  _mGoalsHint();
   if (!hits.length) {
     _mSetStatus('<div class="marm-empty">Aucun résultat trouvé.</div>');
     return;
@@ -414,6 +455,7 @@ function _mRenderResults(hits) {
     const score  = h.score;
     const time   = h.detail ? (h.detail.prepTime + h.detail.cookTime) : 0;
     const serves = h.detail?.servings;
+    const goalBadge = h.detail?.id && typeof goalsBadgeHtml === 'function' ? goalsBadgeHtml(h.detail) : '';
     return `<div class="marm-hit" data-idx="${i}">
       <div class="marm-hit-info">
         <div class="marm-hit-name">${_esc(h.name || h.url.split('/').pop())}</div>
@@ -421,6 +463,7 @@ function _mRenderResults(hits) {
           ${time   ? `⏱ ${time} min` : ''}
           ${serves ? `· 👤 ${serves} portion${serves > 1 ? 's' : ''}` : ''}
           ${score  ? _mScoreBadge(score.pct) : ''}
+          ${goalBadge}
         </div>
       </div>
       <div class="marm-hit-btns">
@@ -463,10 +506,17 @@ async function marmSearch() {
         score: h.detail?.ingredients ? _mScoreIngredients(h.detail.ingredients) : null,
       }));
       if (sortBy === 'stock') hits.sort((a, b) => (b.score?.pct || 0) - (a.score?.pct || 0));
+      // Objectifs actifs : priment sur le tri choisi (même règle que la
+      // grille/planificateur) — appliqué juste avant la coupe à 12 pour ne
+      // pas perdre de candidats potentiellement mieux notés côté objectifs.
+      hits = _mApplyGoals(hits);
       hits = hits.slice(0, 12);
       if (hits.length) { _mRenderResults(hits); return; }
     }
-    // Fallback: CORS proxy (may be blocked by Marmiton bot detection)
+    // Fallback: CORS proxy (may be blocked by Marmiton bot detection). Pas
+    // de _mApplyGoals() ici : ces détails n'ont pas d'id (cf. _mApplyGoals),
+    // donc rien n'y serait évaluable — en mode strict ça viderait la liste
+    // au lieu de laisser ces résultats non vérifiés visibles.
     const hits = await _mSearch(query, { category, n: 8 });
     if (!hits.length) {
       _mSetStatus(`<div class="marm-empty">Aucun résultat pour "<em>${_esc(query)}</em>".<br>
@@ -510,15 +560,17 @@ async function marmStockSearch() {
         }
       }
       if (allHits.length) {
-        const scored = allHits
+        let scored = allHits
           .map(h => ({ ...h, score: _mScoreIngredients(h.detail?.ingredients) }))
           .sort((a, b) => b.score.pct - a.score.pct);
+        scored = _mApplyGoals(scored);
         _mRenderResults(scored);
         return;
       }
     }
 
-    // Fallback: CORS proxy search
+    // Fallback: CORS proxy search (pas de _mApplyGoals ici non plus — mêmes
+    // details sans id que ci-dessus, cf. _mApplyGoals)
     // Search all 4 ingredients IN PARALLEL
     const searchResults = await Promise.allSettled(
       tops.slice(0, 4).map(ing => _mSearch(ing, { noCat: true, n: 6 }))
