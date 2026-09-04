@@ -360,15 +360,20 @@ function _mSearchCatalog(query, { category = null, diet = null, n = 12 } = {}) {
   const words = normIngredient(query).split(/\s+/).filter(w => w.length > 2);
   let base = category ? _mCatalog.filter(r => r.category === category) : _mCatalog;
   if (diet) base = base.filter(r => _mDietMatch(r, diet));
+  // URL absolue telle quelle (pas de strip conditionnel à MARMITON_BASE) —
+  // un résultat catalogue peut venir de marmiton.org, 750g.com ou
+  // cuisineaz.com, et le strip d'origine ne s'appliquait qu'au premier,
+  // laissant les deux autres avec leur URL complète : marmOpenUrl() y
+  // re-préfixait MARMITON_BASE, produisant une URL cassée pour ces sources.
   if (!words.length) {
-    return base.slice(0, n).map(r => ({ url: (r.sourceUrl || '').replace(MARMITON_BASE, ''), name: r.name, detail: r }));
+    return base.slice(0, n).map(r => ({ url: r.sourceUrl || '', name: r.name, detail: r }));
   }
   return base
     .map(r => ({ r, score: _mTextScore(r, words) }))
     .filter(x => x.score > 0)
     .sort((a, b) => b.score - a.score)
     .slice(0, n)
-    .map(({ r }) => ({ url: (r.sourceUrl || '').replace(MARMITON_BASE, ''), name: r.name, detail: r }));
+    .map(({ r }) => ({ url: r.sourceUrl || '', name: r.name, detail: r }));
 }
 
 // ── Panel helpers ─────────────────────────────────────────────────────
@@ -551,7 +556,10 @@ async function marmImportHit(idx) {
   if (btn) { btn.disabled = true; btn.textContent = '⏳'; }
 
   try {
-    const detail = hit.detail || await _mGetRecipe(hit.url);
+    // hit vient toujours du catalogue hors-ligne (_mSearchCatalog() renvoie
+    // systématiquement un detail non-null) — plus de fallback vers une
+    // requête live ici.
+    const detail = hit.detail;
 
     // Build JSON-LD object compatible with the existing importer
     const ld = {
@@ -572,7 +580,7 @@ async function marmImportHit(idx) {
     openImportPanel(parsed);
   } catch (e) {
     if (btn) { btn.disabled = false; btn.textContent = '📥 Importer'; }
-    const fullUrl = hit.detail?.sourceUrl || (hit.url.startsWith('http') ? hit.url : MARMITON_BASE + hit.url);
+    const fullUrl = hit.detail?.sourceUrl || hit.url;
     _mSetStatus(`<div class="marm-error">
       <strong>Import impossible</strong><br>
       <small>${e.message || 'Recette incomplète ou proxy bloqué.'}</small>
@@ -595,15 +603,18 @@ async function marmImportHit(idx) {
 // Open the recipe URL in the import URL panel (pre-filled)
 function marmOpenUrl(idx) {
   const hit = _mResults[idx];
-  if (!hit) return;
+  if (!hit?.url) return;
   closeMarmitonPanel();
-  _mOpenImportUrl(MARMITON_BASE + hit.url);
+  _mOpenImportUrl(hit.url);
 }
 
-async function _mOpenImportUrl(url) {
+// Pré-remplit le panel d'import par URL sans lancer de requête — l'utilisateur
+// doit cliquer lui-même sur "Importer" (même geste explicite que pour une URL
+// collée à la main). Recherche/résultats restent 100% catalogue hors-ligne :
+// ce bouton ne doit jamais déclencher de requête vers un site externe tout
+// seul, seulement offrir un raccourci vers l'import manuel par URL existant.
+function _mOpenImportUrl(url) {
   openImportUrlPanel();                           // ouvre et reset le champ
   const input = document.getElementById('import-url-input');
   if (input) input.value = url;                   // pré-remplit APRÈS le reset
-  // Lance l'import proxy automatiquement — si ça marche l'utilisateur ne voit pas ce panneau
-  await importFromUrl();
 }
