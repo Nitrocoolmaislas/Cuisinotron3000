@@ -33,7 +33,7 @@ jobs:
 
       - name: Scrape cuisineaz.com
         if: github.event.inputs.mode != 'discover'
-        run: python cuisineaz_scraper.py --output data/cuisineaz_catalog.json --per-query 5 --delay 3.0
+        run: python cuisineaz_scraper.py --output data/cuisineaz_catalog.json --per-query 8 --delay 3.0
 
       - uses: EndBug/add-and-commit@v9
         if: github.event.inputs.mode != 'discover'
