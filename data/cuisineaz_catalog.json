@@ -1159,6 +1159,74 @@
       "sourceUrl": "https://www.cuisineaz.com/recettes/soupe-paysanne-aux-legumes-racines-a-congeler-119787.aspx"
     },
     {
+      "id": "cuisineaz-soupe-de-lentilles-vertes-recette-terroir",
+      "custom": true,
+      "source": "cuisineaz",
+      "category": "repas",
+      "categoryLabel": "Repas chauds",
+      "name": "Soupe de lentilles vertes : recette terroir",
+      "description": "Quand les jours raccourcissent, la soupe de lentilles vertes réchauffe les tables et les cœurs. Avec des légumes d’hiver et le goût authentique du terroir, elle invite petits et grands à partager un repas sain et généreux. Star des placards, la lentille verte se marie parfaitement aux carottes, poireaux et oignons de saison. Rien de compliqué, juste l’essentiel pour une recette traditionnelle qui rassemble, rassasie et met tout le monde d’accord, autour d’une belle cuillère fumante.",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 4,
+      "ingredients": [
+        "300 g Lentilles vertes",
+        "2 pièce(s) Carottes en rondelles surgelées U",
+        "1 pièce(s) Oignon(s)",
+        "1 pièce(s) Poireau(x)",
+        "2 gousse(s) Ail",
+        "1 l Bouillon de légumes",
+        "0.5 l Eau",
+        "1 branche(s) Thym",
+        "1 Feuille(s) Feuille(s) de laurier",
+        "2 c. à soupe Huile d'olive",
+        "Sel",
+        "Poivre"
+      ],
+      "steps": [
+        "Commencez par rincer rapidement le poireau, puis retirez la base et la partie vert foncé la plus dure si besoin. Émincez-le finement. Pelez l’oignon et coupez-le en petits morceaux. Épluchez les gousses d’ail puis hachez-les. Sortez les rondelles de carottes surgelées pour les avoir sous la main. Triez ensuite les lentilles vertes si nécessaire, puis rincez-les soigneusement à l’eau froide jusqu’à ce que l’eau soit claire.",
+        "Dans une grande cocotte ou une marmite, faites chauffer l’huile d’olive sur feu moyen. Ajoutez l’oignon, le poireau et l’ail, puis laissez cuire quelques minutes en remuant régulièrement. Les légumes doivent devenir tendres sans colorer fortement. Cette étape permet de développer une base parfumée et douce, qui donnera à la soupe son caractère terroir et une saveur réconfortante dès les premières cuillerées.",
+        "Versez les lentilles rincées dans la cocotte avec les légumes revenus. Ajoutez ensuite les rondelles de carottes, la branche de thym et la feuille de laurier. Mélangez bien pour répartir tous les ingrédients. Cette étape aide les lentilles à s’imprégner des arômes avant l’ajout du liquide, ce qui renforce le goût final de la soupe et lui donne une belle profondeur malgré une préparation simple.",
+        "Versez le bouillon de légumes puis l’eau dans la cocotte. Mélangez doucement pour décoller les sucs éventuels au fond du récipient et bien répartir les ingrédients. Portez l’ensemble à petite ébullition sur feu moyen. Lorsque le liquide commence à frémir, baissez légèrement le feu afin de conserver une cuisson régulière. N’ajoutez le sel qu’avec prudence à ce stade, surtout si le bouillon est déjà salé.",
+        "Laissez cuire la soupe à feu doux pendant environ 35 à 45 minutes, en couvrant partiellement la cocotte. Remuez de temps en temps pour vérifier que rien n’attache au fond. Les lentilles doivent devenir bien tendres, tout en gardant une texture agréable. Si vous constatez que la soupe épaissit trop pendant la cuisson, vous pouvez ajouter un petit verre d’eau pour ajuster la consistance selon votre goût.",
+        "Quand les lentilles sont bien cuites, retirez la branche de thym et la feuille de laurier. Goûtez ensuite la soupe avec attention, puis ajoutez du sel et du poivre selon vos préférences. Mélangez une dernière fois pour bien répartir l’assaisonnement. Si vous aimez les soupes plus rustiques, laissez-la telle quelle. Si vous la préférez un peu plus liée, vous pouvez écraser légèrement une petite partie des lentilles.",
+        "Servez la soupe bien chaude dans des bols ou des assiettes creuses. Veillez à répartir harmonieusement les lentilles et les légumes dans chaque portion pour un résultat généreux et appétissant. Cette soupe de lentilles vertes accompagne très bien du pain de campagne ou des tartines grillées. Juste avant de servir, vous pouvez ajouter un tour de poivre pour renforcer encore le côté simple, familial et chaleureux du plat."
+      ],
+      "image": "https://img.cuisineaz.com/667x667/2017/01/03/i115108-.jpeg",
+      "sourceUrl": "https://www.cuisineaz.com/recettes/soupe-de-lentilles-vertes-recette-terroir-125506.aspx"
+    },
+    {
+      "id": "cuisineaz-soupe-lentilles-corail-express-en-20-minutes",
+      "custom": true,
+      "source": "cuisineaz",
+      "category": "repas",
+      "categoryLabel": "Repas chauds",
+      "name": "Soupe lentilles corail express en 20 minutes",
+      "description": "Envie d’un plat réconfortant en un rien de temps ? La soupe de lentilles corail express est un classique qui réchauffe tous les foyers. Les lentilles corail, combinées aux carottes de saison et à la coriandre fraîche, offrent des saveurs douces et équilibrées. Cette recette simple, rapide et généreuse invite à partager un moment convivial autour d’une soupe nourrissante. Parfaite pour les soirs pressés ou pour ajouter un brin de tradition et de chaleur à votre table, toute l’année.",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 4,
+      "ingredients": [
+        "250 g Lentilles corail",
+        "1 pièce(s) Oignon(s)",
+        "2 pièce(s) Carotte(s)",
+        "2 pièce(s) Ail",
+        "2 c. à soupe Huile d'olive",
+        "1 l Bouillon de légumes",
+        "1 c. à café Cumin moulu",
+        "1 botte(s) Coriandre fraîche"
+      ],
+      "steps": [
+        "Rincez rapidement les lentilles corail sous l’eau froide pour retirer les éventuelles impuretés, puis laissez-les s’égoutter. Épluchez l’oignon, les carottes et les gousses d’ail. Émincez l’oignon, coupez les carottes en fines rondelles et hachez l’ail. Lavez la coriandre fraîche, séchez-la délicatement, puis séparez les tiges des feuilles. Gardez les feuilles pour la finition et réservez les tiges pour parfumer la soupe pendant la cuisson.",
+        "Dans une grande casserole, faites chauffer l’huile d’olive sur feu moyen. Ajoutez l’oignon émincé, les carottes et l’ail haché, puis mélangez régulièrement pendant quelques minutes pour bien enrober les légumes. Lorsqu’ils commencent à devenir tendres, ajoutez le cumin moulu et les tiges de coriandre ciselées. Remuez bien afin de diffuser les arômes sans laisser colorer excessivement les légumes, ce qui garderait à la soupe toute sa douceur.",
+        "Versez les lentilles corail égouttées dans la casserole avec les légumes revenus. Mélangez soigneusement pour bien répartir les saveurs. Ajoutez ensuite le bouillon de légumes, puis portez l’ensemble à ébullition. Dès que le liquide frémit franchement, baissez sur feu moyen à doux et laissez cuire environ 15 minutes. Remuez de temps en temps pour éviter que les lentilles n’attachent au fond et pour favoriser une cuisson homogène.",
+        "Quand les lentilles sont bien fondantes et que les carottes sont tendres, retirez la casserole du feu. Mixez la préparation à l’aide d’un mixeur plongeant directement dans la casserole jusqu’à obtenir une soupe lisse et onctueuse. Si vous préférez une texture plus fluide, ajoutez un peu d’eau chaude ou de bouillon. Goûtez ensuite la soupe et ajustez l’assaisonnement selon vos habitudes, en ajoutant éventuellement un peu de sel ou de poivre.",
+        "Versez la soupe bien chaude dans des bols ou des assiettes creuses. Parsemez généreusement de feuilles de coriandre fraîche juste avant de servir pour apporter une note vive et parfumée. Vous pouvez accompagner cette soupe de pain grillé ou de croûtons pour un repas simple et réconfortant. Servez sans attendre afin de profiter de toute son onctuosité et de ses arômes encore bien présents."
+      ],
+      "image": "https://img.cuisineaz.com/667x667/2018/11/03/i143829-soupe-de-lentilles-corail-aux-carottes.jpeg",
+      "sourceUrl": "https://www.cuisineaz.com/recettes/soupe-lentilles-corail-express-en-20-minutes-125492.aspx"
+    },
+    {
       "id": "cuisineaz-veloute-potimarron-et-lentilles-corail",
       "custom": true,
       "source": "cuisineaz",
@@ -1367,75 +1435,6 @@
       ],
       "image": "https://img.cuisineaz.com/1023x1023/2014/02/24/i81758-salade-de-quinoa-et-lentilles.jpg",
       "sourceUrl": "https://www.cuisineaz.com/recettes/salade-de-quinoa-aux-lentilles-124029.aspx"
-    },
-    {
-      "id": "cuisineaz-salade-de-quinoa-aux-epinards",
-      "custom": true,
-      "source": "cuisineaz",
-      "category": "repas",
-      "categoryLabel": "Repas chauds",
-      "name": "Salade de quinoa aux épinards",
-      "description": "Découvrez une salade de quinoa aux épinards, colorée et pleine de fraîcheur ! Le quinoa, riche en protéines, s’associe à l'épinard, star du printemps, pour une recette gourmande et équilibrée. Avec la feta, le concombre et les tomates cerises, retrouvez un mélange de saveurs inspiré des tables méditerranéennes. Pratique et rapide, cette salade invite petits et grands à partager un moment convivial et savoureux en famille ou entre amis. À vos fourchettes, prêts, régalez-vous !",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 4,
-      "ingredients": [
-        "250 g Quinoa",
-        "200 g Epinards en branches surgelés U",
-        "200 g Grappe de tomates cerises",
-        "1 Concombre(s)",
-        "150 g Feta",
-        "1 Oignon(s) rouge(s)",
-        "3 c. à soupe Huile d'olive",
-        "2 c. à soupe Jus de citron",
-        "pincée(s) Sel",
-        "pincée(s) Poivre"
-      ],
-      "steps": [
-        "Rincez soigneusement le quinoa sous un filet d’eau froide pour retirer son éventuelle amertume. Faites-le ensuite cuire dans une casserole d’eau bouillante salée en suivant le temps indiqué sur le paquet, jusqu’à ce qu’il soit tendre tout en restant légèrement ferme. Égouttez-le bien, puis étalez-le sur une grande assiette ou un plat afin qu’il refroidisse plus vite et que les grains restent bien séparés.",
-        "Placez les épinards en branches surgelés dans un saladier et laissez-les décongeler complètement. Si vous souhaitez aller plus vite, vous pouvez les passer quelques instants au micro-ondes, sans les cuire excessivement. Pressez-les ensuite délicatement entre vos mains propres ou dans une passoire pour retirer le maximum d’eau, puis émiettez-les grossièrement afin de faciliter leur répartition dans la salade.",
-        "Lavez les tomates cerises et le concombre avec soin. Coupez les tomates cerises en deux pour libérer leur jus et apporter plus de saveur à la salade. Pelez le concombre si vous le souhaitez, puis détaillez-le en petits dés réguliers. Épluchez l’oignon rouge et émincez-le finement afin qu’il parfume l’ensemble sans dominer les autres ingrédients à la dégustation.",
-        "Sortez la feta de son emballage et égouttez-la si nécessaire. Coupez-la en petits dés ou émiettez-la grossièrement selon la texture que vous préférez dans la salade. Veillez à conserver des morceaux assez visibles pour qu’ils apportent du relief à chaque bouchée. Réservez-la au frais pendant la suite de la préparation pour qu’elle garde toute sa tenue.",
-        "Dans un bol, versez l’huile d’olive et le jus de citron. Salez légèrement, puis ajoutez quelques pincées de poivre selon votre goût. Mélangez vivement à l’aide d’une cuillère ou d’un petit fouet jusqu’à obtenir une sauce bien homogène. Goûtez la vinaigrette et ajustez l’assaisonnement si besoin, en gardant à l’esprit que la feta apportera aussi une note salée.",
-        "Dans un grand saladier, rassemblez le quinoa refroidi, les épinards bien égouttés, les tomates cerises, les dés de concombre et l’oignon rouge émincé. Ajoutez la feta, puis versez la vinaigrette par-dessus. Mélangez délicatement avec deux cuillères pour bien enrober tous les ingrédients sans écraser les morceaux, afin d’obtenir une salade colorée, fraîche et équilibrée.",
-        "Laissez reposer la salade de quinoa aux épinards pendant une quinzaine de minutes au frais avant de la servir. Ce temps permet aux saveurs de bien se mêler et rend l’ensemble plus agréable en bouche. Juste avant le service, remuez une dernière fois, goûtez, puis rectifiez si nécessaire avec un peu de sel, de poivre ou quelques gouttes de citron."
-      ],
-      "image": "https://img.cuisineaz.com/667x667/2016/12/06/i114076-salade-de-quinoa-a-la-courge-rotie-et-aux-pousses-d-epinard-croq-kilos.jpeg",
-      "sourceUrl": "https://www.cuisineaz.com/recettes/salade-de-quinoa-aux-epinards-124010.aspx"
-    },
-    {
-      "id": "cuisineaz-boulettes-d-epinards-et-chevre-u-sauce-tomate-maison",
-      "custom": true,
-      "source": "cuisineaz",
-      "category": "repas",
-      "categoryLabel": "Repas chauds",
-      "name": "Boulettes d'épinards et chèvre U, sauce tomate maison",
-      "description": "Des boulettes végétariennes qui font l'unanimité : des épinards en branches surgelés U Origine France, un cœur de chèvre U fondant, une sauce tomate maison mijotée. Une recette conviviale et économique, à moins de 2 € par personne, qui prouve que bien manger à prix coûtant peut aussi être généreux et gourmand.",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 4,
-      "ingredients": [
-        "300 g Epinards en branches surgelés U",
-        "2 Palets de chèvre U",
-        "20 g Beurre doux U Bleu-Blanc-Cœur",
-        "4 Tomate(s) en grappe U",
-        "1 Oignon(s)",
-        "2 gousse(s) Ail",
-        "1 Oeuf(s) U Bleu-Blanc-Cœur",
-        "3 c. à soupe Chapelure",
-        "Huile d'olive extra-vierge",
-        "Sel, poivre",
-        "Basilic"
-      ],
-      "steps": [
-        "Décongeler les épinards en branches surgelés U au micro-ondes ou dans une poêle à feu doux. Les essorer soigneusement en les pressant entre les mains pour éliminer tout excès d'eau.",
-        "Hacher grossièrement les épinards, les mélanger avec l'œuf battu, un peu de chapelure, sel et poivre. Façonner des boulettes de la taille d'une balle de golf en glissant un demi-palet de chèvre U au cœur de chacune.",
-        "Dans une poêle, faire dorer les boulettes dans un léger filet d'huile d'olive 3 à 4 minutes sur chaque face. Réserver.",
-        "Dans la même poêle, faire fondre le beurre doux U Bleu-Blanc-Cœur avec l'oignon émincé et l'ail. Ajouter les tomates coupées en dés, saler, poivrer et laisser mijoter 15 minutes à feu doux.",
-        "Remettre les boulettes dans la sauce tomate, couvrir et poursuivre 10 minutes. Parsemer de basilic frais avant de servir."
-      ],
-      "image": "https://img.cuisineaz.com/1200x1200/2026/08/12/i209996-boulette-epinard-chevre.jpg",
-      "sourceUrl": "https://www.cuisineaz.com/recettes/boulettes-d-epinards-et-chevre-u-sauce-tomate-maison-124892.aspx"
     },
     {
       "id": "cuisineaz-poulet-citron-curry-et-legumes-light",
@@ -4301,6 +4300,40 @@
       "sourceUrl": "https://www.cuisineaz.com/recettes/chili-con-carne-vegetarien-101331.aspx"
     },
     {
+      "id": "cuisineaz-champignons-farcis-vegetariens",
+      "custom": true,
+      "source": "cuisineaz",
+      "category": "repas",
+      "categoryLabel": "Repas chauds",
+      "name": "Champignons farcis végétariens",
+      "description": "Les champignons farcis végétariens réveillent les repas d’automne et d’hiver avec leur farce gourmande. Ce grand classique convivial se prépare en un clin d’œil, en alliant le fondant du fromage frais et la saveur du parmesan. Un mélange simple, authentique et généreux à partager en famille ou entre amis, pour savourer la magie de la cuisine maison autour d'une table réconfortante.",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 4,
+      "ingredients": [
+        "12 pièce(s) Champignons de Paris (blond)",
+        "150 g Fromage frais",
+        "50 g Parmesan râpé",
+        "40 g Chapelure",
+        "2 gousse(s) Ail",
+        "2 branche(s) Persil plat",
+        "2 c. à soupe Huile d'olive",
+        "Sel",
+        "Poivre"
+      ],
+      "steps": [
+        "Préchauffez votre four à 180 °C pour qu’il soit bien chaud au moment d’enfourner les champignons. Pendant ce temps, préparez une plaque recouverte de papier cuisson ou un plat légèrement huilé. Ce démarrage vous permettra d’enchaîner plus facilement les étapes et d’obtenir une cuisson régulière, avec des champignons tendres et une farce joliment dorée.",
+        "Nettoyez délicatement les champignons de Paris avec un papier absorbant légèrement humide afin d’enlever les éventuelles traces de terre sans les gorger d’eau. Retirez ensuite les pieds avec précaution pour ne pas casser les têtes. Disposez les chapeaux creux sur votre plaque ou dans votre plat, ouverture vers le haut, puis salez et poivrez légèrement l’intérieur.",
+        "Pelez les gousses d’ail puis hachez-les finement. Lavez le persil plat, séchez-le soigneusement et ciselez-le. Récupérez également les pieds des champignons retirés précédemment, puis hachez-les en petits morceaux. Cette garniture apportera davantage de goût à la farce tout en évitant le gaspillage, ce qui rendra la recette encore plus savoureuse et équilibrée.",
+        "Dans un saladier, mélangez le fromage frais avec le parmesan râpé, la chapelure, l’ail haché, le persil ciselé et les pieds de champignons hachés. Ajoutez l’huile d’olive, puis mélangez soigneusement jusqu’à obtenir une préparation homogène, souple et bien répartie. Salez modérément, car le parmesan apporte déjà du goût, puis donnez quelques tours de moulin à poivre.",
+        "À l’aide d’une petite cuillère, garnissez généreusement chaque tête de champignon avec la farce préparée. Tassez légèrement pour que la préparation tienne bien pendant la cuisson, sans trop comprimer afin de conserver une texture agréable. Répartissez la farce de manière régulière entre tous les champignons pour assurer une cuisson uniforme et une présentation harmonieuse au moment du service.",
+        "Enfournez les champignons farcis dans le four préchauffé à 180 °C pendant environ 20 à 25 minutes. Surveillez la cuisson en fin de parcours : les champignons doivent être tendres, avoir rendu un peu de jus et la farce doit être légèrement dorée sur le dessus. Si nécessaire, prolongez de quelques minutes pour obtenir une surface plus gratinée.",
+        "À la sortie du four, laissez reposer les champignons farcis pendant 2 à 3 minutes afin qu’ils soient plus faciles à servir et que la farce se raffermisse légèrement. Vous pouvez ajouter un peu de persil frais ciselé sur le dessus pour apporter une note de couleur. Servez-les bien chauds, en entrée, à l’apéritif ou avec une salade."
+      ],
+      "image": "https://img.cuisineaz.com/667x667/2021/12/22/i182437-shutterstock-676016494.jpeg",
+      "sourceUrl": "https://www.cuisineaz.com/recettes/champignons-farcis-vegetariens-125479.aspx"
+    },
+    {
       "id": "cuisineaz-potimarron-farci-vegetarien-recette-automne",
       "custom": true,
       "source": "cuisineaz",
@@ -4481,41 +4514,6 @@
       ],
       "image": "https://img.cuisineaz.com/1023x1023/2026/07/16/i209601-wrap-apero-vegetarien-chevre-miel-noix.jpg",
       "sourceUrl": "https://www.cuisineaz.com/recettes/wrap-apero-vegetarien-chevre-miel-noix-123641.aspx"
-    },
-    {
-      "id": "cuisineaz-wrap-apero-vegetarien-au-houmous-et-legumes",
-      "custom": true,
-      "source": "cuisineaz",
-      "category": "repas",
-      "categoryLabel": "Repas chauds",
-      "name": "Wrap apéro végétarien au houmous et légumes",
-      "description": "Craquez pour ces wraps apéro végétariens, pleins de fraîcheur et de couleurs ! Houmous crémeux, carottes croquantes, concombre, poivron et avocat s’enroulent ensemble pour un voyage gourmand aux accents méditerranéens. Ces bouchées sont parfaites dès le printemps, quand les légumes sont à leur meilleur. À partager en famille ou entre amis, pour un apéritif convivial, sain et facile à préparer. Plongez dans la simplicité et la tradition, le sourire aux lèvres !",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 6,
-      "ingredients": [
-        "6 Galettes de blé wrap",
-        "300 g Houmous",
-        "2 Carotte(s)",
-        "1 Concombre(s)",
-        "1 Poivron(s) rouge(s)",
-        "1 Avocat(s)",
-        "12 Grappe de tomates cerises",
-        "50 g Roquette",
-        "1 c. à soupe Jus de citron",
-        "1 c. à soupe Huile d'olive",
-        "Sel",
-        "Poivre"
-      ],
-      "steps": [
-        "Lavez soigneusement la carotte, le concombre, le poivron rouge, l’avocat, les tomates cerises et la roquette. Épluchez les carottes, puis râpez-les finement pour obtenir une texture agréable dans les wraps. Coupez le concombre en fins bâtonnets après l’avoir éventuellement épépiné s’il est très aqueux. Épépinez le poivron rouge puis détaillez-le en fines lanières. Coupez les tomates cerises en deux. Ouvrez l’avocat, retirez le noyau, prélevez la chair et taillez-la en fines lamelles avant de l’arroser avec le jus de citron pour éviter qu’elle ne noircisse.",
-        "Déposez les légumes préparés dans des récipients ou sur un grand plan de travail pour faciliter le montage. Salez et poivrez légèrement les carottes râpées, le concombre et le poivron pour relever leur saveur sans masquer la douceur du houmous. Versez un filet d’huile d’olive sur la roquette et mélangez délicatement. Vérifiez l’assaisonnement de l’ensemble afin d’obtenir une garniture fraîche, équilibrée et savoureuse, idéale pour un apéritif végétarien convivial.",
-        "Étalez les galettes de blé wrap bien à plat sur le plan de travail. Répartissez le houmous sur chaque galette en une couche régulière, en laissant une petite bordure libre sur les côtés pour faciliter la fermeture. Disposez ensuite un peu de carotte râpée, quelques bâtonnets de concombre, des lanières de poivron rouge, des lamelles d’avocat, quelques moitiés de tomates cerises et un peu de roquette. Veillez à ne pas trop charger les wraps afin qu’ils restent faciles à rouler et tiennent bien à la découpe.",
-        "Rabattez légèrement les côtés de chaque galette vers l’intérieur, puis roulez-les fermement en partant du bas pour enfermer correctement la garniture. Serrez sans écraser pour conserver du volume et une belle tenue. Si nécessaire, vous pouvez envelopper chaque wrap dans un film alimentaire ou le maintenir bien serré quelques instants sur le plan de travail afin qu’il garde sa forme avant la découpe. Cette étape permet d’obtenir des bouchées nettes et faciles à servir.",
-        "À l’aide d’un couteau bien aiguisé, coupez chaque wrap en plusieurs tronçons de taille régulière pour former des bouchées apéritives. Essuyez la lame entre les coupes si nécessaire pour garder une découpe propre. Disposez les morceaux debout ou couchés sur un plat de service afin de mettre en valeur les différentes couches colorées de légumes et de houmous. Servez aussitôt pour profiter de toute la fraîcheur des ingrédients, ou réservez brièvement au frais jusqu’au moment de l’apéritif."
-      ],
-      "image": "https://img.cuisineaz.com/1023x1023/2026/07/16/i209600-wrap-apero-vegetarien-au-houmous-et-legumes.jpg",
-      "sourceUrl": "https://www.cuisineaz.com/recettes/wrap-apero-vegetarien-au-houmous-et-legumes-123640.aspx"
     },
     {
       "id": "cuisineaz-plat-estival-ratatouille-provencale-aux-legumes-du-soleil",
@@ -5829,6 +5827,40 @@
       "sourceUrl": "https://www.cuisineaz.com/recettes/houmous-maison-la-meilleure-recette-120028.aspx"
     },
     {
+      "id": "cuisineaz-soupe-miso-maison-recette-japonaise",
+      "custom": true,
+      "source": "cuisineaz",
+      "category": "tartinade",
+      "categoryLabel": "Tartinades & Dips",
+      "name": "Soupe miso maison : recette japonaise",
+      "description": "Plongez dans l’art de la cuisine japonaise avec cette soupe miso maison, un grand classique du quotidien. Tofu fondant, shiitakés de saison et algue wakamé s’invitent dans un bouillon parfumé. Simple à réaliser, elle réchauffe petits et grands autour de la table. À chaque cuillerée, la tradition japonaise se glisse tout en douceur dans votre cocon familial. Une invitation au voyage, sans quitter sa cuisine !",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 4,
+      "ingredients": [
+        "1.2 l Eau",
+        "80 g Pâte miso Hikari Miso",
+        "200 g Tofu soyeux",
+        "150 g Shiitaké(s)",
+        "2 pièce(s) Oignon(s) cébette(s)",
+        "10 g Wakamé",
+        "1 l Cube de bouillon de légumes",
+        "2 c. à soupe Sauce soja",
+        "1 pièce(s) Gingembre frais",
+        "1 c. à café Huile de sésame"
+      ],
+      "steps": [
+        "Commencez par réunir tous les ingrédients sur le plan de travail pour cuisiner plus sereinement. Rincez rapidement les shiitakés, puis essuyez-les avec soin avant de retirer l’extrémité terreuse si besoin. Émincez-les en lamelles. Égouttez délicatement le tofu soyeux, puis coupez-le en petits cubes réguliers pour qu’il reste joli dans le bol. Rincez les cébettes et ciselez-les finement. Pelez ensuite le gingembre frais avant de le râper ou de le hacher très finement. Si le wakamé est sec, placez-le dans un petit bol d’eau tiède quelques minutes pour qu’il se réhydrate tranquillement.",
+        "Versez l’eau dans une casserole ou une marmite de taille adaptée, puis ajoutez le cube de bouillon de légumes. Faites chauffer sur feu moyen en mélangeant de temps en temps afin d’aider le cube à se dissoudre complètement. Incorporez ensuite le gingembre préparé, la sauce soja et l’huile de sésame. Mélangez bien pour répartir les saveurs dans tout le liquide. Cette base parfumée va remplacer un bouillon dashi plus classique et donner à votre soupe miso maison un goût équilibré, chaleureux et facile à réussir.",
+        "Quand le bouillon arrive à frémissement, ajoutez les shiitakés émincés dans la casserole. Laissez-les cuire doucement quelques minutes pour qu’ils deviennent tendres tout en gardant une texture agréable. Remuez de temps en temps avec délicatesse. Cette étape permet aux champignons de libérer leur parfum dans le bouillon, ce qui enrichit nettement le goût final de la soupe. Veillez à ne pas faire bouillir trop fort afin de conserver une préparation claire, légère et agréable à déguster.",
+        "Ajoutez le wakamé réhydraté et égoutté dans le bouillon frémissant, puis incorporez les cubes de tofu soyeux avec beaucoup de douceur pour éviter de les casser. Poursuivez la cuisson à feu doux pendant quelques minutes seulement. Le wakamé va finir de s’assouplir dans le liquide chaud, tandis que le tofu va simplement se réchauffer. À ce stade, il est important de garder une chaleur modérée afin de préserver la texture délicate des ingrédients et l’équilibre subtil de cette soupe japonaise.",
+        "Baissez le feu ou coupez-le juste avant d’ajouter la pâte miso, car une ébullition trop forte peut altérer ses saveurs délicates. Prélevez un peu de bouillon chaud dans un bol, puis délayez-y la pâte miso jusqu’à obtenir un mélange lisse. Reversez ensuite cette préparation dans la casserole en remuant doucement. Cette méthode permet d’éviter les grumeaux et de bien répartir le miso dans toute la soupe. Goûtez ensuite et ajustez éventuellement l’assaisonnement selon vos préférences, sans trop saler car le miso et la sauce soja apportent déjà du caractère.",
+        "Ajoutez au dernier moment les cébettes ciselées pour apporter de la fraîcheur, du croquant et une jolie touche de couleur. Mélangez très légèrement, puis servez immédiatement la soupe miso bien chaude dans des bols. Répartissez équitablement le tofu, les shiitakés et le wakamé dans chaque portion afin que chacun profite de toutes les saveurs. Cette soupe se déguste dès sa préparation, seule pour une entrée légère ou accompagnée de riz et d’un plat japonais pour un repas plus complet."
+      ],
+      "image": "https://img.cuisineaz.com/668x668/2024/09/03/i199668-soupe-miso-au-tofu-et-champignons-shiitake.jpg",
+      "sourceUrl": "https://www.cuisineaz.com/recettes/soupe-miso-maison-recette-japonaise-125496.aspx"
+    },
+    {
       "id": "cuisineaz-sauce-aux-champignons-recette-maison",
       "custom": true,
       "source": "cuisineaz",
@@ -6324,6 +6356,39 @@
       "sourceUrl": "https://www.cuisineaz.com/recettes/tapenade-longue-conservation-maison-125376.aspx"
     },
     {
+      "id": "cuisineaz-guacamole-fait-maison",
+      "custom": true,
+      "source": "cuisineaz",
+      "category": "tartinade",
+      "categoryLabel": "Tartinades & Dips",
+      "name": "Guacamole fait maison",
+      "description": "",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 6,
+      "ingredients": [
+        "3 Tomate(s)",
+        "1 Petit(s) oignon(s)",
+        "2 Avocat(s)",
+        "1 Jus de citron",
+        "3 c. à soupe Crème fraîche",
+        "2 gousse(s) Ail",
+        "Sel",
+        "Poivre",
+        "1 sachet(s) Epices"
+      ],
+      "steps": [
+        "Pelez et dénoyautez les avocats.",
+        "Puis dans un bol, réduisez les en purée.",
+        "Ajoutez le jus de citron, la crème fraîche, les tomates et les oignons préalablement coupés en tout petits dés.",
+        "Mélangez le tout.",
+        "Assaisonnez avec le sel et le poivre.",
+        "Ajoutez la quantité du sachet d'assaisonnement qui vous convient pour un Guacamole plus ou moins épicé."
+      ],
+      "image": "https://img.cuisineaz.com/1200x1200/2013/08/12/i98486-guacamole-fait-maison.jpg",
+      "sourceUrl": "https://www.cuisineaz.com/recettes/guacamole-fait-maison-56414.aspx"
+    },
+    {
       "id": "cuisineaz-pickles-maison-pour-la-rentree-recette-longue-conservation",
       "custom": true,
       "source": "cuisineaz",
@@ -6359,39 +6424,6 @@
       ],
       "image": "https://img.cuisineaz.com/667x667/2024/03/29/i197993-.jpg",
       "sourceUrl": "https://www.cuisineaz.com/recettes/pickles-maison-pour-la-rentree-recette-longue-conservation-125373.aspx"
-    },
-    {
-      "id": "cuisineaz-guacamole-fait-maison",
-      "custom": true,
-      "source": "cuisineaz",
-      "category": "tartinade",
-      "categoryLabel": "Tartinades & Dips",
-      "name": "Guacamole fait maison",
-      "description": "",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 6,
-      "ingredients": [
-        "3 Tomate(s)",
-        "1 Petit(s) oignon(s)",
-        "2 Avocat(s)",
-        "1 Jus de citron",
-        "3 c. à soupe Crème fraîche",
-        "2 gousse(s) Ail",
-        "Sel",
-        "Poivre",
-        "1 sachet(s) Epices"
-      ],
-      "steps": [
-        "Pelez et dénoyautez les avocats.",
-        "Puis dans un bol, réduisez les en purée.",
-        "Ajoutez le jus de citron, la crème fraîche, les tomates et les oignons préalablement coupés en tout petits dés.",
-        "Mélangez le tout.",
-        "Assaisonnez avec le sel et le poivre.",
-        "Ajoutez la quantité du sachet d'assaisonnement qui vous convient pour un Guacamole plus ou moins épicé."
-      ],
-      "image": "https://img.cuisineaz.com/1200x1200/2013/08/12/i98486-guacamole-fait-maison.jpg",
-      "sourceUrl": "https://www.cuisineaz.com/recettes/guacamole-fait-maison-56414.aspx"
     },
     {
       "id": "cuisineaz-pain-maison-a-congeler-pour-la-rentree",
@@ -6592,47 +6624,6 @@
       ],
       "image": "https://img.cuisineaz.com/1122x1122/2016/04/28/i12994-sangria-alcoolisee.jpg",
       "sourceUrl": "https://www.cuisineaz.com/recettes/sangria-don-simon-maison-125252.aspx"
-    },
-    {
-      "id": "cuisineaz-soupe-instantanee-maison-pour-la-rentree",
-      "custom": true,
-      "source": "cuisineaz",
-      "category": "tartinade",
-      "categoryLabel": "Tartinades & Dips",
-      "name": "Soupe instantanée maison pour la rentrée",
-      "description": "Quand la rentrée s’invite à table, rien de mieux qu’une soupe instantanée maison pleine de légumes de saison ! Carottes, champignons, petits pois : ils passent de votre panier à votre bol en un clin d’œil. Inspirée des ramens asiatiques, cette recette réchauffe petits et grands, et fait la part belle aux produits du quotidien. Rapide, pratique et généreuse, elle rassemble toute la famille autour d’un repas simple, réconfortant et plein de saveurs pour attaquer la nouvelle saison en douceur.",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 4,
-      "ingredients": [
-        "300 g Sachet de ramen instantané",
-        "4 c. à soupe Bouillon de légumes",
-        "1 l Eau",
-        "2 pièce(s) Carottes en rondelles surgelées U",
-        "2 pièce(s) Oignon(s) cébette(s)",
-        "100 g Maïs entier",
-        "100 g Petits pois",
-        "150 g Champignons de Paris (blond)",
-        "2 pièce(s) Oeufs durs",
-        "2 c. à soupe Sauce soja",
-        "1 cm Gingembre frais",
-        "2 gousse(s) Gousse(s) d'ail",
-        "1 c. à soupe Huile de sésame",
-        "1 pièce(s) Ciboulette",
-        "Sel",
-        "Poivre"
-      ],
-      "steps": [
-        "Épluchez les gousses d’ail et le morceau de gingembre, puis râpez-les finement ou hachez-les très menu pour qu’ils diffusent bien leurs parfums. Nettoyez les champignons de Paris et émincez-les. Coupez les cébettes en fines rondelles en séparant si possible le blanc du vert. Ciselez la ciboulette. Si besoin, détaillez les carottes surgelées en morceaux plus petits pour faciliter la dégustation.",
-        "Égouttez le maïs si nécessaire et mesurez les petits pois ainsi que les carottes. Écalez les œufs durs puis coupez-les en deux ou en quartiers selon la présentation souhaitée. Répartissez devant vous tous les ingrédients prêts à l’emploi. Cette organisation vous permettra de monter la soupe rapidement au moment du repas, tout en gardant une préparation simple, pratique et adaptée à une rentrée bien chargée.",
-        "Dans un grand saladier ou directement dans quatre grands bols résistants à la chaleur, versez le bouillon de légumes, la sauce soja et l’huile de sésame. Ajoutez l’ail, le gingembre, ainsi que le blanc des cébettes. Mélangez soigneusement pour bien répartir les saveurs. Salez légèrement seulement si nécessaire, puis donnez quelques tours de poivre pour relever l’ensemble sans masquer les notes asiatiques de la soupe.",
-        "Cassez légèrement les nouilles de ramen instantané si vous souhaitez une dégustation plus facile, puis disposez-les dans la base préparée. Ajoutez ensuite les champignons émincés, les rondelles de carottes surgelées, les petits pois et le maïs. Répartissez les ingrédients de manière homogène afin que chaque portion soit équilibrée. Cette étape permet aussi aux légumes de commencer à s’attendrir rapidement lorsque l’eau chaude sera ajoutée.",
-        "Faites chauffer 1 litre d’eau jusqu’à frémissement ou jusqu’à ce qu’elle soit bien chaude. Versez-la immédiatement sur les nouilles et les légumes pour bien les recouvrir. Mélangez délicatement avec une fourchette ou des baguettes pour aider les ramen à se détacher. Couvrez les bols ou le saladier avec une assiette ou un couvercle afin de conserver la chaleur et de favoriser la cuisson rapide des ingrédients.",
-        "Laissez reposer la préparation pendant environ 5 à 8 minutes, en surveillant la texture des nouilles et des légumes. Remuez une ou deux fois durant ce temps pour vérifier que les ramen se détendent correctement et que le bouillon reste homogène. Goûtez ensuite la soupe et ajustez l’assaisonnement avec un peu de sel, de poivre ou quelques gouttes supplémentaires de sauce soja selon vos préférences.",
-        "Ajoutez au moment de servir les morceaux d’œufs durs, le vert des cébettes et la ciboulette ciselée sur le dessus de la soupe. Cette finition apporte de la fraîcheur, de la couleur et un contraste agréable avec le bouillon chaud. Servez aussitôt, bien chaud, pour profiter d’une soupe instantanée maison réconfortante, rapide et très pratique pour les soirs de rentrée où vous manquez de temps."
-      ],
-      "image": "https://img.cuisineaz.com/1023x1023/2026/08/25/i210265-soupe-instantanee-maison.jpg",
-      "sourceUrl": "https://www.cuisineaz.com/recettes/soupe-instantanee-maison-pour-la-rentree-124989.aspx"
     },
     {
       "id": "cuisineaz-caviar-d-aubergines-pour-l-aperitif",
@@ -7249,33 +7240,6 @@
       "sourceUrl": "https://www.cuisineaz.com/recettes/saumon-mi-cuit-a-la-tapenade-et-aux-olives-78984.aspx"
     },
     {
-      "id": "cuisineaz-tapenade-aux-olives-noires-et-creme-fraiche",
-      "custom": true,
-      "source": "cuisineaz",
-      "category": "tartinade",
-      "categoryLabel": "Tartinades & Dips",
-      "name": "Tapenade aux olives noires et crème fraîche",
-      "description": "",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 4,
-      "ingredients": [
-        "250 g Olive noire(s)",
-        "Crème liquide",
-        "1 Gousse Ail",
-        "Vinaigre balsamique",
-        "Moutarde"
-      ],
-      "steps": [
-        "Dénoyautez les olives, pelez l'ail et placez-les dans un mixeur.",
-        "Ajoutez 1 c. à soupe de vinaigre balsamique, 1 c. à café de moutarde et de crème fraîche.",
-        "Mixez jusqu’à obtenir un mélange crémeux.",
-        "Servez la tapenade avec des toasts."
-      ],
-      "image": "https://img.cuisineaz.com/1200x1200/2015/09/14/i113577-tapenade-aux-olives-noires-et-creme-fraiche.jpg",
-      "sourceUrl": "https://www.cuisineaz.com/recettes/tapenade-aux-olives-noires-et-creme-fraiche-77786.aspx"
-    },
-    {
       "id": "cuisineaz-pissaladiere-a-la-tapenade",
       "custom": true,
       "source": "cuisineaz",
@@ -7375,6 +7339,36 @@
       ],
       "image": "https://img.cuisineaz.com/1023x1023/2026/07/16/i209602-wrap-apero-a-la-tapenade-mozzarella-et-basilic.jpg",
       "sourceUrl": "https://www.cuisineaz.com/recettes/wrap-apero-a-la-tapenade-mozzarella-et-basilic-123642.aspx"
+    },
+    {
+      "id": "cuisineaz-cake-au-jambon-gruyere-et-olives",
+      "custom": true,
+      "source": "cuisineaz",
+      "category": "tartinade",
+      "categoryLabel": "Tartinades & Dips",
+      "name": "Cake au jambon, gruyère et olives",
+      "description": "Les cakes salés sont des recettes familiales que l'on peu réaliser pour l'apéritif ou comme entrée avec un peu de salade. Ainsi cette recette de cake au jambon, gruyère et olives ne déroge pas à la règle. Composée de talon de jambon, de gruyère râpé, d'olives vertes, de lait et d'huile d'olive; cette recette de cake est facile et rapide à réaliser pour toutes les occasions.",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 6,
+      "ingredients": [
+        "200 g Farine",
+        "150 g Talon de jambon",
+        "100 g Gruyère râpé",
+        "100 g Olives vertes dénoyautée(s)",
+        "10 cl Lait",
+        "10 cl Huile d'olive",
+        "3 Œuf(s)",
+        "Levure chimique",
+        "Sel poivre"
+      ],
+      "steps": [
+        "Préchauffez le four à th.6 (180°C).",
+        "Prenez le jambon et les olives dénoyautées puis, découpez-les en petits cubes. Cassez vos œufs dans un grand récipient. Battez-les puis ajoutez-y la farine, une petite quantité de sel, le poivre et un sachet de levure chimique. Arrosez avec le lait et l’huile d’olive.",
+        "Ajoutez-y les morceaux de jambon et des olives, de même qu’une demi-quantité du gruyère râpé. Préparez un moule et renversez-y toute la préparation. Recouvrez avec le gruyère râpé restant et enfournez. Retirez après 45 min et attendez 5 min pour démouler. Laissez tiédir sur une grille puis, servez."
+      ],
+      "image": "https://img.cuisineaz.com/1200x1200/2015/07/13/i10961-cake-au-jambon-gruyere-et-olives.jpg",
+      "sourceUrl": "https://www.cuisineaz.com/recettes/cake-au-jambon-gruyere-et-olives-123242.aspx"
     },
     {
       "id": "cuisineaz-porridge-d-avoine-sans-sucre-avec-graines-de-chia-cannelle-et-baies-fraiches",
@@ -8731,6 +8725,33 @@
       "sourceUrl": "https://www.cuisineaz.com/recettes/compote-legere-de-pommes-70965.aspx"
     },
     {
+      "id": "cuisineaz-compote-de-pommes-au-thermomix",
+      "custom": true,
+      "source": "cuisineaz",
+      "category": "dessert",
+      "categoryLabel": "Desserts",
+      "name": "Compote de pommes au Thermomix®",
+      "description": "Quand vient la saison des pommes, impossible de résister à leur parfum et à leur douceur dans une compote maison. Ici, rien que des pommes fraîches et un bâton de cannelle pour réchauffer les cœurs. Une recette simple et réconfortante, parfaite pour tous les âges et à savourer en famille ou entre amis. Retrouvez la tradition en toute simplicité, pour des goûters ou desserts qui rappellent l’enfance et invitent à partager des moments doux autour de la table.",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 4,
+      "ingredients": [
+        "10 Pomme(s)",
+        "1 bâton(s) Cannelle"
+      ],
+      "steps": [
+        "Pelez les pommes et coupez-les en deux. Retirez les queues, les coeurs et les pépins puis coupez-les en fines tranches.",
+        "Placez les tranches de pommes dans le bol du Thermomix puis ajoutez le bâton de cannelle. Programmez sur 10 minutes, 90° et vitesse 2.",
+        "Râlez les parois du bol et relancez la cuisson pour 2 minutes, 90° et vitesse 2.",
+        "Mixez ensuite 10 secondes à vitesse 8.",
+        "Retirez le bâton de cannelle de la compote.",
+        "Laissez refroidir la compote de pommes à température ambiante. Conservez ensuite au frais jusqu'à la dégustation.",
+        "Dégustez bien frais."
+      ],
+      "image": "https://img.cuisineaz.com/1200x1200/2016/04/30/i90007-compote-de-pommes-au-thermomix.jpg",
+      "sourceUrl": "https://www.cuisineaz.com/recettes/compote-de-pommes-au-thermomix-125667.aspx"
+    },
+    {
       "id": "cuisineaz-compote-pour-chausson-aux-pommes-recette-maison",
       "custom": true,
       "source": "cuisineaz",
@@ -8891,32 +8912,6 @@
       ],
       "image": "https://img.cuisineaz.com/667x667/2016/09/05/i85680-compote-de-pommes-a-la-cannelle-facile-facile.jpg",
       "sourceUrl": "https://www.cuisineaz.com/recettes/compote-de-pommes-a-la-cannelle-facile-facile-120660.aspx"
-    },
-    {
-      "id": "cuisineaz-compote-pommes-et-poires-maison-a-congeler",
-      "custom": true,
-      "source": "cuisineaz",
-      "category": "dessert",
-      "categoryLabel": "Desserts",
-      "name": "Compote pommes et poires maison à congeler",
-      "description": "Faites le plein de douceur naturelle avec cette compote maison aux pommes et poires. Un classique du goûter familial, à savourer toute l’année grâce à la congélation ! Profitez des fruits de saison, pour un dessert simple, sain et zéro gaspi. À déguster en solo ou à partager, petits et grands vont l’adorer.",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 6,
-      "ingredients": [
-        "1 kg Pomme(s)",
-        "1 kg Poire(s)",
-        "50 g Sucre",
-        "1 cl Jus de citron"
-      ],
-      "steps": [
-        "Commencez par laver soigneusement les pommes et les poires, puis épluchez-les, épépinez-les et coupez-les en petits morceaux. Pour éviter l’oxydation, disposez-les dans un saladier et arrosez-les avec le jus de citron. Mélangez délicatement afin que tous les morceaux soient bien enrobés.",
-        "Dans une grande casserole, versez les fruits préparés, ajoutez le sucre puis mélangez. Couvrez et faites cuire à feu doux pendant environ 30 minutes en remuant régulièrement. Les fruits doivent compoter doucement afin de bien libérer leur jus et d’obtenir une texture fondante.",
-        "Lorsque les fruits sont bien fondants, retirez la casserole du feu. Utilisez un mixeur plongeant pour réduire la préparation en une compote lisse (ou laissez quelques morceaux selon la préférence). Laissez refroidir la compote avant de la répartir dans des contenants adaptés à la congélation.",
-        "Une fois la compote bien refroidie, répartissez-la dans des récipients hermétiques. Ne les remplissez pas complètement afin de laisser la place à l’expansion lors de la congélation. Placez-les ensuite au congélateur. Vous pourrez ainsi déguster cette compote maison tout au long de l’année !"
-      ],
-      "image": "https://img.cuisineaz.com/665x665/2018/10/12/i143264-compote-pomme-poire.jpeg",
-      "sourceUrl": "https://www.cuisineaz.com/recettes/compote-pommes-et-poires-maison-a-congeler-119789.aspx"
     },
     {
       "id": "cuisineaz-salade-de-melon-et-fruits-frais-a-la-mozzarella-de-cyril-lignac",
@@ -9087,7 +9082,7 @@
       "category": "dessert",
       "categoryLabel": "Desserts",
       "name": "Salade aux fruits rouges et au fromage frais",
-      "description": "",
+      "description": "Des graines de courge, vendues toute l’année plutôt que récoltées à l’automne, apportent leur croquant à cette salade de fruits rouges et de fromage frais. La salade verte sert de base à ce mélange sucré-salé, assaisonné d’une vinaigrette au vinaigre de Xérès et à l’huile d’olive. Un plat d’été léger, où le fruit rouge de saison compte bien plus que la graine de courge, simple ajout de texture.",
       "prepTime": 0,
       "cookTime": 0,
       "servings": 4,
@@ -10648,6 +10643,6 @@
       "sourceUrl": "https://www.cuisineaz.com/recettes/pintade-aux-fruits-secs-miel-et-petits-oignons-75123.aspx"
     }
   ],
-  "updated": "2026-09-20",
+  "updated": "2026-09-27",
   "source": "cuisineaz"
 }
