@@ -67,9 +67,15 @@ function bridgeLookup(normKey) {
   const canonical = IRREGULAR_FORMS[normKey];
   const start = canonical || normKey;
 
+  // Les variantes vont de la plus proche (le nom complet) à la plus large
+  // (le premier mot seul). La PREMIÈRE fiche WHITELIST rencontrée est
+  // l'ingrédient : si elle n'a pas de colruytTerms, on s'arrête (null → le
+  // Bridge Wizard demande) au lieu de continuer vers une fiche plus courte
+  // qui serait un autre ingrédient ("pomme de terre" vide → "pomme" → jus
+  // de pomme).
   for (const v of _bridgeVariants(start)) {
     const entry = whitelistEntry(v);
-    if (entry?.colruytTerms) return entry.colruytTerms;
+    if (entry) return entry.colruytTerms || null;
   }
   return null;
 }

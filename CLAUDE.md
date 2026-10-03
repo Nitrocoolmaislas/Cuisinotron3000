@@ -72,7 +72,10 @@ rather than maintaining separate lookup tables per consumer:
 - `ciqual` — static ANSES nutritional code (`ciqual_fr.js`)
 - `colruytTerms[]` — NL search term(s) against the daily-refreshed Colruyt
   catalog, resolved via `bridgeLookup()` (`js/bridge.js`) using ONLY
-  morphological (singular/plural) variants of `k` — never through
+  morphological (singular/plural) variants and word prefixes of `k`, longest
+  first; the FIRST `WHITELIST` entry hit is the ingredient, and if it has no
+  `colruytTerms` the lookup stops (→ Bridge Wizard) instead of borrowing a
+  shorter entry's terms ("pomme de terre" must never fall to "pomme") — never through
   `aliases`, which groups nutritionally-similar-but-distinct products for
   CIQUAL (ex: "nouilles" is an alias of "pates blanches") and would make
   the Colruyt search return the wrong product.
