@@ -108,7 +108,16 @@ function bridgeLookupFull(normKey) {
   const builtin = bridgeLookup(normKey);
   if (builtin) return builtin;
 
-  // 3. Rien trouvé → ajouter en pending
+  // 3. Mapping custom enregistré sous une clé que l'app ne calcule plus
+  //    (ex: confirmé sous "chocolat" avant que canonicalIngredientKey() ne
+  //    résolve les recettes en "chocolat noir tablette") : on le rattache
+  //    plutôt que de redemander la même confirmation dans le wizard.
+  if (typeof canonicalIngredientKey === 'function') {
+    const orphan = Object.keys(custom).find(k => canonicalIngredientKey(k) === normKey);
+    if (orphan) return custom[orphan];
+  }
+
+  // 4. Rien trouvé → ajouter en pending
   addPending(normKey);
   return null;
 }

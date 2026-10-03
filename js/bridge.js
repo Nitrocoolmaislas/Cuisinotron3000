@@ -41,6 +41,13 @@ function _bridgeVariants(normKey) {
   const words = normKey.split(' ');
   out.add(words.map(w => w.replace(/s$/, '')).join(' '));
   out.add(words.map(w => (w.endsWith('s') ? w : w + 's')).join(' '));
+  // Préfixes, du plus long au plus court, AVANT le seul premier mot : sinon
+  // "pomme de terre belle de" retombait directement sur "pomme" (→ appel).
+  for (let n = words.length - 1; n >= 2; n--) {
+    const prefix = words.slice(0, n).join(' ');
+    out.add(prefix);
+    out.add(prefix.replace(/s$/, ''));
+  }
   out.add(words[0].replace(/s$/, ''));
   out.add(words[0]);
   return [...out];
