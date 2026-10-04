@@ -641,6 +641,40 @@
       "sourceUrl": "https://www.cuisineaz.com/recettes/poulet-roti-aux-pommes-de-terres-et-legumes-66447.aspx"
     },
     {
+      "id": "cuisineaz-poulet-marine-au-fromage-blanc-u-bio-pruneaux-d-agen-et-courge-butternut-rotie",
+      "custom": true,
+      "source": "cuisineaz",
+      "category": "repas",
+      "categoryLabel": "Repas chauds",
+      "name": "Poulet mariné au fromage blanc U bio, pruneaux d'Agen et courge butternut rôtie",
+      "description": "Il y a des recettes qu'on refait sans même y penser, et celle-là en fait partie. Une marinade au fromage blanc U bio, quelques pruneaux d'Agen qui fondent en sauce, une courge butternut rôtie dont l'odeur embaume toute la cuisine : le repas du soir est réglé, et tout le monde se régale. La preuve qu'avec de bons produits U bio et un peu d'anticipation, bien manger en semaine, ça ne prend pas des heures.",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 4,
+      "ingredients": [
+        "500 g Filet(s) de poulet U bio",
+        "150 g Fromage blanc frais nature U bio",
+        "100 g Pruneaux d'Agen U bio dénoyautés",
+        "1 Courge butternut",
+        "2 Gousse(s) d'ail",
+        "1 c. à café Cumin",
+        "1 c. à café Paprika doux",
+        "Herbes de provence",
+        "Huile d'olive",
+        "Sel, poivre"
+      ],
+      "steps": [
+        "Dans un saladier, mélangez le fromage blanc frais nature U bio avec l'ail haché, le cumin, le paprika, les herbes de Provence, du sel et du poivre. Déposez les filets de poulet U bio et retournez-les pour bien les enrober. Couvrez et laissez mariner au frigo au minimum 30 minutes, idéalement une nuit. Plus la marinade est longue, plus la viande est tendre.",
+        "Pendant que le poulet marine, préchauffez le four à 200°C. Épluchez la courge butternut, coupez-la en cubes réguliers et disposez-les sur une plaque recouverte de papier cuisson. Arrosez d'un filet d'huile d'olive, salez, poivrez et enfournez 25 à 30 minutes en remuant à mi-cuisson, jusqu'à ce que les cubes soient dorés et fondants.",
+        "Sortez les filets de poulet U bio de la marinade et faites-les cuire à la poêle à feu moyen-vif, 5 à 6 minutes de chaque côté, jusqu'à ce qu'ils soient bien dorés. Réservez.",
+        "Dans la même poêle, déglacez avec un fond d'eau ou de bouillon. Ajoutez les pruneaux d'Agen U bio coupés en deux et laissez mijoter 5 minutes à feu doux : ils se réhydratent dans les sucs de cuisson et forment une sauce veloutée aux arômes intenses.",
+        "Remettez les filets de poulet U bio dans la poêle pour les réchauffer 2 minutes dans la sauce. Servez avec la courge butternut rôtie et quelques herbes fraîches.",
+        "Anti-gaspi : Le lendemain, vous pouvez effilocher vos restes de poulet et les déposer dans une galette de sarrasin U bio avec une cuillère de fromage blanc U bio et quelques herbes fraîches."
+      ],
+      "image": "https://img.cuisineaz.com/1200x1200/2026/09/25/i210584-poulet-marine-au-fromage-blanc-et-pruneaux-d-agen-cooperative-u.jpg",
+      "sourceUrl": "https://www.cuisineaz.com/recettes/poulet-marine-au-fromage-blanc-u-bio-pruneaux-d-agen-et-courge-butternut-rotie-125816.aspx"
+    },
+    {
       "id": "cuisineaz-poulet-roti-a-rechauffer-au-micro-ondes",
       "custom": true,
       "source": "cuisineaz",
@@ -846,47 +880,6 @@
       ],
       "image": "https://img.cuisineaz.com/1200x1200/2017/01/01/i115005-.jpeg",
       "sourceUrl": "https://www.cuisineaz.com/recettes/fondue-vietnamienne-legumes-poulet-boeuf-et-crevettes-de-cyril-lignac-la-recette-du-lundi-13-juillet-dans-tous-en-cuisine-123707.aspx"
-    },
-    {
-      "id": "cuisineaz-poulet-roti-a-la-creme-et-aux-morilles-de-la-fete-des-meres",
-      "custom": true,
-      "source": "cuisineaz",
-      "category": "repas",
-      "categoryLabel": "Repas chauds",
-      "name": "Poulet rôti à la crème et aux morilles de la fête des mères",
-      "description": "Pour la fête des mères, célébrez l’amour en partageant un délicieux poulet rôti à la crème et aux morilles. Ce plat associe la tendresse d’un poulet rôti et le parfum raffiné des morilles, champignons de printemps par excellence. La crème apporte douceur et gourmandise, pour un moment chaleureux à savourer en famille. Simple à préparer, généreux et festif, ce classique revisité invite à la convivialité autour d’une belle table, où chaque bouchée rend hommage à la tradition et au plaisir de cuisiner ensemble.",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 4,
-      "ingredients": [
-        "1 portion(s) Poulet entier",
-        "40 g Morille déshydratée(s)",
-        "25 cl Crème fraîche épaisse",
-        "1 portion(s) Oignon(s)",
-        "2 gousse(s) Ail",
-        "40 g Beurre",
-        "2 c. à soupe Huile d'olive",
-        "20 cl Bouillon de volaille",
-        "10 cl Vin blanc sec",
-        "2 branche(s) Thym",
-        "2 Feuille(s) Laurier",
-        "Sel",
-        "Poivre"
-      ],
-      "steps": [
-        "Préchauffez le four à 190°C afin qu’il soit bien chaud au moment d’enfourner le poulet. Pendant ce temps, placez les morilles déshydratées dans un bol et couvrez-les d’eau tiède. Laissez-les se réhydrater pendant une vingtaine de minutes. Cette étape permet aux champignons de retrouver une texture souple et agréable, tout en développant pleinement leur parfum.",
-        "Pelez l’oignon puis émincez-le finement. Épluchez les gousses d’ail et hachez-les. Vérifiez le poulet, puis séchez-le soigneusement avec du papier absorbant pour favoriser une belle coloration à la cuisson. Salez et poivrez l’intérieur et l’extérieur, puis disposez autour de vous tous les ingrédients pour cuisiner de façon fluide et bien organisée.",
-        "Dans une grande cocotte ou une sauteuse allant au four, faites chauffer l’huile d’olive avec la moitié du beurre. Déposez le poulet et faites-le dorer sur toutes ses faces pendant plusieurs minutes. Prenez le temps de bien le retourner pour obtenir une peau joliment colorée. Cette coloration apporte beaucoup de goût et améliore la tenue du jus de cuisson.",
-        "Lorsque le poulet est bien doré, ajoutez l’oignon émincé et l’ail haché dans la cocotte. Faites-les revenir quelques minutes autour du poulet en remuant régulièrement pour éviter qu’ils ne colorent trop vite. Ils doivent devenir fondants et légèrement blonds. Cette base aromatique va parfumer la sauce et enrichir le goût du poulet pendant la cuisson.",
-        "Ajoutez le thym et le laurier dans la cocotte, puis versez le vin blanc sec et le bouillon de volaille. Grattez légèrement le fond avec une cuillère en bois pour décoller les sucs. Couvrez si besoin partiellement, puis enfournez pour environ 50 minutes. Arrosez le poulet plusieurs fois pendant la cuisson afin qu’il reste moelleux et bien parfumé.",
-        "Pendant que le poulet cuit, récupérez les morilles réhydratées, puis égouttez-les soigneusement. Si elles contiennent encore un peu de sable ou d’impuretés, rincez-les rapidement sous un filet d’eau froide, puis séchez-les délicatement. Coupez les plus grosses en deux si nécessaire. Cette préparation garantit une texture agréable en bouche et évite de troubler la sauce.",
-        "Faites fondre le reste du beurre dans une poêle sur feu moyen. Ajoutez les morilles égouttées, puis faites-les revenir doucement pendant quelques minutes. Remuez régulièrement pour bien les enrober de beurre. Elles vont légèrement se raffermir et concentrer leur saveur. Salez très légèrement si besoin, en gardant à l’esprit que la sauce du poulet sera déjà assaisonnée.",
-        "Environ 10 à 15 minutes avant la fin de la cuisson du poulet, sortez la cocotte du four. Ajoutez les morilles poêlées ainsi que la crème fraîche épaisse dans le jus de cuisson. Mélangez délicatement autour du poulet pour obtenir une sauce homogène. Remettez au four sans attendre pour que l’ensemble mijote doucement et que les saveurs se lient.",
-        "À la fin de la cuisson, vérifiez que le poulet est bien cuit en piquant la jointure de la cuisse : le jus qui s’écoule doit être clair. Arrosez une dernière fois le poulet avec la sauce à la crème et aux morilles. Goûtez ensuite la sauce, puis rectifiez l’assaisonnement avec du sel et du poivre selon votre goût.",
-        "Laissez reposer le poulet hors du four pendant 5 à 10 minutes avant de le découper. Ce temps de repos aide les chairs à rester tendres et permet aux jus de se répartir. Servez ensuite les morceaux nappés de sauce à la crème et aux morilles, avec les oignons fondants et quelques champignons dans chaque assiette pour un plat généreux et festif."
-      ],
-      "image": "https://img.cuisineaz.com/750x750/2013/12/20/i12685-photo-de-poulet-aux-morilles-et-a-la-creme.jpeg",
-      "sourceUrl": "https://www.cuisineaz.com/recettes/poulet-roti-a-la-creme-et-aux-morilles-de-la-fete-des-meres-123054.aspx"
     },
     {
       "id": "cuisineaz-soupe-de-legumes-a-rechauffer-au-micro-ondes",
@@ -1159,6 +1152,77 @@
       "sourceUrl": "https://www.cuisineaz.com/recettes/soupe-paysanne-aux-legumes-racines-a-congeler-119787.aspx"
     },
     {
+      "id": "cuisineaz-boulettes-de-viande-hachee-u-bio-aux-lentilles-blondes-epinards-et-sauce-tomate-maison",
+      "custom": true,
+      "source": "cuisineaz",
+      "category": "repas",
+      "categoryLabel": "Repas chauds",
+      "name": "Boulettes de viande hachée U bio aux lentilles blondes, épinards et sauce tomate maison",
+      "description": "On aime les boulettes à la maison. Mais on les aime encore plus depuis qu'on a eu l'idée d'y glisser des lentilles blondes U bio : plus généreuses, plus consistantes, plus riches en fibres, et les enfants n'y voient que du feu. Le tout nappé d'une sauce tomate maison mijotée qui embaume la cuisine, pour un plat complet et familial à moins de 2 euros par personne.",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 4,
+      "ingredients": [
+        "300 g Viande hachée U bio",
+        "150 g Lentilles blondes U bio cuites",
+        "100 g Épinard(s) frais",
+        "1 Œuf(s)",
+        "3 c. à soupe Chapelure",
+        "2 Gousse(s) d'ail",
+        "1 Oignon(s)",
+        "1 Boite(s) de tomates pelées",
+        "Basilic frais",
+        "Origan séché",
+        "Huile d'olive",
+        "Sel, poivre"
+      ],
+      "steps": [
+        "Faites cuire vos lentilles blondes U bio 20 minutes dans de l'eau bouillante non salée, puis égouttez-les et laissez-les refroidir. Pendant ce temps, faites revenir les épinards à la poêle avec un filet d'huile d'olive jusqu'à ce qu'ils soient fondants. Égouttez-les bien en les pressant pour éliminer l'excès d'eau.",
+        "Dans un saladier, mélangez la viande hachée U bio avec les lentilles égouttées, les épinards, l'œuf battu, la chapelure, la moitié de l'ail haché, du sel et du poivre. Mélangez bien avec les mains jusqu'à obtenir une préparation homogène. Façonnez des boulettes de la taille d'une grosse noix et faites-les dorer dans une poêle avec un filet d'huile d'olive, 3 à 4 minutes sur chaque face. Réservez.",
+        "Dans la même poêle, faites revenir l'oignon et l'ail restant émincés avec un filet d'huile d'olive. Ajoutez les tomates pelées, l'origan et du sel. Laissez mijoter 15 minutes à feu doux en remuant de temps en temps.",
+        "Remettez les boulettes dans la sauce, couvrez et laissez mijoter encore 10 minutes. Ajoutez les épinards restants en fin de cuisson. Parsemez de basilic frais avant de servir.",
+        "Anti-gaspi : S’il vous reste de la sauce et de boulettes, accompagnez-les d’un peu de pâtes le lendemain pour un dîner express en moins de 10 minutes. Retrouvez tous nos produits U dans votre magasin U ou en Drive sur coursesu.com."
+      ],
+      "image": "https://img.cuisineaz.com/1200x1200/2026/09/25/i210585-boulettes-de-viandes-hachees-aux-lentilles.jpg",
+      "sourceUrl": "https://www.cuisineaz.com/recettes/boulettes-de-viande-hachee-u-bio-aux-lentilles-blondes-epinards-et-sauce-tomate-maison-125817.aspx"
+    },
+    {
+      "id": "cuisineaz-base-magique-de-lentilles-blondes-u-bio",
+      "custom": true,
+      "source": "cuisineaz",
+      "category": "repas",
+      "categoryLabel": "Repas chauds",
+      "name": "Base magique de lentilles blondes U bio",
+      "description": "Découvrez notre Base Magique de lentilles blondes U bio et retrouvez tous les produits Coopérative U dans votre magasin U ou en Drive sur coursesu.com.",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 4,
+      "ingredients": [
+        "250 g Lentilles blondes U bio cuites",
+        "1 Bocal / bocaux Sauce tomate",
+        "1 Oignon(s)",
+        "1 Gousse(s) d'ail",
+        "2 Carotte(s)",
+        "1 Petite branche de cèleri",
+        "1 c. à soupe Huile d'olive",
+        "Sel, poivre",
+        "Thym",
+        "30 cl Eau",
+        "250 g Spaghettis",
+        "150 g Petits pois",
+        "600 g Purée de pommes de terre"
+      ],
+      "steps": [
+        "Dans une sauteuse, faites revenir l'oignon, les carottes, le céleri et l'ail émincés dans l'huile d'olive.",
+        "Ajoutez les Lentilles blondes U Bio préalablement rincées, la sauce tomates aux herbes U et 30cl d'eau. Assaisonnez avec le thym, le sel et le poivre.",
+        "Laissez mijoter à feu doux pendant 25 minutes jusqu'à ce que les lentilles soient tendres. Divisez la préparation en deux parts égales.",
+        "Faites cuire les Spaghetti U Bio dans de l'eau bouillante salée. Mélangez la première moitié de la sauce aux lentilles avec les pâtes égouttées. Servez chaud avec quelques feuilles de basilic",
+        "Dans la seconde moitié de sauce aux lentilles, incorporez les dés de carottes et petits pois. Versez le tout dans un plat à gratin. Recouvrez d'une couche de purée de pommes de terre et enfournez 20 minutes à 200°C."
+      ],
+      "image": "https://img.cuisineaz.com/1200x1200/2026/09/28/i210591-base-magique-de-lentilles.jpg",
+      "sourceUrl": "https://www.cuisineaz.com/recettes/base-magique-de-lentilles-blondes-u-bio-125820.aspx"
+    },
+    {
       "id": "cuisineaz-soupe-de-lentilles-vertes-recette-terroir",
       "custom": true,
       "source": "cuisineaz",
@@ -1361,80 +1425,6 @@
       ],
       "image": "https://img.cuisineaz.com/1023x1023/2026/08/25/i210256-salade-de-lentilles-au-thon-et-a-la-feta.jpg",
       "sourceUrl": "https://www.cuisineaz.com/recettes/salade-de-lentilles-pour-le-travail-recette-express-124657.aspx"
-    },
-    {
-      "id": "cuisineaz-fettuccines-au-saumon-fume-et-epinards",
-      "custom": true,
-      "source": "cuisineaz",
-      "category": "repas",
-      "categoryLabel": "Repas chauds",
-      "name": "Fettuccines au saumon fumé et épinards",
-      "description": "Savourez un classique revisité : les fettuccines au saumon fumé et épinards ! Ce plat allie le fondant du saumon fumé, disponible toute l’année, à la douceur des épinards, parfaits au printemps et en automne. Il puise son inspiration dans la convivialité de la cuisine italienne, pour réchauffer le quotidien. Facile à préparer, cette recette rassemble petits et grands autour d’un bon plat de pâtes, tout en simplicité et en gourmandise. À table, tout le monde va se régaler !",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 4,
-      "ingredients": [
-        "400 g Fettuccine",
-        "200 g Saumon fumé",
-        "300 g Épinards (surgelé)",
-        "20 cl Crème fraîche",
-        "1 Oignon(s) jaune(s)",
-        "2 Quelques gousse(s) Ail",
-        "2 c. à soupe Huile d'olive",
-        "20 g Beurre",
-        "50 g Parmesan râpé"
-      ],
-      "steps": [
-        "Faites chauffer une grande casserole d’eau salée jusqu’à ébullition, puis plongez-y les fettuccines. Remuez dès les premières secondes pour éviter qu’elles ne collent entre elles. Laissez-les cuire selon le temps indiqué sur le paquet, de façon à obtenir des pâtes al dente. Pendant la cuisson, préparez le reste des ingrédients pour gagner du temps et garder un bon rythme en cuisine.",
-        "Pendant que les pâtes cuisent, pelez l’oignon jaune puis émincez-le finement pour qu’il fonde facilement à la cuisson. Pelez également les gousses d’ail et hachez-les. Coupez ensuite le saumon fumé en lanières ou en morceaux de taille régulière. Préparer tous ces ingrédients à l’avance vous permettra d’enchaîner la recette sereinement sans risquer de trop cuire la garniture.",
-        "Dans une grande poêle, faites chauffer l’huile d’olive avec le beurre sur feu moyen. Ajoutez l’oignon émincé et laissez-le cuire quelques minutes en remuant souvent, jusqu’à ce qu’il devienne tendre et légèrement translucide. Incorporez ensuite l’ail haché, puis poursuivez la cuisson une petite minute seulement. Cette base va apporter du goût à l’ensemble sans prendre le dessus sur le saumon fumé.",
-        "Ajoutez les épinards surgelés dans la poêle contenant l’oignon et l’ail. Laissez-les cuire sur feu moyen en remuant régulièrement pour favoriser une décongélation homogène. Poursuivez jusqu’à ce que l’excédent d’eau se soit en grande partie évaporé. Cette étape est importante pour éviter une sauce trop liquide et conserver une texture agréable, bien liée autour des fettuccines.",
-        "Versez la crème fraîche dans la poêle avec les épinards, puis mélangez délicatement pour bien enrober les légumes. Ajoutez les morceaux de saumon fumé et laissez chauffer à feu doux pendant quelques instants. Le saumon ne doit pas cuire trop longtemps afin de garder sa texture fondante. Vous obtiendrez ainsi une sauce crémeuse, savoureuse et bien équilibrée en goût.",
-        "Lorsque les fettuccines sont cuites, égouttez-les soigneusement en gardant éventuellement un petit verre d’eau de cuisson si vous souhaitez assouplir la sauce ensuite. Ne rincez pas les pâtes, car leur amidon aide la sauce à mieux adhérer. Ajoutez-les rapidement dans la poêle pendant qu’elles sont encore bien chaudes pour favoriser un mélange homogène et gourmand.",
-        "Versez les fettuccines égouttées dans la poêle avec la sauce aux épinards, à la crème et au saumon fumé. Mélangez délicatement à l’aide de pinces ou de deux cuillères pour bien répartir tous les ingrédients sans casser les pâtes. Si la préparation vous paraît un peu épaisse, ajoutez un filet d’eau de cuisson réservé afin d’obtenir une texture plus souple.",
-        "Ajoutez le parmesan râpé dans la poêle, puis mélangez une dernière fois pour qu’il fonde légèrement au contact des pâtes chaudes et rende l’ensemble encore plus onctueux. Répartissez aussitôt les fettuccines au saumon fumé et épinards dans des assiettes creuses. Servez sans attendre pour profiter d’un plat bien chaud, crémeux et particulièrement réconfortant."
-      ],
-      "image": "https://img.cuisineaz.com/667x667/2013/12/20/i65422-photo-de-tagliatelles-au-saumon-fume.jpeg",
-      "sourceUrl": "https://www.cuisineaz.com/recettes/fettuccines-au-saumon-fume-et-epinards-124111.aspx"
-    },
-    {
-      "id": "cuisineaz-salade-de-quinoa-aux-lentilles",
-      "custom": true,
-      "source": "cuisineaz",
-      "category": "repas",
-      "categoryLabel": "Repas chauds",
-      "name": "Salade de quinoa aux lentilles",
-      "description": "Misez sur la simplicité gourmande avec cette salade de quinoa aux lentilles ! Alliance de céréales et de légumineuses, elle fait la part belle aux produits frais du printemps et de l’été : tomates cerises, concombre, persil. Ce plat équilibré, riche en couleurs et en saveurs, s’inspire des tables familiales du quotidien. Facile à préparer, il répond à toutes les envies, que ce soit pour un repas léger, un pique-nique ou un grand partage autour de la table.",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 4,
-      "ingredients": [
-        "250 g Quinoa",
-        "200 g Lentilles vertes",
-        "250 g Grappe de tomates cerises",
-        "1 Concombre(s)",
-        "1 Oignon(s) rouge(s)",
-        "1 botte(s) Persil plat",
-        "150 g Feta",
-        "50 g Noix",
-        "4 c. à soupe Huile d'olive",
-        "4.5 c. à soupe Jus de citron",
-        "1 c. à café Moutarde",
-        "Sel",
-        "Poivre noir"
-      ],
-      "steps": [
-        "Rincez soigneusement le quinoa sous un filet d’eau froide dans une passoire fine afin d’enlever son éventuelle amertume. Rincez aussi les lentilles vertes. Faites cuire le quinoa dans une casserole d’eau bouillante légèrement salée selon le temps indiqué sur le paquet, puis égouttez-le. Faites cuire les lentilles dans une autre casserole d’eau frémissante jusqu’à ce qu’elles soient tendres tout en restant fermes, puis égouttez-les également.",
-        "Étalez le quinoa cuit dans un grand plat ou sur une assiette large pour qu’il refroidisse plus vite sans continuer à cuire. Laissez aussi les lentilles tiédir après les avoir égouttées. Cette étape est importante pour garder une salade fraîche, légère et bien équilibrée. Si vous mélangez les ingrédients encore chauds, les légumes risquent de ramollir et la feta de fondre légèrement.",
-        "Lavez les tomates cerises, puis coupez-les en deux ou en quatre selon leur taille. Épluchez le concombre si vous le souhaitez, puis coupez-le en petits dés réguliers pour faciliter la dégustation. Pelez l’oignon rouge et émincez-le finement. Lavez le persil plat, séchez-le soigneusement dans un torchon propre ou du papier absorbant, puis ciselez-le finement pour bien répartir sa saveur dans la salade.",
-        "Coupez la feta en petits dés ou émiettez-la grossièrement selon la texture que vous préférez. Concassez les noix de façon assez grossière pour conserver du croquant dans la salade. Vous pouvez les écraser légèrement avec le plat d’un couteau ou les couper à la main. Cette garniture apporte à la fois du relief, de la gourmandise et un contraste agréable avec les ingrédients plus frais.",
-        "Dans un bol, versez l’huile d’olive, le jus de citron et la moutarde. Salez et poivrez selon votre goût, puis mélangez vivement avec une fourchette ou un petit fouet jusqu’à obtenir une sauce homogène. La moutarde aide à bien lier l’assaisonnement. Goûtez la vinaigrette et ajustez si nécessaire pour trouver un bon équilibre entre l’acidité du citron et la douceur de l’huile.",
-        "Dans un grand saladier, versez le quinoa refroidi et les lentilles tièdes ou froides. Ajoutez les tomates cerises, le concombre, l’oignon rouge et le persil ciselé. Mélangez délicatement pour bien répartir tous les ingrédients. Versez ensuite la vinaigrette sur l’ensemble et remuez de nouveau avec soin afin que chaque bouchée soit bien assaisonnée sans écraser les légumes.",
-        "Incorporez la feta et les noix au dernier moment pour préserver leurs textures. Mélangez doucement avec une grande cuillère afin de ne pas trop casser le fromage. Si vous souhaitez une présentation plus soignée, gardez-en une petite partie de côté pour la répartir sur le dessus juste avant de servir. Cela rendra la salade encore plus appétissante et généreuse.",
-        "Placez la salade au réfrigérateur pendant environ 30 minutes avant de la servir. Ce temps de repos permet aux saveurs de bien se mêler et donne un résultat plus frais, particulièrement agréable. Avant le service, mélangez une dernière fois et rectifiez l’assaisonnement si besoin avec un peu de sel, de poivre ou quelques gouttes de citron supplémentaires selon votre goût."
-      ],
-      "image": "https://img.cuisineaz.com/1023x1023/2014/02/24/i81758-salade-de-quinoa-et-lentilles.jpg",
-      "sourceUrl": "https://www.cuisineaz.com/recettes/salade-de-quinoa-aux-lentilles-124029.aspx"
     },
     {
       "id": "cuisineaz-poulet-citron-curry-et-legumes-light",
@@ -5342,37 +5332,6 @@
       "sourceUrl": "https://www.cuisineaz.com/recettes/salade-de-pates-au-jambon-et-petits-legumes-82248.aspx"
     },
     {
-      "id": "cuisineaz-salade-de-pates-aux-crevettes-a-l-ail-et-aux-legumes",
-      "custom": true,
-      "source": "cuisineaz",
-      "category": "repas",
-      "categoryLabel": "Repas chauds",
-      "name": "Salade de pâtes aux crevettes à l’ail et aux légumes",
-      "description": "",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 4,
-      "ingredients": [
-        "250 g Crevette(s) rose(s) cuite(s)",
-        "200 g Torsette(s)",
-        "200 g Fleur(ette) de brocoli",
-        "1 Gousse Ail",
-        "1 boîte(s) Maïs",
-        "1 Carotte(s)",
-        "8 c. à soupe Huile d'olive",
-        "Sel, poivre"
-      ],
-      "steps": [
-        "Épluchez la carotte, coupez les extrémités et détaillez-la en bâtonnets. Coupez les fleurettes de brocoli en morceaux. Faites cuire l’ensemble 10 minutes à la vapeur.",
-        "Pendant ce temps, faite cuire les pâtes 10 minutes dans une casserole d’eau bouillante salée, ou selon les instructions du paquet. Stoppez la cuisson en les passant rapidement sous l’eau froide, égouttez à nouveau et laissez refroidir.",
-        "Égouttez le maïs. Pelez et pressez la gousse d’ail. Mélangez l’huile d’olive avec l’ail écrasé.",
-        "Dans un saladier, mélangez les pâtes, les légumes, le maïs et les crevettes. Arrosez d’huile à l’ail et tournez délicatement.",
-        "Servez tiède ou froid !"
-      ],
-      "image": "https://img.cuisineaz.com/1200x1200/2015/12/03/i77719-salade-de-pates-aux-crevettes-a-l-ail-et-aux-legumes.jpg",
-      "sourceUrl": "https://www.cuisineaz.com/recettes/salade-de-pates-aux-crevettes-a-l-ail-et-aux-legumes-84473.aspx"
-    },
-    {
       "id": "cuisineaz-pates-en-salade-pour-le-travail",
       "custom": true,
       "source": "cuisineaz",
@@ -5542,6 +5501,46 @@
       ],
       "image": "https://img.cuisineaz.com/1200x1200/2015/06/22/i94360-salade-de-riz-aux-legumes-et-des-de-jambon.jpg",
       "sourceUrl": "https://www.cuisineaz.com/recettes/salade-de-riz-aux-legumes-et-des-de-jambon-122777.aspx"
+    },
+    {
+      "id": "cuisineaz-salade-de-pates-crispy-recette-croquante-facile-et-ultra-rapide-en-ete",
+      "custom": true,
+      "source": "cuisineaz",
+      "category": "repas",
+      "categoryLabel": "Repas chauds",
+      "name": "Salade de pâtes crispy : recette croquante, facile et ULTRA RAPIDE en été",
+      "description": "La salade de pâtes crusty réunit tout le meilleur de l’été dans un seul plat ! Tomates cerises juteuses, concombre croquant et billes de mozzarella fraîche s’invitent à table pour une explosion de fraîcheur. Inspirée des grandes tablées italiennes, cette recette facile à partager est parfaite pour une pause midi ou un dîner léger. Grâce au speck croustillant et à la vinaigrette au thon, chaque bouchée est un voyage savoureux et convivial.",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 4,
+      "ingredients": [
+        "300 g Farfalle cuites",
+        "5 g Parmesan râpé",
+        "Huile d'olive",
+        "Sel poivre",
+        "1 c. à café Paprika fumé",
+        "150 g Saumon fumé",
+        "250 g Tomate(s) cerise(s)",
+        "1 poignée(s) Roquette",
+        "1 c. à soupe Herbes fraîches",
+        "Pour la sauce",
+        "1 pot(s) Yaourt(s) (nature)",
+        "2 c. à soupe Crème épaisse",
+        "1 c. à soupe Moutarde douce",
+        "1 c. à soupe Jus de citron",
+        "1 c. à soupe Ail en poudre",
+        "Quelques pincée(s) Sel poivre"
+      ],
+      "steps": [
+        "Faites cuire les pâtes al dente dans l'eau salée, égouttez-les et laissez-les bien s'évaporer pour qu'elles soient le plus sèches possible.",
+        "Dans un bol, mélangez les pâtes avec l'huile d'olive, le sel, le poivre (et le paprika), puis incorporez le parmesan râpé de façon à ce qu'il adhère bien aux pâtes.",
+        "Disposez les pâtes au parmesan en une seule couche dans le panier du Airfryer et faites-les cuire à 200°C pendant 15 à 18 minutes (en secouant à mi-cuisson) jusqu'à ce qu'elles soient bien dorées, croustillantes et gratinées.",
+        "Lavez la roquette, coupez les tomates cerises en deux, taillez le saumon fumé et l'oignon rouge (très finement, pour la décoration).",
+        "Préparez la sauce en fouettant vigoureusement le yaourt, la crème, la moutarde, le jus de citron, l'ail en poudre, le sel et le poivre.",
+        "Dans un grand saladier, réunissez la roquette, les tomates, le saumon et les herbes, mélangez avec la sauce, puis dressez dans les assiettes en ajoutant les pâtes croustillantes au parmesan et l'oignon rouge en décoration sur le dessus."
+      ],
+      "image": "https://img.cuisineaz.com/495x495/2026/04/09/i208318-salade-de-pate-crispy-avec-roquette-tomates-cerise-saumon-fume-et-sauce-maison.jpg",
+      "sourceUrl": "https://www.cuisineaz.com/recettes/salade-de-pates-crusty-recette-croquante-et-facile-en-ete-122717.aspx"
     },
     {
       "id": "cuisineaz-soupe-de-lentilles-corail-aux-epices-a-preparer-a-l-avance",
@@ -5827,6 +5826,272 @@
       "sourceUrl": "https://www.cuisineaz.com/recettes/houmous-maison-la-meilleure-recette-120028.aspx"
     },
     {
+      "id": "cuisineaz-chips-de-butternut-maison-pour-l-apero",
+      "custom": true,
+      "source": "cuisineaz",
+      "category": "tartinade",
+      "categoryLabel": "Tartinades & Dips",
+      "name": "Chips de butternut maison pour l'apéro",
+      "description": "Craquez pour l’apéro avec ces chips de butternut maison ! La courge butternut, star de l’automne, se transforme ici en tranches fines et dorées, pour une alternative originale aux classiques chips de pomme de terre. Simple à préparer, cette recette réchauffe les moments partagés, en famille ou entre amis. À la fois fondantes et croustillantes, ces chips invitent la saison dans votre assiette, avec une touche conviviale et gourmande à savourer du bout des doigts.",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 4,
+      "ingredients": [
+        "1 Courge butternut",
+        "3 c. à soupe Huile d'olive",
+        "Sel",
+        "Poivre",
+        "1 c. à café Paprika en poudre"
+      ],
+      "steps": [
+        "Préchauffez votre four à 150°C en chaleur tournante si vous l’avez, afin d’assurer une cuisson régulière et progressive des chips. Recouvrez une grande plaque de cuisson de papier sulfurisé pour éviter que les tranches n’attachent. Sortez aussi un grand saladier et, si possible, une mandoline ou un couteau bien aiguisé pour obtenir des rondelles fines et régulières.",
+        "Rincez la courge butternut, puis épluchez-la soigneusement avec un économe. Coupez les extrémités, fendez-la en deux et retirez les graines à l’aide d’une cuillère. Taillez ensuite la chair en tranches très fines, idéalement de 1 à 2 mm d’épaisseur. Plus les tranches seront régulières, plus la cuisson sera homogène et vos chips seront croustillantes à la sortie du four.",
+        "Déposez les tranches de butternut dans un saladier. Ajoutez l’huile d’olive, le paprika, un peu de sel et quelques tours de moulin à poivre. Mélangez délicatement avec les mains ou une cuillère pour bien enrober chaque tranche sans les casser. Veillez à ne pas trop saler dès le départ, car les saveurs se concentrent légèrement pendant la cuisson.",
+        "Répartissez les tranches assaisonnées sur la plaque préparée en une seule couche, sans les superposer. Laissez un léger espace entre elles pour que l’air chaud circule correctement et favorise le séchage. Si nécessaire, utilisez deux plaques ou faites cuire en plusieurs fournées. Cette étape est importante pour obtenir des chips bien dorées et non des tranches ramollies.",
+        "Enfournez la plaque à mi-hauteur et laissez cuire pendant environ 25 à 35 minutes, en surveillant attentivement à partir de la moitié du temps. Retournez les tranches à mi-cuisson pour une coloration plus uniforme. Retirez au fur et à mesure celles qui deviennent croustillantes, car les plus fines peuvent cuire plus vite que les autres et risqueraient de brunir excessivement.",
+        "Sortez les chips du four et laissez-les refroidir quelques minutes directement sur la plaque ou sur une grille. Elles vont continuer à se raffermir en tiédissant. Goûtez, puis rectifiez éventuellement l’assaisonnement avec une pincée de sel ou de paprika. Servez ces chips de butternut maison à l’apéritif, seules ou avec une sauce légère au yaourt pour encore plus de gourmandise."
+      ],
+      "image": "https://img.cuisineaz.com/1200x1200/2013/12/20/i9090-blinis-maison-au-saumon.jpg",
+      "sourceUrl": "https://www.cuisineaz.com/recettes/chips-de-butternut-maison-pour-l-apero-125781.aspx"
+    },
+    {
+      "id": "cuisineaz-schtroumpfs-halloween-maison-bonbons-gelifies",
+      "custom": true,
+      "source": "cuisineaz",
+      "category": "tartinade",
+      "categoryLabel": "Tartinades & Dips",
+      "name": "Schtroumpfs halloween maison : bonbons gélifiés",
+      "description": "Faites entrer la magie d’Halloween dans votre cuisine avec ces schtroumpfs maison, de délicieux bonbons gélifiés à préparer en famille. De l’eau, du sucre, un peu de gélatine et un sirop fruité : voilà tout ce qu’il faut pour créer des gourmandises aussi ludiques qu’originales ! Parfaits pour régaler petits et grands, ces bonbons colorés ajoutent une touche de fantaisie et de douceur à l’automne. Qui croquera le premier ?",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 6,
+      "ingredients": [
+        "250 ml Eau",
+        "200 g Sucre en poudre",
+        "80 g Sirop de glucose",
+        "10 g Feuille(s) de gélatine",
+        "10 cl Sirop à diluer",
+        "1 cuillère Jus de citron",
+        "50 g Sucre glace"
+      ],
+      "steps": [
+        "Commencez par faire tremper les feuilles de gélatine dans un grand bol d’eau bien froide pendant quelques minutes, jusqu’à ce qu’elles deviennent souples et faciles à manipuler. Cette étape est essentielle pour obtenir des bonbons bien pris et agréablement fondants. Pendant ce temps, préparez tous les autres ingrédients à portée de main pour travailler sans attendre par la suite.",
+        "Versez l’eau dans une casserole, puis ajoutez le sucre en poudre et le sirop de glucose. Faites chauffer doucement en mélangeant régulièrement avec une cuillère ou une spatule, juste assez pour bien dissoudre le sucre et obtenir un mélange lisse. Il ne faut pas laisser caraméliser la préparation. Vous devez obtenir un sirop homogène, brillant et parfaitement fluide.",
+        "Quand le sirop est bien lisse et chaud, ajoutez le sirop à diluer choisi ainsi que la cuillère de jus de citron. Mélangez soigneusement pour bien répartir les saveurs dans toute la préparation. Le citron apporte une petite touche d’équilibre au goût sucré et aide à donner un résultat plus vif, plus agréable et moins écœurant en bouche.",
+        "Essorez soigneusement les feuilles de gélatine ramollies entre vos doigts pour retirer l’excédent d’eau, puis ajoutez-les dans la casserole hors du feu. Remuez immédiatement et longuement jusqu’à ce qu’elles soient totalement fondues dans le sirop chaud. Vérifiez qu’il ne reste aucun morceau. La texture doit être parfaitement lisse afin d’obtenir des bonbons réguliers après prise.",
+        "Versez la préparation encore liquide dans des moules en silicone de petite taille, de préférence avec des formes amusantes ou rappelant l’univers d’Halloween. Si vous n’avez pas de moules à bonbons, vous pouvez aussi utiliser un petit plat puis découper les formes plus tard. Travaillez avec soin pour éviter les débordements et garder des bonbons nets.",
+        "Placez les moules remplis au réfrigérateur pendant plusieurs heures, jusqu’à ce que les bonbons soient complètement pris. Ne les manipulez pas trop tôt, sinon ils risqueraient de se déformer ou de coller. Pour un résultat optimal, laissez-les reposer suffisamment longtemps afin qu’ils deviennent bien fermes, tout en gardant une texture souple et gélifiée agréable à déguster.",
+        "Lorsque les bonbons sont bien froids et pris, démoulez-les délicatement en poussant légèrement sous les alvéoles des moules en silicone. Prenez votre temps pour ne pas les déchirer. Si vous avez utilisé un plat au lieu de moules, découpez la pâte gélifiée en petits morceaux ou à l’aide d’emporte-pièces pour créer des formes ludiques et gourmandes.",
+        "Déposez le sucre glace dans une assiette creuse ou un petit saladier, puis roulez les bonbons dedans pour les enrober légèrement. Cet enrobage limite un peu leur côté collant et leur donne un aspect gourmand. Secouez-les doucement pour retirer l’excédent. Vous pouvez ensuite les servir aussitôt ou les conserver au frais dans une boîte hermétique pendant un court moment."
+      ],
+      "image": "https://img.cuisineaz.com/1023x1023/2026/09/22/i210555-bonbons-gelifies-maison-schtroumpfs-d-halloween.jpg",
+      "sourceUrl": "https://www.cuisineaz.com/recettes/schtroumpfs-halloween-maison-bonbons-gelifies-125773.aspx"
+    },
+    {
+      "id": "cuisineaz-paquet-bonbons-halloween-maison-idee-cadeau",
+      "custom": true,
+      "source": "cuisineaz",
+      "category": "tartinade",
+      "categoryLabel": "Tartinades & Dips",
+      "name": "Paquet bonbons halloween maison : idée cadeau",
+      "description": "Surprenez petits et grands avec ces paquets de bonbons faits maison, parfaits pour Halloween ! À base de friandises à la fraise, ces petites créations gourmandes célèbrent l’automne et la tradition du partage lors des fêtes. Faciles à préparer, elles transforment chaque moment en souvenir sucré. Un cadeau original, simple et joyeux, à glisser entre toutes les mains pour une fête pleine de douceur et de fantaisie.",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 6,
+      "ingredients": [
+        "1 Bonbons à la fraise(s)",
+        "6 6 Ficelle de cuisine"
+      ],
+      "steps": [
+        "Installez-vous sur une surface propre et bien dégagée pour préparer facilement vos paquets de bonbons d’Halloween. Rassemblez le sachet de bonbons à la fraise ainsi que les 6 morceaux de ficelle de cuisine. Si nécessaire, coupez la ficelle à l’avance pour obtenir 6 liens de taille similaire. Cette organisation simple vous permettra de travailler plus vite et d’obtenir un résultat plus régulier, pratique si vous souhaitez offrir ces petits cadeaux gourmands à plusieurs personnes.",
+        "Ouvrez le sachet de bonbons à la fraise puis répartissez les friandises en 6 portions aussi équilibrées que possible. Essayez de mettre une quantité similaire dans chaque part pour que tous les paquets soient harmonieux et agréables à offrir. Vous pouvez compter les bonbons si leur format le permet, ou simplement vous fier au volume. Cette étape est importante pour donner à votre présentation finale un aspect soigné et équitable.",
+        "Déposez chaque portion de bonbons au centre d’un petit emballage adapté si vous en avez prévu un, ou regroupez-les simplement en petit ballot bien serré. Maintenez les bonbons ensemble avec les doigts afin qu’ils gardent une forme compacte et jolie. L’idée est d’obtenir 6 petits paquets faciles à manipuler, qui évoquent immédiatement une attention gourmande à offrir pour Halloween, tout en restant simples à réaliser à la maison.",
+        "Prenez un morceau de ficelle de cuisine pour chaque portion, puis nouez délicatement le haut de chaque paquet afin de bien maintenir les bonbons. Serrez suffisamment pour que l’ensemble tienne en place, sans écraser le contenu si vous utilisez un emballage. Faites un double nœud pour éviter que le paquet ne s’ouvre. Répétez l’opération pour les 6 portions jusqu’à obtenir une série de petits cadeaux gourmands propres et bien fermés.",
+        "Prenez un moment pour vérifier que chaque paquet est bien fermé, stable et visuellement soigné. Réajustez la ficelle si besoin pour harmoniser la présentation et donner un rendu plus net. Vous pouvez ensuite disposer les paquets sur un plateau, dans une corbeille ou directement à la place de vos invités. Ces paquets de bonbons d’Halloween maison constituent une idée cadeau simple, rapide et conviviale, parfaite pour une fête ou un goûter."
+      ],
+      "image": "https://img.cuisineaz.com/1023x1023/2026/09/22/i210554-paquet-de-bonbons-d-halloween-maison.jpg",
+      "sourceUrl": "https://www.cuisineaz.com/recettes/paquet-bonbons-halloween-maison-idee-cadeau-125772.aspx"
+    },
+    {
+      "id": "cuisineaz-bonbons-gelifies-halloween-maison",
+      "custom": true,
+      "source": "cuisineaz",
+      "category": "tartinade",
+      "categoryLabel": "Tartinades & Dips",
+      "name": "Bonbons gélifiés halloween maison",
+      "description": "Faites frissonner petits et grands en préparant ces bonbons gélifiés d’Halloween maison ! Avec du jus d’orange et du citron de saison, un doux sirop de fraise et une touche de couleur, ces friandises sont aussi ludiques que savoureuses. Parfaits pour un goûter d’automne ou une fête familiale, ces bonbons simples à réaliser réuniront toute la tribu autour d’un délicieux moment, sans artifices et plein de peps. À partager sans modération pour une soirée monstrueusement gourmande !",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 6,
+      "ingredients": [
+        "20 cl Eau",
+        "80 g Sucre en poudre",
+        "8 g Feuille(s) de gélatine",
+        "10 cl Sirop de fraise",
+        "10 cl Jus d'orange",
+        "2 cuillère Jus de citron",
+        "2 goutte(s) Colorant alimentaire rouge(s)",
+        "2 goutte(s) Colorant alimentaire jaune"
+      ],
+      "steps": [
+        "Versez de l’eau bien froide dans un bol, puis déposez-y les feuilles de gélatine pour les faire ramollir pendant quelques minutes. Elles doivent devenir souples et faciles à manipuler. Pendant ce temps, préparez tous les autres ingrédients à portée de main afin d’enchaîner les étapes facilement et d’obtenir une préparation régulière, sans grumeaux ni temps d’attente inutile.",
+        "Dans une petite casserole, versez l’eau et ajoutez le sucre en poudre. Faites chauffer à feu doux en mélangeant régulièrement avec une cuillère ou un petit fouet, jusqu’à ce que le sucre soit complètement dissous. La préparation doit être chaude, mais elle ne doit pas bouillir fortement. Cette base sucrée servira à bien répartir les saveurs et à dissoudre la gélatine correctement.",
+        "Essorez soigneusement les feuilles de gélatine ramollies entre vos doigts pour retirer l’excédent d’eau, puis ajoutez-les dans la casserole hors du feu ou sur feu très doux. Mélangez immédiatement jusqu’à leur dissolution complète. Veillez à ce qu’il ne reste aucun morceau. Vous devez obtenir un liquide lisse et homogène, condition essentielle pour réussir des bonbons gélifiés à la texture agréable.",
+        "Ajoutez ensuite le sirop de fraise, le jus d’orange et le jus de citron dans la casserole, puis mélangez soigneusement pour bien unir tous les parfums. Le citron relève le goût sucré, tandis que l’orange apporte une note fruitée plus douce. Si besoin, goûtez très légèrement la préparation lorsqu’elle a tiédi afin de vérifier l’équilibre entre acidité et douceur.",
+        "Divisez éventuellement la préparation en deux petits récipients si vous souhaitez varier les couleurs, ou laissez-la dans un seul contenant pour une seule teinte. Ajoutez les gouttes de colorant rouge et jaune, puis mélangez jusqu’à obtenir une couleur vive et uniforme. Ajustez la nuance selon l’effet recherché, pour rappeler l’univers d’Halloween avec des bonbons ludiques, orangés ou rouge intense.",
+        "Versez délicatement la préparation dans de petits moules en silicone, de préférence en formes amusantes liées à Halloween comme des citrouilles, chauves-souris ou fantômes. Si vous n’avez pas de moules à bonbons, utilisez un petit plat que vous découperez plus tard. Remplissez avec soin pour éviter les débordements et tapotez légèrement les moules sur le plan de travail pour chasser les bulles d’air.",
+        "Placez les moules remplis au réfrigérateur pendant plusieurs heures afin que les bonbons prennent correctement. Le mélange doit devenir bien ferme au toucher tout en gardant une texture souple et fondante. Évitez de déplacer les moules pendant le repos pour conserver des formes nettes. Ce temps de refroidissement est indispensable pour obtenir de vrais bonbons gélifiés faciles à démouler.",
+        "Lorsque les bonbons sont bien pris, sortez les moules du réfrigérateur et démoulez-les doucement en écartant légèrement le silicone. Procédez avec délicatesse pour ne pas déchirer les formes, surtout si elles comportent des détails. Si vous avez utilisé un plat, découpez la pâte gélifiée en petits carrés ou en formes festives. Déposez ensuite les bonbons sur une assiette ou un plateau.",
+        "Disposez les bonbons gélifiés Halloween maison dans un petit bol, sur un plateau de fête ou dans des sachets pour les offrir. Conservez-les au frais jusqu’au moment de servir pour préserver leur texture. Vous pouvez les présenter avec d’autres douceurs d’Halloween pour créer une table gourmande et colorée, idéale pour partager un moment simple, amusant et convivial en famille."
+      ],
+      "image": "https://img.cuisineaz.com/1200x1200/2016/04/23/i11230-bonbons-gelifies.png",
+      "sourceUrl": "https://www.cuisineaz.com/recettes/bonbons-gelifies-halloween-maison-125766.aspx"
+    },
+    {
+      "id": "cuisineaz-caramels-halloween-maison-recette-express",
+      "custom": true,
+      "source": "cuisineaz",
+      "category": "tartinade",
+      "categoryLabel": "Tartinades & Dips",
+      "name": "Caramels halloween maison : recette express",
+      "description": "À Halloween, la gourmandise se teinte d’orange et de mystère ! Ces caramels maison, préparés avec du sucre, de la crème et une touche de beurre, font la part belle aux saveurs de l’automne. Ils rappellent les friandises offertes lors des soirées d’octobre, quand petits et grands partagent un moment complice autour de bonbons faits maison. Cette recette express transformera chaque pause sucrée en fête conviviale, à déguster en famille ou entre amis, sans prise de tête.",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 6,
+      "ingredients": [
+        "200 g Sucre en poudre",
+        "50 g Glucose",
+        "10 cl Crème liquide entière",
+        "20 g Beurre demi-sel",
+        "10 g Beurre doux",
+        "Colorant orange",
+        "1 c. à café Extrait de vanille",
+        "150 g Pâte à sucre noire",
+        "50 g Fondant pâtissier (blanc)",
+        "50 g Pâte à sucre verte"
+      ],
+      "steps": [
+        "Commencez par réunir tous les ingrédients et le matériel nécessaire afin de travailler rapidement, car le caramel évolue vite. Préparez un moule carré ou un petit plat recouvert de papier cuisson légèrement beurré. Gardez aussi à portée de main une casserole à fond épais, une spatule, un couteau et un peu de beurre pour manipuler la pâte plus facilement ensuite.",
+        "Versez la crème liquide entière dans une petite casserole avec l’extrait de vanille, puis faites-la chauffer doucement sans la faire bouillir. Cette étape permet d’éviter un choc thermique trop important au moment de l’ajout dans le caramel. Laissez la crème chaude à feu très doux ou hors du feu, tout près de vous, pour qu’elle reste prête à être incorporée immédiatement.",
+        "Dans une casserole à fond épais, versez le sucre en poudre avec le glucose, puis faites chauffer à feu moyen. Remuez très peu pour éviter que le sucre ne cristallise, mais surveillez constamment la coloration. Dès que le mélange prend une belle teinte ambrée, retirez légèrement la casserole du feu. Vous devez obtenir un caramel homogène, brillant et bien fondu, sans goût de brûlé.",
+        "Versez la crème chaude en plusieurs fois sur le caramel en mélangeant prudemment, car le mélange mousse fortement. Ajoutez ensuite le beurre demi-sel, le beurre doux et quelques gouttes de colorant orange, puis remettez sur feu doux si nécessaire pour lisser la préparation. Mélangez jusqu’à obtenir une pâte à caramel souple, brillante et bien homogène, avec une couleur vive adaptée à l’esprit Halloween.",
+        "Versez immédiatement le caramel dans le moule préparé, puis lissez la surface avec une spatule légèrement beurrée pour obtenir une épaisseur régulière. Laissez tiédir à température ambiante jusqu’à ce que la masse soit assez ferme pour être manipulée. Si besoin, placez le moule un court moment au frais afin d’accélérer la prise, sans durcir excessivement la texture.",
+        "Quand la plaque de caramel est suffisamment prise, démoulez-la délicatement sur une planche. Beurrez légèrement la lame d’un couteau, puis découpez des petits rectangles ou des carrés réguliers. Travaillez avec des gestes nets pour éviter d’écraser les morceaux. Si le caramel colle trop, laissez-le reposer encore un peu avant de poursuivre la découpe afin d’obtenir une forme plus propre.",
+        "Travaillez la pâte à sucre noire et la pâte à sucre verte entre vos mains pour les assouplir. Étalez-les finement, puis découpez de petits éléments décoratifs comme des yeux, des sourires, des tiges ou des mini-chapeaux. Faites aussi légèrement tiédir le fondant pâtissier blanc pour qu’il devienne plus facile à appliquer en petites touches sur les caramels et serve de base à certains détails.",
+        "Déposez sur chaque caramel quelques éléments en pâte à sucre pour créer un décor amusant inspiré d’Halloween, par exemple de petites citrouilles, des monstres ou des visages fantômes. Utilisez un peu de fondant blanc comme colle alimentaire pour fixer les décors. Prenez le temps de varier les finitions pour rendre l’ensemble plus festif, tout en gardant des formes simples et faciles à réaliser.",
+        "Laissez les décors reposer quelques minutes pour qu’ils adhèrent bien, puis disposez les caramels sur un plat ou dans de petits caissettes. Vous pouvez aussi les emballer individuellement dans du papier cuisson pour un effet confiserie maison. Servez ces caramels d’Halloween au goûter ou en fin de repas, en veillant à les conserver dans un endroit frais et sec jusqu’au moment de la dégustation."
+      ],
+      "image": "https://img.cuisineaz.com/1200x1200/2015/12/21/i96405-caramels-mous-maison-au-beurre-sale.jpg",
+      "sourceUrl": "https://www.cuisineaz.com/recettes/caramels-halloween-maison-recette-express-125763.aspx"
+    },
+    {
+      "id": "cuisineaz-guimauves-fantomes-halloween-maison",
+      "custom": true,
+      "source": "cuisineaz",
+      "category": "tartinade",
+      "categoryLabel": "Tartinades & Dips",
+      "name": "Guimauves fantômes halloween maison",
+      "description": "Pour Halloween, transformez votre cuisine en atelier magique avec ces guimauves fantômes maison ! Blancs d’œufs, sucre et chocolat s’allient pour créer de tendres petits monstres à croquer. Cette recette simple revisite la tradition des bonbons d’octobre, en offrant une douceur moelleuse et sans colorant. Idéale à partager en famille ou entre amis, elle séduit petits et grands et s’invite parfaitement à vos soirées automnales. Effet fantômes garanti… sans faire peur aux papilles !",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 10,
+      "ingredients": [
+        "4 Blancs",
+        "250 g Sucre en poudre",
+        "40 g Sirop de glucose",
+        "12 cl Eau",
+        "8 Feuille(s) Feuille de gélatine alimentaire Vahiné",
+        "80 g Sucre glace",
+        "40 g Fécule de maïs",
+        "1 c. à café Extrait de vanille",
+        "50 g Chocolat noir"
+      ],
+      "steps": [
+        "Commencez par faire tremper les feuilles de gélatine dans un grand bol d’eau bien froide pendant environ 10 minutes, afin qu’elles ramollissent correctement. Pendant ce temps, préparez tout le reste des ingrédients à portée de main, car la suite de la recette demande un peu de rapidité. Égouttez ensuite la gélatine entre vos doigts en la pressant délicatement pour retirer l’excès d’eau.",
+        "Mélangez le sucre glace et la fécule de maïs dans un bol. Saupoudrez généreusement ce mélange sur une plaque, un grand plat ou un moule chemisé de papier cuisson, afin d’éviter que la guimauve ne colle. Réservez aussi un peu de ce mélange pour le façonnage final. Vous pouvez également préparer une poche à douille ou deux cuillères si vous souhaitez former des fantômes plus réguliers.",
+        "Versez les blancs d’œufs dans un grand saladier ou dans la cuve d’un robot. Fouettez-les jusqu’à obtenir des blancs bien mousseux puis fermes, mais encore souples. Ils doivent former un bec léger au bout du fouet. Cette texture permettra d’incorporer le sirop chaud plus facilement tout en donnant à la guimauve une consistance aérienne et moelleuse.",
+        "Dans une casserole, versez le sucre en poudre, le sirop de glucose, l’eau et l’extrait de vanille. Faites chauffer sur feu moyen en remuant au début pour aider le sucre à fondre, puis laissez cuire sans trop mélanger. Le sirop doit devenir bien chaud et légèrement épaissi. Hors du feu, ajoutez immédiatement la gélatine essorée et mélangez soigneusement jusqu’à ce qu’elle soit parfaitement dissoute dans le sirop.",
+        "Versez le sirop chaud en filet sur les blancs montés, tout en continuant de fouetter à vitesse moyenne puis plus soutenue. Procédez doucement pour éviter de faire retomber les blancs. Continuez à battre plusieurs minutes, jusqu’à ce que la préparation devienne très blanche, brillante, épaisse et tiède. Vous devez obtenir une texture de guimauve ferme, souple et suffisamment dense pour garder une forme.",
+        "Transférez rapidement la préparation dans une poche à douille, si vous en avez une, ou utilisez deux cuillères. Formez des petits tas allongés ou des dômes sur la surface poudrée, en essayant de créer une base large et un sommet légèrement pointu pour rappeler la silhouette d’un fantôme. Travaillez sans trop attendre, car la guimauve commence à prendre au bout de quelques minutes.",
+        "Saupoudrez légèrement les guimauves façonnées avec le reste du mélange sucre glace-fécule, puis laissez-les reposer à température ambiante pendant plusieurs heures, idéalement jusqu’à ce que la surface ne colle plus au toucher. Ce repos est important pour leur permettre de se raffermir tout en gardant un cœur tendre. Évitez de les couvrir hermétiquement pendant cette phase pour ne pas ramollir leur surface.",
+        "Faites fondre le chocolat noir doucement, au bain-marie ou par très courtes impulsions au micro-ondes, en remuant régulièrement pour obtenir une texture lisse. À l’aide d’un cure-dent, d’une poche très fine ou de la pointe d’une cuillère, dessinez les yeux et la bouche sur chaque guimauve pour créer de petits visages de fantômes. Laissez ensuite le chocolat figer quelques minutes avant de servir."
+      ],
+      "image": "https://img.cuisineaz.com/1023x1023/2026/09/22/i210550-guimauves-fantomes-d-halloween.jpg",
+      "sourceUrl": "https://www.cuisineaz.com/recettes/guimauves-fantomes-halloween-maison-125762.aspx"
+    },
+    {
+      "id": "cuisineaz-bonbons-halloween-maison-a-faire-avec-les-enfants",
+      "custom": true,
+      "source": "cuisineaz",
+      "category": "tartinade",
+      "categoryLabel": "Tartinades & Dips",
+      "name": "Bonbons halloween maison à faire avec les enfants",
+      "description": "Pour Halloween, préparez des bonbons maison colorés avec les enfants et faites le plein de gourmandise ! À base de fruits rouges savoureux et de bonbons à la fraise, cette recette transforme l’automne en fête sucrée. Entre créativité, saison des citrouilles et plaisir de partager, ces petites douceurs font rimer frisson et tradition, le tout sans prise de tête. Une activité simple et conviviale, idéale pour réunir toute la famille autour d’un moment rigolo… et original !",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 6,
+      "ingredients": [
+        "200 g Bonbons à la fraise(s)",
+        "200 g Sucre en poudre",
+        "50 g Sirop de glucose",
+        "15 cl Mélange de fruits rouges surgelés",
+        "20 g Gélatine en poudre",
+        "1 pièce(s) Citron(s)",
+        "Colorant",
+        "Colorant noir",
+        "50 g Sucre blanc"
+      ],
+      "steps": [
+        "Versez le mélange de fruits rouges surgelés dans une casserole avec le jus du citron. Faites chauffer à feu doux quelques minutes, juste assez pour faire fondre les fruits et obtenir une texture souple. Écrasez-les bien avec une cuillère pour récupérer un maximum de pulpe, puis passez l’ensemble à travers une passoire fine afin d’éliminer les petits grains et d’obtenir un coulis lisse.",
+        "Versez la gélatine en poudre dans un petit bol avec un peu d’eau froide, en respectant les indications figurant sur l’emballage si besoin. Mélangez doucement puis laissez reposer quelques minutes pour qu’elle gonfle correctement. Cette étape est importante pour assurer une bonne prise des bonbons et éviter la formation de grumeaux au moment de l’incorporation dans la préparation chaude.",
+        "Déposez les bonbons à la fraise, le sucre en poudre, le sirop de glucose et le coulis de fruits rouges filtré dans une casserole. Faites chauffer à feu doux en remuant régulièrement avec une spatule. Les bonbons vont peu à peu fondre et se mélanger au reste des ingrédients. Continuez jusqu’à obtenir une préparation homogène, brillante et bien lisse, sans morceaux visibles.",
+        "Retirez la casserole du feu lorsque la préparation est bien lisse, puis ajoutez la gélatine réhydratée. Mélangez soigneusement pour bien la dissoudre dans la chaleur de la préparation. Ajoutez ensuite quelques gouttes de colorant pour renforcer l’effet Halloween. Vous pouvez utiliser le colorant noir seul, ou l’associer à un autre colorant pour créer des teintes amusantes, mystérieuses ou légèrement effrayantes.",
+        "Versez la préparation encore chaude dans de petits moules en silicone, de préférence avec des formes liées à Halloween comme des fantômes, des chauves-souris ou des citrouilles. Si vous n’avez pas de moules à bonbons, utilisez un petit plat recouvert de papier cuisson. Tapotez légèrement les moules sur le plan de travail pour chasser les bulles d’air et répartir la préparation de façon régulière.",
+        "Placez les moules ou le plat au réfrigérateur pendant plusieurs heures, jusqu’à ce que les bonbons soient bien pris et fermes au toucher. Évitez de les manipuler trop tôt, car ils risqueraient de se déformer. Pour une activité avec les enfants, vous pouvez profiter de ce temps d’attente pour préparer un joli contenant ou imaginer une présentation amusante pour le goûter d’Halloween.",
+        "Sortez les bonbons du réfrigérateur une fois qu’ils sont bien fermes. Démoulez-les délicatement en appuyant légèrement sur le fond des moules en silicone pour ne pas les abîmer. Si vous avez utilisé un plat, découpez la pâte en petits carrés, en losanges ou avec des emporte-pièces amusants. Prenez votre temps pour garder des formes nettes et régulières, plus jolies au moment du service.",
+        "Versez le sucre blanc dans une assiette creuse, puis roulez les bonbons dedans pour leur donner un enrobage gourmand et légèrement croquant. Cette finition les rend plus jolis, moins collants et encore plus attrayants pour les enfants. Disposez-les ensuite dans une boîte, des petits sachets ou un grand plat à partager. Servez bien frais pour profiter d’une texture agréable et fondante."
+      ],
+      "image": "https://img.cuisineaz.com/1023x1023/2026/09/22/i210532-bonbons-d-halloween-maison-aux-fruits-rouges.jpg",
+      "sourceUrl": "https://www.cuisineaz.com/recettes/bonbons-halloween-maison-a-faire-avec-les-enfants-125735.aspx"
+    },
+    {
+      "id": "cuisineaz-bonbons-halloween-maison-pour-enfants",
+      "custom": true,
+      "source": "cuisineaz",
+      "category": "tartinade",
+      "categoryLabel": "Tartinades & Dips",
+      "name": "Bonbons halloween maison pour enfants",
+      "description": "Pour Halloween, partagez un moment créatif avec ces bonbons faits maison, aussi ludiques que gourmands ! Chocolat fondant, fruits secs de saison et marshmallows s’associent pour régaler petits et grands monstres. Cette recette facile transforme la tradition du “trick or treat” en atelier gourmand à savourer en famille ou entre amis. Parfaits pour étonner et amuser lors des goûters d’octobre, ces bonbons feront fureur dans tous les paniers. À vos cuillères, prêts… frissonnez !",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 8,
+      "ingredients": [
+        "200 g Chocolat noir pâtissier",
+        "100 g Chocolat blanc",
+        "150 g Mélange de fruits secs",
+        "50 g Amandes effilées",
+        "50 g Raisins secs",
+        "100 g Mini marshmallow(s)",
+        "150 g Bonbons Bubblizz",
+        "100 g Biscuits Oréo(s)",
+        "50 g Pépites de chocolat noir Nestlé"
+      ],
+      "steps": [
+        "Commencez par rassembler tous les ingrédients sur un plan de travail propre et bien dégagé. Préparez une grande plaque, un plateau ou plusieurs assiettes plates recouvertes de papier cuisson pour pouvoir y déposer les bonbons au fur et à mesure. Sortez aussi plusieurs bols afin de séparer facilement les éléments croquants, moelleux et décoratifs. Cette organisation vous aidera à travailler proprement avec les enfants.",
+        "Versez le mélange de fruits secs, les raisins secs, les amandes effilées, les mini marshmallows, les bonbons Bubblizz, les biscuits Oréo émiettés et les pépites de chocolat dans des bols séparés. Si certains fruits secs sont trop gros, coupez-les grossièrement en petits morceaux. Vous obtiendrez ainsi des garnitures faciles à répartir, plus jolies à l’œil et plus simples à intégrer dans chaque bonbon.",
+        "Cassez le chocolat noir pâtissier en morceaux puis faites-le fondre doucement au bain-marie ou par courtes séquences au micro-ondes, en mélangeant régulièrement pour éviter qu’il ne chauffe trop. Vous devez obtenir une texture bien lisse, brillante et homogène. Si vous réalisez cette étape avec des enfants, gardez la main sur la fonte afin d’éviter tout risque de brûlure.",
+        "Placez ensuite le chocolat blanc dans un autre bol et faites-le fondre séparément, toujours doucement, car il est plus fragile et chauffe plus vite que le chocolat noir. Remuez souvent avec une spatule pour lisser la préparation. Le fait de faire fondre les deux chocolats à part vous permettra de créer un effet décoratif plus festif, parfait pour Halloween.",
+        "Dans un grand saladier, versez une partie du chocolat noir fondu puis ajoutez le mélange de fruits secs, les raisins secs, les amandes effilées, la moitié des mini marshmallows, une partie des biscuits Oréo émiettés et les pépites de chocolat. Mélangez délicatement avec une spatule afin d’enrober tous les morceaux sans trop les écraser. Vous devez obtenir une préparation généreuse, variée et bien gourmande.",
+        "À l’aide de deux cuillères ou d’une petite cuillère à glace, déposez des petits tas de préparation sur le papier cuisson. Espacez-les légèrement pour qu’ils gardent une jolie forme. Essayez de répartir équitablement les fruits secs, les biscuits et les marshmallows afin que chaque bonbon soit bien garni. Cette étape donne déjà à la recette son aspect ludique et irrégulier, très adapté à Halloween.",
+        "Versez le reste du chocolat noir et un peu de chocolat blanc fondu en filet sur les petits tas pour les recouvrir partiellement. Disposez ensuite sur le dessus quelques mini marshmallows, morceaux de Bubblizz, éclats d’Oréo et amandes effilées. Vous pouvez jouer sur les contrastes de couleurs et de textures pour obtenir des bonbons amusants, un peu monstrueux et très attrayants pour les enfants.",
+        "Avec une cuillère, une petite poche ou simplement le bout d’une fourchette, tracez de fins filets de chocolat blanc sur les bonbons pour créer un décor fantaisie. Ce contraste donnera un aspect encore plus festif et maison. Vous pouvez faire des zigzags, des traits irréguliers ou des touches plus épaisses pour rappeler des toiles d’araignée ou des petits monstres d’Halloween.",
+        "Placez le plateau au réfrigérateur pendant au moins 1 heure, ou jusqu’à ce que les bonbons soient bien fermes. Le temps de repos est important pour permettre au chocolat de durcir correctement et aux bonbons de se tenir sans s’écraser. Évitez de les empiler avant cette étape, sinon leur décoration risquerait de se coller ou de s’abîmer.",
+        "Lorsque les bonbons sont bien pris, décollez-les délicatement du papier cuisson puis disposez-les dans une grande assiette, des caissettes en papier ou de petits sachets pour une présentation plus festive. Servez-les aussitôt ou conservez-les au frais jusqu’au moment de la dégustation. Ces bonbons maison sont parfaits pour un goûter d’Halloween, une fête d’enfants ou une activité cuisine en famille."
+      ],
+      "image": "https://img.cuisineaz.com/1023x1023/2026/09/22/i210516-bonbons-d-halloween-au-chocolat-et-fruits-secs.jpg",
+      "sourceUrl": "https://www.cuisineaz.com/recettes/bonbons-halloween-maison-pour-enfants-125721.aspx"
+    },
+    {
       "id": "cuisineaz-soupe-miso-maison-recette-japonaise",
       "custom": true,
       "source": "cuisineaz",
@@ -6067,6 +6332,39 @@
       ],
       "image": "https://img.cuisineaz.com/1023x1023/2026/09/08/i210394-pain-aux-raisins.jpg",
       "sourceUrl": "https://www.cuisineaz.com/recettes/pain-aux-raisins-a-la-pate-levee-feuilletee-maison-125607.aspx"
+    },
+    {
+      "id": "cuisineaz-guacamole-fait-maison",
+      "custom": true,
+      "source": "cuisineaz",
+      "category": "tartinade",
+      "categoryLabel": "Tartinades & Dips",
+      "name": "Guacamole fait maison",
+      "description": "",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 6,
+      "ingredients": [
+        "3 Tomate(s)",
+        "1 Petit(s) oignon(s)",
+        "2 Avocat(s)",
+        "1 Jus de citron",
+        "3 c. à soupe Crème fraîche",
+        "2 gousse(s) Ail",
+        "Sel",
+        "Poivre",
+        "1 sachet(s) Epices"
+      ],
+      "steps": [
+        "Pelez et dénoyautez les avocats.",
+        "Puis dans un bol, réduisez les en purée.",
+        "Ajoutez le jus de citron, la crème fraîche, les tomates et les oignons préalablement coupés en tout petits dés.",
+        "Mélangez le tout.",
+        "Assaisonnez avec le sel et le poivre.",
+        "Ajoutez la quantité du sachet d'assaisonnement qui vous convient pour un Guacamole plus ou moins épicé."
+      ],
+      "image": "https://img.cuisineaz.com/1200x1200/2013/08/12/i98486-guacamole-fait-maison.jpg",
+      "sourceUrl": "https://www.cuisineaz.com/recettes/guacamole-fait-maison-56414.aspx"
     },
     {
       "id": "cuisineaz-la-meilleure-recette-de-chouquettes-maison",
@@ -6322,308 +6620,6 @@
       ],
       "image": "https://img.cuisineaz.com/1023x1023/2024/10/11/i200685-sauce-vinaigrette-rapide-et-facile.jpg",
       "sourceUrl": "https://www.cuisineaz.com/recettes/vinaigrette-longue-conservation-maison-125380.aspx"
-    },
-    {
-      "id": "cuisineaz-tapenade-longue-conservation-maison",
-      "custom": true,
-      "source": "cuisineaz",
-      "category": "tartinade",
-      "categoryLabel": "Tartinades & Dips",
-      "name": "Tapenade longue conservation maison",
-      "description": "La tapenade, trésor de la cuisine provençale, invite le soleil sur vos tartines toute l’année. Avec ses olives noires charnues, ses câpres acidulées et une touche d’anchois, cette recette sent bon l’été, même en hiver. Simple et généreuse, elle transforme chaque apéritif en voyage gourmand, à partager en famille ou entre amis. Faite maison, elle se conserve longtemps pour que le plaisir dure, sans prise de tête. À vos cuillères, la convivialité est servie !",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 6,
-      "ingredients": [
-        "250 g Olives noires dénoyautées",
-        "50 g Câpres au vinaigre",
-        "4 Filet(s) Petite boîte de filet d'anchois à l'huile (facultatif)",
-        "2 gousse(s) Gousse(s) d'ail",
-        "10 cl Huile d'olive",
-        "2 cl Jus de citron",
-        "Poivre noir"
-      ],
-      "steps": [
-        "Rassemblez tous les ingrédients sur le plan de travail pour avancer facilement et garder une préparation bien organisée. Égouttez les câpres si elles sont très humides, puis vérifiez que les olives noires sont bien dénoyautées. Si vous utilisez les filets d’anchois, sortez-les de leur huile. Pelez ensuite les gousses d’ail et coupez-les grossièrement pour faciliter le mixage.",
-        "Versez dans le bol d’un mixeur les olives noires, les câpres et l’ail préparé. Ajoutez les filets d’anchois si vous souhaitez une tapenade au goût plus corsé et plus proche de la version traditionnelle. Donnez déjà une première impulsion courte pour commencer à casser la matière, sans chercher à obtenir une texture lisse à ce stade.",
-        "Incorporez l’huile d’olive en plusieurs fois pour mieux contrôler la texture finale, puis ajoutez le jus de citron. Poivrez selon votre goût, en gardant à l’esprit que les olives, les câpres et les anchois apportent déjà une belle intensité salée. Mélangez de nouveau par à-coups pour obtenir une préparation homogène, souple et encore légèrement texturée.",
-        "Mixez la préparation jusqu’à obtenir la consistance souhaitée. Pour une tapenade rustique, gardez un grain légèrement épais ; pour une version plus tartinable, poursuivez un peu davantage. Arrêtez régulièrement le mixeur pour racler les parois avec une spatule et assurer un mélange uniforme. Goûtez ensuite pour vérifier l’équilibre entre acidité, puissance et rondeur.",
-        "Si la tapenade vous paraît trop compacte, ajoutez un petit filet d’huile d’olive et mélangez de nouveau. Si elle semble trop fluide, mixez-la un peu moins longtemps ou laissez-la reposer quelques minutes pour que les saveurs se fondent et que la texture se stabilise. Rectifiez éventuellement le poivre, sans saler avant d’avoir goûté attentivement.",
-        "Transférez la tapenade dans un bocal propre et parfaitement sec, de préférence en tassant légèrement avec le dos d’une cuillère pour éviter les poches d’air. Lissez la surface, puis versez une fine couche d’huile d’olive sur le dessus. Cette protection limite le contact avec l’air et aide à mieux préserver la préparation au réfrigérateur.",
-        "Fermez soigneusement le bocal et placez-le au réfrigérateur. Laissez reposer la tapenade quelques heures avant dégustation afin que les saveurs se développent pleinement. Pour une conservation plus longue, veillez toujours à utiliser une cuillère propre à chaque service et à maintenir une fine pellicule d’huile en surface après chaque utilisation."
-      ],
-      "image": "https://img.cuisineaz.com/1200x1200/2018/03/19/i136784-tapenade-maison-aux-olives-noires.jpeg",
-      "sourceUrl": "https://www.cuisineaz.com/recettes/tapenade-longue-conservation-maison-125376.aspx"
-    },
-    {
-      "id": "cuisineaz-guacamole-fait-maison",
-      "custom": true,
-      "source": "cuisineaz",
-      "category": "tartinade",
-      "categoryLabel": "Tartinades & Dips",
-      "name": "Guacamole fait maison",
-      "description": "",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 6,
-      "ingredients": [
-        "3 Tomate(s)",
-        "1 Petit(s) oignon(s)",
-        "2 Avocat(s)",
-        "1 Jus de citron",
-        "3 c. à soupe Crème fraîche",
-        "2 gousse(s) Ail",
-        "Sel",
-        "Poivre",
-        "1 sachet(s) Epices"
-      ],
-      "steps": [
-        "Pelez et dénoyautez les avocats.",
-        "Puis dans un bol, réduisez les en purée.",
-        "Ajoutez le jus de citron, la crème fraîche, les tomates et les oignons préalablement coupés en tout petits dés.",
-        "Mélangez le tout.",
-        "Assaisonnez avec le sel et le poivre.",
-        "Ajoutez la quantité du sachet d'assaisonnement qui vous convient pour un Guacamole plus ou moins épicé."
-      ],
-      "image": "https://img.cuisineaz.com/1200x1200/2013/08/12/i98486-guacamole-fait-maison.jpg",
-      "sourceUrl": "https://www.cuisineaz.com/recettes/guacamole-fait-maison-56414.aspx"
-    },
-    {
-      "id": "cuisineaz-pickles-maison-pour-la-rentree-recette-longue-conservation",
-      "custom": true,
-      "source": "cuisineaz",
-      "category": "tartinade",
-      "categoryLabel": "Tartinades & Dips",
-      "name": "Pickles maison pour la rentrée : recette longue conservation",
-      "description": "À la rentrée, rien de tel que les pickles maison pour prolonger la fraîcheur estivale dans vos assiettes ! Concombres croquants, carottes colorées et oignons rouges acidulés se marient dans une tradition gourmande et familiale. Cette recette simple vous invite à conserver le meilleur des légumes de saison, tout en apportant du peps à vos repas. Préparez ces bocaux à partager lors d’un apéritif ou pour pimenter vos lunchs. Facile, malin et convivial : à chacun sa touche de croquant !",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 4,
-      "ingredients": [
-        "50 cl Vinaigre blanc",
-        "25 cl Eau",
-        "100 g Sucre blanc",
-        "1 c. à soupe Sel",
-        "1 c. à café Grain(s) de moutarde",
-        "1 c. à café Grain de coriandre",
-        "1 c. à café Poivre noir",
-        "2 Feuille(s) de laurier",
-        "2 Concombre(s)",
-        "2 Carotte(s)",
-        "1 Oignon(s) rouge(s)",
-        "2 Gousse d'ail pressée",
-        "1 botte(s) Aneth fraîche"
-      ],
-      "steps": [
-        "Lavez soigneusement les concombres, les carottes et l’oignon rouge. Séchez-les avec un torchon propre. Coupez les extrémités des concombres, puis détaillez-les en fines rondelles ou en bâtonnets selon le rendu souhaité. Épluchez les carottes avant de les tailler en rondelles, en rubans ou en bâtonnets. Pelez ensuite l’oignon rouge et émincez-le finement. Rincez l’aneth fraîche, retirez les tiges les plus épaisses si besoin, puis gardez-la à portée de main pour la mise en bocal.",
-        "Préparez des bocaux en verre propres, avec leurs couvercles, afin d’assurer une bonne conservation de vos pickles maison. Lavez-les soigneusement à l’eau chaude savonneuse, puis rincez-les bien. Plongez ensuite les bocaux et les couvercles dans une grande casserole d’eau bouillante pendant quelques minutes. Égouttez-les sans les essuyer, puis laissez-les sécher à l’air libre sur un linge propre. Cette étape aide à limiter les risques de contamination et favorise une conservation plus sûre.",
-        "Dans une casserole, versez le vinaigre blanc, l’eau, le sucre blanc et le sel. Ajoutez les grains de moutarde, les grains de coriandre, le poivre noir, les feuilles de laurier ainsi que l’ail pressé. Faites chauffer doucement en remuant régulièrement pour bien dissoudre le sucre et le sel. Dès que la préparation est bien homogène et frémissante, retirez-la du feu. Laissez tiédir quelques minutes afin de ne pas verser un liquide brûlant directement sur des légumes crus trop fragiles.",
-        "Répartissez les concombres, les carottes et l’oignon rouge dans les bocaux stérilisés en alternant les légumes pour obtenir un mélange équilibré et visuellement appétissant. Glissez l’aneth fraîche entre les couches pour bien parfumer l’ensemble. Tassez légèrement avec une cuillère propre, sans écraser les légumes, afin de laisser circuler la saumure. Essayez de remplir les bocaux de manière régulière jusqu’à quelques centimètres du bord pour faciliter une bonne fermeture.",
-        "Versez la saumure vinaigrée tiède dans les bocaux garnis de légumes, en répartissant aussi les épices et les feuilles de laurier. Veillez à bien recouvrir tous les légumes pour qu’aucune partie ne dépasse du liquide, car cela favorise une meilleure conservation. Si nécessaire, tassez très légèrement une dernière fois. Essuyez soigneusement les bords des bocaux avec un linge propre, puis fermez-les immédiatement avec leurs couvercles.",
-        "Laissez les bocaux refroidir complètement à température ambiante, sans les déplacer trop souvent. Une fois froids, placez-les dans un endroit frais, sec et à l’abri de la lumière, ou au réfrigérateur selon vos habitudes de conservation. Attendez idéalement au moins 48 heures avant de déguster, afin que les légumes s’imprègnent bien des arômes de la saumure. Pour un résultat encore plus savoureux, vous pouvez patienter plusieurs jours avant ouverture."
-      ],
-      "image": "https://img.cuisineaz.com/667x667/2024/03/29/i197993-.jpg",
-      "sourceUrl": "https://www.cuisineaz.com/recettes/pickles-maison-pour-la-rentree-recette-longue-conservation-125373.aspx"
-    },
-    {
-      "id": "cuisineaz-pain-maison-a-congeler-pour-la-rentree",
-      "custom": true,
-      "source": "cuisineaz",
-      "category": "tartinade",
-      "categoryLabel": "Tartinades & Dips",
-      "name": "Pain maison à congeler pour la rentrée",
-      "description": "Préparer un pain maison, c’est retrouver un vrai goût d’enfance et la fierté du fait maison. Avec seulement de la farine, de la levure, un peu d’huile d’olive et de l’eau, ce pain simple accompagne tous les repas, même lors de la rentrée. Ces ingrédients du quotidien offrent une mie moelleuse et une croûte dorée, à déguster en toutes saisons. Idéal à congeler, ce pain sera le complice gourmand et pratique de chaque semaine bien remplie.",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 4,
-      "ingredients": [
-        "500 g Farine de blé",
-        "300 ml Eau tiède",
-        "7 g Levure sèche de boulanger",
-        "1 c. à café Sucre blanc",
-        "2 c. à soupe Huile d'olive"
-      ],
-      "steps": [
-        "Préchauffez le four à 220°C seulement au moment de la seconde levée, pas tout de suite. Pour commencer, versez l’eau tiède dans un grand bol, ajoutez le sucre puis la levure sèche de boulanger. Mélangez doucement avec une cuillère et laissez reposer 10 minutes. La surface doit devenir légèrement mousseuse : cela montre que la levure est bien active et prête à faire lever la pâte.",
-        "Dans un grand saladier, versez la farine de blé puis ajoutez l’huile d’olive. Faites un puits au centre et incorporez le mélange eau-levure. Remuez d’abord avec une cuillère en bois, puis continuez avec les mains propres jusqu’à obtenir une pâte homogène. Si elle vous semble trop sèche, ajoutez un tout petit peu d’eau. Si elle colle beaucoup, saupoudrez légèrement de farine.",
-        "Déposez la pâte sur un plan de travail légèrement fariné puis travaillez-la pendant environ 10 minutes. Appuyez avec la paume de la main, repliez la pâte sur elle-même et recommencez jusqu’à ce qu’elle devienne plus lisse, souple et élastique. Cette étape est importante pour obtenir un pain maison bien aéré, facile à trancher et agréable à congeler pour les jours chargés de la rentrée.",
-        "Formez une boule avec la pâte et remettez-la dans le saladier. Couvrez avec un torchon propre ou un film alimentaire sans trop serrer. Laissez lever dans un endroit tiède pendant 1 heure à 1 heure 30, jusqu’à ce que la pâte double de volume. Évitez les courants d’air afin d’aider la levure à bien agir et d’obtenir une mie régulière après cuisson.",
-        "Quand la pâte a bien levé, appuyez doucement dessus pour la dégazer sans la casser complètement. Donnez-lui ensuite la forme souhaitée : une grosse miche, deux petits pains ou un format allongé plus pratique à trancher avant congélation. Déposez le ou les pains sur une plaque recouverte de papier cuisson en veillant à bien les espacer pour qu’ils puissent encore gonfler.",
-        "Couvrez à nouveau le pain façonné avec un torchon propre et laissez-le reposer 30 à 45 minutes. Pendant cette seconde levée, préchauffez le four à 220°C pour qu’il soit bien chaud au moment d’enfourner. Si vous le souhaitez, vous pouvez pratiquer quelques entailles sur le dessus avec un couteau bien aiguisé afin de guider le développement du pain pendant la cuisson.",
-        "Enfournez la plaque dans le four chaud et laissez cuire environ 25 à 30 minutes, jusqu’à ce que le pain soit bien doré. Pour vérifier la cuisson, tapotez le dessous du pain avec précaution : il doit sonner creux. Si le dessus colore trop vite, baissez légèrement la température en fin de cuisson. Le pain doit être cuit à cœur pour bien se conserver après congélation.",
-        "Sortez le pain du four puis laissez-le refroidir complètement sur une grille. Cette étape est essentielle : un pain encore tiède dégagerait de l’humidité dans son emballage et risquerait de ramollir ou de former du givre au congélateur. Une fois froid, vous pouvez le laisser entier ou le couper en tranches selon vos besoins pour faciliter les repas et petits-déjeuners de la rentrée.",
-        "Emballez soigneusement le pain refroidi dans un sac de congélation ou dans du film alimentaire, en chassant au maximum l’air. Si vous avez choisi de le trancher, glissez éventuellement un petit morceau de papier cuisson entre certaines tranches pour les séparer plus facilement. Placez ensuite le pain au congélateur. Pour le déguster, laissez-le décongeler à température ambiante ou passez-le quelques minutes au four."
-      ],
-      "image": "https://img.cuisineaz.com/1200x1200/2014/11/12/i35923-pain-brioche-maison-pour-toasts.jpg",
-      "sourceUrl": "https://www.cuisineaz.com/recettes/pain-maison-a-congeler-pour-la-rentree-125359.aspx"
-    },
-    {
-      "id": "cuisineaz-pain-de-mie-longue-conservation-maison",
-      "custom": true,
-      "source": "cuisineaz",
-      "category": "tartinade",
-      "categoryLabel": "Tartinades & Dips",
-      "name": "Pain de mie longue conservation maison",
-      "description": "Redécouvrez le plaisir du pain de mie fait maison, avec de la farine de blé, du lait et du beurre pour une mie irrésistiblement tendre. Ces ingrédients simples, disponibles toute l’année, rappellent l’odeur chaude des goûters d’enfance et le partage autour de la table. Ce pain de mie longue conservation s’inspire des traditions familiales et devient l’allié parfait des petits-déjeuners ou sandwiches, facile à préparer et à partager. Une recette cocooning qui réunit tous les gourmands, petits et grands.",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 8,
-      "ingredients": [
-        "500 g Farine de blé t45",
-        "30 cl Eau",
-        "10 cl Lait demi-écrémé",
-        "40 g Beurre",
-        "30 g Sucre blanc",
-        "10 g Sel",
-        "1 sachet(s) Levure sèche de boulanger",
-        "20 g Farine blanche"
-      ],
-      "steps": [
-        "Sortez tous les ingrédients pour travailler plus facilement et éviter les oublis pendant le pétrissage. Versez la farine de blé t45 dans un grand saladier ou dans la cuve d’un robot. Gardez les 20 g de farine blanche pour le façonnage si la pâte colle un peu. Faites fondre le beurre doucement puis laissez-le tiédir. Mélangez l’eau et le lait pour obtenir des liquides à peine tièdes, surtout pas chauds, afin de ne pas abîmer l’action de la levure.",
-        "Dans un bol, versez le mélange d’eau et de lait tiède, puis ajoutez le sucre blanc et la levure sèche de boulanger. Remuez doucement pour bien dissoudre l’ensemble. Laissez reposer quelques minutes jusqu’à ce que la surface devienne légèrement mousseuse. Cette étape permet de vérifier que la levure est active. Pendant ce temps, mélangez la farine et le sel séparément dans le saladier, en veillant à ne pas mettre le sel directement sur la levure au départ.",
-        "Creusez un puits au centre de la farine, puis versez le mélange liquide avec la levure ainsi que le beurre fondu tiédi. Mélangez d’abord avec une cuillère en bois ou avec le crochet du robot à vitesse lente. Lorsque la pâte commence à se rassembler, continuez jusqu’à obtenir une masse homogène. Si elle semble un peu trop humide, farinez très légèrement vos mains ou ajoutez une petite pincée de farine blanche, sans excès pour garder un pain de mie bien moelleux.",
-        "Travaillez la pâte pendant plusieurs minutes pour développer une texture souple et élastique. Si vous pétrissez à la main, poussez la pâte avec la paume puis ramenez-la vers vous en la repliant régulièrement. Au robot, laissez tourner à vitesse moyenne jusqu’à ce qu’elle devienne lisse et se détache des parois. La pâte doit rester douce, un peu souple, mais ne plus être franchement collante. Ce bon pétrissage aide à obtenir une mie fine et régulière.",
-        "Formez une boule et déposez-la dans un saladier légèrement beurré ou fariné. Couvrez avec un torchon propre ou un film alimentaire pour éviter qu’elle ne sèche. Laissez lever dans un endroit tiède, à l’abri des courants d’air, jusqu’à ce que la pâte double de volume. Selon la température de la pièce, cela peut prendre environ 1 h 30 à 2 heures. Cette levée est essentielle pour obtenir un pain de mie aérien et bien développé.",
-        "Beurrez soigneusement un moule à cake ou chemisez-le si besoin pour faciliter le démoulage. Lorsque la pâte a bien levé, appuyez doucement dessus avec le poing ou la paume de la main pour chasser l’excès de gaz sans la déchirer brutalement. Déposez-la ensuite sur un plan de travail très légèrement fariné avec la farine blanche réservée. Ce dégazage permet de repartir sur une structure plus régulière et d’éviter de grosses bulles dans la mie.",
-        "Étalez la pâte grossièrement avec les mains en un rectangle, puis repliez-la sur elle-même de façon assez serrée pour former un boudin adapté à la longueur du moule. Pincez bien la soudure afin qu’elle reste dessous. Déposez le pâton dans le moule, couture vers le bas. Veillez à répartir la pâte de manière uniforme pour obtenir un pain de mie régulier, bien droit et plus facile à trancher une fois refroidi.",
-        "Couvrez de nouveau le moule avec un torchon propre ou sans serrer avec un film alimentaire. Laissez la pâte lever une seconde fois dans un endroit tiède jusqu’à ce qu’elle arrive presque au bord du moule, voire légèrement au-dessus selon sa taille. Cette deuxième pousse donne au pain de mie son volume final et sa texture moelleuse. Surveillez bien la pâte pour éviter qu’elle ne lève trop, ce qui fragiliserait sa tenue à la cuisson.",
-        "Préchauffez le four à 180°C dès la fin de la seconde levée ou un peu avant, afin qu’il soit bien à température au moment d’enfourner. Placez le moule au milieu du four et laissez cuire jusqu’à ce que le pain soit joliment doré sur le dessus. Comptez en général environ 30 à 35 minutes selon votre four. Si la coloration arrive trop vite, posez une feuille de papier aluminium sur le dessus en cours de cuisson pour préserver le moelleux.",
-        "À la sortie du four, laissez reposer le pain quelques minutes dans son moule, puis démoulez-le délicatement sur une grille. Attendez qu’il refroidisse complètement avant de le trancher, afin de ne pas tasser la mie encore chaude. Pour une longue conservation maison, emballez-le ensuite dans un torchon propre puis dans un sac bien fermé ou une boîte hermétique. Gardé à température ambiante, dans un endroit sec, il conservera plus longtemps son moelleux."
-      ],
-      "image": "https://img.cuisineaz.com/687x687/2015/10/05/i93514-pain-mie.jpeg",
-      "sourceUrl": "https://www.cuisineaz.com/recettes/pain-de-mie-longue-conservation-maison-125345.aspx"
-    },
-    {
-      "id": "cuisineaz-sirop-de-menthe-longue-conservation-maison",
-      "custom": true,
-      "source": "cuisineaz",
-      "category": "tartinade",
-      "categoryLabel": "Tartinades & Dips",
-      "name": "Sirop de menthe longue conservation maison",
-      "description": "Réalisez un sirop de menthe maison, synonyme de fraîcheur estivale et de douceur partagée en famille. Cette recette met à l’honneur la menthe fraîche cueillie au jardin ou sur les étals du marché, le parfum acidulé du citron et la gourmandise du sucre. Tradition ancestrale revisitée, ce sirop évoque les goûters d’enfance et les boissons désaltérantes, parfaites aux beaux jours. Facile à préparer, il invite toute la maison à savourer un plaisir simple, authentique, et fait maison.",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 8,
-      "ingredients": [
-        "1 botte(s) Menthe fraîche",
-        "1 l Eau",
-        "800 g Sucre blanc",
-        "1 Citron(s)"
-      ],
-      "steps": [
-        "Commencez par trier soigneusement la botte de menthe fraîche pour retirer les feuilles abîmées, jaunies ou trop sèches. Rincez ensuite la menthe sous un filet d’eau froide afin d’éliminer toute trace de terre ou de poussière. Égouttez-la bien, puis déposez-la sur un torchon propre ou du papier absorbant. Séchez délicatement les feuilles pour éviter d’ajouter trop d’eau dans la préparation et préserver au mieux leurs arômes.",
-        "Lavez soigneusement le citron, surtout si vous utilisez aussi un peu de son zeste dans la préparation. Coupez-le ensuite en rondelles ou en morceaux pour faciliter la diffusion de son parfum et de son acidité. Retirez les pépins si vous les voyez, afin d’éviter une légère amertume. Le citron aide ici à soutenir la fraîcheur du sirop, à équilibrer le goût sucré et à favoriser une meilleure conservation.",
-        "Versez l’eau dans un grand récipient bien propre, assez large pour accueillir tous les ingrédients. Ajoutez le sucre blanc, puis remuez longuement avec une cuillère en bois ou une spatule jusqu’à ce qu’il commence à bien se dissoudre. Même si la recette est sans cuisson, il est important de bien mélanger pour obtenir une base homogène. Cette étape permet de répartir le sucre de façon régulière et de préparer l’infusion aromatique.",
-        "Incorporez la menthe propre et séchée dans le mélange d’eau sucrée, puis ajoutez les morceaux de citron. Enfoncez légèrement les feuilles avec une cuillère pour qu’elles soient bien en contact avec le liquide. Mélangez doucement afin de ne pas casser excessivement la menthe tout en favorisant la diffusion des saveurs. À ce stade, la préparation commence déjà à prendre le parfum frais caractéristique d’un sirop de menthe maison.",
-        "Couvrez le récipient avec un couvercle, une assiette ou un film alimentaire propre, puis laissez reposer la préparation pendant plusieurs heures au réfrigérateur. Ce temps de repos est essentiel pour permettre à la menthe et au citron de parfumer intensément le mélange. Vous pouvez remuer une ou deux fois pendant l’infusion si vous le souhaitez. Plus le repos est soigné, plus le sirop développera un goût frais, rond et agréable.",
-        "Lorsque l’infusion vous semble suffisamment parfumée, filtrez soigneusement la préparation à l’aide d’une passoire fine, d’un chinois ou d’une étamine propre placée au-dessus d’un saladier. Pressez légèrement la menthe et les morceaux de citron avec le dos d’une cuillère pour récupérer un maximum de liquide, sans trop forcer pour ne pas troubler le sirop. Vous obtenez ainsi une préparation plus limpide, plus agréable à conserver et à servir.",
-        "Versez le sirop filtré dans une ou plusieurs bouteilles parfaitement propres et sèches, idéalement stérilisées au préalable pour optimiser la conservation. Utilisez un entonnoir si nécessaire pour travailler proprement et éviter les pertes. Refermez immédiatement avec un bouchon hermétique. Placez ensuite les bouteilles au réfrigérateur. Votre sirop de menthe maison sera prêt à être utilisé dans de l’eau bien fraîche, une limonade, un dessert ou un cocktail sans alcool."
-      ],
-      "image": "https://img.cuisineaz.com/1023x1023/2026/08/25/i210267-sirop-de-menthe-maison.jpg",
-      "sourceUrl": "https://www.cuisineaz.com/recettes/sirop-de-menthe-longue-conservation-maison-125343.aspx"
-    },
-    {
-      "id": "cuisineaz-pizza-maison-a-rechauffer-au-micro-ondes",
-      "custom": true,
-      "source": "cuisineaz",
-      "category": "tartinade",
-      "categoryLabel": "Tartinades & Dips",
-      "name": "Pizza maison à réchauffer au micro-ondes",
-      "description": "Envie d’une vraie pause gourmande sans passer des heures en cuisine ? Cette pizza maison à réchauffer au micro-ondes marie la douceur de la mozzarella, la saveur des champignons, et le parfum du jambon. Facile et rapide, elle permet de retrouver l'esprit convivial italien, même lors des soirées pressées. Que ce soit pour se réunir après le travail ou partager un repas en famille, cette recette rassemble petits et grands autour d’une part généreuse, idéale en toute saison.",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 4,
-      "ingredients": [
-        "1 Pâte à pizza",
-        "150 g Sauce tomate",
-        "200 g Mozzarella",
-        "2 tranche(s) Jambon cuit",
-        "100 g Champignons de Paris (blond)",
-        "12 Olives noires",
-        "1 c. à café Origan séché",
-        "1 c. à soupe Huile d'olive",
-        "Sel",
-        "Poivre"
-      ],
-      "steps": [
-        "Sortez la pâte à pizza, la sauce tomate, la mozzarella, le jambon, les champignons, les olives noires, l’origan et l’huile d’olive. Égouttez bien la mozzarella si elle rend de l’eau, puis coupez-la en petits morceaux. Émincez les champignons, découpez le jambon en lanières et préparez les olives. Salez et poivrez légèrement en gardant la main légère, car le jambon et les olives apportent déjà du goût.",
-        "Déroulez ou étalez la pâte à pizza sur un support compatible avec le micro-ondes, comme un plat large ou une assiette plate allant à la cuisson. Formez une pizza régulière en remontant légèrement les bords pour retenir la garniture. Piquez le centre avec une fourchette si besoin pour éviter que la pâte ne gonfle trop pendant la cuisson et pour favoriser une base plus homogène.",
-        "Étalez la sauce tomate sur toute la surface de la pâte en laissant un petit bord libre tout autour. Utilisez le dos d’une cuillère pour obtenir une couche régulière, ni trop fine ni trop épaisse. Ajoutez un peu de sel, de poivre et une partie de l’origan pour relever la base. Cette étape permet de bien parfumer la pizza dès le départ et d’assurer une garniture équilibrée.",
-        "Répartissez les morceaux de mozzarella sur la sauce tomate, puis ajoutez les lanières de jambon, les champignons émincés et les olives noires. Essayez de bien répartir chaque ingrédient afin que chaque part soit garnie de façon régulière. Parsemez le reste d’origan, puis versez un filet d’huile d’olive sur l’ensemble pour apporter du moelleux et renforcer le parfum de la pizza.",
-        "Placez la pizza au micro-ondes et faites-la cuire à puissance assez élevée pendant plusieurs minutes, en surveillant la cuisson selon la puissance de votre appareil. La mozzarella doit être bien fondue et les champignons juste cuits. Si votre micro-ondes chauffe de façon irrégulière, tournez le plat en cours de cuisson. La pâte restera plus moelleuse qu’au four, ce qui convient bien à une pizza pensée pour être réchauffée.",
-        "Laissez reposer la pizza une à deux minutes à la sortie du micro-ondes pour que le fromage se stabilise légèrement et que la découpe soit plus nette. Vérifiez l’assaisonnement, puis ajoutez éventuellement un peu de poivre juste avant de servir. Découpez la pizza en parts égales et servez-la chaude. Cette courte attente améliore aussi le confort de dégustation en évitant une garniture trop brûlante.",
-        "Si vous préparez cette pizza à l’avance, laissez-la refroidir avant de conserver les parts au réfrigérateur dans une boîte hermétique. Au moment du repas, réchauffez une ou plusieurs parts au micro-ondes pendant un court instant, jusqu’à ce que la garniture soit bien chaude. Pour éviter que la pâte ne se dessèche, vous pouvez couvrir très légèrement sans enfermer totalement la vapeur."
-      ],
-      "image": "https://img.cuisineaz.com/1200x1200/2016/06/14/i92179-pizza-margarita-maison.jpg",
-      "sourceUrl": "https://www.cuisineaz.com/recettes/pizza-maison-a-rechauffer-au-micro-ondes-125138.aspx"
-    },
-    {
-      "id": "cuisineaz-chausson-aux-pommes-feuilletage-maison",
-      "custom": true,
-      "source": "cuisineaz",
-      "category": "tartinade",
-      "categoryLabel": "Tartinades & Dips",
-      "name": "Chausson aux pommes feuilletage maison",
-      "description": "Envie d’un goûter maison qui sent bon l’automne ? Le chausson aux pommes, c’est le souvenir des goûters partagés et des après-midis cocooning. Avec une pâte feuilletée dorée et des pommes fondantes de saison, ce classique fait le bonheur de toutes les générations. Facile à préparer, cette recette réunit saveurs authentiques, douceur fruitée et tradition gourmande autour de la table. À chacun sa bouchée de bonheur, pour un moment simple et chaleureux en famille ou entre amis.",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 6,
-      "ingredients": [
-        "4 Compote de pommes",
-        "1 Pâte feuilletée",
-        "50 g Sucre en poudre",
-        "20 g Beurre",
-        "1 Jaune(s) d'œuf(s)",
-        "20 g Farine de blé",
-        "5 cl Eau",
-        "1 sachet(s) Sucre vanillé",
-        "Cannelle moulue"
-      ],
-      "steps": [
-        "Préchauffez le four à 200°C afin qu’il soit bien chaud au moment d’enfourner les chaussons. Pendant ce temps, farinez légèrement le plan de travail avec la farine de blé pour éviter que la pâte n’attache. Sortez aussi la pâte feuilletée, le jaune d’œuf, l’eau et tous les ingrédients nécessaires afin d’avoir une organisation simple et fluide.",
-        "Versez la compote de pommes dans une casserole puis ajoutez le beurre, le sucre en poudre, le sucre vanillé et une pincée de cannelle moulue selon votre goût. Faites chauffer doucement quelques minutes en mélangeant régulièrement pour bien dissoudre les sucres et obtenir une texture plus fondante, parfumée et légèrement plus sèche, idéale pour garnir les chaussons sans trop détremper la pâte.",
-        "Retirez la casserole du feu dès que la compote est bien homogène et un peu épaissie. Laissez-la tiédir puis refroidir quelques minutes avant le montage. Cette étape est importante, car une garniture trop chaude ramollirait la pâte feuilletée et rendrait le façonnage plus délicat. Vous obtiendrez ainsi des chaussons plus nets et un feuilletage plus régulier à la cuisson.",
-        "Déroulez la pâte feuilletée sur le plan de travail légèrement fariné. Découpez-y des disques ou des rectangles de taille égale, selon la forme que vous souhaitez donner à vos chaussons. Veillez à prévoir des portions adaptées pour obtenir six pièces. Essayez de travailler rapidement pour que la pâte reste fraîche, souple et facile à manipuler sans devenir collante.",
-        "Déposez au centre de chaque morceau de pâte une petite quantité de compote refroidie, sans trop charger pour éviter les débordements pendant la cuisson. Laissez un bord libre tout autour afin de pouvoir refermer facilement les chaussons. Répartissez la garniture de manière régulière pour que chaque portion soit bien équilibrée et cuise de façon homogène.",
-        "Repliez chaque morceau de pâte sur la garniture pour former un chausson. Appuyez bien sur les bords avec les doigts, puis soudez-les avec les dents d’une fourchette pour bien enfermer la compote. Cette finition aide à éviter les fuites à la cuisson et donne aussi un aspect traditionnel. Vérifiez que chaque chausson soit bien fermé sur toute sa longueur.",
-        "Mélangez le jaune d’œuf avec l’eau dans un petit bol, puis badigeonnez délicatement le dessus des chaussons à l’aide d’un pinceau. Cette dorure leur donnera une belle couleur dorée à la cuisson. Si vous le souhaitez, vous pouvez aussi tracer quelques légères entailles décoratives sur le dessus, sans percer complètement la pâte, pour une finition plus jolie.",
-        "Disposez les chaussons sur une plaque recouverte de papier cuisson en les espaçant légèrement. Enfournez-les dans le four préchauffé à 200°C pendant environ 20 à 25 minutes, jusqu’à ce qu’ils soient bien gonflés et joliment dorés. Surveillez la fin de cuisson, car la coloration peut varier selon les fours. La pâte doit être croustillante et bien cuite.",
-        "Sortez les chaussons du four puis laissez-les reposer quelques minutes sur une grille ou sur la plaque avant de les servir. Ce court temps de repos permet à la garniture de se stabiliser et évite de vous brûler avec la compote encore très chaude. Dégustez-les tièdes pour profiter pleinement du contraste entre le feuilletage croustillant et le cœur fondant."
-      ],
-      "image": "https://img.cuisineaz.com/667x667/2022/06/14/i184255-61-chaussons-aux-pommes.jpeg",
-      "sourceUrl": "https://www.cuisineaz.com/recettes/chausson-aux-pommes-feuilletage-maison-124153.aspx"
-    },
-    {
-      "id": "cuisineaz-sangria-don-simon-maison",
-      "custom": true,
-      "source": "cuisineaz",
-      "category": "tartinade",
-      "categoryLabel": "Tartinades & Dips",
-      "name": "Sangria Don Simon maison",
-      "description": "Envie de fraîcheur et de partage ? La sangria Don Simon maison est idéale pour les beaux jours. Du vin rouge, des fruits de saison comme l’orange, le citron et la pomme, un peu de rhum et une touche pétillante : tout le soleil de l’Espagne dans votre verre ! À l’apéritif ou lors d’un repas entre proches, cette recette authentique et généreuse se savoure dans la bonne humeur. Préparez-la à l’avance et laissez la magie opérer.",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 6,
-      "ingredients": [
-        "1 l Vin rouge",
-        "1 l Sangria",
-        "2 pièce(s) Orange(s)",
-        "1 pièce(s) Citron(s)",
-        "1 pièce(s) Pomme(s)",
-        "80 g Sucre en poudre",
-        "1 pièce(s) Bâton de cannelle",
-        "10 cl Rhum",
-        "50 cl Eau gazeuse"
-      ],
-      "steps": [
-        "Lavez soigneusement les oranges, le citron et la pomme sous l’eau fraîche. Coupez les oranges et le citron en fines rondelles, puis détaillez la pomme en petits quartiers ou en dés, selon le rendu souhaité. Si vous préférez une sangria plus agréable à boire, retirez les pépins visibles. Gardez la peau des agrumes pour apporter davantage de parfum à la boisson.",
-        "Dans un grand saladier, un pichet très large ou une fontaine à boisson, versez le vin rouge puis la sangria. Ajoutez ensuite le sucre en poudre et mélangez longuement avec une grande cuillère pour bien le dissoudre. Incorporez le bâton de cannelle et le rhum, puis remuez à nouveau afin d’obtenir une base homogène, parfumée et bien équilibrée.",
-        "Déposez les rondelles d’orange, les rondelles de citron et les morceaux de pomme dans le mélange. Remuez délicatement pour bien répartir les fruits dans toute la préparation sans les écraser. Cette étape permet aux fruits de commencer à diffuser leur parfum dans la boisson, tout en donnant à votre sangria maison un aspect généreux, coloré et très convivial.",
-        "Couvrez le récipient avec un film alimentaire ou un couvercle, puis placez la sangria au réfrigérateur pendant plusieurs heures. Ce repos est essentiel pour que les arômes des fruits, de la cannelle, du rhum et du vin se mêlent harmonieusement. Vous pouvez la préparer à l’avance, idéalement la veille, pour obtenir une boisson encore plus parfumée et agréable à déguster.",
-        "Au moment de servir, sortez la sangria du réfrigérateur et mélangez-la une dernière fois. Versez l’eau gazeuse bien fraîche pour apporter une touche légère et pétillante, puis remuez doucement afin de ne pas faire retomber les bulles trop vite. Servez immédiatement dans de grands verres, en répartissant un peu de fruits dans chacun pour une présentation plus gourmande."
-      ],
-      "image": "https://img.cuisineaz.com/1122x1122/2016/04/28/i12994-sangria-alcoolisee.jpg",
-      "sourceUrl": "https://www.cuisineaz.com/recettes/sangria-don-simon-maison-125252.aspx"
     },
     {
       "id": "cuisineaz-caviar-d-aubergines-pour-l-aperitif",
@@ -7089,36 +7085,6 @@
       "sourceUrl": "https://www.cuisineaz.com/recettes/cake-marbre-tomate-pesto-aux-lardons-fait-maison-76984.aspx"
     },
     {
-      "id": "cuisineaz-pesto-longue-conservation-en-bocaux",
-      "custom": true,
-      "source": "cuisineaz",
-      "category": "tartinade",
-      "categoryLabel": "Tartinades & Dips",
-      "name": "Pesto longue conservation en bocaux",
-      "description": "Le pesto maison, c’est la saveur du soleil en bocal ! Préparez-le avec du basilic frais, cueilli à la belle saison, de l’ail parfumé, des pignons croquants et du parmesan fondant. Ce grand classique italien se partage en famille ou entre amis, pour donner du pep’s à chaque repas. Facile à réaliser et idéal à conserver, il réveille vos pâtes, tartines ou salades en un clin d’œil… et fait durer les beaux jours jusque dans votre assiette.",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 6,
-      "ingredients": [
-        "2 botte(s) Basilic frais",
-        "4 gousse(s) Gousse(s) d'ail",
-        "100 g Parmesan râpé",
-        "60 g Sachet de pignons de pin",
-        "20 cl Thon mariné à l’huile d’olive"
-      ],
-      "steps": [
-        "Lavez soigneusement les bottes de basilic sous un filet d’eau fraîche pour retirer toute trace de terre ou de poussière. Séchez ensuite très soigneusement les feuilles avec un torchon propre ou du papier absorbant, car l’humidité réduit la bonne conservation du pesto. Effeuillez les tiges les plus épaisses et gardez principalement les feuilles tendres pour obtenir une texture plus fine et un goût bien équilibré.",
-        "Pelez les gousses d’ail puis retirez le germe si vous souhaitez un pesto plus doux et plus digeste. Versez ensuite les pignons de pin dans le bol d’un mixeur ou d’un robot. Ajoutez l’ail préparé afin de commencer une base aromatique homogène. Cette étape permet de mieux répartir les saveurs avant l’ajout du basilic et du fromage.",
-        "Ajoutez les feuilles de basilic dans le mixeur avec l’ail et les pignons. Mixez par impulsions courtes pour éviter d’échauffer les feuilles, ce qui pourrait altérer leur couleur et leur parfum. Vous devez obtenir une préparation grossièrement hachée, encore un peu texturée. Prenez le temps de racler les parois du bol avec une spatule pour assurer un mélange régulier.",
-        "Incorporez le parmesan râpé dans le bol du mixeur, puis versez progressivement l’huile d’olive de la marinade du thon, en filet, tout en mixant par courtes impulsions. Continuez jusqu’à obtenir une texture souple, liée et homogène, sans la rendre totalement liquide. Si besoin, ajustez légèrement la quantité d’huile pour obtenir un pesto facile à mettre en bocal et bien protégé.",
-        "Observez la consistance du pesto obtenu. Il doit rester onctueux, dense et légèrement granuleux, tout en étant assez souple pour être étalé ou mélangé à des pâtes. Goûtez la préparation pour vérifier l’équilibre entre le basilic, l’ail, les pignons et le parmesan. Comme les ingrédients sont déjà salés naturellement, rectifiez avec prudence si vous jugez cela nécessaire.",
-        "Répartissez le pesto dans des bocaux propres et parfaitement secs, idéalement stérilisés au préalable pour favoriser une meilleure conservation. Tassez délicatement avec une petite cuillère afin de chasser les bulles d’air. Lissez bien la surface, puis recouvrez le dessus d’une fine couche d’huile d’olive pour isoler la préparation de l’air et aider à préserver sa fraîcheur plus longtemps.",
-        "Fermez soigneusement les bocaux avec leurs couvercles propres, puis placez-les sans attendre au réfrigérateur. Laissez le pesto reposer quelques heures avant dégustation afin que les saveurs se mêlent bien. Pour une bonne conservation, veillez à toujours prélever le pesto avec une cuillère propre et à remettre un léger voile d’huile en surface après chaque utilisation."
-      ],
-      "image": "https://img.cuisineaz.com/667x667/2025/06/19/i205569-pesto-maison.jpg",
-      "sourceUrl": "https://www.cuisineaz.com/recettes/pesto-longue-conservation-en-bocaux-125375.aspx"
-    },
-    {
       "id": "cuisineaz-tapenade-aux-olives-noires",
       "custom": true,
       "source": "cuisineaz",
@@ -7240,6 +7206,38 @@
       "sourceUrl": "https://www.cuisineaz.com/recettes/saumon-mi-cuit-a-la-tapenade-et-aux-olives-78984.aspx"
     },
     {
+      "id": "cuisineaz-tapenade-longue-conservation-maison",
+      "custom": true,
+      "source": "cuisineaz",
+      "category": "tartinade",
+      "categoryLabel": "Tartinades & Dips",
+      "name": "Tapenade longue conservation maison",
+      "description": "La tapenade, trésor de la cuisine provençale, invite le soleil sur vos tartines toute l’année. Avec ses olives noires charnues, ses câpres acidulées et une touche d’anchois, cette recette sent bon l’été, même en hiver. Simple et généreuse, elle transforme chaque apéritif en voyage gourmand, à partager en famille ou entre amis. Faite maison, elle se conserve longtemps pour que le plaisir dure, sans prise de tête. À vos cuillères, la convivialité est servie !",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 6,
+      "ingredients": [
+        "250 g Olives noires dénoyautées",
+        "50 g Câpres au vinaigre",
+        "4 Filet(s) Petite boîte de filet d'anchois à l'huile (facultatif)",
+        "2 gousse(s) Gousse(s) d'ail",
+        "10 cl Huile d'olive",
+        "2 cl Jus de citron",
+        "Poivre noir"
+      ],
+      "steps": [
+        "Rassemblez tous les ingrédients sur le plan de travail pour avancer facilement et garder une préparation bien organisée. Égouttez les câpres si elles sont très humides, puis vérifiez que les olives noires sont bien dénoyautées. Si vous utilisez les filets d’anchois, sortez-les de leur huile. Pelez ensuite les gousses d’ail et coupez-les grossièrement pour faciliter le mixage.",
+        "Versez dans le bol d’un mixeur les olives noires, les câpres et l’ail préparé. Ajoutez les filets d’anchois si vous souhaitez une tapenade au goût plus corsé et plus proche de la version traditionnelle. Donnez déjà une première impulsion courte pour commencer à casser la matière, sans chercher à obtenir une texture lisse à ce stade.",
+        "Incorporez l’huile d’olive en plusieurs fois pour mieux contrôler la texture finale, puis ajoutez le jus de citron. Poivrez selon votre goût, en gardant à l’esprit que les olives, les câpres et les anchois apportent déjà une belle intensité salée. Mélangez de nouveau par à-coups pour obtenir une préparation homogène, souple et encore légèrement texturée.",
+        "Mixez la préparation jusqu’à obtenir la consistance souhaitée. Pour une tapenade rustique, gardez un grain légèrement épais ; pour une version plus tartinable, poursuivez un peu davantage. Arrêtez régulièrement le mixeur pour racler les parois avec une spatule et assurer un mélange uniforme. Goûtez ensuite pour vérifier l’équilibre entre acidité, puissance et rondeur.",
+        "Si la tapenade vous paraît trop compacte, ajoutez un petit filet d’huile d’olive et mélangez de nouveau. Si elle semble trop fluide, mixez-la un peu moins longtemps ou laissez-la reposer quelques minutes pour que les saveurs se fondent et que la texture se stabilise. Rectifiez éventuellement le poivre, sans saler avant d’avoir goûté attentivement.",
+        "Transférez la tapenade dans un bocal propre et parfaitement sec, de préférence en tassant légèrement avec le dos d’une cuillère pour éviter les poches d’air. Lissez la surface, puis versez une fine couche d’huile d’olive sur le dessus. Cette protection limite le contact avec l’air et aide à mieux préserver la préparation au réfrigérateur.",
+        "Fermez soigneusement le bocal et placez-le au réfrigérateur. Laissez reposer la tapenade quelques heures avant dégustation afin que les saveurs se développent pleinement. Pour une conservation plus longue, veillez toujours à utiliser une cuillère propre à chaque service et à maintenir une fine pellicule d’huile en surface après chaque utilisation."
+      ],
+      "image": "https://img.cuisineaz.com/1200x1200/2018/03/19/i136784-tapenade-maison-aux-olives-noires.jpeg",
+      "sourceUrl": "https://www.cuisineaz.com/recettes/tapenade-longue-conservation-maison-125376.aspx"
+    },
+    {
       "id": "cuisineaz-pissaladiere-a-la-tapenade",
       "custom": true,
       "source": "cuisineaz",
@@ -7339,36 +7337,6 @@
       ],
       "image": "https://img.cuisineaz.com/1023x1023/2026/07/16/i209602-wrap-apero-a-la-tapenade-mozzarella-et-basilic.jpg",
       "sourceUrl": "https://www.cuisineaz.com/recettes/wrap-apero-a-la-tapenade-mozzarella-et-basilic-123642.aspx"
-    },
-    {
-      "id": "cuisineaz-cake-au-jambon-gruyere-et-olives",
-      "custom": true,
-      "source": "cuisineaz",
-      "category": "tartinade",
-      "categoryLabel": "Tartinades & Dips",
-      "name": "Cake au jambon, gruyère et olives",
-      "description": "Les cakes salés sont des recettes familiales que l'on peu réaliser pour l'apéritif ou comme entrée avec un peu de salade. Ainsi cette recette de cake au jambon, gruyère et olives ne déroge pas à la règle. Composée de talon de jambon, de gruyère râpé, d'olives vertes, de lait et d'huile d'olive; cette recette de cake est facile et rapide à réaliser pour toutes les occasions.",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 6,
-      "ingredients": [
-        "200 g Farine",
-        "150 g Talon de jambon",
-        "100 g Gruyère râpé",
-        "100 g Olives vertes dénoyautée(s)",
-        "10 cl Lait",
-        "10 cl Huile d'olive",
-        "3 Œuf(s)",
-        "Levure chimique",
-        "Sel poivre"
-      ],
-      "steps": [
-        "Préchauffez le four à th.6 (180°C).",
-        "Prenez le jambon et les olives dénoyautées puis, découpez-les en petits cubes. Cassez vos œufs dans un grand récipient. Battez-les puis ajoutez-y la farine, une petite quantité de sel, le poivre et un sachet de levure chimique. Arrosez avec le lait et l’huile d’olive.",
-        "Ajoutez-y les morceaux de jambon et des olives, de même qu’une demi-quantité du gruyère râpé. Préparez un moule et renversez-y toute la préparation. Recouvrez avec le gruyère râpé restant et enfournez. Retirez après 45 min et attendez 5 min pour démouler. Laissez tiédir sur une grille puis, servez."
-      ],
-      "image": "https://img.cuisineaz.com/1200x1200/2015/07/13/i10961-cake-au-jambon-gruyere-et-olives.jpg",
-      "sourceUrl": "https://www.cuisineaz.com/recettes/cake-au-jambon-gruyere-et-olives-123242.aspx"
     },
     {
       "id": "cuisineaz-porridge-d-avoine-sans-sucre-avec-graines-de-chia-cannelle-et-baies-fraiches",
@@ -8426,45 +8394,6 @@
       ],
       "image": "https://img.cuisineaz.com/662x662/2018/03/30/i139146-granola-maison-sans-gluten.jpeg",
       "sourceUrl": "https://www.cuisineaz.com/recettes/granola-maison-sans-gluten-64311.aspx"
-    },
-    {
-      "id": "cuisineaz-granola-longue-conservation-pour-les-petits-dejeuners",
-      "custom": true,
-      "source": "cuisineaz",
-      "category": "petitdej",
-      "categoryLabel": "Petits-déjeuners",
-      "name": "Granola longue conservation pour les petits-déjeuners",
-      "description": "Envie de croquer dans un petit-déjeuner maison, croustillant et généreux ? Découvrez ce granola longue conservation, préparé avec de bons flocons d’avoine, des noix de pécan et de la coco, ingrédients accessibles toute l’année. Inspiré de la tradition anglo-saxonne, il apporte chaleur et douceur à vos matins en famille. Simple à préparer, il se conserve des semaines pour s’adapter à tous les emplois du temps. Un grand bol de bonheur à partager, saison après saison !",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 6,
-      "ingredients": [
-        "350 g Flocon d'avoine",
-        "100 g Noix de pécan",
-        "100 g Amandes émincées",
-        "100 g Pâte pralinée aux noisettes",
-        "50 g Graine(s) de tournesol",
-        "50 g Graines de courge",
-        "50 g Noix de coco râpée",
-        "120 g Miel",
-        "80 g Huile de coco",
-        "80 g Sirop d'érable",
-        "1 c. à café Cannelle en poudre",
-        "100 g Raisins secs"
-      ],
-      "steps": [
-        "Préchauffez le four à 150°C pour garantir une cuisson douce et régulière, idéale pour sécher le granola sans le brûler. Pendant ce temps, recouvrez une grande plaque de cuisson de papier sulfurisé. Cette étape facilite l’étalement du mélange, évite qu’il n’attache et permet d’obtenir une cuisson homogène sur toute la surface.",
-        "Dans un grand saladier, versez les flocons d’avoine, les noix de pécan grossièrement concassées, les amandes émincées, les graines de tournesol, les graines de courge, la noix de coco râpée et la cannelle. Mélangez soigneusement avec une cuillère ou une spatule pour bien répartir chaque ingrédient et assurer une texture variée dans chaque portion de granola.",
-        "Dans une petite casserole ou un bol adapté, réunissez le miel, le sirop d’érable, l’huile de coco et la pâte pralinée aux noisettes. Faites chauffer très doucement, juste assez pour assouplir l’ensemble et obtenir une préparation fluide. Remuez régulièrement afin de bien lier les ingrédients et de créer un enrobage homogène, gourmand et parfumé.",
-        "Versez le mélange sucré encore tiède sur les ingrédients secs. Mélangez longuement avec une spatule ou une grande cuillère pour bien enrober les flocons, les fruits secs et les graines. Veillez à ce qu’il ne reste pas de zones sèches dans le saladier, car un enrobage uniforme favorise une cuisson régulière et un granola bien croustillant.",
-        "Étalez la préparation sur la plaque recouverte de papier cuisson en une couche régulière. Tassez légèrement avec le dos de la cuillère si vous souhaitez obtenir par endroits de petits amas croustillants. Prenez soin de ne pas faire une couche trop épaisse, afin que la chaleur circule bien et que l’ensemble dore de manière homogène.",
-        "Enfournez la plaque dans le four préchauffé et laissez cuire environ 30 à 35 minutes. Remuez délicatement à mi-cuisson pour favoriser une coloration uniforme, sans trop casser les morceaux. Surveillez bien la fin de cuisson : le granola doit être joliment doré et sec au toucher, sans prendre une couleur trop foncée qui donnerait de l’amertume.",
-        "Sortez la plaque du four et laissez le granola refroidir complètement dessus, sans le manipuler pendant les premières minutes. Ce temps de refroidissement est essentiel, car c’est en reposant qu’il devient vraiment croustillant. Une fois froid, cassez délicatement les plaques formées si besoin, en conservant la texture souhaitée selon vos préférences.",
-        "Lorsque le granola est totalement refroidi, ajoutez les raisins secs puis mélangez une dernière fois. Il est préférable de les incorporer après cuisson afin qu’ils gardent leur moelleux et ne durcissent pas au four. Cette étape apporte une touche fruitée et une petite note sucrée qui équilibre bien les saveurs grillées du mélange.",
-        "Transférez le granola dans un bocal hermétique, propre et parfaitement sec. Conservez-le à température ambiante, dans un endroit frais et à l’abri de l’humidité. Dans de bonnes conditions, il gardera son croustillant et ses saveurs pendant plusieurs semaines. Servez-le au petit-déjeuner avec du lait, un yaourt nature ou des fruits frais."
-      ],
-      "image": "https://img.cuisineaz.com/369x369/2023/09/01/i195866-.jpg",
-      "sourceUrl": "https://www.cuisineaz.com/recettes/granola-longue-conservation-pour-les-petits-dejeuners-125378.aspx"
     },
     {
       "id": "cuisineaz-pudding-de-chia-au-lait-d-amande-et-framboises-fraiches",
@@ -10643,6 +10572,6 @@
       "sourceUrl": "https://www.cuisineaz.com/recettes/pintade-aux-fruits-secs-miel-et-petits-oignons-75123.aspx"
     }
   ],
-  "updated": "2026-09-27",
+  "updated": "2026-10-04",
   "source": "cuisineaz"
 }
