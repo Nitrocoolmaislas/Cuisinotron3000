@@ -91,6 +91,19 @@ function renderContributorPanel() {
         `}
       </div>
 
+      <!-- Section 3 : Sauvegardes (filet de sécurité contre une perte de mappings) -->
+      <div class="contrib-section" id="contrib-backups">
+        <div class="contrib-section-header">
+          <span class="contrib-section-title">🕐 Sauvegardes</span>
+        </div>
+        ${_localBackupHtml()}
+        <div id="contrib-drive-backups">
+          <p class="contrib-empty">${typeof driveReady !== 'undefined' && driveReady
+            ? 'Chargement des sauvegardes Drive…'
+            : 'Connecte Google Drive pour voir les sauvegardes quotidiennes (7 derniers jours).'}</p>
+        </div>
+      </div>
+
       <!-- Instructions -->
       <div class="contrib-section contrib-instructions">
         <div class="contrib-section-title">📖 Comment contribuer</div>
@@ -106,6 +119,63 @@ function renderContributorPanel() {
 
     </div>
   `;
+  _renderDriveBackups();
+}
+
+// ─── Sauvegardes ──────────────────────────────────────────────────────────────
+// Undo local d'une génération (écrit par mergeCustomTable() dans drive.js)
+function _localBackupHtml() {
+  const rows = Object.entries(typeof DRIVE_BACKUP_TABLES !== 'undefined' ? DRIVE_BACKUP_TABLES : {})
+    .map(([key, cfg]) => {
+      const n = Object.keys(_loadCustom(key + '_backup')).length;
+      if (!n) return '';
+      return `<li>${cfg.label} — état local avant la dernière synchro : ${n} entrée${n !== 1 ? 's' : ''}
+        <button class="contrib-copy-btn" onclick="restoreLocalBackup('${key}')">♻️ Restaurer</button></li>`;
+    }).join('');
+  return rows ? `<ul class="contrib-steps">${rows}</ul>` : '';
+}
+
+async function _renderDriveBackups() {
+  const box = document.getElementById('contrib-drive-backups');
+  if (!box || typeof listCustomDataBackups !== 'function' || !driveReady) return;
+  try {
+    const parts = [];
+    for (const [key, cfg] of Object.entries(DRIVE_BACKUP_TABLES)) {
+      const backups = await listCustomDataBackups(key);
+      const current = _loadCustom(key);
+      const rows = backups.map(b => {
+        const missing = Object.keys(b.table).filter(k => !(k in current)).length;
+        return `<li>${b.date} — ${b.count} entrée${b.count !== 1 ? 's' : ''}${missing ? ` (<strong>${missing} absente${missing !== 1 ? 's' : ''} aujourd'hui</strong>)` : ''}
+          ${missing ? `<button class="contrib-copy-btn" onclick="restoreDriveBackup('${key}','${b.id}')">♻️ Restaurer</button>` : ''}</li>`;
+      }).join('');
+      parts.push(`<p class="contrib-hint">${cfg.label} sur Drive :</p>` +
+        (rows ? `<ul class="contrib-steps">${rows}</ul>` : '<p class="contrib-empty">Aucune sauvegarde pour l\'instant.</p>'));
+    }
+    box.innerHTML = parts.join('') +
+      '<p class="contrib-hint">Restaurer ajoute les entrées manquantes sans toucher à celles qui existent déjà.</p>';
+  } catch(e) {
+    box.innerHTML = `<p class="contrib-empty">Sauvegardes Drive indisponibles : ${escapeAttr(e.message || String(e))}</p>`;
+  }
+}
+
+async function restoreDriveBackup(storageKey, fileId) {
+  const res = await restoreCustomDataBackup(storageKey, fileId);
+  if (res) alert(`${res.incomingNew} entrée${res.incomingNew !== 1 ? 's' : ''} restaurée${res.incomingNew !== 1 ? 's' : ''}.`);
+  _afterRestore();
+}
+
+function restoreLocalBackup(storageKey) {
+  const res = mergeCustomTable(storageKey, _loadCustom(storageKey + '_backup'), true);
+  alert(`${res.incomingNew} entrée${res.incomingNew !== 1 ? 's' : ''} restaurée${res.incomingNew !== 1 ? 's' : ''}.`);
+  if (storageKey === 'recettes_bridge_custom' && typeof scheduleBridgeSave === 'function') scheduleBridgeSave();
+  if (storageKey === 'recettes_unit_weights_custom' && typeof scheduleDriveSaveUnitWeights === 'function') scheduleDriveSaveUnitWeights();
+  _afterRestore();
+}
+
+function _afterRestore() {
+  renderContributorPanel();
+  if (typeof refreshBadge === 'function') refreshBadge();
+  if (typeof renderGrid === 'function') renderGrid();
 }
 
 // ─── Générateurs de snippets ──────────────────────────────────────────────────

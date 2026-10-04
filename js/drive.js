@@ -144,6 +144,118 @@ async function saveDriveFile(fileId, fileName, data) {
 }
 
 // ══════════════════════════════════════════════
+//  FUSION SÛRE + SAUVEGARDES (bridge custom, unit weights)
+// ══════════════════════════════════════════════
+
+// Fusionne une table clé→valeur venue de Drive (ou d'une sauvegarde) dans le
+// localStorage : union des clés, rien n'est perdu d'aucun côté. En cas de
+// conflit sur une même clé, `incoming` gagne (Drive = version partagée entre
+// appareils) — sauf preferLocal (restauration : on rajoute ce qui manque
+// sans défaire les corrections faites depuis). L'ancienne valeur locale est
+// gardée dans <storageKey>_backup avant écriture (undo d'une génération).
+function mergeCustomTable(storageKey, incoming, preferLocal = false) {
+  let local = {};
+  try { local = JSON.parse(localStorage.getItem(storageKey) || '{}') || {}; } catch { local = {}; }
+  const merged = preferLocal ? { ...incoming, ...local } : { ...local, ...incoming };
+  const localOnly   = Object.keys(local).filter(k => !(k in incoming)).length;
+  const incomingNew = Object.keys(incoming).filter(k => !(k in local)).length;
+  const before = JSON.stringify(local);
+  const after  = JSON.stringify(merged);
+  if (after !== before) {
+    if (Object.keys(local).length > 0) localStorage.setItem(storageKey + '_backup', before);
+    localStorage.setItem(storageKey, after);
+  }
+  return { merged, localOnly, incomingNew };
+}
+
+// Avant d'écrire une table sur Drive, y rapatrier les clés que seul Drive
+// connaît (local prioritaire en cas de conflit : c'est l'édition en cours).
+async function _mergeRemoteBeforeSave(storageKey, fileId, field) {
+  if (!fileId) return;
+  const remote = await fetchDriveFile(fileId);
+  if (remote?.[field] && typeof remote[field] === 'object') mergeCustomTable(storageKey, remote[field], true);
+}
+
+const DRIVE_BACKUP_KEEP = 7; // sauvegardes datées conservées par table
+
+// Tables protégées par des sauvegardes Drive datées
+const DRIVE_BACKUP_TABLES = {
+  recettes_bridge_custom:       { prefix: 'recettes_clara_bridge_custom_backup_', field: 'bridgeCustom', label: '🌉 Mappings bridge' },
+  recettes_unit_weights_custom: { prefix: 'recettes_clara_unit_weights_backup_',  field: 'unitWeights',  label: '⚖️ Unités custom' },
+};
+
+// ── Liste les fichiers Drive dont le nom commence par prefix (plus récent d'abord) ──
+async function listDriveFilesByPrefix(prefix) {
+  const q = encodeURIComponent(`name contains '${prefix}' and trashed = false`);
+  const r = await fetch(
+    `https://www.googleapis.com/drive/v3/files?q=${q}&fields=files(id,name)&pageSize=100`,
+    { headers: { Authorization: `Bearer ${driveAccessToken}` } }
+  );
+  const d = await r.json();
+  return (d.files || [])
+    .filter(f => f.name.startsWith(prefix))
+    .sort((a, b) => b.name.localeCompare(a.name)); // YYYY-MM-DD trie chronologiquement
+}
+
+async function deleteDriveFile(fileId) {
+  await fetch(`https://www.googleapis.com/drive/v3/files/${fileId}`, {
+    method: 'DELETE',
+    headers: { Authorization: `Bearer ${driveAccessToken}` }
+  });
+}
+
+// ── Sauvegarde datée quotidienne + rotation sur DRIVE_BACKUP_KEEP jours ──
+// Appelée après chaque sauvegarde réussie, mais n'écrit qu'une fois par jour
+// calendaire. Une table vide n'est jamais sauvegardée : sinon un état vidé
+// par un bug finirait par pousser les bonnes sauvegardes hors de la rotation.
+async function backupCustomDataToDrive(storageKey) {
+  const cfg = DRIVE_BACKUP_TABLES[storageKey];
+  if (!cfg || !driveAccessToken || !driveReady) return;
+  const today = new Date().toISOString().slice(0, 10);
+  const guardKey = storageKey + '_last_drive_backup';
+  if (localStorage.getItem(guardKey) === today) return;
+  let table = {};
+  try { table = JSON.parse(localStorage.getItem(storageKey) || '{}') || {}; } catch { return; }
+  if (Object.keys(table).length === 0) return;
+  try {
+    const existing = await listDriveFilesByPrefix(cfg.prefix);
+    const todayFile = existing.find(f => f.name === `${cfg.prefix}${today}.json`);
+    await saveDriveFile(todayFile ? todayFile.id : null, `${cfg.prefix}${today}.json`, { [cfg.field]: table });
+    localStorage.setItem(guardKey, today);
+    const all = todayFile ? existing : [{ name: `${cfg.prefix}${today}.json` }, ...existing];
+    for (const old of all.slice(DRIVE_BACKUP_KEEP)) if (old.id) await deleteDriveFile(old.id);
+    console.info('[Drive] Sauvegarde datée', storageKey, today, '—', Object.keys(table).length, 'entrées');
+  } catch(e) {
+    console.error('[Drive] Sauvegarde datée échouée :', storageKey, e);
+  }
+}
+
+// ── Liste les sauvegardes Drive d'une table (pour le panel Contribuer) ──
+async function listCustomDataBackups(storageKey) {
+  const cfg = DRIVE_BACKUP_TABLES[storageKey];
+  if (!cfg || !driveAccessToken || !driveReady) return [];
+  const files = await listDriveFilesByPrefix(cfg.prefix);
+  return Promise.all(files.map(async f => {
+    const data = await fetchDriveFile(f.id).catch(() => ({}));
+    const table = data?.[cfg.field] && typeof data[cfg.field] === 'object' ? data[cfg.field] : {};
+    return { id: f.id, date: f.name.slice(cfg.prefix.length, -5), count: Object.keys(table).length, table };
+  }));
+}
+
+// ── Restaure une sauvegarde : FUSION (ajoute ce qui manque), jamais écrasement ──
+async function restoreCustomDataBackup(storageKey, fileId) {
+  const cfg = DRIVE_BACKUP_TABLES[storageKey];
+  if (!cfg) return null;
+  const data = await fetchDriveFile(fileId);
+  const table = data?.[cfg.field];
+  if (!table || typeof table !== 'object') return null;
+  const res = mergeCustomTable(storageKey, table, true);
+  if (storageKey === 'recettes_bridge_custom') scheduleBridgeSave();
+  else scheduleDriveSaveUnitWeights();
+  return res;
+}
+
+// ══════════════════════════════════════════════
 //  CHARGEMENT
 // ══════════════════════════════════════════════
 async function loadFromDrive() {
@@ -183,23 +295,28 @@ async function loadFromDrive() {
       if (merged.length > driveRecipes.length) scheduleCustomRecipesSave();
     }
 
-    // Charge le bridge custom
+    // Charge le bridge custom — FUSION avec le local, jamais d'écrasement.
+    // Un mapping confirmé dans le Bridge Wizard n'a aucune raison d'expirer :
+    // écraser le local par une copie Drive vide/périmée (autre appareil pas
+    // encore synchronisé) faisait disparaître silencieusement des mappings.
     driveBridgeFileId = await findDriveFileByName(DRIVE_BRIDGE_FILE);
     if (driveBridgeFileId) {
       const data = await fetchDriveFile(driveBridgeFileId);
       if (data.bridgeCustom && typeof data.bridgeCustom === 'object') {
-        // Drive = source de vérité — écrase le localStorage
-        localStorage.setItem('recettes_bridge_custom', JSON.stringify(data.bridgeCustom));
-        console.info('[Drive] Bridge custom chargé :', Object.keys(data.bridgeCustom).length, 'entrées');
+        const { merged, localOnly } = mergeCustomTable('recettes_bridge_custom', data.bridgeCustom);
+        console.info('[Drive] Bridge custom fusionné :', Object.keys(merged).length, 'entrées');
+        // Drive en retard sur le local → le rattraper
+        if (localOnly > 0) scheduleBridgeSave();
       }
     }
 
-    // Charge les unit weights custom
+    // Charge les unit weights custom — même fusion que le bridge
     driveUnitWeightsFileId = await findDriveFileByName(DRIVE_UNIT_WEIGHTS_FILE);
     if (driveUnitWeightsFileId) {
       const uwData = await fetchDriveFile(driveUnitWeightsFileId);
       if (uwData.unitWeights && typeof uwData.unitWeights === 'object') {
-        localStorage.setItem('recettes_unit_weights_custom', JSON.stringify(uwData.unitWeights));
+        const { localOnly } = mergeCustomTable('recettes_unit_weights_custom', uwData.unitWeights);
+        if (localOnly > 0) scheduleDriveSaveUnitWeights();
       }
     }
 
@@ -273,9 +390,13 @@ function scheduleCustomRecipesSave() {
 async function saveBridgeCustomToDrive() {
   if (!driveAccessToken || !driveReady) return;
   try {
+    // Lire-fusionner-écrire : un appareil qui n'a pas encore chargé Drive ne
+    // doit pas écraser les mappings que d'autres appareils y ont poussés.
+    await _mergeRemoteBeforeSave('recettes_bridge_custom', driveBridgeFileId || (driveBridgeFileId = await findDriveFileByName(DRIVE_BRIDGE_FILE)), 'bridgeCustom');
     const bridgeCustom = JSON.parse(localStorage.getItem('recettes_bridge_custom') || '{}');
     driveBridgeFileId = await saveDriveFile(driveBridgeFileId, DRIVE_BRIDGE_FILE, { bridgeCustom });
     console.info('[Drive] Bridge custom sauvegardé :', Object.keys(bridgeCustom).length, 'entrées');
+    backupCustomDataToDrive('recettes_bridge_custom');
   } catch(e) {
     console.error('[Drive] Bridge custom save error:', e);
   }
@@ -289,8 +410,10 @@ function scheduleBridgeSave() {
 async function saveUnitWeightsToDrive() {
   if (!driveAccessToken || !driveReady) return;
   try {
+    await _mergeRemoteBeforeSave('recettes_unit_weights_custom', driveUnitWeightsFileId || (driveUnitWeightsFileId = await findDriveFileByName(DRIVE_UNIT_WEIGHTS_FILE)), 'unitWeights');
     const unitWeights = JSON.parse(localStorage.getItem('recettes_unit_weights_custom') || '{}');
     driveUnitWeightsFileId = await saveDriveFile(driveUnitWeightsFileId, DRIVE_UNIT_WEIGHTS_FILE, { unitWeights });
+    backupCustomDataToDrive('recettes_unit_weights_custom');
   } catch(e) {
     console.error('[Drive] Unit weights save error:', e);
   }

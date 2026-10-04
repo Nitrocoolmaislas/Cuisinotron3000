@@ -139,7 +139,53 @@ function getColruytNutrition(p) {
 }
 
 // ── Matching ingrédient → produit Colruyt ──
-// Parmi tous les matches : isAvailable=true + prix le plus bas
+// Rayons qui ne vendent jamais un ingrédient de recette : sans ce filtre,
+// "miel" → baume à lèvres, "thon"/"poulet" → pâtée pour chat, "courgette"
+// → petit pot bébé (le moins cher contenant le terme gagnait).
+const COLRUYT_NON_FOOD_CATEGORIES = new Set([
+  'Lichaamsverzorging/Parfumerie', 'Niet-voeding', 'Onderhoud/Huishouden',
+  'Huisdieren', 'Baby', 'Gezondheid',
+]);
+
+// Pertinence d'un produit pour un terme NL (plus petit = meilleur) :
+//   0  nom générique = le terme (± pluriel)          "courgetten", "rode paprika"
+//   1  nom générique qui COMMENCE par le terme        "eieren vers L", "rijst thai"
+//   2  terme en mot entier ailleurs dans le nom       "vrij uitloop eieren"
+//   3  terme en début de mot composé                  "appelsap", "kipfilet"
+//   4  simple sous-chaîne (marque, nom long…)
+// Un produit dérivé (sauce, soupe, biscuit, chewing-gum…) recule de 1,5
+// rang, sauf si le terme lui-même le demande ("appelsap", "pesto saus").
+const COLRUYT_DERIVED_WORDS = /(?:^| )(saus|soep|chips|snack|mousse|koek(?:je)?s?|wafels?|taart|pap|salade|dressing|smaak|sap|siroop|lolly|reep|stick|bonbons?|ijs|roomijs|yoghurt|drink|falafel|hummus|spread|terrine|rol)(?= |$)/;
+// Rayons boissons : seulement si le terme désigne lui-même une boisson (ou
+// le cacao, rangé en boissons) — sinon "appel" → jus de pomme, "laurier" →
+// Muscadet "Les Lauriers", "feve" → tonic Fever-Tree.
+const COLRUYT_DRINK_CATEGORIES = new Set(['Dranken', 'Wijn']);
+const COLRUYT_DRINK_TERMS = /wijn|bier|rum|sap|cider|porto|cognac|likeur|whisky|vodka|calvados|kirsch|water|limonade|cola|tonic|martini|sherry|madeira|koffie|thee|cacao/;
+function _colruytScore(p, t) {
+  const name = (p.name || '').toLowerCase();
+  const derived = !COLRUYT_DERIVED_WORDS.test(t) && COLRUYT_DERIVED_WORDS.test(name);
+  return _colruytTermRank(p, t) * 2 + (derived ? 3 : 0);
+}
+
+function _colruytTermRank(p, t) {
+  const name = (p.name || '').toLowerCase().trim();
+  const esc  = t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const pl   = "(?:s|n|en|'s)?";
+  if (new RegExp(`^${esc}${pl}$`).test(name)) return 0;
+  if (new RegExp(`^${esc}${pl}(?= )`).test(name)) return 1;
+  if (new RegExp(`(?:^| )${esc}${pl}(?= |$)`).test(name)) return 2;
+  if (new RegExp(`(?:^| )${esc}`).test(name)) return 3;
+  return 4;
+}
+
+function _lexLess(a, b) {
+  for (let i = 0; i < a.length; i++) if (a[i] !== b[i]) return a[i] < b[i];
+  return false;
+}
+
+// Parmi tous les termes NL de l'ingrédient : meilleur rang de pertinence,
+// puis ordre des termes (le premier est le plus spécifique), puis
+// disponible, puis prix le plus bas.
 function matchColruyt(normKey) {
   if (!colruytData || colruytData.length === 0) return null;
   // Eau, eau tiède… n'ont pas de produit Colruyt et ne doivent pas polluer
@@ -152,31 +198,19 @@ function matchColruyt(normKey) {
   // est aussi ajouté en pending pour le wizard (même effet de bord que pour
   // l'import).
   const bridgeTerms = typeof bridgeLookupFull === 'function' ? bridgeLookupFull(normKey) : bridgeLookup(normKey);
-  const terms = Array.isArray(bridgeTerms) ? bridgeTerms : [normKey];
+  const terms = (Array.isArray(bridgeTerms) ? bridgeTerms : [normKey]).map(t => t.toLowerCase());
 
-  for (const term of terms) {
-    const t = term.toLowerCase();
-    const matches = colruytData.filter(p => {
-      const hay = ((p.LongName || '') + ' ' + (p.name || '') + ' ' + (p.brand || ''))
-        .toLowerCase();
-      return hay.includes(t);
+  let best = null, bestKey = null;
+  colruytData.forEach(p => {
+    if (COLRUYT_NON_FOOD_CATEGORIES.has(p.topCategoryName)) return;
+    const hay = ((p.LongName || '') + ' ' + (p.name || '') + ' ' + (p.brand || '')).toLowerCase();
+    terms.forEach((t, ti) => {
+      if (!hay.includes(t)) return;
+      if (COLRUYT_DRINK_CATEGORIES.has(p.topCategoryName) && !COLRUYT_DRINK_TERMS.test(t)) return;
+      const price = p.price?.basicPrice > 0 ? p.price.basicPrice : Infinity;
+      const key = [_colruytScore(p, t), ti, p.isAvailable === true ? 0 : 1, price];
+      if (!bestKey || _lexLess(key, bestKey)) { best = p; bestKey = key; }
     });
-
-    if (matches.length === 0) continue;
-
-    // Préférer les produits disponibles
-    const available = matches.filter(p => p.isAvailable === true);
-    const pool      = available.length > 0 ? available : matches;
-
-    // Parmi le pool, prendre le prix le plus bas (basicPrice > 0)
-    const withPrice = pool.filter(p => p.price?.basicPrice > 0);
-    if (withPrice.length > 0) {
-      return withPrice.reduce((best, p) =>
-        p.price.basicPrice < best.price.basicPrice ? p : best
-      );
-    }
-
-    return pool[0]; // fallback si aucun prix dispo
-  }
-  return null;
+  });
+  return best;
 }

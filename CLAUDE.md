@@ -13,7 +13,21 @@ python3 -m http.server 8000
 # Then open http://localhost:8000
 ```
 
-There are no tests, no linter, no package manager, and no CI pipeline.
+There are no unit tests, no linter, no package manager, and no CI pipeline.
+Before pushing any change to the matching pipeline (`whitelist_canonique.js`,
+`bridge.js`, `utils.js`, `ingredientParser.js`, `colruyt.js`, `ciqual_fr.js`),
+run the non-regression audit — ideally against the user's real corpus exported
+from Drive (the personal recipes and bridge custom never live in this repo):
+
+```bash
+node scripts/audit_mapping.js --compare HEAD \
+  --custom recettes_clara_custom.json --bridge recettes_clara_bridge_custom.json
+```
+
+It lists every ingredient whose CIQUAL/Colruyt mapping is lost, gained or
+changed, and exits non-zero if one is lost. Note: a shallow clone hides the
+history of these files — `git fetch --unshallow` before concluding that
+"nothing changed".
 
 ## Architecture
 
@@ -58,7 +72,10 @@ rather than maintaining separate lookup tables per consumer:
 - `ciqual` — static ANSES nutritional code (`ciqual_fr.js`)
 - `colruytTerms[]` — NL search term(s) against the daily-refreshed Colruyt
   catalog, resolved via `bridgeLookup()` (`js/bridge.js`) using ONLY
-  morphological (singular/plural) variants of `k` — never through
+  morphological (singular/plural) variants and word prefixes of `k`, longest
+  first; the FIRST `WHITELIST` entry hit is the ingredient, and if it has no
+  `colruytTerms` the lookup stops (→ Bridge Wizard) instead of borrowing a
+  shorter entry's terms ("pomme de terre" must never fall to "pomme") — never through
   `aliases`, which groups nutritionally-similar-but-distinct products for
   CIQUAL (ex: "nouilles" is an alias of "pates blanches") and would make
   the Colruyt search return the wrong product.
@@ -73,6 +90,11 @@ either merged into an existing `WHITELIST` entry when it was a
 morphological variant of that entry's `k`, or became a new entry).
 
 Feasibility (`checkFeasibility()` in `app.js`) matches recipe ingredients against `stock` keys using `normIngredient()` plus substring fuzzy matching. ≥85% match = "faisable", ≥50% = "partial".
+
+`recettes_bridge_custom` and `recettes_unit_weights_custom` are **merged**
+(never overwritten) when loading from or saving to Drive, with a one-step
+local undo (`<key>_backup`) and 7 daily dated backups on Drive, restorable
+from the ⚙️ Contribuer panel (`js/drive.js`, `js/contributor.js`).
 
 ### Persistence
 
