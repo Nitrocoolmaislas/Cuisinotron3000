@@ -5826,6 +5826,59 @@
       "sourceUrl": "https://www.cuisineaz.com/recettes/houmous-maison-la-meilleure-recette-120028.aspx"
     },
     {
+      "id": "cuisineaz-liqueur-de-coing-maison",
+      "custom": true,
+      "source": "cuisineaz",
+      "category": "tartinade",
+      "categoryLabel": "Tartinades & Dips",
+      "name": "Liqueur de coing maison",
+      "description": "Découvrez la douceur automnale avec cette liqueur de coing maison, un classique à partager quand les jours raccourcissent. Les coings dorés et oranges juteuses, rois des marchés d’octobre, offrent ici toute leur richesse parfumée. Une recette simple, inspirée des traditions familiales, à préparer pour savourer l’esprit de la saison ou offrir une touche artisanale lors des fêtes. Laissez-vous tenter, la convivialité commence toujours par une gorgée partagée !",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 24,
+      "ingredients": [
+        "1 kg Coing",
+        "1 l Alcool",
+        "400 g Sucre",
+        "1 Anis étoilé",
+        "2 Orange(s)"
+      ],
+      "steps": [
+        "Découpez puis épépinez les coings en quartiers. Plongez-les dans l'eau puis retirez le duvet à l'aide d'une éponge grattante.",
+        "Nettoyez ensuite les oranges et coupez-les en lamelle.",
+        "Versez l'alcool de fruit dans un grand bocal et ajoutez les oranges et les coings. Incorporez l'anis étoilé et le sucre. Laissez reposer et mariner durant 1 mois dans un endroit frais. Secouez le bocal de temps en temps.",
+        "Filtrez la liqueur et versez-là dans une bouteille."
+      ],
+      "image": "https://img.cuisineaz.com/1200x1200/2017/05/09/i125670-liqueur-de-coings.jpeg",
+      "sourceUrl": "https://www.cuisineaz.com/recettes/liqueur-de-coing-maison-125866.aspx"
+    },
+    {
+      "id": "cuisineaz-gelee-de-coing-maison",
+      "custom": true,
+      "source": "cuisineaz",
+      "category": "tartinade",
+      "categoryLabel": "Tartinades & Dips",
+      "name": "Gelée de coing maison",
+      "description": "Quand l’automne s’invite en cuisine, le coing fait sa star et parfume la maison d’arômes doux et fruités. Préparer une gelée de coing maison, c’est renouer avec la douceur des traditions et le plaisir simple du fait-main. Un fruit de saison, du sucre, un trait de citron, et voilà un trésor doré à tartiner sur du pain. Cette recette facile rassemble petits et grands autour d’un vrai moment de partage gourmand.",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 6,
+      "ingredients": [
+        "12 Coing",
+        "1 kg Sucre",
+        "1 Citron(s)"
+      ],
+      "steps": [
+        "Essuyez bien vos coings à l'aide d'un torchon humide. Coupez-les en 8. Mettez-les dans une grande casserole avec de l'eau (minérale ou adoucie) au 3/4. Laissez cuire ensuite à feux doux (mais petite ébullition quand même) pendant 30 à 45 minutes en remuant de temps en temps. C’est cuit quand les fruits sont tendres.",
+        "Versez les fruits dans une mousseline, de la gaze ou un torchon assez fin et laissez égoutter au dessus d'un récipient soit toute une nuit ou 2/3 heures. Finissez en pressant bien le torchon. Ne jetez pas les coings, ils vous serviront pour de la pâte de coings.",
+        "Pesez ensuite votre jus obtenu et ajoutez le même poids en sucre à gelée (ou cristallisé) ainsi que le jus de citron. Mettez dans une grande casserole et remuez. Laissez cuire avec une petite ébullition pendant 30 minutes environ en remuant de temps en temps. C'est prêt quand le mélange se gélifie. Testez au bout d'une cuillère, dans une petite assiette, la gelée doit rester figée.",
+        "Passez vos pots sous l'eau bouillante et retournez-les sur un torchon pour les égoutter. Versez votre gelée dans vos pots à l'aide d'une louche attention c'est chaud ! Avec cette recette on fait 6 pots à confiture. Fermez-les et retournez-les. Laissez refroidir et mettez-les au réfrigérateur pendant une nuit.",
+        "Sortez-les et entreposez-les dans un placard par exemple. Ces confitures se conservent comme les autres confitures."
+      ],
+      "image": "https://img.cuisineaz.com/714x714/2015/12/15/i18692-gelee-de-coings.jpeg",
+      "sourceUrl": "https://www.cuisineaz.com/recettes/gelee-de-coing-maison-125865.aspx"
+    },
+    {
       "id": "cuisineaz-chips-de-butternut-maison-pour-l-apero",
       "custom": true,
       "source": "cuisineaz",
@@ -5851,7 +5904,7 @@
         "Enfournez la plaque à mi-hauteur et laissez cuire pendant environ 25 à 35 minutes, en surveillant attentivement à partir de la moitié du temps. Retournez les tranches à mi-cuisson pour une coloration plus uniforme. Retirez au fur et à mesure celles qui deviennent croustillantes, car les plus fines peuvent cuire plus vite que les autres et risqueraient de brunir excessivement.",
         "Sortez les chips du four et laissez-les refroidir quelques minutes directement sur la plaque ou sur une grille. Elles vont continuer à se raffermir en tiédissant. Goûtez, puis rectifiez éventuellement l’assaisonnement avec une pincée de sel ou de paprika. Servez ces chips de butternut maison à l’apéritif, seules ou avec une sauce légère au yaourt pour encore plus de gourmandise."
       ],
-      "image": "https://img.cuisineaz.com/1200x1200/2013/12/20/i9090-blinis-maison-au-saumon.jpg",
+      "image": "https://img.cuisineaz.com/1023x1023/2026/10/08/i210765-chips-de-butternut-maison-pour-l-apero.jpg",
       "sourceUrl": "https://www.cuisineaz.com/recettes/chips-de-butternut-maison-pour-l-apero-125781.aspx"
     },
     {
@@ -6256,6 +6309,39 @@
       "sourceUrl": "https://www.cuisineaz.com/recettes/puree-de-potimarron-maison-125445.aspx"
     },
     {
+      "id": "cuisineaz-guacamole-fait-maison",
+      "custom": true,
+      "source": "cuisineaz",
+      "category": "tartinade",
+      "categoryLabel": "Tartinades & Dips",
+      "name": "Guacamole fait maison",
+      "description": "",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 6,
+      "ingredients": [
+        "3 Tomate(s)",
+        "1 Petit(s) oignon(s)",
+        "2 Avocat(s)",
+        "1 Jus de citron",
+        "3 c. à soupe Crème fraîche",
+        "2 gousse(s) Ail",
+        "Sel",
+        "Poivre",
+        "1 sachet(s) Epices"
+      ],
+      "steps": [
+        "Pelez et dénoyautez les avocats.",
+        "Puis dans un bol, réduisez les en purée.",
+        "Ajoutez le jus de citron, la crème fraîche, les tomates et les oignons préalablement coupés en tout petits dés.",
+        "Mélangez le tout.",
+        "Assaisonnez avec le sel et le poivre.",
+        "Ajoutez la quantité du sachet d'assaisonnement qui vous convient pour un Guacamole plus ou moins épicé."
+      ],
+      "image": "https://img.cuisineaz.com/1200x1200/2013/08/12/i98486-guacamole-fait-maison.jpg",
+      "sourceUrl": "https://www.cuisineaz.com/recettes/guacamole-fait-maison-56414.aspx"
+    },
+    {
       "id": "cuisineaz-puree-de-butternut-maison",
       "custom": true,
       "source": "cuisineaz",
@@ -6332,39 +6418,6 @@
       ],
       "image": "https://img.cuisineaz.com/1023x1023/2026/09/08/i210394-pain-aux-raisins.jpg",
       "sourceUrl": "https://www.cuisineaz.com/recettes/pain-aux-raisins-a-la-pate-levee-feuilletee-maison-125607.aspx"
-    },
-    {
-      "id": "cuisineaz-guacamole-fait-maison",
-      "custom": true,
-      "source": "cuisineaz",
-      "category": "tartinade",
-      "categoryLabel": "Tartinades & Dips",
-      "name": "Guacamole fait maison",
-      "description": "",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 6,
-      "ingredients": [
-        "3 Tomate(s)",
-        "1 Petit(s) oignon(s)",
-        "2 Avocat(s)",
-        "1 Jus de citron",
-        "3 c. à soupe Crème fraîche",
-        "2 gousse(s) Ail",
-        "Sel",
-        "Poivre",
-        "1 sachet(s) Epices"
-      ],
-      "steps": [
-        "Pelez et dénoyautez les avocats.",
-        "Puis dans un bol, réduisez les en purée.",
-        "Ajoutez le jus de citron, la crème fraîche, les tomates et les oignons préalablement coupés en tout petits dés.",
-        "Mélangez le tout.",
-        "Assaisonnez avec le sel et le poivre.",
-        "Ajoutez la quantité du sachet d'assaisonnement qui vous convient pour un Guacamole plus ou moins épicé."
-      ],
-      "image": "https://img.cuisineaz.com/1200x1200/2013/08/12/i98486-guacamole-fait-maison.jpg",
-      "sourceUrl": "https://www.cuisineaz.com/recettes/guacamole-fait-maison-56414.aspx"
     },
     {
       "id": "cuisineaz-la-meilleure-recette-de-chouquettes-maison",
@@ -6554,72 +6607,6 @@
       ],
       "image": "https://img.cuisineaz.com/1200x1200/2016/05/24/i86084-pain-aux-raisins-maison.jpg",
       "sourceUrl": "https://www.cuisineaz.com/recettes/pain-aux-raisins-maison-la-vraie-recette-125597.aspx"
-    },
-    {
-      "id": "cuisineaz-soupe-en-bocaux-longue-conservation-sterilisation-maison",
-      "custom": true,
-      "source": "cuisineaz",
-      "category": "tartinade",
-      "categoryLabel": "Tartinades & Dips",
-      "name": "Soupe en bocaux longue conservation : stérilisation maison",
-      "description": "Quand l’hiver s’invite à table, rien de tel qu’une bonne soupe maison pour réchauffer le foyer ! Courge butternut, carottes, poireau et pommes de terre sont des légumes de saison, parfaits pour cuisiner ensemble comme autrefois. Avec cette méthode de stérilisation, retrouvez la chaleur de la tradition tout en savourant votre soupe à tout moment. Une recette facile, généreuse, et pensée pour durer... à partager en famille ou à garder pour plus tard, selon les envies et les saisons !",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 4,
-      "ingredients": [
-        "800 g Courge butternut",
-        "3 pièce(s) Carottes en rondelles surgelées U",
-        "1 pièce(s) Poireau(x)",
-        "1 pièce(s) Oignon(s)",
-        "2 pièce(s) Ail",
-        "2 pièce(s) Pommes de terre grenailles",
-        "1 l Bouillon de légumes",
-        "2 c. à soupe Huile d'olive",
-        "Sel",
-        "Poivre",
-        "1 pincée(s) Noix de muscade",
-        "20 cl Crème fraîche"
-      ],
-      "steps": [
-        "Commencez par laver soigneusement les bocaux, les couvercles, la louche et tout le matériel qui sera en contact avec la soupe. Rincez abondamment puis laissez égoutter sur un torchon propre. Vérifiez que les bocaux ne sont ni fêlés ni ébréchés et que les couvercles ferment correctement. Cette étape est essentielle pour réussir une bonne conservation longue durée après la stérilisation maison.",
-        "Épluchez la courge butternut, retirez les graines puis coupez la chair en morceaux réguliers. Nettoyez le poireau soigneusement pour enlever toute trace de terre, puis émincez-le. Pelez et hachez l’oignon et l’ail. Lavez les pommes de terre grenailles, épluchez-les si vous le souhaitez, puis coupez-les en morceaux. Préparez également les carottes surgelées pour qu’elles soient prêtes à être ajoutées rapidement.",
-        "Faites chauffer l’huile d’olive dans une grande marmite. Ajoutez l’oignon, l’ail et le poireau, puis faites-les revenir quelques minutes à feu moyen en remuant régulièrement. Les légumes doivent devenir fondants sans colorer fortement. Cette première cuisson permet de développer les arômes et de donner une base savoureuse à la soupe avant l’ajout des autres ingrédients.",
-        "Ajoutez dans la marmite les morceaux de butternut, les pommes de terre et les carottes. Versez le bouillon de légumes, puis assaisonnez avec un peu de sel, du poivre et une pincée de noix de muscade. Portez à ébullition, puis baissez le feu et laissez cuire doucement jusqu’à ce que tous les légumes soient bien tendres. Remuez de temps en temps pour assurer une cuisson homogène.",
-        "Lorsque les légumes sont parfaitement cuits, mixez la soupe jusqu’à obtenir une texture lisse et homogène. Ajoutez ensuite la crème fraîche, puis mélangez de nouveau pour bien l’incorporer. Goûtez la préparation et rectifiez l’assaisonnement si nécessaire. La soupe doit être bien chaude au moment du remplissage des bocaux afin de favoriser une meilleure mise en conservation.",
-        "Versez immédiatement la soupe chaude dans les bocaux propres à l’aide d’une louche, en laissant un espace libre en haut du bocal pour permettre une bonne stérilisation. Essuyez soigneusement les bords avec un chiffon propre ou du papier absorbant afin d’éliminer toute trace de soupe. Fermez ensuite les bocaux sans attendre avec leurs couvercles parfaitement propres.",
-        "Placez les bocaux fermés dans un grand faitout ou un stérilisateur, en les calant avec des torchons propres pour éviter les chocs. Couvrez-les entièrement d’eau, puis portez à ébullition. Laissez stériliser pendant environ 1 h 30 à petits bouillons réguliers. À la fin, coupez le feu et laissez les bocaux refroidir dans l’eau avant de les sortir.",
-        "Sortez les bocaux une fois refroidis, séchez-les puis vérifiez que la fermeture est bien hermétique. Si un couvercle ne semble pas correctement scellé, conservez le bocal au réfrigérateur et consommez-le rapidement. Entreposez les bocaux bien stérilisés dans un endroit frais, sec et à l’abri de la lumière. Vous pourrez ainsi garder votre soupe maison plus longtemps."
-      ],
-      "image": "https://img.cuisineaz.com/1023x1023/2026/08/25/i210258-soupe-express-aux-carottes-et-mini-poireaux.jpg",
-      "sourceUrl": "https://www.cuisineaz.com/recettes/soupe-en-bocaux-longue-conservation-sterilisation-maison-125381.aspx"
-    },
-    {
-      "id": "cuisineaz-vinaigrette-longue-conservation-maison",
-      "custom": true,
-      "source": "cuisineaz",
-      "category": "tartinade",
-      "categoryLabel": "Tartinades & Dips",
-      "name": "Vinaigrette longue conservation maison",
-      "description": "Réalisez chez vous une vinaigrette longue conservation maison, un classique du quotidien qui invite la tradition à table. Huile d’olive dorée, vinaigre de vin acidulé, moutarde de Dijon relevée et une pointe de miel : voici des ingrédients disponibles toute l’année pour accompagner toutes les saisons. Facile à préparer, cette recette familiale et généreuse promet des salades sublimées et la vraie saveur d’une cuisine authentique, où chacun se rassemble autour du goût.",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 4,
-      "ingredients": [
-        "12 cl Huile d'olive",
-        "4 cl Vinaigre de vin",
-        "2 c. à soupe Moutarde de Dijon",
-        "1 c. à café Miel",
-        "1 gousse(s) Gousse(s) d'ail"
-      ],
-      "steps": [
-        "Commencez par rassembler tous les ingrédients sur un plan de travail propre et sec : l’huile d’olive, le vinaigre de vin, la moutarde de Dijon, le miel et la gousse d’ail. Épluchez l’ail, retirez le germe si vous le souhaitez pour une saveur plus douce, puis hachez-le très finement ou écrasez-le afin qu’il se mélange facilement à la vinaigrette.",
-        "Dans un bol ou un saladier, déposez la moutarde de Dijon avec le miel. Fouettez ces deux ingrédients pour obtenir une base homogène et légèrement crémeuse. Versez ensuite le vinaigre de vin en filet tout en continuant de mélanger, afin de bien dissoudre la moutarde et de créer une préparation lisse, sans petits amas.",
-        "Ajoutez l’huile d’olive progressivement dans le mélange précédent, en fouettant régulièrement pour bien lier l’ensemble. Même si la vinaigrette reste naturellement fluide, ce mélange soigné permet de mieux répartir les saveurs. Prenez le temps d’obtenir une texture uniforme, avec une moutarde parfaitement dispersée dans l’huile et le vinaigre.",
-        "Incorporez l’ail finement haché ou écrasé à la vinaigrette, puis mélangez soigneusement pour qu’il parfume toute la préparation. Veillez à bien le répartir, car il apportera du caractère à la sauce. Si vous préférez une vinaigrette plus douce et plus lisse, vous pouvez écraser l’ail très finement avant de l’ajouter.",
-        "Versez la vinaigrette dans un bocal ou une bouteille propre, parfaitement sec et idéalement stérilisé pour favoriser une meilleure conservation. Refermez soigneusement le contenant. Avant chaque utilisation, secouez bien pour homogénéiser la sauce, car les éléments peuvent légèrement se séparer au repos. Conservez ensuite la vinaigrette au réfrigérateur pendant plusieurs jours."
-      ],
-      "image": "https://img.cuisineaz.com/1023x1023/2024/10/11/i200685-sauce-vinaigrette-rapide-et-facile.jpg",
-      "sourceUrl": "https://www.cuisineaz.com/recettes/vinaigrette-longue-conservation-maison-125380.aspx"
     },
     {
       "id": "cuisineaz-caviar-d-aubergines-pour-l-aperitif",
@@ -10572,6 +10559,6 @@
       "sourceUrl": "https://www.cuisineaz.com/recettes/pintade-aux-fruits-secs-miel-et-petits-oignons-75123.aspx"
     }
   ],
-  "updated": "2026-10-04",
+  "updated": "2026-10-11",
   "source": "cuisineaz"
 }
