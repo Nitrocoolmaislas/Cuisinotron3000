@@ -2084,13 +2084,9 @@
         "Poivre"
       ],
       "steps": [
-        "Préchauffez votre four à 200°C.",
-        "Lavez et coupez les poireaux en rondelles, les carottes et le fenouil en fines lamelles. Pelez et émincez finement l’ail. Coupez des rondelles de citron",
-        "Placez chaque filet de poisson au centre d’une feuille de papier sulfurisé et répartissez les légumes et l’ail émincé autour du poisson. Déposez les rondelles de citron sur les filets de poisson.",
-        "Ajoutez une branche de thym sur chaque filet, puis arrosez d’une cuillère à soupe d’huile d’olive. Salez et poivrez à votre convenance.",
-        "Refermez les papillotes en repliant bien les bords pour assurer une bonne cuisson à la vapeur.",
-        "Enfournez pendant 20 à 25 minutes, selon l’épaisseur des filets.",
-        "Servez immédiatement, en ouvrant les papillotes à table pour un effet surprise garanti."
+        "Préchauffez votre four à 200°C. Lavez et coupez les poireaux en rondelles, les carottes et le fenouil en fines lamelles. Pelez et émincez finement l’ail. Coupez des rondelles de citron",
+        "Placez chaque filet de poisson au centre d’une feuille de papier sulfurisé et répartissez les légumes et l’ail émincé autour du poisson. Ajoutez les rondelles de citron et une branche de thym sur chaque filet, puis arrosez d’une cuillère à soupe d’huile d’olive. Salez et poivrez à votre convenance. Refermez les papillotes en repliant bien les bords pour assurer une bonne cuisson à la vapeur.",
+        "Enfournez pendant 20 à 25 minutes, selon l’épaisseur des filets. Servez immédiatement, en ouvrant les papillotes à table pour un effet surprise garanti."
       ],
       "image": "https://img.cuisineaz.com/667x667/2023/10/27/i196338-paillote-poisson.jpg",
       "sourceUrl": "https://www.cuisineaz.com/recettes/papillote-de-poisson-aux-legumes-de-novembre-116767.aspx"
@@ -3844,7 +3840,7 @@
       "category": "repas",
       "categoryLabel": "Repas chauds",
       "name": "Riz sauté aux légumes et soja",
-      "description": "",
+      "description": "Un riz sauté comme on en fait avec un reste de riz cuit de la veille. Brocolis et carottes sautent dans l’huile avec de l’ail, puis le riz et les œufs battus rejoignent la poêle. L’assaisonnement combine sauce soja, sauce poisson et sauce d’huître, avec une pointe de sucre. Le riz déjà froid se détache mieux et grille sans coller. Un plat complet, végétal avec des œufs, qui se fait toute l’année en peu de temps.",
       "prepTime": 0,
       "cookTime": 0,
       "servings": 4,
@@ -5826,6 +5822,96 @@
       "sourceUrl": "https://www.cuisineaz.com/recettes/houmous-maison-la-meilleure-recette-120028.aspx"
     },
     {
+      "id": "cuisineaz-confiture-de-kaki-maison",
+      "custom": true,
+      "source": "cuisineaz",
+      "category": "tartinade",
+      "categoryLabel": "Tartinades & Dips",
+      "name": "Confiture de kaki maison",
+      "description": "Craquez pour la douceur de l’automne avec cette confiture de kaki maison ! Kaki mûr, sucre et une pointe de vanille s’unissent pour régaler petits et grands au petit-déjeuner ou au goûter. Facile à préparer, cette recette invite à partager un moment gourmand en famille, tout en profitant des fruits de saison. Un clin d’œil savoureux à la tradition des confitures faites maison, pour tartiner le bonheur au cœur de l’hiver.",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 6,
+      "ingredients": [
+        "1 kg Kaki(s)",
+        "700 g Sucre spécial confiture",
+        "1 c. à café Extrait de vanille liquide"
+      ],
+      "steps": [
+        "Lavez vos kakis, coupez-les en deux. Puis retirez la pulpe du kaki avec une petite cuillère à café. Dans un récipient, ajoutez la pulpe prélevée sur les fruits, le sucre en poudre et la vanille liquide. Mélangez.",
+        "Versez votre recette dans une casserole à feux moyen. Et faites cuire le tout pendant 20 minutes.",
+        "Pendant ce temps, stérilisez vos pots à confiture si ce n'est pas déjà fait en les disposant dans de l'eau chaude bouillante pendant 10 minutes. Puis retournez-les sur un torchon propre pour les sécher.",
+        "Une fois la cuisson de la confiture à l'extrait de vanille terminée, versez votre recette de fruits dans les pots. Retournez-les et laissez-les ainsi jusqu'à ce qu'ils refroidissent complètement. Vous pourrez ensuite déguster vos confitures pour vos tartines ou dans vos yaourts par exemple."
+      ],
+      "image": "https://img.cuisineaz.com/1200x1200/2013/12/20/i11886-recette-confiture-kaki.jpg",
+      "sourceUrl": "https://www.cuisineaz.com/recettes/confiture-de-kaki-maison-125933.aspx"
+    },
+    {
+      "id": "cuisineaz-creme-de-chataignes-maison",
+      "custom": true,
+      "source": "cuisineaz",
+      "category": "tartinade",
+      "categoryLabel": "Tartinades & Dips",
+      "name": "Crème de châtaignes maison",
+      "description": "Quand l’automne arrive et que les châtaignes tombent des arbres, on retrouve un plaisir simple et authentique : la crème de châtaignes maison. Ce dessert doux, réconfortant et sans lactose, fait la part belle à la saveur unique du marron. Préparée avec peu d’ingrédients mais beaucoup de douceur, elle rappelle les goûters d’enfance et les traditions partagées en famille. Facile à faire, elle réunit petits et grands autour d’un pot au parfum d’automne.",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 6,
+      "ingredients": [
+        "330 g Purée de châtaigne",
+        "1 Sachet Sucre vanillé",
+        "220 g Sucre",
+        "110 g Eau"
+      ],
+      "steps": [
+        "Pour faire la purée de châtaignes il faut d'abord éplucher les châtaignes. Pour cela, lavez-les, incisez-les avec un couteau sur leur partie bombée puis faites bouillir une casserole d'eau et plongez-les dedans pendant 10 à 15 mn.",
+        "Retirez ensuite leur peau marron et si possible la sous peau brun clair.",
+        "Portez ensuite à ébullition une grande casserole d'eau et faites cuire les châtaignes 30 mn.",
+        "Passez-les ensuite au moulin à légumes pour obtenir une purée compacte. Réservez dans une casserole.",
+        "Dans un autre casserole préparez un sirop en mélangeant bien le sucre et l'eau.",
+        "Portez à ébullition pendant 5 à 6 mn jusqu'a ce que le sucre soit bien dissout.",
+        "Mettez à chauffer la crème de châtaignes lentement après y avoir ajouté le sucre vanillé et en remuant constamment.",
+        "Incorporez le sirop progressivement, à l'aide d'une louche, tout en continuant à mélangez constamment et ce pendant 20 mn ; la crème va épaissir petit à petit.",
+        "Dans une 3éme casserole remplie d'eau bouillante ébouillantez un bocal de confiture et son couvercle. Sortez-le avec une pince, garnissez-le de crème complément puis fermez le bocal et retournez-le côté bouchon jusqu'à refroidissement",
+        "Conservez au frais."
+      ],
+      "image": "https://img.cuisineaz.com/1200x1200/2016/11/05/i103682-creme-de-chataignes-de-lolo.jpeg",
+      "sourceUrl": "https://www.cuisineaz.com/recettes/creme-de-chataignes-maison-125914.aspx"
+    },
+    {
+      "id": "cuisineaz-confiture-de-coing-maison",
+      "custom": true,
+      "source": "cuisineaz",
+      "category": "tartinade",
+      "categoryLabel": "Tartinades & Dips",
+      "name": "Confiture de coing maison",
+      "description": "Quand l’automne dore les vergers, le coing s’invite en cuisine pour réchauffer vos petits déjeuners. Avec sa chair tendre et parfumée, il devient star d’une confiture maison pleine de douceur. Marié au citron pour une note acidulée, il offre un plaisir simple, entre tradition et partage. Cette recette, facile et gourmande, réveille de jolis souvenirs et met tout le foyer à l’heure du goûter. À préparer en famille pour savourer l’automne à la cuillère !",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 8,
+      "ingredients": [
+        "Préparation",
+        "1 kg Coing",
+        "800 g Sucre",
+        "1 Citron(s)",
+        "200 ml Eau"
+      ],
+      "steps": [
+        "Pelez les coings puis tranchez-les en 4 parties.",
+        "Enlevez les pépins ainsi que toutes les parties dures. Disposez les pépins dans une petite bourse.",
+        "Mettez les coings dans un grand bol.",
+        "Pressez-y le citron.",
+        "Ajoutez du sucre et arrosez avec de l'eau.",
+        "Laissez reposer pendant 1 h.",
+        "Bouillonnez de l'eau dans une casserole avec la bourse qui contient les pépins.",
+        "Déversez le tout dans une bassine à confiture. Mettez sur le dessus la préparation des coings.",
+        "Faites cuire pendant 2 h à feu doux et à découvert.",
+        "Attendez que le sirop soit pâteux et les fruits bien rouges pour ôter la bourse de pépins."
+      ],
+      "image": "https://img.cuisineaz.com/1124x1124/2016/04/28/i1492-confiture-de-coing.jpg",
+      "sourceUrl": "https://www.cuisineaz.com/recettes/confiture-de-coing-maison-125888.aspx"
+    },
+    {
       "id": "cuisineaz-liqueur-de-coing-maison",
       "custom": true,
       "source": "cuisineaz",
@@ -6214,6 +6300,39 @@
       "sourceUrl": "https://www.cuisineaz.com/recettes/sauce-aux-champignons-recette-maison-125468.aspx"
     },
     {
+      "id": "cuisineaz-guacamole-fait-maison",
+      "custom": true,
+      "source": "cuisineaz",
+      "category": "tartinade",
+      "categoryLabel": "Tartinades & Dips",
+      "name": "Guacamole fait maison",
+      "description": "",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 6,
+      "ingredients": [
+        "3 Tomate(s)",
+        "1 Petit(s) oignon(s)",
+        "2 Avocat(s)",
+        "1 Jus de citron",
+        "3 c. à soupe Crème fraîche",
+        "2 gousse(s) Ail",
+        "Sel",
+        "Poivre",
+        "1 sachet(s) Epices"
+      ],
+      "steps": [
+        "Pelez et dénoyautez les avocats.",
+        "Puis dans un bol, réduisez les en purée.",
+        "Ajoutez le jus de citron, la crème fraîche, les tomates et les oignons préalablement coupés en tout petits dés.",
+        "Mélangez le tout.",
+        "Assaisonnez avec le sel et le poivre.",
+        "Ajoutez la quantité du sachet d'assaisonnement qui vous convient pour un Guacamole plus ou moins épicé."
+      ],
+      "image": "https://img.cuisineaz.com/1200x1200/2013/08/12/i98486-guacamole-fait-maison.jpg",
+      "sourceUrl": "https://www.cuisineaz.com/recettes/guacamole-fait-maison-56414.aspx"
+    },
+    {
       "id": "cuisineaz-cinnamon-rolls-facon-ikea-recette-maison",
       "custom": true,
       "source": "cuisineaz",
@@ -6307,39 +6426,6 @@
       ],
       "image": "https://img.cuisineaz.com/667x667/2018/10/25/i143515-puree-potimarron-facile.jpeg",
       "sourceUrl": "https://www.cuisineaz.com/recettes/puree-de-potimarron-maison-125445.aspx"
-    },
-    {
-      "id": "cuisineaz-guacamole-fait-maison",
-      "custom": true,
-      "source": "cuisineaz",
-      "category": "tartinade",
-      "categoryLabel": "Tartinades & Dips",
-      "name": "Guacamole fait maison",
-      "description": "",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 6,
-      "ingredients": [
-        "3 Tomate(s)",
-        "1 Petit(s) oignon(s)",
-        "2 Avocat(s)",
-        "1 Jus de citron",
-        "3 c. à soupe Crème fraîche",
-        "2 gousse(s) Ail",
-        "Sel",
-        "Poivre",
-        "1 sachet(s) Epices"
-      ],
-      "steps": [
-        "Pelez et dénoyautez les avocats.",
-        "Puis dans un bol, réduisez les en purée.",
-        "Ajoutez le jus de citron, la crème fraîche, les tomates et les oignons préalablement coupés en tout petits dés.",
-        "Mélangez le tout.",
-        "Assaisonnez avec le sel et le poivre.",
-        "Ajoutez la quantité du sachet d'assaisonnement qui vous convient pour un Guacamole plus ou moins épicé."
-      ],
-      "image": "https://img.cuisineaz.com/1200x1200/2013/08/12/i98486-guacamole-fait-maison.jpg",
-      "sourceUrl": "https://www.cuisineaz.com/recettes/guacamole-fait-maison-56414.aspx"
     },
     {
       "id": "cuisineaz-puree-de-butternut-maison",
@@ -6450,163 +6536,6 @@
       ],
       "image": "https://img.cuisineaz.com/1023x1023/2026/09/08/i210372-chouquettes-maison.jpg",
       "sourceUrl": "https://www.cuisineaz.com/recettes/la-meilleure-recette-de-chouquettes-maison-125565.aspx"
-    },
-    {
-      "id": "cuisineaz-madeleines-maison-nutri-score-b-a-preparer-en-15-minutes",
-      "custom": true,
-      "source": "cuisineaz",
-      "category": "tartinade",
-      "categoryLabel": "Tartinades & Dips",
-      "name": "Madeleines maison Nutri-Score B à préparer en 15 minutes",
-      "description": "Redécouvrez le plaisir des madeleines maison avec cette version Nutri-Score B, moelleuse et généreuse. Grâce à l’alliance de la farine, des flocons d’avoine, de la compote de pommes de saison et du zeste de citron, ces douceurs font rimer tradition et équilibre. Un goûter simple, à partager en famille ou entre ami·es, pour un moment gourmand sans compromis. Quand la simplicité rencontre la nostalgie, chaque bouchée devient une invitation à la convivialité !",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 6,
-      "ingredients": [
-        "200 g Farine de blé t55",
-        "50 g Flocon d'avoine",
-        "2 pièce(s) Oeufs durs",
-        "100 g Compote de pommes",
-        "1 pièce(s) Yaourt(s) (nature)",
-        "30 ml Huile de colza",
-        "60 g Cassonade pure canne Auchan",
-        "5 cl Lait demi-écrémé",
-        "1 sachet(s) Levure chimique",
-        "1 c. à café Extrait de vanille",
-        "1 Zeste de citron",
-        "Sel"
-      ],
-      "steps": [
-        "Préchauffez le four à 220°C pour créer le choc thermique qui aide les madeleines à former leur bosse. Pendant ce temps, préparez votre moule à madeleines. Si nécessaire, huilez très légèrement les empreintes avec un peu d’huile de colza puis farinez à peine, afin de faciliter le démoulage sans alourdir la recette. Sortez aussi tous les ingrédients pour travailler plus sereinement et obtenir une pâte homogène.",
-        "Dans un grand saladier, versez la farine de blé, les flocons d’avoine, la levure chimique et une petite pincée de sel. Mélangez soigneusement avec une cuillère ou un fouet pour bien répartir la levure dans l’ensemble. Cette étape permet d’éviter les amas et favorise une levée régulière à la cuisson. Si vous souhaitez une texture plus fine, vous pouvez mixer rapidement les flocons d’avoine avant de les incorporer.",
-        "Dans un second récipient, cassez les œufs puis fouettez-les avec la cassonade jusqu’à obtenir un mélange bien lisse. Ajoutez ensuite la compote de pommes, le yaourt nature, l’huile de colza, le lait demi-écrémé, l’extrait de vanille et le zeste de citron. Mélangez de nouveau avec soin jusqu’à ce que la préparation soit uniforme. Cette base apporte du moelleux tout en limitant la quantité de matières grasses saturées.",
-        "Versez progressivement la préparation humide sur les ingrédients secs. Mélangez délicatement, juste assez pour obtenir une pâte homogène, souple et légèrement épaisse. Évitez de trop travailler la pâte afin de préserver une texture tendre après cuisson. Vérifiez qu’il ne reste plus de farine visible au fond du saladier. La pâte doit être lisse, parfumée et facile à répartir ensuite dans les empreintes du moule.",
-        "Couvrez le saladier ou transvasez la pâte dans un récipient fermé, puis placez-la au réfrigérateur pendant 30 minutes. Ce temps de repos est important pour améliorer la texture des madeleines et favoriser la formation de la bosse au four. Le contraste entre une pâte bien froide et un four très chaud donne un meilleur résultat. Profitez-en pour vérifier que le moule est prêt et proprement préparé.",
-        "Sortez la pâte du réfrigérateur juste avant l’utilisation, sans trop la laisser se réchauffer. Répartissez-la dans les alvéoles du moule à madeleines en les remplissant aux deux tiers environ. Vous pouvez vous aider de deux cuillères pour rester précis et propre. Inutile d’étaler la pâte : elle se placera d’elle-même à la cuisson. Veillez à garder des quantités régulières pour obtenir des madeleines de taille uniforme.",
-        "Enfournez immédiatement le moule dans le four chaud à 220°C pendant 4 minutes, puis baissez la température à 180°C et poursuivez la cuisson pendant 6 à 8 minutes. Les madeleines doivent être gonflées, légèrement dorées sur les bords et souples au toucher. Surveillez bien la fin de cuisson, car elles colorent vite. Cette cuisson en deux temps aide à obtenir à la fois la bosse, le moelleux et une belle forme.",
-        "À la sortie du four, laissez les madeleines tiédir 2 à 3 minutes dans leur moule pour qu’elles se raffermissent légèrement sans se casser. Démoulez-les ensuite avec précaution et déposez-les sur une grille. Ce refroidissement à l’air libre évite que l’humidité ne ramollisse leur surface. Attendez qu’elles soient juste tièdes ou complètement refroidies avant de les déguster, afin de profiter pleinement de leur texture moelleuse."
-      ],
-      "image": "https://img.cuisineaz.com/1024x1024/2026/09/09/i210417-madeleines-maison-nutri-score-b-a-preparer-en-15-minutes.jpg",
-      "sourceUrl": "https://www.cuisineaz.com/recettes/madeleines-maison-nutri-score-b-a-preparer-en-15-minutes-125644.aspx"
-    },
-    {
-      "id": "cuisineaz-cinnamon-roll-la-meilleure-recette-maison",
-      "custom": true,
-      "source": "cuisineaz",
-      "category": "tartinade",
-      "categoryLabel": "Tartinades & Dips",
-      "name": "Cinnamon roll : la meilleure recette maison",
-      "description": "Envie d’un voyage doux et réconfortant ? Les cinnamon rolls, trésors gourmands venus des États-Unis, réveillent le quotidien avec leur parfum de cannelle et leur cœur moelleux. Ici, le lait, la cannelle et la farine, disponibles toute l’année, s’unissent pour créer un plaisir simple et familial. À partager au petit-déjeuner ou au goûter, ces brioches roulées promettent chaleur, convivialité… et une irrésistible envie d’en reprendre.",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 8,
-      "ingredients": [
-        "500 g Farine de blé",
-        "25 cl Lait entier",
-        "7 g Levure sèche de boulanger",
-        "80 g Sucre en poudre",
-        "80 g Beurre doux",
-        "Oeufs de lompe",
-        "Sel",
-        "2 c. à café Cannelle en poudre",
-        "100 g Sucre roux",
-        "150 g Cream cheese Philadelphia",
-        "80 g Sucre glace",
-        "1 c. à café Extrait de vanille"
-      ],
-      "steps": [
-        "Faites tiédir le lait pour qu’il soit juste chaud au toucher, sans être brûlant. Versez-le dans un grand saladier avec la levure sèche de boulanger et une cuillère à soupe de sucre prélevée sur les 80 g. Mélangez doucement, puis laissez reposer quelques minutes. La surface doit légèrement mousser, signe que la levure est bien active et que la pâte lèvera correctement.",
-        "Ajoutez dans le saladier la farine, le reste du sucre en poudre, 80 g de beurre doux préalablement fondu puis refroidi, ainsi qu’une bonne pincée de sel. Comme les œufs ne sont pas renseignés de façon exploitable dans la liste fournie, n’en ajoutez pas. Mélangez d’abord à la cuillère, puis pétrissez plusieurs minutes jusqu’à obtenir une pâte souple, homogène et légèrement élastique.",
-        "Formez une boule avec la pâte et déposez-la dans un saladier légèrement fariné ou beurré. Couvrez avec un torchon propre ou un film alimentaire. Laissez reposer dans un endroit tiède jusqu’à ce que la pâte double de volume. Cette étape est importante pour obtenir des cinnamon rolls bien moelleux, légers et généreusement développés après cuisson.",
-        "Dans un bol, mélangez le sucre roux avec la cannelle en poudre afin de bien répartir les saveurs. Si le beurre utilisé pour la pâte a entièrement été consommé, prélevez-en une petite partie avant pour le garder souple, car il servira à étaler la garniture. Vous devez obtenir un mélange parfumé, prêt à être réparti uniformément sur la pâte abaissée.",
-        "Lorsque la pâte a bien levé, déposez-la sur un plan de travail légèrement fariné. Dégazez-la doucement avec la paume de la main pour chasser l’excès d’air, sans la brusquer. Étalez-la ensuite au rouleau pour former un grand rectangle régulier, ni trop fin ni trop épais, afin que les roulés gardent une belle tenue et restent moelleux après cuisson.",
-        "Étalez une fine couche de beurre souple sur toute la surface du rectangle, en laissant éventuellement une petite bordure libre sur un côté pour faciliter la fermeture. Répartissez ensuite le mélange de sucre roux et de cannelle de façon homogène. Appuyez légèrement avec la main pour bien faire adhérer la garniture et assurer une saveur régulière dans chaque roulé.",
-        "Roulez la pâte sur elle-même en partant du côté le plus long pour former un boudin serré et régulier. Veillez à ne pas trop écraser la pâte afin de conserver son moelleux. Pincez légèrement la jointure pour refermer le rouleau. Cette étape conditionne l’aspect final des cinnamon rolls, avec une spirale nette, gourmande et bien dessinée à la découpe.",
-        "Coupez le boudin en 8 portions de taille aussi régulière que possible. Utilisez un couteau bien aiguisé pour ne pas déformer les spirales. Disposez les morceaux dans un plat allant au four, en les espaçant légèrement car ils vont encore gonfler. Vous obtiendrez ainsi une cuisson harmonieuse, avec des rolls moelleux au centre et délicatement dorés sur le dessus.",
-        "Couvrez le plat avec un torchon propre et laissez les roulés reposer une seconde fois dans un endroit tiède. Ils doivent prendre du volume et presque se toucher. Cette deuxième pousse apporte beaucoup de légèreté à la texture finale. Pendant ce temps, vous pouvez préparer votre espace de cuisson afin d’enchaîner facilement la suite de la recette sans précipitation.",
-        "Préchauffez le four à 180°C afin qu’il soit bien chaud au moment d’enfourner. Une température stable dès le départ aide les cinnamon rolls à bien se développer tout en dorant progressivement. Vérifiez que le plat utilisé convient à la cuisson au four et placez-le de préférence au milieu du four pour une chaleur mieux répartie et un résultat plus uniforme.",
-        "Enfournez le plat lorsque les roulés ont terminé leur seconde pousse. Laissez cuire jusqu’à ce qu’ils soient bien gonflés et joliment dorés. Surveillez la coloration en fin de cuisson pour éviter qu’ils ne sèchent. Les cinnamon rolls doivent rester tendres à cœur. À la sortie du four, laissez-les tiédir quelques minutes pour faciliter l’ajout du glaçage sans le liquéfier.",
-        "Dans un bol, travaillez le cream cheese Philadelphia avec le sucre glace et l’extrait de vanille jusqu’à obtenir une crème lisse, souple et sans grumeaux. Mélangez soigneusement pour que le glaçage soit bien homogène. Si la texture semble trop ferme, laissez-le revenir légèrement à température ambiante avant de l’étaler généreusement sur les roulés encore tièdes.",
-        "Répartissez le glaçage sur les cinnamon rolls lorsqu’ils sont tièdes, afin qu’il fonde légèrement sur les spirales tout en gardant une belle épaisseur gourmande. Servez-les de préférence le jour même, encore moelleux et parfumés. Vous pouvez les déguster au petit-déjeuner, au brunch ou au goûter, accompagnés d’un café, d’un thé ou d’un verre de lait."
-      ],
-      "image": "https://img.cuisineaz.com/1200x1200/2022/06/26/i184363-shutterstock-117255817-min.jpeg",
-      "sourceUrl": "https://www.cuisineaz.com/recettes/cinnamon-roll-la-meilleure-recette-maison-125522.aspx"
-    },
-    {
-      "id": "cuisineaz-chouquettes-maison-recette-facile-et-inratable",
-      "custom": true,
-      "source": "cuisineaz",
-      "category": "tartinade",
-      "categoryLabel": "Tartinades & Dips",
-      "name": "Chouquettes maison : recette facile et inratable",
-      "description": "Craquez pour les chouquettes maison, ces petites douceurs dorées qui enchantent petits et grands depuis des générations. Avec de simples œufs, de la farine, du beurre et un soupçon de sucre perlé, elles se préparent toute l’année, pour un goûter rapide ou une pause gourmande. Faciles à partager, moelleuses et croustillantes, elles transforment chaque moment en instant convivial. Suivez notre recette facile et inratable pour inviter la tradition et la gourmandise française à votre table, en toute simplicité.",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 6,
-      "ingredients": [
-        "125 g Farine de blé",
-        "25 cl Eau",
-        "80 g Beurre doux",
-        "3 Oeufs durs",
-        "50 g Sucre perlé",
-        "1 pincée(s) Sel fin"
-      ],
-      "steps": [
-        "Préchauffez le four à 180°C pour qu’il soit bien chaud au moment d’enfourner les chouquettes. Recouvrez une plaque de cuisson de papier sulfurisé afin d’éviter qu’elles n’attachent pendant la cuisson. Versez aussi le sucre perlé dans un petit bol pour l’avoir sous la main au moment du façonnage. Cette organisation vous permettra d’aller plus vite une fois la pâte prête.",
-        "Dans une casserole, versez l’eau, ajoutez le beurre doux coupé en morceaux ainsi que la pincée de sel. Faites chauffer sur feu moyen en remuant de temps en temps. Attendez que le beurre soit complètement fondu et que le mélange frémisse franchement. Il est important que l’ensemble soit bien chaud pour réussir la pâte et obtenir des chouquettes qui gonflent bien.",
-        "Retirez la casserole du feu, puis versez la farine de blé en une seule fois. Mélangez immédiatement avec une cuillère en bois ou une spatule robuste pour bien incorporer la farine au liquide chaud. Remettez ensuite la casserole sur feu doux et continuez à mélanger pendant quelques instants, jusqu’à ce que la pâte forme une boule homogène et se détache des parois.",
-        "Poursuivez le mélange sur feu doux pendant 1 à 2 minutes afin de dessécher légèrement la pâte. Elle doit devenir plus compacte, lisse et laisser un léger film au fond de la casserole. Cette étape est essentielle pour éviter une pâte trop humide, qui empêcherait les chouquettes de bien lever. Mélangez sans arrêt pour obtenir une texture régulière et sans grumeaux.",
-        "Versez la pâte dans un saladier afin qu’elle tiédisse quelques minutes. Ajoutez ensuite les œufs un par un, en mélangeant bien entre chaque ajout. Au début, la pâte peut sembler se séparer, mais continuez à remuer énergiquement jusqu’à retrouver une texture souple et brillante. La pâte finale doit être lisse, assez ferme pour se tenir, tout en restant facile à pocher ou à déposer.",
-        "À l’aide de deux petites cuillères ou d’une poche à douille, déposez de petits tas de pâte sur la plaque préparée, en les espaçant suffisamment car ils vont gonfler à la cuisson. Essayez de leur donner une taille régulière pour une cuisson homogène. Si une petite pointe se forme sur le dessus, vous pouvez la lisser avec un doigt légèrement humide pour un rendu plus net.",
-        "Parsemez généreusement chaque chouquette de sucre perlé en appuyant très légèrement pour qu’il adhère bien à la pâte. N’hésitez pas à en mettre sur toute la surface pour obtenir le visuel classique et le petit croquant sucré très apprécié. Cette étape donne aux chouquettes leur identité gourmande et apporte une finition simple, jolie et irrésistiblement réconfortante.",
-        "Enfournez la plaque dans le four préchauffé à 180°C et laissez cuire environ 20 à 25 minutes, jusqu’à ce que les chouquettes soient bien gonflées et joliment dorées. Pendant la cuisson, n’ouvrez surtout pas la porte du four, car un choc de température pourrait les faire retomber. Surveillez simplement la coloration en fin de cuisson pour obtenir un résultat bien équilibré.",
-        "Sortez les chouquettes du four une fois bien dorées, puis laissez-les refroidir sur une grille. Ce temps de repos permet à la vapeur de s’échapper et aide à conserver une texture légère. Dégustez-les tièdes ou froides, au goûter ou au petit-déjeuner. Elles sont meilleures le jour même, lorsque leur cœur reste moelleux et leur surface encore légèrement croustillante."
-      ],
-      "image": "https://img.cuisineaz.com/667x667/2024/03/29/i197987-chouquettes-faciles-au-airfryer.jpg",
-      "sourceUrl": "https://www.cuisineaz.com/recettes/chouquettes-maison-recette-facile-et-inratable-125560.aspx"
-    },
-    {
-      "id": "cuisineaz-pain-aux-raisins-maison-la-vraie-recette",
-      "custom": true,
-      "source": "cuisineaz",
-      "category": "tartinade",
-      "categoryLabel": "Tartinades & Dips",
-      "name": "Pain aux raisins maison : la vraie recette",
-      "description": "Craquez pour le pain aux raisins maison, ce classique de la viennoiserie française qui sent bon la générosité ! Entre la douceur du lait, le moelleux de la pâte feuilletée, la crème pâtissière onctueuse et les raisins de saison, chaque bouchée invite au partage. Facile à préparer, il réunit petits et grands autour d’un goûter réconfortant ou d’un petit déjeuner festif. Osez la tradition : le fait-maison a toujours meilleur goût !",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 8,
-      "ingredients": [
-        "500 g Farine de blé T45 tous usages U",
-        "25 cl Lait entier",
-        "250 g Beurre doux",
-        "60 g Sucre en poudre",
-        "2 Oeufs durs",
-        "7 g Levure sèche de boulanger",
-        "1 pincée(s) Sel fin",
-        "150 g Raisins secs",
-        "40 cl Crème pâtissière",
-        "1 sachet(s) Sucre vanillé",
-        "1 Jaune d'œuf(s)"
-      ],
-      "steps": [
-        "Placez les raisins secs dans un bol et couvrez-les d’eau tiède pendant une quinzaine de minutes pour les assouplir. Cette étape permet d’obtenir des pains aux raisins plus moelleux et plus gourmands à la dégustation. Égouttez-les soigneusement ensuite, puis réservez-les sur du papier absorbant afin d’éviter qu’ils ne détrempent la crème pâtissière au moment du montage.",
-        "Dans un grand saladier, versez la farine, le sucre en poudre, la levure sèche de boulanger et le sel en veillant à ne pas mettre directement le sel sur la levure. Ajoutez le lait entier légèrement tiédi ainsi que les œufs, puis mélangez jusqu’à obtenir une pâte homogène. Pétrissez plusieurs minutes jusqu’à ce que la pâte devienne souple, lisse et élastique.",
-        "Ajoutez 50 g de beurre doux en morceaux à la pâte encore souple, puis continuez de pétrir patiemment jusqu’à complète absorption. La pâte doit rester homogène et devenir plus lustrée. Formez une boule régulière, déposez-la dans un saladier propre, couvrez avec un torchon ou un film alimentaire, puis laissez reposer dans un endroit tiède jusqu’à ce qu’elle double de volume.",
-        "Lorsque la pâte a bien levé, chassez doucement l’air avec la paume de la main pour la dégazer sans la déchirer. Enveloppez-la ensuite dans du film alimentaire ou placez-la dans un récipient fermé, puis laissez-la reposer au réfrigérateur pendant au moins 1 heure. Une pâte bien froide sera beaucoup plus facile à étaler et à travailler ensuite.",
-        "Pendant que la pâte refroidit, travaillez les 200 g de beurre restants pour les assouplir légèrement sans les faire fondre. Déposez-le entre deux feuilles de papier cuisson et aplatissez-le au rouleau afin d’obtenir un carré ou un rectangle régulier. Réservez-le au frais : il doit rester ferme tout en étant assez souple pour pouvoir être étalé avec la pâte.",
-        "Sortez la pâte froide et étalez-la sur un plan de travail légèrement fariné en formant un rectangle plus grand que le beurre. Placez le beurre au centre, puis rabattez les côtés de pâte pour l’enfermer complètement. Soudez bien les bords avec les doigts afin que le beurre ne s’échappe pas. Vous obtenez alors une pâte prête à être feuilletée.",
-        "Étalez la pâte en longueur avec délicatesse, puis repliez-la en trois comme une lettre. Tournez-la d’un quart de tour, puis recommencez une seconde fois de la même manière. Si la pâte ou le beurre deviennent trop souples, remettez l’ensemble au réfrigérateur entre les tours. Ce feuilletage donnera aux pains aux raisins leur texture aérienne, fondante et bien développée.",
-        "Après un dernier passage au froid si nécessaire, étalez la pâte en un grand rectangle régulier d’environ quelques millimètres d’épaisseur. Travaillez toujours avec douceur pour ne pas écraser les couches de beurre. Essayez de garder des bords nets afin d’obtenir des roulés plus uniformes. La pâte doit rester bien froide pendant toute cette étape pour conserver un beau feuilletage.",
-        "Répartissez la crème pâtissière sur toute la surface de la pâte en laissant une petite bordure libre sur un des grands côtés pour faciliter la fermeture. Parsemez ensuite les raisins secs bien égouttés de façon régulière. Si vous le souhaitez, ajoutez le sucre vanillé sur la crème pour renforcer le parfum. Veillez à ne pas trop charger la garniture pour garder un roulage net.",
-        "Roulez la pâte sur elle-même en serrant régulièrement mais sans l’écraser, afin de conserver les couches feuilletées. Terminez en plaçant la soudure dessous pour maintenir le boudin bien fermé. Si le rouleau est trop souple, placez-le quelques minutes au réfrigérateur avant de le couper. Cela vous aidera à obtenir des tranches plus nettes et des pains aux raisins bien formés.",
-        "Coupez le rouleau en tranches de taille régulière pour obtenir huit portions. Déposez-les au fur et à mesure sur une plaque recouverte de papier cuisson en les espaçant suffisamment, car elles vont gonfler pendant la pousse puis à la cuisson. Aplatissez-les très légèrement avec la main si besoin pour leur donner une forme harmonieuse et bien stable.",
-        "Laissez les pains aux raisins lever à température ambiante dans un endroit tiède, à l’abri des courants d’air, jusqu’à ce qu’ils deviennent plus gonflés et plus légers. Cette étape est essentielle pour obtenir une mie moelleuse et une belle texture après cuisson. Pendant la fin de cette pousse, préchauffez le four à 180 °C pour qu’il soit bien chaud au moment d’enfourner.",
-        "Mélangez le jaune d’œuf avec la cuillère à soupe de lait entier afin de préparer une dorure brillante et régulière. Badigeonnez délicatement le dessus des pains aux raisins à l’aide d’un pinceau sans faire couler de mélange sur les côtés, ce qui pourrait gêner le développement du feuilletage. Cette dorure donnera une jolie couleur bien appétissante après cuisson.",
-        "Enfournez la plaque dans le four préchauffé et faites cuire les pains aux raisins jusqu’à ce qu’ils soient bien dorés, gonflés et joliment feuilletés. Surveillez la coloration en fin de cuisson, car elle peut varier selon les fours. Une fois cuits, sortez-les de la plaque avec précaution et laissez-les tiédir sur une grille pour préserver leur croustillant."
-      ],
-      "image": "https://img.cuisineaz.com/1200x1200/2016/05/24/i86084-pain-aux-raisins-maison.jpg",
-      "sourceUrl": "https://www.cuisineaz.com/recettes/pain-aux-raisins-maison-la-vraie-recette-125597.aspx"
     },
     {
       "id": "cuisineaz-caviar-d-aubergines-pour-l-aperitif",
@@ -8527,33 +8456,6 @@
       "sourceUrl": "https://www.cuisineaz.com/recettes/chia-pudding-banane-noisette-85867.aspx"
     },
     {
-      "id": "cuisineaz-chia-pudding-au-lait-de-coco-citron-vert-et-ananas",
-      "custom": true,
-      "source": "cuisineaz",
-      "category": "petitdej",
-      "categoryLabel": "Petits-déjeuners",
-      "name": "Chia pudding au lait de coco, citron vert et ananas",
-      "description": "Le chia pudding est un grand classique de la cuisine végétalienne. La graine de chia est issue d'une espèce de sauge originaire de la vallée centrale du Mexique. Elle est considérée comme \"Super aliment\" du fait de sa concentration en nutriments. Les graines de chia, se comportent comme du tapioca, elles gonflent au contact du liquide et deviennent gélatineuses. C'est ce qu'on appelle des graines à mucilage. Je vous propose donc, de découvrir cette graine via un chia pudding au lait de coco, citron vert et ananas. Cette recette est naturellement sans gluten et sans lactose. Retrouvez-moi aussi sur mon blog : http://danslacuisinedegin.blogspot.fr",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 2,
-      "ingredients": [
-        "50 g Graine(s) de chia",
-        "25 cl Lait de coco",
-        "3 c. à soupe Sirop d'agave",
-        "3 c. à soupe Jus de citron(s) vert(s)",
-        "Ananas"
-      ],
-      "steps": [
-        "Versez les graines de chia dans un petit saladier et versez le lait de coco, le sirop d'agave et le jus de citron dessus, et non le contraire (cela évite que les graines s'agglomèrent trop). Mélangez bien le tout.",
-        "Laissez reposer 10 minutes et mélangez de nouveau, afin que les graines de chia ne s’amalgament pas entre elles. Versez dans deux verres ou des petits ramequins, des cubes d'ananas.",
-        "Recouvrez l'ananas de la préparation au chia pudding. Placez au frais pour au moins 1h30 ou plus (ou la nuit pour le lendemain matin).",
-        "Servez vos chia pudding, avec le reste de l'ananas. Décorez à votre convenance."
-      ],
-      "image": "https://img.cuisineaz.com/1200x1200/2017/08/04/i131319-.jpeg",
-      "sourceUrl": "https://www.cuisineaz.com/recettes/chia-pudding-au-lait-de-coco-citron-vert-et-ananas-98508.aspx"
-    },
-    {
       "id": "cuisineaz-black-pudding-de-la-saint-patrick",
       "custom": true,
       "source": "cuisineaz",
@@ -8613,6 +8515,34 @@
       "sourceUrl": "https://www.cuisineaz.com/recettes/creme-chocolatee-aux-graines-de-chia-122056.aspx"
     },
     {
+      "id": "cuisineaz-brocoli-saute-a-l-ail-et-aux-graines-de-sesame-et-de-chia",
+      "custom": true,
+      "source": "cuisineaz",
+      "category": "petitdej",
+      "categoryLabel": "Petits-déjeuners",
+      "name": "Brocoli sauté à l'ail et aux graines de sésame et de chia",
+      "description": "Voici une recette riche en vitamines, minéraux et antioxydants, nous vous proposons du brocoli croquant sauté à l'ail et aux graines. Le brocoli perd de ses propriétés nutritionnelles si vous le cuisez trop longtemps, ici pour vous proposons de le cuire en deux phases. Une pré-cuisson dans de l'eau bouillante salée pendant 2 minutes et une deuxième cuisson juste le temps de le faire sauter avec de l'ail, du piment et le mélange de graines. Moins de 5 minutes de cuisson et votre brocoli sera encore légèrement croquant et parfumé et un petit côté craquant sera apporté grâce à l'ajout de nos graines de sésame et de chia.",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 2,
+      "ingredients": [
+        "1 Tête de brocoli",
+        "1 gousse(s) Ail",
+        "1 morceau(x) Piment d'Espelette",
+        "1 c. à soupe Graine(s) de chia",
+        "1 c. à soupe Graine de sésame doré",
+        "Huile d'olive",
+        "Sel, poivre"
+      ],
+      "steps": [
+        "Mettez de l'eau salée à bouillir dans une grande casserole. Lavez et détachez les bouquets du brocoli. Coupez les plus gros en 2 ou 4 morceaux. Vous pouvez garder la queue du brocoli et les parties plus fermes pour en faire une délicieuse soupe.",
+        "Épluchez, dégermez et coupez l'ail en petits morceaux. Lavez, retirez les graines du piment et coupez-le également en petits morceaux. Plongez vos sommités du brocoli dans la casserole d'eau bouillante et laissez cuire 2 minutes après reprise de l'ébullition. Égouttez-les dans une passoire.",
+        "Passons à la deuxième cuisson avec le reste des ingrédients. Faîtes chauffer sur feu vif, un filet d'huile d'olive dans une poêle ou un wok et ajoutez les brocolis. Ajoutez l'ail, le piment et les graines. Salez et poivrez. Remuez rapidement pour éviter que l'ail ne brûle, juste le temps que les parfums se mêlent. Servez en accompagnement d'une viande grillée, d'un poisson ou simplement avec du riz..."
+      ],
+      "image": "https://img.cuisineaz.com/1200x1200/2018/01/11/i134994-brocoli-saute-a-l-ail-et-aux-graines-de-sesame-et-de-chia.jpeg",
+      "sourceUrl": "https://www.cuisineaz.com/recettes/brocoli-saute-a-l-ail-et-aux-graines-de-sesame-et-de-chia-121982.aspx"
+    },
+    {
       "id": "cuisineaz-compote-legere-de-pommes",
       "custom": true,
       "source": "cuisineaz",
@@ -8639,6 +8569,30 @@
       ],
       "image": "https://img.cuisineaz.com/667x667/2014/08/29/i29448-compote-legere-de-pommes.jpeg",
       "sourceUrl": "https://www.cuisineaz.com/recettes/compote-legere-de-pommes-70965.aspx"
+    },
+    {
+      "id": "cuisineaz-compote-de-pommes-et-chataignes",
+      "custom": true,
+      "source": "cuisineaz",
+      "category": "dessert",
+      "categoryLabel": "Desserts",
+      "name": "Compote de pommes et châtaignes",
+      "description": "Plongez dans la douceur de l’automne avec cette compote de pommes et châtaignes, un classique réconfortant à partager en famille. Mariage parfait entre les pommes juteuses et les châtaignes fondantes de saison, cette recette simple rappelle les goûters d’antan. Prête en quelques étapes, elle évoque le plaisir sincère des fruits récoltés à la main, quand les feuilles roussissent. À savourer en dessert, au petit-déjeuner ou pour réchauffer les cœurs lors des après-midis frisquets.",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 4,
+      "ingredients": [
+        "4 Pomme(s)",
+        "20 Châtaigne(s)",
+        "0.5 Citron(s)"
+      ],
+      "steps": [
+        "Lavez les pommes, épluchez-les, épépinez-les et coupez-les grossièrement. Pressez le citron et couvrez les morceaux de pommes avec un peu de jus afin d'éviter l'oxydation. Placez les morceaux de pommes dans votre autocuiseur et faites-les cuire pendant 20 min.",
+        "Lavez les châtaignes, incisez-les. Faites bouillir de l'eau dans une casserole et plongez les châtaignes dedans. Faites cuire pendant 3 min. Plongez immédiatement les châtaignes dans un récipient d'eau glacée. Retirez leur écorce. Faites cuire les châtaignes pendant 20 min dans une casserole d'eau bouillante.",
+        "Versez les pommes et les châtaignes cuites dans le bol de votre blender. Réduisez le tout en compote. Versez dans un récipient. Dégustez la compote chaude ou froide."
+      ],
+      "image": "https://img.cuisineaz.com/667x667/2018/06/10/i140332-compote-pommes-chataignes.jpeg",
+      "sourceUrl": "https://www.cuisineaz.com/recettes/compote-de-pommes-et-chataignes-125929.aspx"
     },
     {
       "id": "cuisineaz-compote-de-pommes-au-thermomix",
@@ -8803,31 +8757,6 @@
       ],
       "image": "https://img.cuisineaz.com/1000x1000/2018/10/26/i143537-gateau-aux-amandes-et-a-la-compote-de-pommes.jpeg",
       "sourceUrl": "https://www.cuisineaz.com/recettes/gateau-a-la-compote-de-pommes-et-aux-amandes-121198.aspx"
-    },
-    {
-      "id": "cuisineaz-compote-de-pommes-a-la-cannelle-facile-facile",
-      "custom": true,
-      "source": "cuisineaz",
-      "category": "dessert",
-      "categoryLabel": "Desserts",
-      "name": "Compote de pommes à la cannelle facile facile",
-      "description": "La compote de pommes à la cannelle rappelle des souvenirs de goûters simples et de moments partagés en famille. L’automne marque le retour des pommes, ingrédient phare de cette recette douce et réconfortante. La cannelle apporte une note chaleureuse, parfaite pour accompagner cette saison. Cette préparation trouve facilement sa place dans le quotidien, aussi bien au dessert qu’au petit-déjeuner. Rien de plus accessible que ces quelques ingrédients, pour une compote maison qui réunit petits et grands autour de saveurs intemporelles.",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 4,
-      "ingredients": [
-        "6 Pomme(s)",
-        "1 c. à soupe Sucre cassonade",
-        "1 c. à café Cannelle",
-        "0.5 verre(s) Eau"
-      ],
-      "steps": [
-        "Épluchez les pommes, retirez-en le cœur et les pépins et coupez-les en petits cubes.",
-        "Dans une grande casserole, mettez les pommes et ajoutez l'eau et le sucre. Faites chauffer et laissez mijoter une quinzaine de minutes, en remuant de temps en temps, jusqu'à ce que les pommes soient réduites.",
-        "En fin de cuisson, ajoutez la cannelle, mélangez et laissez refroidir une demi-heure avant de servir."
-      ],
-      "image": "https://img.cuisineaz.com/667x667/2016/09/05/i85680-compote-de-pommes-a-la-cannelle-facile-facile.jpg",
-      "sourceUrl": "https://www.cuisineaz.com/recettes/compote-de-pommes-a-la-cannelle-facile-facile-120660.aspx"
     },
     {
       "id": "cuisineaz-salade-de-melon-et-fruits-frais-a-la-mozzarella-de-cyril-lignac",
@@ -10559,6 +10488,6 @@
       "sourceUrl": "https://www.cuisineaz.com/recettes/pintade-aux-fruits-secs-miel-et-petits-oignons-75123.aspx"
     }
   ],
-  "updated": "2026-10-11",
+  "updated": "2026-10-18",
   "source": "cuisineaz"
 }
