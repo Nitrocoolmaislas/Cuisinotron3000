@@ -1231,6 +1231,37 @@
       "sourceUrl": "https://www.cuisineaz.com/recettes/boulettes-de-viande-hachee-u-bio-aux-lentilles-blondes-epinards-et-sauce-tomate-maison-125817.aspx"
     },
     {
+      "id": "cuisineaz-soupe-de-lentilles-corail-turque",
+      "custom": true,
+      "source": "cuisineaz",
+      "category": "repas",
+      "categoryLabel": "Repas chauds",
+      "name": "Soupe de lentilles corail turque",
+      "description": "Arômes et chaleur pour cette soupe qui vient directement de Turquie. Elle mélange intimement des lentilles corail, des légumes, de la pomme de terre avec un soupçon de tomate et de curcuma. Rassasiante et réconfortante à souhait, cette soupe de concentré de saveurs est très simple à réaliser. A vos fourneaux !",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 4,
+      "ingredients": [
+        "120 g Lentilles corail",
+        "1 Pomme(s) de terre",
+        "1 Carotte(s)",
+        "1 Oignon(s)",
+        "1 Gousse Ail",
+        "2 c. à café Concentré de tomates",
+        "1 c. à soupe Huile d'olive",
+        "0.5 c. à café Curcuma",
+        "Sel",
+        "Poivre"
+      ],
+      "steps": [
+        "Lavez et épluchez les légumes. Coupez en dés la pomme de terre et la carotte.",
+        "Faites revenir dans l’huile d’olive l’oignon haché et la gousse d’ail écrasée. Ajoutez les dés de pommes de terre et de carotte. Faites revenir quelques instants à feu moyen avant d’ajouter le concentré de tomates, le paprika, le sel, le poivre puis 1,2 litre d’eau. Couvrez et laissez mijoter à petit feu pendant 30 minutes.",
+        "Mixez la soupe et la verser dans un grand saladier ou une soupière. Rectifiez l’assaisonnement et servez bien chaud."
+      ],
+      "image": "https://img.cuisineaz.com/667x667/2018/06/20/i140541-soupe-de-lentilles-corail.jpeg",
+      "sourceUrl": "https://www.cuisineaz.com/recettes/soupe-de-lentilles-corail-turque-126313.aspx"
+    },
+    {
       "id": "cuisineaz-soupe-potimarron-lentilles-corail-et-carottes-une-recette-reconfortante-d-automne",
       "custom": true,
       "source": "cuisineaz",
@@ -1404,41 +1435,6 @@
       ],
       "image": "https://img.cuisineaz.com/667x667/2018/11/03/i143852-veloute-de-potimarron-et-lentilles-corail.jpeg",
       "sourceUrl": "https://www.cuisineaz.com/recettes/veloute-potimarron-et-lentilles-corail-125452.aspx"
-    },
-    {
-      "id": "cuisineaz-saucisse-lentilles-a-rechauffer-au-micro-ondes",
-      "custom": true,
-      "source": "cuisineaz",
-      "category": "repas",
-      "categoryLabel": "Repas chauds",
-      "name": "Saucisse-lentilles à réchauffer au micro-ondes",
-      "description": "Simple, savoureuse et conviviale, la saucisse-lentilles est un classique des tables familiales. Avec ses lentilles riches en fibres et ses saucisses fondantes, ce plat réconforte toute l’année, surtout dès l’automne quand les légumes révèlent leur douceur. Facile à préparer à l’avance et à réchauffer, il s’invite à chaque repas, pour rassembler petits et grands autour d’un moment chaleureux. Un vrai plat doudou à partager, sans chichi, pour répondre à la fameuse question : “On mange quoi ce soir ?”",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 4,
-      "ingredients": [
-        "4 pièce(s) Chair à saucisse, pur porc",
-        "300 g Lentilles vertes",
-        "1 pièce(s) Oignon(s)",
-        "2 pièce(s) Carotte(s)",
-        "2 gousse(s) Gousse(s) d'ail",
-        "60 cl Bouillon de légumes",
-        "2 c. à soupe Huile d'olive",
-        "1 branche(s) Thym",
-        "2 Feuille(s) Laurier"
-      ],
-      "steps": [
-        "Rincez soigneusement les lentilles vertes sous l’eau froide dans une passoire pour retirer les impuretés. Pelez ensuite l’oignon, les carottes et les gousses d’ail. Émincez l’oignon, coupez les carottes en petits dés réguliers et hachez l’ail. Cette préparation homogène aide à obtenir une cuisson plus régulière et une garniture fondante, idéale pour un plat complet facile à réchauffer au micro-ondes.",
-        "Piquez légèrement les saucisses avec la pointe d’un couteau pour éviter qu’elles n’éclatent pendant la cuisson. Déposez-les dans un grand plat adapté au micro-ondes. Si besoin, vérifiez que le récipient est assez profond pour accueillir ensuite les lentilles, les légumes et le bouillon. Cette organisation dès le départ facilite la cuisson du plat en une seule préparation.",
-        "Ajoutez autour des saucisses les lentilles rincées, l’oignon émincé, les dés de carottes et l’ail haché. Versez l’huile d’olive, puis ajoutez le thym et les feuilles de laurier. Mélangez délicatement pour bien répartir les ingrédients sans casser les lentilles. Versez enfin le bouillon de légumes sur l’ensemble afin de bien immerger les lentilles et de favoriser une cuisson uniforme au micro-ondes.",
-        "Couvrez le plat avec un couvercle adapté au micro-ondes ou avec un film spécial cuisson légèrement percé. Faites cuire une première fois au micro-ondes à puissance élevée pendant environ 15 minutes. À la fin de cette étape, sortez le plat avec précaution, car il sera très chaud. Mélangez doucement les lentilles et les légumes pour répartir la chaleur et éviter qu’une partie ne sèche.",
-        "Remettez le plat couvert au micro-ondes pour poursuivre la cuisson pendant environ 20 à 25 minutes, toujours à puissance moyenne à élevée selon votre appareil. Vérifiez à mi-cuisson le niveau de liquide et ajoutez un peu d’eau chaude si nécessaire. Les lentilles doivent devenir tendres, les carottes fondantes et les saucisses bien cuites à cœur pour obtenir un résultat savoureux.",
-        "Retirez le thym et le laurier, puis goûtez les lentilles pour vérifier leur cuisson. Si elles sont encore un peu fermes, prolongez la cuisson par tranches de 3 à 5 minutes. Contrôlez aussi la cuisson des saucisses en les coupant légèrement. Rectifiez l’assaisonnement si besoin. À ce stade, l’ensemble doit être moelleux, bien lié par le bouillon réduit et prêt à être conservé.",
-        "Laissez tiédir la préparation quelques minutes hors du micro-ondes avant de la répartir, si vous le souhaitez, dans des contenants individuels adaptés. Cette étape permet de mieux conserver les textures et facilite le réchauffage ultérieur. Fermez ensuite les contenants une fois la chaleur retombée, puis placez-les au réfrigérateur. Le plat pourra ainsi être réchauffé facilement pour un repas pratique et complet.",
-        "Pour servir, placez une portion de saucisse-lentilles dans un récipient compatible avec le micro-ondes et couvrez sans fermer hermétiquement. Faites réchauffer pendant 2 à 4 minutes selon la quantité et la puissance de votre appareil, en remuant les lentilles à mi-parcours. Vérifiez que la saucisse est bien chaude à cœur avant de déguster. Servez aussitôt pour profiter d’un plat généreux et réconfortant."
-      ],
-      "image": "https://img.cuisineaz.com/1024x1024/2025/06/20/i205614-saucisses-aux-lentilles-mijotees-facon-grand-mere.jpg",
-      "sourceUrl": "https://www.cuisineaz.com/recettes/saucisse-lentilles-a-rechauffer-au-micro-ondes-125135.aspx"
     },
     {
       "id": "cuisineaz-poulet-citron-curry-et-legumes-light",
@@ -5824,6 +5820,98 @@
       "sourceUrl": "https://www.cuisineaz.com/recettes/houmous-maison-la-meilleure-recette-120028.aspx"
     },
     {
+      "id": "cuisineaz-tarte-aux-pommes-maison-a-la-compote-la-recette-facile-et-gourmande",
+      "custom": true,
+      "source": "cuisineaz",
+      "category": "tartinade",
+      "categoryLabel": "Tartinades & Dips",
+      "name": "Tarte aux pommes maison à la compote : la recette facile et gourmande",
+      "description": "La tarte aux pommes maison, c’est le dessert qui rassemble tout le monde autour d’une bonne part. Avec des pommes de saison, une pâte au beurre croustillante et une compote fondante, chaque bouchée a de quoi plaire. Le petit truc ? Une pointe de sel qui fait ressortir le goût des pommes, sans prendre le dessus. Simple, gourmand, et encore meilleur à partager tiède !",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 6,
+      "ingredients": [
+        "250 g Farine de blé",
+        "145 g Beurre doux",
+        "70 g Sucre en poudre",
+        "10 cl Eau",
+        "Sel",
+        "6 pièce(s) Pomme(s)",
+        "1 c. à soupe Jus de citron"
+      ],
+      "steps": [
+        "Préchauffez le four à 180 °C, en chaleur traditionnelle. Versez les 250 g de farine dans un saladier avec 30 g de sucre et une petite pincée de sel. Ajoutez 125 g de beurre doux froid, coupé en petits morceaux. Travaillez rapidement du bout des doigts pour obtenir une texture sableuse, sans chercher à former une pâte à ce stade.",
+        "Versez progressivement 5 cl d’eau froide sur le mélange, en rassemblant les ingrédients avec la main. Arrêtez de travailler la pâte dès qu’elle forme une boule homogène : un pétrissage prolongé la rendrait moins friable après cuisson. Aplatissez légèrement la boule en disque, enveloppez-la dans un film alimentaire et placez-la au réfrigérateur pendant 30 minutes.",
+        "Pendant le repos de la pâte, lavez puis épluchez trois pommes. Coupez-les en quartiers, retirez le cœur et les pépins, puis détaillez la chair en petits morceaux réguliers pour faciliter la cuisson. Déposez-les dans une casserole avec les 5 cl d’eau restants, 20 g de sucre et la moitié de la cuillère à soupe de jus de citron.",
+        "Couvrez la casserole et faites cuire les pommes à feu doux pendant 15 à 20 minutes, en remuant régulièrement. Lorsqu’elles sont tendres, retirez le couvercle et laissez évaporer l’excédent d’eau si nécessaire. Écrasez les morceaux à la fourchette, puis ajoutez une toute petite pincée de sel pour souligner leur saveur sans rendre la compote salée. Laissez tiédir dans un récipient.",
+        "Sortez la pâte du réfrigérateur et étalez-la entre deux feuilles de papier cuisson pour obtenir un disque d’environ 3 mm d’épaisseur, adapté à un moule de 26 cm. Retirez la feuille supérieure, puis installez la pâte dans le moule avec la feuille inférieure. Appliquez-la contre les bords, retirez l’excédent et piquez légèrement le fond à la fourchette, sans le transpercer.",
+        "Épluchez les trois pommes restantes, retirez leur cœur et leurs pépins, puis coupez-les en fines lamelles régulières. Mélangez-les délicatement avec le reste du jus de citron. Répartissez la compote tiédie sur le fond de pâte, puis disposez les lamelles en rosace en les faisant légèrement se chevaucher. Parsemez des 20 g de sucre et des 20 g de beurre restants, coupés en petits dés.",
+        "Enfournez la tarte dans la partie basse du four pendant 40 à 45 minutes. Surveillez la coloration en fin de cuisson : les pommes doivent être tendres et légèrement dorées, et les bords de la pâte bien colorés. Si le dessus brunit trop vite, protégez-le avec une feuille de papier aluminium. Laissez tiédir au moins 20 minutes avant de démouler délicatement et de servir."
+      ],
+      "image": "https://img.cuisineaz.com/1200x1200/2026/11/15/i211513-tarte-aux-pommes-maison-l-astuce-gourmande-du-chef-etchebest.jpg",
+      "sourceUrl": "https://www.cuisineaz.com/recettes/tarte-aux-pommes-maison-a-la-compote-la-recette-facile-et-gourmande-126422.aspx"
+    },
+    {
+      "id": "cuisineaz-sucettes-au-caramel-maison-a-faire-avec-les-enfants",
+      "custom": true,
+      "source": "cuisineaz",
+      "category": "tartinade",
+      "categoryLabel": "Tartinades & Dips",
+      "name": "Sucettes au caramel maison à faire avec les enfants",
+      "description": "Partagez un moment doux et ludique en famille avec ces sucettes caramel maison ! Le sucre, la crème et le beurre, simples et accessibles toute l’année, invitent à créer ensemble un classique des goûters d’enfance. Cette recette réveille l’esprit des vrais bonbons d’antan : préparés avec amour et une pincée de complicité. Faciles à personnaliser, ces sucettes sont idéales pour initier petits et grands aux plaisirs de la cuisine et replonger, le temps d’une bouchée, dans la gourmandise partagée.",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 4,
+      "ingredients": [
+        "200 g Sucre blanc",
+        "5 cl Crème liquide entière",
+        "30 g Beurre demi-sel",
+        "0.5 Citron(s)",
+        "Beurre pour le moule"
+      ],
+      "steps": [
+        "Beurrez très légèrement un moule plat, une plaque recouverte de papier cuisson ou un tapis en silicone pour éviter que le caramel n’attache. Préparez aussi 8 bâtonnets en bois ou petites piques, ainsi qu’un couteau et un demi-citron. Avec des enfants, installez tout à l’avance sur un plan de travail dégagé pour garder la préparation simple, rapide et bien encadrée.",
+        "Versez la crème liquide dans un petit récipient et coupez le beurre demi-sel en morceaux pour qu’il fonde plus facilement. Pressez le demi-citron afin de récupérer quelques gouttes de jus. Gardez tous les ingrédients à portée de main, car le caramel évolue vite. Cette organisation vous permettra de cuisiner plus sereinement avec les enfants, sans devoir chercher un ustensile au dernier moment.",
+        "Versez le sucre blanc dans une casserole à fond épais, puis ajoutez quelques gouttes de jus de citron. Faites chauffer à feu moyen sans remuer avec une cuillère, en inclinant seulement la casserole si nécessaire. Laissez le sucre fondre peu à peu jusqu’à obtenir un caramel bien doré. Surveillez attentivement la couleur, car quelques secondes de trop suffisent à lui donner un goût amer.",
+        "Quand le caramel a une belle couleur ambrée, retirez brièvement la casserole du feu puis versez la crème avec beaucoup de prudence, en plusieurs fois, car le mélange mousse fortement. Remettez ensuite sur feu moyen, ajoutez le beurre, puis poursuivez la cuisson en remuant jusqu’à ce que le caramel atteigne 145 °C au thermomètre de cuisson : une goutte versée dans un verre d’eau froide doit durcir aussitôt et casser net. Veillez à ce qu’un adulte réalise cette étape, car le caramel est très chaud.",
+        "Versez rapidement de petits tas de caramel sur le support beurré ou sur le papier cuisson, en les espaçant légèrement. Donnez-leur une forme ronde à l’aide d’une cuillère si besoin, puis déposez un bâtonnet dans chaque portion en l’enfonçant légèrement. Travaillez sans attendre, car le caramel durcit assez vite. Les enfants peuvent aider à placer les bâtonnets, sous la surveillance attentive d’un adulte.",
+        "Laissez les sucettes refroidir complètement à température ambiante jusqu’à ce qu’elles deviennent bien fermes. Évitez de les toucher pendant cette phase pour ne pas les déformer ni vous brûler. Une fois le caramel durci, décollez-les délicatement du support. Si vous le souhaitez, vous pouvez les emballer individuellement dans du papier cuisson ou du film adapté pour une présentation plus jolie et pratique."
+      ],
+      "image": "https://img.cuisineaz.com/1023x1023/2026/11/08/i211280-sucettes-au-caramel-maison-a-faire-avec-les-enfants.jpg",
+      "sourceUrl": "https://www.cuisineaz.com/recettes/sucettes-au-caramel-maison-a-faire-avec-les-enfants-126140.aspx"
+    },
+    {
+      "id": "cuisineaz-sucre-a-la-creme-maison-la-recette-quebecoise-facile-en-4-ingredients",
+      "custom": true,
+      "source": "cuisineaz",
+      "category": "tartinade",
+      "categoryLabel": "Tartinades & Dips",
+      "name": "Sucre à la crème maison : la recette québécoise facile en 4 ingrédients",
+      "description": "Redécouvrez la douceur des traditions avec cette recette de sucre à la crème maison, rapide et authentique. Beurre onctueux, cassonade dorée, crème entière et sucre glace : quatre ingrédients sans fioriture, parfaits en toute saison. Un plaisir fondant à préparer à la maison, à partager autour d’une table ou à offrir pour les fêtes. Cette confiserie familiale, simple mais inoubliable, ravive les souvenirs tout en créant de nouveaux moments gourmands. À vos spatules, la magie opère !",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 24,
+      "ingredients": [
+        "450 g Beurre",
+        "1.2 kg Cassonade",
+        "35 cl Crème entière à 30% de MG",
+        "900 g Sucre glace"
+      ],
+      "steps": [
+        "Commencez par préparer votre plaque ou votre moule rectangulaire, idéalement d’environ 30 x 45 cm. Graissez très légèrement le fond pour aider le papier cuisson à bien adhérer, puis déposez une feuille de papier cuisson en la laissant remonter un peu sur les côtés. Cette précaution vous permettra de démouler le sucre à la crème plus facilement une fois qu’il aura pris, sans risquer de le casser.",
+        "Versez dans une grande casserole le beurre coupé en morceaux, la cassonade et la crème entière. Choisissez un récipient assez haut, car le mélange va bouillonner pendant la cuisson. Mélangez doucement avec une cuillère robuste ou une spatule pour commencer à réunir les ingrédients. À ce stade, il n’est pas nécessaire de chercher une texture parfaitement lisse, car tout va fondre ensemble sur le feu.",
+        "Placez la casserole sur feu moyen et remuez régulièrement jusqu’à ce que le beurre soit entièrement fondu et que la cassonade commence à se dissoudre dans la crème. Vous devez obtenir une préparation homogène, brillante et bien chaude. Prenez le temps de surveiller le fond de la casserole pour éviter que le sucre n’attache ou ne colore trop vite, ce qui pourrait donner un goût trop caramélisé à la confiserie.",
+        "Lorsque le mélange arrive à franche ébullition sur toute la surface, démarrez immédiatement le chronomètre et laissez cuire exactement 7 minutes. Pendant cette étape, gardez un bouillonnement régulier sans interrompre la cuisson. Remuez avec prudence si nécessaire pour éviter que le fond accroche, mais sans faire retomber la température. Cette durée précise est importante pour obtenir un sucre à la crème fondant, ni trop mou ni trop sec.",
+        "Retirez la casserole du feu dès la fin des 7 minutes de cuisson, puis ajoutez sans attendre le sucre glace. Incorporez-le d’abord avec précaution pour éviter les nuages de poudre, puis commencez à mélanger jusqu’à ce qu’il soit humidifié par la préparation chaude. Vous verrez la texture épaissir rapidement. Cette étape doit être réalisée sans trop attendre afin de conserver la bonne consistance avant le battage.",
+        "Battez ensuite la préparation à l’aide d’un batteur électrique ou d’un malaxeur, à vitesse assez élevée, pendant environ 8 minutes. Pensez à racler régulièrement les bords de la casserole avec une spatule pour homogénéiser l’ensemble. Peu à peu, le mélange va perdre un peu de sa brillance et devenir plus épais. C’est ce travail qui donne au sucre à la crème sa texture fine, serrée et agréablement fondante.",
+        "Versez rapidement la préparation dans la plaque chemisée, car elle commence à figer assez vite. Étalez-la avec une spatule pour obtenir une épaisseur régulière sur toute la surface. Lissez le dessus avec soin afin d’avoir un rendu net au moment de la découpe. Si besoin, tapotez légèrement la plaque sur le plan de travail pour répartir la masse de façon uniforme et chasser d’éventuelles bulles d’air.",
+        "Laissez d’abord tiédir la préparation quelques minutes à température ambiante, puis placez-la au réfrigérateur jusqu’à ce qu’elle soit bien ferme. Le temps de repos peut varier selon l’épaisseur, mais il faut compter au moins 1 à 2 heures pour un résultat confortable à découper. Cette phase est essentielle pour permettre au sucre à la crème de se stabiliser et d’obtenir des carrés propres et bien formés.",
+        "Quand la préparation est bien froide et prise, soulevez-la délicatement en vous aidant du papier cuisson, puis déposez-la sur une planche. À l’aide d’un grand couteau, découpez des carrés réguliers adaptés au service. Essuyez la lame entre les coupes si nécessaire pour un résultat plus net. Vous pouvez ensuite conserver les morceaux au frais dans une boîte hermétique jusqu’au moment de les déguster ou de les partager."
+      ],
+      "image": "https://img.cuisineaz.com/1200x1200/2026/11/08/i211275-sucre-a-la-creme-maison-facile-une-douceur-traditionnelle-a-seulement-4-ingredients.jpg",
+      "sourceUrl": "https://www.cuisineaz.com/recettes/sucre-a-la-creme-maison-la-recette-quebecoise-facile-en-4-ingredients-126250.aspx"
+    },
+    {
       "id": "cuisineaz-tarte-au-citron-meringuee-maison",
       "custom": true,
       "source": "cuisineaz",
@@ -6288,6 +6376,39 @@
       "sourceUrl": "https://www.cuisineaz.com/recettes/chaussons-aux-pommes-maison-et-latte-glace-a-la-tarte-aux-pommes-126023.aspx"
     },
     {
+      "id": "cuisineaz-guacamole-fait-maison",
+      "custom": true,
+      "source": "cuisineaz",
+      "category": "tartinade",
+      "categoryLabel": "Tartinades & Dips",
+      "name": "Guacamole fait maison",
+      "description": "",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 6,
+      "ingredients": [
+        "3 Tomate(s)",
+        "1 Petit(s) oignon(s)",
+        "2 Avocat(s)",
+        "1 Jus de citron",
+        "3 c. à soupe Crème fraîche",
+        "2 gousse(s) Ail",
+        "Sel",
+        "Poivre",
+        "1 sachet(s) Epices"
+      ],
+      "steps": [
+        "Pelez et dénoyautez les avocats.",
+        "Puis dans un bol, réduisez les en purée.",
+        "Ajoutez le jus de citron, la crème fraîche, les tomates et les oignons préalablement coupés en tout petits dés.",
+        "Mélangez le tout.",
+        "Assaisonnez avec le sel et le poivre.",
+        "Ajoutez la quantité du sachet d'assaisonnement qui vous convient pour un Guacamole plus ou moins épicé."
+      ],
+      "image": "https://img.cuisineaz.com/1200x1200/2013/08/12/i98486-guacamole-fait-maison.jpg",
+      "sourceUrl": "https://www.cuisineaz.com/recettes/guacamole-fait-maison-56414.aspx"
+    },
+    {
       "id": "cuisineaz-confiture-de-kaki-maison",
       "custom": true,
       "source": "cuisineaz",
@@ -6377,39 +6498,6 @@
       "sourceUrl": "https://www.cuisineaz.com/recettes/confiture-de-coing-maison-125888.aspx"
     },
     {
-      "id": "cuisineaz-guacamole-fait-maison",
-      "custom": true,
-      "source": "cuisineaz",
-      "category": "tartinade",
-      "categoryLabel": "Tartinades & Dips",
-      "name": "Guacamole fait maison",
-      "description": "",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 6,
-      "ingredients": [
-        "3 Tomate(s)",
-        "1 Petit(s) oignon(s)",
-        "2 Avocat(s)",
-        "1 Jus de citron",
-        "3 c. à soupe Crème fraîche",
-        "2 gousse(s) Ail",
-        "Sel",
-        "Poivre",
-        "1 sachet(s) Epices"
-      ],
-      "steps": [
-        "Pelez et dénoyautez les avocats.",
-        "Puis dans un bol, réduisez les en purée.",
-        "Ajoutez le jus de citron, la crème fraîche, les tomates et les oignons préalablement coupés en tout petits dés.",
-        "Mélangez le tout.",
-        "Assaisonnez avec le sel et le poivre.",
-        "Ajoutez la quantité du sachet d'assaisonnement qui vous convient pour un Guacamole plus ou moins épicé."
-      ],
-      "image": "https://img.cuisineaz.com/1200x1200/2013/08/12/i98486-guacamole-fait-maison.jpg",
-      "sourceUrl": "https://www.cuisineaz.com/recettes/guacamole-fait-maison-56414.aspx"
-    },
-    {
       "id": "cuisineaz-liqueur-de-coing-maison",
       "custom": true,
       "source": "cuisineaz",
@@ -6461,93 +6549,6 @@
       ],
       "image": "https://img.cuisineaz.com/714x714/2015/12/15/i18692-gelee-de-coings.jpeg",
       "sourceUrl": "https://www.cuisineaz.com/recettes/gelee-de-coing-maison-125865.aspx"
-    },
-    {
-      "id": "cuisineaz-chips-de-butternut-maison-pour-l-apero",
-      "custom": true,
-      "source": "cuisineaz",
-      "category": "tartinade",
-      "categoryLabel": "Tartinades & Dips",
-      "name": "Chips de butternut maison pour l'apéro",
-      "description": "Craquez pour l’apéro avec ces chips de butternut maison ! La courge butternut, star de l’automne, se transforme ici en tranches fines et dorées, pour une alternative originale aux classiques chips de pomme de terre. Simple à préparer, cette recette réchauffe les moments partagés, en famille ou entre amis. À la fois fondantes et croustillantes, ces chips invitent la saison dans votre assiette, avec une touche conviviale et gourmande à savourer du bout des doigts.",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 4,
-      "ingredients": [
-        "1 Courge butternut",
-        "3 c. à soupe Huile d'olive",
-        "Sel",
-        "Poivre",
-        "1 c. à café Paprika en poudre"
-      ],
-      "steps": [
-        "Préchauffez votre four à 150°C en chaleur tournante si vous l’avez, afin d’assurer une cuisson régulière et progressive des chips. Recouvrez une grande plaque de cuisson de papier sulfurisé pour éviter que les tranches n’attachent. Sortez aussi un grand saladier et, si possible, une mandoline ou un couteau bien aiguisé pour obtenir des rondelles fines et régulières.",
-        "Rincez la courge butternut, puis épluchez-la soigneusement avec un économe. Coupez les extrémités, fendez-la en deux et retirez les graines à l’aide d’une cuillère. Taillez ensuite la chair en tranches très fines, idéalement de 1 à 2 mm d’épaisseur. Plus les tranches seront régulières, plus la cuisson sera homogène et vos chips seront croustillantes à la sortie du four.",
-        "Déposez les tranches de butternut dans un saladier. Ajoutez l’huile d’olive, le paprika, un peu de sel et quelques tours de moulin à poivre. Mélangez délicatement avec les mains ou une cuillère pour bien enrober chaque tranche sans les casser. Veillez à ne pas trop saler dès le départ, car les saveurs se concentrent légèrement pendant la cuisson.",
-        "Répartissez les tranches assaisonnées sur la plaque préparée en une seule couche, sans les superposer. Laissez un léger espace entre elles pour que l’air chaud circule correctement et favorise le séchage. Si nécessaire, utilisez deux plaques ou faites cuire en plusieurs fournées. Cette étape est importante pour obtenir des chips bien dorées et non des tranches ramollies.",
-        "Enfournez la plaque à mi-hauteur et laissez cuire pendant environ 25 à 35 minutes, en surveillant attentivement à partir de la moitié du temps. Retournez les tranches à mi-cuisson pour une coloration plus uniforme. Retirez au fur et à mesure celles qui deviennent croustillantes, car les plus fines peuvent cuire plus vite que les autres et risqueraient de brunir excessivement.",
-        "Sortez les chips du four et laissez-les refroidir quelques minutes directement sur la plaque ou sur une grille. Elles vont continuer à se raffermir en tiédissant. Goûtez, puis rectifiez éventuellement l’assaisonnement avec une pincée de sel ou de paprika. Servez ces chips de butternut maison à l’apéritif, seules ou avec une sauce légère au yaourt pour encore plus de gourmandise."
-      ],
-      "image": "https://img.cuisineaz.com/1023x1023/2026/10/08/i210765-chips-de-butternut-maison-pour-l-apero.jpg",
-      "sourceUrl": "https://www.cuisineaz.com/recettes/chips-de-butternut-maison-pour-l-apero-125781.aspx"
-    },
-    {
-      "id": "cuisineaz-schtroumpfs-halloween-maison-bonbons-gelifies",
-      "custom": true,
-      "source": "cuisineaz",
-      "category": "tartinade",
-      "categoryLabel": "Tartinades & Dips",
-      "name": "Schtroumpfs halloween maison : bonbons gélifiés",
-      "description": "Faites entrer la magie d’Halloween dans votre cuisine avec ces schtroumpfs maison, de délicieux bonbons gélifiés à préparer en famille. De l’eau, du sucre, un peu de gélatine et un sirop fruité : voilà tout ce qu’il faut pour créer des gourmandises aussi ludiques qu’originales ! Parfaits pour régaler petits et grands, ces bonbons colorés ajoutent une touche de fantaisie et de douceur à l’automne. Qui croquera le premier ?",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 6,
-      "ingredients": [
-        "250 ml Eau",
-        "200 g Sucre en poudre",
-        "80 g Sirop de glucose",
-        "10 g Feuille(s) de gélatine",
-        "10 cl Sirop à diluer",
-        "1 cuillère Jus de citron",
-        "50 g Sucre glace"
-      ],
-      "steps": [
-        "Commencez par faire tremper les feuilles de gélatine dans un grand bol d’eau bien froide pendant quelques minutes, jusqu’à ce qu’elles deviennent souples et faciles à manipuler. Cette étape est essentielle pour obtenir des bonbons bien pris et agréablement fondants. Pendant ce temps, préparez tous les autres ingrédients à portée de main pour travailler sans attendre par la suite.",
-        "Versez l’eau dans une casserole, puis ajoutez le sucre en poudre et le sirop de glucose. Faites chauffer doucement en mélangeant régulièrement avec une cuillère ou une spatule, juste assez pour bien dissoudre le sucre et obtenir un mélange lisse. Il ne faut pas laisser caraméliser la préparation. Vous devez obtenir un sirop homogène, brillant et parfaitement fluide.",
-        "Quand le sirop est bien lisse et chaud, ajoutez le sirop à diluer choisi ainsi que la cuillère de jus de citron. Mélangez soigneusement pour bien répartir les saveurs dans toute la préparation. Le citron apporte une petite touche d’équilibre au goût sucré et aide à donner un résultat plus vif, plus agréable et moins écœurant en bouche.",
-        "Essorez soigneusement les feuilles de gélatine ramollies entre vos doigts pour retirer l’excédent d’eau, puis ajoutez-les dans la casserole hors du feu. Remuez immédiatement et longuement jusqu’à ce qu’elles soient totalement fondues dans le sirop chaud. Vérifiez qu’il ne reste aucun morceau. La texture doit être parfaitement lisse afin d’obtenir des bonbons réguliers après prise.",
-        "Versez la préparation encore liquide dans des moules en silicone de petite taille, de préférence avec des formes amusantes ou rappelant l’univers d’Halloween. Si vous n’avez pas de moules à bonbons, vous pouvez aussi utiliser un petit plat puis découper les formes plus tard. Travaillez avec soin pour éviter les débordements et garder des bonbons nets.",
-        "Placez les moules remplis au réfrigérateur pendant plusieurs heures, jusqu’à ce que les bonbons soient complètement pris. Ne les manipulez pas trop tôt, sinon ils risqueraient de se déformer ou de coller. Pour un résultat optimal, laissez-les reposer suffisamment longtemps afin qu’ils deviennent bien fermes, tout en gardant une texture souple et gélifiée agréable à déguster.",
-        "Lorsque les bonbons sont bien froids et pris, démoulez-les délicatement en poussant légèrement sous les alvéoles des moules en silicone. Prenez votre temps pour ne pas les déchirer. Si vous avez utilisé un plat au lieu de moules, découpez la pâte gélifiée en petits morceaux ou à l’aide d’emporte-pièces pour créer des formes ludiques et gourmandes.",
-        "Déposez le sucre glace dans une assiette creuse ou un petit saladier, puis roulez les bonbons dedans pour les enrober légèrement. Cet enrobage limite un peu leur côté collant et leur donne un aspect gourmand. Secouez-les doucement pour retirer l’excédent. Vous pouvez ensuite les servir aussitôt ou les conserver au frais dans une boîte hermétique pendant un court moment."
-      ],
-      "image": "https://img.cuisineaz.com/1023x1023/2026/09/22/i210555-bonbons-gelifies-maison-schtroumpfs-d-halloween.jpg",
-      "sourceUrl": "https://www.cuisineaz.com/recettes/schtroumpfs-halloween-maison-bonbons-gelifies-125773.aspx"
-    },
-    {
-      "id": "cuisineaz-paquet-bonbons-halloween-maison-idee-cadeau",
-      "custom": true,
-      "source": "cuisineaz",
-      "category": "tartinade",
-      "categoryLabel": "Tartinades & Dips",
-      "name": "Paquet bonbons halloween maison : idée cadeau",
-      "description": "Surprenez petits et grands avec ces paquets de bonbons faits maison, parfaits pour Halloween ! À base de friandises à la fraise, ces petites créations gourmandes célèbrent l’automne et la tradition du partage lors des fêtes. Faciles à préparer, elles transforment chaque moment en souvenir sucré. Un cadeau original, simple et joyeux, à glisser entre toutes les mains pour une fête pleine de douceur et de fantaisie.",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 6,
-      "ingredients": [
-        "1 Bonbons à la fraise(s)",
-        "6 6 Ficelle de cuisine"
-      ],
-      "steps": [
-        "Installez-vous sur une surface propre et bien dégagée pour préparer facilement vos paquets de bonbons d’Halloween. Rassemblez le sachet de bonbons à la fraise ainsi que les 6 morceaux de ficelle de cuisine. Si nécessaire, coupez la ficelle à l’avance pour obtenir 6 liens de taille similaire. Cette organisation simple vous permettra de travailler plus vite et d’obtenir un résultat plus régulier, pratique si vous souhaitez offrir ces petits cadeaux gourmands à plusieurs personnes.",
-        "Ouvrez le sachet de bonbons à la fraise puis répartissez les friandises en 6 portions aussi équilibrées que possible. Essayez de mettre une quantité similaire dans chaque part pour que tous les paquets soient harmonieux et agréables à offrir. Vous pouvez compter les bonbons si leur format le permet, ou simplement vous fier au volume. Cette étape est importante pour donner à votre présentation finale un aspect soigné et équitable.",
-        "Déposez chaque portion de bonbons au centre d’un petit emballage adapté si vous en avez prévu un, ou regroupez-les simplement en petit ballot bien serré. Maintenez les bonbons ensemble avec les doigts afin qu’ils gardent une forme compacte et jolie. L’idée est d’obtenir 6 petits paquets faciles à manipuler, qui évoquent immédiatement une attention gourmande à offrir pour Halloween, tout en restant simples à réaliser à la maison.",
-        "Prenez un morceau de ficelle de cuisine pour chaque portion, puis nouez délicatement le haut de chaque paquet afin de bien maintenir les bonbons. Serrez suffisamment pour que l’ensemble tienne en place, sans écraser le contenu si vous utilisez un emballage. Faites un double nœud pour éviter que le paquet ne s’ouvre. Répétez l’opération pour les 6 portions jusqu’à obtenir une série de petits cadeaux gourmands propres et bien fermés.",
-        "Prenez un moment pour vérifier que chaque paquet est bien fermé, stable et visuellement soigné. Réajustez la ficelle si besoin pour harmoniser la présentation et donner un rendu plus net. Vous pouvez ensuite disposer les paquets sur un plateau, dans une corbeille ou directement à la place de vos invités. Ces paquets de bonbons d’Halloween maison constituent une idée cadeau simple, rapide et conviviale, parfaite pour une fête ou un goûter."
-      ],
-      "image": "https://img.cuisineaz.com/1023x1023/2026/09/22/i210554-paquet-de-bonbons-d-halloween-maison.jpg",
-      "sourceUrl": "https://www.cuisineaz.com/recettes/paquet-bonbons-halloween-maison-idee-cadeau-125772.aspx"
     },
     {
       "id": "cuisineaz-caviar-d-aubergines-pour-l-aperitif",
@@ -7009,6 +7010,34 @@
       ],
       "image": "https://img.cuisineaz.com/400x300/default/default.jpg",
       "sourceUrl": "https://www.cuisineaz.com/recettes/cake-marbre-tomate-pesto-aux-lardons-fait-maison-76984.aspx"
+    },
+    {
+      "id": "cuisineaz-sauce-au-pesto-allegee-la-touche-fraicheur-pour-vos-plats-d-automne",
+      "custom": true,
+      "source": "cuisineaz",
+      "category": "tartinade",
+      "categoryLabel": "Tartinades & Dips",
+      "name": "Sauce au pesto allégée : la touche fraîcheur pour vos plats d'automne",
+      "description": "Envie de couleurs et de fraîcheur en automne ? Cette sauce au pesto allégée revisite la tradition italienne avec du basilic frais, de l’ail et une touche de crème légère. Idéale pour relever pâtes ou salades de saison, elle apporte du pep’s tout en douceur. Simple, rapide et savoureuse, elle transforme vos repas en petit rayon de soleil, même quand les feuilles tombent. À tester sans attendre, pour tous les gourmands du quotidien !",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 4,
+      "ingredients": [
+        "1 botte(s) Basilic frais",
+        "1 gousse(s) Ail",
+        "10 cl Crème liquide légère",
+        "2 c. à soupe Huile d'olive",
+        "1 c. à soupe Jus de citron"
+      ],
+      "steps": [
+        "Lavez soigneusement la botte de basilic sous un filet d’eau fraîche, puis séchez bien les feuilles avec un torchon propre ou du papier absorbant. Cette étape est importante pour éviter d’apporter trop d’eau dans la sauce. Détachez ensuite les feuilles des tiges si elles sont épaisses. Épluchez la gousse d’ail, retirez le germe si vous souhaitez une saveur plus douce, puis hachez-la grossièrement pour faciliter le mélange.",
+        "Déposez les feuilles de basilic dans le bol d’un mixeur ou dans un récipient haut si vous utilisez un mixeur plongeant. Ajoutez l’ail haché, l’huile d’olive et le jus de citron. Mixez par à-coups pour obtenir une préparation homogène et bien verte. Raclez les parois si nécessaire pour bien incorporer tous les ingrédients. Vous devez obtenir une base lisse, parfumée et encore assez souple, sans morceaux trop visibles.",
+        "Versez la crème liquide légère dans la préparation au basilic, puis mélangez de nouveau quelques secondes, juste assez pour bien l’incorporer. La sauce doit devenir plus onctueuse, plus douce en bouche et prendre une texture nappante. Si vous préférez un résultat plus fluide pour accompagner une salade, vous pouvez mixer un peu plus longtemps. Goûtez la sauce à ce stade pour vérifier l’équilibre entre la fraîcheur du basilic, l’ail et la touche acidulée du citron.",
+        "Observez la consistance de votre sauce au pesto allégée avant de la servir. Si elle vous paraît trop épaisse, ajoutez un très petit filet d’eau froide ou un peu de crème légère supplémentaire, puis mélangez à nouveau. Si au contraire vous la souhaitez plus soutenue pour napper des pâtes, laissez-la telle quelle. Cette étape vous permet d’adapter facilement la sauce à l’usage prévu, sans perdre son côté frais et léger.",
+        "Transférez la sauce au pesto allégée dans un bol ou un petit pot de service. Vous pouvez la proposer immédiatement avec des pâtes chaudes, des légumes rôtis tièdes ou une salade de saison. Pour une dégustation encore plus agréable, remuez-la une dernière fois juste avant de servir afin de retrouver une texture bien homogène. Servez sans attendre pour profiter pleinement de la fraîcheur du basilic et de la douceur de la crème."
+      ],
+      "image": "https://img.cuisineaz.com/1200x1200/2026/11/08/i211258-sauce-au-pesto-allegee-la-touche-fraicheur-pour-vos-plats-d-automne.jpg",
+      "sourceUrl": "https://www.cuisineaz.com/recettes/sauce-au-pesto-allegee-la-touche-fraicheur-pour-vos-plats-d-automne-126233.aspx"
     },
     {
       "id": "cuisineaz-tapenade-aux-olives-noires",
@@ -9350,6 +9379,43 @@
       "sourceUrl": "https://www.cuisineaz.com/recettes/mousse-legere-chocolat-et-clementine-de-cyril-lignac-118810.aspx"
     },
     {
+      "id": "cuisineaz-buche-de-noel-legere-au-chocolat-a-l-airfryer",
+      "custom": true,
+      "source": "cuisineaz",
+      "category": "dessert",
+      "categoryLabel": "Desserts",
+      "name": "Bûche de Noël légère au Chocolat à l’Airfryer",
+      "description": "À Noël, la bûche au chocolat fait toujours plaisir à partager. Ici, le biscuit moelleux cuit à l’Airfryer, le fromage blanc apporte une touche de fraîcheur et le chocolat noir enveloppe le tout d’un nappage fondant. Une version légère de ce dessert de fête, avec du cacao, de la vanille et juste ce qu’il faut de gourmandise. De quoi finir le repas en beauté, sans compliquer les préparatifs !",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 6,
+      "ingredients": [
+        "4 Œuf(s)",
+        "80 g Sucre en poudre",
+        "60 g Farine de blé",
+        "35 g Cacao en poudre non sucré",
+        "0.5 sachet(s) Levure chimique",
+        "Sel",
+        "250 g Fromage blanc",
+        "20 g Sucre glace",
+        "1 c. à café Extrait de vanille",
+        "100 g Chocolat noir",
+        "5 cl Crème liquide légère"
+      ],
+      "steps": [
+        "Préchauffez l’Airfryer à 160 °C. Préparez un moule peu profond compatible avec votre appareil, idéalement rectangulaire, d’environ 18 × 20 cm. Tapissez son fond et ses côtés de papier cuisson, sans laisser de papier dépasser près de la résistance.",
+        "Séparez les blancs des jaunes des quatre œufs. Fouettez les jaunes avec les 80 g de sucre en poudre jusqu’à obtenir un mélange pâle et mousseux. Tamisez ensemble les 60 g de farine, 20 g de cacao non sucré et le demi-sachet de levure chimique. Dans un autre saladier parfaitement propre, montez les blancs en neige ferme avec une pincée de sel.",
+        "Incorporez un tiers des blancs montés aux jaunes sucrés pour assouplir le mélange. Ajoutez les poudres tamisées, puis le reste des blancs délicatement, avec une spatule. Étalez la moitié de la pâte dans le moule sur une épaisseur régulière. Faites cuire à 160 °C pendant 7 à 10 minutes, selon votre appareil : le biscuit doit rester souple et sa surface ne doit plus être humide.",
+        "Démoulez le premier biscuit sur une feuille de papier cuisson propre et retirez doucement le papier utilisé pendant la cuisson. Roulez immédiatement le biscuit avec la nouvelle feuille, sans trop serrer, puis laissez refroidir. Faites cuire la seconde moitié de pâte dans le même moule préparé à nouveau, pendant 7 à 10 minutes à 160 °C. Roulez ce second biscuit de la même manière.",
+        "Si le fromage blanc présente du petit-lait en surface, retirez ce liquide pour éviter une garniture trop humide. Mélangez les 250 g de fromage blanc avec les 20 g de sucre glace, la cuillère à café d’extrait de vanille et les 15 g de cacao non sucré restants, préalablement tamisés. Travaillez à la cuillère jusqu’à obtenir une crème homogène, puis réservez au réfrigérateur.",
+        "Lorsque les biscuits sont complètement froids, déroulez-les avec précaution et retirez le papier. Répartissez la garniture sur les deux biscuits, en laissant environ 2 cm libres sur le bord de fermeture. Roulez chaque biscuit sans écraser la crème, puis placez les deux rouleaux bout à bout sur un plat pour former une seule bûche. Orientez leurs fermetures vers le dessous et réfrigérez pendant 30 minutes.",
+        "Hachez finement les 100 g de chocolat noir et placez-les dans un bol résistant à la chaleur. Faites chauffer les 5 cl de crème liquide légère dans une petite casserole, jusqu’aux premiers frémissements. Versez sur le chocolat, attendez une minute, puis mélangez du centre vers les bords. Si des morceaux persistent, terminez doucement au bain-marie. Laissez tiédir jusqu’à obtenir une texture facile à étaler.",
+        "Recouvrez les deux rouleaux de nappage tiédi à l’aide d’une spatule, en masquant soigneusement leur jonction pour donner l’apparence d’une seule bûche. Tracez des stries avec une fourchette pour évoquer l’écorce du bois, sans appuyer jusqu’au biscuit. Placez au réfrigérateur pendant au moins 2 heures supplémentaires. Pour le service, découpez six parts avec un couteau passé sous l’eau chaude puis essuyé."
+      ],
+      "image": "https://img.cuisineaz.com/1023x1023/2026/11/12/i211444-buche-de-noel-legere-au-chocolat-a-l-airfryer.jpg",
+      "sourceUrl": "https://www.cuisineaz.com/recettes/buche-de-noel-legere-au-chocolat-a-l-airfryer-126291.aspx"
+    },
+    {
       "id": "cuisineaz-mousse-stracciatella-au-chocolat-blanc-et-framboises-de-cyril-lignac",
       "custom": true,
       "source": "cuisineaz",
@@ -9518,34 +9584,6 @@
       ],
       "image": "https://img.cuisineaz.com/850x850/2013/12/20/i19490-mousse-au-chocolat-de-paques.jpg",
       "sourceUrl": "https://www.cuisineaz.com/recettes/mousse-au-chocolat-de-paques-122675.aspx"
-    },
-    {
-      "id": "cuisineaz-mousse-au-chocolat-dans-un-oeuf-de-paques",
-      "custom": true,
-      "source": "cuisineaz",
-      "category": "dessert",
-      "categoryLabel": "Desserts",
-      "name": "Mousse au chocolat dans un oeuf de Pâques",
-      "description": "Offrez une touche ludique et gourmande à votre table de Pâques avec cette mousse au chocolat onctueuse, nichée dans un œuf en chocolat. Idéale pour émerveiller petits et grands à l’occasion des fêtes printanières, son chocolat corsé et ses œufs frais célèbrent les saveurs et la magie de ce moment familial. Une recette irrésistible, aussi belle que facile à réaliser, qui ajoutera une note de surprise et de tradition à votre dessert de Pâques.",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 4,
-      "ingredients": [
-        "200 g Chocolat noir",
-        "4 Œuf(s)",
-        "30 g Sucre",
-        "20 cl Crème liquide",
-        "1 Oeuf de Pâque",
-        "Pincée de sel"
-      ],
-      "steps": [
-        "Commencez par casser le chocolat en petits morceaux et faites-le fondre au bain-marie jusqu'à obtenir une texture bien lisse. Laissez tiédir quelques instants. Pendant ce temps, séparez les jaunes des blancs d'œufs.",
-        "Ajoutez les jaunes d'œufs au chocolat fondu et mélangez bien pour obtenir une préparation homogène. Montez les blancs d'œufs en neige ferme avec une pincée de sel et incorporez-les délicatement au mélange à l'aide d'une spatule. Incorporez le sucre et la crème liquide en soulevant la masse pour ne pas casser les blancs.",
-        "Cassez délicatement le sommet de l'œuf en chocolat pour former une coque. Remplissez-la avec la mousse au chocolat. Veillez à ne pas dépasser le bord pour une présentation esthétique. Placez au réfrigérateur pendant au moins 2 heures pour que la mousse prenne.",
-        "Avant de déguster, vous pouvez décorer la mousse avec quelques copeaux de chocolat, des petits œufs en sucre ou autres garnitures de votre choix. Servez bien frais directement dans la coque d’œuf en chocolat pour une surprise gourmande parfaite."
-      ],
-      "image": "https://img.cuisineaz.com/1023x1023/2024/10/03/i200372-mousse-au-chocolat-en-oeufs-de-paques.jpg",
-      "sourceUrl": "https://www.cuisineaz.com/recettes/mousse-au-chocolat-dans-un-oeuf-de-paques-122520.aspx"
     },
     {
       "id": "cuisineaz-kefir-de-fruits-maison-la-boisson-petillante-naturelle",
@@ -10527,6 +10565,6 @@
       "sourceUrl": "https://www.cuisineaz.com/recettes/pintade-aux-fruits-secs-miel-et-petits-oignons-75123.aspx"
     }
   ],
-  "updated": "2026-11-08",
+  "updated": "2026-11-15",
   "source": "cuisineaz"
 }
