@@ -149,36 +149,38 @@
       "sourceUrl": "https://www.750g.com/salade-de-quinoa-mangue-avocat-r205217.htm"
     },
     {
-      "id": "750g-croquettes-de-quinoa",
+      "id": "750g-bowl-boulgour-millet-quinoa-rouge-courge-et-pois-chiches",
       "custom": true,
       "source": "750g",
       "category": "repas",
       "categoryLabel": "Repas chauds",
-      "name": "Croquettes de quinoa",
-      "description": "D&amp;eacute;licieuses croquettes qui permettent de mettre en valeur le quinoa tr&amp;egrave;s bonne c&amp;eacute;r&amp;eacute;ale",
+      "name": "Bowl boulgour, millet, quinoa rouge, courge  et pois chiches",
+      "description": "Pour se faire plaisir et faire le plein de saveurs &amp;agrave; l&amp;rsquo;approche des journ&amp;eacute;es d&amp;rsquo;hiver, Carrefour Bio a imagin&amp;eacute; ce bowl aux notes m&amp;eacute;diterran&amp;eacute;ennes.",
       "prepTime": 0,
       "cookTime": 0,
-      "servings": 12,
+      "servings": 1,
       "ingredients": [
-        "340 g de quinoa  cuit",
-        "100 g de chapelure",
-        "4 oeufs",
-        "70 g de chèvre frais",
-        "15 g de parmesan râpé",
-        "1 oignon  coupé finement",
-        "Oignon nouveau ou Cébette",
-        "1 c. à s. d'huile d'olive",
-        "Ciboulette  ou Tiges de ciboules"
+        "80g de mélange boulgour,millet, quinoa rouge, graines de tournesol Carrefour Bio",
+        "100g de courge Bio",
+        "30g de feta Carrefour Bio",
+        "1⁄4 de pomme Bio",
+        "1 brin de menthe Bio",
+        "1 carotte Bio",
+        "30g de pois chiches Carrefour Bio",
+        "1 c à c de gomasioCarrefour Bio",
+        "2 c à c d'huile d'olive Carrefour Bio",
+        "1⁄4 de citron Bio",
+        "Poivre blanc Carrefour Bio"
       ],
       "steps": [
-        "M&amp;eacute;langez dans un bol le quinoa, les oeufs battus et une pinc&amp;eacute;e de sel.",
-        "Ajoutez l&#039;oignon, la ciboule, le fromage r&amp;acirc;p&amp;eacute; et le ch&amp;egrave;vre frais, m&amp;eacute;langez bien &amp;agrave; la fourchette (le ch&amp;egrave;vre frais va s&#039;amalgamer avec le reste ).",
-        "Ajoutez la chapelure , m&amp;eacute;langez et laissez reposer quelques instant pour qu&#039;elle absorbe toute l&#039;humidit&amp;eacute; du m&amp;eacute;lange. Vous pouvez alors faire des croquettes facilement avec la pr&amp;eacute;paration. Si elle vous parait trop liquide ajoutez un peu de chapelure",
-        "Faites chauffer une po&amp;ecirc;le avec la cuill&amp;egrave;re &amp;agrave; soupe d&#039;huile d&#039;olive , formez les croquettes et faite cuire &amp;agrave; feu moyen dans une po&amp;ecirc;le avec le couvercle pendant 7 &amp;agrave; 10 minutes pour qu&#039;elles soient bien dor&amp;eacute;es et retournez les d&amp;eacute;licatement pour poursuivre la cuisson encore 7 minutes. (j&#039;ai du ajouter une petite cuill&amp;egrave;re &amp;agrave; soupe d&#039;huile suppl&amp;eacute;mentaire pour les faire colorer sur la 2eme face ).",
-        "Servez les chaudes avec une salade ou en accompagnement d&#039;une viande, par exemple."
+        "Faire cuire le m&amp;eacute;lange boulgour, millet, quinoa rouge, graines de tournesol Carrefour Bio dans un grand volume d&amp;rsquo;eau bouillante pendant 10 min. &amp;Eacute;goutter et verser dans un bol.",
+        "Couper la courge en petits d&amp;eacute;s, puis les faire revenir &amp;agrave; la po&amp;ecirc;le dans une cuill&amp;egrave;re &amp;agrave; caf&amp;eacute; d&amp;rsquo;huile d&amp;rsquo;olive, jusqu&amp;rsquo;&amp;agrave; ce qu&amp;rsquo;ils soient fondants.",
+        "&amp;Eacute;plucher la carotte et r&amp;eacute;aliser des rubans &amp;agrave; l&amp;rsquo;aide d&amp;rsquo;une mandoline ou d&amp;rsquo;un &amp;eacute;conome. Couper la pomme en fines tranches, &amp;eacute;mietter la feta.",
+        "Disposer les rubans de carotte, les d&amp;eacute;s de potiron, la feta, les pois chiches et les tranches de pommes dans le bol.",
+        "Arroser du jus de citron, saupoudrer de gomasio, poivrer et parsemer de feuilles de menthe."
       ],
-      "image": "https://static.750g.com/images/1200-675/30c5f5ac2be36ade6591a9ebd9089c27/croquettes-de-quinoa.png",
-      "sourceUrl": "https://www.750g.com/croquettes-de-quinoa-r54374.htm"
+      "image": "https://static.750g.com/images/1200-675/e8d45fd82a6215764797f942474c12fc/bowl-quinoa-.jpg",
+      "sourceUrl": "https://www.750g.com/bowl-boulgour-millet-quinoa-rouge-courge-et-pois-chiches-r203208.htm"
     },
     {
       "id": "750g-salade-tout-en-fer",
@@ -352,6 +354,36 @@
       "sourceUrl": "https://www.750g.com/salade-de-mais-r64342.htm"
     },
     {
+      "id": "750g-poulet-au-four-a-la-moutarde",
+      "custom": true,
+      "source": "750g",
+      "category": "repas",
+      "categoryLabel": "Repas chauds",
+      "name": "Poulet au four à la moutarde",
+      "description": "Pour du poulet rôti en sauce !",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 6,
+      "ingredients": [
+        "1 poulet",
+        "Pâtes",
+        "1 oignon",
+        "20 cl de crème liquide",
+        "2 c. à s. de moutarde",
+        "1 c. à s. de fécule de maïs  Maïzena",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "steps": [
+        "Préchauffez votre four à 210°C.",
+        "Déposez votre poulet dans une cocotte allant au four et déposez l&#039;oignon émincé tout autour.",
+        "Dans un récipient, mélangez la moutarde, la crème et la maïzena sans oublier de saler et poivrer.",
+        "A mi-cuisson du poulet, déposez la sauce dans la cocotte. Couvrez la et laisser cuire environ 30 minutes."
+      ],
+      "image": "https://static.750g.com/images/1200-675/90eb97e2ba60f5804f7efc8946b29c76/poulet-au-four-a-la-moutarde.png",
+      "sourceUrl": "https://www.750g.com/poulet-au-four-a-la-moutarde-r67787.htm"
+    },
+    {
       "id": "750g-poulet-dore-au-four-a-la-provencale",
       "custom": true,
       "source": "750g",
@@ -381,36 +413,6 @@
       ],
       "image": "https://static.750g.com/images/1200-675/4089fa4e6bacbe28ba8827c76a3f2173/poulet-dore-au-four-a-la-provencale.jpeg",
       "sourceUrl": "https://www.750g.com/poulet-dore-au-four-a-la-provencale-r83487.htm"
-    },
-    {
-      "id": "750g-poulet-au-four-a-la-moutarde",
-      "custom": true,
-      "source": "750g",
-      "category": "repas",
-      "categoryLabel": "Repas chauds",
-      "name": "Poulet au four à la moutarde",
-      "description": "Pour du poulet rôti en sauce !",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 6,
-      "ingredients": [
-        "1 poulet",
-        "Pâtes",
-        "1 oignon",
-        "20 cl de crème liquide",
-        "2 c. à s. de moutarde",
-        "1 c. à s. de fécule de maïs  Maïzena",
-        "Sel ou sel fin",
-        "Poivre"
-      ],
-      "steps": [
-        "Préchauffez votre four à 210°C.",
-        "Déposez votre poulet dans une cocotte allant au four et déposez l&#039;oignon émincé tout autour.",
-        "Dans un récipient, mélangez la moutarde, la crème et la maïzena sans oublier de saler et poivrer.",
-        "A mi-cuisson du poulet, déposez la sauce dans la cocotte. Couvrez la et laisser cuire environ 30 minutes."
-      ],
-      "image": "https://static.750g.com/images/1200-675/90eb97e2ba60f5804f7efc8946b29c76/poulet-au-four-a-la-moutarde.png",
-      "sourceUrl": "https://www.750g.com/poulet-au-four-a-la-moutarde-r67787.htm"
     },
     {
       "id": "750g-cuisses-de-poulet-a-la-moutarde-et-pommes-de-terre-au-four",
@@ -444,69 +446,58 @@
       "sourceUrl": "https://www.750g.com/cuisses-de-poulet-a-la-moutarde-et-pommes-de-terre-au-four-r50040.htm"
     },
     {
-      "id": "750g-poulet-roti-et-ses-pommes-de-terre",
+      "id": "750g-poulet-juteux-four-propre",
       "custom": true,
       "source": "750g",
       "category": "repas",
       "categoryLabel": "Repas chauds",
-      "name": "Poulet rôti et ses pommes de terre",
-      "description": "Un poulet tendre, avec un cro&amp;ucirc;te croustillante et pour finir de bonnes pommes de terre moelleuses...",
+      "name": "Poulet juteux (four propre)",
+      "description": "Une recette originale o&amp;ugrave; la cuisson du poulet se fera dans un sac sp&amp;eacute;cifique, le poulet d&amp;eacute;veloppera toute sa saveur et sans mati&amp;egrave;re grasse, il conservera ses ar&amp;ocirc;mes naturels et le go&amp;ucirc;t est savoureux.La cerise sur le g&amp;acirc;teau le four reste propre. L&#039;essayer c&#039;est l&#039;adopter.",
       "prepTime": 0,
       "cookTime": 0,
-      "servings": 4,
+      "servings": 6,
       "ingredients": [
-        "1,2 kg de poulet",
-        "20 pommes de terre",
-        "Poivre",
+        "1 poulet fermier  label rouge",
+        "2 oignons",
+        "2 bouquets d'herbes aromatiques",
+        "1 c. à s. de farine",
         "Sel ou sel fin",
-        "Herbes de Provence",
-        "50 g de beurre"
+        "Poivre"
       ],
       "steps": [
-        "Mettre le poulet dans un plat &amp;agrave; four. Pendant ce temps-l&amp;agrave;, pr&amp;eacute;chauffer le four &amp;agrave; 210-240&amp;deg;C. Enduire le poulet de beurre et d&#039;herbes de Provence. Rincer les pommes de terre et les mettre dans le plat autour du poulet.&amp;nbsp;",
-        "Saler, poivrer et arroser le tout d&#039;un verre d&#039;eau. Laisser cuire 1h15, plus ou moins en fonction de la taille du poulet et des pommes de terre. Ne pas h&amp;eacute;siter &amp;agrave; m&amp;eacute;langer les pommes de terre pendant la cuisson et &amp;agrave; ajouter de l&#039;eau au besoin. Les pommes de terre doivent baigner dans le jus."
+        "Saupoudrer une cuill&amp;egrave;re &amp;agrave; soupe de farine dans le sac pour l&#039;emp&amp;ecirc;cher d&#039;&amp;eacute;clater.D&amp;eacute;poser les oignons coup&amp;eacute;s, les herbes aromatiques, le sel et le poivre dans le fond du sac.",
+        "D&amp;eacute;poser le poulet sur les oignons. Saler, poivrer et mettre les herbes aromatiques puis fermer le sac avec une attache.Pratiquer 6 petite fentes sur le dessus du sac pour &amp;eacute;viter que tout n&#039;explose dans le four. Placer le sac dans un plat.",
+        "Mettre le plat sur la grille du four au niveau le plus bas pour que le sac puisse gonfler sans rien toucher. Faire cuire &amp;agrave; TH. 6/7 (environ 60 mn pour un kilo)."
       ],
-      "image": "https://static.750g.com/images/1200-675/1848d4fdec7973152b9f4287ce52c3ee/pouletrotipdt.jpg",
-      "sourceUrl": "https://www.750g.com/poulet-roti-et-ses-pommes-de-terre-r41818.htm"
+      "image": "https://static.750g.com/images/1200-675/9e960f722e64c5cdfa8da5fbe251cd51/poulet-juteux-four-propre.png",
+      "sourceUrl": "https://www.750g.com/poulet-juteux-four-propre-r45329.htm"
     },
     {
-      "id": "750g-poulet-au-citron-et-petits-legumes",
+      "id": "750g-poulet-roti-du-dimanche",
       "custom": true,
       "source": "750g",
       "category": "repas",
       "categoryLabel": "Repas chauds",
-      "name": "Poulet au citron et petits légumes",
-      "description": "Poulet au four cuit avec son accompagnement",
+      "name": "Poulet rôti du dimanche",
+      "description": "Le poulet rôti tel qu&#039;on le prépare à la maison.",
       "prepTime": 0,
       "cookTime": 0,
-      "servings": 4,
+      "servings": 6,
       "ingredients": [
-        "Moutarde",
-        "Sauge",
-        "Thym",
-        "Huile d'olive",
-        "Sel ou sel fin",
-        "Poivre",
-        "Herbes de Provence",
-        "Ail",
-        "Citron",
-        "Pomme de terre",
-        "Carotte",
-        "Champignon de Paris",
-        "Oignon",
-        "Tomate",
-        "1 poulet"
+        "1 poulet fermier",
+        "40 g de beurre  pommade",
+        "1 échalote",
+        "1 filet d'huile d'olive",
+        "1 branche de thym",
+        "1 feuille de laurier",
+        "2 gousses d'ail",
+        "Sel ou sel fin"
       ],
       "steps": [
-        "Couper les pommes de terre en cubes grossiersCouper les carottes, l&#039;oignon et les champignons en rondelles.Couper les tomates en quartiers.Détaillez l&#039;ail en quartiers après avoir retirer le germe.",
-        "Garnir l&#039;intérieur du poulet avec le bouquet de thym et sauge, des quelques morceaux de citrons. Arrosez l&#039;intérieur avec un peu d&#039;huile d&#039;olivePiquez les flans du poulet avec quelques morceaux d&#039;ail.Badigeonner le poulet de moutarde, salez, poivrez et mettre un peu d&#039;herbe de Provence.",
-        "Dans un plat allant au four, disposez le poulet au centre.Disposez les légumes autour en mettant d&#039;abord les carottes au fond qui mettent plus longtemps à cuire.Répartir quelques morceaux de citrons.Mettre un filet d&#039;huile d&#039;olive, saler et poivrer.",
-        "Mettre le tout dans un four préchauffé thermostat 9.Laisser 10min, le temps que la peau du poulet dore un peu.Sortir le plat, arroser les légumes d&#039;un verre d&#039;eau.Remettre au four en baissant le thermostat pour une cuisson plus lente.",
-        "Régulièrement arrosez le poulet avec le jus des légumes pour qu&#039;il ne sèche pas trop.Surveillez qu&#039;il reste toujours un peu d&#039;eau au fond du plat, au besoin en rajouter.",
-        "Le poulet est cuit quand du jus en sort quand vous le piquez avec un coteau.Vérifiez aussi la cuisson des pommes de terres, et surtout des carottes avec la pointe d&#039;un couteau.Quand tout est cuit, c&#039;est prêt!"
+        "Laver le poulet.Eplucher et couper l&#039;échalote en 2. Eplucher l&#039;ail, le couper en 2 et le dégermer.Saler généreusement l&#039;intérieur du poulet, le farcir avec l&#039;échalote, l&#039;ail, le thym, le laurier. Badigeonner entièrement la peau avec le beurre.Préchauffer le four à 200°C.Dans une cocotte en fonte, verser un filet d&#039;huile d&#039;olive, déposer le poulet sur la cuisse et laisser cuire à feu moyen pendant 5 minutes. Enfourner pendant 15 minutes.Au bout de 15 minutes, tourner le poulet sur le dos et laisser cuire 20 minutes. Le tourner sur l&#039;autre cuisse et laisser cuire 20 minutes. Le tourner sur le ventre et laisser cuire encore 20 minutes.Retirer le poulet de la cocotte, le couvrir de papier aluminium et réserver dans un endroit tiède quelques minutes."
       ],
-      "image": "https://static.750g.com/images/1200-675/46f25d68a66c06f12588d2e4396a76c5/poulet-au-citron-et-petits-legumes.png",
-      "sourceUrl": "https://www.750g.com/poulet-au-citron-et-petits-legumes-r51850.htm"
+      "image": "https://static.750g.com/images/1200-675/6f6c3e7829e4db1e54fe2be4923e538f/poulet-roti-du-dimanche.jpg",
+      "sourceUrl": "https://www.750g.com/poulet-roti-du-dimanche-r19862.htm"
     },
     {
       "id": "750g-veloute-de-courgettes-leger-et-gouteux",
@@ -540,38 +531,6 @@
       "sourceUrl": "https://www.750g.com/veloute-de-courgettes-r56781.htm"
     },
     {
-      "id": "750g-soupe-pommes-de-terre-poireaux-bouquet-garni",
-      "custom": true,
-      "source": "750g",
-      "category": "repas",
-      "categoryLabel": "Repas chauds",
-      "name": "Soupe pommes de terre, poireaux, bouquet garni",
-      "description": "Soupe goûteuse mais minceur.",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 4,
-      "ingredients": [
-        "1 c. à s. de crème fraîche",
-        "Sel ou sel fin",
-        "Poivre",
-        "1 bouquet garni",
-        "1 l de bouillon de volaille",
-        "200 g de pommes de terre",
-        "30 g de beurre",
-        "3 poireaux"
-      ],
-      "steps": [
-        "Lavez et émincez les poireaux.",
-        "Pelez et coupez les pommes de terre en dés.",
-        "Dans un faitout, versez les poireaux et les pommes de terre, ajoutez le beurre et laissez revenir à feu doux.",
-        "Ajoulter le litre de bouillon de volaille et le bouquet garni, salez et poivrez.",
-        "Faire cuire 30min et passez le potage au mixer avec la crème fraiche.",
-        "Vous pouvez déguster !"
-      ],
-      "image": "https://static.750g.com/images/1200-675/720fa33cd2c4edb3f38d5623230682c2/soupe-pommes-de-terre-poireaux-bouquet-garni.png",
-      "sourceUrl": "https://www.750g.com/soupe-pommes-de-terre-et-poireaux-r82542.htm"
-    },
-    {
       "id": "750g-veloute-de-mache",
       "custom": true,
       "source": "750g",
@@ -597,37 +556,6 @@
       ],
       "image": "https://static.750g.com/images/1200-675/777be86410e278c2246a20dec6c01cf3/veloute-de-mache.png",
       "sourceUrl": "https://www.750g.com/veloute-de-mache-r20801.htm"
-    },
-    {
-      "id": "750g-veloute-de-legumes",
-      "custom": true,
-      "source": "750g",
-      "category": "repas",
-      "categoryLabel": "Repas chauds",
-      "name": "Velouté de légumes",
-      "description": "Un velouté tout en douceur pour un délicieux moment...",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 6,
-      "ingredients": [
-        "du céleri (une vingtaine de feuilles)",
-        "Sel",
-        "Poivre",
-        "Note : il me restait des endives (que j'avais cuites pour faire des endives au gratin)",
-        "6 carottes",
-        "1 morceau de potiron",
-        "1 cs de margarine",
-        "4 poireaux",
-        "4 pommes de terre",
-        "2 oignons"
-      ],
-      "steps": [
-        "Dans votre cocotte, faites revenir les oignons émincés dans de la margarine, laissez blondir.",
-        "Pendant ce temps, découpez les légumes en morceaux (carottes, poireaux, potiron, céleri, endives, pdt). Couvrir d&#039;eau (env 1 litre). Salez et poivrez puis couvrez.",
-        "Lorsque la cocotte &quot;siffle&quot;.... comptez encore 20 minutes. Mixer. N&#039;hésitez à assaisonnez selon votre goût.A déguster très chaud."
-      ],
-      "image": "https://static.750g.com/images/1200-675/dad1797fd1362efacfa9b4d80191afe4/veloute-de-legumes.png",
-      "sourceUrl": "https://www.750g.com/veloute-de-legumes-r18896.htm"
     },
     {
       "id": "750g-soupe-pour-maigrir",
@@ -669,32 +597,67 @@
       "sourceUrl": "https://www.750g.com/soupe-pour-maigrir-r12480.htm"
     },
     {
-      "id": "750g-rillettes-vegetariennes-aux-lentilles-et-aux-noix-du-perigord-aop",
+      "id": "750g-veloute-de-legumes",
       "custom": true,
       "source": "750g",
       "category": "repas",
       "categoryLabel": "Repas chauds",
-      "name": "Rillettes végétariennes aux lentilles et aux Noix du Périgord AOP",
-      "description": "Une version v&amp;eacute;g&amp;eacute;tarienne et originale des traditionnelles rillettes.&amp;nbsp;",
+      "name": "Velouté de légumes",
+      "description": "Un velouté tout en douceur pour un délicieux moment...",
       "prepTime": 0,
       "cookTime": 0,
       "servings": 6,
       "ingredients": [
-        "250g de lentilles vertes cuites",
-        "100g de Noix du Périgord AOP",
-        "1 gros oignon",
-        "3 c à s d'huile d'olive",
-        "2 c à s de sauce soja",
-        "¼ de c à c de piment doux en poudre",
-        "1 c à s de paprika",
-        "2 c à s de jus de citron"
+        "du céleri (une vingtaine de feuilles)",
+        "Sel",
+        "Poivre",
+        "Note : il me restait des endives (que j'avais cuites pour faire des endives au gratin)",
+        "6 carottes",
+        "1 morceau de potiron",
+        "1 cs de margarine",
+        "4 poireaux",
+        "4 pommes de terre",
+        "2 oignons"
       ],
       "steps": [
-        "Torr&amp;eacute;fiez les Noix du P&amp;eacute;rigord AOP&amp;nbsp;5 minutes &amp;agrave; la po&amp;ecirc;le. &amp;Eacute;mincez finement les oignons puis faites les revenir dans un peu d&#039;huile d&amp;rsquo;olive.",
-        "Mettez ensuite tous les ingr&amp;eacute;dients dans le bol d&amp;rsquo;un mixeur et mixez jusqu&amp;rsquo;&amp;agrave; obtenir une texture cr&amp;eacute;meuse. Ajoutez un peu d&amp;rsquo;eau si le m&amp;eacute;lange est trop &amp;eacute;pais. Servez la tartinade aussit&amp;ocirc;t sur des tartines ou des crudit&amp;eacute;s."
+        "Dans votre cocotte, faites revenir les oignons émincés dans de la margarine, laissez blondir.",
+        "Pendant ce temps, découpez les légumes en morceaux (carottes, poireaux, potiron, céleri, endives, pdt). Couvrir d&#039;eau (env 1 litre). Salez et poivrez puis couvrez.",
+        "Lorsque la cocotte &quot;siffle&quot;.... comptez encore 20 minutes. Mixer. N&#039;hésitez à assaisonnez selon votre goût.A déguster très chaud."
       ],
-      "image": "https://static.750g.com/images/1200-675/56c0b6105cc2ea7865575d3f4142305a/750g-s07-sopexa-01-noix-perigord-rillette-packshot-nu.jpg",
-      "sourceUrl": "https://www.750g.com/rillettes-vegetariennes-aux-lentilles-et-aux-noix-du-perigord-aop-r204628.htm"
+      "image": "https://static.750g.com/images/1200-675/dad1797fd1362efacfa9b4d80191afe4/veloute-de-legumes.png",
+      "sourceUrl": "https://www.750g.com/veloute-de-legumes-r18896.htm"
+    },
+    {
+      "id": "750g-soupe-pommes-de-terre-poireaux-bouquet-garni",
+      "custom": true,
+      "source": "750g",
+      "category": "repas",
+      "categoryLabel": "Repas chauds",
+      "name": "Soupe pommes de terre, poireaux, bouquet garni",
+      "description": "Soupe goûteuse mais minceur.",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 4,
+      "ingredients": [
+        "1 c. à s. de crème fraîche",
+        "Sel ou sel fin",
+        "Poivre",
+        "1 bouquet garni",
+        "1 l de bouillon de volaille",
+        "200 g de pommes de terre",
+        "30 g de beurre",
+        "3 poireaux"
+      ],
+      "steps": [
+        "Lavez et émincez les poireaux.",
+        "Pelez et coupez les pommes de terre en dés.",
+        "Dans un faitout, versez les poireaux et les pommes de terre, ajoutez le beurre et laissez revenir à feu doux.",
+        "Ajoulter le litre de bouillon de volaille et le bouquet garni, salez et poivrez.",
+        "Faire cuire 30min et passez le potage au mixer avec la crème fraiche.",
+        "Vous pouvez déguster !"
+      ],
+      "image": "https://static.750g.com/images/1200-675/720fa33cd2c4edb3f38d5623230682c2/soupe-pommes-de-terre-poireaux-bouquet-garni.png",
+      "sourceUrl": "https://www.750g.com/soupe-pommes-de-terre-et-poireaux-r82542.htm"
     },
     {
       "id": "750g-polenta-vegetarienne-aux-lentilles-vertes-champignons-de-paris-et-epinards",
@@ -771,73 +734,95 @@
       "sourceUrl": "https://www.750g.com/tajine-de-lentilles-poivrons-et-tomates-r88839.htm"
     },
     {
-      "id": "750g-verrine-de-boudin-blanc-lentilles-et-agrumes",
+      "id": "750g-lentilles-aux-epices",
       "custom": true,
       "source": "750g",
       "category": "repas",
       "categoryLabel": "Repas chauds",
-      "name": "Verrine de boudin blanc, lentilles et agrumes",
-      "description": "Un petit amuse bouche original à base de lentilles et d&#039;endives parfumées d&#039;agrumes et de gingembre et accompagnées de boudin blanc",
+      "name": "Lentilles aux épices",
+      "description": "Lentilles avec épices, plat.",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 5,
+      "ingredients": [
+        "1 bouquet de coriande",
+        "Apices au choix cumin et poivre sont très bien",
+        "3 c à s d'huile d'olive",
+        "3 gousses d'ail",
+        "3 tomates",
+        "2 oignons émincés",
+        "2 petits bols de lentilles"
+      ],
+      "steps": [
+        "Dans une cocotte faire gonfler les lentilles jusqu&#039;à ce qu&#039;elles soient fermes.",
+        "Préparer la sauce faire revenir 10 min dans une autre marmite,  peler les tomates ajouter l&#039;ail concassé et le soignons en morceaux, huile d&#039;olive, les épices.",
+        "Incorporer la coriandre émincée et les lentilles et laisser cuire jusqu&#039;à sauce onctueuse.",
+        "Ajouter huile d&#039;olive si nécessaire."
+      ],
+      "image": "https://static.750g.com/images/1200-675/9a05c9194b2625ebee4d58bb66e94c55/lentilles-aux-epices.png",
+      "sourceUrl": "https://www.750g.com/lentilles-aux-epices-r68666.htm"
+    },
+    {
+      "id": "750g-rillettes-vegetariennes-aux-lentilles-et-aux-noix-du-perigord-aop",
+      "custom": true,
+      "source": "750g",
+      "category": "repas",
+      "categoryLabel": "Repas chauds",
+      "name": "Rillettes végétariennes aux lentilles et aux Noix du Périgord AOP",
+      "description": "Une version v&amp;eacute;g&amp;eacute;tarienne et originale des traditionnelles rillettes.&amp;nbsp;",
       "prepTime": 0,
       "cookTime": 0,
       "servings": 6,
       "ingredients": [
-        "1 cuillère à café de crème fraiche (très facultatif)",
-        "2 boudins blancs",
-        "Sel",
-        "Poivre",
-        "1 petit peu de racine de gingembre",
-        "1 citron vert",
-        "un petit oignon blanc finement émincé",
-        "1 belle endive",
-        "2 oranges",
-        "une boite de lentilles au naturel"
+        "250g de lentilles vertes cuites",
+        "100g de Noix du Périgord AOP",
+        "1 gros oignon",
+        "3 c à s d'huile d'olive",
+        "2 c à s de sauce soja",
+        "¼ de c à c de piment doux en poudre",
+        "1 c à s de paprika",
+        "2 c à s de jus de citron"
       ],
       "steps": [
-        "Emincer l&#039;endive émincés très finement en conservant 3 &quot;bouts&quot; de feuille pour la déco mais aussi servir de &quot;cuillère&quot;. Peler 1 orange à vif, réserver 6 demi-suprèmes, couper le reste en petits cubes, en garder quelques uns. Faire fondre l&#039;oignon et les endives, ajouter les lentilles, le jus d&#039;une orange, les petits cubes, le jus de citron vert, un petit coup de râpe sur la racine de gingembre, du sel, du poivre et on oublie sur feu doux environ 15 minutes.",
-        "Ajouter la crème et mixer au mixer plongeant, jusqu&#039;à l&#039;obtention d&#039;une crème onctueuse Passer au chinois pour supprimer tout risque de petite &quot;peau&quot; un peu dure. Jusque là, on peut tout faire à l&#039;avance.",
-        "Juste avant de servir, couper 6 rondelles dans le boudin blanc, détailler le reste en cubes, faire griller dans une petite noisette de beurre. Dresser les verrines pendant ce temps avec les lentilles chaudes, parsemer des petits boudins, des dés d&#039;oranges, décorer avec l&#039;endive, la rondelle de boudin et le demi-suprème."
+        "Torr&amp;eacute;fiez les Noix du P&amp;eacute;rigord AOP&amp;nbsp;5 minutes &amp;agrave; la po&amp;ecirc;le. &amp;Eacute;mincez finement les oignons puis faites les revenir dans un peu d&#039;huile d&amp;rsquo;olive.",
+        "Mettez ensuite tous les ingr&amp;eacute;dients dans le bol d&amp;rsquo;un mixeur et mixez jusqu&amp;rsquo;&amp;agrave; obtenir une texture cr&amp;eacute;meuse. Ajoutez un peu d&amp;rsquo;eau si le m&amp;eacute;lange est trop &amp;eacute;pais. Servez la tartinade aussit&amp;ocirc;t sur des tartines ou des crudit&amp;eacute;s."
       ],
-      "image": "https://static.750g.com/images/1200-675/5384b3ac4937cd387a25354b705b2627/verrine-de-boudin-blanc-lentilles-et-agrumes.png",
-      "sourceUrl": "https://www.750g.com/verrine-de-boudin-blanc-lentilles-et-agrumes-r35230.htm"
+      "image": "https://static.750g.com/images/1200-675/56c0b6105cc2ea7865575d3f4142305a/750g-s07-sopexa-01-noix-perigord-rillette-packshot-nu.jpg",
+      "sourceUrl": "https://www.750g.com/rillettes-vegetariennes-aux-lentilles-et-aux-noix-du-perigord-aop-r204628.htm"
     },
     {
-      "id": "750g-verrine-de-lentilles-vertes-du-puy-emince-de-saumon-grille-mi-cuit-emulsion-d-aneth",
+      "id": "750g-lasagnes-vegetariennes-chevre-epinards",
       "custom": true,
       "source": "750g",
       "category": "repas",
       "categoryLabel": "Repas chauds",
-      "name": "Verrine de lentilles vertes du Puy, émincé de saumon grillé mi-cuit, émulsion d'aneth",
-      "description": "De délicieuses petites verrines qui permettent de déguster les lentilles autrement !",
+      "name": "Lasagnes végétariennes chèvre épinards",
+      "description": "Un plat plat familial facile à préparer, à faire un peu à l&#039;avance et à cuire avant le repas. Idéal pour faire aimer les épinards aux enfants.",
       "prepTime": 0,
       "cookTime": 0,
-      "servings": 4,
+      "servings": 6,
       "ingredients": [
-        "huile d'olive",
-        "1 cube d'épices",
-        "sel",
-        "Poivre",
-        "1 petit verre de vin blanc sec",
-        "200g d'épinards frais",
-        "240g de lentilles vertes du Puy",
-        "1 tomate",
-        "1 échalote",
-        "Les lentilles",
-        "fleur de sel",
-        "Poivre",
-        "2 pavés de saumon bien frais sans peau ni arrête",
-        "sel",
-        "Poivre",
-        "4 branches d'aneth",
-        "20cl de crème entière liquide",
-        "1 branche d'aneth",
-        "4 verrines"
+        "530 g d'epinards",
+        "200 g de bûchettes de chèvre",
+        "125 g de ricotta",
+        "100 g de parmesan râpé",
+        "½ l de lait",
+        "9 feuilles de lasagnes  sèches",
+        "40 g de farine",
+        "40 g de beurre",
+        "2 gousses d'ail",
+        "Noix de muscade",
+        "Sel ou sel fin",
+        "Poivre"
       ],
       "steps": [
-        "L&#039;émulsion Portez à ébullition la crème dans une casserole avec les feuilles d&#039;aneth lavées et séchées. Stoppez la cuisson, couvrez et laissez infuser 1 heure. Au moment de servir, émulsionnez quelques minutes à l&#039;aide d&#039;un mixer plongeant.Les lentilles Epluchez l&#039;échalote et émincez-la. Faites chauffez une casserole avec un filet d&#039;huile d&#039;olive, ajoutez-y l&#039;échalote ainsi que les lentilles. Laissez cuire 1mn en mélangeant bien, puis versez le vin blanc. Couvrez ensuite d&#039;eau et ajoutez le cube d&#039;épices. Laissez cuire les lentilles 15 à 20 mn après ébullition. Epluchez et lavez les épinards. Séchez-les. Lavez et coupez la tomate en petits morceaux. Incorporez-les dans les lentilles, et laissez encore mijoter 10mn. Rectifiez l&#039;assaisonnement. Le saumon Coupez le saumon en petits morceaux pour former des petites lanières, toutes de la même épaisseur et longueur, attention car elles doivent rentrer dans vos verrines. Faites chauffer un grill, et lorsqu&#039;il est bien chaud, posez les lanières de saumon en les retournant aussitôt, assaisonnez de fleur de sel et d&#039;une pincée de poivre. Retirez-les aussitôt, le temps de cuisson est très court.Dressage Répartissez les lentilles du Puy dans les verrines. Posez sur le dessus, 2 lanières de saumon grillé mi-cuit. Ajoutez délicatement l&#039;émulsion d&#039;aneth, en ne prenant que la mousse. Décorez avec une feuille d&#039;aneth et servez sans attendre !"
+        "Égoutter les épinards. Les mettre dans un robot mixeur avec le fromage de chèvre dont on aura enlevé la croûte, l&#039;ail haché, la ricotta, du sel et du poivre. Mixer jusqu&#039;à obtenir une consistance fine et homogène.",
+        "aire la béchamel : Faire fondre le beurre, ajouter la farine et bien mélanger sur feu doux. Ajouter le lait et fouetter sur feu doux jusqu&#039;à ce que le mélange épaississe. Saler, poivrer, ajouter un peu de muscade râpée.",
+        "Monter les lasagnes : Déposer une peu de béchamel au fond du plat, recouvrir avec 3 feuilles de lasagnes, puis la moitié des épinards. Recouvrir de béchamel, parsemer de parmesan. Poser 3 nouvelles feuilles de lasagnes. Puis épinards, béchamel, parmesan. Finir avec le reste de béchamel généreusement saupoudré de parmesan.Filmer et réserver au frais 1h (ou une nuit).",
+        "Allumer le four th6, 180°C. Enfourner pour 40 minutes."
       ],
-      "image": "https://static.750g.com/images/1200-675/decd287f7f88dc0d63a51b0f64d6f8f1/verrine-de-lentilles-vertes-du-puy-emince-de-saumon-grille-mi-cuit-emulsion-d-aneth.jpg",
-      "sourceUrl": "https://www.750g.com/verrine-de-lentilles-vertes-du-puy-emince-de-saumon-grille-mi-cuit-emulsion-daneth-r12628.htm"
+      "image": "https://static.750g.com/images/1200-675/d4f90d87c5074b31d8fecc58186ad790/lasagnes-vegetariennes-chevre-epinards.png",
+      "sourceUrl": "https://www.750g.com/lasagnes-vegetariennes-chevre-epinards-r49251.htm"
     },
     {
       "id": "750g-curry-aux-cereales-lentilles-aux-epinards-et-curcuma",
@@ -873,36 +858,6 @@
       "sourceUrl": "https://www.750g.com/curry-aux-cereale-and-lentilles-aux-epinards-et-curcuma-r203799.htm"
     },
     {
-      "id": "750g-curry-de-tofu-au-lait-de-coco",
-      "custom": true,
-      "source": "750g",
-      "category": "repas",
-      "categoryLabel": "Repas chauds",
-      "name": "Curry de tofu au lait de coco",
-      "description": "Une recette pour les végétariens où pas, toute en douceur et simple à réaliser.",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 4,
-      "ingredients": [
-        "300 g de tofu",
-        "5 tomates pelées",
-        "2 oignons",
-        "30 cl de lait de coco",
-        "2 c. à c. de curry Madras",
-        "2 c. à s. d'huile",
-        "1 c. à c. de curcuma en poudre",
-        "1 c. à c. de cumin en poudre",
-        "1 pincée de gingembre",
-        "Sel ou sel fin"
-      ],
-      "steps": [
-        "Eplucher et émincer les oignons, couper les tomates et le tofu en dés.",
-        "Faire fondre les oignons dans l&#039;huile. Ajouter les épices, les tomates, le tofu et le lait de coco.Bien mélanger. Saler si nécessaire et laisser mijoter à feu doux 15 minutes."
-      ],
-      "image": "https://static.750g.com/images/1200-675/5395901d2e122d3671282fff2fbd7c8a/curry-de-tofu-au-lait-de-coco.jpeg",
-      "sourceUrl": "https://www.750g.com/curry-de-tofu-au-lait-de-coco-r91527.htm"
-    },
-    {
       "id": "750g-curry-aux-feves-courgettes-et-lait-de-coco",
       "custom": true,
       "source": "750g",
@@ -935,6 +890,36 @@
       ],
       "image": "https://static.750g.com/images/1200-675/da815d7584bea8c4f608efbb560bced6/curry-aux-feves-courgettes-et-lait-de-coco.png",
       "sourceUrl": "https://www.750g.com/curry-aux-feves-courgettes-et-lait-de-coco-r76219.htm"
+    },
+    {
+      "id": "750g-curry-de-tofu-au-lait-de-coco",
+      "custom": true,
+      "source": "750g",
+      "category": "repas",
+      "categoryLabel": "Repas chauds",
+      "name": "Curry de tofu au lait de coco",
+      "description": "Une recette pour les végétariens où pas, toute en douceur et simple à réaliser.",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 4,
+      "ingredients": [
+        "300 g de tofu",
+        "5 tomates pelées",
+        "2 oignons",
+        "30 cl de lait de coco",
+        "2 c. à c. de curry Madras",
+        "2 c. à s. d'huile",
+        "1 c. à c. de curcuma en poudre",
+        "1 c. à c. de cumin en poudre",
+        "1 pincée de gingembre",
+        "Sel ou sel fin"
+      ],
+      "steps": [
+        "Eplucher et émincer les oignons, couper les tomates et le tofu en dés.",
+        "Faire fondre les oignons dans l&#039;huile. Ajouter les épices, les tomates, le tofu et le lait de coco.Bien mélanger. Saler si nécessaire et laisser mijoter à feu doux 15 minutes."
+      ],
+      "image": "https://static.750g.com/images/1200-675/5395901d2e122d3671282fff2fbd7c8a/curry-de-tofu-au-lait-de-coco.jpeg",
+      "sourceUrl": "https://www.750g.com/curry-de-tofu-au-lait-de-coco-r91527.htm"
     },
     {
       "id": "750g-curry-de-crevettes-au-lait-de-coco",
@@ -975,32 +960,39 @@
       "sourceUrl": "https://www.750g.com/curry-de-crevettes-au-lait-de-coco-r201803.htm"
     },
     {
-      "id": "750g-puree-au-lait-de-coco-epicee-au-curry",
+      "id": "750g-curry-d-automne",
       "custom": true,
       "source": "750g",
       "category": "repas",
       "categoryLabel": "Repas chauds",
-      "name": "Purée au lait de coco épicée au curry",
-      "description": "Une purée délicieusement parfumée parfaite pour vos viandes blanches ou vos poissons !",
+      "name": "Curry d’automne",
+      "description": "Une recette healthy aux couleurs d&#039;automne. A d&amp;eacute;guster avec du riz ou du quinoa.",
       "prepTime": 0,
       "cookTime": 0,
       "servings": 4,
       "ingredients": [
-        "Grain de graine de sésame",
-        "Sel ou sel fin",
-        "Poivre",
-        "Huile de sésame",
-        "1 c. à c. de curry en poudre",
-        "1 brique de lait de coco",
-        "40 g de beurre",
-        "1 kg de pomme de terre"
+        "1 oignon",
+        "1 potimarron",
+        "2 carottes",
+        "3 patates douces",
+        "150g de petits pois",
+        "1 panais",
+        "10 châtaignes cuites",
+        "Quelques fleurs de chou Romanesco",
+        "Persil",
+        "20 cl de lait de coco",
+        "2 c à s de curry jaune",
+        "Huile de coco"
       ],
       "steps": [
-        "Lavez, épluchez et coupez en gros morceaux les pommes de terre. Faites-les cuire 15min dans une casserole d&#039;eau froide. Laissez cuire 20min à partir de l&#039;ébullition.Égouttez les pommes de terre.Versez les pommes de terre dans une casserole et écrasez-les avec un presse purée ou une fourchette.",
-        "Remettez la casserole sur feu doux puis versez le lit de coco et le beurre. Remuez avec une cuillère en bois.Salez, poivrez et ajoutez le curry.Servez aussitôt arrosez d&#039;un filet d&#039;huile de sésame et parsemez de graines.Accompagnez cette purée de poisson ou de viande blanche."
+        "Faire revenir l&amp;rsquo;oignon dans un peu d&amp;rsquo;huile de coco.",
+        "Ajouter tous les l&amp;eacute;gumes coup&amp;eacute;s en d&amp;eacute;s, sauf les fleurs de chou. Laisser cuire une vingtaine de minutes &amp;agrave; feu doux.",
+        "Ajouter le curry. Laisser encore cuire 10 minutes.",
+        "Ajouter le lait de coco, les ch&amp;acirc;taignes et les fleurs de chou. Laisser mijoter &amp;agrave; feu doux 5 minutes.",
+        "Dresser et ajouter le persil et la noix de coco r&amp;acirc;p&amp;eacute;e pour la d&amp;eacute;coration."
       ],
-      "image": "https://static.750g.com/images/1200-675/830f353ab519ec6098b6fe4965be4f57/puree-au-lait-de-coco-epicee-au-curry.png",
-      "sourceUrl": "https://www.750g.com/puree-au-lait-de-coco-epicee-au-curry-r68613.htm"
+      "image": "https://static.750g.com/images/1200-675/216e4a57c0814d04c4aa3ba1f4e03584/15007536-10154818121926614-1936383150-o.jpg",
+      "sourceUrl": "https://www.750g.com/curry-d-automne-r201484.htm"
     },
     {
       "id": "750g-taboule-aux-notes-d-agrumes",
@@ -1031,6 +1023,37 @@
       ],
       "image": "https://static.750g.com/images/1200-675/a4870103075461a4ea730dabdba4e602/taboule.jpg",
       "sourceUrl": "https://www.750g.com/taboule-r6892.htm"
+    },
+    {
+      "id": "750g-taboule-fraicheur",
+      "custom": true,
+      "source": "750g",
+      "category": "repas",
+      "categoryLabel": "Repas chauds",
+      "name": "Taboulé fraicheur",
+      "description": "Rapide à préparer, un régal pour les yeux et divinement bon....à essayer",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 4,
+      "ingredients": [
+        "Sel",
+        "Poivre",
+        "Ciboulette",
+        "Basilic",
+        "Persil",
+        "1 échalote",
+        "1/2 concombre",
+        "1/2poivron rouge",
+        "1/2poivron jaune",
+        "1jus de citron",
+        "2cas d'huile d'olive",
+        "220g de semoule de blé, grain moyen"
+      ],
+      "steps": [
+        "Mélanger la semoule et l&#039;huile.Mixer 1/2 concombre et le reste des ingrédients très finement.Mélanger le tout , rectifier l&#039;assaisonnement.Mettre au frais pendant 2 heures, en mélangeant de temps en temps. Servir frais."
+      ],
+      "image": "https://static.750g.com/images/1200-675/ae56a2b91d32feba0fe995d4c3099db6/taboule-fraicheur.png",
+      "sourceUrl": "https://www.750g.com/taboule-fraicheur-r34918.htm"
     },
     {
       "id": "750g-taboule-aux-billes-de-melon",
@@ -1065,159 +1088,104 @@
       "sourceUrl": "https://www.750g.com/taboule-aux-billes-de-melon-r54133.htm"
     },
     {
-      "id": "750g-taboule-fraicheur",
+      "id": "750g-taboule-menteur",
       "custom": true,
       "source": "750g",
       "category": "repas",
       "categoryLabel": "Repas chauds",
-      "name": "Taboulé fraicheur",
-      "description": "Rapide à préparer, un régal pour les yeux et divinement bon....à essayer",
+      "name": "Taboulé menteur",
+      "description": "un taboulé original sans semoule ni boulghour",
       "prepTime": 0,
       "cookTime": 0,
-      "servings": 4,
+      "servings": 6,
       "ingredients": [
+        "20 cl d'huile d'olive",
+        "200 g de tomate concassée (2 grosses tomates pelées et épépinées)",
+        "80 g de raisins de Corinthe",
         "Sel",
         "Poivre",
-        "Ciboulette",
-        "Basilic",
-        "Persil",
-        "1 échalote",
-        "1/2 concombre",
-        "1/2poivron rouge",
-        "1/2poivron jaune",
-        "1jus de citron",
-        "2cas d'huile d'olive",
-        "220g de semoule de blé, grain moyen"
+        "50 g de pignons",
+        "1 petit oignon haché (environ 60 g)",
+        "le jus de 2 citrons (15 cl minimum)",
+        "1 bouquet de menthe",
+        "1 bouquet de persil",
+        "1 bouquet de coriandre",
+        "un peu de ciboulette",
+        "1 choufleur blanc, serré et ferme"
       ],
       "steps": [
-        "Mélanger la semoule et l&#039;huile.Mixer 1/2 concombre et le reste des ingrédients très finement.Mélanger le tout , rectifier l&#039;assaisonnement.Mettre au frais pendant 2 heures, en mélangeant de temps en temps. Servir frais."
+        "Oter le trognon et les morceaux de tiges du chou-fleur lavé pour ne garder que les fleurs.",
+        "Les râper : on obtient une poudre blanche (à titre indicatif, pour un chou-fleur entier, environ 700 g).",
+        "Effeuiller les herbes, les laver, sécher et ciseler.",
+        "Mélanger tous les ingrédients à l&#039;exception des pignons.",
+        "Mettre à macérer au frais au moins 6 heures.",
+        "Ajouter les pignons 1 heure avant de servir."
       ],
-      "image": "https://static.750g.com/images/1200-675/ae56a2b91d32feba0fe995d4c3099db6/taboule-fraicheur.png",
-      "sourceUrl": "https://www.750g.com/taboule-fraicheur-r34918.htm"
+      "image": "https://static.750g.com/images/1200-675/58e2f329f465b6b6fdf2564ba52b6002/taboule-menteur.png",
+      "sourceUrl": "https://www.750g.com/taboule-menteur-r37331.htm"
     },
     {
-      "id": "750g-taboule-aux-epices-variees",
+      "id": "750g-taboule-maison-facile",
       "custom": true,
       "source": "750g",
       "category": "repas",
       "categoryLabel": "Repas chauds",
-      "name": "Taboulé aux épices variées",
-      "description": "Une recette de taboulé aux épices.",
+      "name": "Taboulé maison facile",
+      "description": "Une entrée bien fraiche et pleine de couleurs",
       "prepTime": 0,
       "cookTime": 0,
-      "servings": 4,
+      "servings": 6,
       "ingredients": [
-        "Sel",
-        "1 petite pincée de cannelle (facultatif)",
-        "1 pincée de piment d'Espelette (facultatif)",
-        "4 à 6 c à s d'huile d'olive selon le goût",
-        "30g de boulghour fin",
-        "4 brins de menthe",
-        "4 tomates bien mûres mais fermes",
-        "3 citrons",
-        "2 oignons verts",
-        "3 bottes de persil plat"
-      ],
-      "steps": [
-        "Commencer par presser 2 citrons et verser le jus sur le bourghoul étalé au fond d&#039;un saladier, ajouter le sel et le piment d&#039;espelette, laisser en attente. Si les tomates sont bien fermes, les peler à l&#039;aide d&#039;un économe comme une pomme (sinon faire une croix avec un couteau dans la peau, les plonger quelques secondes dans de l&#039;eau frémissante, les sortir et les passer sous l&#039;eau froide avant de les peler), les épépiner et les couper en petits dés, les mettre sur la surface du bourghoul (surtout ne pas remuer le mélange), bien égaliser la couche de tomate.",
-        "Laver, trier et hacher le persil très fin, l&#039;ajouter au fur et à mesure sur la couche de tomate (surtout sans remuer). Couper les oignons très fins (on peut selon le goût, saupoudrer sur les oignons 1 très petite pincée de cannelle et bien la mélanger aux dés d&#039;oignon avant de les mettre sur le persil), les mettre sur le persil, laver et effeuiller les brins de menthe, hacher les feuilles et les enfouir dans le persil pour éviter qu&#039;elles ne noircissent (sinon les hacher juste avant de mélanger le tout). Sans être remué, ce mélange peut rester en attente au réfrigérateur (saladier bien filmé) quelques heures voire jusqu&#039;au lendemain. Au moment de servir, mélanger le tout bien régulièrement en remuant avec deux cuillères, goûter et rectifier l&#039;assaisonnement (souvent il faut ajouter du jus de citron ou du sel), ajouter l&#039;huile d&#039;olive et servir dans un plat sur un lit de feuilles de salade tendres."
-      ],
-      "image": "https://static.750g.com/images/1200-675/1fc2d688827f70eb8881a0061067ea74/taboule-aux-epices-variees.png",
-      "sourceUrl": "https://www.750g.com/taboule-r98074.htm"
-    },
-    {
-      "id": "750g-taboule-maison",
-      "custom": true,
-      "source": "750g",
-      "category": "repas",
-      "categoryLabel": "Repas chauds",
-      "name": "Taboulé maison",
-      "description": "Le taboul&amp;eacute; est originaire du Liban et se compose de semoule, de persil plat et de tomate. Notre version est un peu diff&amp;eacute;rente. Nous l&amp;rsquo;appr&amp;eacute;cions beaucoup l&#039;&amp;eacute;t&amp;eacute; avec un bon barbecue et il est encore meilleur lorsqu&#039;il est fait maison.",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 4,
-      "ingredients": [
-        "200 g de graines de couscous moyennes",
-        "150 g de tomates cerise",
-        "1 concombre",
-        "1 jus de citron",
-        "1 petit bouquet de coriandre  petit",
-        "1 petit bouquet de menthe",
-        "3 c. à s. d'huile d'olive",
-        "Poivre",
-        "Sel ou sel fin"
-      ],
-      "steps": [
-        "Lavez et hachez finement le persil et la coriandre.",
-        "Pr&amp;eacute;parez&amp;nbsp;le couscous comme indiqu&amp;eacute; sur le paquet.&amp;nbsp;Versez le dans un saladier. Ajoutez le persil et la coriandre cisel&amp;eacute;s.",
-        "Lavez et coupez les tomates cerise en quatre.",
-        "Epluchez le concombre et coupez-le en d&amp;eacute;s de 2 cm environ.",
-        "Ajoutez les tomates et les d&amp;eacute;s de concombre &amp;agrave; la semoule.",
-        "Arrosez le taboul&amp;eacute; de jus de citron.",
-        "Ajoutez l&#039;huile d&#039;olive.",
-        "M&amp;eacute;langez bien le taboul&amp;eacute; et laissez reposer au frigo au minimum 1 heure afin que les saveurs se m&amp;eacute;langent."
-      ],
-      "image": "https://static.750g.com/images/1200-675/0563e0491300018b4eb57d0d7718c6db/taboule-maison.jpg",
-      "sourceUrl": "https://www.750g.com/taboule-maison-r99667.htm"
-    },
-    {
-      "id": "750g-papillote-de-poisson-et-poivron",
-      "custom": true,
-      "source": "750g",
-      "category": "repas",
-      "categoryLabel": "Repas chauds",
-      "name": "Papillote de poisson et poivron",
-      "description": "Sur un lit de petits légumes colorés, nage un filet de poisson!",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 4,
-      "ingredients": [
-        "20 cl de vin blanc sec",
-        "Sel",
-        "Poivre",
-        "persil",
-        "4 feuilles de papier sulfurisé",
-        "huile d'olive",
-        "2 échalotes",
-        "4 carottes",
-        "1 poivron vert",
-        "1 poivron rouge",
-        "1 poivron jaune",
-        "4 filets de cabillaud"
-      ],
-      "steps": [
-        "- Préchauffer le four à 180°C- Couper les carottes en petits cubes et les poivrons en petite lamelles- Les faire revenir dans uns peu d&#039;huile d&#039;olive- Couper les échalotes en petits morceaux- Sur chaque feuille de papier sulfurisé, déposer les petits légumes, puis les échalotes, saler et poivrer- Ajouter dessus le filet de poisson, saler et poivrer, et déposer quelques brins de persil haché- Arroser d&#039;un filet d&#039;huile d&#039;olive- Déposer les papillotes dans le plat du four- Verser le vin blanc, juste avant la fermeture définitive des papillotes- Mettre au four à 180 °C pendant 30 min"
-      ],
-      "image": "https://static.750g.com/images/1200-675/7370a1ecb562cc83558b735ae9a70bbe/papillote-de-poisson-et-poivron.jpg",
-      "sourceUrl": "https://www.750g.com/papillote-de-poisson-et-poivron-r29424.htm"
-    },
-    {
-      "id": "750g-filets-de-lieu-noir-au-cuit-vapeur",
-      "custom": true,
-      "source": "750g",
-      "category": "repas",
-      "categoryLabel": "Repas chauds",
-      "name": "Filets de lieu noir au cuit vapeur",
-      "description": "une recette de poisson très légère et simplissime à préparer",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 3,
-      "ingredients": [
-        "Filet de lieu noir",
-        "Oignon  émincé",
-        "Brocoli",
-        "Estragon",
-        "Piment doux",
+        "200 g de semoule  ou Boulghour",
+        "½ poivron rouge",
+        "½ poivron jaune",
+        "½ poivron vert",
+        "4 tomates",
+        "2 citrons  (jus)",
+        "1 botte de persil",
+        "2 oignons doux",
+        "6 brins de menthe",
+        "5 cl d'huile d'olive",
         "Sel ou sel fin",
         "Poivre"
       ],
       "steps": [
-        "Préparer les filets laver, oter les arrêtes, bien les éponger les assaisonner de sel, poivre et d&#039;un peu de piment, glisser quelques feuilles d&#039;estragon ou de persil.",
-        "Les enrouler autour des bouquets de brocolis précuit. Les fermer à l&#039;aide d&#039;un cure-dent en bois.",
-        "Mettre dans le panier du cuit vapeur avec les oignons.Faire cuire 10 à 15 minutes selon l&#039;épaisseur des filets."
+        "Couvrez la semoule ou le boulghour d&#039;eau froide salée dans une jatte et laissez-le gonfler 1 heure.",
+        "Lavez le persil et la menthe, équeutez-les, gardez-en quelques feuilles, hachez finement le reste.",
+        "Plongez 20 secondes les tomates dans une casserole d&#039;eau bouillante et retirez la peau.Epépinez-les, coupez-les en dés.Pelez et ciselez les oignons.",
+        "Epluchez avec un économe vos poivrons et découpez-les en petits dés.",
+        "Egouttez votre semoule avec soin entre vos mains, versez le dans un grand saladier avec sel et poivre, les dés de tomates, les oignons, les poivrons, la menthe et le persil hachés.",
+        "Arrosez-le avec le jus des citrons et l&#039;huile d&#039;olive.",
+        "Couvrez et laissez au frais (bien garder le jus des tomates)."
       ],
-      "image": "https://static.750g.com/images/1200-675/607bc6fe74b6a50d9215ca23d9fbebf3/filets-de-lieu-noir-au-cuit-vapeur.jpg",
-      "sourceUrl": "https://www.750g.com/filets-de-lieu-noir-au-cuit-vapeur-r23189.htm"
+      "image": "https://static.750g.com/images/1200-675/4af52db857c3832f240c299206662a1a/taboule-maison-facile.png",
+      "sourceUrl": "https://www.750g.com/taboule-maison-r38183.htm"
+    },
+    {
+      "id": "750g-poulet-vapeur-a-l-ail",
+      "custom": true,
+      "source": "750g",
+      "category": "repas",
+      "categoryLabel": "Repas chauds",
+      "name": "Poulet vapeur à l'ail",
+      "description": "Avec la cuisson vapeur le poulet perd tout son gras, la chair est moelleuse à souhait et très parfumée.",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 4,
+      "ingredients": [
+        "1 kg de poulet fermier",
+        "4 gousses d'ail",
+        "½ botte de menthe",
+        "1 c. à s. de gros sel",
+        "Poivre du moulin"
+      ],
+      "steps": [
+        "Hachez les feuilles de menthe et l&#039;ail.Frottez le poulet avec ce mélange et parsemez-le de sel. Poivrez.",
+        "Placez le poulet dans le panier vapeur de la cocotte, versez 500 ml d&#039;eau dans le fond. Démarrez la cuisson à feu doux, faites cuire 30 min sous pression.",
+        "Découpez le poulet en morceaux et servez."
+      ],
+      "image": "https://static.750g.com/images/1200-675/6740b22fd95c5d6461a014ede0c6c8e7/poulet-vapeur-a-l-ail.png",
+      "sourceUrl": "https://www.750g.com/poulet-vapeur-a-lail-r35125.htm"
     },
     {
       "id": "750g-boulgour-aux-petits-legumes-d-hiver-filet-de-poisson-vapeur",
@@ -1251,38 +1219,59 @@
       "sourceUrl": "https://www.750g.com/boulgour-aux-petits-legumes-d-hiver-filet-de-poisson-vapeur-r203442.htm"
     },
     {
-      "id": "750g-papillote-de-poisson-a-la-provencale",
+      "id": "750g-pommes-de-terre-vapeur",
       "custom": true,
       "source": "750g",
       "category": "repas",
       "categoryLabel": "Repas chauds",
-      "name": "Papillote de poisson à la provençale",
-      "description": "Une recette simple, qui fait bonne impression !",
+      "name": "Pommes de terre vapeur",
+      "description": "D&amp;eacute;gustez des pommes de terre cuites&amp;nbsp;&amp;agrave; la vapeur !",
       "prepTime": 0,
       "cookTime": 0,
       "servings": 4,
       "ingredients": [
-        "Sel",
-        "Poivre",
-        "Basilic (en feuilles ou en morceaux)",
-        "Papier aluminium",
-        "Herbes de Provence",
-        "50 cl de vin blanc",
-        "2 tomates",
-        "2 poivrons (1 rouge et 1 vert)",
-        "1 oignon",
-        "2 courgettes",
-        "4 filets de merlan"
+        "passoire métallique",
+        "gros sel",
+        "eau",
+        "12 pommes de terre à chair ferme (comme la charlotte)"
       ],
       "steps": [
-        "Couper en lamelles les poivrons, tomates, oignon et courgettes.",
-        "Deposer les courgettes au fond du papier aluminium, puis les poivrons, ensuites les oignons et enfin les tomates.",
-        "Deposer le filet de merlan dessu les légumes",
-        "Mettre l&#039;équivalant de 12.5 cl de vin balnc, mettre les herbes de provences ainsi que le basilic, sel et poivre.",
-        "Refermer la papillote et laisser cuire a 180°C en surveillant de temps en temps que le poisson ne s&#039;éffrite pas."
+        "Epluchez les pommes de terre, retirez les points noirs et passez-les bien &amp;agrave; l&#039;eau. Coupez les pommes de terre en d&amp;egrave;s de 2 cm de c&amp;ocirc;t&amp;eacute;s. S&#039;il s&#039;agit de pommes de terre primeur, laissez-les enti&amp;egrave;res avec la peau.",
+        "Verser &amp;agrave; peu pr&amp;egrave;s 5 cm d&#039;eau dans le fond d&#039;une grande casserole et d&amp;eacute;poser une passoire m&amp;eacute;tallique &amp;agrave; trous au dessus (panier perfor&amp;eacute;). D&amp;eacute;posez les pommes de terre dans la passoire, ajoutez une bonne pinc&amp;eacute;e de gros sel et mettez un couvercle. Portez le tout &amp;agrave; &amp;eacute;bullition pendant 20 &amp;agrave; 30 min environ. Au bout de ce temps les pommes de terre doivent &amp;ecirc;tre tendres sans se d&amp;eacute;faire.",
+        "Servir les pommes de terre bien chaudes avec une simple noix de beurre, assaisonnez et parsemez d&#039;herbes fra&amp;icirc;ches."
       ],
-      "image": "https://static.750g.com/images/1200-675/f4b2d00e957adafa7f8190d1d31909cc/papillote-de-poisson-a-la-provencale.png",
-      "sourceUrl": "https://www.750g.com/papillote-de-poisson-a-la-provencale-r55457.htm"
+      "image": "https://static.750g.com/images/1200-675/ecb4cadae4348761b593232a9b88e2a9/gettyimages-867903974.jpg",
+      "sourceUrl": "https://www.750g.com/pommes-de-terre-vapeur-r38297.htm"
+    },
+    {
+      "id": "750g-veloute-de-pois-casses-au-lardons-fumes",
+      "custom": true,
+      "source": "750g",
+      "category": "repas",
+      "categoryLabel": "Repas chauds",
+      "name": "Velouté de pois cassés au lardons fumés",
+      "description": "Un velouté rapide et très savoureux.",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 4,
+      "ingredients": [
+        "250 g de pois cassés",
+        "1 oignon",
+        "100 g de lardons fumés",
+        "1 carotte",
+        "1 c. à s. de crème fraîche",
+        "2 cubes de cubes de bouillon  de volaille",
+        "Thym",
+        "Poivre"
+      ],
+      "steps": [
+        "Dans une cocotte minute, faire revenir les lardons avec l&#039;oignon émincé et la carotte pelée et nettoyée. Pendant ce temps, rincer dans une passoire les pois cassés puis les ajouter dans la cocotte.",
+        "Verser 1.5 litre d&#039;eau avec les 2 cubes de bouillon. Poivrer et ajouter un peu de thym.",
+        "Couvrir et laisser cuire 20 minutes quand la soupape se met a tourner.",
+        "Une fois cuit, mixer le tout avec une cuillère a soupe de crème fraîche.Saler si nécessaire."
+      ],
+      "image": "https://static.750g.com/images/1200-675/824b9cc628454376f51670a763272842/adobestock-249308304-1-1-.jpeg",
+      "sourceUrl": "https://www.750g.com/veloute-de-pois-casses-au-lardons-fumes-r66544.htm"
     },
     {
       "id": "750g-omelette",
@@ -1359,35 +1348,6 @@
       "sourceUrl": "https://www.750g.com/omelette-legere-r38266.htm"
     },
     {
-      "id": "750g-omelette-aux-poivrons-rapide",
-      "custom": true,
-      "source": "750g",
-      "category": "repas",
-      "categoryLabel": "Repas chauds",
-      "name": "Omelette aux poivrons rapide",
-      "description": "Une omelette&amp;nbsp;facile &amp;agrave; faire et savoureuse, une bonne option pour un repas rapide !",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 4,
-      "ingredients": [
-        "2 pommes de terre",
-        "Sel ou sel fin",
-        "Poivre",
-        "1 poivron vert",
-        "1 poivron rouge",
-        "100 g de dés de jambon",
-        "6 oeufs"
-      ],
-      "steps": [
-        "Dans un bol, casser les oeufs, salez et poivrez.",
-        "Couper les tranches de Jambon, les poivrons en petit d&amp;eacute;s.",
-        "Faire cuire les pommes de terres &amp;agrave; l&#039;eau, une fois cuites, les &amp;eacute;plucher et les couper en d&amp;eacute;s.",
-        "Mettre tous les ingr&amp;eacute;dients dans le bol, m&amp;eacute;langer et faire cuire &amp;agrave; la po&amp;ecirc;le quelques minutes."
-      ],
-      "image": "https://static.750g.com/images/1200-675/6ecb8d0db3a8d10fee00651d1f85787c/adobestock-957818282-1-.jpeg",
-      "sourceUrl": "https://www.750g.com/omelette-aux-poivrons-r82558.htm"
-    },
-    {
       "id": "750g-omelette-fermiere",
       "custom": true,
       "source": "750g",
@@ -1418,37 +1378,29 @@
       "sourceUrl": "https://www.750g.com/omelette-fermiere-r70547.htm"
     },
     {
-      "id": "750g-wok-de-legumes-sauce-aigre-douce",
+      "id": "750g-omelette-au-thermomix",
       "custom": true,
       "source": "750g",
       "category": "repas",
       "categoryLabel": "Repas chauds",
-      "name": "Wok de légumes sauce aigre-douce",
-      "description": "Un plat aux saveurs asiatiques.",
+      "name": "Omelette au thermomix",
+      "description": "",
       "prepTime": 0,
       "cookTime": 0,
-      "servings": 4,
+      "servings": 5,
       "ingredients": [
-        "1 poivron vert",
-        "1 poivron rouge",
-        "1 carotte",
-        "1 courgette",
-        "1 oignon",
-        "1 petite boîte d'ananas  en morceaux",
-        "30 g de pousses de bambou",
-        "125 g de sucre roux",
-        "2 gousses d'ail",
-        "12,5 cl de vinaigre de vin",
-        "4 c. à s. de ketchup  Amora",
-        "2 c. à s. de fécule"
+        "Poivre",
+        "Sel ou sel fin",
+        "Beurre",
+        "140 g de crème épaisse",
+        "12 oeufs"
       ],
       "steps": [
-        "D&amp;eacute;coupez les poivrons, la carotte, la courgette et les pousses de bambou en lani&amp;egrave;res. &amp;Eacute;mincez l&#039;oignon finement. &amp;Eacute;gouttez l&#039;ananas en conservant le jus. Faites revenir tous les l&amp;eacute;gumes dans un wok &amp;agrave; feu vif pendant 3/4 minutes puis retirez-les avec une &amp;eacute;cumoire et r&amp;eacute;servez.",
-        "M&amp;eacute;langez le sucre roux, la f&amp;eacute;cule et les gousses d&#039;ail press&amp;eacute;es. Ajoutez le vinaigre, le jus d&#039;ananas et le ketchup Amora. M&amp;eacute;langez bien puis versez le tout dans votre wok encore chaud. Portez &amp;agrave; &amp;eacute;bullition en remuant sans arr&amp;ecirc;t puis poursuivez la cuisson encore 1 minute.",
-        "Remettez les l&amp;eacute;gumes dans la sauce et m&amp;eacute;langez. Poursuivez la cuisson encore 2 minutes, les l&amp;eacute;gumes doivent rester croquants."
+        "Dans une poêle, chauffer le beurre et verser le contenu du bol.",
+        "Mélanger un peu et laisser cuire. Retourner l&#039;omelette pour cuire quelques secondes."
       ],
-      "image": "https://static.750g.com/images/1200-675/e5b7bcd358db94b1edcd3d685c97d9e7/wok-de-legumes-sauce-aigre-douce.png",
-      "sourceUrl": "https://www.750g.com/wok-de-legumes-sauce-aigre-douce-au-ketchup-r68555.htm"
+      "image": "https://static.750g.com/images/1200-675/38847075534870f31df823b4495b0c35/omelette-au-thermomix.png",
+      "sourceUrl": "https://www.750g.com/omelette-au-thermomix-r89166.htm"
     },
     {
       "id": "750g-nouilles-sautees-aux-legumes-et-au-tofu-fume",
@@ -1492,6 +1444,73 @@
       ],
       "image": "https://static.750g.com/images/1200-675/3b45c8be63762a49fdc222c086c89144/319717.jpg",
       "sourceUrl": "https://www.750g.com/nouilles-sautees-aux-legumes-et-au-tofu-fume-r201809.htm"
+    },
+    {
+      "id": "750g-wok-de-legumes-sauce-aigre-douce",
+      "custom": true,
+      "source": "750g",
+      "category": "repas",
+      "categoryLabel": "Repas chauds",
+      "name": "Wok de légumes sauce aigre-douce",
+      "description": "Un plat aux saveurs asiatiques.",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 4,
+      "ingredients": [
+        "1 poivron vert",
+        "1 poivron rouge",
+        "1 carotte",
+        "1 courgette",
+        "1 oignon",
+        "1 petite boîte d'ananas  en morceaux",
+        "30 g de pousses de bambou",
+        "125 g de sucre roux",
+        "2 gousses d'ail",
+        "12,5 cl de vinaigre de vin",
+        "4 c. à s. de ketchup  Amora",
+        "2 c. à s. de fécule"
+      ],
+      "steps": [
+        "D&amp;eacute;coupez les poivrons, la carotte, la courgette et les pousses de bambou en lani&amp;egrave;res. &amp;Eacute;mincez l&#039;oignon finement. &amp;Eacute;gouttez l&#039;ananas en conservant le jus. Faites revenir tous les l&amp;eacute;gumes dans un wok &amp;agrave; feu vif pendant 3/4 minutes puis retirez-les avec une &amp;eacute;cumoire et r&amp;eacute;servez.",
+        "M&amp;eacute;langez le sucre roux, la f&amp;eacute;cule et les gousses d&#039;ail press&amp;eacute;es. Ajoutez le vinaigre, le jus d&#039;ananas et le ketchup Amora. M&amp;eacute;langez bien puis versez le tout dans votre wok encore chaud. Portez &amp;agrave; &amp;eacute;bullition en remuant sans arr&amp;ecirc;t puis poursuivez la cuisson encore 1 minute.",
+        "Remettez les l&amp;eacute;gumes dans la sauce et m&amp;eacute;langez. Poursuivez la cuisson encore 2 minutes, les l&amp;eacute;gumes doivent rester croquants."
+      ],
+      "image": "https://static.750g.com/images/1200-675/e5b7bcd358db94b1edcd3d685c97d9e7/wok-de-legumes-sauce-aigre-douce.png",
+      "sourceUrl": "https://www.750g.com/wok-de-legumes-sauce-aigre-douce-au-ketchup-r68555.htm"
+    },
+    {
+      "id": "750g-wok-de-legumes-d-hiver",
+      "custom": true,
+      "source": "750g",
+      "category": "repas",
+      "categoryLabel": "Repas chauds",
+      "name": "Wok de légumes d'hiver",
+      "description": "J&#039;ai vraiment adoré ce wok de légumes, très parfumé, et préparé en un rien de temps.",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 4,
+      "ingredients": [
+        "1 pincée de coriandre en poudre ou coriandre moulue",
+        "1 pincée de gingembre (en poudre)",
+        "1 pincée de poudre de piment",
+        "1 c. à c. de poivre du Sichuan ou poivre chinois",
+        "1 c. à s. d'huile",
+        "2 c. à s. de sauce soja",
+        "3 carottes",
+        "1 échalote",
+        "3 c. à s. de mirin",
+        "1 botte de blette ou Bette"
+      ],
+      "steps": [
+        "Nettoyer les blettes, enlever les premières feuilles et les émincer (tiges + feuilles).",
+        "Peler les carottes et les couper en petits bâtonnets.",
+        "Peler et émincer l&#039;échalote.",
+        "Dans un wok, faire chauffer l&#039;huile. Y faire revenir les carottes pendant 5 minutes en mélangeant régulièrement.",
+        "Ajouter ensuite les blettes. Les faire revenir 5 minutes puis ajouter le mirin et la sauce soja.",
+        "Ajouter les épices, mélanger et poursuivre la cuisson pendant 5 minutes, le temps que les blettes cuisent et que la sauce réduise. Rectifier l&#039;assaisonnement en sel et poivre, et servir pour accompagner une viande rôtie par exemple."
+      ],
+      "image": "https://static.750g.com/images/1200-675/51994be2d755af6aad36d61c0356a98e/wok-de-legumes-d-hiver.png",
+      "sourceUrl": "https://www.750g.com/wok-de-legumes-dhiver-r44812.htm"
     },
     {
       "id": "750g-wok-de-legumes-inratable",
@@ -1556,45 +1575,6 @@
       ],
       "image": "https://static.750g.com/images/1200-675/cd16d66f1ca12b418f914867b589ae5c/wok-asiatique-corse.png",
       "sourceUrl": "https://www.750g.com/wok-asiatique-corse-r64035.htm"
-    },
-    {
-      "id": "750g-wok-de-legumes-croquants-et-crevettes-a-l-asiatique-saveur-cacahuete",
-      "custom": true,
-      "source": "750g",
-      "category": "repas",
-      "categoryLabel": "Repas chauds",
-      "name": "Wok de légumes croquants et crevettes à l'asiatique saveur cacahuète",
-      "description": "Une recette aux saveurs asiatiques dans laquelle les odeurs de sauce soja&amp;nbsp;et de gingembre se m&amp;ecirc;lent aux fragrances de cacahu&amp;egrave;te et au croquant des l&amp;eacute;gumes de saison et des crevettes.",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 2,
-      "ingredients": [
-        "500 g d'haricots plats",
-        "400 g de champignons de Paris",
-        "250 g de crevettes roses  cuites",
-        "3 carottes",
-        "1 oignon",
-        "1 grosse poignée de cacahuète grillée",
-        "0,33 verre d'eau filtrée",
-        "2 c. à s. de sauce soja",
-        "1 c. à s. bombée(s) de gingembre (en poudre)",
-        "Brin de coriandre  quelques (fraîche)",
-        "Huile d'olive",
-        "Sel ou sel fin",
-        "Poivre"
-      ],
-      "steps": [
-        "&amp;Eacute;queuter et retirer les fils des haricots plats et les rincer. &amp;Eacute;plucher les carottes et les couper en fines lamelles. Laver les champignons et les couper &amp;eacute;galement en lamelles. &amp;Eacute;mincer l&#039;oignon.",
-        "D&amp;eacute;cortiquer les cacahu&amp;egrave;tes et les piler (&amp;agrave; la main dans un pilon).",
-        "D&amp;eacute;cortiquer les crevettes. R&amp;eacute;server au frais.",
-        "Cuire les haricots et les carottes &amp;agrave; la vapeur pendant 5 minutes.",
-        "Dans un wok, faire revenir l&#039;oignon dans 4 c &amp;agrave; s d&#039;huile d&#039;olive pendant 2-3 minutes. Ajouter les champignons et laisser suer pendant 5 minutes.",
-        "Ajouter les haricots et les carottes dans le wok. Saupoudrer du gingembre, de la sauce soja et des cacahu&amp;egrave;tes pil&amp;eacute;es. Saler&amp;nbsp;et poivrer &amp;agrave; convenance. Ajouter un peu d&#039;eau, m&amp;eacute;langer et laisser cuire &amp;agrave; couvert pendant 3-4 minutes.",
-        "D&amp;eacute;couvrir le wok&amp;nbsp;et ajouter les crevettes. M&amp;eacute;langer et laisser cuire 5 minutes suppl&amp;eacute;mentaires, en remuant de temps en temps. Les l&amp;eacute;gumes doivent rester croquants.",
-        "Parsermer de cacahu&amp;egrave;tes pil&amp;eacute;es et de coriandre cisel&amp;eacute;e avant de servir bien chaud."
-      ],
-      "image": "https://static.750g.com/images/1200-675/8013558fae9918ecbc07747139d096ac/wok-de-legumes-croquants-et-crevettes-a-l-asiatique-saveur-cacahuete.jpeg",
-      "sourceUrl": "https://www.750g.com/wok-de-legumes-croquants-et-crevettes-a-lasiatique-saveur-cacahuete-r76452.htm"
     },
     {
       "id": "750g-salade-nicoise-classique",
@@ -1910,6 +1890,35 @@
       "sourceUrl": "https://www.750g.com/gratin-de-courge-light-r46388.htm"
     },
     {
+      "id": "750g-gratin-de-courgettes-a-l-italienne",
+      "custom": true,
+      "source": "750g",
+      "category": "repas",
+      "categoryLabel": "Repas chauds",
+      "name": "Gratin de courgettes à l'italienne",
+      "description": "Peu coûteuse facile a préparer et délicieuse !",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 4,
+      "ingredients": [
+        "2 courgettes",
+        "300 g de mozzarella",
+        "4 tomates",
+        "2 gousses d'ail",
+        "Parmesan",
+        "½ jus de citron",
+        "8 c. à s. d'huile d'olive",
+        "2 c. à s. d'herbes de Provence"
+      ],
+      "steps": [
+        "Coupez la mozzarella, les tomates, et les courgettes en tranches.",
+        "Disposez les tranches de courgettes, de tomates et de mozzarella en alternance dans un plat à gratin, en terminant par la mozzarella.Parsemez d&#039;herbes de Provence et de gousses d&#039;ail pressées.Arrosez le tout de jus de citron et d&#039;huile d&#039;olive, et recouvrez avec un peu de parmesan.",
+        "Enfournez pendant environ 20 min, à 180°C (thermostat 6)."
+      ],
+      "image": "https://static.750g.com/images/1200-675/9e711abc8c245fdeddd72b888da6a4a6/gratin-de-courgettes-a-l-italienne.jpeg",
+      "sourceUrl": "https://www.750g.com/gratin-de-courgettes-a-litalienne-r17499.htm"
+    },
+    {
       "id": "750g-quiche-sans-pate-gourmande-aux-legumes",
       "custom": true,
       "source": "750g",
@@ -1947,43 +1956,92 @@
       "sourceUrl": "https://www.750g.com/quiche-sans-pate-gourmande-aux-legumes-r45238.htm"
     },
     {
-      "id": "750g-quiche-aux-legumes",
+      "id": "750g-quiche-sans-pate-de-grand-mere",
       "custom": true,
       "source": "750g",
       "category": "repas",
       "categoryLabel": "Repas chauds",
-      "name": "Quiche aux légumes",
-      "description": "Amateurs de l&amp;eacute;gumes, vous cherchez une recette originale et d&amp;eacute;licieuse &amp;agrave; d&amp;eacute;guster au d&amp;eacute;jeuner ou bien au d&amp;icirc;ner ? Avec cette recette de quiche, vous allez r&amp;eacute;galer les petits et les grands gourmands. D&#039;ailleurs, les l&amp;eacute;gumes dont vous avez besoin pour cette quiche, vous les avez forc&amp;eacute;ment &amp;agrave; la maison. Il s&#039;agit des tomates, des carottes ainsi que des courgettes.&amp;nbsp;Pour leur donner du go&amp;ucirc;t, pendant une dizaine de minutes, vous allez les faire revenir dans une po&amp;ecirc;le avec de l&#039;oignon mais aussi avec de l&#039;ail. Enfin, apr&amp;egrave;s les avoir m&amp;eacute;lang&amp;eacute; &amp;agrave; l&#039;appareil cr&amp;egrave;me fraiche et d&#039;&amp;oelig;ufs, vous allez verser le tout sur une p&amp;acirc;te bris&amp;eacute;e. N&#039;oubliez pas de parsemer la quiche avec un peu de fromage r&amp;acirc;p&amp;eacute;. C&#039;est parti pour une demi-heure de cuisson &amp;agrave; 180&amp;deg;C !&amp;nbsp;",
+      "name": "Quiche sans pâte de grand-mère",
+      "description": "Quiche légère idéale en été accompagnée d&#039;une salade verte.",
       "prepTime": 0,
       "cookTime": 0,
-      "servings": 8,
+      "servings": 4,
       "ingredients": [
-        "3 courgettes",
-        "3 carottes",
-        "1 pâte brisée",
-        "20 cl de crème fraîche",
-        "1 oignon",
-        "1 tomate",
-        "2 oeufs",
-        "Gruyère râpé",
-        "Ail",
         "Sel ou sel fin",
-        "Poivre"
+        "Poivre",
+        "400 g de lardons",
+        "100 g de gruyère râpé",
+        "½ l de crème fraîche",
+        "3 oeufs",
+        "100 g de farine"
       ],
       "steps": [
-        "Couper les oignons en petits d&amp;eacute;s.",
-        "Couper les courgettes en petits d&amp;eacute;s.",
-        "Couper les carottes en petits d&amp;eacute;s.",
-        "&amp;nbsp;Les faire revenir&amp;nbsp;dans une po&amp;ecirc;le.",
-        "Ajouter les tomates.",
-        "Laisse&amp;nbsp;cuire 10 minutes environ.",
-        "M&amp;eacute;langer les oeufs, la cr&amp;egrave;me fra&amp;icirc;che et le gruy&amp;egrave;re r&amp;acirc;p&amp;eacute;.",
-        "Mettre les l&amp;eacute;gumes sur la p&amp;acirc;te bris&amp;eacute;e.",
-        "Verser l&#039;appareil &amp;agrave; quiche.",
-        "Laisser cuire au four&amp;nbsp;&amp;agrave; 180&amp;deg;C &amp;agrave;&amp;nbsp;30 &amp;agrave; 40 minutes."
+        "Mélanger les ingrédients.Mettre au four dans un moule à tarte beurré."
       ],
-      "image": "https://static.750g.com/images/1200-675/b3ade28dc143097361abf1b9d1382b7c/quiche-aux-legumes.png",
-      "sourceUrl": "https://www.750g.com/quiche-aux-legumes-r25850.htm"
+      "image": "https://static.750g.com/images/1200-675/fb1540bc4213de6e4a7884ba928b7e76/quiche-sans-pate-de-grand-mere.png",
+      "sourceUrl": "https://www.750g.com/quiche-sans-pate-r56998.htm"
+    },
+    {
+      "id": "750g-quiche-sans-pate",
+      "custom": true,
+      "source": "750g",
+      "category": "repas",
+      "categoryLabel": "Repas chauds",
+      "name": "Quiche sans pâte",
+      "description": "Une quiche toute en légèreté et simplissime !",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 4,
+      "ingredients": [
+        "100 g de gruyère",
+        "100 g de lardons",
+        "70 g de farine",
+        "25 cl de lait",
+        "25 cl de crème fraîche liquide",
+        "2 oeufs",
+        "2 jaunes d'oeuf",
+        "1 oignon",
+        "Tomate cerise",
+        "Noix de muscade",
+        "Sel ou sel fin",
+        "Poivre du moulin"
+      ],
+      "steps": [
+        "Commencez par préparer l&#039;appareil à quiche, mettez la farine dans un saladier et faites un puits. Mettez les oeufs dans le puits et commencez à battre le tout. Ajoutez le lait petit à petit pour éviter les grumeaux et assaisonnez la préparation sans oublier la noix de muscade.",
+        "Dans un second temps, taillez l&#039;oignon finement et faites le revenir avec les lardons quelques minutes avec un filet d&#039;huile d&#039;olive. Beurrez et farinez un moule à tarte. Ajoutez les oignons, les lardons, les tomates cerises et le gruyère dans le moule. Versez l&#039;appareil à quiche dans le moule.",
+        "Enfournez la tarte dans un four préchauffé à 180°C pendant 45 à 50 min."
+      ],
+      "image": "https://static.750g.com/images/1200-675/648aabd9637eb539aac0b7f9ca652e72/quiche-sans-pate.jpeg",
+      "sourceUrl": "https://www.750g.com/quiche-sans-pate-r82029.htm"
+    },
+    {
+      "id": "750g-quiche-au-saumon-very-light",
+      "custom": true,
+      "source": "750g",
+      "category": "repas",
+      "categoryLabel": "Repas chauds",
+      "name": "Quiche au saumon very light",
+      "description": "Quiche au saumon allégée",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 6,
+      "ingredients": [
+        "20 cl crème liquide 4-5%",
+        "150g de saumon fumée (ou chutes de saumon)",
+        "Tomates",
+        "Moutarde",
+        "3 œufs",
+        "1 pâte feuilletée ou brisée"
+      ],
+      "steps": [
+        "Préchauffez le fourEtalez la pâtePiquez a l&#039;aide d&#039;une fourchette et mettre au four",
+        "Dans un saladier battre les oeufs.Mélanger la crème une cuillère de moutarde (et si pas de régime mettre du fromage râpé).",
+        "Coupez une ou deux tomates en quartier.Coupez en morceau le saumon dans une assiette a part",
+        "Sortir la pâte précuite du four .Disposez au fond des morceaux de saumonsVidez le saladier dessusDéposez les morceaux de tomates sur ma quiche (comme pour une tarte au pommes)Saupoudrez d herbes de provence",
+        "C&#039;est fini ! Au four 40 minutes environs 180°C. A dégustez avec quelques feuilles de salades ou en entrée."
+      ],
+      "image": "https://static.750g.com/images/1200-675/8a4393807ac69c120593f4ff2592b6d0/quiche-au-saumon-very-light.png",
+      "sourceUrl": "https://www.750g.com/quiche-au-saumon-very-light-r57392.htm"
     },
     {
       "id": "750g-quiche-a-la-citrouille",
@@ -2012,62 +2070,6 @@
       ],
       "image": "https://static.750g.com/images/1200-675/481ac11aca231b83a5709b39412eecf7/gettyimages-114254706.jpg",
       "sourceUrl": "https://www.750g.com/quiche-a-la-citrouille-r19120.htm"
-    },
-    {
-      "id": "750g-quiche-sans-pate-de-grand-mere",
-      "custom": true,
-      "source": "750g",
-      "category": "repas",
-      "categoryLabel": "Repas chauds",
-      "name": "Quiche sans pâte de grand-mère",
-      "description": "Quiche légère idéale en été accompagnée d&#039;une salade verte.",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 4,
-      "ingredients": [
-        "Sel ou sel fin",
-        "Poivre",
-        "400 g de lardons",
-        "100 g de gruyère râpé",
-        "½ l de crème fraîche",
-        "3 oeufs",
-        "100 g de farine"
-      ],
-      "steps": [
-        "Mélanger les ingrédients.Mettre au four dans un moule à tarte beurré."
-      ],
-      "image": "https://static.750g.com/images/1200-675/fb1540bc4213de6e4a7884ba928b7e76/quiche-sans-pate-de-grand-mere.png",
-      "sourceUrl": "https://www.750g.com/quiche-sans-pate-r56998.htm"
-    },
-    {
-      "id": "750g-quiche-aux-courgettes-et-aux-tomates-cerises",
-      "custom": true,
-      "source": "750g",
-      "category": "repas",
-      "categoryLabel": "Repas chauds",
-      "name": "Quiche aux courgettes et aux tomates cerises",
-      "description": "Tr&amp;egrave;s bonne recette et facile &amp;agrave; r&amp;eacute;aliser.",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 4,
-      "ingredients": [
-        "500 g de courgettes",
-        "300 g de tomates cerise",
-        "2 oeufs",
-        "1 oignon",
-        "1 pâte brisée",
-        "20 cl de crème fraîche",
-        "1 c. à s. d'huile d'olive",
-        "Sel ou sel fin",
-        "Poivre"
-      ],
-      "steps": [
-        "Pr&amp;eacute;chauffez le four &amp;agrave; 180&amp;deg;C (th. 5).Garnissez un moule &amp;agrave; tarte avec la p&amp;acirc;te bris&amp;eacute;e et faites la cuire &amp;agrave; blanc pendant 12 minutes.",
-        "Pendant ce temps, faites suer &amp;agrave; feu doux les courgettes d&amp;eacute;coup&amp;eacute;es en fines rondelles et ajoutez l&#039;oignon finement &amp;eacute;minc&amp;eacute;.Battez les &amp;oelig;ufs avec la cr&amp;egrave;me fra&amp;icirc;che dans un saladier. Salez et poivrez.Coupez les tomates cerises en deux.",
-        "D&amp;eacute;posez les l&amp;eacute;gumes sur la p&amp;acirc;te cuite &amp;agrave; blanc.&amp;nbsp;Versez la pr&amp;eacute;paration sur les l&amp;eacute;gumes et enfournez pour 25 mn. V&amp;eacute;rifier le degr&amp;eacute;s de cuisson &amp;agrave; l&#039;aide de la pointe d&#039;un couteau."
-      ],
-      "image": "https://static.750g.com/images/1200-675/2018f72df95c1ecafd9905578f4e73f0/quiche-aux-courgettes-et-aux-tomates-cerises.jpeg",
-      "sourceUrl": "https://www.750g.com/quiche-aux-courgettes-et-aux-tomates-cerises-r43353.htm"
     },
     {
       "id": "750g-houmous-maison",
@@ -2126,31 +2128,6 @@
       "sourceUrl": "https://www.750g.com/le-vrai-houmous-r99807.htm"
     },
     {
-      "id": "750g-hommous",
-      "custom": true,
-      "source": "750g",
-      "category": "tartinade",
-      "categoryLabel": "Tartinades & Dips",
-      "name": "Hommous",
-      "description": "Pur&amp;eacute;e de pois chiches.",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 4,
-      "ingredients": [
-        "1 boite de pois chiche  (en purée)",
-        "1 gousse d'ail",
-        "60 ml de crème de sésame  (tahiné)",
-        "½ jus de citron",
-        "½ c. à c. de sel ou sel fin"
-      ],
-      "steps": [
-        "Dans une jatte mettre 1 boite de pur&amp;eacute;e de pois chiche, 1/2 c a c de sel, le jus d&#039;1/2 citron, 60 ml de cr&amp;egrave;me de s&amp;eacute;same (selon votre go&amp;ucirc;t vous pouvez ajouter 1 gousse d&#039;ail &amp;eacute;cras&amp;eacute;e)",
-        "En pr&amp;eacute;sentation, d&amp;eacute;poser le homos dans une assiette creuse et par dessus vous avez le choix de mettre soit de la viande hach&amp;eacute;e cuite ou de l&#039;huile d&#039;olive."
-      ],
-      "image": "https://static.750g.com/images/1200-675/d1dde4370b4432b28d55df69d642d45f/hommous.png",
-      "sourceUrl": "https://www.750g.com/hommous-r44052.htm"
-    },
-    {
       "id": "750g-le-hoummous-libanais",
       "custom": true,
       "source": "750g",
@@ -2177,6 +2154,31 @@
       ],
       "image": "https://static.750g.com/images/1200-675/7f5f366cf94685184571d3c8b8c600b9/le-hoummous-libanais.png",
       "sourceUrl": "https://www.750g.com/le-hoummous-libanais-r45756.htm"
+    },
+    {
+      "id": "750g-hommous",
+      "custom": true,
+      "source": "750g",
+      "category": "tartinade",
+      "categoryLabel": "Tartinades & Dips",
+      "name": "Hommous",
+      "description": "Pur&amp;eacute;e de pois chiches.",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 4,
+      "ingredients": [
+        "1 boite de pois chiche  (en purée)",
+        "1 gousse d'ail",
+        "60 ml de crème de sésame  (tahiné)",
+        "½ jus de citron",
+        "½ c. à c. de sel ou sel fin"
+      ],
+      "steps": [
+        "Dans une jatte mettre 1 boite de pur&amp;eacute;e de pois chiche, 1/2 c a c de sel, le jus d&#039;1/2 citron, 60 ml de cr&amp;egrave;me de s&amp;eacute;same (selon votre go&amp;ucirc;t vous pouvez ajouter 1 gousse d&#039;ail &amp;eacute;cras&amp;eacute;e)",
+        "En pr&amp;eacute;sentation, d&amp;eacute;poser le homos dans une assiette creuse et par dessus vous avez le choix de mettre soit de la viande hach&amp;eacute;e cuite ou de l&#039;huile d&#039;olive."
+      ],
+      "image": "https://static.750g.com/images/1200-675/d1dde4370b4432b28d55df69d642d45f/hommous.png",
+      "sourceUrl": "https://www.750g.com/hommous-r44052.htm"
     },
     {
       "id": "750g-houmous-de-potiron",
@@ -2245,34 +2247,6 @@
       "sourceUrl": "https://www.750g.com/tzatziki-concombre-au-yaourt-a-la-grecque-r38237.htm"
     },
     {
-      "id": "750g-tsatziki",
-      "custom": true,
-      "source": "750g",
-      "category": "tartinade",
-      "categoryLabel": "Tartinades & Dips",
-      "name": "Tsatziki",
-      "description": "Crème au yaourt nature à la grecque, Philadelphia, concombre, menthe",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 4,
-      "ingredients": [
-        "1 bouquet d'aneth",
-        "3 càs d'huile",
-        "Sel",
-        "1 bouquet de menthe",
-        "1 gousse d'ail",
-        "160g de Philadelphia Nature",
-        "1/2 concombre",
-        "125g de yaourt nature à la grecque"
-      ],
-      "steps": [
-        "Pelez le concombre, râpez-le grossièrement, salez-le et faites-le dégorger dans une passoire pendant une dizaine de minutes.",
-        "Incorporez le Philadelphia au yaourt et à l&#039;huile, ajoutez le concombre et la menthe hachée avec l&#039;ail.Mélangez bien, rectifiez l&#039;assaisonnement et servez décoré de quelques brins d&#039;aneth."
-      ],
-      "image": "https://static.750g.com/images/1200-675/cebba17c41392491e6f2423a637d2e32/tsatziki.png",
-      "sourceUrl": "https://www.750g.com/tsatziki-r53289.htm"
-    },
-    {
       "id": "750g-tzatziki-menthe-et-ciboulette",
       "custom": true,
       "source": "750g",
@@ -2306,6 +2280,62 @@
       "sourceUrl": "https://www.750g.com/tzatziki-r97742.htm"
     },
     {
+      "id": "750g-tsatziki",
+      "custom": true,
+      "source": "750g",
+      "category": "tartinade",
+      "categoryLabel": "Tartinades & Dips",
+      "name": "Tsatziki",
+      "description": "Crème au yaourt nature à la grecque, Philadelphia, concombre, menthe",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 4,
+      "ingredients": [
+        "1 bouquet d'aneth",
+        "3 càs d'huile",
+        "Sel",
+        "1 bouquet de menthe",
+        "1 gousse d'ail",
+        "160g de Philadelphia Nature",
+        "1/2 concombre",
+        "125g de yaourt nature à la grecque"
+      ],
+      "steps": [
+        "Pelez le concombre, râpez-le grossièrement, salez-le et faites-le dégorger dans une passoire pendant une dizaine de minutes.",
+        "Incorporez le Philadelphia au yaourt et à l&#039;huile, ajoutez le concombre et la menthe hachée avec l&#039;ail.Mélangez bien, rectifiez l&#039;assaisonnement et servez décoré de quelques brins d&#039;aneth."
+      ],
+      "image": "https://static.750g.com/images/1200-675/cebba17c41392491e6f2423a637d2e32/tsatziki.png",
+      "sourceUrl": "https://www.750g.com/tsatziki-r53289.htm"
+    },
+    {
+      "id": "750g-tzatziki-classique",
+      "custom": true,
+      "source": "750g",
+      "category": "tartinade",
+      "categoryLabel": "Tartinades & Dips",
+      "name": "Tzatziki classique",
+      "description": "Servir accompagné de toasts grilles ou de petit légumes",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 6,
+      "ingredients": [
+        "1 cuillère à soupe d'huile d'olive",
+        "sel",
+        "poivre",
+        "1 cuillère a soupe de citron",
+        "1/2 bouquet de menthe fraîche",
+        "Ail  maggi ou de l'ail frais",
+        "200 gr de fromage blanc",
+        "1 cuillère a soupe de crème épaisse",
+        "1 concombre"
+      ],
+      "steps": [
+        "1- Peler et couper le concombre en petit dès.saler-les légèrement et faites-les égoutter 10 min.  2- Dans un saladier, mélanger le fromage blanc, la crème, l&#039;huile, le jus de citron, ajouter l&#039;ail et poivrer.  3- Ajouter les dès de concombre, la menthe préablement.hachée.Mélanger et réserver au frais."
+      ],
+      "image": "https://static.750g.com/images/1200-675/f2066718262b99f045552c64abe39302/tzatziki-classique.jpeg",
+      "sourceUrl": "https://www.750g.com/tzatziki-r18480.htm"
+    },
+    {
       "id": "750g-tzatziki-au-chevre-frais",
       "custom": true,
       "source": "750g",
@@ -2331,35 +2361,6 @@
       ],
       "image": "https://static.750g.com/images/1200-675/d842fe01ebdcff54c48375658b163c5e/tzatziki-au-chevre-frais.png",
       "sourceUrl": "https://www.750g.com/tzatziki-au-chevre-frais-r76101.htm"
-    },
-    {
-      "id": "750g-raita-au-concombre-et-a-la-menthe",
-      "custom": true,
-      "source": "750g",
-      "category": "tartinade",
-      "categoryLabel": "Tartinades & Dips",
-      "name": "Raïta au concombre et à la menthe",
-      "description": "Le raïta est une variante du tzaziki. Une sauce divinement fraîche et savoureuse ...",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 6,
-      "ingredients": [
-        "1 concombre",
-        "1 yaourt grec",
-        "1 jus de citron vert",
-        "½ gousse d'ail",
-        "1 morceau de gingembre  frais",
-        "1 pincée de cumin",
-        "8 feuilles de menthe",
-        "Sel ou sel fin"
-      ],
-      "steps": [
-        "Épluchez le concombre, coupez-le en deux et retirez l&#039;intérieur du concombre. Râpez-le et pressez le concombre râpé pour retirer un maximum d&#039;eau.",
-        "Ajoutez le cumin, le gingembre et la gousse d&#039;ail hachée. Ajoutez le citron vert et mélangez.",
-        "Ajoutez le yaourt à la grecque, mélangez, ajoutez de la menthe hachée et laissez reposer au frais une petite heure."
-      ],
-      "image": "https://static.750g.com/images/1200-675/18a87b73cdd5f4725cd2d04c76a901a4/raita-au-concombre-et-a-la-menthe.jpg",
-      "sourceUrl": "https://www.750g.com/raita-au-concombre-et-a-la-menthe-r99856.htm"
     },
     {
       "id": "750g-guacamole-express-fait-maison",
@@ -2418,31 +2419,6 @@
       ],
       "image": "https://static.750g.com/images/1200-675/952f449a68fe3ae5cd82517900110d22/guacamole-mexicain.jpg",
       "sourceUrl": "https://www.750g.com/guacamole-mexicain-r100877.htm"
-    },
-    {
-      "id": "750g-guacamole-thon-et-avocat",
-      "custom": true,
-      "source": "750g",
-      "category": "tartinade",
-      "categoryLabel": "Tartinades & Dips",
-      "name": "Guacamole thon et avocat",
-      "description": "Un variante du guacamole plus épaisse et plus complête.",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 4,
-      "ingredients": [
-        "Jus de citron",
-        "Epice mexicaine",
-        "1 boite de thon au naturel",
-        "2 avocats"
-      ],
-      "steps": [
-        "Pelez les avocats, enlevez le noyau et placez les en cube dans le mixer avec le thon emietté.",
-        "Commencer à mixer et ajouter du jus de citron puis des épices au fur et à mesure.",
-        "Dès que le guacamole à une consistance adéquate, sans morceau, stopper le mixer et gouter pour équilibrer le jus de citron et les épices."
-      ],
-      "image": "https://static.750g.com/images/1200-675/6554f8df5a87426ab63cc2664dbf0b37/guacamole-thon-et-avocat.png",
-      "sourceUrl": "https://www.750g.com/guacamole-thon-et-avocat-r74016.htm"
     },
     {
       "id": "750g-guacamole-facile",
@@ -2505,6 +2481,31 @@
       ],
       "image": "https://static.750g.com/images/1200-675/83723d4d95602a0595f2008b477a5306/guacamole-cremeux.png",
       "sourceUrl": "https://www.750g.com/guacamole-r45704.htm"
+    },
+    {
+      "id": "750g-guacamole-thon-et-avocat",
+      "custom": true,
+      "source": "750g",
+      "category": "tartinade",
+      "categoryLabel": "Tartinades & Dips",
+      "name": "Guacamole thon et avocat",
+      "description": "Un variante du guacamole plus épaisse et plus complête.",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 4,
+      "ingredients": [
+        "Jus de citron",
+        "Epice mexicaine",
+        "1 boite de thon au naturel",
+        "2 avocats"
+      ],
+      "steps": [
+        "Pelez les avocats, enlevez le noyau et placez les en cube dans le mixer avec le thon emietté.",
+        "Commencer à mixer et ajouter du jus de citron puis des épices au fur et à mesure.",
+        "Dès que le guacamole à une consistance adéquate, sans morceau, stopper le mixer et gouter pour équilibrer le jus de citron et les épices."
+      ],
+      "image": "https://static.750g.com/images/1200-675/6554f8df5a87426ab63cc2664dbf0b37/guacamole-thon-et-avocat.png",
+      "sourceUrl": "https://www.750g.com/guacamole-thon-et-avocat-r74016.htm"
     },
     {
       "id": "750g-caviar-d-aubergine-aux-epices",
@@ -2781,36 +2782,6 @@
       "sourceUrl": "https://www.750g.com/porridge-amandes-r34378.htm"
     },
     {
-      "id": "750g-porridge-au-four",
-      "custom": true,
-      "source": "750g",
-      "category": "petitdej",
-      "categoryLabel": "Petits-déjeuners",
-      "name": "Porridge au four",
-      "description": "Le porridge au four, c&#039;est&amp;nbsp;comme un porridge classique mais encore plus moelleux et fondant, un peu comme un g&amp;acirc;teau. Cette version est pomme-cannelle, mais la recette est &amp;agrave; personnaliser &amp;agrave; l&#039;infini.",
-      "prepTime": 0,
-      "cookTime": 0,
-      "servings": 1,
-      "ingredients": [
-        "40 g de flocons d'avoine",
-        "12,5 cl de lait",
-        "1 pomme",
-        "Cannelle",
-        "1 grain de graines de lin",
-        "Grain de graines de courge",
-        "Beurre",
-        "1 poignée de noisette",
-        "1 poignée d'amande"
-      ],
-      "steps": [
-        "Couper la pomme en morceaux et les faire revenir dans une po&amp;ecirc;le avec un peu de beurre et de cannelle. Les pommes doivent &amp;ecirc;tre fondantes.",
-        "Dans un bol, m&amp;eacute;langer les flocons d&#039;avoine, ajouter les pommes cuites, les graines et les noix concass&amp;eacute;es. Verser le lait petit &amp;agrave; petit en m&amp;eacute;langeant. M&amp;eacute;langer jusqu&#039;&amp;agrave; obtenir une pr&amp;eacute;paration homog&amp;egrave;ne, verser et r&amp;eacute;partir uniform&amp;eacute;ment dans un petit r&amp;eacute;cipient allant au four.",
-        "Faire cuire 35 minutes environ dans un four pr&amp;eacute;chauff&amp;eacute; &amp;agrave; 170&amp;deg;C, jusqu&#039;&amp;agrave; ce que le porridge soit cuit et dor&amp;eacute;. Laisser refroidir et parsemer de quelques amandes. D&amp;eacute;guster ti&amp;egrave;de."
-      ],
-      "image": "https://static.750g.com/images/1200-675/f70222683dcdf3b752169f054d14c15d/oat.jpg",
-      "sourceUrl": "https://www.750g.com/porridge-au-four-r202969.htm"
-    },
-    {
       "id": "750g-smoothie-bowl-aux-fruits-rouges-et-banane",
       "custom": true,
       "source": "750g",
@@ -2951,6 +2922,96 @@
       "sourceUrl": "https://www.750g.com/smoothie-vitamine-r39474.htm"
     },
     {
+      "id": "750g-toasts-petit-dej-aux-fruits",
+      "custom": true,
+      "source": "750g",
+      "category": "petitdej",
+      "categoryLabel": "Petits-déjeuners",
+      "name": "Toasts petit dej' aux fruits",
+      "description": "Un petit d&amp;eacute;jeuner complet et sain, avec une pointe de gourmandise, on adore.",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 4,
+      "ingredients": [
+        "8 tranches de pain complet  8 tranches de pain aux céréales",
+        "1 barquette de fromage à la crème ou cream cheese  Philadelphia",
+        "Fruits  fraises, bananes, myrtilles, kiwis, grenade",
+        "Purée d'oléagineux  noix de pécan, pistaches, amandes,...",
+        "1 gousse de vanille",
+        "1 c. à s. de sucre  (facultatif)"
+      ],
+      "steps": [
+        "Couper les fraises et les kiwis en tranches, les bananes en rondelles.",
+        "Concasser les noix.",
+        "Faire griller l&amp;eacute;g&amp;egrave;rement les tranches de pain au grille-pain ou au four.",
+        "Dans un bol, m&amp;eacute;langer le Philadelphia, le sucre, la vanille et le sucre, si vous en mettez.",
+        "Etaler la pr&amp;eacute;paration sur les tartines de pain et ajouter les fruits frais. Parsemer de noix concass&amp;eacute;es et de grenade."
+      ],
+      "image": "https://static.750g.com/images/1200-675/d3d376ef53ebfe247c1c8e5f11647f3b/toast-petit-dej.jpg",
+      "sourceUrl": "https://www.750g.com/toasts-petit-dej-aux-fruits-r202562.htm"
+    },
+    {
+      "id": "750g-miam-o-fruits",
+      "custom": true,
+      "source": "750g",
+      "category": "petitdej",
+      "categoryLabel": "Petits-déjeuners",
+      "name": "Miam-Ô-Fruits",
+      "description": "Le petit d&amp;eacute;jeuner healthy pour faire le plein d&#039;&amp;eacute;nergie.",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 1,
+      "ingredients": [
+        "½ banane",
+        "2 c. à s. d'huile de colza  ou de lin ou Huile de colza",
+        "2 c. à c. de jus de citron  fraîchement pressé",
+        "1 c. à s. rase(s) de graines de lin",
+        "1 c. à s. rase(s) de graine de sésame",
+        "1 c. à c. de cerneau de Noix",
+        "1 c. à c. d'amande",
+        "1 c. à c. de graines de courge",
+        "1 poignée de fraise",
+        "1 kiwi",
+        "1 pomme"
+      ],
+      "steps": [
+        "Broyez finement les graines de lin et de s&amp;eacute;same dans un moulin &amp;eacute;lectrique. Pelez le kiwi, coupez-le en d&amp;eacute;s. Coupez la pomme en d&amp;eacute;s en laissant la peau. Coupez les fraises en morceaux.",
+        "Dans une assiette ou un bol, &amp;eacute;crasez la banane &amp;agrave; la fourchette en pur&amp;eacute;e lisse. Ajoutez l&#039;huile de colza ou de lin et m&amp;eacute;langez. Ajoutez les graines de lin et de s&amp;eacute;same broy&amp;eacute;es et m&amp;eacute;langez. Ajoutez le jus de citron et m&amp;eacute;langez.",
+        "Ajoutez les d&amp;eacute;s de pomme et de kiwi et les morceaux de fraises, en disposant le tout joliment sur la pur&amp;eacute;e de banane. Terminez en ajoutant les cerneaux de noix, les amandes coup&amp;eacute;es en 2 et les graines de courge. Servez aussit&amp;ocirc;t.&amp;nbsp;&amp;nbsp;"
+      ],
+      "image": "https://static.750g.com/images/1200-675/9b53a333d7071e645def6ac8be21393e/miam-o-fruit-img-0053.jpg",
+      "sourceUrl": "https://www.750g.com/miam-o-fruits-r205279.htm"
+    },
+    {
+      "id": "750g-gateau-au-yaourt-pour-petit-dejeuner",
+      "custom": true,
+      "source": "750g",
+      "category": "petitdej",
+      "categoryLabel": "Petits-déjeuners",
+      "name": "Gâteau au yaourt pour petit déjeuner",
+      "description": "Le g&amp;acirc;teau au yaourt revisit&amp;eacute; pour un petit d&amp;eacute;jeuner gourmand mais qui reste raisonnable et complet.",
+      "prepTime": 0,
+      "cookTime": 0,
+      "servings": 6,
+      "ingredients": [
+        "1 yaourt nature (garder le contenant)",
+        "1/2 pot de sucre complet",
+        "2 pots de farine semi-complète",
+        "1 pot de farine au choix : seigle, épeautre, avoine, intégrale, quinoa, sarrasin,",
+        "1 sachet de levure chimique",
+        "1/2 pot d'huile de coco ou 1 compote de pomme",
+        "2 gros oeufs ou 3 oeufs",
+        "1 c à s de graines de lin moulues",
+        "Option : Zeste de citron, cannelle, vanille,noisettes, amandes, fruits secs, graines"
+      ],
+      "steps": [
+        "Verser le yaourt dans un saladier, ajouter les farines, le sucre, la levure, l&#039;huile ou la compote, les graines de lin, m&amp;eacute;langer, ajouter les oeufs et m&amp;eacute;langer &amp;agrave; nouveau jusqu&#039;&amp;agrave; obtenir une p&amp;acirc;te lisse. Ajouter les ar&amp;ocirc;mes ou les fruits secs au besoin (ici noisettes concass&amp;eacute;es) et m&amp;eacute;langer.",
+        "Verser dans un moule &amp;agrave; cake et faire cuire 45 minutes &amp;agrave; 180&amp;deg;C. V&amp;eacute;rifier la cuisson avec la pointe d&#039;un couteau. Laisser refroidir sur une grille."
+      ],
+      "image": "https://static.750g.com/images/1200-675/f9c7a266ef8fdf75e0e4244db700567e/cale-copie.jpg",
+      "sourceUrl": "https://www.750g.com/gateau-au-yaourt-pour-petit-dejeuner-r204588.htm"
+    },
+    {
       "id": "750g-pancakes-a-la-banane-et-aux-flocons-d-avoine",
       "custom": true,
       "source": "750g",
@@ -3035,60 +3096,58 @@
       "sourceUrl": "https://www.750g.com/pancakes-aux-flocons-davoine-cottage-cheese-et-myrtilles-r82150.htm"
     },
     {
-      "id": "750g-pancakes-pour-petit-dejeuner-americain",
+      "id": "750g-pancakes-sans-gluten-et-sans-lactose",
       "custom": true,
       "source": "750g",
       "category": "petitdej",
       "categoryLabel": "Petits-déjeuners",
-      "name": "Pancakes pour petit-déjeuner américain",
-      "description": "Parfaits pour un petit-d&amp;eacute;jeuner maison...",
+      "name": "Pancakes sans gluten et sans lactose",
+      "description": "De d&amp;eacute;licieux pancakes, bien moelleux. Sans lactose et sans gluten, ils plairont au plus grand monde.",
       "prepTime": 0,
       "cookTime": 0,
       "servings": 4,
       "ingredients": [
-        "4 oeufs",
-        "250 g de farine",
-        "30 cl de lait",
-        "4 c. à s. de sucre",
-        "2 c. à c. de levure chimique",
-        "2 pincées de sel ou sel fin",
-        "Huile"
+        "2 oeufs",
+        "100 g de farine de riz",
+        "50 g de farine de maïs",
+        "50 g de farine de sarrasin",
+        "30 g de sucre roux",
+        "4 cl de lait de soja"
       ],
       "steps": [
-        "S&amp;eacute;parez les blancs des jaunes. M&amp;eacute;langez les jaunes avec le lait.&amp;nbsp;Ajoutez le sucre, la farine, la levure, le sel et m&amp;eacute;langez, jusqu&amp;rsquo;&amp;agrave; obtenir une p&amp;acirc;te lisse. Battez les blancs en neige, puis incorporez-les &amp;agrave; la p&amp;acirc;te.&amp;nbsp;",
-        "Faites chauffer et graissez une po&amp;ecirc;le avec un peu d&amp;rsquo;huile. D&amp;eacute;posez 2 &amp;agrave; 3 petites louches de p&amp;acirc;te dans la po&amp;ecirc;le en les espa&amp;ccedil;ant. D&amp;egrave;s qu&amp;rsquo;une multitude de petites bulles apparaissent &amp;agrave; la surface des pancakes, retournez-les. Poursuivez la cuisson pendant encore un peu moins d&amp;rsquo;1 minute.&amp;nbsp;",
-        "D&amp;eacute;posez-les sur une assiette puis poursuivez la cuisson jusqu&amp;rsquo;&amp;agrave; &amp;eacute;puisement de la p&amp;acirc;te.&amp;nbsp;Servez chaud avec du sirop d&amp;rsquo;&amp;eacute;rable et des&amp;nbsp;noix de p&amp;eacute;can."
+        "Cassez les oeufs dans un saladier, commencez &amp;agrave; battre, ajoutez le lait de soja tout en battant. Ajoutez le sucre,&amp;nbsp;les pinc&amp;eacute;es de sel et la farine en m&amp;eacute;langeant.",
+        "Faites chauffer la po&amp;ecirc;le, huilez avec du sopalin, versez une petite louche de p&amp;acirc;te et faites cuire quelques puis&amp;nbsp;retournez-les. Continuez jusqu&#039;&amp;agrave; &amp;eacute;puisement de la p&amp;acirc;te."
       ],
-      "image": "https://static.750g.com/images/1200-675/d63236027d0bb44dd12b809179cb7d12/snap-2016-07-12-at-15.41.12.jpg",
-      "sourceUrl": "https://www.750g.com/pancakes-r200922.htm"
+      "image": "https://static.750g.com/images/1200-675/af17afc16b1173e3039d863dc3ef7161/pancakes.jpg",
+      "sourceUrl": "https://www.750g.com/pancakes-sans-gluten-et-sans-lactose-r204313.htm"
     },
     {
-      "id": "750g-pancakes-a-la-cannelle",
+      "id": "750g-pancakes-delicieux",
       "custom": true,
       "source": "750g",
       "category": "petitdej",
       "categoryLabel": "Petits-déjeuners",
-      "name": "Pancakes à la cannelle",
-      "description": "D&amp;eacute;licieux pancakes &amp;agrave; faire le matin ou au go&amp;ucirc;ter. Entre amis ou seul ils sauront vous satisfaire !",
+      "name": "Pancakes délicieux",
+      "description": "Pour faire de délicieux pancakes !",
       "prepTime": 0,
       "cookTime": 0,
-      "servings": 2,
+      "servings": 3,
       "ingredients": [
+        "250 ml de lait",
+        "50 g de beurre  fondu",
         "2 oeufs",
-        "80 g de sucre",
-        "1 sachet de sucre vanillé",
-        "60 g de beurre  fondu",
-        "150 g de farine",
-        "2,5 c. à s. de cannelle"
+        "1 pincée de sel ou sel fin",
+        "2 c. à c. de levure chimique",
+        "2 c. à s. de sucre en poudre ou sucre semoule",
+        "185 g de farine"
       ],
       "steps": [
-        "Mettez le sucre dans un saladier. Ensuite ajoutez les oeufs. M&amp;eacute;langez le tout puis lorsque le m&amp;eacute;lange est bien m&amp;eacute;lang&amp;eacute; ajoutez le beurre fondu. M&amp;eacute;langez le tout puis ajoutez la farine petit &amp;agrave; petit. Lorsque le m&amp;eacute;lange est homog&amp;egrave;ne ajoutez la cannelle.",
-        "A faire dans une po&amp;ecirc;le avec un fond d&#039;huile pour ne pas coller. Ou sur une plancha. Prendre une louche, d&amp;eacute;posez et attendre environ 1 minute puis retournez. A manger chaud, patientez quelques seconde avant de d&amp;eacute;guster."
+        "Mélanger la farine, la levure, le sucre et le sel. Faire un puits et y casser les œufs, mélangez les œufs, ajouter le beurre et verser petit à petit le lait. Bien mélanger (vous pouvez utiliser un batteur pour avoir une pâte bien homogène).Couvrir de film alimentaire et laisser reposer 20 minutes.Verser dans une poêle à pancakes de préférence une petite louche de pâte (60 ml). Pour une poêle normale, il faut obtenir un pancake de 10 cm de diamètre. Laisser cuire le pancake 1 minute de chaque coté jusqu&#039;à ce que le pancake soit bien doré."
       ],
-      "image": "https://static.750g.com/images/1200-675/e3237042ee6e15abd750917dea307cd5/pancakes-a-la-cannelle.png",
-      "sourceUrl": "https://www.750g.com/pancakes-a-la-cannelle-r200484.htm"
+      "image": "https://static.750g.com/images/1200-675/7cd2b5e37b069b5c353e1e907861ebce/pancakes.png",
+      "sourceUrl": "https://www.750g.com/pancakes-r16013.htm"
     }
   ],
-  "updated": "2026-11-08",
+  "updated": "2026-11-15",
   "source": "750g"
 }
